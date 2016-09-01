@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+    body {
+      margin: 2em auto;
+      max-width: 40em;
+      font: 1em/1.2em sans-serif;
+      letter-spacing: 0.5px;
+      background: #000;
+      color: #C0C0C0;
+      padding: 0 1em;
+    }
+    a {
+      color: #E18A07;
+      text-decoration: none;
+    }
+    h1, h2, h3, h4 {
+      color: #fff;
+      text-align: center
+    }
+    pre {
+      font-family: inherit;
+      color: inherit;
+      background: #333;
+      padding: 1em;
+      overflow: scroll;
+    }
+    ul.navbar {
+      text-decoration: none;
+    }
+    dd {
+      margin-bottom: 1em;
+    }
+    span.date {
+      font-size: 0.7em;
+    }
+    ul.nav {
+      list-style-type: none;
+      overflow: auto;
+      padding: 0;
+    }
+    ul.nav li {
+      float: left;
+      margin: 0 20px 0 0;
+    }
+    table {
+      margin-bottom: 1em;
+      width: 100%;
+    }
+    tr {
+      height: 1.4em;
+    }
+  </style>
+  <title>Tornado ve Node.js Arasında Seçim Yapmak — Mirat Can Bayrak</title>
+</head>
+<body>
+<ul class="nav">
+  <li>
+    <a href="../../">Anasayfa</a></li>
+    
+      <li class="active">
+        <a href="../../blog/">Blog</a>
+      </li>
+    
+</ul>
+
+
+  
+  <h1>Tornado ve Node.js Arasında Seçim Yapmak</h1>
+  <p>Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim için. Hem bir sosyal medya aracının oluşturulurken ne gibi badireler atlattığını görmüş oldum. Hem de bir yazılım geliştirici olarak daha önce hiç el atmadığım meselelere el atmak durumunda kaldım. Benim için oldukça çetrefilli ama bir yandan da oldukça zevkli bir iş oldu. Keşke daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarımız tekrar kesişir.</p>
+<p>Şu anda ise ilk göz ağrım bilsin'i tekrar ayağa kaldırmak için elime bir fırsat geçti. Geçerli sosyal medya araçlarının zayıflığı ve bilsin'in neden güçlü bir araç olacağı konusunda okuldaki jüriye yaptığım sunum oldukça ikna edici oldu ve şu bilsin resmi olarak bitirme projem haline dönüştü. Ancak çok çalışmam gerek çünkü şu anda her ne kadar kırık dökük de olsa çalışan bir alet (tool) görünümü verse de aslında kafamdaki ideolojiden ve sağlamlıktan uzak durumda.</p>
+<p>Projeye daha önce başlarken yaptığım yanlış teknoloji seçimlerini ve kervan yolda düzülür diyip yolda yol değiştirmeleri (gerçekten çok fazla enerji ve kaybı oluyor) tekrar yaşamamak için mümkün olduğunca belgeli, planlı davranmaya çalışıyor. Çıkacak sorunları mümkün olduğunca ön görmeye çalışıyorum. Blog üzerinden çok fazla ayrıntı vermeyi uygun görmüyorum ama projenin %90'ının sağlam restFul api oluşturmaktan geçtiğini ve mümkün olduğunca akışkan bir yapıda olacağını söyleyebilirim. Tabi bu noktada Django kullanmak bir az saçma oluyor zira api yazmak için context processorlere ya da template sistemine ihtiyaç duymuyorum. Bunun yanında Django ile long pooling yapmak ya da websockets kullanmak deveyi at yarışına sokmak gibi bir şey olurdu.</p>
+<p>Bu noktada Node.js gel beni kullan diye göz kırpıyor, diğer kolumda da Tornado var. Bunları kendimce karşılaştırmaya çalıştım ancak eğer yanlış bilgi verdiğimi, yanıldığımı düşünüyorsanız lütfen yorum bırakın.</p>
+<h2> Performans</h2>
+<p>Node.js Google beyin V8 adlı javascript motorunu kullanıyor. Javascript kodları derlenip makina diline çevriliyor. Bu da kallavi bir hız demek. Tornado ise bunu ta ki Python 3.3 çıkana kadar yapamayacak(mış). İzlediğim node.js sunumunda yapılan testte ki bu test sadece bir "hello world" testi. Node.js saniyede 4340 cevap verebilirken tornado ise sadece 2344 cevap verebilmiş. Sözün özü Node.js performans konusunda Tornado'yu ikiye katlıyor.</p>
+<h2>Dil Yapısı</h2>
+<p>Bu noktada Tornado golünü atıyor zira hiç bir programcının Python varken Javascript kullanmak isteyeceğini sanmıyorum. Javascript'in iğrenç bir syntax yapısı var. Bu Python sever birinin şahsi fikri olmakla beraber, pek çok kişinin de noktalı virgül ya da memeli parantezler ile boğuşmak isteyeceğini sanmıyorum. Hoş, syntax olayı CofeeScript sayesinde çözülebiliyor ancak yine de dahili standartlaşmış kütüphanelerin eksikliği hissediliyor. Bir each döngüsü yaratmak için bile harici bir kütüphaneye ihtiyaç duymak, bende huzursuzluğa yol açıyor. Yengeç burcu programcılar için önermiyorum. :)</p>
+<p>İkinci olarak javascript ilk defa browser dışında bir mecrada iş görmeye başladığı için bir çok kütüphane olgunlaşmamış durumda. Halbu ki Python 1994 de 1.0 versiyonuna ulaştı yıllardır her konuda kütüphane geliştirilmekte kendisi için. Node.js nin şu anki versiyonu 0.4.1 Tornado'nun ise 2.1.1.</p>
+<p>Üçüncü olarak, Javascript in doğal halinin etkinlik tabanlı (event-driven) bir dil olduğunu bu yüzden geliştirilen kütüphanelerin haliyle asenkron kütüphaneler olduğunu. Python ise aslında sıralı (satır satır) işlenen bir dil olması itibari ile Tornado ile kullanacağınız kütüphanelerin özel olarak asenkron olarak yazılmış kütüphaneler olması gerektiğini eklemem gerekiyor. Anlayacağınız Tornado içinde mysqllib'i direkt olarak import edip kullanamıyorsunuz. Bunun yerine asenkron çalışacak şekilde tasarlanmış mysql kütüphanesi ne ise onu bulup kullanmanız gerekiyor.</p>
+<p>Ancak ilginçtir ki her ne kadar Tornado daha olgun olsa da içerisinde bir session management olayı bulundurmuyor. Bu bana çok garip geldi. Sanırım Django'da ki:</p>
+<pre><code>if user.is_authenticated():
+    ...
+    ...
+</code></pre>
+<p>Türevi sorular soramayacağımız manasına geliyor Tornado'ya. Belki authentication olayları başka türlü cookie tabanlı atraksiyonlarla (OAuth?) çözülüyordur bilemiyorum.</p>
+<h2>Topluluk</h2>
+<p>Node.js'in çok heyecanlı bir topluluk henüz bir velet olmasına rağmen inanılmaz ilgi görüyor. Aşağıdaki bu rakamlar söylediğimi kanıtlar nitelikte: (Fork, Takipçi ve İlgili Depo sayılarını Github'dan aldım)</p>
+<p>Fork Takipçi İlgili Depo Eposta Listesi Tornado 510 3,313 364 1779 Node.js 1,339 11,944 5842 6590</p>
+<h2>Sonuç</h2>
+<p>Sonuç olarak Node.js topluluk ve performans olarak Tornado'yu dövüyor gözüküyor. Ancak sanırım geliştiriciler arasında bir garip moda ya da trendin peşinden hızla gitme durumu var. Yeni bir teknoloji afili bir sunumla anlatılıp da bir kaç yerde yazılıp çizildiği zaman hurra herkes o tarafa gidiyor. Sonra herkes sakinleşiyor hangi dili rahat kullanıyorsa onu kullanmaya devam ediyor. Bu yüzden bu 7000 kişilik e-posta listelerini falan biraz şişirilmiş rakamlar olarak görüyorum. Ayrıca bu devasa kitleden kaç tanesi gerçek bir iş görebilmek üzere sizin ofisinize gelip çalışabilecek insanlardır bunu hesap etmek gerek. üç mü beş mi?</p>
+<p>Bunun yanında Node.js teoride bu kadar ilgi görmesine rağmen, henüz kendisini savaş arenasında görmüş değiliz. Gerçek - büyük projelerde ne gibi problemler çıkaracağı konusunda pek fikrimiz yok. Tornado ise halihazırda Facebook'un ve FriendFeed'in ağır işlerini gören bir sistem.</p>
+<p>Bütün bunlara dayanarak, üzülerek Node.js ye bizimle değilsin diyorum. Zira saniyede 4bin request karşılayabiliyor olması bende yarattığı rahatsızlık hissini gidermeye yetmiyor. Zaten bir gün sunucularım altından kalkamayacağım bir yükle karşılaşırsa zaten para kazanıyorum demektir bir sunucu daha koyarım.</p>
+<p>Kaynaklar:</p>
+<ul>
+<li><a href="http://nodejs.org/">http://nodejs.org/</a></li>
+<li><a href="http://www.tornadoweb.org/">http://www.tornadoweb.org/</a></li>
+<li>Node.js mailing list</li>
+<li>Tornado mailing list</li>
+<li>The History of Python</li>
+<li>What are the disadvantages of using Node.js?</li>
+<li>What are the disadvantages/drawbacks of using Tornado as a primary web server, not just for real time activity?</li>
+<li>Node.js is Cancer</li>
+</ul>
+
+  <hr />
+  <p>Mirat Bayrak - July 2016</p>
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//blog-lektor.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                    
+
+</body>
+
+</html>
+
+

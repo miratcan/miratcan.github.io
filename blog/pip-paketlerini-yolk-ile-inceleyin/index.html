@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+    body {
+      margin: 2em auto;
+      max-width: 40em;
+      font: 1em/1.2em sans-serif;
+      letter-spacing: 0.5px;
+      background: #000;
+      color: #C0C0C0;
+      padding: 0 1em;
+    }
+    a {
+      color: #E18A07;
+      text-decoration: none;
+    }
+    h1, h2, h3, h4 {
+      color: #fff;
+      text-align: center
+    }
+    pre {
+      font-family: inherit;
+      color: inherit;
+      background: #333;
+      padding: 1em;
+      overflow: scroll;
+    }
+    ul.navbar {
+      text-decoration: none;
+    }
+    dd {
+      margin-bottom: 1em;
+    }
+    span.date {
+      font-size: 0.7em;
+    }
+    ul.nav {
+      list-style-type: none;
+      overflow: auto;
+      padding: 0;
+    }
+    ul.nav li {
+      float: left;
+      margin: 0 20px 0 0;
+    }
+    table {
+      margin-bottom: 1em;
+      width: 100%;
+    }
+    tr {
+      height: 1.4em;
+    }
+  </style>
+  <title>Pip Paketlerini Yolk İle İnceleyin — Mirat Can Bayrak</title>
+</head>
+<body>
+<ul class="nav">
+  <li>
+    <a href="../../">Anasayfa</a></li>
+    
+      <li class="active">
+        <a href="../../blog/">Blog</a>
+      </li>
+    
+</ul>
+
+
+  
+  <h1>Pip Paketlerini Yolk İle İnceleyin</h1>
+  <p>Virtualenv kullanarak geliştirme yaptığınızda genelde hangi paket yüklüydü, hangisi kaçıncı versiyondaydı gibi sorulara cevap bulmak için pip freeze çıktısını gözle inceliyordum. Yolk pakedi bu işleri baya kolaylaştırıyor. Kendisi PyPI üzerinde sorgular çalıştırmak ve yerelde kurulu Python paketlerini incelemek için yazılmış bir komut satırı aracı.</p>
+<p>Kurmak için:</p>
+<pre><code>pip install yolk
+</code></pre>
+<p>En işime yarayan sorgular ise:</p>
+<pre><code>$ yolk -l
+</code></pre>
+<p>pip freeze gibi ama daha çok bilgi veriyor</p>
+<pre><code>$ yolk -V pkg_name
+</code></pre>
+<p>verilen pakette hangi versionların kurulabilir olduğu</p>
+<pre><code>$ yolk -U pkg_name
+</code></pre>
+<p>kurulu paketler içerisinde hangilerinin güncellenebileceği</p>
+<p>Ben sadece üç tanesini yazdım fakat projenin sayfasında birçok yapılabilir sorgu çeşidinden bahsedilmiş. Oradan inceleyip hoşunuza gidenleri yorum olarak bırakabilirsiniz.</p>
+
+  <hr />
+  <p>Mirat - April 2016</p>
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//blog-lektor.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                    
+
+</body>
+
+</html>
+
+

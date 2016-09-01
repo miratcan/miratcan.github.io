@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+    body {
+      margin: 2em auto;
+      max-width: 40em;
+      font: 1em/1.2em sans-serif;
+      letter-spacing: 0.5px;
+      background: #000;
+      color: #C0C0C0;
+      padding: 0 1em;
+    }
+    a {
+      color: #E18A07;
+      text-decoration: none;
+    }
+    h1, h2, h3, h4 {
+      color: #fff;
+      text-align: center
+    }
+    pre {
+      font-family: inherit;
+      color: inherit;
+      background: #333;
+      padding: 1em;
+      overflow: scroll;
+    }
+    ul.navbar {
+      text-decoration: none;
+    }
+    dd {
+      margin-bottom: 1em;
+    }
+    span.date {
+      font-size: 0.7em;
+    }
+    ul.nav {
+      list-style-type: none;
+      overflow: auto;
+      padding: 0;
+    }
+    ul.nav li {
+      float: left;
+      margin: 0 20px 0 0;
+    }
+    table {
+      margin-bottom: 1em;
+      width: 100%;
+    }
+    tr {
+      height: 1.4em;
+    }
+  </style>
+  <title>Javascript ve Nesnel Programlama — Mirat Can Bayrak</title>
+</head>
+<body>
+<ul class="nav">
+  <li>
+    <a href="../../">Anasayfa</a></li>
+    
+      <li class="active">
+        <a href="../../blog/">Blog</a>
+      </li>
+    
+</ul>
+
+
+  
+  <h1>Javascript ve Nesnel Programlama</h1>
+  <blockquote><p>Bu yazıyı bitmiş bir makale değil de benim tuttuğum notlardan oluşan bir yazı olarak düşünmek daha doğru. O yüzden bölük bölçük ve bitmemiş durumda zamanla düzelte düzelte adam edeceğim.</p>
+</blockquote>
+<p>Baya bir süredir Javascript kullanırım ancak bu kullanım var olan <a href="http://jquery.com/">JQuery</a> pluginlerini doğru dürüst entegre etmek, gerekirse bir iki fonksiyon yazmaktan öteye geçmez. Son bir iş var yapmam gereken ve pek öyle basit bir iş değil adam akıllı bir <a href="http://tr.wikipedia.org/wiki/Model-view-controller">MVC</a> yapısı kurmam, gerekli. Önce Backbone.js kullanmayı denesem de, Backbone'un view katmanının&nbsp;<a href="http://tr.wikipedia.org/wiki/Document_Object_Model">DOM</a> elemanlarını manuple edecek şekilde hazırlanmış olması işi bozdu. Zira benim yapacağım iş kullanıcıya <a href="http://www.w3schools.com/html5/html5_canvas.asp">canvas</a> üzerinde bir takım resimler çizdirmek.</p>
+<p>Javascript ile Nesne Yönelimli Programlamaya dair tuttuğum notlar şu şekilde</p>
+<h2>Variable Scope (Değişken Kapsamı)</h2>
+<p>Javascript değişkenlerin nerede görünür nerede görünmez olduğuna function scope (fonksiyon kapsam) kullanarak karar veriyor. Yani her değişken kendi içinde bulunduğu fonksiyon içerisinde görünür durumda. Ancak iç içe geçmiş fonksiyonlarda &nbsp;içerideki bir değişken kullanıldığı zaman önce fonksiyon içerisinde, eğer bulunamaz ise dıştaki fonksiyonda aratılıyor.</p>
+<p>Aşağıdaki örnekte bir <em>myvar</em> adlı bir değişken var, bu global bir değer en tepede duruyor. is_exists() fonksiyonu çağırıldığı zaman önce fonksiyon içerisinde aranıyor, bulunamadığı için bir üste yani global katmanına çıkılıyor. Orada bulunduğu için <em>myvar</em> görüntüleyebiliyoruz.</p>
+<pre><code>var myvar = "here i am!";
+function is_exists() { console.log(myvar); };
+is_exists();
+&gt; here i am!
+</code></pre>
+<p>Global değişken görülmüyor olsa da eğer fonksiyonları iç içe kullanır isek, alttaki fonksiyon üsttekine ait değişkenleri görebiliyor. Aşağıdaki örnekte outer fonksiyonunu çağırıyoruz, o da değer olarak kendi içindeki <em>inner</em> fonksiyonunu döndürüyor. <em>inner</em> fonksiyonu outer'a ait <em>myvar</em> değerini getiriyor.</p>
+<pre><code>function outer()  {
+    var myvar = "here i am!"
+        function inner() {
+            console.log(myvar);
+        }
+    return inner();
+};
+outer();
+&gt; "here i am!"
+</code></pre>
+<h2>Fonksiyon Tanımlamaları</h2>
+<p>Javascript'te klasik fonksiyon tanımlamaları mümkün, bunun yanında bir de anonim (isimsiz) fonksiyonlar var. Anonim fonksiyonlar genelde bir değer üzerine atanarak kullanılıyor ya da başka fonksiyonlara parametre olarak gönderiliyor. (evet biraz kafa karıştırıcı olmaya başladı)</p>
+<p>Aşağıdaki bir klasik fonksiyon oluşturma örneği:</p>
+<pre><code>function nameOfFunction(listOfVariableNames) {
+    ...
+    ...
+ }
+ var a = nameOfFunction();
+</code></pre>
+<p>Bu fonksiyonun yaptığı işlemin sonucunu bir a değişkenine atadık. Eğer istersek tekrar kullanabilir, başka bir değişkene de atayabiliriz.</p>
+<p>Aşağıdaki ise isimsiz bir fonksiyon</p>
+<pre><code>b = function(listOfVariableNames) {
+    ...
+    ...
+};
+</code></pre>
+<p>Burada fonksiyonumuzu b değişkenine atamış oluyoruz ancak atamayabilirdik. Bir fonksiyon diğerine parametre olarak verildiğinde kullanılıyor genelde bu özellik.</p>
+<h2>Nesneler</h2>
+<p>Javascript her ne kadar kendini nesnel bir programlama dili olarak tanıtsa da Javascript'de her şey nesne değil. İlkel değerlere (<em>undefined</em>, <em>null</em>, <em>boolean</em>, <em>string</em> ve <em>number</em>) sahip. İlginçtir ki bu ilkel değerlere objeymiş gibi davranır, her hangi bir metodunu çağırmaya kalkarsanız; ilkel değer, nesneye düşüyor (fall back) ve metod çağırılıyor.</p>
+<pre><code>var a = "hi!" // bu bir string, yani ilkel değer
+console.log(a.length); // burada fall back işlemi gerçekleşiyor, objeye dönüşüyor
+&gt; 3
+</code></pre>
+<p>İkinci bir gariplik ise Javascript'de class kavramının bulunmayışı. Bunu ilk duyduğumda tepkim aşağıdaki resimdeki gibi oldu.</p>
+<p><img src="http://munfitnessblog.com/wp-content/uploads/2007/12/sad-man-forehead-on-the-wall.JPG" alt=""></p>
+<p>Ancak türetme işlerini bir obje oluşturup buna ait metodları ve özellikleri yine de başka objelere aktararak halledebiliyoruz.</p>
+<p>Javascript'de bir obje oluşturmanın en kısa yolu şu şekilde:</p>
+<p>var ninja = {
+    name: 'Shadow Warrior'
+    health: 100,
+    swing_sword: function() {
+        alert("swosh!");
+    }
+};
+ninja.swing_sword();&lt;/pre&gt;</p>
+<p><em>ninja</em> adında bir obje oluşturmuş olduk. İçindeki _swing<em>sword</em> (kılıç salla) metodunu kullandık. Ancak bunu oluştururken dict nesnesini baz alarak oluşturduğumuz için her ne kadar boş bir nesne oluşturduk gibi gözükse de dict objesinin metodları ile birlikte gelmiş oluyor.</p>
+<h2>İnşa Edici Fonksiyonlar (Constructor Functions) ve New ifadesinin kullanımı.</h2>
+<p>Adından da anlaşılacağı üzer inşa edici fonksiyonlar sizin nesneleri inşa etmenizi sağlayan fonksiyonlar oluyor. Bizim nesneleri dinamik bir biçimde inşa edebilmemizi sağlıyor. Örneğin bir kaç ninja nesnesine ihtiyaç duymuş olalım ve bunların name ve health değerleri birbirinden farklı olsun. Bu durumda uzun uzun yazmak yerine aşağıdaki gibi bir yol izleyebiliriz.</p>
+<pre>function NinjaConstructor(name, health) {
+    this.name = name; 
+    this.health = health;
+    this.swing_sword: function() {
+        alert("swosh!");
+    }
+}
+var ninja1 = new NinjaConstructor('mirat', 100);
+var ninja2 = new NinjaConstructor('osman', 62);
+console.log(ninja1.name, ninja1.health);
+> mirat, 100
+console.log(ninja2.name, ninja2.health);
+> osman, 62</pre><p>Burada new ifadesi dikkatinizi çekmiştir, bu ifade <strong>al bu fonksiyondan obje üret</strong> demek için kullanılıyor. new ifadesini kullanmasaydık atadığınız değerler fonksiyonun kendisi olacaktı.</p>
+<p>İnşa edici fonksiyonumuzu (<em>NinjaConstructor</em>) yazdıktan sonra aslında fonksiyonun ürettiği özellik ve metodları üretilen nesnelere aktardığımız için bir nebze miras alma-verme mevzusunu çözmüş oluyoruz. Ancak yine de bazı durumlarda bu yeterli olmaya biliyor.</p>
+<p><strong>Miras Mevzusu (Prototypal Inheritance)</strong></p>
+<p>Javascript miras alma işlerini nesnelerin içine yerleştirdiği prototype adındaki başka bir objeyi kullanarak hallediyor. Siz nesne içindeki bir özelliği ya da metodu çağırdığınızda eğer yok ise, prototipine bakılıyor, orada da yok ise undefined döndürüyor. Şöyle,</p>
+<pre><code>// bu a nesnesini, prototip olarak kullanacağım:
+class a = {
+    hello: function () {
+        alert("hello!")
+    },
+}
+
+// bu da miras alacak şahıs:
+class b = {
+    bye: function () {
+        alert("goodbye!")
+    },
+}
+
+// şu anda b nesnesi hello fonksiyonuna sahip değil
+console.log(b.hello)
+&gt; undefined
+
+// b nesnesinin prototipini a olarak belirliyorum
+b.__proto__ = a
+
+// hello fonksiyonunu çağırdığımda önce b objesine bakılacak
+// bulunamadığı için prototipine gidilecek, oradaki metod çalıştırılacak.
+b.hello()
+&gt; hello!
+</code></pre>
+<p>Bu arada yeri gelmişken hemen belirtmek gerekir ki <em>new</em> ifadesi ise aslında yeni bir obje oluştururken, ona verdiğiniz inşa edici fonksiyonun prototipine bakıyor.</p>
+
+  <hr />
+  <p></p>
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//blog-lektor.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                    
+
+</body>
+
+</html>
+
+

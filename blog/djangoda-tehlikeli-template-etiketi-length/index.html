@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+    body {
+      margin: 2em auto;
+      max-width: 40em;
+      font: 1em/1.2em sans-serif;
+      letter-spacing: 0.5px;
+      background: #000;
+      color: #C0C0C0;
+      padding: 0 1em;
+    }
+    a {
+      color: #E18A07;
+      text-decoration: none;
+    }
+    h1, h2, h3, h4 {
+      color: #fff;
+      text-align: center
+    }
+    pre {
+      font-family: inherit;
+      color: inherit;
+      background: #333;
+      padding: 1em;
+      overflow: scroll;
+    }
+    ul.navbar {
+      text-decoration: none;
+    }
+    dd {
+      margin-bottom: 1em;
+    }
+    span.date {
+      font-size: 0.7em;
+    }
+    ul.nav {
+      list-style-type: none;
+      overflow: auto;
+      padding: 0;
+    }
+    ul.nav li {
+      float: left;
+      margin: 0 20px 0 0;
+    }
+    table {
+      margin-bottom: 1em;
+      width: 100%;
+    }
+    tr {
+      height: 1.4em;
+    }
+  </style>
+  <title>Django&#39;da tehlikeli template etiketi: length. — Mirat Can Bayrak</title>
+</head>
+<body>
+<ul class="nav">
+  <li>
+    <a href="../../">Anasayfa</a></li>
+    
+      <li class="active">
+        <a href="../../blog/">Blog</a>
+      </li>
+    
+</ul>
+
+
+  
+  <h1>Django&#39;da tehlikeli template etiketi: length.</h1>
+  <p>Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni'den ayrıldım onu bilhare anlatırım.) Template içerisinde bir QuerySet length template filtresiyle çağırılıyordu:</p>
+<pre><code>{% if BlaBla.all|length == 5 %}
+    ..
+{% endif %}
+</code></pre>
+<p>length template filtresini açıp baktığımda verilen değeri len fonksiyonuna geçirdiğini <a href="https://github.com/django/django/blob/master/django/template/defaultfilters.py#L577">gördüm</a>:</p>
+<pre><code>@register.filter(is_safe=False)
+def length(value):
+    """Returns the length of the value - useful for lists."""
+    try:
+        return len(value)
+    except (ValueError, TypeError):
+        return 0
+</code></pre>
+<p>İşte tam da arıza burada başlıyor. Len fonksiyonu ile bir QuerySet'in uzunluğunu almaya çalıştığınızda QuerySet'in tamamını veritabanından alıp, bir listeye dönüştürüp ardından listenin uzunluğunu alıyor. Bu da devasa tablolarda hem memory sıkıntısı, hem de veritabanı sunucularını gereksiz meşgul etmek demek. Sqldebugshell ile len metodunun nasıl bir sorgu çalıştırdığına baktığımda manzara şu şekilde:</p>
+<pre><code>In [6]: len(BlaBla.objects.all())
+
+SELECT `c..`.`id`,
+       `c..`.`i..`,
+       `c..`.`p..`,
+       `c..`.`c..`,
+       `c..`.`s..`,
+       `c..`.`i..`,
+       `c..`.`i..`,
+       `c..`.`u..`,
+       `c..`.`u..`,
+       `c..`.`s..`,
+       `c..`.`c..`,
+       `channel_customstream`.`t..`
+FROM `channel_customstream`
+</code></pre>
+<p>Görüldüğü üzere o modele ait her şeyi toplayarak alan bir sorgu oluşturdu. Halbuki count metodu QuerySet'lerin direkt olarak veritabanında Count çalıştırması sağlanabiliyor:</p>
+<pre><code>In [5]: CustomStream.objects.count()
+
+SELECT COUNT(*)
+FROM `channel_customstream` 
+</code></pre>
+<p>Diyeceğim o ki, length etiketini count sorgusu yaptığını sanarak kullanmayınız.</p>
+
+  <hr />
+  <p>Mirat - January 2014</p>
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//blog-lektor.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                    
+
+</body>
+
+</html>
+
+
