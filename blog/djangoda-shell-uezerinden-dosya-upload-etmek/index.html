@@ -58,7 +58,7 @@
   </style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Letgo ile Satış Deneyimim — Mirat Can Bayrak</title>
+  <title>Django&#39;da Shell Üzerinden Dosya Upload Etmek — Mirat Can Bayrak</title>
 </head>
 <body>
 <ul class="nav">
@@ -76,11 +76,22 @@
 </ul>
 
   
-  <h1>Letgo ile Satış Deneyimim</h1>
-  <p>Eşimle birlikte evimizi 2+1'den 3+1'e upgrade ediyoruz bu hafta. Tabi bu taşınma sırasında atılması verilmesi gereken eşyalar çıktı. Ben de Letgo'ya fotoğraflarını atarak ticaret sularına ayak parmağımı sokmuş bulundum. 200 liralık şeye 50 lira teklif verip duran insanlardan bir ordu var. 15 liralık cep telefonunu 5 liraya indirmek için pazarlık eden var. Konuştuğunuz herkes Ferdi Tayfur tonunda yazıyor sanki sürekli bir drama. Gramafon satıyorum adam “çaresiz bir babayım” diyor sanırsın çocuk felci aşısı satıyorum. Anladım ki asla satmak istediğin fiyatı koyamazsın bizim ülkede ticaret yaparken, pazarlık yok lafını asla kabul etmiyorlar. Türlü ufak cinliklerle karşımdakini nasıl salak yerine koyarım duygusu hemen hissediliyor karşınıza çıkan insanlardan. Birisi çıkıp da “How to trade with Turks for Dummies” kitabı yazsa ben alırım.</p>
+  <h1>Django&#39;da Shell Üzerinden Dosya Upload Etmek</h1>
+  <p>Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var:</p>
+<pre><code>from django.db import models
+
+class Photo(models.Model):
+    image = models.ImageField(upload_to="/photos/")&lt;/pre&gt;
+</code></pre>
+<p>Bu modelden bir adet örnek oluşturmak ve ilgili image dosyasını shell üzerinden upload etmek istiyorum, o zaman ne yapıyorum?</p>
+<pre><code>...: from hede.models import Photo
+...: from django.core.files import File
+...: photo = Photo.objects.create(
+         image=File(open("dosyaya/giden/yol.jpg", "r")))&lt;/pre&gt;
+</code></pre>
 
   <hr />
-  <p>Mirat - July 2016</p>
+  <p>Mirat - July 2012</p>
   <div id="disqus_thread"></div>
 <script>
 

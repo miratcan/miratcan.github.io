@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+    body {
+      margin: 2em auto;
+      max-width: 40em;
+      font: 1em/1.2em sans-serif;
+      letter-spacing: 0.5px;
+      background: #000;
+      color: #C0C0C0;
+      padding: 0 1em;
+    }
+    a {
+      color: #E18A07;
+      text-decoration: none;
+    }
+    h1, h2, h3, h4, h5 { color: #fff; }
+    h1, h2, h3         { text-align: center; }
+    pre {
+      font-family: inherit;
+      color: inherit;
+      background: #333;
+      padding: 1em;
+      overflow: scroll;
+    }
+    ul.navbar {
+      text-decoration: none;
+    }
+    dd {
+      margin-bottom: 1em;
+    }
+    span.date {
+      font-size: 0.7em;
+    }
+    ul.nav {
+      list-style-type: none;
+      overflow: auto;
+      padding: 0;
+    }
+    ul.nav li {
+      float: left;
+      margin: 0 20px 0 0;
+    }
+    table {
+      margin-bottom: 1em;
+      width: 100%;
+    }
+    tr {
+      height: 1.4em;
+    }
+    img {
+      max-width: 100%;
+    }
+  </style>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Veritabanı sorgularında yorumlama ve kümeleme. — Mirat Can Bayrak</title>
+</head>
+<body>
+<ul class="nav">
+  <li>
+    <a href="../../">Anasayfa</a></li>
+    
+      <li class="active">
+        <a href="../../blog/">Blog</a>
+      </li>
+    
+      <li>
+        <a href="../../projeler/">Projeler</a>
+      </li>
+    
+</ul>
+
+  
+  <h1>Veritabanı sorgularında yorumlama ve kümeleme.</h1>
+  <p>Django'nun veritabanı katmanı size basit sorgular yapma imkanı tanıdığı gibi, çeşitli yorumlama (annotation) ve kümeleme (aggregation) işlemleri yapmanıza da imkan sağlıyor. Söz gelimi bir kullanıcının gelir giderini tuttuğumuz transaction adında bir modelimiz olduğunu farzedelim.</p>
+<pre><code>from django.contrib.auth.models import User
+
+class Transaction(models.Model):
+    user = models.ForeignKey(User)
+    balance = models.IntegerField()
+    description = models.CharField(max_length=255)&lt;/pre&gt;
+</code></pre>
+<p>Şimdi de x kullanıcısı için bir kaç adet işlem oluşturalım:</p>
+<pre><code>... : from django.contrib.auth.models import User
+... : user_x = User.objects.get(...)
+... : Transaction.objects.create(
+... :     user=user_x,
+... :     balance=200,
+... :     description="Cebimde 200 lira var")
+... :
+... : Transaction.objects.create(
+... :     user=user_x,
+... :     balance=-15,
+... :     description="Taksi parası")
+... : 
+... : Transaction.objects.create(
+... :     user=user_x,
+... :     balance=-120,
+... :     description="Mutfak alışverişi")&lt;/pre&gt;
+</code></pre>
+<p>Kullanıcı 3 adet işlem yaptı. Şu an kayıtlı olan bütün transaction objelerinden yola çıkarak ve kümeleme metodunu kullanarak kullanıcının toplam para durumuna bakalım.</p>
+<pre><code>... : from django.db.models import Sum
+... : Transaction.objects.all().aggregate(total=Sum('balance'))
+... : {'total': 65 }
+</code></pre>
+<p>Gördüğünüz gibi bütün balance değerlerini toplayarak bize (+200 - 15 - 120 = 65) sonucunu gönderdi. Eğer istersek yorumlama özelliğini kullanarak kullanıcıları direkt olarak balans durumları ile birlikte alabiliriz.</p>
+<pre>... : user_x = User.objects.get(...).annotate(\
+... :     balance=Sum("transaction__balance"))
+... : user_x.balance
+... : 65</pre><p>Burada yaptığımız şey Django'ya şunu söylemek oldu:</p>
+<blockquote><p>User nesnesini al, ancak transaction içerisindeki balance değerlerini toplayıp, balance adında yeni bir kolon olarak ekle.</p>
+</blockquote>
+<p>Tabi burada sadece Sum fonksiyonu ile sınırlı değilsiniz. Count, Max, Avg gibi bir çok metod mevcut. Daha fazla bilgi için şuraya bakabilirsiniz: <a href="https://docs.djangoproject.com/en/dev/topics/db/aggregation/" title="https://docs.djangoproject.com/en/dev/topics/db/aggregation/">https://docs.djangoproject.com/en/dev/topics/db/aggregation/</a></p>
+
+  <hr />
+  <p>Mirat - February 2012</p>
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//blog-lektor.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                    
+
+</body>
+</html>
+
+
