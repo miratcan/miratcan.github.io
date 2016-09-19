@@ -27,14 +27,22 @@
       padding: 1em;
       overflow: scroll;
     }
+    ul.article-list {
+      padding: 0;
+      margin: 0;
+    }
+    ul.article-list li {
+      list-style-type: none;
+      padding: 0.5em 0;
+      border-bottom: 1px solid #333;
+    }
+
     ul.navbar {
       text-decoration: none;
     }
-    dd {
-      margin-bottom: 1em;
-    }
     span.date {
       font-size: 0.7em;
+      float: right;
     }
     ul.nav {
       list-style-type: none;
@@ -95,26 +103,7 @@
   <hr />
   <p>Mirat - July 2016</p>
   <div id="disqus_thread"></div>
-<script>
-
-/**
- *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
- *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
-/*
-var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = '//blog-lektor.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                                    
+  <script>(function() { var d = document, s = d.createElement('script'); s.src = '//blog-lektor.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 </body>
 </html>
