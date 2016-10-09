@@ -5,14 +5,14 @@
 
     body {
       max-width: 40em;
-      margin: 4em auto;
+      padding: 1em;
+      margin: 1em auto;
     }
 
     pre {
       font-family: inherit;
       color: inherit;
-      background: #ccc;
-      border: 1px solid #000;
+      background: lightgrey;
       padding: 1em;
       overflow: auto;
     }
@@ -42,7 +42,7 @@
       width: 100%;
     }
     th, td {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid grey;
       padding: 0.25em;
       text-align: left;
     }
@@ -111,18 +111,8 @@
 </tr>
 </tbody>
 </table>
-<p>Bu durumda Disqus, blogda şimdiye kadar Disqus penceresi en az bir defa render edilmiş gönderilerin olduğu bir CSV dosyası veriyor, CSV dosyanın içerisinde her adresin karşılığına hangi adresin geldiğini yazıp tekrar upload etmemizi istiyor. Şu adresten yapılıyor demek isterdim fakat biraz bulması zor hem de doğru düzgün bir URL'e sahip değil bu sayfa. Şu adımları takip edebilirsiniz:</p>
-<ol>
-<li>Disqus'a giriş yap</li>
-<li>Ana sayfadaki <em>Admin</em> bağlantısına tıkla</li>
-<li><em>Moderate Comments</em> bağlantısına tıkla</li>
-<li>Solda <em>Tools</em> menüsünden <em>Migration Tools</em>'a gir</li>
-<li>Taşımak istediğin siteyi seç</li>
-<li>Karşına çıkan sayfadan <em>Start URL Mapper</em> butonuna tıkla</li>
-<li>Buradan <em>you can download your csv here</em> bağlantısına tıkla</li>
-<li>Eposta adresine git ve Disqus'dan gelen maili açarak CSV dosyasını al</li>
-</ol>
-<p>Buraya kadar güzel, ancak işler indirdiğim CSV dosyasını incelediğimde değişmeye başladı. Aşağıda elime geçen CSV dosyasından bir kesit var:</p>
+<p>Bu durumda Disqus, blogda şimdiye kadar Disqus penceresi en az bir defa render edilmiş gönderilerin olduğu bir CSV dosyası veriyor, CSV dosyanın içerisinde her adresin karşılığına hangi adresin geldiğini yazıp tekrar upload etmemizi istiyor. İşlemin nasıl yapılacağı ile ilgili ayrıntılı bilgi şurada: <a href="https://help.disqus.com/customer/portal/articles/286778-migration-tools">https://help.disqus.com/customer/portal/articles/286778-migration-tools</a></p>
+<p>Buraya kadar her şey mantıklı, CSV dosyası indireceğiz, her adresin karşısına yeni adresi yazacağız ve geri upload edeceğiz. Ancak CSV dosyasını incelediğimde değişmeye başladı. Aşağıda elime geçen CSV dosyasından bir kesit var:</p>
 <table>
 <thead><tr>
 <th>Adres</th>
@@ -146,64 +136,9 @@
 </tr>
 </tbody>
 </table>
-<p>Bağlantılara tek tek tıklayıp kontrol edersek 404 veren sayfalar olduğunu görüyoruz. Disqus benim sildiğim, artık 404 veren sayfaları ayıklamamış, öte yandan asılnda hiç yorum olmayan sayfaların linklerini de benim CSV dosyama eklemiş. Elimde 575 satırlık satırlık eminim çoğu çöp olan bir adres listesi var. Açıkcası bu noktada biraz Disqus kullandığıma pişman oldum. Zira bu listeyi ya elle ya da çeşitli scriptlerle temizlemem gerekiyor. Öncelikle yapmak istediğim şey 404 veren sayfaları bu listeden çıkarmak.</p>
-<p>Öncelikle dosyanın içeriğini okuyup tek tek basan haliyle başlayalım:</p>
-<pre><code># temizle.py
-
-line = raw_input()
-while line:
-    print line
-    try:
-        line = raw_input()
-    except EOFError:
-        line = None
-</code></pre>
-<p>Bu scriptte (hala betik mi script mi diyeceğime karar veremiyorum) herhangi bir dosya açma fonksiyonu yok. Çalıştırıp her satırda elle URL vererek ya da bir dosyanın içeriğini giriş olarak yönlendirerek kullanabiliriz. Örneğin ben elimdeki CSV dosyasını şu şekilde yönlendiriyorum:</p>
-<pre><code>python temizle1.py &lt; miratcan-tumblr-2016-10-07T11-54-35.472943-links.csv
-</code></pre>
-<p>Şimdi urlopen komutu ile elimize geçen linklere ulaşmaya çalışalım. urlopen standart urllib2 kütüphanesinin içinde yer alıyor, parametre olarak URL alıyor ve karşılığında bir dosya benzeri obje veriyor. Eğer verilen URL ulaşılamaz ise HTTPError kaldırıyor. Yukarıdaki kodu eğer sadece bağlantı ulaşılabiliyorsa basan</p>
-<pre><code># temizle.py
-
-from urllib2 import urlopen, HTTPError
-
-line = raw_input()
-while line:
-
-    try:
-        remote = urlopen(line)
-    except HTTPError:
-        remote = None
-
-    if remote:
-        print line
-
-    try:
-        line = raw_input()
-    except EOFError:
-        line = None
-</code></pre>
-<p>Programın çıktısı 181 satır oldu, 575 satırdan çok daha iyi, 1/3 oranında azalma var. Fakat yetmez. Bu gönderilerin çoğu hiç yorum almadı. Blogum çok yorum alan bir blog değil. Disqus bunu da filtre etmemiş bize.  Kısa bir araştırmayla <a href="https://disqus.com/api/docs/threads/set/">api üzerinden bir gönderiya ait kaç yorum olduğunu okumanın yolunu</a> buldum. Dökümantasyonda yazdığına göre <a href="https://disqus.com/api/3.0/threads/set.json">https://disqus.com/api/3.0/threads/set.json</a> adresine bir GET talebi yapmak gerekiyor. Bu talep forum-id'sini ve thread linkini ve son olarak da api_secret değerini göndermek gerekiyor. Api secret anahtarını oluşturabilmek için <a href="https://disqus.com/api/applications/">https://disqus.com/api/applications/</a> adresine gidip bir uygulama oluşturmak gerekli.</p>
-<p>Verilen linkte kaç adet yorum olduğunu hesaplamayı ayrı bir dosyada yazalım:</p>
-<pre><code>from urllib import urlencode, urlopen
-from json import loads
-
-API_SECRET = '...BURAYI DOLDUR...'
-FORUM_ID = '...BURAYI DOLDUR...'
-
-
-def get_comment_count(url):
-    params = urlencode({
-        'forum': FORUM_ID,
-        'thread': 'link:%s' % url,
-        'api_secret': API_SECRET
-    })
-    api_url = 'https://disqus.com/api/3.0/threads/set.json?%s' % params
-    data = urlopen(api_url).read()
-    json = loads(data)
-    return json['response'][0]['posts']
-
-print get_comment_count(raw_input())
-</code></pre>
+<p>Bağlantılara tek tek tıklayıp kontrol ettiğimde 404 veren sayfalar olduğunu gördüm. Disqus benim sildiğim, artık 404 veren sayfaları ayıklamamış, öte yandan asılnda hiç yorum olmayan sayfaların linklerini de benim CSV dosyama eklemiş. Elimde 575 satırlık satırlık eminim çoğu çöp olan bir adres listesi var. Açıkcası bu noktada biraz Disqus kullandığıma pişman oldum. Zira bu listeyi ya elle ya da çeşitli scriptlerle temizlemem gerekiyordu.</p>
+<p>Bu problemi çözen bir script yazdım. CSV dosyasını parametre olarak alıyor ve filtreleyip geri veriyor. Benim 575 satırlık devasa listeyi 12 elemana düşürdü. Şuradan indirip kullanabilirsiniz:</p>
+<p><a href="https://gist.github.com/miratcan/c2b486945798c70b35c1adc7f70b70db">https://gist.github.com/miratcan/c2b486945798c70b35c1adc7f70b70db</a></p>
 
   <hr />
   <p>Mirat - October 2016</p>
