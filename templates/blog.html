@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% from "macros/blog.html" import render_blog_post %}
+{% from "macros/pagination.html" import render_pagination %}
+{% block title %}{{ this.title }}{% endblock %}
+
+{% block body %}
+  <table class="article-list">
+  	{% for post in this.pagination.items %}
+  	  <tr>
+        <td><a href="{{ post|url }}">{{ post.title }}</a></td>
+        <td class="date">{{ post.pub_date }}</td>
+      </tr>
+  	{% endfor %}
+  </table>
+  {{ render_pagination(this.pagination) }}
+{% endblock %}

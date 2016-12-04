@@ -1,0 +1,5 @@
+[project]
+name = Mirat Can Bayrak
+locale = tr_TR
+[servers.ghpages]
+target = ghpages://miratcan/miratcan.github.io

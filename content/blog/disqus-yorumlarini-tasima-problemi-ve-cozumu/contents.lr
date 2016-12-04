@@ -1,0 +1,41 @@
+title: Disqus Yorumlarını Taşıma Problemi ve Çözümü
+---
+author: Mirat
+---
+pub_date: 2016-10-07
+---
+body:
+
+Kişisel blogumu Tumblr'dan taşımak istedim. Taşımak isteme sebebim Lektor oldu. [Lektor](https://www.getlektor.com/) Markdown tabanlı bir statik web sitesi jeneratörü bu yazının konusu olmayan bir çok güzel özelliği var. Yeni siteye eski blogdan yazıları taşıdıktan sonra Disqus'daki yorumları yeni domaine ve yazı adreslemelerine taşımam gerekti. Sadece domain değiştiğinde yani taşınma şemamız aşağıdaki gibiyse sadece domaini değiştirerek taşınma işini halledebiliyoruz:
+
+  | Eski Adres        | Yeni Adres        |
+  |-------------------|-------------------|
+  | site1.com/adres1/ | site2.com/adres1/ |
+  | site1.com/adres2/ | site2.com/adres2/ |
+
+Ancak benim taşınma şemam bu kadar basit değildi, hem domain değişiyor hem de her yazının adresi de değişiyordu: 
+
+  | Eski Adres        | Yeni Adres        |
+  |-------------------|-------------------|
+  | site1.com/adres1/ | site2.com/adres2/ |
+  | site1.com/adres3/ | site2.com/adres4/ |
+
+
+Bu durumda Disqus, blogda şimdiye kadar Disqus penceresi en az bir defa render edilmiş gönderilerin olduğu bir CSV dosyası veriyor, CSV dosyanın içerisinde her adresin karşılığına hangi adresin geldiğini yazıp tekrar upload etmemizi istiyor. İşlemin nasıl yapılacağı ile ilgili ayrıntılı bilgi şurada: https://help.disqus.com/customer/portal/articles/286778-migration-tools
+
+Buraya kadar her şey mantıklı, CSV dosyası indireceğiz, her adresin karşısına yeni adresi yazacağız ve geri upload edeceğiz. Ancak CSV dosyasını incelediğimde değişmeye başladı. Aşağıda elime geçen CSV dosyasından bir kesit var:
+ 
+ | Adres                                       |
+ |---------------------------------------------|
+ | http://miratcan.tumblr.com/post/14315717349 |
+ | http://miratcan.tumblr.com/post/16236379665 |
+ | http://miratcan.tumblr.com/post/16422262730 |
+ | http://miratcan.tumblr.com/post/14315714972 |
+ | http://miratcan.tumblr.com/post/16597868308 | 
+
+Bağlantılara tek tek tıklayıp kontrol ettiğimde 404 veren sayfalar olduğunu gördüm. Disqus benim sildiğim, artık 404 veren sayfaları ayıklamamış, öte yandan asılnda hiç yorum olmayan sayfaların linklerini de benim CSV dosyama eklemiş. Elimde 575 satırlık satırlık eminim çoğu çöp olan bir adres listesi var. Açıkcası bu noktada biraz Disqus kullandığıma pişman oldum. Zira bu listeyi ya elle ya da çeşitli scriptlerle temizlemem gerekiyordu. 
+
+Bu problemi çözen bir script yazdım. CSV dosyasını parametre olarak alıyor ve filtreleyip geri veriyor. Benim 575 satırlık devasa listeyi 12 elemana düşürdü. Şuradan indirip kullanabilirsiniz:
+
+https://gist.github.com/miratcan/c2b486945798c70b35c1adc7f70b70db
+

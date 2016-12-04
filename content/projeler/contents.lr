@@ -1,0 +1,35 @@
+_model: page
+---
+title: Projeler
+---
+body:
+
+####Resm.in
+
+Sorulara fotoğraf çekerek cevap verilen soru cevap sitesiydi. *Çekmecende ne var?* ya da *Çocukluktan kalma vesikalığın var mı?* gibi sorulara fotoğraf çekip yolluyorduk. Eğlencenin yanında yemek tarifleri ve Kendin Yap (DIY) tarzı foto hikayelere de ev sahipliği yapıyordu. Python ve Django ile yazmıştım, veritabanı olarak MySql ve Redis kullanıyordu. Bunun haricinde bir kaç yerde Backbone.js kullanmıştım.
+
+####Linkfloyd
+
+İnsanlar yerine konuları takip ettiğiniz, aynı ilgi alanına sahip insanları bir araya getirme niyetinde olan, paylaşım ve yer imleme servisiydi. Türkiye'nin Reddit gibi bir topluluğa sahip olması gerektiğini düşündüğüm için kalkışmıştım bu işe. Kendi içinde güzel bir topluluğu oluştu zamanla, şu an hala konuştuğum bir çok güzel insanla tanıştım sayesinde. Python ve Django kullanarak yazmıştım. Veritabanı olarak Mysql ve Redis kullanıyordu. Şu an yayında olmasa da [kaynak kodu incelenebilir](https://github.com/linkfloyd/linkfloyd).
+
+####Bavula Ne Koysam?
+
+Seyahate çıkarken bavula koyulacaklar listesi hazırlamanızı kolaylaştıracak basit web uygulaması. Şu an hala [yayında](http://bavulanekoysam.appspot.com). Appengine ile yazdım kendisini, kaynak [kodu açık](https://github.com/miratcan/bavulanekoysam). Bunu bir ara tekrar Angular.js ile ya da Backbone ile tekrar yazmak istiyorum. 
+
+####Filika
+
+FriendFeed'in kapanmasına yakın hesapların yedeğinin alınabilmesi için yazdığım terminal uygulaması. Hesaba ait bütün paylaşılmış imaj ve mp3'leri de indiriyordu. İndiren herkesin bilgisayarında çalışabilmesi için de standart Python kütüphanelerinden dışarı çıkmamıştım. Friendfeed kapatıldığı için artık işe yaramıyor ama API ve download işleri ile ilgilenenler inceleyebilir. Kaynak [kodu açık](https://gist.github.com/miratcan/89aff1ae486e91dd0ca8).
+
+####FFAnony
+
+İnsanlara FriendFeed üzerindeki FFAnony adlı hesabı kullanarak anonim gönderi yapma imkanı veren web servisiydi. FriendFeed'in açık olduğu zamanlarda bir gecelik proje olarak yapmıştım. Çeşitli sataşmalar, ilanı aşklar, hakaretler, flörtler ve [/r/gonewild/](http://reddit.com/r/gonewild/) türevi fotoğraf paylaşımlarına ev sahipliği yaptı. Bizim insanımız gıybet seviyor tabi baya popüler olmuştu.
+
+####Logme
+
+Kendi ihtiyaçlarım için yazdığım basit bir günlük tutma programı.  Programı çalıştırılabilir hale getirdikten sonra yapacağınız şey terminalde logme yazdıktan sonra o anlık notunuzu yazmak. Yazdığınız not ~/.logme klasörü altında bugünün tarihi ile isimlendirilmiş bir dosyaya metin olarak kaydediliyor. Oldukça basit ve tam olarak benim günlük tutma ihtiyacımı karşılıyor. Kaynak kodunu incelemek için [tık tık](https://gist.github.com/miratcan/fc3badeb3a7c121f6256739a0ad5c2e3).
+
+####Cubb.in
+
+Bunu anlatıcam bir ara.
+
+
