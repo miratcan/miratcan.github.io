@@ -51,8 +51,11 @@
       right: 0;
       margin-right: auto;
       margin-left: auto;
-    }   
-
+    }
+    .small {
+      font-size: smaller;
+      font-weight: normal;
+    }
   </style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -62,7 +65,7 @@
 <ul class="nav">
   <li{% if this._path == '/' %} class="active"{% endif%}>
     <a href="{{ '/'|url }}">Anasayfa</a></li>
-    {% for href, title in [['/blog', 'Blog'], ['/projeler/', 'Projeler']] %}
+    {% for href, title in [['/blog', 'Blog'], ['/projeler/', 'Projeler'], ['/cv/', 'Özgeçmiş'], ['/odeme/', 'Ödemeler']] %}
       <li{% if this.is_child_of(href) %} class="active"{% endif
       %}>
         <a href="{{ href|url }}">{{ title }}</a>
