@@ -59,49 +59,37 @@
   </style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Django&#39;da Shell Üzerinden Dosya Upload Etmek — Mirat Can Bayrak</title>
+  <title>Ödemeler / Payments — Mirat Can Bayrak</title>
 </head>
 <body>
 <ul class="nav">
   <li>
-    <a href="../../">Anasayfa</a></li>
+    <a href="../">Anasayfa</a></li>
+    
+      <li>
+        <a href="../blog/">Blog</a>
+      </li>
+    
+      <li>
+        <a href="../projeler/">Projeler</a>
+      </li>
+    
+      <li>
+        <a href="../cv/">Özgeçmiş</a>
+      </li>
     
       <li class="active">
-        <a href="../../blog/">Blog</a>
-      </li>
-    
-      <li>
-        <a href="../../projeler/">Projeler</a>
-      </li>
-    
-      <li>
-        <a href="../../cv/">Özgeçmiş</a>
-      </li>
-    
-      <li>
-        <a href="../../odeme/">Ödemeler</a>
+        <a href="../odeme/">Ödemeler</a>
       </li>
     
 </ul>
 
-  
-  <h1>Django&#39;da Shell Üzerinden Dosya Upload Etmek</h1>
-  <p>Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var:</p>
-<pre><code>from django.db import models
-
-class Photo(models.Model):
-    image = models.ImageField(upload_to="/photos/")&lt;/pre&gt;
-</code></pre>
-<p>Bu modelden bir adet örnek oluşturmak ve ilgili image dosyasını shell üzerinden upload etmek istiyorum, o zaman ne yapıyorum?</p>
-<pre><code>...: from hede.models import Photo
-...: from django.core.files import File
-...: photo = Photo.objects.create(
-         image=File(open("dosyaya/giden/yol.jpg", "r")))&lt;/pre&gt;
-</code></pre>
-
-  <hr />
-  <p>Mirat - July 2012</p>
-
+  <h1>Ödemeler / Payments</h1>
+  <p>Bitcoin ödemeleri İçin cüzden adresim  / Use this wallet address for Bitcoin Payments:</p>
+<div style="border: 1px dashed; padding: 1em;">1DApaPXRzERJPKPjU5N1qV6iSEDSRNEQRq</div><p>Türk lirası ödemeleri için ise IBAN numaram / My IBAN number for money transfers in Turkish Lira.</p>
+<div style="border: 1px dashed; padding: 1em;">
+TR31 0003 2000 0000 0014 4311 20 (TÜRK EKONOMİ BANKASI A.Ş. / TEBUTRIS
+</div>
 </body>
 </html>
 
