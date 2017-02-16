@@ -1,15 +1,11 @@
 _model: page
 ---
-title: Ödemeler / Payments
----
 body:
-
-Bitcoin ödemeleri İçin cüzden adresim  / Use this wallet address for Bitcoin Payments:
-
-<div style="border: 1px dashed; padding: 1em;">1DApaPXRzERJPKPjU5N1qV6iSEDSRNEQRq</div>
-
-Türk lirası ödemeleri için ise IBAN numaram / My IBAN number for money transfers in Turkish Lira.
-
-<div style="border: 1px dashed; padding: 1em;">
-TR31 0003 2000 0000 0014 4311 20 (TÜRK EKONOMİ BANKASI A.Ş. / TEBUTRIS
+<div>
+  <h4>Bitcoin</h4>
+  <p>Cüzdan adresi: <code>1DApaPXRzERJPKPjU5N1qV6iSEDSRNEQRq</code></p>
+</div>
+<div>
+  <h4>Türk Lirası:</h4>
+  <p>IBAN numarası: <code>TR31 0003 2000 0000 0014 4311 20</code><br />(TÜRK EKONOMİ BANKASI A.Ş. / TEBUTRIS)</p>
 </div>
