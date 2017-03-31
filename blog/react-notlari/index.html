@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    body {
+      max-width: 1000px;
+      padding: 0 1em;
+      margin: 0 auto;
+      font-size: 1.3rem;
+      line-height: 1.6rem;
+    }
+    pre {
+      padding: 0.5rem !important;
+      border: None !important;
+     
+    }
+    ul.nav {
+      list-style-type: none;
+      overflow: auto;
+      padding: 0;
+    }
+    ul.nav li {
+      float: left;
+      margin: 0 1rem 0 0;
+    }
+    img {
+      max-width: 100%;
+    }
+    li {
+      margin-bottom: 0.25rem;
+    }
+    span.date {
+      font-size: 0.7rem;
+      float: right;
+    }
+    table {
+      width: 100%;
+    }
+    th, td {
+      border-bottom: 1px solid grey;
+      padding: 0.25em;
+      text-align: left;
+    }
+    img {
+      left: 0;
+      right: 0;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    .small {
+      font-size: smaller;
+      font-weight: normal;
+    }
+    h1 {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+  </style>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>React Notları — Mirat Can Bayrak</title>
+  
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-eighties.min.css">
+
+  
+
+</head>
+<body>
+<ul class="nav">
+  <li>
+    <a href="../../">Anasayfa</a></li>
+    
+      <li class="active">
+        <a href="../../blog/">Blog</a>
+      </li>
+    
+</ul>
+
+  
+  <h1>React Notları</h1>
+  <p>React Notları:</p>
+<p>React Facebook tarafından ortalara atılmış bir javascript kütüphanesi. MVC 
+desenli tasarımlarda V (View) katmanını oluşturduğu söylense de redux gibi 
+kütüphanelerle birleştiğinde başlı başına bir çalışma tasarım şemasına sahip
+olduğunuz söyleniyor.</p>
+<h2>React'ın Getirdikleri:</h2>
+<p>1) JSX adında bir markup dili getiriyor, bunu kullanmak zorunlu olmasa da 
+şiddetle tavsiye edilmekte. Ha HTML yerine kullanılması avantajlı mı?
+Tartışılır.</p>
+<p>2) Components - React bir web sayfası ya da uygulamayı tasarlarken HTML 
+etiketleri olarak değil de görünüm bileşenleri tasarlamanızı sağlıyor. Ne 
+faydası var diyecek olursanız, bileşenler bir kere düzgün tasarlandıktan sonra
+farklı projelerde kullanılabiliyorlar. Örneğin hesap makinesi adında büyük bir
+bileşen yaparsanız bunu yaptığınız farklı farklı uygulamalara takabiliyorsunuz.</p>
+<p>3) Çift Taraflı Veri Akışı: React componentlerin veriden yola çıkarak 
+gösterimini, aynı zamanda da verinin componentlerin durumuyla güncellenmesini
+sağlayabiliyor. Bunu flux adında bir kütüphane ile yapıyor.</p>
+<h2>Avantajları:</h2>
+<p>React web sayfalarını render ederken gerçek DOM'u değil de kendi salan DOM'unu kullanıyor ve burada güncellemeleri değişiklikleri yaptıktan sonra gerçek DOM'a bu değişiklikleri aktarıyor. Bu da muazzam bir performans artışı demek.</p>
+<p>React sunucu ve istemci tarafında kullanılabiliyor. React ile hazırladığınız
+componentler sonradan render edilmek zorunda değil.</p>
+<p>Component ve veri tipleri javascript kodunun okunabilirliğini arttırıyor.</p>
+<h2>Sınırlamaları:</h2>
+<p>React sadece view katmanını temsil ettiği için geliştirme ortamınızı tamamlamak
+adına başka kütüphanelere ihtiyaç duyabiliyorsunuz.</p>
+<p>React'ın kullandığı JSX markup dili bazı geliştiricilere acayip gözükebiliyor.</p>
+<p>ADIM 1 - GLOBAL GEREKLİ PAKETLERİN KURULMASI:</p>
+<p>Öncelikle babel pakedini kurmanız gerekiyor. Bu paket javascript yazarken
+ES2015 standardını kullanabilmenizi sağlıyor. ES2015 standardı ile yazdığınız
+javascript kodunun eğer broser desteklemiyor ise downgrade edilmiş bir 
+versionunu compile ediyor.</p>
+<p>$ npm install -g babel babel-cli</p>
+
+  <hr />
+  <p>Mirat Can Bayrak</p>
+
+</body>
+</html>
+
+
