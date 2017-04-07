@@ -3,9 +3,9 @@
 <head>
   <style type="text/css">
     body {
-      max-width: 600px;
+      max-width: 800px;
       padding: 0 1em;
-      margin: 0;
+      margin: 0 auto;
       font-size: 1.2rem;
       line-height: 1.4rem;
     }
@@ -64,7 +64,8 @@
 <body>
 <ul class="nav">
   <li{% if this._path == '/' %} class="active"{% endif%}>
-    <a href="{{ '/'|url }}">Anasayfa</a></li>
+    <a href="{{ '/'|url }}">Anasayfa</a>
+  </li>
     {% for href, title in [['/blog', 'Blog']] %}
       <li{% if this.is_child_of(href) %} class="active"{% endif
       %}>
