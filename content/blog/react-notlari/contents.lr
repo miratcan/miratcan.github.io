@@ -10,7 +10,11 @@ React Facebook tarafından ortalara atılmış bir javascript kütüphanesi. MVC
 
 >Okumadan Önce:
 >
->Hedef işletim sistemim Android, geliştirme yaptığım işletim sistemi ise OSX olacak. Bu yüzden örneğin IOS için geliştirme yapmak istiyorsanız bu yazı bir yere kadar yeterli olacaktır. Geliştirme yaptığınız sistemde NodeJS, NPM ve Homebrew kurulu olmalıdır.
+>Hedef işletim sistemim Android, geliştirme yaptığım işletim sistemi ise OSX olacak. Bu yüzden örneğin IOS için geliştirme yapmak istiyorsanız bu yazı bir yere kadar yeterli olacaktır. Geliştirme yaptığınız sistemde NodeJS, NPM, Watchman ve Homebrew kurulu olmalıdır. Eğer kurulu değillerse aşağıdaki komutları kullanarak yükleyebilirsiniz:
+
+<pre class="prettyprint"><code class="language-bash">$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ brew install nodejs watchman
+</code></pre>
 
 ##Getirileri:
 
