@@ -5,7 +5,7 @@ body:
 Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var:
 
     from django.db import models
-    
+
     class Photo(models.Model):
         image = models.ImageField(upload_to="/photos/")</pre>
 

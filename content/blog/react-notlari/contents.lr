@@ -38,10 +38,12 @@ $ brew install nodejs watchman
 
 ###ADIM 1 - GLOBAL GEREKLİ PAKETLERİN KURULMASI:
 
-Öncelikle babel pakedini kurmanız gerekiyor. Bu paket javascript yazarken ES2015 standardını kullanabilmenizi sağlıyor. ES2015 standardı ile yazdığınız javascript kodunun eğer broser desteklemiyor ise downgrade edilmiş bir versionunu compile ediyor. Artık modern javascript yazmak için babel kullanmak
+Öncelikle babel pakedini kurmanız gerekiyor. Bu paket javascript yazarken ES6 standardını kullanabilmenizi sağlıyor. ES6 standardı ile yazdığınız javascript kodunun eğer broser desteklemiyor ise downgrade edilmiş bir versionunu compile ediyor. Artık modern javascript yazmak için babel kullanmak
 zorunlu gibi bir şey.
 
 <pre class="prettyprint"><code class="language-bash">$ npm install -g babel babel-cli react-native-cli</code></pre>
+
+> NOT: Bağzı yerlerde React Native ES2015 standardını kullanıyor gibi bir şeyler okuyabilirsiniz. ES2015, ES6'nın draft hali yani ES6 standardının bitirilmeden önceki halini ifade ediyor.
 
 ###ADIM 2 - ANDROID SDK'NIN KURULUMU:
 
@@ -103,7 +105,24 @@ Neyse, bu noktada bilmemiz gereken bazı şeyler şunlar:
 
 <pre class="prettyprint"><code class="language-bash">$ react-native run-android</code></pre>
 
-Bu komut baya bir indirme yapacak, daha önce kurduğumuz Android SDK üzerine, React Native'in çalışması için gerekli olan paketleri kuracak. İyi haber bu işlemin sadece 1 defa yapılacak olması. Eğer şansımız yerindeyse.
+Bu komut baya bir indirme yapacak, daha önce kurduğumuz Android SDK üzerine, React Native'in çalışması için gerekli olan paketleri kuracak. İyi haber bu işlemin sadece 1 defa yapılacak olması. Eğer şansımız yerindeyse telefonumuzda şunun gibi bir ekran görmeliyiz:
+
+![](https://kylewbanks.com/images/post/react-native-tutorial-1.png)
+
+Bu ekrandayken telefonu salladığınızda karşınıza çeşitli geliştirici seçenekleri çıkacak. Bunları biraz kurcalayın ne olduğunu anlamaya çalışın. İlerde lazım olacaklar.
+
+##Hello World
+
+Şimdi yukarda index.android.js ve index.ios.js dosyalarımızın bulunduğunu, bunların iki farklı cihaz için üretilmiş kodlar olduğunu söylemiştik. Şimdi bu iki dosyayı sıfırlayıp baştan yazarak React'ın ve React Native'in nasıl çalıştığını biraz inceleyelim. İki dosyanın da içini boşaltın ve aşağıdaki satırları ekleyin:
+
+<pre class="prettyprint"><code class="language-javascript">import React, { Component } from 'react';
+import {
+    Text,
+    AppRegistry
+} from 'react-native';</code></pre>
+
+React Native'in ES
+
 
 Kaynaklar:
 
@@ -111,3 +130,5 @@ Kaynaklar:
  * https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html
  * https://kylewbanks.com/blog/react-native-tutorial-part-1-hello-react
  * https://facebook.github.io/react-native/docs/getting-started.html
+ * https://benmccormick.org/2015/09/14/es5-es6-es2016-es-next-whats-going-on-with-javascript-versioning/
+ * https://www.youtube.com/watch?v=Vp4K03xWsgE
