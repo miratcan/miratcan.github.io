@@ -106,9 +106,11 @@ $ brew install nodejs watchman
 <h2>GELİŞTİRME ORTAMININ KURULMASI</h2>
 <p>Şimdiye kadar yaptığım denemelerde geliştirme ortamının kurulması bana geliştirme yapmanın en zor kısmıymış gibi geldi. Zira Android SDK'nın ve SDK içerisinde bulunması gereken paketlerin kurulumunu anlatan birden falza döküman var.</p>
 <h3>ADIM 1 - GLOBAL GEREKLİ PAKETLERİN KURULMASI:</h3>
-<p>Öncelikle babel pakedini kurmanız gerekiyor. Bu paket javascript yazarken ES2015 standardını kullanabilmenizi sağlıyor. ES2015 standardı ile yazdığınız javascript kodunun eğer broser desteklemiyor ise downgrade edilmiş bir versionunu compile ediyor. Artık modern javascript yazmak için babel kullanmak
+<p>Öncelikle babel pakedini kurmanız gerekiyor. Bu paket javascript yazarken ES6 standardını kullanabilmenizi sağlıyor. ES6 standardı ile yazdığınız javascript kodunun eğer broser desteklemiyor ise downgrade edilmiş bir versionunu compile ediyor. Artık modern javascript yazmak için babel kullanmak
 zorunlu gibi bir şey.</p>
-<pre class="prettyprint"><code class="language-bash">$ npm install -g babel babel-cli react-native-cli</code></pre><h3>ADIM 2 - ANDROID SDK'NIN KURULUMU:</h3>
+<pre class="prettyprint"><code class="language-bash">$ npm install -g babel babel-cli react-native-cli</code></pre><blockquote><p>NOT: Bağzı yerlerde React Native ES2015 standardını kullanıyor gibi bir şeyler okuyabilirsiniz. ES2015, ES6'nın draft hali yani ES6 standardının bitirilmeden önceki halini ifade ediyor.</p>
+</blockquote>
+<h3>ADIM 2 - ANDROID SDK'NIN KURULUMU:</h3>
 <p>Yazacağınız uygulamaların telefonda ya da bir telefon emülatöründe çalıştırılması gerekiyor. Eğer yazdığımız kodların sonucunu sanal ya da değil bir Android makine üzerinde görmek istiyorsanız (benim senaryomda istiyoruz) Android SDK'nın kurulumunu yapmamız gerekiyor.</p>
 <pre class="prettyprint"><code class="language-bash">$ brew tap caskroom/cask
 $ brew cask install android-sdk</code></pre><p>Brew güzel alet, Android SDK'nın çıplak haliyle kurulumunu yaptık. Ardından yapmamız gereken şey ise ANDROID_HOME ortam değerinin set edilmesi. Bu değer Android SDK'yı kurduğunuz yer olmalı.</p>
@@ -140,13 +142,24 @@ android          index.android.js ios              package.json</code></pre><p>N
 <li>index.android.js ve index.ios.jsedosyaları bizim kaynak kodumuzun giriş noktaları oluyor.</li>
 </ul>
 <p>Şimdi de bu boş projeyi Android üzerinde çalıştıralım:</p>
-<pre class="prettyprint"><code class="language-bash">$ react-native run-android</code></pre><p>Bu komut baya bir indirme yapacak, daha önce kurduğumuz Android SDK üzerine, React Native'in çalışması için gerekli olan paketleri kuracak. İyi haber bu işlemin sadece 1 defa yapılacak olması. Eğer şansımız yerindeyse.</p>
+<pre class="prettyprint"><code class="language-bash">$ react-native run-android</code></pre><p>Bu komut baya bir indirme yapacak, daha önce kurduğumuz Android SDK üzerine, React Native'in çalışması için gerekli olan paketleri kuracak. İyi haber bu işlemin sadece 1 defa yapılacak olması. Eğer şansımız yerindeyse telefonumuzda şunun gibi bir ekran görmeliyiz:</p>
+<p><img src="https://kylewbanks.com/images/post/react-native-tutorial-1.png" alt=""></p>
+<p>Bu ekrandayken telefonu salladığınızda karşınıza çeşitli geliştirici seçenekleri çıkacak. Bunları biraz kurcalayın ne olduğunu anlamaya çalışın. İlerde lazım olacaklar.</p>
+<h2>Hello World</h2>
+<p>Şimdi yukarda index.android.js ve index.ios.js dosyalarımızın bulunduğunu, bunların iki farklı cihaz için üretilmiş kodlar olduğunu söylemiştik. Şimdi bu iki dosyayı sıfırlayıp baştan yazarak React'ın ve React Native'in nasıl çalıştığını biraz inceleyelim. İki dosyanın da içini boşaltın ve aşağıdaki satırları ekleyin:</p>
+<pre class="prettyprint"><code class="language-javascript">import React, { Component } from 'react';
+import {
+    Text,
+    AppRegistry
+} from 'react-native';</code></pre><p>React Native'in ES</p>
 <p>Kaynaklar:</p>
 <ul>
 <li><a href="https://www.tutorialspoint.com/react_native/">https://www.tutorialspoint.com/react_native/</a></li>
 <li><a href="https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html">https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html</a></li>
 <li><a href="https://kylewbanks.com/blog/react-native-tutorial-part-1-hello-react">https://kylewbanks.com/blog/react-native-tutorial-part-1-hello-react</a></li>
 <li><a href="https://facebook.github.io/react-native/docs/getting-started.html">https://facebook.github.io/react-native/docs/getting-started.html</a></li>
+<li><a href="https://benmccormick.org/2015/09/14/es5-es6-es2016-es-next-whats-going-on-with-javascript-versioning/">https://benmccormick.org/2015/09/14/es5-es6-es2016-es-next-whats-going-on-with-javascript-versioning/</a></li>
+<li><a href="https://www.youtube.com/watch?v=Vp4K03xWsgE">https://www.youtube.com/watch?v=Vp4K03xWsgE</a></li>
 </ul>
 
   <hr />
