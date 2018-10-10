@@ -2,68 +2,35 @@
 <html>
 <head>
   <style type="text/css">
-    html {
-      background: #666;
+    img {
+        width: 60%;
+        margin: 0 auto;
     }
     body {
-      max-width: 800px;
-      font-size: 1.2rem;
-      line-height: 1.6rem;
-      padding: 1rem 2rem;
-      margin: 1rem auto;
-      background: #fff;
-    }
-    pre {
-      padding: 1rem !important;
-      border: 1px solid #ddd;
-      background: #eee;
-      overflow: scroll;
-    }
-    ul.nav {
-      list-style-type: none;
-      overflow: auto;
-      padding: 0;
-    }
-    blockquote {
-      border: 1px dashed #aaa;
-      padding: 0 1rem;
-      margin: 0;
-    }
-    ul.nav li {
-      float: left;
-      margin: 0 1rem 0 0;
-    }
-    img {
-      max-width: 100%;
-    }
-    li {
-      margin-bottom: 0.25rem;
-    }
-    span.date {
-      font-size: 0.7rem;
-      float: right;
+        max-width: 40em;
     }
     table {
-      width: 100%;
+        width: 100%;
     }
-    th, td {
-      border-bottom: 1px solid grey;
-      padding: 0.25em;
-      text-align: left;
+    table th {
+        text-align: left;
     }
-    img {
-      left: 0;
-      right: 0;
-      margin-right: auto;
-      margin-left: auto;
+    .nav {
+        display: block;
+        overflow: auto;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        margin-bottom: 1rem;
     }
-    .small {
-      font-size: smaller;
-      font-weight: normal;
+    .nav li {
+        float: left;
+        margin-right: 1rem;
     }
-    h1 {
-      font-size: 2rem;
-      line-height: 2.5rem;
+    pre {
+        background: #ddd;
+        border: none !important;
+        padding: 1rem !important;
     }
   </style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -71,7 +38,8 @@
   <title>Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı — Mirat Can Bayrak</title>
   
   
-
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/atelier-forest-light.min.css">
   
 
 </head>
@@ -95,10 +63,8 @@
 <blockquote><p>Okumadan Önce:</p>
 <p>Hedef işletim sistemim Android, geliştirme yaptığım işletim sistemi ise OSX olacak. Bu yüzden örneğin IOS için geliştirme yapmak istiyorsanız bu yazı bir yere kadar yeterli olacaktır. Geliştirme yaptığınız sistemde NodeJS, NPM, Watchman ve Homebrew kurulu olmalıdır. Eğer kurulu değillerse aşağıdaki komutları kullanarak yükleyebilirsiniz:</p>
 </blockquote>
-<pre><code>$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-$ brew install nodejs watchman
-</code></pre>
-<h2>Getirileri:</h2>
+<pre class="prettyprint lang-bash"><code>$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ brew install nodejs watchman</code></pre><h2>Getirileri:</h2>
 <ol>
 <li>JSX adında bir markup dili getiriyor, bunu kullanmak zorunlu olmasa da şiddetle tavsiye edilmekte. Ha HTML yerine kullanılması avantajlı mı? Tartışılır.</li>
 <li>Components - React bir web sayfası ya da uygulamayı tasarlarken HTML etiketleri olarak değil de görünüm bileşenleri tasarlamanızı sağlıyor. Ne faydası var diyecek olursanız, bileşenler bir kere düzgün tasarlandıktan sonra farklı projelerde kullanılabiliyorlar. Örneğin hesap makinesi adında büyük bir bileşen yaparsanız bunu yaptığınız farklı farklı uygulamalara takabiliyorsunuz.</li>
@@ -119,38 +85,27 @@ $ brew install nodejs watchman
 <h3>ADIM 1 - GLOBAL GEREKLİ PAKETLERİN KURULMASI:</h3>
 <p>Öncelikle babel pakedini kurmanız gerekiyor. Bu paket javascript yazarken ES6 standardını kullanabilmenizi sağlıyor. ES6 standardı ile yazdığınız javascript kodunun eğer broser desteklemiyor ise downgrade edilmiş bir versionunu compile ediyor. Artık modern javascript yazmak için babel kullanmak
 zorunlu gibi bir şey.</p>
-<pre><code>$ npm install -g babel babel-cli react-native-cli
-</code></pre>
-<blockquote><p>NOT: Bazı yerlerde React Native ES2015 standardını kullanıyor gibi bir şeyler okuyabilirsiniz. ES2015, ES6'nın draft hali yani ES6 standardının bitirilmeden önceki halini ifade ediyor.</p>
+<pre class="prettyprint lang-bash"><code>$ npm install -g babel babel-cli react-native-cli</code></pre><blockquote><p>NOT: Bağzı yerlerde React Native ES2015 standardını kullanıyor gibi bir şeyler okuyabilirsiniz. ES2015, ES6'nın draft hali yani ES6 standardının bitirilmeden önceki halini ifade ediyor.</p>
 </blockquote>
 <h3>ADIM 2 - ANDROID SDK'NIN KURULUMU:</h3>
 <p>Yazacağınız uygulamaların telefonda ya da bir telefon emülatöründe çalıştırılması gerekiyor. Eğer yazdığımız kodların sonucunu sanal ya da değil bir Android makine üzerinde görmek istiyorsanız (benim senaryomda istiyoruz) Android SDK'nın kurulumunu yapmamız gerekiyor.</p>
-<pre><code>$ brew tap caskroom/cask
-$ brew cask install android-sdk
-</code></pre>
-<p>Brew güzel alet, Android SDK'nın çıplak haliyle kurulumunu yaptık. Ardından yapmamız gereken şey ise ANDROID_HOME ortam değerinin set edilmesi. Bu değer Android SDK'yı kurduğunuz yer olmalı.</p>
+<pre class="prettyprint lang-bash"><code>brew tap caskroom/cask
+$ brew cask install android-sdk</code></pre><p>Brew güzel alet, Android SDK'nın çıplak haliyle kurulumunu yaptık. Ardından yapmamız gereken şey ise ANDROID_HOME ortam değerinin set edilmesi. Bu değer Android SDK'yı kurduğunuz yer olmalı.</p>
 <p>Unix sisteminizde aşağıdaki satırı (eğer yoksa) ~/.bashrc, ~/.bash_profiel ya da fish kullanıyorsanız adını hatırlamadığım başka bir dosya içine yazmanız gerekiyor:</p>
-<pre><code>export ANDROID_HOME=/usr/local/share/android-sdk
-</code></pre>
-<p>Burada tekrar hatırlatmamda fayda var verdiğimiz yolun SDK'nın kurulu olduğu yeri göstermesi gerekiyor. Kontrol edip yolu ona göre gerekiyorsa değiştirin.</p>
+<pre class="prettyprint lang-bash"><code>export ANDROID_HOME=/usr/local/share/android-sdk</code></pre><p>Burada tekrar hatırlatmamda fayda var verdiğimiz yolun SDK'nın kurulu olduğu yeri göstermesi gerekiyor. Kontrol edip yolu ona göre gerekiyorsa değiştirin.</p>
 <p>Bu değişkeni doğru olarak değiştirdiyseniz aşağıdaki komutun çıktısı şunun gibi olmalıdır:</p>
-<pre><code>ls $ANDROID_HOME
+<pre class="prettyprint lang-bash"><code>$ ls $ANDROID_HOME
 INSTALL_RECEIPT.json add-ons              build-tools
 extras               platforms            sources
 temp                 README               bin
 etc                  platform-tools       samples
-system-images        tools
-</code></pre>
-<p>Bu aşamadan sonra SDK için çeşitli paketlerin yüklenmesi gerekiyor. React Native'in kendi dökümantasyonu bu konuda biraz eski, şu an baktığımda Android Studio kurmaya, oradan görsel arabirim üzerinden çeşitli kütüphaneleri elle yüklemeye yönlendiriyor ama bunlara gerek olmadığını gördüm. Eğer Android SDK doğru bir şekilde kuruldu ve tanımlandıyda ilk çalıştırma sırasında React Native gerekli paketleri kuruyor.</p>
+system-images        tools</code></pre><p>Bu aşamadan sonra SDK için çeşitli paketlerin yüklenmesi gerekiyor. React Native'in kendi dökümantasyonu bu konuda biraz eski, şu an baktığımda Android Studio kurmaya, oradan görsel arabirim üzerinden çeşitli kütüphaneleri elle yüklemeye yönlendiriyor ama bunlara gerek olmadığını gördüm. Eğer Android SDK doğru bir şekilde kuruldu ve tanımlandıyda ilk çalıştırma sırasında React Native gerekli paketleri kuruyor.</p>
 <h3>ADIM 3 - TELEFONUN TANITILMASI</h3>
 <p>Bu işlem basit, Android telefonunuzun önce geliştirici modunu açacak. Sonra da USB den bilgisayarınıza bağlayacaksınız. Bu işlemleri yaptıktan sonra şu komutu verdiğinizde şunun gibi bir çıktı görmelisiniz:</p>
-<pre><code>#terminalde
-adb devices
+<pre class="prettyprint"><code class="language-bash">$ adb devices
 List of devices attached
 
-TELEFON MODELI
-</code></pre>
-<p>Eğer telefonunuz bu listede gözükmüyorsa emin olmanız gereken şeyler şunlar.</p>
+TELEFON MODELI</code></pre><p>Eğer telefonunuz bu listede gözükmüyorsa emin olmanız gereken şeyler şunlar.</p>
 <ol>
 <li>Telefonunuz USB ile bağlı olmalı.</li>
 <li>Telefonunuz sadece şarj ya da fotoğraf makinesi modunda değil MTP modunda bağlı olmalı.</li>
@@ -161,53 +116,39 @@ TELEFON MODELI
 <p>Bu arada sanal bir Android makine oluşturup bunun üzerinde geliştirme yapmak da mümkün ancak ben bu şekilde, gerçek bir telefon üzerinde çalışmayı daha mantıklı buldum. Sanal makine için -zaten gerçeği varken- CPU, disk alanı, RAM harcamak, geliştirme yaparken sürekli tab yaparak ya da pencereleri hizalamaya çalışarak sanal makineyi takip etmektense bilgisayarın yanına telefonunuzu koymak ve değişiklikleri oradan takip etmek çok daha mantıklı geldi bana.</p>
 <h2>REACT NATIVE ILE PROJENIN BAŞLATILMASI</h2>
 <p>Yukarıdaki adımları takip ettikten sonra artık react-native komutu bizim için çalıştırılabilir olmalı:</p>
-<pre><code>$ react-native init ReactHello
-</code></pre>
-<p>Bu komut baya bir indirme yapıyor ve bana çok devasa gözüken bir dizin ağacı yaratıyor. Daha hiç bir şey yapmadan 22.700 tane dosya oluştu proje dizinimin içinde. Bu bana biraz sevimsiz geldi açıkcası ama soğuyup bırakacak değilim.</p>
-<pre><code>$ cd ReactHello
+<pre class="prettyprint lang-bash"><code>$ react-native init ReactHello</code></pre><p>Bu komut baya bir indirme yapıyor ve bana çok devasa gözüken bir dizin ağacı yaratıyor. Daha hiç bir şey yapmadan 22.700 tane dosya oluştu proje dizinimin içinde. Bu bana biraz sevimsiz geldi açıkcası ama soğuyup bırakacak değilim.</p>
+<pre class="prettyprint lang-bash"><code>$ cd ReactHello
 $ ReactHello/ $ ls
-__tests__        app.json         index.ios.js     node_modules &lt;-- içinde bi dünya dosya var.
-android          index.android.js ios              package.json
-</code></pre>
-<p>Neyse, bu noktada bilmemiz gereken bazı şeyler şunlar:</p>
+__tests__        app.json         index.ios.js     node_modules <-- içinde bi dünya dosya var.
+android          index.android.js ios              package.json</code></pre><p>Neyse, bu noktada bilmemiz gereken bazı şeyler şunlar:</p>
 <ul>
 <li>React Native paket yöneticisi olarak NPM kullanıyor. Dolayısıyla node_modules dizini kurduğumuz, kuracağımız paketleri barındırıyor.</li>
 <li>"android" ve "ios" dizinleri android ve ios projeleri için üretilmiş kodu barındırıyor. Android Studio ya da XCode kullanarak açıp, incelenebilir.</li>
 <li>index.android.js ve index.ios.jsedosyaları bizim kaynak kodumuzun giriş noktaları oluyor.</li>
 </ul>
 <p>Şimdi de bu boş projeyi Android üzerinde çalıştıralım:</p>
-<pre><code>$ react-native run-android
-</code></pre>
-<p>Bu komut baya bir indirme yapacak, daha önce kurduğumuz Android SDK üzerine, React Native'in çalışması için gerekli olan paketleri kuracak. İyi haber bu işlemin sadece 1 defa yapılacak olması. Eğer şansımız yerindeyse telefonumuzda şunun gibi bir ekran görmeliyiz:</p>
+<pre class="prettyprint lang-bash"><code>$ react-native run-android</code></pre><p>Bu komut baya bir indirme yapacak, daha önce kurduğumuz Android SDK üzerine, React Native'in çalışması için gerekli olan paketleri kuracak. İyi haber bu işlemin sadece 1 defa yapılacak olması. Eğer şansımız yerindeyse telefonumuzda şunun gibi bir ekran görmeliyiz:</p>
 <p style="text-align:center"><img src="https://kylewbanks.com/images/post/react-native-tutorial-1.png" /></p><p>Bu ekrandayken telefonu salladığınızda karşınıza çeşitli geliştirici seçenekleri çıkacak. Bunları biraz kurcalayın ne olduğunu anlamaya çalışın. İlerde lazım olacaklar.</p>
 <h2>Hello World</h2>
 <p>Şimdi yukarda index.android.js ve index.ios.js dosyalarımızın bulunduğunu, bunların iki farklı cihaz için üretilmiş kodlar olduğunu söylemiştik. Şimdi bu iki dosyayı sıfırlayıp baştan yazarak React'ın ve React Native'in nasıl çalıştığını biraz inceleyelim. İki dosyanın da içini boşaltın ve aşağıdaki satırları ekleyin:</p>
-<pre><code>import React, { Component } from 'react';
+<pre class="prettyprint lang-bash"><code>import React, { Component } from 'react';
 import {
     Text,
     AppRegistry
-} from 'react-native';
-</code></pre>
-<p>Şimdiye kadar sadece kurulumla konfigurasyon ile geçirmiştik zamanımızı, şimdi ise ilk defa elimizi taşın altına attık ve Javascript yazmaya başladık. React Native Javascript yazımında ES6 standardını kullanıyor. Yukarodaki kod parçacığındaki import yönergeleri de bu standarda ait yönergeler. Daha önce görmediyseniz şöyle basitçe açıklayayım. 'react' pakedinden React ve Component'i, react-native pakedinden de Text ve AppRegistry dosyalarını import ediyoruz. Eğer bir paketten export edilmemiş bir şeyi import etmeye çalışıyorsak bunu kıvrımlı parantezler içinde yazıyoruz. ES6'daki import yönergeleri için <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">Mozilla vakfının dökümanı</a>na göz atabilirsiniz.</p>
+} from 'react-native';</code></pre><p>Şimdiye kadar sadece kurulumla konfigurasyon ile geçirmiştik zamanımızı, şimdi ise ilk defa elimizi taşın altına attık ve Javascript yazmaya başladık. React Native Javascript yazımında ES6 standardını kullanıyor. Yukarodaki kod parçacığındaki import yönergeleri de bu standarda ait yönergeler. Daha önce görmediyseniz şöyle basitçe açıklayayım. 'react' pakedinden React ve Component'i, react-native pakedinden de Text ve AppRegistry dosyalarını import ediyoruz. Eğer bir paketten export edilmemiş bir şeyi import etmeye çalışıyorsak bunu kıvrımlı parantezler içinde yazıyoruz. ES6'daki import yönergeleri için <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">Mozilla vakfının dökümanı</a>na göz atabilirsiniz.</p>
 <p>Bu arada yeri gelmişken söyleyeyim bu yazıyı yazarken-React ortamını incelerken ES6 spesifikasyonuna aşina oldum. Neredeyse Javascript çok güzel olmuş diyeceğim. Dili bütün saçmalıklarından ayıklamışlar.ES6 hakkında daha fazla bilgi sahip olmak için <a href="http://es6-features.org/#Constants">şu</a> ve <a href="https://github.com/lukehoban/es6features">şu</a> sayfalara göz atabilirsiniz. Ayrıca bunları okumak sıkıcı gelirse Üstün Özgür'ün Youtube'da çok güzel bir <a href="https://www.youtube.com/watch?v=Vp4K03xWsgE">sunum</a>u var.</p>
 <p>Şimdi devam edelim ve ilk bileşenimizi (componentimizi ekleyelim). Component dediğimiz şey aslında bir gösterimi ifade eden sınıf. Bu sınıflar alt sınıflara sahip olabiliyor. Bir hesap makinesi bileşeni yaratıp, o bileşenin içerisine de tuş bileşenlerini koyabiliyoruz mesela.</p>
-<pre><code>class ReactHello extends Component {
+<pre class="prettyprint lang-javascript"><code>class ReactHello extends Component {
     render() {
         return (
             &lt;Text&gt;Selam, React!&lt;/Text&gt;
        )
     }
-}
-</code></pre>
-<p>Burada ReactHello sınıfı Component ana sınıfından türemekte. Bu syntax'da ES6'nın bir hediyesi bu arada. Neyse, göreceğiniz gibi sınıfımız (ya da bileşenimiz) sadece bir render fonksiyonuna sahip, ve bu fonksiyon içerisinde XML benzeri bir yazım dili içeriyor, adı da JSX. Bunun ne olduğunu birazdan anlatacağım biz şimdilik devam edelim.</p>
+}</code></pre><p>Burada ReactHello sınıfı Component ana sınıfından türemekte. Bu syntax'da ES6'nın bir hediyesi bu arada. Neyse, göreceğiniz gibi sınıfımız (ya da bileşenimiz) sadece bir render fonksiyonuna sahip, ve bu fonksiyon içerisinde XML benzeri bir yazım dili içeriyor, adı da JSX. Bunun ne olduğunu birazdan anlatacağım biz şimdilik devam edelim.</p>
 <p>Son olarak yapmamız gereken şey componentimizin, uygulamamızın ana görünümü olduğunu belirtmek. Bunun için şöyle bir hareket çekiyoruz.</p>
-<pre><code>AppRegistry.registerComponent('ReactHello', () =&gt; ReactHello);
-</code></pre>
-<p>Burada uygulamamızın sahip olduğu bileşeni uygulamamızın ana bileşeni olarak belirlemiş oluyoruz. React Native projenin klasör adını projenin ana bileşen ismi olarak kullanıyor. Yani klasör ismimiz 'ReachNaber' olsaydı register ederken:</p>
-<pre><code>AppRegistry.registerComponent('ReactNaber', () =&gt; ReactHello);
-</code></pre>
-<p>Şeklinde kaydedecektik. Neticede uygulamamızın son hali şu şekilde olmalı:</p>
-<pre><code>import React, { Component } from 'react';
+<pre class="prettyprint lang-javascript"><code>AppRegistry.registerComponent('ReactHello', () => ReactHello);</code></pre><p>urada uygulamamızın sahip olduğu bileşeni uygulamamızın ana bileşeni olarak belirlemiş oluyoruz. React Native projenin klasör adını projenin ana bileşen ismi olarak kullanıyor. Yani klasör ismimiz 'ReachNaber' olsaydı register ederken:</p>
+<pre class="prettyprint lang-javascript"><code>AppRegistry.registerComponent('ReactNaber', () => ReactHello);</code></pre><p>Şeklinde kaydedecektik. Neticede uygulamamızın son hali şu şekilde olmalı:</p>
+<pre class="prettyprint lang-javascript"><code>import React, { Component } from 'react';
 import {
     Text,
     AppRegistry
@@ -221,21 +162,16 @@ class ReactHello extends Component {
     }
 }
 
-AppRegistry.registerComponent('ReactHello', () =&gt; ReactHello);
-</code></pre>
-<p>Şimdi uygulamamızı tekrar run komutu vererek çalıştırabiliriz, ya da hiç kapatmadıysak telefonu sallayıp, çıkan menüden reload edebiliriz. Ekrana selam, React! yazmaktan başka hiç bir şey yapamayan rezil uygulamamızın çalışıyor olması lazım.</p>
+AppRegistry.registerComponent('ReactHello', () => ReactHello);
+</code></pre><p>imdi uygulamamızı tekrar run komutu vererek çalıştırabiliriz, ya da hiç kapatmadıysak telefonu sallayıp, çıkan menüden reload edebiliriz. Ekrana selam, React! yazmaktan başka hiç bir şey yapamayan rezil uygulamamızın çalışıyor olması lazım.</p>
 <h2>JSX</h2>
 <p>Şu return ettiğimiz XML benzeri yazım var ya. Bu yazım JSX olarak adlandırılıyor. HTML de değil Javascript de değil. React tarafından sunulan bir Javascript eki (kütüphane değil). Javascript notasyonuna uymuyor. Bu yüzden de beni biraz rahatsız etti açıkcası. Bir JSX bloğu yazarken aslında React yazdığımız kodu şunun gibi bir çevrime sokuyor:</p>
-<pre><code>// JSX Kodu:
-&lt;MyButton color="blue" shadowSize={2}&gt;
+<pre class="prettyprint"><code>// JSX Kodu:
+&lt;MyButton color=&quot;blue&quot; shadowSize={2}&gt;
   Click Me
-&lt;/MyButton&gt;
-
-// Javascript Çıktısı:
-React.createElement(MyButton, {color: 'blue', shadowSize: 2}, 'Click Me')
-</code></pre>
-<p>Yani compile edilene kadar editör içinde Javascript, JSX karışık bir syntax görüyorsunuz. Bunun eleştirilecek bir kaç yönü var. Yıllarca tasarım, yazım ve mantığı ayırmaya uğraşmış ve bunu başarmışken böyle bir kod yazmak tarih öncesine dönmüş gibi hissettiriyor. JSX yazarken dikkat etmeniz ve hep hatırınızda tutmanız gereken şey çalışma aşamasına gelindiğinde Javascript koduna dönüşecek bir şey yazdığınız. Bu yüzden örneğin eğer bir değişken kullanıyorsanız bunun JSX'in içinde bulunduğu scope'da tanımlı olması gerekiyor. Ha evet tam yeri geldi şu anda, JSX içerisinde değişkenler ve ifadeler kullanabiliyoruz:</p>
-<pre><code>import React, { Component } from 'react';
+&lt;/MyButton&gt;</code></pre><pre class="prettyprint"><code>// Javascript Çıktısı:
+React.createElement(MyButton, {color: 'blue', shadowSize: 2}, 'Click Me')</code></pre><p>Yani compile edilene kadar editör içinde Javascript, JSX karışık bir syntax görüyorsunuz. Bunun eleştirilecek bir kaç yönü var. Yıllarca tasarım, yazım ve mantığı ayırmaya uğraşmış ve bunu başarmışken böyle bir kod yazmak tarih öncesine dönmüş gibi hissettiriyor. JSX yazarken dikkat etmeniz ve hep hatırınızda tutmanız gereken şey çalışma aşamasına gelindiğinde Javascript koduna dönüşecek bir şey yazdığınız. Bu yüzden örneğin eğer bir değişken kullanıyorsanız bunun JSX'in içinde bulunduğu scope'da tanımlı olması gerekiyor. Ha evet tam yeri geldi şu anda, JSX içerisinde değişkenler ve ifadeler kullanabiliyoruz:</p>
+<pre class="prettyprint lang-javascript"><code>import React, { Component } from 'react';
 import {
     Text,
     AppRegistry
@@ -250,63 +186,7 @@ class ReactHello extends Component {
     }
 }
 
-AppRegistry.registerComponent('ReactHello', () =&gt; ReactHello);
-</code></pre>
-<p>Kullanmak istediğimiz değişkeni ya da ifadeyi {} içerisinde yazmamız yeterli oluyor.</p>
-<h2>Bileşenleri Anlamak</h2>
-<p>Bileşenler aslında birer view fonksiyonu demiştik. Yukarda bileşen tanımlarken döndürdüğümüz Text etiketi aslında Text adındaki başka bir React bileşenini çağırıyor. Her bileşenin kendi özellik ve durumu var. Özellikler (property) bir component oluşsun çağrsı yaptığımızda dışardan gönderilen parametreler oluyor ve bunlar bileşenin yaşam döngüsü içerisinde değiştirilmiyorlar. Durumlar ise (state) bileşenin o anki durumunu ifade eden değişkenleri ifade ediyor ve yaşam döngüsü içerisinde değiştirilebilir oluyor.</p>
-<p>Örneğin bir oyun yapıyoruz diyelim ve Ninja adında bir bileşen oluşturduk. Ninjanın elinde bir silah var ya da hiç bir şey yok. Ninjamızın elinde ne olduğu ya da olmadığı varlığı süresince değiştirilebilir bir şey olduğu için durum (state) olarak tanımlanabilir. Ninjamızın ismi ise değişmez bir şey olduğu için (oyunumuzda dava açıp kendi adını değiştiremiyor olduğu için) Bu ise bir özellik olur. Şimdi bu ninja örneği üzerinden React Native componentimizi yazmaya çalışalım.)</p>
-<pre><code>import React, { Component } from 'react';
-import { Text } from 'react-native';
-
-class Ninja extends Component {
-  render() {
-    return (
-      &lt;Text&gt;Ben bir Ninjayım Adım {this.props.name} ve şu an elimde XXX var.&lt;/Text&gt;
-    )
-  }
-}
-
-class ReactHello extends Component {
-  render(){
-    return(
-      &lt;Ninja name="Mirat" /&gt;
-    )
-  }
-}
-
-AppRegistry.registerComponent('ReactHello', () =&gt; ReactHello);
-</code></pre>
-<p>Şimdi ilk aşama olarak sadece bir adet "name" adında özelliği olan "Ninja" adında bir bileşen yazdık. Bu bileşenimizi de uygulamamızın ana bileşenine taktık. Bu bileşene dışardan verilen "name" özelliğine {this.props.name} yazarak ulaştık. React native ile uygulama tasarlarken bir ana bileşen ve ona üst üste eklenen bileşenler olarak tasarlamak gerekiyor. Bunun haricinde farklı ekranlar arası geçişler için <a href="https://facebook.github.io/react-native/docs/navigator.html">Navigator</a> adında bir bileşen var. Bu bileşen sayesinde farklı sayfalar ve bu sayfalar arası geçişler yapabiliyoruz.</p>
-<p>Neyse konumuza geri dönelim, özellik tanımlamaları yukarda bahsettiğim şekilde gerçekleşiyor. Şimdi weapon adında bir state ekleyelim:</p>
-<pre><code>import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-
-class Ninja extends Component {
-  constructor() {
-    super();
-    this.state = {
-      weapon: 'Bıçak'
-    }
-  }
-  render() {
-    return (
-      &lt;Text&gt;Ben bir Ninjayım Adım {this.props.name} ve şu an elimde {this.state.weapon} var.&lt;/Text&gt;
-    )
-  }
-}
-
-export default class App extends Component {
-  render(){
-    return(
-      &lt;View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}&gt;
-        &lt;Ninja name="Mirat" /&gt;
-      &lt;/View&gt;
-    )
-  }
-}
-</code></pre>
-<p>Burada bir constructor method ekle</p>
+AppRegistry.registerComponent('ReactHello', () => ReactHello);</code></pre><p>Kullanmak istediğimiz değişkeni ya da ifadeyi {} içerisinde yazmamız yeterli oluyor.</p>
 <p>Kaynaklar:</p>
 <ul>
 <li><a href="https://www.tutorialspoint.com/react_native/">https://www.tutorialspoint.com/react_native/</a></li>
@@ -317,20 +197,10 @@ export default class App extends Component {
 <li><a href="https://www.youtube.com/watch?v=Vp4K03xWsgE">https://www.youtube.com/watch?v=Vp4K03xWsgE</a></li>
 <li><a href="https://facebook.github.io/react/docs/components-and-props.html">https://facebook.github.io/react/docs/components-and-props.html</a></li>
 <li><a href="https://facebook.github.io/react/docs/jsx-in-depth.html">https://facebook.github.io/react/docs/jsx-in-depth.html</a></li>
-<li><a href="https://ysfzrn.gitbooks.io/react-native-turkce/">https://ysfzrn.gitbooks.io/react-native-turkce/</a></li>
 </ul>
 
-  <hr />
-  <p>Mirat - April 2017</p>
+  <p>Mirat</p>
 
-  <div id="disqus_thread"></div>
-  <script>(function() { // DON'T EDIT BELOW THIS LINE
-  var d = document, s = d.createElement('script');
-  s.src = 'https://blog-lektor.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-  })();</script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </body>
 </html>
 
