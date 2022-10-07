@@ -1,56 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style type="text/css">
-    img {
-        width: 60%;
-        margin: 0 auto;
-    }
-    body {
-        max-width: 40em;
-    }
-    table {
-        width: 100%;
-    }
-    table th {
-        text-align: left;
-    }
-    .nav {
-        display: block;
-        overflow: auto;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        margin-bottom: 1rem;
-    }
-    .nav li {
-        float: left;
-        margin-right: 1rem;
-    }
-    pre {
-        background: #ddd;
-        border: none !important;
-        padding: 1rem !important;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-fonts@1.1.1/fonts/inter.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>{% block title %}Welcome{% endblock %} — Mirat Can Bayrak</title>
   {% block extra_head %}{% endblock %}
 </head>
 <body>
-<ul class="nav">
-  <li{% if this._path == '/' %} class="active"{% endif%}>
-    <a href="{{ '/'|url }}">Anasayfa</a>
-  </li>
-    {% for href, title in [['/blog', 'Blog']] %}
-      <li{% if this.is_child_of(href) %} class="active"{% endif
-      %}>
-        <a href="{{ href|url }}">{{ title }}</a>
-      </li>
-    {% endfor %}
-</ul>
-{% block body %}{% endblock %}</body>
+<header class="wrap">
+<nav>
+  <a href="{{ '/'|url }}">Anasayfa</a>
+  {% for href, title in [['/blog', 'Blog']] %}
+    <a href="{{ href|url }}">{{ title }}</a>
+  {% endfor %}
+</nav>
+</header>
+<main class="wrap">{% block body %}{% endblock %}</main>
+</body>
 </html>
 
 
