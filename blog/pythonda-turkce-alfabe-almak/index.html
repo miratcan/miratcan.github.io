@@ -3,13 +3,19 @@
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-fonts@1.1.1/fonts/inter.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
+  <style>
+    pre { padding: 20px !important; }
+    body { background-color: #202124; }
+  </style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Python&#39;da Türkçe Alfabe Almak — Mirat Can Bayrak</title>
   
   
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/atelier-forest-light.min.css">
+    <link rel="stylesheet" type="text/css"
+               href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css"
+               />
   
 
 </head>
@@ -23,53 +29,64 @@
     </ul>
   </nav>
   <main>
-  
+
   <h1>Python&#39;da Türkçe Alfabe Almak</h1>
-  <p>Elimde bir iş vardı, eğer bir formda Türkçe olmayan karakterler varsa hata kaldırmam gerekliydi. Bunu çözerken Türkçe karakter listesini ilk akla gelen metodla oluşturdum. Ve gelen karakterler bu dizinin dışında ise hata kaldırdım.</p>
+  <p>Elimde bir iş vardı, eğer bir formda Türkçe olmayan karakterler varsa hata
+kaldırmam gerekliydi. Bunu çözerken Türkçe karakter listesini ilk akla gelen
+metodla oluşturdum. Ve gelen karakterler bu dizinin dışında ise hata kaldırdım.</p>
 <pre class="prettyprint"><code># -*- coding: utf-8 -*-
 def turkish_chars_validator(string):
     turkish_chars = 'ABCÇD...'
     ...
-</code></pre><p>Sonra kod içerisinde böyle alfabe içeren satır bulunmasın, zira projede hiç bir yerde dosya başına coding belirtmiyoruz dedi takım liderimiz. (Merak edenler için coding belirtmekten kaçmamızın sebebi bir kere utf-8 girdi mi projedeki dosyaların içerisine Türkçe docstring'lerin ve yorumların peydah olmaya başlamasıymış.)</p>
-<p>Python'da Türkçe harfleri alabileceğim bir kütüphane elbet vardır dedim zira lokalizasyon kütüphaneleri içerisinde bir çok değişken ve metod hatırlıyordum harflerle ilgili. Girip baktığımda string modülü içerisindeki letters değişkenine ulaştım. Kendisi o an set edilmiş <strong>locale</strong> değerini kullanarak alfabe getiriyormuş:</p>
+</code></pre><p>Sonra kod içerisinde böyle alfabe içeren satır bulunmasın, zira projede hiç bir
+yerde dosya başına coding belirtmiyoruz dedi takım liderimiz. (Merak edenler
+için coding belirtmekten kaçmamızın sebebi bir kere utf-8 girdi mi projedeki
+dosyaların içerisine Türkçe docstring'lerin ve yorumların peydah olmaya
+başlamasıymış.)</p>
+<p>Python'da Türkçe harfleri alabileceğim bir kütüphane elbet vardır dedim zira
+lokalizasyon kütüphaneleri içerisinde bir çok değişken ve metod hatırlıyordum
+harflerle ilgili. Girip baktığımda string modülü içerisindeki letters
+değişkenine ulaştım. Kendisi o an set edilmiş <strong>locale</strong> değerini kullanarak
+alfabe getiriyormuş:</p>
 <pre class="prettyprint"><code>>>> from locale import LC_ALL, setlocale
 >>> setlocale(LC_ALL, 'tr_TR.utf8')
 >>> from string import letters
 >>> print letters
 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
-</code></pre><p>Türkçe karakterleri içermeyen bir sonuç verdi tr_TR.utf8 lokali, Turkish_Turkey.1254 ile çağırdığımda ise şunu diziyi döndürdü:</p>
+</code></pre><p>Türkçe karakterleri içermeyen bir sonuç verdi tr_TR.utf8 lokali,
+Turkish_Turkey.1254 ile çağırdığımda ise şunu diziyi döndürdü:</p>
 <p><code>abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
 ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS</code></p>
-<p>Görüldüğü üzere bu şekilde yaklaşmak pek umut verici değil. Hem setlocale kullanmak Django içerisinde baya sıkıntılı sonuçlar doğuruyor. setlocale hakkında şöyle bir yorum bırakmışlar python dökümantasyonuna:</p>
-<blockquote><p>It is generally a bad idea to call setlocale() in some library routine, since as a side effect it affects the entire program. Saving and restoring it is almost as bad: it is expensive and affects other threads that happen to run before the settings have been restored.</p>
+<p>Görüldüğü üzere bu şekilde yaklaşmak pek umut verici değil. Hem setlocale
+kullanmak Django içerisinde baya sıkıntılı sonuçlar doğuruyor. setlocale
+hakkında şöyle bir yorum bırakmışlar Python dökümantasyonuna:</p>
+<blockquote><p>It is generally a bad idea to call setlocale() in some library routine, since
+as a side effect it affects the entire program. Saving and restoring it is
+almost as bad: it is expensive and affects other threads that happen to run
+before the settings have been restored.</p>
 </blockquote>
-<p>Neyse çok uzatmayayım regex kütüphanesini kullanarak da bir kaç deneme yaptıktan sonra son olarak basitçe şunu yapıp gönderdim:</p>
-<pre class="prettyprint"><code>alpha = 'ABC\xc3\x87DEFG\xc4\x9eHI\xc4\xb0JKL' \
-            'MNO\xc3\x96PRS\xc5\x9eTU\xc3\x9cVYZ' \
-            'abc\xc3\xa7defg\xc4\x9fh\xc4\xb1ijklmno\xc3' \
-            '\xb6prs\xc5\x9ftu\xc3\xbcvyz'.decode('utf-8')
+<p>Neyse çok uzatmayayım regex kütüphanesini kullanarak da bir kaç deneme
+yaptıktan sonra son olarak basitçe şunu yapıp gönderdim:</p>
+<pre class="prettyprint"><code>
+alpha = 'ABC\xc3\x87DEFG\xc4\x9eHI\xc4\xb0JKL' \
+        'MNO\xc3\x96PRS\xc5\x9eTU\xc3\x9cVYZ' \
+        'abc\xc3\xa7defg\xc4\x9fh\xc4\xb1ijklmno\xc3' \
+        '\xb6prs\xc5\x9ftu\xc3\xbcvyz'.decode('utf-8')
 
 def invalid_chars(text, charset=alpha):
-    return set(filter(lambda c: c not in charset, list(text)))</code></pre><p>Bir problemi çözerken en iyi yol, her zaman ilk akla gelen en basit yol oluyor. Problemleri karmaşıklaştırmak biraz mühendis kafası hastalığı sanırım.</p>
+    return set(filter(lambda c: c not in charset, list(text)))</code></pre><p>Bir problemi çözerken en iyi yol, her zaman ilk akla gelen en basit yol oluyor.
+Problemleri karmaşıklaştırmak biraz mühendis kafası hastalığı sanırım.</p>
 
   <p>Mirat - July 2014</p>
 
-  
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function() { this.page.identifier = "/blog/pythonda-turkce-alfabe-almak"; };
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = '//"blog-lektor";.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
 </script>
-<noscript>
-  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
-    rel="nofollow">comments powered by Disqus.</a>
-</noscript>
-
 </main>
 </body>
 </html>
