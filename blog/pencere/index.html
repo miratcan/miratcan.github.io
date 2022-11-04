@@ -1,38 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style type="text/css">
-    img {
-        width: 60%;
-        margin: 0 auto;
-    }
-    body {
-        max-width: 40em;
-    }
-    table {
-        width: 100%;
-    }
-    table th {
-        text-align: left;
-    }
-    .nav {
-        display: block;
-        overflow: auto;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        margin-bottom: 1rem;
-    }
-    .nav li {
-        float: left;
-        margin-right: 1rem;
-    }
-    pre {
-        background: #ddd;
-        border: none !important;
-        padding: 1rem !important;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-fonts@1.1.1/fonts/inter.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Pencere — Mirat Can Bayrak</title>
@@ -41,23 +11,38 @@
 
 </head>
 <body>
-<ul class="nav">
-  <li>
-    <a href="../../">Anasayfa</a>
-  </li>
-    
-      <li class="active">
-        <a href="../../blog/">Blog</a>
-      </li>
-    
-</ul>
-
+  <nav>
+    <ul>
+      <li><a href="../../">Anasayfa</a></li>
+      
+        <li><a href="../">Blog</a></li>
+      
+    </ul>
+  </nav>
+  <main>
   
   <h1>Pencere</h1>
   <p>Webcam'i pencereye sabitledim. Motion adlı güvenlik kamerası  uygulamasına dedim ki webcam'i kullanarak bana dakikada 1 kare kaydet.  24 saat bu kaydı yaptıktan sonra kareleri birleştirip müziği koymak  kaldı. Fotoğraf makinasıyla yapıldığını biliyorum bu <a href="http://en.wikipedia.org/wiki/Time-lapse">timelapse videoları</a>nın ama webcam ilk sanırım :)</p>
 <iframe src="http://player.vimeo.com/video/3128868?title=0&amp;byline=0&amp;portrait=0" style="width: 100%; height: 400px;" frameborder="0"></iframe>
   <p>Mirat - January 2010</p>
 
+  
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/pencere"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//"blog-lektor";.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+
+</main>
 </body>
 </html>
 
