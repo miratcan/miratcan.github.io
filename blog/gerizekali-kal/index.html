@@ -25,8 +25,8 @@
   </nav>
   <main>
 
-  <h1>Gerizekalı Kal</h1>
-  <p>Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu sebepten yapıyorum. Mesela geçen gün şöyle bir şey yapmışım:</p>
+  <p style="text-align: right;">07/2016</p>
+  <h1>Gerizekalı Kal</h1><p>Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu sebepten yapıyorum. Mesela geçen gün şöyle bir şey yapmışım:</p>
 <pre><code>val = ... # (1)
 try:
     a = int(val)
@@ -35,8 +35,7 @@ except ValueError:
 </code></pre>
 <p>Burada val değeri integer, integer'a çevirilebilir bir string ya da None gelecek (1). Ben de demişim ki eğer None gelirse None set edeyim, diğer durumlarda ise integer'a çevireyim. Zira int fonksiyonunun integer'a çeviremediğinde ValueError kaldırdığından eminim. Bu kodu çalıştırmaya bile ihtiyaç duymadan göndermişim (burada kendime hakaretler yağdırıyorum) Sonra anladım ki int(None) ValueError değil TypeError kaldırıyor. Kodum testten döndü :)</p>
 <p>Geliştirme yaparken tek satırdaki tırnak işaretini değiştirsek o satırın çalışıp çalışmadığını görmeden hiç bir yere göndermemek, kendini gerizekalı kabul etmek gerek.</p>
-
-  <p>Mirat - July 2016</p>
+<hr />
 
 <script src="https://utteranc.es/client.js"
         repo="miratcan/miratcan.github.io"

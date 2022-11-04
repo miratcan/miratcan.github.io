@@ -30,8 +30,8 @@
   </nav>
   <main>
 
-  <h1>Django&#39;da tehlikeli template etiketi: length.</h1>
-  <p>Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni'den ayrıldım onu bilhare anlatırım.) Template içerisinde bir QuerySet length template filtresiyle çağırılıyordu:</p>
+  <p style="text-align: right;">01/2014</p>
+  <h1>Django&#39;da tehlikeli template etiketi: length.</h1><p>Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni'den ayrıldım onu bilhare anlatırım.) Template içerisinde bir QuerySet length template filtresiyle çağırılıyordu:</p>
 <pre class="prettyprint"><code>{% if BlaBla.all|length == 5 %}
     ..
 {% endif %}</code></pre><p>length template filtresini açıp baktığımda verilen değeri len fonksiyonuna geçirdiğini <a href="https://github.com/django/django/blob/master/django/template/defaultfilters.py#L577">gördüm</a>:</p>
@@ -61,8 +61,7 @@ FROM `channel_customstream`</code></pre><p>Görüldüğü üzere o modele ait he
 
 SELECT COUNT(*)
 FROM `channel_customstream`</code></pre><p>Diyeceğim o ki, length etiketini count sorgusu yaptığını sanarak kullanmayınız.</p>
-
-  <p>Mirat - January 2014</p>
+<hr />
 
 <script src="https://utteranc.es/client.js"
         repo="miratcan/miratcan.github.io"

@@ -30,8 +30,8 @@
   </nav>
   <main>
 
-  <h1>Python&#39;da Türkçe Alfabe Almak</h1>
-  <p>Elimde bir iş vardı, eğer bir formda Türkçe olmayan karakterler varsa hata
+  <p style="text-align: right;">07/2014</p>
+  <h1>Python&#39;da Türkçe Alfabe Almak</h1><p>Elimde bir iş vardı, eğer bir formda Türkçe olmayan karakterler varsa hata
 kaldırmam gerekliydi. Bunu çözerken Türkçe karakter listesini ilk akla gelen
 metodla oluşturdum. Ve gelen karakterler bu dizinin dışında ise hata kaldırdım.</p>
 <pre class="prettyprint"><code># -*- coding: utf-8 -*-
@@ -76,8 +76,7 @@ alpha = 'ABC\xc3\x87DEFG\xc4\x9eHI\xc4\xb0JKL' \
 def invalid_chars(text, charset=alpha):
     return set(filter(lambda c: c not in charset, list(text)))</code></pre><p>Bir problemi çözerken en iyi yol, her zaman ilk akla gelen en basit yol oluyor.
 Problemleri karmaşıklaştırmak biraz mühendis kafası hastalığı sanırım.</p>
-
-  <p>Mirat - July 2014</p>
+<hr />
 
 <script src="https://utteranc.es/client.js"
         repo="miratcan/miratcan.github.io"
