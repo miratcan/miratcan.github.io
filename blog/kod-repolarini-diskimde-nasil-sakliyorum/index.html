@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-fonts@1.1.1/fonts/inter.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
+  <style>
+    pre { padding: 20px !important; }
+    body { background-color: #202124; }
+  </style>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Kod Repolarını Diskimde Nasıl Saklıyorum? — Mirat Can Bayrak</title>
+  
+  
+
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../../">Anasayfa</a></li>
+      
+        <li><a href="../">Blog</a></li>
+      
+    </ul>
+  </nav>
+  <main>
+
+  <p style="text-align: right;">11/2022</p>
+  <h1>Kod Repolarını Diskimde Nasıl Saklıyorum?</h1><h2>Yerelleştirme</h2>
+<p>OSX kullanıyorsanız fark  etmişsinizdir grafik arayüzün gösterdiği klasör
+isimlerine terminalden ulaşamıyorsunuz. Grafik arayüzde "Belgeler" olarak
+görüntülediğiniz klasör terminelde ulaşmaya çalıştığınızda Documents
+oluveriyor. Kullandığım klasör  yapısı da buna uygun olsun istedim. "Code" adlı
+bir klasörüm olsun ama tıpkı sistemdeki diğer klasörler gibi buna grafik
+arayüzden eriştiğimde "Kodlar" olarak gözüksün dedim. Şu anki  durum şöyle:</p>
+<p><img src="ss1.png" alt=""></p>
+<p>Aynı klasörü terminalden listelediğimde ise şöyle bir sonuç alıyorum:</p>
+<p><img src="ss2.png" alt=""></p>
+<p>Osx'de bir klasörün sonuna <code>.localized</code> ekleyerek, içerisine <code>.localized</code>
+adında bir klasör ekleyip onun da içerisine <code>tr.strings</code> adında bir dosya
+koyarak o klasörün grafik arayüzde Türkçe gözükmesini sağlayabiliyorsunuz. Bir
+örnek yapalım. Ships adında  bir klasörümüz olsun, ama finder  bunu Gemiler
+olarak göstersin istiyoruz diyelim.</p>
+<pre><code>mkdir -p Ships.localized/.localized/
+</code></pre>
+<p>Buradaki  <code>-p</code> parametresi bir kısayol, fazla iç içe klasör oluşturabilmemizi
+sağlıyor.  Bunu kullanmamış olsaydık önce  Ships.localized klasörünü sonra da
+onun içindeki <code>.localized</code> klasörünü  oluşturmamız gerekecekti.</p>
+<p>Şimdi de <code>.localized</code> klasörünün içerisindeki tr.strings dosyasına Ships
+kelimesini Gemiler olarak göstermesi gerektiğini anlatan satırı koyalım:</p>
+<pre><code>echo '"Ships" = "Gemiler"' &gt; Ships.localized/.localized/tr.strings
+</code></pre>
+<p>Bunu yaptığımızda finder penceresinin artık Ships klasörünü Gemiler olarak
+gösterdiğini göreceğiz.</p>
+<p>Bu özelliği kullanarak Code klasörümü yerelleştirdikten sonra şöyle alt
+klasörlere ayırma yoluna gittim:</p>
+<p><img src="ss4.png" alt=""></p>
+<p>Kısaca açıklamak gerekirse Daimi (Permanent) klasöründe ne olursa olsbun
+çalışmaya devam ettiğim blogum, internetguzeldir gibi repolar duruyor. Güncel
+(Current) klasöründe o ara çalıştığım iş ne varsa o. Arşiv ve Geçici
+klasörlerini de tahmin edersiniz zaten.</p>
+<p>Sizin de kullandığınız başka düzenler varsa, ya da bu çirkin .localized klasör
+soyadını kullanmadan yerelleştirme yapabiliyorsanız yorum atabilirsiniz.</p>
+<p>Kolay gelsin.</p>
+<hr />
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+</main>
+</body>
+</html>
+
+
