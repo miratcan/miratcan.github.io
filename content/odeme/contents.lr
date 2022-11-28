@@ -1,11 +1,11 @@
 _model: page
 ---
 body:
-<div>
-  <h4>Bitcoin</h4>
-  <p>Cüzdan adresi: <code>1DApaPXRzERJPKPjU5N1qV6iSEDSRNEQRq</code></p>
-</div>
-<div>
-  <h4>Türk Lirası:</h4>
-  <p>IBAN numarası: <code>TR31 0003 2000 0000 0014 4311 20</code><br />(TÜRK EKONOMİ BANKASI A.Ş. / TEBUTRIS)</p>
-</div>
+
+Ethereum, Gnosis Chain, Avalance:
+
+0xDfb156aa433A46ed8df6C00AFe2b0135B4b95e5a
+---
+_discoverable: no
+---
+title: Ödeme Bilgileri

@@ -4,12 +4,21 @@ author: Mirat
 ---
 body:
 
-[Twitter-bootstap](http://twitter.github.io/bootstrap/)'e karşıyım ama yeterince özelleştirebilirsem kullanabileceğimi düşünüyorum. Bunun için kaynak kodunu indirdim derlemek için de [nodejs](http://nodejs.org/) kurdum, [npm](https://npmjs.org/) ile de [less compiler](http://lesscss.org/) pakedini ekledim. Ancak lessc komutu hiç hata vermemesine rağmen boş sonuç döndürüyordu. Her zaman derim hata almak iyidir, hata alamıyorsan problem var diye. Herhalde nodejs'yi ve elemanlarını paket yöneticisi yerine kaynaktan derleyerek kurmak gerek diyerekten biraz araştırma yaptım. Bu bash betiğini buldum. İşi oldukça kolaylaştırıyor, bütün kurulumu 3 dakika civarı bir sürede hallediyor.
+[Twitter-bootstap](http://twitter.github.io/bootstrap/)'e karşıyım ama
+yeterince özelleştirebilirsem kullanabileceğimi düşünüyorum. Bunun için kaynak
+kodunu indirdim derlemek için de [nodejs](http://nodejs.org/) kurdum,
+[npm](https://npmjs.org/) ile de [less compiler](http://lesscss.org/) pakedini
+ekledim. Ancak lessc komutu hiç hata vermemesine rağmen boş sonuç döndürüyordu.
+Her zaman derim hata almak iyidir, hata alamıyorsan problem var diye. Herhalde
+nodejs'yi ve elemanlarını paket yöneticisi yerine kaynaktan derleyerek kurmak
+gerek diyerekten biraz araştırma yaptım. Bu bash betiğini buldum. İşi oldukça
+kolaylaştırıyor, bütün kurulumu 3 dakika civarı bir sürede hallediyor.
 
-Kurulum betiği şurada: https://gist.github.com/nicoayala/5425809#file-node-and-npm-in-30s-sh
+Kurulum betiği şurada:
+https://gist.github.com/nicoayala/5425809#file-node-and-npm-in-30s-sh
 
-Bu arada neden hala apt-get ile adam akıllı nodejs kurulumu yapamuyoruz merak konusu tarafımdan.
-
+Bu arada neden hala apt-get ile adam akıllı nodejs kurulumu yapamuyoruz merak
+konusu tarafımdan.
 
 ---
 pub_date: 2013-05-13

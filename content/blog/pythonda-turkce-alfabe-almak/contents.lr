@@ -4,7 +4,9 @@ pub_date: 2014-07-18
 ---
 body:
 
-Elimde bir iş vardı, eğer bir formda Türkçe olmayan karakterler varsa hata kaldırmam gerekliydi. Bunu çözerken Türkçe karakter listesini ilk akla gelen metodla oluşturdum. Ve gelen karakterler bu dizinin dışında ise hata kaldırdım.
+Elimde bir iş vardı, eğer bir formda Türkçe olmayan karakterler varsa hata
+kaldırmam gerekliydi. Bunu çözerken Türkçe karakter listesini ilk akla gelen
+metodla oluşturdum. Ve gelen karakterler bu dizinin dışında ise hata kaldırdım.
 
 <pre class="prettyprint"><code># -*- coding: utf-8 -*-
 def turkish_chars_validator(string):
@@ -12,9 +14,17 @@ def turkish_chars_validator(string):
     ...
 </code></pre>
 
-Sonra kod içerisinde böyle alfabe içeren satır bulunmasın, zira projede hiç bir yerde dosya başına coding belirtmiyoruz dedi takım liderimiz. (Merak edenler için coding belirtmekten kaçmamızın sebebi bir kere utf-8 girdi mi projedeki dosyaların içerisine Türkçe docstring'lerin ve yorumların peydah olmaya başlamasıymış.)
+Sonra kod içerisinde böyle alfabe içeren satır bulunmasın, zira projede hiç bir
+yerde dosya başına coding belirtmiyoruz dedi takım liderimiz. (Merak edenler
+için coding belirtmekten kaçmamızın sebebi bir kere utf-8 girdi mi projedeki
+dosyaların içerisine Türkçe docstring'lerin ve yorumların peydah olmaya
+başlamasıymış.)
 
-Python'da Türkçe harfleri alabileceğim bir kütüphane elbet vardır dedim zira lokalizasyon kütüphaneleri içerisinde bir çok değişken ve metod hatırlıyordum harflerle ilgili. Girip baktığımda string modülü içerisindeki letters değişkenine ulaştım. Kendisi o an set edilmiş **locale** değerini kullanarak alfabe getiriyormuş:
+Python'da Türkçe harfleri alabileceğim bir kütüphane elbet vardır dedim zira
+lokalizasyon kütüphaneleri içerisinde bir çok değişken ve metod hatırlıyordum
+harflerle ilgili. Girip baktığımda string modülü içerisindeki letters
+değişkenine ulaştım. Kendisi o an set edilmiş **locale** değerini kullanarak
+alfabe getiriyormuş:
 
 <pre class="prettyprint"><code>>>> from locale import LC_ALL, setlocale
 >>> setlocale(LC_ALL, 'tr_TR.utf8')
@@ -23,26 +33,36 @@ Python'da Türkçe harfleri alabileceğim bir kütüphane elbet vardır dedim zi
 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
 </code></pre>
 
-Türkçe karakterleri içermeyen bir sonuç verdi tr_TR.utf8 lokali, Turkish_Turkey.1254 ile çağırdığımda ise şunu diziyi döndürdü:
+Türkçe karakterleri içermeyen bir sonuç verdi tr_TR.utf8 lokali,
+Turkish_Turkey.1254 ile çağırdığımda ise şunu diziyi döndürdü:
 
 <code>abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
 ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS</code>
 
-Görüldüğü üzere bu şekilde yaklaşmak pek umut verici değil. Hem setlocale kullanmak Django içerisinde baya sıkıntılı sonuçlar doğuruyor. setlocale hakkında şöyle bir yorum bırakmışlar python dökümantasyonuna:
+Görüldüğü üzere bu şekilde yaklaşmak pek umut verici değil. Hem setlocale
+kullanmak Django içerisinde baya sıkıntılı sonuçlar doğuruyor. setlocale
+hakkında şöyle bir yorum bırakmışlar Python dökümantasyonuna:
 
-> It is generally a bad idea to call setlocale() in some library routine, since as a side effect it affects the entire program. Saving and restoring it is almost as bad: it is expensive and affects other threads that happen to run before the settings have been restored.
+> It is generally a bad idea to call setlocale() in some library routine, since
+> as a side effect it affects the entire program. Saving and restoring it is
+> almost as bad: it is expensive and affects other threads that happen to run
+> before the settings have been restored.
 
+Neyse çok uzatmayayım regex kütüphanesini kullanarak da bir kaç deneme
+yaptıktan sonra son olarak basitçe şunu yapıp gönderdim:
 
-Neyse çok uzatmayayım regex kütüphanesini kullanarak da bir kaç deneme yaptıktan sonra son olarak basitçe şunu yapıp gönderdim:
-<pre class="prettyprint"><code>alpha = 'ABC\xc3\x87DEFG\xc4\x9eHI\xc4\xb0JKL' \
-            'MNO\xc3\x96PRS\xc5\x9eTU\xc3\x9cVYZ' \
-            'abc\xc3\xa7defg\xc4\x9fh\xc4\xb1ijklmno\xc3' \
-            '\xb6prs\xc5\x9ftu\xc3\xbcvyz'.decode('utf-8')
+<pre class="prettyprint"><code>
+alpha = 'ABC\xc3\x87DEFG\xc4\x9eHI\xc4\xb0JKL' \
+        'MNO\xc3\x96PRS\xc5\x9eTU\xc3\x9cVYZ' \
+        'abc\xc3\xa7defg\xc4\x9fh\xc4\xb1ijklmno\xc3' \
+        '\xb6prs\xc5\x9ftu\xc3\xbcvyz'.decode('utf-8')
  
 def invalid_chars(text, charset=alpha):
     return set(filter(lambda c: c not in charset, list(text)))</code></pre>
 
-Bir problemi çözerken en iyi yol, her zaman ilk akla gelen en basit yol oluyor. Problemleri karmaşıklaştırmak biraz mühendis kafası hastalığı sanırım.
+Bir problemi çözerken en iyi yol, her zaman ilk akla gelen en basit yol oluyor.
+Problemleri karmaşıklaştırmak biraz mühendis kafası hastalığı sanırım.
+
 ---
 author: Mirat
 ---

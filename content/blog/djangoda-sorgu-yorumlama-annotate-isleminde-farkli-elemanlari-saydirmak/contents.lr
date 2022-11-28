@@ -1,4 +1,4 @@
-title: Django'da sorgu yorumlama (annotate) işleminde farklı elemanları saydırmak.
+title: Django'da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak.
 ---
 author: Mirat
 ---
@@ -22,10 +22,10 @@ Arkadaşın bir Category, Author ve Post adında üç adet modeli var:
 
 Sorgulamak istenilen şey ise, kategori listesini her bir kategoride yazısı olan yazar sayılarıyla birlikte listelemek. Yani şöyle bir liste:
 
-| category_id | category | name | author_count |   |
-|-------------|----------|------|--------------|---|
-| 2           | Django   | 4    | 1            |   |
-| 1           | Python   | 3    | 3            |   |
+| category_id | category | name | author_count | 
+|--------------|----------|------|--------------|---|
+| 2 | Django | 4 | 1 | 
+| 1 | Python | 3 | 3 |
 
 Burada arkadaş bu sonuçları elde edebilmek için aşağıdaki gibi kümeleme kullanmış ([şurda bahsetmiştim](http://miratcan.tumblr.com/post/18246437693/veritaban-sorgular-nda-yorumlama-ve-kumeleme))
 

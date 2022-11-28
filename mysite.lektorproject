@@ -3,3 +3,7 @@ name = Mirat Can Bayrak
 locale = tr_TR
 [servers.ghpages]
 target = ghpages://miratcan/miratcan.github.io
+
+[packages]
+lektor-disqus-comments = 0.4.1
+lektor-tags = 0.5.1

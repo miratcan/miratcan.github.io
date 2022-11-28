@@ -6,10 +6,18 @@
 {% block extra_head %}
   {% if this.has_code %}
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/atelier-forest-light.min.css">
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
   {% endif %}
 {% endblock %}
 
 {% block body %}
-  {{ render_blog_post(this) }}
+{{ render_blog_post(this) }}
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
 {% endblock %}

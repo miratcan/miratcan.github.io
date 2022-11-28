@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-fonts@1.1.1/fonts/inter.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+  <link rel="stylesheet" href="//writ.cmcenroe.me/1.0.4/writ.min.css">
+<style>
+pre {padding: 20px !important;}
+main {border: 1px solid black; padding: 20px; background: #fff;}
+body {background: #bebebe}
+body>header {max-width:79ch;text-align:right;margin:0 auto;}
+h1{font-size:1.988em; text-align:center;}
+h2{font-size:1.574em;}
+h3{font-size:1.228em;}
+h4{font-size:.940em;}
+</style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>{% block title %}Welcome{% endblock %} — Mirat Can Bayrak</title>
+  <title>{% block title %}Selamlar{% endblock %} — Mirat Can Bayrak</title>
   {% block extra_head %}{% endblock %}
 </head>
 <body>
-<header class="wrap">
-<nav>
-  <a href="{{ '/'|url }}">Anasayfa</a>
-  {% for href, title in [['/blog', 'Blog']] %}
-    <a href="{{ href|url }}">{{ title }}</a>
-  {% endfor %}
-</nav>
-</header>
-<main class="wrap">{% block body %}{% endblock %}</main>
+  <header>
+  <nav>
+    <ul>
+      <li><a href="/">Anasayfa</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/projeler">Projeler</a></li>
+      <li><a href="/cv">CV</a></li>
+    </ul>
+  </nav>
+  </header>
+  <main>{% block body %}{% endblock %}</main>
 </body>
 </html>
 
