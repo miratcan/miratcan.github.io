@@ -2,7 +2,16 @@
 <html>
 <head>
   <link rel="stylesheet" href="//writ.cmcenroe.me/1.0.4/writ.min.css">
-  <style>pre { padding: 20px !important; }</style>
+<style>
+pre {padding: 20px !important;}
+main {border: 1px solid black; padding: 20px; background: #fff;}
+body {background: #bebebe}
+body>header {max-width:79ch;text-align:right;margin:0 auto;}
+h1{font-size:1.988em; text-align:center;}
+h2{font-size:1.574em;}
+h3{font-size:1.228em;}
+h4{font-size:.940em;}
+</style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Javascript ve Nesnel Programlama — Mirat Can Bayrak</title>
@@ -15,21 +24,26 @@
 </head>
 <body>
   <header>
-    <h1>Mirat Can Bayrak</h1>
   <nav>
     <ul>
-      <li><a href="../../">Anasayfa</a></li>
-    
-      <li><a href="../">Blog</a></li>
-    
+      <li><a href="/">Anasayfa</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/projeler">Projeler</a></li>
+      <li><a href="/cv">CV</a></li>
+    </ul>
   </nav>
   </header>
   <main>
 
-<h2>
+<h1>
   Javascript ve Nesnel Programlama
-</h2>
-  <blockquote><p>Bu yazıyı bitmiş bir makale değil de benim tuttuğum notlardan oluşan bir yazı olarak düşünmek daha doğru. O yüzden bölük bölçük ve bitmemiş durumda zamanla düzelte düzelte adam edeceğim.</p>
+</h1>
+
+<center>
+    06/2012
+</center>
+
+<blockquote><p>Bu yazıyı bitmiş bir makale değil de benim tuttuğum notlardan oluşan bir yazı olarak düşünmek daha doğru. O yüzden bölük bölçük ve bitmemiş durumda zamanla düzelte düzelte adam edeceğim.</p>
 </blockquote>
 <p>Baya bir süredir Javascript kullanırım ancak bu kullanım var olan <a href="http://jquery.com/">JQuery</a> pluginlerini doğru dürüst entegre etmek, gerekirse bir iki fonksiyon yazmaktan öteye geçmez. Son bir iş var yapmam gereken ve pek öyle basit bir iş değil adam akıllı bir <a href="http://tr.wikipedia.org/wiki/Model-view-controller">MVC</a> yapısı kurmam, gerekli. Önce Backbone.js kullanmayı denesem de, Backbone'un view katmanının <a href="http://tr.wikipedia.org/wiki/Document_Object_Model">DOM</a> elemanlarını manuple edecek şekilde hazırlanmış olması işi bozdu. Zira benim yapacağım iş kullanıcıya <a href="http://www.w3schools.com/html5/html5_canvas.asp">canvas</a> üzerinde bir takım resimler çizdirmek.</p>
 <p>Javascript ile Nesne Yönelimli Programlamaya dair tuttuğum notlar şu şekilde</p>
@@ -120,12 +134,6 @@ b.__proto__ = a
 b.hello()
 > hello!</code></pre><p>Bu arada yeri gelmişken hemen belirtmek gerekir ki <em>new</em> ifadesi ise aslında yeni bir obje oluştururken, ona verdiğiniz inşa edici fonksiyonun prototipine bakıyor.</p>
 
-  <span style="float:right; font-size: 16px;font-weight: normal;">
-    
-      06/2012
-    
-  </span>
-  <hr />
 
 <script src="https://utteranc.es/client.js"
         repo="miratcan/miratcan.github.io"
