@@ -1,0 +1,58 @@
+title: Yazılımcı Girişimciler Nereye Gitti?
+---
+body:
+
+Geçen gün bir Tweet gördüm, tam olarak şu soruyu soruyordu:
+
+<blockquote class="twitter-tweet"><p lang="tr" dir="ltr">Ekonomik durum kaynaklı mı yoksa yazılımcı maaşlarının artması nedeniyle mi bilemiyorum, çevremdeki girişimci yazılımcıların sayısı hayli azaldı. Benzer gözlemleri olan var mı?</p>&mdash; Ahmet Oğuz Koca (@aokocax) <a href="https://twitter.com/aokocax/status/1587863007471681537?ref_src=twsrc%5Etfw">November 2, 2022</a></blockquote> 
+
+Benim de aklımdan zaman zaman geçen bir  soru bu. Şu anda
+[Onur](https://twitter.com/aslanon)'un [Zetup.me](https://zetup.me)'si ve
+[Bahadır](https://twitter.com/kandemir)'ın geliştirme aşamasındaki
+[NMORPG](https://t.co/cU29zMzsrq) oyunu haricinde bildiğim girişim
+sayılabilecek bir şey bilmiyorum. Peki bu azalmanın sebebi ne? Kendimce
+edindiğim fikirleri listelemek istedim:
+
+###1. Yazılımcıların Profili Değişti
+
+Ben bu işe başladığımda yazılımcılık maaşı sebebiyle tercih edilen bir iş
+değildi. Lisede orta okulda bilgisayar başından kalkmayan, bir yazılımın,
+bilgisayarın ya da donanımın nasıl çalıştığı ile hobi heyecanı ile ilgilenen
+insanlar çoğunluktaydı. Bu kişiler büyüyüp çoluğa çocuğa karıştıkça, artık
+zaman bulamaz ya da para getirmesi garanti olmayan işlere giremez oldular.
+
+Bundan bir sonra gelen nesil ise daha çok lisede iken sayısal derslerde iyi
+olan, üniversiteye hazırlık aşamasında öğretmenlerinin yazılımda iyi para var
+mühendislik yaz dediği kişilerden oluşuyordu. Bunu çeşitli şirkletlere işe alım
+yaparken yaptığım mülakatlarda aldığım cevaplarda da bizzat gözlemledim. Bu
+kötü bir şey diyemem tabi ancak bir önceki nesil ile aynı hislerde kişiler
+olmadıklarını düşünüyorum.
+
+###2. Bir Yazılım Geliştirmenin Zaman ve Bilgi Maliyeti Çok Arttı
+
+Ekşisözlüğün, itiraf.com'un ortaya çıkıp palazlandığı dönemi hayal ettiğinizde
+ya da bir tık ileri gideyim [ekşi sözlüğün kaynak
+kodu](https://github.com/ssg/sozluk-cgi)nu incelediğinizde basitçe çalışan bir
+programın çeşitli girdileri alarak HTML kodu ürettiğini görüyoruz. Şu an ise
+durum hiç öyle değil. Sanallaştırma, frontend geliştirme, css derleyicileri,
+prototipleme, tasarım derken bir ürünü ortaya çıkarmak için atlatılması
+gereken aşamalar, bilmeniz gereken şeylerin çokluğu inanılmaz arttı. Daha
+pazarlama, metin yazımı gibi konulara girmiyorum bile.
+
+Verilmesi gereken emek bu kadar fazla olunca, haklı olarak bir çok kişi maddi
+olarak geri dönüşü olmasını bekliyor ve bu da çok küçük bir ihtimal.
+
+###3. Artık Kullanıcıları Tatmin Etmek Çok Zor
+
+Uygulama kullanıcıları harika uygulamaları bedava olarak kullanmaya çok
+alıştı. Hem bedava kullanmak istiyorlar, hem kişisel verilerim işlenmesin
+istiyorlar hem de hemen herkes reklam engelleyicileri kullanıyor.
+Kullanıcıların uygulama geliştiricilerin taş ya da evlerinin duvarını yemesini
+istediği bir dönemde yaşıyoruz.
+
+Bu sebeplerle artık bence yazılımcı girişimci kavramı yavaş yavaş ortadan
+kalkmaya başladı diye düşünüyorum. Eklemek ya da itiraz etmek istediğiniz bir 
+şey varsa yorum yazarsanız sevinirim.
+
+---
+pub_date: 2022-11-05
