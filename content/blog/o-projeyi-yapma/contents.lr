@@ -4,27 +4,27 @@ body:
 
 Ben program yazmaya orta okulda merak salmış olsam da ilk Django çalışmaya, büyük bir şey inşa etmeye karar vermem Eskişehir için ilan sitesi yapmak istemem ile başlamıştı. Her zaman hayalini kurduğum şeyleri inşa etmeye çalıştım. Bir internet marangozu olarak bir sürü oyuncak yaptım. Ben oyuncak diyorum yabancılar side-project diyor, garaj projesi diyen de var bunlara. Hala da yenilerini yapma isteği ile doluyum. Ancak artık yeni bir oyuncağın inşasına başlamak oldukça zor oluyor. Baya çok filtreden geçiriyorum artık aklıma gelen fikirleri. Bunları not almak istedim:
 
-###Gerçek Bir Sorunu Çözmüyorsa Yapma
+##Gerçek Bir Sorunu Çözmüyorsa Yapma
 
 "*Şöyle bir şey olsa güzel olurdu*" kalıbında bir cümleyle başladıysa at gitsin. İnsanlar güzel şeylere "*hmm güzelmiş*" der geçer, gerçekten önemseyecekleri şeyler sorunlarını çözüyordur. "*İnsanların şöyle bir sorunu var ben de bunu ..... şeklinde çözeceğim*" kalıbı ile kurmamış isen ilk cümleni o projeyi yapma.
 
-###Kendin Kullanmayacaksan Yapma
+##Kendin Kullanmayacaksan Yapma
 
 En iyi okuyucun sen olduğun gibi, en iyi müşterin de sensin. Öyle bir şey bul ki kimse kullanmasa bile sen kullan. Hem tutmazsa üzülmezsin.
 
-###Reklam Geliri Hedefliyorsan Yapma
+##Reklam Geliri Hedefliyorsan Yapma
 
 Reklam geliri demek binlerce kişiye ulaşmak, o binlerce kişiyi tekrar tekrar defalarca yaptığın siteye/uygulamaya girmeye ikna etmek demek. Her ne kadar entegrasyonu bir "adsense çakmak" kadar kolay gözükse de gözüktüğü kadar kolay değil. 
 
-###Sonucu Çabuk Görmeyeceksen Yapma
+##Sonucu Çabuk Görmeyeceksen Yapma
 
 Benim 1.5 yıl uğraştığım proje de var, 3 yıl uğraştığım da. Malesef en çok tutanı bir haftada yaptığım oldu: [ffanony](http://ffanony.appspot.com/). Yaptıktan 2 sene sonra bile bir yere iş görüşmesine gittiğimde tanınıyordum. Deneyim olarak görsem de uzun süre harcadığım projeleri harcanmış zaman olarak görüyorum. Eğer elindeki projeyi inşa etmen çalışma saati olarak 1 haftalık mesaiden fazla sürecekse (8x7=54 saat), 3'den fazla sayfadan oluşacak ise yapma.
 
-###Ne İşe Yaradığını Tek Cümlede Anlatamıyorsan Yapma
+##Ne İşe Yaradığını Tek Cümlede Anlatamıyorsan Yapma
 
 "*Sorulara fotoğraf çekerek cevap verilen soru-cevap platformu.*" cümlesi ile resm.in projesini tanımlayabiliyorum. Ama daha önce yaptığım bir cubb.in projesi vardı ki onun ne olduğunu baya paragraf paragraf yazmam lazım. Projenize isim bulduktan sonra ilk iş onu başkasına anlatırken kullanacağınız cümleyi düşünün, eğer cümle üç satırlık bir cümle oluyorsa büyük ihtimalle yanlış yoldasınız demektir. Ben cubb.in projesinde baya "*insanlar beni anlamıyo yeaa*" diye tribe girmiştim ki salak olan bendim aslında.
 
-###3 Gün Sonra Hala Heyecanlandırmıyorsa Yapma
+##3 Gün Sonra Hala Heyecanlandırmıyorsa Yapma
 
 Bu benim için kişisel bir ölçüt ama heyecanlanıyorsanız kolayca. Aklınıza gelen fikirin üzerine 1 hafta geçsin, bakın bakalım hala heyecanlanıyor musunuz. Eğer heyecan geçiyor ise yapmayın.
 
