@@ -1,0 +1,65 @@
+title: Tornado ve Node.js Arasında Seçim Yapmak
+---
+teaser: Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu sebepten yapıyorum.
+---
+pub_date: 2016-07-02
+---
+author: Mirat Bayrak
+---
+body:
+
+Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim için. Hem bir sosyal medya aracının oluşturulurken ne gibi badireler atlattığını görmüş oldum. Hem de bir yazılım geliştirici olarak daha önce hiç el atmadığım meselelere el atmak durumunda kaldım. Benim için oldukça çetrefilli ama bir yandan da oldukça zevkli bir iş oldu. Keşke daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarımız tekrar kesişir.
+
+Şu anda ise ilk göz ağrım bilsin'i tekrar ayağa kaldırmak için elime bir fırsat geçti. Geçerli sosyal medya araçlarının zayıflığı ve bilsin'in neden güçlü bir araç olacağı konusunda okuldaki jüriye yaptığım sunum oldukça ikna edici oldu ve şu bilsin resmi olarak bitirme projem haline dönüştü. Ancak çok çalışmam gerek çünkü şu anda her ne kadar kırık dökük de olsa çalışan bir alet (tool) görünümü verse de aslında kafamdaki ideolojiden ve sağlamlıktan uzak durumda.
+
+Projeye daha önce başlarken yaptığım yanlış teknoloji seçimlerini ve kervan yolda düzülür diyip yolda yol değiştirmeleri (gerçekten çok fazla enerji ve kaybı oluyor) tekrar yaşamamak için mümkün olduğunca belgeli, planlı davranmaya çalışıyor. Çıkacak sorunları mümkün olduğunca ön görmeye çalışıyorum. Blog üzerinden çok fazla ayrıntı vermeyi uygun görmüyorum ama projenin %90'ının sağlam restFul api oluşturmaktan geçtiğini ve mümkün olduğunca akışkan bir yapıda olacağını söyleyebilirim. Tabi bu noktada Django kullanmak bir az saçma oluyor zira api yazmak için context processorlere ya da template sistemine ihtiyaç duymuyorum. Bunun yanında Django ile long pooling yapmak ya da websockets kullanmak deveyi at yarışına sokmak gibi bir şey olurdu.
+
+Bu noktada Node.js gel beni kullan diye göz kırpıyor, diğer kolumda da Tornado var. Bunları kendimce karşılaştırmaya çalıştım ancak eğer yanlış bilgi verdiğimi, yanıldığımı düşünüyorsanız lütfen yorum bırakın.
+
+## Performans
+
+Node.js Google beyin V8 adlı javascript motorunu kullanıyor. Javascript kodları derlenip makina diline çevriliyor. Bu da kallavi bir hız demek. Tornado ise bunu ta ki Python 3.3 çıkana kadar yapamayacak(mış). İzlediğim node.js sunumunda yapılan testte ki bu test sadece bir "hello world" testi. Node.js saniyede 4340 cevap verebilirken tornado ise sadece 2344 cevap verebilmiş. Sözün özü Node.js performans konusunda Tornado'yu ikiye katlıyor.
+
+## Dil Yapısı
+
+Bu noktada Tornado golünü atıyor zira hiç bir programcının Python varken Javascript kullanmak isteyeceğini sanmıyorum. Javascript'in iğrenç bir syntax yapısı var. Bu Python sever birinin şahsi fikri olmakla beraber, pek çok kişinin de noktalı virgül ya da memeli parantezler ile boğuşmak isteyeceğini sanmıyorum. Hoş, syntax olayı CofeeScript sayesinde çözülebiliyor ancak yine de dahili standartlaşmış kütüphanelerin eksikliği hissediliyor. Bir each döngüsü yaratmak için bile harici bir kütüphaneye ihtiyaç duymak, bende huzursuzluğa yol açıyor. Yengeç burcu programcılar için önermiyorum. :)
+
+İkinci olarak javascript ilk defa browser dışında bir mecrada iş görmeye başladığı için bir çok kütüphane olgunlaşmamış durumda. Halbu ki Python 1994 de 1.0 versiyonuna ulaştı yıllardır her konuda kütüphane geliştirilmekte kendisi için. Node.js nin şu anki versiyonu 0.4.1 Tornado'nun ise 2.1.1.
+
+Üçüncü olarak, Javascript in doğal halinin etkinlik tabanlı (event-driven) bir dil olduğunu bu yüzden geliştirilen kütüphanelerin haliyle asenkron kütüphaneler olduğunu. Python ise aslında sıralı (satır satır) işlenen bir dil olması itibari ile Tornado ile kullanacağınız kütüphanelerin özel olarak asenkron olarak yazılmış kütüphaneler olması gerektiğini eklemem gerekiyor. Anlayacağınız Tornado içinde mysqllib'i direkt olarak import edip kullanamıyorsunuz. Bunun yerine asenkron çalışacak şekilde tasarlanmış mysql kütüphanesi ne ise onu bulup kullanmanız gerekiyor.
+
+Ancak ilginçtir ki her ne kadar Tornado daha olgun olsa da içerisinde bir session management olayı bulundurmuyor. Bu bana çok garip geldi. Sanırım Django'da ki:
+
+    if user.is_authenticated():
+        ...
+        ...
+
+Türevi sorular soramayacağımız manasına geliyor Tornado'ya. Belki authentication olayları başka türlü cookie tabanlı atraksiyonlarla (OAuth?) çözülüyordur bilemiyorum.
+
+##Topluluk
+
+Node.js'in çok heyecanlı bir topluluk henüz bir velet olmasına rağmen inanılmaz ilgi görüyor. Aşağıdaki bu rakamlar söylediğimi kanıtlar nitelikte: (Fork, Takipçi ve İlgili Depo sayılarını Github'dan aldım)
+
+|           | Fork         | Takipçi   | İlgili Depo |  Eposta Listesi |
+|-----------|--------------|-----------|-------------|-------------------|
+| Tornado   | 510          | 3,313     | 364         | 1779              |
+| Node.js   | 1,339        | 11,944    | 5842        | 6590              |
+
+##Sonuç
+
+Sonuç olarak Node.js topluluk ve performans olarak Tornado'yu dövüyor gözüküyor. Ancak sanırım geliştiriciler arasında bir garip moda ya da trendin peşinden hızla gitme durumu var. Yeni bir teknoloji afili bir sunumla anlatılıp da bir kaç yerde yazılıp çizildiği zaman hurra herkes o tarafa gidiyor. Sonra herkes sakinleşiyor hangi dili rahat kullanıyorsa onu kullanmaya devam ediyor. Bu yüzden bu 7000 kişilik e-posta listelerini falan biraz şişirilmiş rakamlar olarak görüyorum. Ayrıca bu devasa kitleden kaç tanesi gerçek bir iş görebilmek üzere sizin ofisinize gelip çalışabilecek insanlardır bunu hesap etmek gerek. üç mü beş mi?
+
+Bunun yanında Node.js teoride bu kadar ilgi görmesine rağmen, henüz kendisini savaş arenasında görmüş değiliz. Gerçek - büyük projelerde ne gibi problemler çıkaracağı konusunda pek fikrimiz yok. Tornado ise halihazırda Facebook'un ve FriendFeed'in ağır işlerini gören bir sistem.
+
+Bütün bunlara dayanarak, üzülerek Node.js ye bizimle değilsin diyorum. Zira saniyede 4bin request karşılayabiliyor olması bende yarattığı rahatsızlık hissini gidermeye yetmiyor. Zaten bir gün sunucularım altından kalkamayacağım bir yükle karşılaşırsa zaten para kazanıyorum demektir bir sunucu daha koyarım.
+
+Kaynaklar:
+
+ * http://nodejs.org/
+ * http://www.tornadoweb.org/
+ * Node.js mailing list
+ * Tornado mailing list
+ * The History of Python
+ * What are the disadvantages of using Node.js?
+ * What are the disadvantages/drawbacks of using Tornado as a primary web server, not just for real time activity?
+ * Node.js is Cancer

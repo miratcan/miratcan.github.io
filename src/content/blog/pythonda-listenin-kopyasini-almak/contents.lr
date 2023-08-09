@@ -1,0 +1,65 @@
+title: Python'da Listenin Kopyasını Almak
+---
+body:
+
+Python'da listenin kopyasını almak
+Python da her eşitlik referans gösterir. Bu iddalı lafın anlamını şöyle ifade edeyim.
+Örneğin şekildeki gibi bir liste = başka bir liste şeklinde kopya almaya çalıştığınızda şöyle bir gariplik (aslında güzellik) ile karşılaşırsınız.
+
+    a = ["a","b","c"]
+    >>> b = a
+    >>> b.append("d")
+    >>> print a, b
+    ['a', 'b', 'c', 'd'] ['a', 'b', 'c', 'd']
+
+Nesnelere gelince yine aynı mantık, nesne = başkabirnesne dediğinizde referans göstermiş oluyorsrunuz :
+
+    >> class obj:
+    ...     def __init__(self):
+    ...         self.counter = 0
+    ...     def inc(self):
+    ...         self.counter += 1
+    ... 
+    >>> a = obj()
+    >>> b = a
+    >>> a.inc()
+    >>> print a.counter
+    1
+    >>> print b.counter
+    1
+
+Bir nesnenin ya da değişkenin kopyasını almak istediğinizde çeşitli yöntemler var, sanırım verilerin (list, tuple, dict vs) kopyasını alırken karşılaştığım en yakışıklı yöntem şu :
+
+    >>> a = ["a","b","c"]
+    >>> b = list(a)
+    >>> print a , b
+    ['a', 'b', 'c'] ['a', 'b', 'c']
+    >>> a.append("d")
+    >>> print a, b
+    ['a', 'b', 'c', 'd'] ['a', 'b', 'c']
+
+Peki bir nesnenin kopyasını almak istiyorsak? bunun için copy adında bir modül var:
+
+    >>> class obj:
+    ...     def __init__(self):
+    ...         self.counter = 0
+    ...     def inc(self):
+    ...         self.counter += 1
+    ... 
+    >>> a = obj()
+    >>> from copy import copy
+    >>> b = copy(a)
+    >>> a.inc()
+    >>> b.inc()
+    >>> b.inc()
+    >>> b.inc()
+    >>> print a.counter, b.counter
+    1 3
+
+Eğer copy modülünden deepcopy fonksionunu import eder kullanırsak, nesneyi özyinelemeli olarak kopyalıyormuş. Herkese iyi hafta sonları :)
+
+
+---
+author: Mirat
+---
+pub_date: 2011-07-14
