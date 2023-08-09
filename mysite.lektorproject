@@ -6,3 +6,4 @@ target = ghpages://miratcan/miratcan.github.io
 
 [packages]
 lektor-tags = 0.5.1
+lektor-minify = 1.2
