@@ -1,63 +1,14 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <link rel="stylesheet" href="//writ.cmcenroe.me/1.0.4/writ.min.css">
-  <style>
-    pre {padding: 20px !important;}
-    body>header {max-width:79ch;text-align:center;margin:0 auto;}
-    img { width: 100%; }
-    h1{font-size:1.988em; text-align:center;}
-    h2{font-size:1.574em;}
-    h3{font-size:1.228em;}
-    h4{font-size:.940em;}
-  </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
-  <script>
+<!DOCTYPE html><html><head><link href="//writ.cmcenroe.me/1.0.4/writ.min.css" rel="stylesheet"/><style>pre {padding: 20px !important;} main {border: 1px solid black; padding: 20px; background: #fff;} body {background: #bebebe} body>header {max-width:79ch;text-align:right;margin:0 auto;} h1{font-size:1.988em; text-align:center;} h2{font-size:1.574em;} h3{font-size:1.228em;} h4{font-size:.940em;}</style><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script><script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-JB4V7FTEJQ');
-  </script>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Python&#39;da Listenin Kopyasını Almak — Mirat Can Bayrak</title>
-  
-  
-
-</head>
-<body>
-  <header>
-  <nav>
-    <ul>
-      <li><a href="/">Anasayfa</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/yamp">YAMP</a></li>
-      <li><a href="/resume">Özgeçmiş</a></li>
-    </ul>
-  </nav>
-  </header>
-  <main>
-
-<h1>
-  Python&#39;da Listenin Kopyasını Almak
-</h1>
-
-<center>
-    07/2011
-</center>
-
-<p>Python'da listenin kopyasını almak
-Python da her eşitlik referans gösterir. Bu iddalı lafın anlamını şöyle ifade edeyim.
-Örneğin şekildeki gibi bir liste = başka bir liste şeklinde kopya almaya çalıştığınızda şöyle bir gariplik (aslında güzellik) ile karşılaşırsınız.</p>
-<pre><code>a = ["a","b","c"]
+  </script><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Python'da Listenin Kopyasını Almak — Mirat Can Bayrak</title></head><body><header><nav><ul><li><a href="/">Anasayfa</a></li><li><a href="/blog">Blog</a></li><li><a href="/yamp">YAMP</a></li><li><a href="/resume">Özgeçmiş</a></li></ul></nav></header><main><h1>Python'da Listenin Kopyasını Almak</h1><center>07/2011</center><p>Python'da listenin kopyasını almak Python da her eşitlik referans gösterir. Bu iddalı lafın anlamını şöyle ifade edeyim. Örneğin şekildeki gibi bir liste = başka bir liste şeklinde kopya almaya çalıştığınızda şöyle bir gariplik (aslında güzellik) ile karşılaşırsınız.</p><pre><code>a = ["a","b","c"]
 &gt;&gt;&gt; b = a
 &gt;&gt;&gt; b.append("d")
 &gt;&gt;&gt; print a, b
 ['a', 'b', 'c', 'd'] ['a', 'b', 'c', 'd']
-</code></pre>
-<p>Nesnelere gelince yine aynı mantık, nesne = başkabirnesne dediğinizde referans göstermiş oluyorsrunuz :</p>
-<pre><code>&gt;&gt; class obj:
+</code></pre><p>Nesnelere gelince yine aynı mantık, nesne = başkabirnesne dediğinizde referans göstermiş oluyorsrunuz :</p><pre><code>&gt;&gt; class obj:
 ...     def __init__(self):
 ...         self.counter = 0
 ...     def inc(self):
@@ -70,18 +21,14 @@ Python da her eşitlik referans gösterir. Bu iddalı lafın anlamını şöyle 
 1
 &gt;&gt;&gt; print b.counter
 1
-</code></pre>
-<p>Bir nesnenin ya da değişkenin kopyasını almak istediğinizde çeşitli yöntemler var, sanırım verilerin (list, tuple, dict vs) kopyasını alırken karşılaştığım en yakışıklı yöntem şu :</p>
-<pre><code>&gt;&gt;&gt; a = ["a","b","c"]
+</code></pre><p>Bir nesnenin ya da değişkenin kopyasını almak istediğinizde çeşitli yöntemler var, sanırım verilerin (list, tuple, dict vs) kopyasını alırken karşılaştığım en yakışıklı yöntem şu :</p><pre><code>&gt;&gt;&gt; a = ["a","b","c"]
 &gt;&gt;&gt; b = list(a)
 &gt;&gt;&gt; print a , b
 ['a', 'b', 'c'] ['a', 'b', 'c']
 &gt;&gt;&gt; a.append("d")
 &gt;&gt;&gt; print a, b
 ['a', 'b', 'c', 'd'] ['a', 'b', 'c']
-</code></pre>
-<p>Peki bir nesnenin kopyasını almak istiyorsak? bunun için copy adında bir modül var:</p>
-<pre><code>&gt;&gt;&gt; class obj:
+</code></pre><p>Peki bir nesnenin kopyasını almak istiyorsak? bunun için copy adında bir modül var:</p><pre><code>&gt;&gt;&gt; class obj:
 ...     def __init__(self):
 ...         self.counter = 0
 ...     def inc(self):
@@ -96,20 +43,5 @@ Python da her eşitlik referans gösterir. Bu iddalı lafın anlamını şöyle 
 &gt;&gt;&gt; b.inc()
 &gt;&gt;&gt; print a.counter, b.counter
 1 3
-</code></pre>
-<p>Eğer copy modülünden deepcopy fonksionunu import eder kullanırsak, nesneyi özyinelemeli olarak kopyalıyormuş. Herkese iyi hafta sonları :)</p>
-
-
-<script src="https://utteranc.es/client.js"
-        repo="miratcan/miratcan.github.io"
-        issue-term="title"
-        label="Comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-</main>
-</body>
-</html>
-
-
+</code></pre><p>Eğer copy modülünden deepcopy fonksionunu import eder kullanırsak, nesneyi özyinelemeli olarak kopyalıyormuş. Herkese iyi hafta sonları :)</p><script async="" crossorigin="anonymous" issue-term="title" label="Comment" repo="miratcan/miratcan.github.io" src="https://utteranc.es/client.js" theme="github-light">
+</script></main></body></html>
