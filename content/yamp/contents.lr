@@ -1,24 +1,26 @@
 _model: page
 ---
-title: YAMP 
+title:
+
+YAMP 
 ---
 body:
 
+<img src="ss1.png" alt="YAMP Logo" style="width: 100px; float:right; margin-left:10px;" />
 Bu liste biraz kalabalık. Hem 10'u aşkın yılkdır kod yazıyorum hem de
 çocukluğumdan beri bir şeyler inşa etmekten yaratıcılığını kullanmaktan çok
 keyif alan biriyim. Arkadaşlar artık *YAMP* (Yet Another Mirat Project) diyorlar
 yaptığım işlere. Ben de baya seviyorum bu ismi :)
 
-##Logme
+##Kaydet
 
-Kendi ihtiyaçlarım için yazdığım basit bir günlük tutma betiği. Hala her gün
-kullanıyorum. Çalıştırılabilir hale getirdikten sonra terminalde logme
-yazdıktan sonra o anlık notunuzuy yazdığnızda yazdığınız not ~/.logme klasörü
-altında bugünün tarihi ile isimlendirilmiş bir dosyaya metin olarak
-kaydediliyor. Oldukça basit ve tam olarak benim günlük tutma ihtiyacımı
-karşılıyor. 
+Kendi ihtiyaçlarım için yazdığım basit bir günlük tutma betiği. İlk olarak kendi
+ihtiyacımı görsün diye 2016 yılında yazdım, 2023 yılında Python pakedi haline
+getirdim:
 
- * [Github](https://gist.github.com/miratcan/fc3badeb3a7c121f6256739a0ad5c2e3)
+ * [İlgili blog yazısı](/blog/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/)
+ * [Github](https://github.com/miratcan/kaydet)
+ * [PyPI](https://pypi.org/project/kaydet/)
 
 ##İnternet Güzeldir
 

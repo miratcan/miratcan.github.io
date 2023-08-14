@@ -4,7 +4,7 @@ pub_date: 2023-08-12
 ---
 has_code: no
 ---
-body: 
+body:
 
 Günlük tutmak çeşitli duygu ve düşüncelerimi kolayca kaydetmek sonra da
 okumak istiyordum. Bunu da en kısa yoldan nasıl yaparım diye düşünüyor iken
@@ -30,7 +30,7 @@ ayarladığınız klasöre bir dosya açıyor örneğin: 2023-07-30.txt sonra da
 saatini yazdığınız metne ekleyip bir satır ekliyor.
 
 	2023-07-30.txt
-        09:01:00 Günaydın canım kendim.
+	09:01:00 Günaydın canım kendim.
 	09:03:00 Bugün işteki ilk günüm.
 
 Evet farkındayım çok ahım şahım bir şey değil oldukça severek kullanıyorum.
