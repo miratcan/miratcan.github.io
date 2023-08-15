@@ -34,13 +34,22 @@ Excel veritabanı olarak işimi görüyor olsa da uzun bir metin yazmak istediğ
 
 ### Çözüm
 
-Lektor, ya da 
+Lektor, Hugo ya da Wordpress gibi metin yazımına daha yatkın bir şeyler kullanmak. Bu blogun altyapısı olarak kullandığım ve Python ile ilgili bir sorun çıktığında daha kolay halledebildiğim için Lektor göz kırpıyor. Hala statik site üretme ve kolayca host etme derdindeyim anlayacağınız.
 
 ## 3. Kategori Ağacı İşe Yaramıyor
 
-Kategori ağaçları bir şey tek bir tür ile ifade edilebiliyor ise işe yarıyor. Bunu uzun yoldan öğrendim diyebiliriz :) Örneğin [OpenRA](https://internetguzeldir.com/bilgisayarlar/oyunlar/masaustu-oyunlari/https-www-openra-net.html) linkini ele alalım. Oyun o kadar çok farklı gruba dahil ki bir kategori altında listelenmesi oldukça saçma oluyor. Hem MacOS oyunu, hem Windows Oyunu, hem masaüstü oyunu diye gidiyor liste. O yüzden kategori yerine etiket kullanmalıydım.
+Kategori ağaçları bir şey tek bir tür ile ifade edilebiliyor ise işe yarıyor. Bunu uzun yoldan öğrendim diyebiliriz :) Örneğin [OpenRA](https://internetguzeldir.com/bilgisayarlar/oyunlar/masaustu-oyunlari/https-www-openra-net.html) linkini ele alalım. Oyun o kadar çok farklı gruba dahil ki bir kategori altında listelenmesi oldukça saçma oluyor. Hem MacOS oyunu, hem Windows Oyunu, hem masaüstü oyunu diye gidiyor liste. O yüzden kategori yerine etiket kullanmalıydım. Stackexchange'de gördüğüm bir [cevap](https://ux.stackexchange.com/questions/40334/why-is-tree-representation-of-data-becoming-unpopular) da bu konuda iyice ikna olmamı sağladı.
 
-# Peki Ne Yapacağım?
+### Çözüm
 
+Kategoriler yerine etiketler kullanmak. Örneğin gelen biri hem türkçe, hem windowsta çalışan hem strateji oyunu arıyor ise bu üç etiketi de seçerek hoşuna giden şeyleri bulabilecek. Bu işi [itch.io'nun browse sayfası](https://itch.io/games/tag-short) oldukça iyi halletmiş gözüküyor.
 
+Tabi bu durumda statik sayfa çıktısı almak imkansız hale geliyor, sayfaları dinamik olarak üretmek gerekiyor. Bu durumda da sanıyorum eski dost Django yardıma koşacak.
 
+## Sonuç
+
+ * Kategoriler kalkıyor, etiketler geliyor.
+ * Site Django ile baştan yazılıyor, makaleler, linkler, etiketler geliyor.
+ * SEO uyumlu makaleler yazılıyor, makaleler link arşivindeki detay sayfalarına referanslar içeriyor.
+---
+description: 

@@ -1,5 +1,7 @@
 [project]
 name = Mirat Can Bayrak
+url = https://miratcan.github.io
+
 locale = tr_TR
 [servers.ghpages]
 target = ghpages://miratcan/miratcan.github.io
@@ -7,3 +9,6 @@ target = ghpages://miratcan/miratcan.github.io
 [packages]
 lektor-tags = 0.5.1
 lektor-minify = 1.2
+lektor-atom = 0.4.0
+
+
