@@ -4,23 +4,43 @@ pub_date: 2023-08-14
 ---
 has_code: no
 ---
-body: 
+body:
 
-InternetGuzeldir, çok büyük hevesle başladığım ve hayalimdeki şekli alması için baya uğraştığım bir proje oldu. Site, [900](https://github.com/miratcan/InternetGuzeldir/blob/master/rebuild.py) satırlık bir Python betiğinin bir excell dosyasını okumasıyla ortaya çıkıyor. Benim için hem geliştirmesi hem de içerikle dodurması oldukça eğlenceliyken son bir kaç aydır soğuma yaşıyorum. Bunun bir iki sebebi var.
+[InternetGuzeldir](https://internetguzeldir.com), çok büyük hevesle başladığım ve hayalimdeki şekli alması için baya uğraştığım bir proje oldu. Site, [900](https://github.com/miratcan/InternetGuzeldir/blob/master/rebuild.py) satırlık bir Python betiğinin bir [excel dosyası](https://docs.google.com/spreadsheets/d/1mK5BycfvwvuPcekTKIMhPKtsRa0EXe-dGeQsvok5wz4/edit?usp=sharing)nı okumasıyla ortaya çıkıyor. Benim için hem geliştirmesi hem de içerikle doldurması oldukça eğlenceliyken son bir kaç aydır soğuma yaşıyorum. Bunun üç sebebi var:
 
 ## 1. Google Beni Sevmiyor :)
 
-Bir web sitesini anlamlı kılan şey ziyaretçileri, ve de onun yan etkisi olarak geliridir. Gelir olarak zaten Türkçe bir site işletiyor olmaktan mütevellit bir şey beklemenin anlamı yok ama üstüne üstlük hiç bir trafik de alamıyorum. Bunu bir kaç SEO forumunda falan araştırdım sordum. Sebebi olarak Google'ın bu tip listeleme sitelerinden hiç hoşlanmadığı, direkt olarak da kalitesiz içerik olarak işaretlediği cevabını aldım.
+Bir web sitesini anlamlı kılan şey ziyaretçileri, ve de onun yan etkisi olarak geliridir. Gelir olarak zaten Türkçe bir site işletiyor olmaktan mütevellit bir şey beklemenin anlamı yok ama üstüne üstlük hiç bir trafik de alamıyorum. Bunu bir kaç SEO forumunda falan araştırdım sordum. Sebebi olarak Google'ın bu tip listeleme sitelerinden hiç hoşlanmadığı, direkt olarak da kalitesiz içerik olarak işaretlediği cevabını aldım. Hatta direkt Google Adsense başvurusundan red aldım.
 
-Bir yandan bu duruma gıcık oluyor olsam da bir kod parçasının bir web sitesinin içeriğini konumlandırmak için bolca metne ihtiyaç duymasını anlıyorum gibi da bir yandan.
+Bu duruma gıcık olmuş olsam da bir kod parçasının bir web sitesinin içeriğini konumlandırmak için bolca metne ihtiyaç duymasını anlıyorum gibi. 
 
-## 2. Excell Kötü Fikirdi
+### Çözüm
 
-Sanıyorum bu projeye ilk başladığımda şu no-code furyasından gereksiz etkilendim. Her yerde excell tablosundan site yapın, excell tablosundan ilan sitesi yapın gibi ilanlar düşüyordu önüme. Hatta [Eleman](https://github.com/miratcan/Eleman) projesini de de aynı rüzgarın etkisiyle yapmış olabilirim.
+Site içerisinde makaleler adında bir bölüm olması ve bu bölümde dizin kısmındaki link detay sayfasına link verilmesi.
 
-Excell veritabanı olarak işimi görüyor olsa da uzun bir metin yazmak istediğimde bir hücre içerisine makale sığdırmaya çalışmak işkence oluyor. Haliyle gönderilere daha uzun, daha açıklayıcı metinle giremiyorum. Bunun haricinde veri validasyonu yapmak, kayıtlarda gerekli kolonları mecbur bırakmak gibi şeyler de yapılamıyor. [Şurada](https://zapier.com/blog/database-vs-spreadsheet/) güzel bir yazı var bununla ilgili.
+Örneğin:
 
-## 3. Kategori Ağacı
+  * Gürültülü Yerlerde Çalışırken İşinizi Kolaylaştıracak 5 Uygulama
+    * Makale  İçi Bağlantılar
+      * Noises Online Link Detay Sayfasi
+      * Deftonic Link Detay Sayfasi
+      * Soundscape World Link Detay Sayfasi
 
-... Yazının devamını yazacağım şimdi servise binmem lazım...
+## 2. Excel Kötü Fikirdi
+
+Sanıyorum bu projeye ilk başladığımda şu no-code furyasından gereksiz etkilendim. Her yerde excell tablosundan site yapın, excel tablosundan ilan sitesi yapın gibi ilanlar düşüyordu önüme. Hatta [Eleman](https://github.com/miratcan/Eleman) projesini de de aynı rüzgarın etkisiyle yapmış olabilirim.
+
+Excel veritabanı olarak işimi görüyor olsa da uzun bir metin yazmak istediğimde bir hücre içerisine makale sığdırmaya çalışmak işkence oluyor. Haliyle gönderilere daha uzun, daha açıklayıcı metinle giremiyorum. Bunun haricinde veri geçerliliği kontrolü yapmak, kayıtlarda gerekli kolonları mecbur bırakmak gibi şeyler de yapılamıyor. [Şurada](https://zapier.com/blog/database-vs-spreadsheet/) güzel bir yazı var bununla ilgili.
+
+### Çözüm
+
+Lektor, ya da 
+
+## 3. Kategori Ağacı İşe Yaramıyor
+
+Kategori ağaçları bir şey tek bir tür ile ifade edilebiliyor ise işe yarıyor. Bunu uzun yoldan öğrendim diyebiliriz :) Örneğin [OpenRA](https://internetguzeldir.com/bilgisayarlar/oyunlar/masaustu-oyunlari/https-www-openra-net.html) linkini ele alalım. Oyun o kadar çok farklı gruba dahil ki bir kategori altında listelenmesi oldukça saçma oluyor. Hem MacOS oyunu, hem Windows Oyunu, hem masaüstü oyunu diye gidiyor liste. O yüzden kategori yerine etiket kullanmalıydım.
+
+# Peki Ne Yapacağım?
+
+
 
