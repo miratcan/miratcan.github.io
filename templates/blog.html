@@ -3,7 +3,7 @@
 {% from "macros/pagination.html" import render_pagination %}
 {% block title %}{{ this.title }}{% endblock %}
 {% block body %}
-    <ul>
+    <ul id="articles">
     {% for post in this.pagination.items %}
     <li>{{ post.pub_date }}: <a href="{{ post|url }}">{{ post.title }}</a></li>
     {% endfor %}

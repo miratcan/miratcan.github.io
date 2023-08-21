@@ -12,7 +12,7 @@ body:
 
 Dünyada bizi hatırlayan son kişi öldüğünde hiç yaşamamış gibi olacağız. Bunu depresyonu kaliteli yaşamayı alışkanlık haline getirmiş bir arkaşım şu videoyu attığında fark etmiştim:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CEpFVz5vVVM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe class="youtube-video" src="https://www.youtube.com/embed/CEpFVz5vVVM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Sanırım bu yüzden herkes kendi yöntemiyle bir şekilde dünyada kalıcı olmaya, dünyada var iken de varlığını (kimim, neyim, neredeyim) netleştirmeye çalışıyor. Bizim asıl konumuz olan blog yazmak da bu yöntemlerden biri.
 
@@ -59,7 +59,7 @@ Blog yazmak birincisi düşüncelerini belli bir mimaride tasarlamak zorunda bı
 
 Direkt bir çözümü ise yok, beynimizi de bir kas olarak kabul edip bu konuda geliştirmek için zorlamamız gerekiyor.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-VBzP3S0POk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe class="youtube-video" src="https://www.youtube.com/embed/-VBzP3S0POk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## 6. Yazmak Çok Uzak
 
