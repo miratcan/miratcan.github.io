@@ -36,8 +36,8 @@ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
 Türkçe karakterleri içermeyen bir sonuç verdi tr_TR.utf8 lokali,
 Turkish_Turkey.1254 ile çağırdığımda ise şunu diziyi döndürdü:
 
-<code>abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
-ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS</code>
+<pre><code>abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
+ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS</code></pre>
 
 Görüldüğü üzere bu şekilde yaklaşmak pek umut verici değil. Hem setlocale
 kullanmak Django içerisinde baya sıkıntılı sonuçlar doğuruyor. setlocale
