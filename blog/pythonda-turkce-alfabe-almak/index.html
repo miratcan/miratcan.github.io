@@ -96,9 +96,8 @@ alfabe getiriyormuş:</p>
 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
 </code></pre><p>Türkçe karakterleri içermeyen bir sonuç verdi tr_TR.utf8 lokali,
 Turkish_Turkey.1254 ile çağırdığımda ise şunu diziyi döndürdü:</p>
-<p><code>abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
-ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS</code></p>
-<p>Görüldüğü üzere bu şekilde yaklaşmak pek umut verici değil. Hem setlocale
+<pre><code>abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
+ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS</code></pre><p>Görüldüğü üzere bu şekilde yaklaşmak pek umut verici değil. Hem setlocale
 kullanmak Django içerisinde baya sıkıntılı sonuçlar doğuruyor. setlocale
 hakkında şöyle bir yorum bırakmışlar Python dökümantasyonuna:</p>
 <blockquote><p>It is generally a bad idea to call setlocale() in some library routine, since
