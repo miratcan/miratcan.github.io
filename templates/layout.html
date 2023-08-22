@@ -2,16 +2,40 @@
 <html lang="tr">
 
 <head>
-  <link rel="stylesheet" href="//writ.cmcenroe.me/1.0.4/writ.min.css">
   <style>
-    pre {padding: 20px !important;}
-    h1{font-size:1.988em; text-align:center;}
-    h2{font-size:1.574em;}
-    h3{font-size:1.228em;}
-    h4{font-size:.940em;}
-    .youtube-video {aspect-ratio: 16 / 9; width: 100%;}
-    ul#articles li { list-style-type: none !important; }
-    ul#articles { padding: 0 }
+    pre            { padding: 20px !important; }
+    h1             { font-size:18px; text-align:center; color: white;}
+    h2             { font-size:16px; }
+    h3             { font-size:14px; }
+    h4             { font-size:0.940em; }
+    .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
+    ul             { margin: 16px 0 16px 0 ; }
+    li             { margin-bottom: 8px; }
+    ul#articles li { list-style-type: none !important; color: gray; }
+    ul#articles    { padding: 0 }
+    body           { background: #261917;
+                     color: #B2A497;
+                     font-family: monospace;
+                     font-size: 14px;
+                   }
+    a              { text-decoration: none; color: darkkhaki; }
+    main           { max-width: 600px;
+                     margin: 0 auto;
+                     box-sizing: border-box;
+                     margin-top: 20px;
+                     background: #333;
+                     padding: 24px;
+                     border: 1px dashed darkgray;
+                     overflow: auto; }
+    img            { width: 100% }
+    nav            { background: linear-gradient(359deg,#6e1313,#9B2821);
+                     height: fit-content;
+                     display: flex;
+                     align-items: center;
+                     justify-content: center;
+                     padding: 10px 0;
+                     gap: 40px; }
+    main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
   <script>
@@ -52,12 +76,10 @@
 <body>
   <header>
   <nav>
-    <ul>
-      <li><a href="/">Anasayfa</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/yamp/">YAMP</a></li>
-      <li><a href="/resume/resume.html">Özgeçmiş</a></li>
-    </ul>
+    <a href="/">Anasayfa</a>
+    <a href="/blog/">Blog</a>
+    <a href="/yamp/">YAMP</a>
+    <a href="/resume/resume.html">Özgeçmiş</a>
   </nav>
   </header>
   <main>{% block body %}{% endblock %}</main>
