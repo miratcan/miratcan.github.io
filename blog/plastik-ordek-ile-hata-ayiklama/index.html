@@ -3,25 +3,26 @@
 
 <head>
   <style>
+    html, body     { min-height: 100% }
     pre            { padding: 20px; background: #261917; }
     h1             { font-size:18px; text-align:center; }
     h2             { font-size:16px; }
     h3             { font-size:14px; color: wheat; }
     h1, h2         { background: #9B2821; color: wheat; padding: 5px; }
+    blockquote     { padding: 0 20px; border-left: 5px solid #B2A497 }
     .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
     ul             { margin: 16px 0 16px 0 ; }
     li             { margin-bottom: 8px; }
     ul#articles li { list-style-type: none !important; color: gray; }
     ul#articles    { padding: 0 }
-    body           { background: #261917 url(dithered-image.png) no-repeat bottom right;
+    body           { background: #261917 url(/dithered-image.png) no-repeat bottom right;
                      color: #B2A497;
                      font-family: monospace;
-                     font-size: 14px;
-                     height: 100%; }
+                     font-size: 14px; }
     a              { text-decoration: none; color: darkkhaki; }
     a:hover        { color: wheat; }
     main           { max-width: 600px;
-                     margin: 0 auto;
+                     margin: 40px auto;
                      box-sizing: border-box;
                      margin-top: 20px;
                      background: #333;
@@ -36,6 +37,7 @@
                      justify-content: center;
                      padding: 10px 0;
                      gap: 40px; }
+    .pagination    { text-align: center; }
     main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
@@ -87,15 +89,9 @@
   </header>
   <main>
 
-<h1>
-  Plastik Ördek İle Hata Ayıklama
-</h1>
-
-<center>
-    12/2013
-</center>
-
-<p>Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. <a href="https://twitter.com/gkmngrgn">Gökmen</a>'de aynı şeyi söylüyordu hatta, "<em>birine sorarken problemi çözüyorum</em>" diyordu. Bunun olmasının sebebi sorunu başkasına anlatabilmek için mevzuyu önce zihinde düzenlemek zorunda oluşumuz. İfade edebilmek için bunu yapmak zorunda kalıyor insan, yapabilince de çözümü kendisi buluveriyor.</p>
+  <h1>Plastik Ördek İle Hata Ayıklama</h1>
+  <center>12/2013</center>
+  <p>Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. <a href="https://twitter.com/gkmngrgn">Gökmen</a>'de aynı şeyi söylüyordu hatta, "<em>birine sorarken problemi çözüyorum</em>" diyordu. Bunun olmasının sebebi sorunu başkasına anlatabilmek için mevzuyu önce zihinde düzenlemek zorunda oluşumuz. İfade edebilmek için bunu yapmak zorunda kalıyor insan, yapabilince de çözümü kendisi buluveriyor.</p>
 <p>Neyse bugün <a href="http://reddit.com">reddit</a>'de Rubber Duck Debugging diye bir şey <a href="http://www.reddit.com/r/todayilearned/comments/1tmviq/til_that_rubber_duck_debugging_is_when_a/">gördüm</a>. Tam bu bahsettiğim şeye yarıyor. Bilgisayarın yanına bir tane plastik ördek koyuyorsun. Sorunu, kodunu ona anlatıyorsun. İfade etmeye çalışırken problemi ve karşındaki kodu zihninde düzenlemek zorunda kalıyorsun bu da çözümü bulmanı sağlıyor.</p>
 <p><img src="https://31.media.tumblr.com/6cb3ff8a8faf41c2c3a9fe20daa42fbc/tumblr_inline_mycps0OjJg1qdjsvv.jpg" alt=""></p>
 <p>Bu metod <a href="http://en.wikipedia.org/wiki/The_Pragmatic_Programmer">The Pragmatic Programmer</a> adlı kitapta bir hikayede geçmiş ilk defa. Biraz deli işi ama denenebilir. İşe yarar gibi gözüküyor.</p>
@@ -105,7 +101,7 @@
         repo="miratcan/miratcan.github.io"
         issue-term="title"
         label="Comment"
-        theme="github-light"
+        theme="github-dark"
         crossorigin="anonymous"
         async>
 </script>

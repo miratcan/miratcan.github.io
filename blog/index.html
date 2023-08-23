@@ -3,25 +3,26 @@
 
 <head>
   <style>
+    html, body     { min-height: 100% }
     pre            { padding: 20px; background: #261917; }
     h1             { font-size:18px; text-align:center; }
     h2             { font-size:16px; }
     h3             { font-size:14px; color: wheat; }
     h1, h2         { background: #9B2821; color: wheat; padding: 5px; }
+    blockquote     { padding: 0 20px; border-left: 5px solid #B2A497 }
     .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
     ul             { margin: 16px 0 16px 0 ; }
     li             { margin-bottom: 8px; }
     ul#articles li { list-style-type: none !important; color: gray; }
     ul#articles    { padding: 0 }
-    body           { background: #261917 url(dithered-image.png) no-repeat bottom right;
+    body           { background: #261917 url(/dithered-image.png) no-repeat bottom right;
                      color: #B2A497;
                      font-family: monospace;
-                     font-size: 14px;
-                     height: 100%; }
+                     font-size: 14px; }
     a              { text-decoration: none; color: darkkhaki; }
     a:hover        { color: wheat; }
     main           { max-width: 600px;
-                     margin: 0 auto;
+                     margin: 40px auto;
                      box-sizing: border-box;
                      margin-top: 20px;
                      background: #333;
@@ -36,6 +37,7 @@
                      justify-content: center;
                      padding: 10px 0;
                      gap: 40px; }
+    .pagination    { text-align: center; }
     main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
@@ -86,79 +88,79 @@
   <main>
     <ul id="articles">
     
-    <li>2023-08-22: <a href="yazilimcilar-pzgecmis-hazirlarken-nelere-dikkat-etmeli/">Yazılımcılar Özgeçmiş Yazarken Nelere Dikkat Etmeli?</a></li>
+    <li><a href="yazilimcilar-pzgecmis-hazirlarken-nelere-dikkat-etmeli/">Yazılımcılar Özgeçmiş Yazarken Nelere Dikkat Etmeli?</a> <small>2023-08-22</small></li>
     
-    <li>2023-08-17: <a href="neden-blog-yazamiyorsun/">Neden Blog Yazamıyorsun?</a></li>
+    <li><a href="neden-blog-yazamiyorsun/">Neden Blog Yazamıyorsun?</a> <small>2023-08-17</small></li>
     
-    <li>2023-08-14: <a href="internetguzeldir-in-akibeti/">InternetGuzeldir&#39;in Akibeti</a></li>
+    <li><a href="internetguzeldir-in-akibeti/">InternetGuzeldir&#39;in Akibeti</a> <small>2023-08-14</small></li>
     
-    <li>2023-08-12: <a href="terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/">Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım</a></li>
+    <li><a href="terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/">Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım</a> <small>2023-08-12</small></li>
     
-    <li>2023-08-11: <a href="interneti-paylasarak-para-kazanmak/">İnterneti Paylaşarak Para Kazanmak?</a></li>
+    <li><a href="interneti-paylasarak-para-kazanmak/">İnterneti Paylaşarak Para Kazanmak?</a> <small>2023-08-11</small></li>
     
-    <li>2022-12-04: <a href="bir-evcil-hayvan-olarak-salyangoz/">Bir Evcil Hayvan Olarak Neden Salyangoz Seçtim?</a></li>
+    <li><a href="bir-evcil-hayvan-olarak-salyangoz/">Bir Evcil Hayvan Olarak Neden Salyangoz Seçtim?</a> <small>2022-12-04</small></li>
     
-    <li>2022-11-29: <a href="web3e-asina-olmayan-birine-nftyi-nasil-aciklarsiniz/">Web3&#39;e Aşina Olmayan Birine NFT&#39;yi Nasıl Açıklarsınız?</a></li>
+    <li><a href="web3e-asina-olmayan-birine-nftyi-nasil-aciklarsiniz/">Web3&#39;e Aşina Olmayan Birine NFT&#39;yi Nasıl Açıklarsınız?</a> <small>2022-11-29</small></li>
     
-    <li>2022-11-27: <a href="kod-repolarini-diskimde-nasil-sakliyorum/">Kod Repolarını Diskimde Nasıl Saklıyorum?</a></li>
+    <li><a href="kod-repolarini-diskimde-nasil-sakliyorum/">Kod Repolarını Diskimde Nasıl Saklıyorum?</a> <small>2022-11-27</small></li>
     
-    <li>2022-11-05: <a href="yazilimci-girisimciler-nereye-gitti/">Yazılımcı Girişimciler Nereye Gitti?</a></li>
+    <li><a href="yazilimci-girisimciler-nereye-gitti/">Yazılımcı Girişimciler Nereye Gitti?</a> <small>2022-11-05</small></li>
     
-    <li>2016-07-31: <a href="o-projeyi-yapma/">Bir Projeyi Yapmamaya Nasıl Karar Veriyorum?</a></li>
+    <li><a href="o-projeyi-yapma/">Bir Projeyi Yapmamaya Nasıl Karar Veriyorum?</a> <small>2016-07-31</small></li>
     
-    <li>2016-07-31: <a href="letgo-ile-satis-deneyimim/">Letgo ile Satış Yapmaya Çalıştım</a></li>
+    <li><a href="letgo-ile-satis-deneyimim/">Letgo ile Satış Yapmaya Çalıştım</a> <small>2016-07-31</small></li>
     
-    <li>2016-07-28: <a href="inanci-olmak-cok-zor/">İnançı Olmak Çok Zor</a></li>
+    <li><a href="inanci-olmak-cok-zor/">İnançı Olmak Çok Zor</a> <small>2016-07-28</small></li>
     
-    <li>2016-07-02: <a href="gerizekali-kal/">Gerizekalı Kal</a></li>
+    <li><a href="gerizekali-kal/">Gerizekalı Kal</a> <small>2016-07-02</small></li>
     
-    <li>2016-07-02: <a href="tornado-ve-nodejs-arasinda-secim-yapmak/">Tornado ve Node.js Arasında Seçim Yapmak</a></li>
+    <li><a href="tornado-ve-nodejs-arasinda-secim-yapmak/">Tornado ve Node.js Arasında Seçim Yapmak</a> <small>2016-07-02</small></li>
     
-    <li>2016-04-26: <a href="pip-paketlerini-yolk-ile-inceleyin/">Pip Paketlerini Yolk İle İncelemek Mantıklı Gibi</a></li>
+    <li><a href="pip-paketlerini-yolk-ile-inceleyin/">Pip Paketlerini Yolk İle İncelemek Mantıklı Gibi</a> <small>2016-04-26</small></li>
     
-    <li>2015-01-16: <a href="baskalariyla-ugrasmak/">Başkalarıyla Uğraşmak</a></li>
+    <li><a href="baskalariyla-ugrasmak/">Başkalarıyla Uğraşmak</a> <small>2015-01-16</small></li>
     
-    <li>2014-07-18: <a href="pythonda-turkce-alfabe-almak/">Python&#39;da Türkçe Alfabe Almak</a></li>
+    <li><a href="pythonda-turkce-alfabe-almak/">Python&#39;da Türkçe Alfabe Almak</a> <small>2014-07-18</small></li>
     
-    <li>2014-07-02: <a href="ani-defteri-fotografciligi/">Anı Defteri Fotoğrafçılığı</a></li>
+    <li><a href="ani-defteri-fotografciligi/">Anı Defteri Fotoğrafçılığı</a> <small>2014-07-02</small></li>
     
-    <li>2014-01-15: <a href="djangoda-tehlikeli-template-etiketi-length/">Django&#39;da tehlikeli template etiketi: length.</a></li>
+    <li><a href="djangoda-tehlikeli-template-etiketi-length/">Django&#39;da tehlikeli template etiketi: length.</a> <small>2014-01-15</small></li>
     
-    <li>2013-12-25: <a href="plastik-ordek-ile-hata-ayiklama/">Plastik Ördek İle Hata Ayıklama</a></li>
+    <li><a href="plastik-ordek-ile-hata-ayiklama/">Plastik Ördek İle Hata Ayıklama</a> <small>2013-12-25</small></li>
     
-    <li>2013-12-17: <a href="o-hikayedeki-mal-benim/">O Hikayedeki Mal Benim</a></li>
+    <li><a href="o-hikayedeki-mal-benim/">O Hikayedeki Mal Benim</a> <small>2013-12-17</small></li>
     
-    <li>2013-05-13: <a href="3-dakikada-nodejs-ve-npm-kurulumu-yapmak/">3 Dakikada Nodejs ve NPM kurulumu yapmak</a></li>
+    <li><a href="3-dakikada-nodejs-ve-npm-kurulumu-yapmak/">3 Dakikada Nodejs ve NPM kurulumu yapmak</a> <small>2013-05-13</small></li>
     
-    <li>2012-08-15: <a href="sosyal-medyada-topluluk-dinamikleri/">Sosyal Medyada Topluluk Dinamikleri</a></li>
+    <li><a href="sosyal-medyada-topluluk-dinamikleri/">Sosyal Medyada Topluluk Dinamikleri</a> <small>2012-08-15</small></li>
     
-    <li>2012-07-29: <a href="djangoda-shell-uzerinden-dosya-upload-etmek/">Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir?</a></li>
+    <li><a href="djangoda-shell-uzerinden-dosya-upload-etmek/">Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir?</a> <small>2012-07-29</small></li>
     
-    <li>2012-06-06: <a href="javascript-ve-nesnel-programlama/">Javascript ve Nesnel Programlama</a></li>
+    <li><a href="javascript-ve-nesnel-programlama/">Javascript ve Nesnel Programlama</a> <small>2012-06-06</small></li>
     
-    <li>2012-03-16: <a href="djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/">Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak.</a></li>
+    <li><a href="djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/">Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak.</a> <small>2012-03-16</small></li>
     
-    <li>2012-03-09: <a href="blogger-mi-tumblr-mi/">Blogger mı Tumblr mı?</a></li>
+    <li><a href="blogger-mi-tumblr-mi/">Blogger mı Tumblr mı?</a> <small>2012-03-09</small></li>
     
-    <li>2012-02-25: <a href="veritabani-sorgularinda-yorumlama-ve-kumeleme/">Veritabanı sorgularında yorumlama ve kümeleme.</a></li>
+    <li><a href="veritabani-sorgularinda-yorumlama-ve-kumeleme/">Veritabanı sorgularında yorumlama ve kümeleme.</a> <small>2012-02-25</small></li>
     
-    <li>2011-07-14: <a href="pythonda-listenin-kopyasini-almak/">Python&#39;da Listenin Kopyasını Almak</a></li>
+    <li><a href="pythonda-listenin-kopyasini-almak/">Python&#39;da Listenin Kopyasını Almak</a> <small>2011-07-14</small></li>
     
-    <li>2011-07-11: <a href="barselonadayim/">Barselona&#39;dayım</a></li>
+    <li><a href="barselonadayim/">Barselona&#39;dayım</a> <small>2011-07-11</small></li>
     
-    <li>2011-02-26: <a href="freelance-calisan-olmak/">Freelance Çalışan Olmak</a></li>
+    <li><a href="freelance-calisan-olmak/">Freelance Çalışan Olmak</a> <small>2011-02-26</small></li>
     
-    <li>2011-02-26: <a href="internet-isi-kurmak-isteyenlere-tavsiyeler/">İnternet İşi Kurmak İsteyenlere Tavsiyeler</a></li>
+    <li><a href="internet-isi-kurmak-isteyenlere-tavsiyeler/">İnternet İşi Kurmak İsteyenlere Tavsiyeler</a> <small>2011-02-26</small></li>
     
-    <li>2011-02-26: <a href="python-istanbul-bulusmasina-gittim/">Python İstanbul Buluşmasına Gittim</a></li>
+    <li><a href="python-istanbul-bulusmasina-gittim/">Python İstanbul Buluşmasına Gittim</a> <small>2011-02-26</small></li>
     
-    <li>2010-04-14: <a href="nasil-sosyal-olunur/">Nasıl Sosyal Olunur?</a></li>
+    <li><a href="nasil-sosyal-olunur/">Nasıl Sosyal Olunur?</a> <small>2010-04-14</small></li>
     
-    <li>2010-01-03: <a href="pencere/">Pencere</a></li>
+    <li><a href="pencere/">Pencere</a> <small>2010-01-03</small></li>
     
-    <li>2009-04-09: <a href="sayisal-fotograf-sevmiyorum/">Sayısal Fotoğraf Sevmiyorum</a></li>
+    <li><a href="sayisal-fotograf-sevmiyorum/">Sayısal Fotoğraf Sevmiyorum</a> <small>2009-04-09</small></li>
     
-    <li>: <a href="react-notlari/">Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı</a></li>
+    <li><a href="react-notlari/">Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı</a> <small></small></li>
     
     </ul>
     

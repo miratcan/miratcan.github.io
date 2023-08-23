@@ -3,25 +3,26 @@
 
 <head>
   <style>
+    html, body     { min-height: 100% }
     pre            { padding: 20px; background: #261917; }
     h1             { font-size:18px; text-align:center; }
     h2             { font-size:16px; }
     h3             { font-size:14px; color: wheat; }
     h1, h2         { background: #9B2821; color: wheat; padding: 5px; }
+    blockquote     { padding: 0 20px; border-left: 5px solid #B2A497 }
     .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
     ul             { margin: 16px 0 16px 0 ; }
     li             { margin-bottom: 8px; }
     ul#articles li { list-style-type: none !important; color: gray; }
     ul#articles    { padding: 0 }
-    body           { background: #261917 url(dithered-image.png) no-repeat bottom right;
+    body           { background: #261917 url(/dithered-image.png) no-repeat bottom right;
                      color: #B2A497;
                      font-family: monospace;
-                     font-size: 14px;
-                     height: 100%; }
+                     font-size: 14px; }
     a              { text-decoration: none; color: darkkhaki; }
     a:hover        { color: wheat; }
     main           { max-width: 600px;
-                     margin: 0 auto;
+                     margin: 40px auto;
                      box-sizing: border-box;
                      margin-top: 20px;
                      background: #333;
@@ -36,6 +37,7 @@
                      justify-content: center;
                      padding: 10px 0;
                      gap: 40px; }
+    .pagination    { text-align: center; }
     main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
@@ -87,15 +89,9 @@
   </header>
   <main>
 
-<h1>
-  Tornado ve Node.js Arasında Seçim Yapmak
-</h1>
-
-<center>
-    07/2016
-</center>
-
-<p>Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim için. Hem bir sosyal medya aracının oluşturulurken ne gibi badireler atlattığını görmüş oldum. Hem de bir yazılım geliştirici olarak daha önce hiç el atmadığım meselelere el atmak durumunda kaldım. Benim için oldukça çetrefilli ama bir yandan da oldukça zevkli bir iş oldu. Keşke daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarımız tekrar kesişir.</p>
+  <h1>Tornado ve Node.js Arasında Seçim Yapmak</h1>
+  <center>07/2016</center>
+  <p>Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim için. Hem bir sosyal medya aracının oluşturulurken ne gibi badireler atlattığını görmüş oldum. Hem de bir yazılım geliştirici olarak daha önce hiç el atmadığım meselelere el atmak durumunda kaldım. Benim için oldukça çetrefilli ama bir yandan da oldukça zevkli bir iş oldu. Keşke daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarımız tekrar kesişir.</p>
 <p>Şu anda ise ilk göz ağrım bilsin'i tekrar ayağa kaldırmak için elime bir fırsat geçti. Geçerli sosyal medya araçlarının zayıflığı ve bilsin'in neden güçlü bir araç olacağı konusunda okuldaki jüriye yaptığım sunum oldukça ikna edici oldu ve şu bilsin resmi olarak bitirme projem haline dönüştü. Ancak çok çalışmam gerek çünkü şu anda her ne kadar kırık dökük de olsa çalışan bir alet (tool) görünümü verse de aslında kafamdaki ideolojiden ve sağlamlıktan uzak durumda.</p>
 <p>Projeye daha önce başlarken yaptığım yanlış teknoloji seçimlerini ve kervan yolda düzülür diyip yolda yol değiştirmeleri (gerçekten çok fazla enerji ve kaybı oluyor) tekrar yaşamamak için mümkün olduğunca belgeli, planlı davranmaya çalışıyor. Çıkacak sorunları mümkün olduğunca ön görmeye çalışıyorum. Blog üzerinden çok fazla ayrıntı vermeyi uygun görmüyorum ama projenin %90'ının sağlam restFul api oluşturmaktan geçtiğini ve mümkün olduğunca akışkan bir yapıda olacağını söyleyebilirim. Tabi bu noktada Django kullanmak bir az saçma oluyor zira api yazmak için context processorlere ya da template sistemine ihtiyaç duymuyorum. Bunun yanında Django ile long pooling yapmak ya da websockets kullanmak deveyi at yarışına sokmak gibi bir şey olurdu.</p>
 <p>Bu noktada Node.js gel beni kullan diye göz kırpıyor, diğer kolumda da Tornado var. Bunları kendimce karşılaştırmaya çalıştım ancak eğer yanlış bilgi verdiğimi, yanıldığımı düşünüyorsanız lütfen yorum bırakın.</p>
@@ -160,7 +156,7 @@
         repo="miratcan/miratcan.github.io"
         issue-term="title"
         label="Comment"
-        theme="github-light"
+        theme="github-dark"
         crossorigin="anonymous"
         async>
 </script>

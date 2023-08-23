@@ -3,25 +3,26 @@
 
 <head>
   <style>
+    html, body     { min-height: 100% }
     pre            { padding: 20px; background: #261917; }
     h1             { font-size:18px; text-align:center; }
     h2             { font-size:16px; }
     h3             { font-size:14px; color: wheat; }
     h1, h2         { background: #9B2821; color: wheat; padding: 5px; }
+    blockquote     { padding: 0 20px; border-left: 5px solid #B2A497 }
     .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
     ul             { margin: 16px 0 16px 0 ; }
     li             { margin-bottom: 8px; }
     ul#articles li { list-style-type: none !important; color: gray; }
     ul#articles    { padding: 0 }
-    body           { background: #261917 url(dithered-image.png) no-repeat bottom right;
+    body           { background: #261917 url(/dithered-image.png) no-repeat bottom right;
                      color: #B2A497;
                      font-family: monospace;
-                     font-size: 14px;
-                     height: 100%; }
+                     font-size: 14px; }
     a              { text-decoration: none; color: darkkhaki; }
     a:hover        { color: wheat; }
     main           { max-width: 600px;
-                     margin: 0 auto;
+                     margin: 40px auto;
                      box-sizing: border-box;
                      margin-top: 20px;
                      background: #333;
@@ -36,6 +37,7 @@
                      justify-content: center;
                      padding: 10px 0;
                      gap: 40px; }
+    .pagination    { text-align: center; }
     main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
@@ -87,15 +89,9 @@
   </header>
   <main>
 
-<h1>
-  Python İstanbul Buluşmasına Gittim
-</h1>
-
-<center>
-    02/2011
-</center>
-
-<p>Bir önceki yazımda Facebook'a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı tekrar açmak zorunda kaldım; zira okuldaki elemanlarla başka bir şekilde iletişim kurmam imkansız. "Bari hesabımı açtım gelen saçma sapan davetler kimden geliyorsa engelleyeyim de kurtulayım" derken hiç bakmadığım etkinlikler sayfasına baktım. Bir de ne göreyim? kırk yılın başı mantıklı bir etkinlik daveti gelmiş...</p>
+  <h1>Python İstanbul Buluşmasına Gittim</h1>
+  <center>02/2011</center>
+  <p>Bir önceki yazımda Facebook'a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı tekrar açmak zorunda kaldım; zira okuldaki elemanlarla başka bir şekilde iletişim kurmam imkansız. "Bari hesabımı açtım gelen saçma sapan davetler kimden geliyorsa engelleyeyim de kurtulayım" derken hiç bakmadığım etkinlikler sayfasına baktım. Bir de ne göreyim? kırk yılın başı mantıklı bir etkinlik daveti gelmiş...</p>
 <p><img src="http://3.bp.blogspot.com/-nVqiULJXkCA/TuUhFakKXfI/AAAAAAAACxA/3AT4olBDWwU/s1600/Screenshot%2Bat%2B2011-12-11%2B23%253A19%253A08.png" alt="davet"></p>
 <p>Bu <a href="http://pyist.net/">pyist</a> buluşmalarını daha önce bir kaç kez duymuş, gitmek istemiştim ancak nasip olmamıştı. Bu gün sonunda buluşmalarından birine katılmayı başardım. Yaklaşık 3-4 saat boyunca oldukça keyifli bir sohbet oldu. <a href="http://www.mengu.net/">Mengü</a> bize güzel bir <a href="http://turbogears.org/">TurboGears</a> sunumu yaptı. Özet geçmek gerekirse Pylons ile Django arasında kalan bir framework TurboGears. Sizi template sistemi seçmek, orm seçmek gibi özgürlüklere kavuştururken yönetim paneli vermek ya da veri modellerinden formlar üretmek gibi nimetlerden de mahrum bırakmıyor.</p>
 <p>Her ne kadar sunum eksiksiz olsa da biz Django Cumhuriyeti'nin elamanları olarak "Neden TurboGears kullanayım ki?" sorusuna pek tatmin edici cevap alamadık diye düşünüyorum. Örneğin Django'da <a href="http://www.sqlalchemy.org/">SqlAlchemy</a> kullanmak oldukça Django ORM'si varken anlamlı gelemedi bana. Şimdiye kadar Django'nun sorgu setlerinin işimi görmediği hiç olmadı. (Ancak yinede kişisel görüşüm olarak Django'nun generic foreign keyler'lere ulaşırken, sorgular biraz karmaşıklaştığı anda çekilmez olabildiğini söylemem gerek). Neyse sözü fazla uzatmadan Django'nun bana henüz "artık yeter ben senin ihtiyacını karşılayamıyorum başkasına git" demedi. Belki zamanla kalkıştığım işler karmaşıklaşır Django bana yetmemeye başlar orasını bilemiyorum. Sanırım biraz da zevk meselesi bu yazılım geliştirme çatıları arası geçişler yapmak.</p>
@@ -111,7 +107,7 @@
         repo="miratcan/miratcan.github.io"
         issue-term="title"
         label="Comment"
-        theme="github-light"
+        theme="github-dark"
         crossorigin="anonymous"
         async>
 </script>

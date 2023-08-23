@@ -3,25 +3,26 @@
 
 <head>
   <style>
+    html, body     { min-height: 100% }
     pre            { padding: 20px; background: #261917; }
     h1             { font-size:18px; text-align:center; }
     h2             { font-size:16px; }
     h3             { font-size:14px; color: wheat; }
     h1, h2         { background: #9B2821; color: wheat; padding: 5px; }
+    blockquote     { padding: 0 20px; border-left: 5px solid #B2A497 }
     .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
     ul             { margin: 16px 0 16px 0 ; }
     li             { margin-bottom: 8px; }
     ul#articles li { list-style-type: none !important; color: gray; }
     ul#articles    { padding: 0 }
-    body           { background: #261917 url(dithered-image.png) no-repeat bottom right;
+    body           { background: #261917 url(/dithered-image.png) no-repeat bottom right;
                      color: #B2A497;
                      font-family: monospace;
-                     font-size: 14px;
-                     height: 100%; }
+                     font-size: 14px; }
     a              { text-decoration: none; color: darkkhaki; }
     a:hover        { color: wheat; }
     main           { max-width: 600px;
-                     margin: 0 auto;
+                     margin: 40px auto;
                      box-sizing: border-box;
                      margin-top: 20px;
                      background: #333;
@@ -36,6 +37,7 @@
                      justify-content: center;
                      padding: 10px 0;
                      gap: 40px; }
+    .pagination    { text-align: center; }
     main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>

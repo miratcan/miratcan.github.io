@@ -3,25 +3,26 @@
 
 <head>
   <style>
+    html, body     { min-height: 100% }
     pre            { padding: 20px; background: #261917; }
     h1             { font-size:18px; text-align:center; }
     h2             { font-size:16px; }
     h3             { font-size:14px; color: wheat; }
     h1, h2         { background: #9B2821; color: wheat; padding: 5px; }
+    blockquote     { padding: 0 20px; border-left: 5px solid #B2A497 }
     .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
     ul             { margin: 16px 0 16px 0 ; }
     li             { margin-bottom: 8px; }
     ul#articles li { list-style-type: none !important; color: gray; }
     ul#articles    { padding: 0 }
-    body           { background: #261917 url(dithered-image.png) no-repeat bottom right;
+    body           { background: #261917 url(/dithered-image.png) no-repeat bottom right;
                      color: #B2A497;
                      font-family: monospace;
-                     font-size: 14px;
-                     height: 100%; }
+                     font-size: 14px; }
     a              { text-decoration: none; color: darkkhaki; }
     a:hover        { color: wheat; }
     main           { max-width: 600px;
-                     margin: 0 auto;
+                     margin: 40px auto;
                      box-sizing: border-box;
                      margin-top: 20px;
                      background: #333;
@@ -36,6 +37,7 @@
                      justify-content: center;
                      padding: 10px 0;
                      gap: 40px; }
+    .pagination    { text-align: center; }
     main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
@@ -87,15 +89,9 @@
   </header>
   <main>
 
-<h1>
-  İnternet İşi Kurmak İsteyenlere Tavsiyeler
-</h1>
-
-<center>
-    02/2011
-</center>
-
-<p>Şimdi bu başlığı attım ama küstahlık olarak anlaşılmasın. Bende şahsen henüz bir baltaya sap olabilmiş değilim. Ya da şöyle söyleyeyim henüz istediğim baltaya sap olabilmiş değilim. Bu tip işleri bir yerlerde çalışarak öğrenmedim ya da etrafımda internet işi ile ilgili girişimde bulunmaya kalkışan örnek alabileceğim arkadaşlarım yoktu. Olanlar da tam olarak benim geçtiğim yollardan geçmemişti. O yüzden öğrenme sürecim zorlu oldu, olmaya da devam ediyıor. Yine de bu kadar debelenmeye belli bir yol katettim ve bu yolu kat ederken yüzlerce hata yaptım. Kendimce şimdiye kadar yaptığım hatalardan çıkardığım bazı sonuçları derleyip toplayıp not etmek istedim şuraya. Hem sizde faidelenmiş olursunuz.</p>
+  <h1>İnternet İşi Kurmak İsteyenlere Tavsiyeler</h1>
+  <center>02/2011</center>
+  <p>Şimdi bu başlığı attım ama küstahlık olarak anlaşılmasın. Bende şahsen henüz bir baltaya sap olabilmiş değilim. Ya da şöyle söyleyeyim henüz istediğim baltaya sap olabilmiş değilim. Bu tip işleri bir yerlerde çalışarak öğrenmedim ya da etrafımda internet işi ile ilgili girişimde bulunmaya kalkışan örnek alabileceğim arkadaşlarım yoktu. Olanlar da tam olarak benim geçtiğim yollardan geçmemişti. O yüzden öğrenme sürecim zorlu oldu, olmaya da devam ediyıor. Yine de bu kadar debelenmeye belli bir yol katettim ve bu yolu kat ederken yüzlerce hata yaptım. Kendimce şimdiye kadar yaptığım hatalardan çıkardığım bazı sonuçları derleyip toplayıp not etmek istedim şuraya. Hem sizde faidelenmiş olursunuz.</p>
 <h3>Siteyi Açmadan Önce Topluluğu Tanıyın</h3>
 <p>Evet burada sert bir çıkış yaptığımın farkındayım. Başka insanların tavsiyelerini okuyacak olursanız "internette iş yapmak için siteniz olması şart!" gibi cümleler okursunuz. Buna şu noktada katılıyorum. Eğer bahsi geçen işi gerçek hayatta somut olarak halihazırda yapıyorsanız. Evet siteyi açın. Bu daha kurumsal bir kimliğe bürünmenizi sağlar. Örneğin çiçekçi dükkanınız varsa ve bu işi internetten yapmak istiyorsanız siteyi açmanız gerekiyor. Ancak başlangıcı zaten internet olan bir iş yapacaksanız acele etmeyin.</p>
 <p>Ben acele ettim bilsin'i kurup çalıştırmaya başlamak gibi bir çabaya giriştim. Ancak site bittiğinde insanlar ne duyuru bırakıyorlar ne de duyurulara yorum yazıyorlardı. Gelenler ise siteyi çoğunlukla yanlış kullanıyorlardı. Kodlama ve tasarıma ayırdığım zamanın bir o kadarını siteye gelen insanları bir anlamda terbiye etmek için ve alışkanlık kazandırmak için harcadım. Bunun üzerine bir de topluluğun ihtiyaçlarını tanıma sürecini kurmuş olduğum site üzerinde gerçekleştirdiğim için ekstra masrafa girdim. Daha önce eklemiş olduğum "duyurulara resim ekleme" desteğini kaldırdım, daha sonra her subdomain için ayrı kategori ağacı gerektiğini düşünüp ; nedeyse bütün mimariyi değiştirdim. Ta ki Oğuz beni duruma uyandırana kadar. Sonra ayıldım.</p>
@@ -134,7 +130,7 @@
         repo="miratcan/miratcan.github.io"
         issue-term="title"
         label="Comment"
-        theme="github-light"
+        theme="github-dark"
         crossorigin="anonymous"
         async>
 </script>
