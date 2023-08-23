@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>My Site's Blog</title><link href="https://miratcan.github.io/blog/" rel="alternate"></link><link href="https://miratcan.github.io/feed.xml" rel="self"></link><id>urn:uuid:8ba36550-ee0b-3a52-8a96-f88b6f1a2bca</id><updated>2023-08-22T08:05:58Z</updated><author><name></name></author><entry><title>Yazılımcılar Özgeçmiş Yazarken Nelere Dikkat Etmeli?</title><link href="https://miratcan.github.io/blog/yazilimcilar-pzgecmis-hazirlarken-nelere-dikkat-etmeli/" rel="alternate"></link><updated>2023-08-22T00:00:00Z</updated><author><name></name></author><id>urn:uuid:e7cd381a-e737-3801-a30e-5b5853cb9fc1</id><content type="html">&lt;h2&gt;Özgeçmişinizin PDF formatında olması&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Site's Blog</title><link href="https://miratcan.github.io/blog/" rel="alternate"></link><link href="https://miratcan.github.io/feed.xml" rel="self"></link><id>urn:uuid:8ba36550-ee0b-3a52-8a96-f88b6f1a2bca</id><updated>2023-08-23T06:22:57Z</updated><author><name></name></author><entry><title>Yazılımcılar Özgeçmiş Yazarken Nelere Dikkat Etmeli?</title><link href="https://miratcan.github.io/blog/yazilimcilar-pzgecmis-hazirlarken-nelere-dikkat-etmeli/" rel="alternate"></link><updated>2023-08-22T00:00:00Z</updated><author><name></name></author><id>urn:uuid:e7cd381a-e737-3801-a30e-5b5853cb9fc1</id><content type="html">&lt;h2&gt;Özgeçmişinizin PDF formatında olması&lt;/h2&gt;
 &lt;p&gt;PDF bir dağıtım formatıdır. Yani karşı tarafa bir belgeyi editlemesi için değil incelemesi/okuması için gönderiyorsanız Word belgesi olarak yollamamalısınız. Bu internet kültürünün basit kurallarından biridir.&lt;/p&gt;
 &lt;h2&gt;Özgeçmişinizde İmla Hatası Olmaması&lt;/h2&gt;
 &lt;p&gt;Elime geçen bir çok özgeçmişte en basit imla kurallarına dikkat edilmediğini görüyorum. İmla hatası direkt elenmenize yol açabilir. Oysa düzgün yazmak zor değil.&lt;/p&gt;
@@ -155,7 +155,7 @@ NFT'nin ne olduğunu bilmiyor. O yüzden kısa bir açıklama yazısı yazmak
 istedim. Daha önce nedir bu NFT diye araştırmış yine de anlamamış biriyseniz
 idda ediyorum ki şimdi anlayacaksınız zira konuyu teknik detaylardan
 arındırarak anlatacağım.&lt;/p&gt;
-&lt;h3&gt;NFT Nedir?&lt;/h3&gt;
+&lt;h2&gt;NFT Nedir?&lt;/h2&gt;
 &lt;p&gt;Gerçek dünyada tekil bir kağıt parçası düşünün bu bir lunapark kartı da
 olabilir, bir spor salonu üyelik kartı da olabilir, sinema ya da tiyatro bileti
 de olabilir, bir sanat eseri de olabilir. NFT dediğimiz şey bunların sanal
@@ -165,11 +165,11 @@ olduğunuzu kanıtlayabilirsiniz. (Hatta bazı durumlarda kiralamak da mümkün.
 &lt;figure style="width:275px;"&gt;
   &lt;img src="img1.png" /&gt;
   &lt;figcaption&gt;Bored Ape NFT Koleksiyonundan Bir Token&lt;/figcaption&gt;
-&lt;/figure&gt;&lt;h3&gt;NFT Maymun Resmi Değil mi?&lt;/h3&gt;
+&lt;/figure&gt;&lt;h2&gt;NFT Maymun Resmi Değil mi?&lt;/h2&gt;
 &lt;p&gt;Hayır değil. En çok dijital sanatçıların yaptıkları eserlerin alınıp satılması
 amacıyla kullanıldığı için ve burada bir süre boyunca inanılmaz paralar döndüğü
 için herkes öyle zannetti.&lt;/p&gt;
-&lt;h3&gt;NFT'ler İle Neler Yapılabilir?&lt;/h3&gt;
+&lt;h2&gt;NFT'ler İle Neler Yapılabilir?&lt;/h2&gt;
 &lt;p&gt;Bir örnek vereyim: &lt;a href="https://realt.co/"&gt;RealIt&lt;/a&gt; adında bir girişim.
 Bu adamlar gidip çeşitli emlaklar satın alıyorlar ve her emlak için belirli bir
 sayıda NFT basıyorlar. Siz normalde bir emlak yatırımı yapacak kadar zengin
@@ -177,14 +177,14 @@ değilseniz bile gidip bilmem neredeki bir evin %1 lik hissesini ifade eden NFT'
 alabiliyorsunuz. Sanıyorum bu emlakları kiralayıp NFT sahiplerine de pay
 ediyorlar ancak çok detaya sahip değilim. (Yanlışım varsa yoruma
 ekleyebilirsiniz)&lt;/p&gt;
-&lt;h3&gt;NFT'ler Nerede Duruyor?&lt;/h3&gt;
+&lt;h2&gt;NFT'ler Nerede Duruyor?&lt;/h2&gt;
 &lt;p&gt;Barındığı blockchain üzerinde. Blockchain dediğimiş şey dünyada var olan
 yekpare bir oluşum değil. Solana, Avalance, Ethereum gibi çeşitli blockchain
 ağları var. Bu ağların birbirine göre avantajları var, kimisi ben en hızlıyım
 diyor kimisi ben en hızlı olmaya çalışmıyorum en güvenli olmaya çalışıyorum
 diyor. Bunlardan en ünlüsü malumunuz Ethereum. İşlem ücretleri çok yüksek
 ancak en güvenli ağ olarak kabul ediliyor.&lt;/p&gt;
-&lt;h3&gt;Yatırım İçin Hangi NFT'yi Almamız Lazım?&lt;/h3&gt;
+&lt;h2&gt;Yatırım İçin Hangi NFT'yi Almamız Lazım?&lt;/h2&gt;
 &lt;p&gt;Ben işin yatırımcılık yönüyle hiç ilgilenmiyorum, sadece teknolojisi üzerinde
 baya çalışma fırsatı buldum. Söyleyebileceğim tek şey tıpkı gerçek dünyada
 olduğu gibi gerçekten çalışan ve bazı işlevleri olan tokenlara yatırım yapmanın
@@ -883,7 +883,7 @@ Python da her eşitlik referans gösterir. Bu iddalı lafın anlamını şöyle 
 &lt;p&gt;Bütün bunların yanında sayısal fotoğrafçılığı bal kaymak, analog fotoğrafçılığı ise gereksiz efor kaybı (hatta enayilik) olarak görme durumu oluşmaya başladı  :&lt;/p&gt;
 &lt;p&gt;Fotoğrafçı fotoğraf'ı sergilemenin yanında onun üretim aşamasından zevk alan adamdır. Eli titrediğinde dirseğini koyacak yer aramaktan hoşlanır, nefesini tutmaktan hoşlanır, Filmleri banyo edilirken (ya da ederken) doğumu bekleyen baba kadar heyecanlı adamdır o. Fotoğraf çekeceği günün öncesinde hava durumunu ilgi ile izleyen adamdır. İçgüdülerine güvenmek zorunda kalır çoğu zaman, evet senin kadar çabuk üretemez, bu sebepten kıymetlidir onun için damağında eriyen çikolatadır fotoğraf. En güzel duyguların insanıdır :)&lt;/p&gt;
 &lt;p&gt;Oğuz Karaesmen bu konuda bir kitap önerdi bana adı da : Fotoğraf Ölmedi ama Garip Kokuyor. okunacak kitaplar listeme eklendi :)&lt;/p&gt;
-</content></entry><entry><title>Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı</title><link href="https://miratcan.github.io/blog/react-notlari/" rel="alternate"></link><updated>2023-08-22T08:05:58Z</updated><author><name></name></author><id>urn:uuid:98a7f7a2-0c70-371e-ba74-ff36d121d8f3</id><content type="html">&lt;blockquote&gt;&lt;p&gt;Bu yazı hala yapım aşamasındadır, bulduğunuz eksiklikleri &lt;a href="https://github.com/miratcan/miratcan.github.io/blob/source/content/blog/react-notlari/contents.lr"&gt;pull request açarak&lt;/a&gt; giderebilir ya da &lt;a href="https://github.com/miratcan/miratcan.github.io/issues"&gt;issue girerek&lt;/a&gt; bildirebilirsiniz.&lt;/p&gt;
+</content></entry><entry><title>Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı</title><link href="https://miratcan.github.io/blog/react-notlari/" rel="alternate"></link><updated>2023-08-23T06:22:57Z</updated><author><name></name></author><id>urn:uuid:98a7f7a2-0c70-371e-ba74-ff36d121d8f3</id><content type="html">&lt;blockquote&gt;&lt;p&gt;Bu yazı hala yapım aşamasındadır, bulduğunuz eksiklikleri &lt;a href="https://github.com/miratcan/miratcan.github.io/blob/source/content/blog/react-notlari/contents.lr"&gt;pull request açarak&lt;/a&gt; giderebilir ya da &lt;a href="https://github.com/miratcan/miratcan.github.io/issues"&gt;issue girerek&lt;/a&gt; bildirebilirsiniz.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;React Facebook tarafından ortalara atılmış bir javascript kütüphanesi. MVC desenli tasarımlarda V (View) katmanını oluşturduğu söylense de redux gibi kütüphanelerle birleştiğinde başlı başına bir çalışma tasarım şemasına sahip olduğunuz söyleniyor. Bu yazıda sıfırdan başlayarak react native ile bir uygulama geliştirmeye çalışacağız.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;Okumadan Önce:&lt;/p&gt;
