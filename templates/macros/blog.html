@@ -1,11 +1,5 @@
 {% macro render_blog_post(post, from_index=false) %}
-<h1>
-  {{ post.title }}
-</h1>
-{% if post.pub_date %}
-<center>
-    {{ post.pub_date.strftime('%m/%Y') }}
-</center>
-{% endif %}
-{{ post.body }}
+  <h1>{{ post.title }}</h1>
+  {% if post.pub_date %}<center>{{ post.pub_date.strftime('%m/%Y') }}</center>{% endif %}
+  {{ post.body }}
 {% endmacro %}

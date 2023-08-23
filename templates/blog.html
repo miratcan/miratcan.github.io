@@ -5,7 +5,7 @@
 {% block body %}
     <ul id="articles">
     {% for post in this.pagination.items %}
-    <li>{{ post.pub_date }}: <a href="{{ post|url }}">{{ post.title }}</a></li>
+    <li><a href="{{ post|url }}">{{ post.title }}</a> <small>{{ post.pub_date }}</small></li>
     {% endfor %}
     </ul>
     {{ render_pagination(this.pagination) }}
