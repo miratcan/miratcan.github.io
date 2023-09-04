@@ -3,31 +3,31 @@
 
 <head>
   <style>
-    html, body     { min-height: 100% }
+    html, body     { min-height: 100%; margin: 0; padding: 0; }
     pre            { padding: 20px; background: #261917; }
-    h1             { font-size:18px; text-align:center; }
-    h2             { font-size:16px; }
-    h3             { font-size:14px; color: wheat; }
-    h1, h2         { background: #9B2821; color: wheat; padding: 5px; }
-    blockquote     { padding: 0 20px; border-left: 5px solid #B2A497 }
+    h1             { font-size:18px; line-height: 24px; text-align:center; }
+    h2             { font-size:16px; line-height: 20px; }
+    h3             { font-size:14px; line-height: 18px; color: wheat; }
+    h1, h2         { background: #9B2821; color: wheat; padding: 10px; }
+    blockquote     { margin: 0; padding: 0 10px; border-left: 5px solid #B2A497 }
     .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
-    ul             { margin: 16px 0 16px 0 ; }
-    li             { margin-bottom: 8px; }
+    ul             { margin: 24px 0; }
+    li             { margin-bottom: 16px; }
     ul#articles li { list-style-type: none !important; color: gray; }
     ul#articles    { padding: 0 }
     body           { background: #261917 url(/dithered-image.png) no-repeat bottom right;
                      color: #B2A497;
                      font-family: monospace;
-                     font-size: 14px; }
+                     font-size: 14px; line-height: 18px;}
     a              { text-decoration: none; color: darkkhaki; }
     a:hover        { color: wheat; }
-    main           { max-width: 600px;
+    main           { max-width: 800px;
                      margin: 40px auto;
                      box-sizing: border-box;
-                     margin-top: 20px;
-                     background: #333;
+                     background: rgba(0, 0, 0, .8);
+                     border: 1px solid gray;
+                     border-radius: 10px;
                      padding: 24px;
-                     border: 1px dashed darkgray;
                      overflow: auto; }
     img            { width: 100% }
     nav            { background: linear-gradient(359deg,#6e1313,#9B2821);
@@ -38,6 +38,11 @@
                      padding: 10px 0;
                      gap: 40px; }
     .pagination    { text-align: center; }
+    @media only screen and (max-width: 500px) {
+      main { padding: 20px 5px }
+      ul#articles li a { display: block }
+    } 
+
     main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>

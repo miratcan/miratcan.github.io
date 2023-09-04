@@ -3,31 +3,31 @@
 
 <head>
   <style>
-    html, body     { min-height: 100% }
+    html, body     { min-height: 100%; margin: 0; padding: 0; }
     pre            { padding: 20px; background: #261917; }
-    h1             { font-size:18px; text-align:center; }
-    h2             { font-size:16px; }
-    h3             { font-size:14px; color: wheat; }
-    h1, h2         { background: #9B2821; color: wheat; padding: 5px; }
-    blockquote     { padding: 0 20px; border-left: 5px solid #B2A497 }
+    h1             { font-size:18px; line-height: 24px; text-align:center; }
+    h2             { font-size:16px; line-height: 20px; }
+    h3             { font-size:14px; line-height: 18px; color: wheat; }
+    h1, h2         { background: #9B2821; color: wheat; padding: 10px; }
+    blockquote     { margin: 0; padding: 0 10px; border-left: 5px solid #B2A497 }
     .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
-    ul             { margin: 16px 0 16px 0 ; }
-    li             { margin-bottom: 8px; }
+    ul             { margin: 24px 0; }
+    li             { margin-bottom: 16px; }
     ul#articles li { list-style-type: none !important; color: gray; }
     ul#articles    { padding: 0 }
     body           { background: #261917 url(/dithered-image.png) no-repeat bottom right;
                      color: #B2A497;
                      font-family: monospace;
-                     font-size: 14px; }
+                     font-size: 14px; line-height: 18px;}
     a              { text-decoration: none; color: darkkhaki; }
     a:hover        { color: wheat; }
-    main           { max-width: 600px;
+    main           { max-width: 800px;
                      margin: 40px auto;
                      box-sizing: border-box;
-                     margin-top: 20px;
-                     background: #333;
+                     background: rgba(0, 0, 0, .8);
+                     border: 1px solid gray;
+                     border-radius: 10px;
                      padding: 24px;
-                     border: 1px dashed darkgray;
                      overflow: auto; }
     img            { width: 100% }
     nav            { background: linear-gradient(359deg,#6e1313,#9B2821);
@@ -38,6 +38,11 @@
                      padding: 10px 0;
                      gap: 40px; }
     .pagination    { text-align: center; }
+    @media only screen and (max-width: 500px) {
+      main { padding: 20px 5px }
+      ul#articles li a { display: block }
+    } 
+
     main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
@@ -91,20 +96,20 @@
 
   <h1>161 satir Javascript ile 10K dolar yapmak</h1>
   <center>09/2023</center>
-  <p>Geçenlerde <a href="http://aligundogdu.com">Ali</a> ile birlikte <a href="http://flippa.com">Flippa</a>’ya bakıyorduk. Bilmeyenler için Flippa insanların uygulama,  web sitesi ya da bloglarını sattığı açık arttırmaya koyabildiği bir pazaryeri.</p>
-<p>Neyse oradaki işlere bakarken <a href="http://timenite.com">timenite</a> adındaki saçma sapan bir web sitesine denk geldim.   Girdiğinizde karşınıza  bir geriye sayım çıkarıyor, bu sayımda fortnite’in bir sonraki sezonununa ne kadar kaldığını söylüyor. Bütün işlevi bu kadar, zaman sayacının altında üstünde de adsense var.</p>
-<p>İş buraya kadar normal gidiyorken flippa’da aylık gelirinin 200 dolar olduğunu ve bunun da flippa tarafından onaylandığını fark ettiğimde gözümde site oyuncak olmaktan çıktı. Zira 4 varlığını sürdürüyor idi, büyük ihtimalle sadece bir hafta sonunda yapıldı, hiç bakım gerektirmedi ve bu  4 senenin 3 senesinde 200  dolar yaptı ise 12 * 200  * 3 = 7200 dolar  para yapmıştı. Üstüne üstlük satışa konmuş, 3500 dolara alıcısını bekliyordu.</p>
-<p>Siteyi biraz araştırdığımda basit bir html yapısı, ve içerisindeki <a href="https://github.com/Centerpoint-Gaming/timenite/blob/main/scripts/main.js">161 satırlık javascript</a>  dosyasından ibaret olduğunu gördüm.</p>
+  <p>Geçenlerde <a href="http://aligundogdu.com">Ali</a> ile birlikte <a href="https://flippa.com">Flippa</a>’ya bakıyorduk. Bilmeyenler için Flippa insanların uygulama, web sitesi ya da bloglarını sattığı açık arttırmaya koyabildiği bir pazaryeri.</p>
+<p>Neyse oradaki işlere bakarken <a href="https://timenite.com">timenite</a> adındaki saçma sapan bir web sitesine denk geldim. Girdiğinizde karşınıza bir geriye sayım çıkarıyor, bu sayımda fortnite’in bir sonraki sezonununa ne kadar kaldığını söylüyor. Bütün işlevi bu kadar, zaman sayacının altında üstünde de adsense var.</p>
+<p>İş buraya kadar normal gidiyorken flippa’da aylık gelirinin 200 dolar olduğunu ve bunun da flippa tarafından onaylandığını fark ettiğimde gözümde site oyuncak olmaktan çıktı. Zira 4 varlığını sürdürüyor idi, büyük ihtimalle sadece bir hafta sonunda yapıldı, hiç bakım gerektirmedi ve bu 4 senenin 3 senesinde 200 dolar yaptı ise 12 <em> 200 </em> 3 = 7200 dolar para yapmıştı. Üstüne üstlük satışa konmuş, 3500 dolara alıcısını bekliyordu.</p>
+<p>Siteyi biraz araştırdığımda basit bir html yapısı, ve içerisindeki <a href="https://github.com/Centerpoint-Gaming/timenite/blob/main/scripts/main.js">161 satırlık javascript</a> dosyasından ibaret olduğunu gördüm.</p>
 <p>Hepsi buydu, ayrıca ben bu yazıyı yazarken site satılmıştı, o yüzden <a href="https://flippa.com/11545762-a-4-year-old-simple-website-that-shows-a-countdown-to-the-next-season-on-fortnite-earning-2100-per-year-through-adsense-and-epic-s-support-a-creator">Flippa'daki sayfasına</a> girdiğinizde 404 veriyor.</p>
-<p>Bunu yapan kimse önce 7200 dolar adsense ile, sonra da  3500 dolar sitenin satışı ile kazanmıştı.</p>
+<p>Bunu yapan kimse önce 7200 dolar adsense ile, sonra da 3500 dolar sitenin satışı ile kazanmıştı.</p>
 <p>Valla Kıskandım :)</p>
-<p>Kim yapmış bunu diye araştırmaya başladım, zira böyle şeyler genelde o çok şanslı ülkelerin sarışın çocuklarından çıkıyordu. Fakat bu sefer öyle olmadı. <a href="https://github.com/Centerpoint-Gaming/timenite">Proje Github'da</a> açık olarak duruyordu. Buradan yapan kişinin Priyam Raj olduğunu öğrendim sonra da <a href="https://priyamraj.com/">web sitesine</a> ulaştım.</p>
-<p>Baya genç  bir çocuk, Hindistan’ın Bangalore şehrinde yaşıyormuş. 2009 yılından kalma şu fotoğrafından anladığım baya fakir bir aileden geliyor ama bilgisayarlara ve internete erişimi olan bir çocuk.</p>
-<p><img src="5.jpeg" alt=""></p>
-<p>Kendisini  açıklarken şunları yazmış:</p>
+<p>Kim yapmış bunu diye araştırmaya başladım, zira böyle şeyler genelde o çok şanslı ülkelerin sarışın çocuklarından çıkıyordu. Fakat bu sefer öyle olmadı. <a href="https://github.com/Centerpoint-Gaming/timenite">Proje Github'da</a> açık olarak duruyordu. Buradan yapan kişinin Priyam Raj olduğunu öğrendim sonra da <a href="https://priyamraj.com">web sitesine</a> ulaştım.</p>
+<p>Baya genç bir çocuk, Hindistan’ın Bangalore şehrinde yaşıyormuş. 2009 yılından kalma şu fotoğrafından anladığım baya fakir bir aileden geliyor ama bilgisayarlara ve internete erişimi olan bir çocuk.</p>
+<p><img src="hero.jpg" alt=""></p>
+<p>Kendisini açıklarken şunları yazmış:</p>
 <blockquote><p>Whether it be a film, a book or just a a simple tool, I want to keep creating useful stuff until my time on this planet.</p>
 </blockquote>
-<p>Çok serin hikaye  değil mi? Bu  hikayeyi neden paylaştım peki? Kendi fikrimi çürütmek için. Daha önceki <a href="../yazilimci-girisimciler-nereye-gitti/">bir  yazımda</a> ortalikta girişimci yazılımcıları neden görmediğimizden bahsederken, "Bir Yazılım Geliştirmenin Zaman ve Bilgi Maliyeti Çok Arttı" demiştim. Öyle değilmiş,  hala iyi bir fikir ve basit bir uygulama planı ile bir şeyler yapabiliyorsunuz.</p>
+<p>Çok serin hikaye değil mi? Bu hikayeyi neden paylaştım peki? Kendi fikrimi çürütmek için. Daha önceki <a href="../yazilimci-girisimciler-nereye-gitti/">bir yazımda</a> ortalikta girişimci yazılımcıları neden görmediğimizden bahsederken, "<em>Bir Yazılım Geliştirmenin Zaman ve Bilgi Maliyeti Çok Arttı</em>" demiştim. Öyle değilmiş, hala iyi bir fikir ve basit bir uygulama planı ile bir şeyler yapabiliyorsunuz.</p>
 <p>Üçüncü dünya ülkesi olsanız bile.</p>
 
 
