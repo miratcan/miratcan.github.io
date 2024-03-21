@@ -40,15 +40,10 @@
       main { padding: 20px 5px }
       ul#articles li a { display: block }
     } 
-
     main > :first-child { margin-top: 0; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ');
-  </script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234" crossorigin="anonymous"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -61,17 +56,18 @@
   <title>{% block title %}Ana Sayfa{% endblock %} — Mirat Can Bayrak</title>
   <meta name="title" content="{{ self.title() }}" />
   <meta name="description" content="{% block description %}{{ default_desc }}{% endblock %}" />
+  <link rel='canonical' href="{{ config.PROJECT.url }}{% if this._path != '/' %}{{ this._path }}{% endif %}/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
-  <meta property="og:url" content="{{config.PROJECT.url}}{{ this._path }}" />
+  <meta property="og:url" content="{{config.PROJECT.url}}{% if this._path != '/' %}{{ this._path }}{% endif %}/" />
   <meta property="og:title" content="{{ self.title() }} - Mirat Can Bayrak" />
   <meta property="og:description" content="{{ self.description() }}" />
   <meta property="og:image" content="{{config.PROJECT.url}}{% block meta_img %}/miratcan.jpeg{% endblock %}" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="{{ config.PROJECT.url }}{{ this._path }}"/>
+  <meta property="twitter:url" content="{{ config.PROJECT.url }}{% if this._path != '/' %}{{ this._path }}{% endif %}/"/>
   <meta property="twitter:title" content="{{ self.title() }}"/>
   <meta property="twitter:description" content="{{ self.description() }}" />
   <meta property="twitter:image" content="{{ config.PROJECT.url }}{{ self.meta_img() }}" />

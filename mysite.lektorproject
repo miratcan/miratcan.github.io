@@ -1,6 +1,6 @@
 [project]
 name = Mirat Can Bayrak
-url = https://miratcan.github.io
+url = https://mirat.dev
 
 locale = tr_TR
 [servers.ghpages]
