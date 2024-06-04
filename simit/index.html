@@ -1,8 +1,8 @@
 <html>
   <head>
   <style>
-      body { background: brown; background-image: url(lol.png) }
-      main { max-width: 600px; border-radius: 10px; border: 1px solid gray; padding: 20px; margin: 0 auto; color: bisque; }
+      body { background: brown; display: flex; align-items: center; justify-content: center; }
+      main { max-width: 600px; border-radius: 10px; border: 1px solid gray; padding: 20px; color: bisque; }
       table { background: darksalmon; border-collapse: colapse; padding: 10px; width: 100%; }
       table caption { color: bisque; }
       a { color: white; }
@@ -10,21 +10,15 @@
       img { max-width: 300px; }
       p { text-align: center; overflow: auto;}
       div { display: flex; margin-bottom: 20px; align-items: center; }
-    @media only screen and (max-width: 600px) {
-      div{
-          flex-flow: column;
-
-  }
-}
-
-
+      .mirat { margin-left: -40px; }
+      .mirat.flip { margin-left: 0; margin-right: -40px; transform: scaleX(-1); }
+      @media only screen and (max-width: 600px) { div{ flex-flow: column; } .mirat { display: none; } }
   </style>
   <script>function copyToClipboard(str) {var aux = document.createElement("input"); aux.setAttribute("value", 'TR730082900009494058424324'); document.body.appendChild(aux); aux.select(); document.execCommand("copy"); document.body.removeChild(aux); document.getElementById('iban_button').innerHTML = 'Kopyalandı' } </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   </head>
   <body>
-
+    <img class='mirat flip' src="lol.png">
       <main>
           <h1>Simitlerin Efendisi</h1>
           <p>Sabah simidi servisimle sizlerleyim.</p>
@@ -67,6 +61,7 @@
                   <td colspan=2><a href="https://ppr.ist/156ddR0XN">4058424324</a></td></tr>
           </table>
       </main>
+    <img class='mirat' src="lol.png">
   </body>
 </html>
 
