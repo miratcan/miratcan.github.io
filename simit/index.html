@@ -1,0 +1,72 @@
+<html>
+  <head>
+  <style>
+      body { background: brown; background-image: url(lol.png) }
+      main { max-width: 600px; border-radius: 10px; border: 1px solid gray; padding: 20px; margin: 0 auto; color: bisque; }
+      table { background: darksalmon; border-collapse: colapse; padding: 10px; width: 100%; }
+      table caption { color: bisque; }
+      a { color: white; }
+      h1 { margin: 0; text-align: center;}
+      img { max-width: 300px; }
+      p { text-align: center; overflow: auto;}
+      div { display: flex; margin-bottom: 20px; align-items: center; }
+    @media only screen and (max-width: 600px) {
+      div{
+          flex-flow: column;
+
+  }
+}
+
+
+  </style>
+  <script>function copyToClipboard(str) {var aux = document.createElement("input"); aux.setAttribute("value", 'TR730082900009494058424324'); document.body.appendChild(aux); aux.select(); document.execCommand("copy"); document.body.removeChild(aux); document.getElementById('iban_button').innerHTML = 'Kopyalandı' } </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+
+      <main>
+          <h1>Simitlerin Efendisi</h1>
+          <p>Sabah simidi servisimle sizlerleyim.</p>
+          <div>
+              <img src="https://media.tenor.com/o5ZPK_q8rAMAAAAM/sinsi-clavi.gif">
+              <p>Papara hesabınız varsa direkt aşağıdaki satın al linklerini, yoksa da whatsapp sipariş hattım olan <a href="https://wa.me/905066788505">+905066788505</a> numarasını kullanabilirsiniz.</p>
+          </div>
+          <div>
+            <table>
+                <caption>Menü</caption>
+                <tr>i
+                    <td>Simit</td>
+                    <td>15TL</td>
+                    <td><a href="https://ppr.ist/156c4ZVMY">Satın Al</a></td>
+                </tr>
+                <tr>
+                    <td>Simit Peynir</td>
+                    <td>20TL</td>
+                    <td><a href="https://ppr.ist/156czWFIo">Satın Al</a><td>
+                </tr>
+                <tr>
+                    <td>Simit Çift Peynir</td>
+                    <td>25TL</td>
+                    <td><a href="https://ppr.ist/156cTpaj5">Satın Al</a></td>
+                </tr>
+            </table>
+            <img src="https://media1.tenor.com/m/eN-pem-7--IAAAAC/munch-goat-face.gif">
+          </div>
+          <table>
+              <caption>Ödeme</caption>
+              <tr>
+                  <td>IBAN</td>
+                  <td>TR73 0082 9000 0949 4058 4243 24</td>
+                  <td>
+                      <button id="iban_button" onclick="copyToClipboard()">Kopyala</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Papara</td>
+                  <td colspan=2><a href="https://ppr.ist/156ddR0XN">4058424324</a></td></tr>
+          </table>
+      </main>
+  </body>
+</html>
+
