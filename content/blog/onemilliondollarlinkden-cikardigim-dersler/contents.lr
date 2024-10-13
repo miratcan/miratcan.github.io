@@ -1,0 +1,17 @@
+title: OneMillionDollar.link'den Cikardigim Dersler
+---
+body:
+
+> Bilmeyenler icin [onemilliondollar.link](https://onemilliondollar.link) son yaptigim sacma proje. Iddasi internetteki en pahali linke sahip olmak. Siteye girdiginizde tepede bir link oluyor ucretini vererek bu linki degistirebiliyorsunuz. Her degisimde fiyati %20 artiyor, 1 dolardan baslayip 280 dolara kadar ilerledi fiyati. Ben bu yaziyi yazarken ise 340 dolar. Simdi biraz durulmus olsa da cok fazla ilgi gordu. Ben sahsen 15 dolardan sonrasini beklemiyordum.
+
+1. Insanlarin attention span'i gercekten bes saniye. Bir seyi sozlu ya da yazili anlatirken 5 saniyeden uzun suruyor ise kaybettiniz. Projeyi yaparken bu bes saniye kuralini surekli aklimda tutarak yaptim tasarimi. Olabilecek bir suru ozelligi de ayni sebepten iptal ettim. Basit kalabilmek ciddi meziyet.
+2. Bir isi yapiyorken sosyal medya basamagini birinci basamak olarak planlamak gerekiyor. Google'in hali malum, playstore appstore gibi platformlarda ise kalabaligin icinde kayboluyorsunuz. Ortaya cikarilan urun ne olursa olsun sosyal medya icin icerik uretme makinesi olarak tasarlanmak zorunda. Yoksa ilk gun haric kimse sizin web sitenizin adini adres cubuguna girmeyecek.
+3. Gercekten tutan bir sey yaptiginizda mutlaka DDOS atagi yiyorsunuz, ilk 3 gun hazirliksiz yakalandim. Bastan planlayin. Default admin paneli adresini de degistirin oraya da brute force attack geldi.
+4. Yedigim DDOS atagi sebebiyle defalarca kitlendi ancak hala SQLite'in neredeyse butun projeler icin yeterli oldugunu dusunuyorum. Yeter ki [WAL](https://sqlite.org/wal.html) modunu aktive etmeyi unutmayin. En fazla gideceginiz yer postresql'dir.
+5. Insanlar koca koca firmalarin yaptigi ciddi islerden cok sikilmis durumda. Internet'in eski eglenceli gunlerini ozluyorlar. CSS ile halay ceken kunduzlar sayfasi yapsaniz gene gelirler.
+6. Film yonetmeni bir [arkadasim](https://www.imdb.com/name/nm9214577/) sunu demisti: cok basit bir hikayeyi cok guzel anlatirsan film gene guzel olur. (Max Max filminin hikayesi neredeyse yok gibi diye ekledigini hatirliyorum). Ayni sey girisimciler icin de gecerli. Basit bir hikaye ama cok iyi execution. 
+7. TR ortamina bir sey yapiyorsaniz tek bir buttonun bile calismiyor olmasi kufur yemeniz anlamina geliyor. Ote yandan guzel gozukmesi de malesef cok onemli. [Craigslist](https://craigslist.org/)' TR de olsa [600 milyon dolar](https://www.reddit.com/r/todayilearned/comments/1c2mjro/til_craigslist_generates_over_600_million_in/) degil 60tl para yapardi.
+8. Proje belli bir yere kadar geldikten sonra cesitli buyuklere mail attim. Webrazzi, Serdar Kuzuluoglu vs gibi. Efsaneyi birlikte buyutebilirdik ama malesef kimse geri donmedi. Birileri elimden tutacak diye beklerseniz uzulursunuz.
+9. Sosyal medya artik birinci basamak demistim ya, istemeden artik aklima gelen isleri tartarken ben bu is icin tiktokta got sallamali video ceker miyim diye dusunmeye basladim. Belki siz de dusunmelisiniz =)
+10. Projeye ilgi gosteren herkese asiri tesekkur ediyorum. Benim icin para degil inanc meselesi idi hatta bir cok kisiye de ilham oldugunu dusunuyorum.
+
