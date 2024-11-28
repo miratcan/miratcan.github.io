@@ -3,90 +3,162 @@
 
 <head>
   <style>
-    html, body     { min-height: 100%; margin: 0; padding: 0; }
-    pre            { padding: 20px; background: #261917; }
-    h1             { font-size:18px; line-height: 24px; text-align:center; }
-    h2             { font-size:16px; line-height: 20px; }
-    h3             { font-size:14px; line-height: 18px; color: wheat; }
-    h1, h2         { background: #9B2821; color: wheat; padding: 10px; }
-    blockquote     { margin: 0; padding: 0 10px; border-left: 5px solid #B2A497 }
-    .youtube-video { aspect-ratio: 16 / 9; width: 100%; }
-    ul             { margin: 8px 0 0 0; }
-    li             { margin-bottom: 8px; }
-    ul#articles li { list-style-type: none !important; color: gray; }
-    ul#articles    { padding: 0 }
-    body           { background: #261917 url(/dithered-image.png) no-repeat bottom right;
-                     color: #B2A497;
-                     font-family: monospace;
-                     font-size: 14px; line-height: 18px;}
-    a              { text-decoration: none; color: darkkhaki; }
-    a:hover        { color: wheat; }
-    main           { max-width: 800px;
-                     margin: 40px auto;
-                     box-sizing: border-box;
-                     background: rgba(38, 25, 23, .6);
-                     padding: 24px;
-                     overflow: auto; }
-    img            { width: 100% }
-    nav            { background: linear-gradient(359deg,#6e1313,#9B2821);
-                     height: fit-content;
-                     display: flex;
-                     align-items: center;
-                     justify-content: center;
-                     padding: 10px 0;
-                     gap: 40px; }
-    .pagination    { text-align: center; }
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #161917;
+      color: #B2A497;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    pre {
+      padding: 2em;
+      background: #261917;
+      font-size: .8em;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      line-height: 1.73em;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      line-height: 1.61em;
+    }
+
+    h3 {
+      line-height: 1.48em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: wheat;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 0 10px;
+      border-left: 5px solid #B2A497
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+
+    ul {
+      margin: 8px 0 0 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    ul#articles li {
+      list-style-type: none !important;
+      color: gray;
+    }
+
+    ul#articles {
+      padding: 0
+    }
+
+    body {}
+
+    a {
+      text-decoration: none;
+      color: darkkhaki;
+    }
+
+    a:hover {
+      color: wheat;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    img {
+      width: 100%
+    }
+
+    nav {
+      background: linear-gradient(360deg, #6e1313, #9B2821);
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+      gap: 40px;
+    }
+
+    .pagination {
+      text-align: center;
+    }
+
     @media only screen and (max-width: 500px) {
-      main { padding: 20px 5px }
-      ul#articles li a { display: block }
-    } 
-    main > :first-child { margin-top: 0; }
+      main {
+        padding: 20px 5px
+      }
+
+      ul#articles li a {
+        display: block
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234" crossorigin="anonymous"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
+    crossorigin="anonymous"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="content-language" content="TR-tr">
 
-  {% set default_title  = 'Ana Sayfa' %}
-  {% set default_desc   = 'Saçma proje üreticisi, kız babası, yazılım geliştiricisi' %}
+  {% set default_title = 'Ana Sayfa' %}
+  {% set default_desc = 'Saçma proje üreticisi, kız babası, yazılım geliştiricisi' %}
 
   <!-- Primary Meta Tags -->
   <title>{% block title %}Ana Sayfa{% endblock %} — Mirat Can Bayrak</title>
   <meta name="title" content="{{ self.title() }}" />
   <meta name="description" content="{% block description %}{{ default_desc }}{% endblock %}" />
   <link rel='canonical' href="{{ config.PROJECT.url }}{% if this._path != '/' %}{{ this._path }}{% endif %}/">
-
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
   <meta property="og:url" content="{{config.PROJECT.url}}{% if this._path != '/' %}{{ this._path }}{% endif %}/" />
   <meta property="og:title" content="{{ self.title() }} - Mirat Can Bayrak" />
   <meta property="og:description" content="{{ self.description() }}" />
   <meta property="og:image" content="{{config.PROJECT.url}}{% block meta_img %}/miratcan.jpeg{% endblock %}" />
-
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="{{ config.PROJECT.url }}{% if this._path != '/' %}{{ this._path }}{% endif %}/"/>
-  <meta property="twitter:title" content="{{ self.title() }}"/>
+  <meta property="twitter:url"
+    content="{{ config.PROJECT.url }}{% if this._path != '/' %}{{ this._path }}{% endif %}/" />
+  <meta property="twitter:title" content="{{ self.title() }}" />
   <meta property="twitter:description" content="{{ self.description() }}" />
   <meta property="twitter:image" content="{{ config.PROJECT.url }}{{ self.meta_img() }}" />
-
-  <!-- Meta Tags Generated with https://metatags.io -->
   {% block extra_head %}{% endblock %}
 </head>
+
 <body>
   <header>
-  <nav>
-    <a href="/">Anasayfa</a>
-    <a href="/blog/">Blog</a>
-    <a href="/yamp/">YAMP</a>
-    <a href="/resume/resume.html">Özgeçmiş</a>
-  </nav>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/projects/">Projects</a>
+      <a target="_blank" href="/resume/resume.html">Resume</a>
+    </nav>
   </header>
   <main>{% block body %}{% endblock %}</main>
-  <script async src="https://fundingchoicesmessages.google.com/i/pub-3821665691664234?ers=1" nonce="H5ttpIa270VtkxToUG1__w"></script><script nonce="H5ttpIa270VtkxToUG1__w">(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
 </body>
+
 </html>
-
-

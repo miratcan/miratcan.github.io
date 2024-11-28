@@ -1,0 +1,64 @@
+_model: page
+---
+title: Projects
+---
+body:
+
+<img src="ss1.png" alt="YAMP Logo" style="width: 100px; float:right; margin-left:10px;" />
+This list is a bit crowded. I've been coding for over 10 years, and since childhood, I've always enjoyed creating things and using my creativity. My friends now call my projects *YAMP* (Yet Another Mirat Project), and I really like the name :)
+
+## Kaydet
+
+A simple journaling script I wrote for my own needs. Initially created in 2016, I turned it into a Python package in 2023:
+
+ * [Related blog post](/blog/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/)
+ * [Github](https://github.com/miratcan/kaydet)
+ * [PyPI](https://pypi.org/project/kaydet/)
+
+## Internet Güzeldir
+
+A Python script that generates a categorized link directory website (web directory) by using an Excel file stored on Google Drive as a data source, along with a sample website created with it.
+
+ * [Github](https://github.com/miratcan/InternetGuzeldir)
+ * [Web](https://internetguzeldir.com)
+
+## Eleman
+
+A white-label job listing site with minimal dependencies. It uses Airtable as a database, is dockerized, and runs quickly. Ideal for creating and publishing job listings for your company or organization.
+
+ * [Github](https://github.com/miratcan/Eleman)
+ * [Youtube](https://www.youtube.com/watch?v=3lXs0bKfdMw&feature=youtu.be)
+
+## Resm.in
+
+A Q&A platform where users responded with photos. Questions like *What's in your drawer?* or *Do you have a childhood photo ID?* encouraged users to reply with pictures. Besides being fun, it also featured recipes and DIY-style photo stories. I built it using Python and Django, with MySQL and Redis for databases, and Backbone.js in a few places.
+
+ * [Web Archive](https://web.archive.org/web/20150310032649/http://resm.in/).
+ * [Github](https://github.com/miratcan/Resmin)
+
+## Linkfloyd
+
+A bookmarking and sharing service designed for following topics instead of people, aiming to bring together those with similar interests. Inspired by the need for a Reddit-like community in Turkey, it eventually developed a dedicated user base. I made lasting connections through it. Built using Python and Django, with MySQL and Redis as databases.
+
+ * [Web Archive](https://web.archive.org/web/20150325085445/http://linkfloyd.com/).
+ * [Github](https://github.com/linkfloyd/linkfloyd-museum)
+
+## Bavula Ne Koysam?
+
+A simple web application to help create a packing list for travel. It’s still [online](http://bavulanekoysam.appspot.com). I initially wrote it using App Engine, but I plan to rewrite it to function solely as a frontend application.
+
+ * [Web Archive](https://web.archive.org/web/20210515145133/https://bavulanekoysam.appspot.com/)
+ * [Github](https://github.com/miratcan/BavulaNeKoysam)
+
+## Filika
+
+A terminal application I wrote for backing up FriendFeed accounts as it was shutting down. It also downloaded all shared images and MP3s. To ensure compatibility on all users' computers, I only used standard Python libraries. It’s no longer functional since FriendFeed has closed, but it may interest those working with APIs and downloads.
+
+ * [GitHub](https://gist.github.com/miratcan/89aff1ae486e91dd0ca8).
+
+## FFAnony
+
+A web service that allowed people to post anonymously on FriendFeed using an account named FFAnony. I built it as a one-night project during FriendFeed's active days. It hosted all sorts of content, from gossip and love confessions to playful banter, flirtation, and [/r/gonewild/](http://reddit.com/r/gonewild/)-style photo shares. Our people love gossip, so it became quite popular.
+
+ * [Github](https://github.com/miratcan/FFAnony)
+
