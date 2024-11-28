@@ -134,15 +134,15 @@
   <title>Ana Sayfa — Mirat Can Bayrak</title>
   <meta name="title" content="Ana Sayfa" />
   <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <link rel='canonical' href="https://mirat.dev/resume/">
+  <link rel='canonical' href="https://mirat.dev/articles/technical/kod-repolarini-diskimde-nasil-sakliyorum/">
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mirat.dev/resume/" />
+  <meta property="og:url" content="https://mirat.dev/articles/technical/kod-repolarini-diskimde-nasil-sakliyorum/" />
   <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
   <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
   <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/resume/" />
+    content="https://mirat.dev/articles/technical/kod-repolarini-diskimde-nasil-sakliyorum/" />
   <meta property="twitter:title" content="Ana Sayfa" />
   <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
   <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
@@ -159,9 +159,42 @@
     </nav>
   </header>
   <main>
-  <h1>Resume</h1>
-  <p><a href="resume.html">Buraya tıklayarak özgeçmişimi görüntüleyebilirsiniz.</a>
-(İngilizcedir)</p>
+  <h1>Kod Repolarını Diskimde Nasıl Saklıyorum?</h1>
+  <p>OSX kullanıyorsanız fark  etmişsinizdir grafik arayüzün gösterdiği klasör
+isimlerine terminalden ulaşamıyorsunuz. Grafik arayüzde "Belgeler" olarak
+görüntülediğiniz klasör terminelde ulaşmaya çalıştığınızda Documents
+oluveriyor. Kullandığım klasör  yapısı da buna uygun olsun istedim. "Code" adlı
+bir klasörüm olsun ama tıpkı sistemdeki diğer klasörler gibi buna grafik
+arayüzden eriştiğimde "Kodlar" olarak gözüksün dedim. Şu anki  durum şöyle:</p>
+<p><img src="ss1.png" alt=""></p>
+<p>Aynı klasörü terminalden listelediğimde ise şöyle bir sonuç alıyorum:</p>
+<p><img src="ss2.png" alt=""></p>
+<p>Osx'de bir klasörün sonuna <code>.localized</code> ekleyerek, içerisine <code>.localized</code>
+adında bir klasör ekleyip onun da içerisine <code>tr.strings</code> adında bir dosya
+koyarak o klasörün grafik arayüzde Türkçe gözükmesini sağlayabiliyorsunuz. Bir
+örnek yapalım. Ships adında  bir klasörümüz olsun, ama finder  bunu Gemiler
+olarak göstersin istiyoruz diyelim.</p>
+<pre class="prettyprint lang-bsh">
+$ mkdir -p Ships.localized/.localized/
+</pre><p>Buradaki  <code>-p</code> parametresi bir kısayol, fazla iç içe klasör oluşturabilmemizi
+sağlıyor.  Bunu kullanmamış olsaydık önce  Ships.localized klasörünü sonra da
+onun içindeki <code>.localized</code> klasörünü  oluşturmamız gerekecekti.</p>
+<p>Şimdi de <code>.localized</code> klasörünün içerisindeki tr.strings dosyasına Ships
+kelimesini Gemiler olarak göstermesi gerektiğini anlatan satırı koyalım:</p>
+<pre class="prettyprint lang-bsh">
+echo '"Ships" = "Gemiler"' > Ships.localized/.localized/tr.strings
+</pre><p>Bunu yaptığımızda finder penceresinin artık Ships klasörünü Gemiler olarak
+gösterdiğini göreceğiz.</p>
+<p>Bu özelliği kullanarak Code klasörümü yerelleştirdikten sonra şöyle alt
+klasörlere ayırma yoluna gittim:</p>
+<p><img src="ss4.png" alt=""></p>
+<p>Kısaca açıklamak gerekirse Daimi (Permanent) klasöründe ne olursa olsbun
+çalışmaya devam ettiğim blogum, internetguzeldir gibi repolar duruyor. Güncel
+(Current) klasöründe o ara çalıştığım iş ne varsa o. Arşiv ve Geçici
+klasörlerini de tahmin edersiniz zaten.</p>
+<p>Sizin de kullandığınız başka düzenler varsa, ya da bu çirkin .localized klasör
+soyadını kullanmadan yerelleştirme yapabiliyorsanız yorum atabilirsiniz.</p>
+<p>Kolay gelsin.</p>
 
 </main>
 </body>

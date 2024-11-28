@@ -134,15 +134,15 @@
   <title>Ana Sayfa — Mirat Can Bayrak</title>
   <meta name="title" content="Ana Sayfa" />
   <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <link rel='canonical' href="https://mirat.dev/resume/">
+  <link rel='canonical' href="https://mirat.dev/articles/technical/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/">
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mirat.dev/resume/" />
+  <meta property="og:url" content="https://mirat.dev/articles/technical/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/" />
   <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
   <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
   <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/resume/" />
+    content="https://mirat.dev/articles/technical/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/" />
   <meta property="twitter:title" content="Ana Sayfa" />
   <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
   <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
@@ -159,9 +159,43 @@
     </nav>
   </header>
   <main>
-  <h1>Resume</h1>
-  <p><a href="resume.html">Buraya tıklayarak özgeçmişimi görüntüleyebilirsiniz.</a>
-(İngilizcedir)</p>
+  <h1>Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım</h1>
+  <p>Günlük tutmak çeşitli duygu ve düşüncelerimi kolayca kaydetmek sonra da
+okumak istiyordum. Bunu da en kısa yoldan nasıl yaparım diye düşünüyor iken
+telefonda <a href="https://daylio.net/">Daylio</a> uygulamasını buldum. Uygulama çok
+güzel hatta ne yaparken nasıl hissettiğini kaydederek sonrasında çeşitli
+raporlar alabiliyor ve mesela "Kitap okumadığım zamanlarda daha depresif
+oluyormuşum" gibi sonuçlar çıkarabiliyorsunuz. İyi bir kendini loglama
+uygulamasından bekleyebileceğiniz her şey var anlayacağınız ama bir sorun var.</p>
+<p>Ben telefonu alıp bir şeyler yazmaya aşırı üşenen biriyim, hatta telefon benim
+için eşim ve annemle konuşma, tuvalete girince de twitter karıştırma cihazı
+olmaktan ileri geçemiyor.</p>
+<p>Ben de madem günlerimin çoğu bilgisayar başında terminal karşısında geçiyor,
+kendime basit bir uygulama yapayım tivit atar gibi daha sonra hatırlamak
+isteyeceğim şeyleri kaydedeyim dedim. Çalışırken şu şekilde basitçe metin
+dosyalarına kayıtlar atabiliyorum:</p>
+<pre class="prettyprint lang-bsh">
+$ kaydet "Bugun işteki ilk günüm."
+</pre><p>Bu komut eğer yoksa o günün tarihi ile günlüğünüzü kaydetmek için
+ayarladığınız klasöre bir dosya açıyor örneğin: 2023-07-30.txt sonra da günün
+saatini yazdığınız metne ekleyip bir satır ekliyor.</p>
+<pre class="prettyprint">
+2023-07-30.txt
+09:01:00 Günaydın canım kendim.
+09:03:00 Bugün işteki ilk günüm.
+</pre><p>Evet farkındayım çok ahım şahım bir şey değil oldukça severek kullanıyorum.
+Bir de günlük tuttuğum klasörü Google Drive ile cihazlar arası senkronize
+edebilmeye de başladım.</p>
+<p>Siz de kullanmak isterseniz şu komutla direkt yükleyebilirsiniz:</p>
+<pre class="prettyprint lang-bsh">
+$ pip3 install kaydet
+</pre><p>Daha sonrasında --help ile çağırarak nasıl kullanıdığını inceleyebilirsiniz:</p>
+<pre class="prettyprint lang-bsh">
+$ kaydet --help
+</pre><p>Bir hata bildirmek ya da yeni bir özellik eklemek isterseniz
+<a href="https://github.com/miratcan/kaydet">github</a> reposuna beklerim.</p>
+<p>Görüşmek üzere.</p>
+<p>(Bir ara blog yazıları nasıl düzgün bitirilir konusunu çalışmam lazım)</p>
 
 </main>
 </body>

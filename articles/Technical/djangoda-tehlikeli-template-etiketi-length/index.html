@@ -134,15 +134,15 @@
   <title>Ana Sayfa — Mirat Can Bayrak</title>
   <meta name="title" content="Ana Sayfa" />
   <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <link rel='canonical' href="https://mirat.dev/resume/">
+  <link rel='canonical' href="https://mirat.dev/articles/technical/djangoda-tehlikeli-template-etiketi-length/">
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mirat.dev/resume/" />
+  <meta property="og:url" content="https://mirat.dev/articles/technical/djangoda-tehlikeli-template-etiketi-length/" />
   <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
   <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
   <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/resume/" />
+    content="https://mirat.dev/articles/technical/djangoda-tehlikeli-template-etiketi-length/" />
   <meta property="twitter:title" content="Ana Sayfa" />
   <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
   <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
@@ -159,9 +159,37 @@
     </nav>
   </header>
   <main>
-  <h1>Resume</h1>
-  <p><a href="resume.html">Buraya tıklayarak özgeçmişimi görüntüleyebilirsiniz.</a>
-(İngilizcedir)</p>
+  <h1>Django&#39;da tehlikeli template etiketi: length.</h1>
+  <p>Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni'den ayrıldım onu bilhare anlatırım.) Template içerisinde bir QuerySet length template filtresiyle çağırılıyordu:</p>
+<pre class="prettyprint"><code>{% if BlaBla.all|length == 5 %}
+    ..
+{% endif %}</code></pre><p>length template filtresini açıp baktığımda verilen değeri len fonksiyonuna geçirdiğini <a href="https://github.com/django/django/blob/master/django/template/defaultfilters.py#L577">gördüm</a>:</p>
+<pre class="prettyprint"><code>@register.filter(is_safe=False)
+def length(value):
+    """Returns the length of the value - useful for lists."""
+    try:
+        return len(value)
+    except (ValueError, TypeError):
+        return 0</code></pre><p>İşte tam da arıza burada başlıyor. Len fonksiyonu ile bir QuerySet'in uzunluğunu almaya çalıştığınızda QuerySet'in tamamını veritabanından alıp, bir listeye dönüştürüp ardından listenin uzunluğunu alıyor. Bu da devasa tablolarda hem memory sıkıntısı, hem de veritabanı sunucularını gereksiz meşgul etmek demek. Sqldebugshell ile len metodunun nasıl bir sorgu çalıştırdığına baktığımda manzara şu şekilde:</p>
+<pre class="prettyprint"><code>In [6]: len(BlaBla.objects.all())
+
+SELECT `c..`.`id`,
+       `c..`.`i..`,
+       `c..`.`p..`,
+       `c..`.`c..`,
+       `c..`.`s..`,
+       `c..`.`i..`,
+       `c..`.`i..`,
+       `c..`.`u..`,
+       `c..`.`u..`,
+       `c..`.`s..`,
+       `c..`.`c..`,
+       `channel_customstream`.`t..`
+FROM `channel_customstream`</code></pre><p>Görüldüğü üzere o modele ait her şeyi toplayarak alan bir sorgu oluşturdu. Halbuki count metodu QuerySet'lerin direkt olarak veritabanında Count çalıştırması sağlanabiliyor:</p>
+<pre class="prettyprint"><code>In [5]: CustomStream.objects.count()
+
+SELECT COUNT(*)
+FROM `channel_customstream`</code></pre><p>Diyeceğim o ki, length etiketini count sorgusu yaptığını sanarak kullanmayınız.</p>
 
 </main>
 </body>
