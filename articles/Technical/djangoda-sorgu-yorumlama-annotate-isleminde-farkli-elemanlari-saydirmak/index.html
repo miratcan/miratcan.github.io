@@ -7,11 +7,10 @@
     body {
       min-height: 100%;
       margin: 0;
-      padding: 0;
       background: #161917;
       color: #B2A497;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 22px;
     }
 
@@ -97,8 +96,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding-top: 1em;
+      padding-bottom: 1em;
       gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
     }
 
     .pagination {
@@ -131,22 +137,27 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Ana Sayfa — Mirat Can Bayrak</title>
-  <meta name="title" content="Ana Sayfa" />
-  <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
+  <title>Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak. — Mirat Can Bayrak</title>
+  <meta name="title" content="Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak." />
+  <meta name="description" content="Python İstanbul mail grubuna ilginç bir soru geldi, buraya not edeyim dedim. Arkadaşın bir Category, Author ve Post adında üç adet modeli var: class..." />
   <link rel='canonical' href="https://mirat.dev/articles/technical/djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/">
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:url" content="https://mirat.dev/articles/technical/djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/" />
-  <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
-  <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="og:title" content="Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak. - Mirat Can Bayrak" />
+  <meta property="og:description" content="Python İstanbul mail grubuna ilginç bir soru geldi, buraya not edeyim dedim. Arkadaşın bir Category, Author ve Post adında üç adet modeli var: class..." />
+  <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
     content="https://mirat.dev/articles/technical/djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/" />
-  <meta property="twitter:title" content="Ana Sayfa" />
-  <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="twitter:title" content="Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak." />
+  <meta property="twitter:description" content="Python İstanbul mail grubuna ilginç bir soru geldi, buraya not edeyim dedim. Arkadaşın bir Category, Author ve Post adında üç adet modeli var: class..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
   
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+
 </head>
 
 <body>
@@ -159,22 +170,23 @@
     </nav>
   </header>
   <main>
-  <h1>Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak.</h1>
-  <p>Python İstanbul mail grubuna <a href="https://groups.google.com/forum/?fromgroups#!topic/python-istanbul/IAscvyQ7Euk">ilginç bir soru geldi</a>, buraya not edeyim dedim.</p>
+
+<h1>Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak.</h1>
+<p>Python İstanbul mail grubuna <a href="https://groups.google.com/forum/?fromgroups#!topic/python-istanbul/IAscvyQ7Euk">ilginç bir soru geldi</a>, buraya not edeyim dedim.</p>
 <p>Arkadaşın bir Category, Author ve Post adında üç adet modeli var:</p>
-<pre><code>class Category(models.Model):
-    slug = ...
-    name = ...
+<pre class="prettyprint lang-python">
+    class Category(models.Model):
+        slug = ...
+        name = ...
 
-class Post(models.Model)
-    title = ...
-    category = ForeignKey(Category)
-    author = ...
+    class Post(models.Model)
+        title = ...
+        category = ForeignKey(Category)
+        author = ...
 
-class Author(models.Model):
-    name = ...
-</code></pre>
-<p>Sorgulamak istenilen şey ise, kategori listesini her bir kategoride yazısı olan yazar sayılarıyla birlikte listelemek. Yani şöyle bir liste:</p>
+    class Author(models.Model):
+        name = ...
+</pre><p>Sorgulamak istenilen şey ise, kategori listesini her bir kategoride yazısı olan yazar sayılarıyla birlikte listelemek. Yani şöyle bir liste:</p>
 <table>
 <thead><tr>
 <th>category_id</th>
@@ -199,16 +211,27 @@ class Author(models.Model):
 </tbody>
 </table>
 <p>Burada arkadaş bu sonuçları elde edebilmek için aşağıdaki gibi kümeleme kullanmış (<a href="http://miratcan.tumblr.com/post/18246437693/veritaban-sorgular-nda-yorumlama-ve-kumeleme">şurda bahsetmiştim</a>)</p>
-<pre><code>Category.objects.annotate(\
-    author_count=Count('post__author')).order_by('-author_count')&lt;/pre&gt;
-</code></pre>
-<p>Burda beklenilen şey kategorilerin post_author'ların sayımı birlikte gelmesi. Ancak yanlış giden bir şey var ki iki author var ise bunlar 2'şer Post yaptı ise toplam 4 yazar varmış gibi gözüküyor.</p>
+<pre class="prettyprint lang-python">
+    Category.objects.annotate(\
+        author_count=Count('post__author')).order_by('-author_count')</pre>
+</pre><p>Burda beklenilen şey kategorilerin post_author'ların sayımı birlikte gelmesi. Ancak yanlış giden bir şey var ki iki author var ise bunlar 2'şer Post yaptı ise toplam 4 yazar varmış gibi gözüküyor.</p>
 <p>Burada çözüm, yapılan sorguyu tekrarlardan uzak tutarak yapmak. Yani yazarları say ama unique (bunun Türkçe'si nedir?) say dememiz gerekiyor. Bunun için distinct adında bir parametre varmış:</p>
-<pre><code>Category.objects.annotate(\
-    author_count=Count('post__author', distinct=True)
-    ).order_by('-author_count')&lt;/pre&gt;
-</code></pre>
+<pre class="prettyprint lang-python">
+    Category.objects.annotate(\
+        author_count=Count('post__author', distinct=True)
+        ).order_by('-author_count')
+</pre>
+<hr />
+03/2012
 
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 </main>
 </body>
 

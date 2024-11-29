@@ -7,11 +7,10 @@
     body {
       min-height: 100%;
       margin: 0;
-      padding: 0;
       background: #161917;
       color: #B2A497;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 22px;
     }
 
@@ -97,8 +96,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding-top: 1em;
+      padding-bottom: 1em;
       gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
     }
 
     .pagination {
@@ -131,22 +137,27 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Ana Sayfa — Mirat Can Bayrak</title>
-  <meta name="title" content="Ana Sayfa" />
-  <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
+  <title>Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı — Mirat Can Bayrak</title>
+  <meta name="title" content="Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı" />
+  <meta name="description" content="Bu yazı hala yapım aşamasındadır, bulduğunuz eksiklikleri pull request açarak giderebilir ya da issue girerek bildirebilirsiniz. React Facebook..." />
   <link rel='canonical' href="https://mirat.dev/articles/technical/react-notlari/">
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:url" content="https://mirat.dev/articles/technical/react-notlari/" />
-  <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
-  <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="og:title" content="Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı - Mirat Can Bayrak" />
+  <meta property="og:description" content="Bu yazı hala yapım aşamasındadır, bulduğunuz eksiklikleri pull request açarak giderebilir ya da issue girerek bildirebilirsiniz. React Facebook..." />
+  <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
     content="https://mirat.dev/articles/technical/react-notlari/" />
-  <meta property="twitter:title" content="Ana Sayfa" />
-  <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="twitter:title" content="Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı" />
+  <meta property="twitter:description" content="Bu yazı hala yapım aşamasındadır, bulduğunuz eksiklikleri pull request açarak giderebilir ya da issue girerek bildirebilirsiniz. React Facebook..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
   
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+
 </head>
 
 <body>
@@ -159,8 +170,9 @@
     </nav>
   </header>
   <main>
-  <h1>Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı</h1>
-  <blockquote><p>Bu yazı hala yapım aşamasındadır, bulduğunuz eksiklikleri <a href="https://github.com/miratcan/miratcan.github.io/blob/source/content/blog/react-notlari/contents.lr">pull request açarak</a> giderebilir ya da <a href="https://github.com/miratcan/miratcan.github.io/issues">issue girerek</a> bildirebilirsiniz.</p>
+
+<h1>Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı</h1>
+<blockquote><p>Bu yazı hala yapım aşamasındadır, bulduğunuz eksiklikleri <a href="https://github.com/miratcan/miratcan.github.io/blob/source/content/blog/react-notlari/contents.lr">pull request açarak</a> giderebilir ya da <a href="https://github.com/miratcan/miratcan.github.io/issues">issue girerek</a> bildirebilirsiniz.</p>
 </blockquote>
 <p>React Facebook tarafından ortalara atılmış bir javascript kütüphanesi. MVC desenli tasarımlarda V (View) katmanını oluşturduğu söylense de redux gibi kütüphanelerle birleştiğinde başlı başına bir çalışma tasarım şemasına sahip olduğunuz söyleniyor. Bu yazıda sıfırdan başlayarak react native ile bir uygulama geliştirmeye çalışacağız.</p>
 <blockquote><p>Okumadan Önce:</p>
@@ -302,6 +314,17 @@ AppRegistry.registerComponent('ReactHello', () => ReactHello);</code></pre><p>Ku
 <li><a href="https://facebook.github.io/react/docs/jsx-in-depth.html">https://facebook.github.io/react/docs/jsx-in-depth.html</a></li>
 </ul>
 
+<hr />
+
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 </main>
 </body>
 

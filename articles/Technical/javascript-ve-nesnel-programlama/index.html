@@ -7,11 +7,10 @@
     body {
       min-height: 100%;
       margin: 0;
-      padding: 0;
       background: #161917;
       color: #B2A497;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 22px;
     }
 
@@ -97,8 +96,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding-top: 1em;
+      padding-bottom: 1em;
       gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
     }
 
     .pagination {
@@ -131,22 +137,27 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Ana Sayfa — Mirat Can Bayrak</title>
-  <meta name="title" content="Ana Sayfa" />
-  <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
+  <title>Javascript ve Nesnel Programlama — Mirat Can Bayrak</title>
+  <meta name="title" content="Javascript ve Nesnel Programlama" />
+  <meta name="description" content="Bu yazıyı bitmiş bir makale değil de benim tuttuğum notlardan oluşan bir yazı olarak düşünmek daha doğru. O yüzden bölük bölçük ve bitmemiş durumda..." />
   <link rel='canonical' href="https://mirat.dev/articles/technical/javascript-ve-nesnel-programlama/">
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:url" content="https://mirat.dev/articles/technical/javascript-ve-nesnel-programlama/" />
-  <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
-  <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="og:title" content="Javascript ve Nesnel Programlama - Mirat Can Bayrak" />
+  <meta property="og:description" content="Bu yazıyı bitmiş bir makale değil de benim tuttuğum notlardan oluşan bir yazı olarak düşünmek daha doğru. O yüzden bölük bölçük ve bitmemiş durumda..." />
+  <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
     content="https://mirat.dev/articles/technical/javascript-ve-nesnel-programlama/" />
-  <meta property="twitter:title" content="Ana Sayfa" />
-  <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="twitter:title" content="Javascript ve Nesnel Programlama" />
+  <meta property="twitter:description" content="Bu yazıyı bitmiş bir makale değil de benim tuttuğum notlardan oluşan bir yazı olarak düşünmek daha doğru. O yüzden bölük bölçük ve bitmemiş durumda..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
   
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+
 </head>
 
 <body>
@@ -159,8 +170,9 @@
     </nav>
   </header>
   <main>
-  <h1>Javascript ve Nesnel Programlama</h1>
-  <blockquote><p>Bu yazıyı bitmiş bir makale değil de benim tuttuğum notlardan oluşan bir yazı olarak düşünmek daha doğru. O yüzden bölük bölçük ve bitmemiş durumda zamanla düzelte düzelte adam edeceğim.</p>
+
+<h1>Javascript ve Nesnel Programlama</h1>
+<blockquote><p>Bu yazıyı bitmiş bir makale değil de benim tuttuğum notlardan oluşan bir yazı olarak düşünmek daha doğru. O yüzden bölük bölçük ve bitmemiş durumda zamanla düzelte düzelte adam edeceğim.</p>
 </blockquote>
 <p>Baya bir süredir Javascript kullanırım ancak bu kullanım var olan <a href="http://jquery.com/">JQuery</a> pluginlerini doğru dürüst entegre etmek, gerekirse bir iki fonksiyon yazmaktan öteye geçmez. Son bir iş var yapmam gereken ve pek öyle basit bir iş değil adam akıllı bir <a href="http://tr.wikipedia.org/wiki/Model-view-controller">MVC</a> yapısı kurmam, gerekli. Önce Backbone.js kullanmayı denesem de, Backbone'un view katmanının <a href="http://tr.wikipedia.org/wiki/Document_Object_Model">DOM</a> elemanlarını manuple edecek şekilde hazırlanmış olması işi bozdu. Zira benim yapacağım iş kullanıcıya <a href="http://www.w3schools.com/html5/html5_canvas.asp">canvas</a> üzerinde bir takım resimler çizdirmek.</p>
 <p>Javascript ile Nesne Yönelimli Programlamaya dair tuttuğum notlar şu şekilde</p>
@@ -251,6 +263,17 @@ b.__proto__ = a
 b.hello()
 > hello!</code></pre><p>Bu arada yeri gelmişken hemen belirtmek gerekir ki <em>new</em> ifadesi ise aslında yeni bir obje oluştururken, ona verdiğiniz inşa edici fonksiyonun prototipine bakıyor.</p>
 
+<hr />
+06/2012
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 </main>
 </body>
 

@@ -7,11 +7,10 @@
     body {
       min-height: 100%;
       margin: 0;
-      padding: 0;
       background: #161917;
       color: #B2A497;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 22px;
     }
 
@@ -97,8 +96,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding-top: 1em;
+      padding-bottom: 1em;
       gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
     }
 
     .pagination {
@@ -131,22 +137,24 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Ana Sayfa — Mirat Can Bayrak</title>
-  <meta name="title" content="Ana Sayfa" />
-  <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
+  <title>Tornado ve Node.js Arasında Seçim Yapmak — Mirat Can Bayrak</title>
+  <meta name="title" content="Tornado ve Node.js Arasında Seçim Yapmak" />
+  <meta name="description" content="Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim..." />
   <link rel='canonical' href="https://mirat.dev/articles/technical/tornado-ve-nodejs-arasinda-secim-yapmak/">
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:url" content="https://mirat.dev/articles/technical/tornado-ve-nodejs-arasinda-secim-yapmak/" />
-  <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
-  <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="og:title" content="Tornado ve Node.js Arasında Seçim Yapmak - Mirat Can Bayrak" />
+  <meta property="og:description" content="Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim..." />
+  <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
     content="https://mirat.dev/articles/technical/tornado-ve-nodejs-arasinda-secim-yapmak/" />
-  <meta property="twitter:title" content="Ana Sayfa" />
-  <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="twitter:title" content="Tornado ve Node.js Arasında Seçim Yapmak" />
+  <meta property="twitter:description" content="Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
   
+  
+
 </head>
 
 <body>
@@ -159,8 +167,9 @@
     </nav>
   </header>
   <main>
-  <h1>Tornado ve Node.js Arasında Seçim Yapmak</h1>
-  <p>Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim için. Hem bir sosyal medya aracının oluşturulurken ne gibi badireler atlattığını görmüş oldum. Hem de bir yazılım geliştirici olarak daha önce hiç el atmadığım meselelere el atmak durumunda kaldım. Benim için oldukça çetrefilli ama bir yandan da oldukça zevkli bir iş oldu. Keşke daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarımız tekrar kesişir.</p>
+
+<h1>Tornado ve Node.js Arasında Seçim Yapmak</h1>
+<p>Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim için. Hem bir sosyal medya aracının oluşturulurken ne gibi badireler atlattığını görmüş oldum. Hem de bir yazılım geliştirici olarak daha önce hiç el atmadığım meselelere el atmak durumunda kaldım. Benim için oldukça çetrefilli ama bir yandan da oldukça zevkli bir iş oldu. Keşke daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarımız tekrar kesişir.</p>
 <p>Şu anda ise ilk göz ağrım bilsin'i tekrar ayağa kaldırmak için elime bir fırsat geçti. Geçerli sosyal medya araçlarının zayıflığı ve bilsin'in neden güçlü bir araç olacağı konusunda okuldaki jüriye yaptığım sunum oldukça ikna edici oldu ve şu bilsin resmi olarak bitirme projem haline dönüştü. Ancak çok çalışmam gerek çünkü şu anda her ne kadar kırık dökük de olsa çalışan bir alet (tool) görünümü verse de aslında kafamdaki ideolojiden ve sağlamlıktan uzak durumda.</p>
 <p>Projeye daha önce başlarken yaptığım yanlış teknoloji seçimlerini ve kervan yolda düzülür diyip yolda yol değiştirmeleri (gerçekten çok fazla enerji ve kaybı oluyor) tekrar yaşamamak için mümkün olduğunca belgeli, planlı davranmaya çalışıyor. Çıkacak sorunları mümkün olduğunca ön görmeye çalışıyorum. Blog üzerinden çok fazla ayrıntı vermeyi uygun görmüyorum ama projenin %90'ının sağlam restFul api oluşturmaktan geçtiğini ve mümkün olduğunca akışkan bir yapıda olacağını söyleyebilirim. Tabi bu noktada Django kullanmak bir az saçma oluyor zira api yazmak için context processorlere ya da template sistemine ihtiyaç duymuyorum. Bunun yanında Django ile long pooling yapmak ya da websockets kullanmak deveyi at yarışına sokmak gibi bir şey olurdu.</p>
 <p>Bu noktada Node.js gel beni kullan diye göz kırpıyor, diğer kolumda da Tornado var. Bunları kendimce karşılaştırmaya çalıştım ancak eğer yanlış bilgi verdiğimi, yanıldığımı düşünüyorsanız lütfen yorum bırakın.</p>
@@ -220,6 +229,17 @@
 <li>Node.js is Cancer</li>
 </ul>
 
+<hr />
+07/2016
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 </main>
 </body>
 

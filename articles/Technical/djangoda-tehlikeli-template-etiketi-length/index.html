@@ -7,11 +7,10 @@
     body {
       min-height: 100%;
       margin: 0;
-      padding: 0;
       background: #161917;
       color: #B2A497;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 22px;
     }
 
@@ -97,8 +96,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding-top: 1em;
+      padding-bottom: 1em;
       gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
     }
 
     .pagination {
@@ -131,22 +137,27 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Ana Sayfa — Mirat Can Bayrak</title>
-  <meta name="title" content="Ana Sayfa" />
-  <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
+  <title>Django&#39;da tehlikeli template etiketi: length. — Mirat Can Bayrak</title>
+  <meta name="title" content="Django&#39;da tehlikeli template etiketi: length." />
+  <meta name="description" content="Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni&#39;den ayrıldım onu bilhare..." />
   <link rel='canonical' href="https://mirat.dev/articles/technical/djangoda-tehlikeli-template-etiketi-length/">
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:url" content="https://mirat.dev/articles/technical/djangoda-tehlikeli-template-etiketi-length/" />
-  <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
-  <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="og:title" content="Django&#39;da tehlikeli template etiketi: length. - Mirat Can Bayrak" />
+  <meta property="og:description" content="Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni&#39;den ayrıldım onu bilhare..." />
+  <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
     content="https://mirat.dev/articles/technical/djangoda-tehlikeli-template-etiketi-length/" />
-  <meta property="twitter:title" content="Ana Sayfa" />
-  <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
+  <meta property="twitter:title" content="Django&#39;da tehlikeli template etiketi: length." />
+  <meta property="twitter:description" content="Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni&#39;den ayrıldım onu bilhare..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
   
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+
 </head>
 
 <body>
@@ -159,8 +170,9 @@
     </nav>
   </header>
   <main>
-  <h1>Django&#39;da tehlikeli template etiketi: length.</h1>
-  <p>Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni'den ayrıldım onu bilhare anlatırım.) Template içerisinde bir QuerySet length template filtresiyle çağırılıyordu:</p>
+
+<h1>Django&#39;da tehlikeli template etiketi: length.</h1>
+<p>Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni'den ayrıldım onu bilhare anlatırım.) Template içerisinde bir QuerySet length template filtresiyle çağırılıyordu:</p>
 <pre class="prettyprint"><code>{% if BlaBla.all|length == 5 %}
     ..
 {% endif %}</code></pre><p>length template filtresini açıp baktığımda verilen değeri len fonksiyonuna geçirdiğini <a href="https://github.com/django/django/blob/master/django/template/defaultfilters.py#L577">gördüm</a>:</p>
@@ -191,6 +203,17 @@ FROM `channel_customstream`</code></pre><p>Görüldüğü üzere o modele ait he
 SELECT COUNT(*)
 FROM `channel_customstream`</code></pre><p>Diyeceğim o ki, length etiketini count sorgusu yaptığını sanarak kullanmayınız.</p>
 
+<hr />
+01/2014
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 </main>
 </body>
 
