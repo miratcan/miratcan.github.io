@@ -8,36 +8,45 @@ Python İstanbul mail grubuna [ilginç bir soru geldi](https://groups.google.com
 
 Arkadaşın bir Category, Author ve Post adında üç adet modeli var:
 
-    class Category(models.Model):
-        slug = ...
-        name = ...
-    
-    class Post(models.Model)
-        title = ...
-        category = ForeignKey(Category)
-        author = ...
-    
-    class Author(models.Model):
-        name = ...
+<pre class="prettyprint lang-python">
+class Category(models.Model):
+    slug = ...
+    name = ...
+
+class Post(models.Model)
+    title = ...
+    category = ForeignKey(Category)
+    author = ...
+
+class Author(models.Model):
+    name = ...
+</pre>
 
 Sorgulamak istenilen şey ise, kategori listesini her bir kategoride yazısı olan yazar sayılarıyla birlikte listelemek. Yani şöyle bir liste:
 
-| category_id | category | name | author_count | 
-|--------------|----------|------|--------------|---|
-| 2 | Django | 4 | 1 | 
-| 1 | Python | 3 | 3 |
+| category_id  | category | name | author_count | 
+|--------------|----------|------|--------------|
+| 2            | Django   | 4    | 1            |
+| 1            | Python   | 3    | 3            |
 
 Burada arkadaş bu sonuçları elde edebilmek için aşağıdaki gibi kümeleme kullanmış ([şurda bahsetmiştim](http://miratcan.tumblr.com/post/18246437693/veritaban-sorgular-nda-yorumlama-ve-kumeleme))
 
+<pre class="prettyprint lang-python">
     Category.objects.annotate(\
         author_count=Count('post__author')).order_by('-author_count')</pre>
+</pre>
 
 Burda beklenilen şey kategorilerin post_author'ların sayımı birlikte gelmesi. Ancak yanlış giden bir şey var ki iki author var ise bunlar 2'şer Post yaptı ise toplam 4 yazar varmış gibi gözüküyor.
 
 Burada çözüm, yapılan sorguyu tekrarlardan uzak tutarak yapmak. Yani yazarları say ama unique (bunun Türkçe'si nedir?) say dememiz gerekiyor. Bunun için distinct adında bir parametre varmış:
 
+<pre class="prettyprint lang-python">
     Category.objects.annotate(\
         author_count=Count('post__author', distinct=True)
-        ).order_by('-author_count')</pre>
+        ).order_by('-author_count')
+</pre>
+
 ---
 pub_date: 2012-03-16
+---
+has_code: yes

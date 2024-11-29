@@ -1,69 +1,62 @@
-title: Python'da Türkçe Alfabe Almak
+title: Handling Non-Turkish Characters in Forms: A Pythonic Approach
 ---
 pub_date: 2014-07-18
 ---
 body:
 
-Elimde bir iş vardı, eğer bir formda Türkçe olmayan karakterler varsa hata
-kaldırmam gerekliydi. Bunu çözerken Türkçe karakter listesini ilk akla gelen
-metodla oluşturdum. Ve gelen karakterler bu dizinin dışında ise hata kaldırdım.
+Recently, I faced a task where I needed to raise an error if any non-Turkish characters were present in a form input. To address this, I started with the simplest approach: creating a list of Turkish characters manually. If the input contained characters outside this list, an error would be raised. Here's a snippet of my initial implementation:
 
-<pre class="prettyprint"><code># -*- coding: utf-8 -*-
+<pre class="prettyprint lang-python">
+# -*- coding: utf-8 -*-
 def turkish_chars_validator(string):
     turkish_chars = 'ABCÇD...'
-    ...
-</code></pre>
+    # Logic for validation
+</pre>
 
-Sonra kod içerisinde böyle alfabe içeren satır bulunmasın, zira projede hiç bir
-yerde dosya başına coding belirtmiyoruz dedi takım liderimiz. (Merak edenler
-için coding belirtmekten kaçmamızın sebebi bir kere utf-8 girdi mi projedeki
-dosyaların içerisine Türkçe docstring'lerin ve yorumların peydah olmaya
-başlamasıymış.)
+## The Problem with Hardcoding Turkish Characters
 
-Python'da Türkçe harfleri alabileceğim bir kütüphane elbet vardır dedim zira
-lokalizasyon kütüphaneleri içerisinde bir çok değişken ve metod hatırlıyordum
-harflerle ilgili. Girip baktığımda string modülü içerisindeki letters
-değişkenine ulaştım. Kendisi o an set edilmiş **locale** değerini kullanarak
-alfabe getiriyormuş:
+However, my team lead pointed out an issue: our project avoids specifying # -*- coding: utf-8 -*- at the top of files. Including it often leads to Turkish docstrings and comments creeping into the project, which we wanted to avoid for consistency.
 
-<pre class="prettyprint"><code>>>> from locale import LC_ALL, setlocale
->>> setlocale(LC_ALL, 'tr_TR.utf8')
->>> from string import letters
->>> print letters
-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
-</code></pre>
+This led me to think there must be a library in Python that handles Turkish characters, especially since localization libraries often include methods and variables for such tasks. My initial thought was to check the string module, which has a letters variable that adapts to the current locale.
 
-Türkçe karakterleri içermeyen bir sonuç verdi tr_TR.utf8 lokali,
-Turkish_Turkey.1254 ile çağırdığımda ise şunu diziyi döndürdü:
+## Experimenting with the locale Module
+Using the locale module, I tested this approach:
 
-<pre><code>abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
-ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS</code></pre>
+<pre class="prettyprint lang-python">
+from locale import LC_ALL, setlocale
+from string import letters
 
-Görüldüğü üzere bu şekilde yaklaşmak pek umut verici değil. Hem setlocale
-kullanmak Django içerisinde baya sıkıntılı sonuçlar doğuruyor. setlocale
-hakkında şöyle bir yorum bırakmışlar Python dökümantasyonuna:
+setlocale(LC_ALL, 'tr_TR.utf8')
+print(letters)
+</pre>
 
-> It is generally a bad idea to call setlocale() in some library routine, since
-> as a side effect it affects the entire program. Saving and restoring it is
-> almost as bad: it is expensive and affects other threads that happen to run
-> before the settings have been restored.
+To my surprise, the output did not include Turkish-specific characters despite setting the locale to tr_TR.utf8. When I tried Turkish_Turkey.1254, the output was closer but still contained unexpected characters:
 
-Neyse çok uzatmayayım regex kütüphanesini kullanarak da bir kaç deneme
-yaptıktan sonra son olarak basitçe şunu yapıp gönderdim:
+<pre>
+abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
+ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS
+</pre>
 
-<pre class="prettyprint"><code>
-alpha = 'ABC\xc3\x87DEFG\xc4\x9eHI\xc4\xb0JKL' \
-        'MNO\xc3\x96PRS\xc5\x9eTU\xc3\x9cVYZ' \
-        'abc\xc3\xa7defg\xc4\x9fh\xc4\xb1ijklmno\xc3' \
-        '\xb6prs\xc5\x9ftu\xc3\xbcvyz'.decode('utf-8')
- 
+This approach turned out to be unreliable for my requirements. Furthermore, using setlocale in a Django project can lead to significant issues, as noted in Python's documentation:
+
+> It is generally a bad idea to call setlocale() in some library routine, since as a side effect it affects the entire program. Saving and restoring it is almost as bad: it is expensive and affects other threads that happen to run before the settings have been restored.
+
+## The Final Solution
+After trying a few more methods, including regular expressions, I settled on a simple and effective solution. I manually defined the Turkish alphabet as a Unicode string, ensuring it was consistent and covered all cases. Here's the final implementation:
+
+<pre class="prettyprint lang-python">
+alpha = 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ' \
+        'abcçdefgğhıijklmnoöprsştuüvyz'.encode('utf-8').decode('utf-8')
+
 def invalid_chars(text, charset=alpha):
-    return set(filter(lambda c: c not in charset, list(text)))</code></pre>
+    return set(filter(lambda c: c not in charset, list(text)))
+</pre>
 
-Bir problemi çözerken en iyi yol, her zaman ilk akla gelen en basit yol oluyor.
-Problemleri karmaşıklaştırmak biraz mühendis kafası hastalığı sanırım.
+## Lessons Learned
+
+When solving problems, the simplest solution is often the best. Overcomplicating problems is a trap that many engineers, including myself, sometimes fall into. In this case, returning to basics provided a straightforward and reliable fix.
 
 ---
 author: Mirat
 ---
-has_code: no
+has_code: yes
