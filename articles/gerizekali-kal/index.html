@@ -149,22 +149,24 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Ana Sayfa — Mirat Can Bayrak</title>
-  <meta name="title" content="Ana Sayfa" />
-  <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <link rel='canonical' href="https://mirat.dev/resume/">
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mirat.dev/resume/" />
-  <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
-  <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
+  <title>Gerizekalı Kal — Mirat Can Bayrak</title>
+  <meta name="title" content="Gerizekalı Kal" />
+  <meta name="description" content="Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu..." />
+  <link rel='canonical' href="https://mirat.dev/articles/gerizekali-kal/">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mirat.dev/articles/gerizekali-kal/" />
+  <meta property="og:title" content="Gerizekalı Kal - Mirat Can Bayrak" />
+  <meta property="og:description" content="Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu..." />
+  <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/resume/" />
-  <meta property="twitter:title" content="Ana Sayfa" />
-  <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
+    content="https://mirat.dev/articles/gerizekali-kal/" />
+  <meta property="twitter:title" content="Gerizekalı Kal" />
+  <meta property="twitter:description" content="Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
   
+  
+
 </head>
 
 <body>
@@ -178,10 +180,30 @@
     </nav>
   </header>
   <main>
-  <h1>Resume</h1>
-  <p><a href="resume.html">Buraya tıklayarak özgeçmişimi görüntüleyebilirsiniz.</a>
-(İngilizcedir)</p>
 
+07/2016
+<h1>Gerizekalı Kal</h1>
+<p>Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu sebepten yapıyorum. Mesela geçen gün şöyle bir şey yapmışım:</p>
+<pre><code>val = ... # (1)
+try:
+    a = int(val)
+except ValueError:
+    a = None
+</code></pre>
+<p>Burada val değeri integer, integer'a çevirilebilir bir string ya da None gelecek (1). Ben de demişim ki eğer None gelirse None set edeyim, diğer durumlarda ise integer'a çevireyim. Zira int fonksiyonunun integer'a çeviremediğinde ValueError kaldırdığından eminim. Bu kodu çalıştırmaya bile ihtiyaç duymadan göndermişim (burada kendime hakaretler yağdırıyorum) Sonra anladım ki int(None) ValueError değil TypeError kaldırıyor. Kodum testten döndü :)</p>
+<p>Geliştirme yaparken tek satırdaki tırnak işaretini değiştirsek o satırın çalışıp çalışmadığını görmeden hiç bir yere göndermemek, kendini gerizekalı kabul etmek gerek.</p>
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 </main>
 </body>
 

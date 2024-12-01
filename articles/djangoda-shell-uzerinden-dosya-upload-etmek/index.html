@@ -149,22 +149,24 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Ana Sayfa — Mirat Can Bayrak</title>
-  <meta name="title" content="Ana Sayfa" />
-  <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <link rel='canonical' href="https://mirat.dev/resume/">
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mirat.dev/resume/" />
-  <meta property="og:title" content="Ana Sayfa - Mirat Can Bayrak" />
-  <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
+  <title>Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir? — Mirat Can Bayrak</title>
+  <meta name="title" content="Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir?" />
+  <meta name="description" content="Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var: from django.db import models class Photo(models.Model): image =..." />
+  <link rel='canonical' href="https://mirat.dev/articles/djangoda-shell-uzerinden-dosya-upload-etmek/">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mirat.dev/articles/djangoda-shell-uzerinden-dosya-upload-etmek/" />
+  <meta property="og:title" content="Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir? - Mirat Can Bayrak" />
+  <meta property="og:description" content="Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var: from django.db import models class Photo(models.Model): image =..." />
+  <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/resume/" />
-  <meta property="twitter:title" content="Ana Sayfa" />
-  <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
+    content="https://mirat.dev/articles/djangoda-shell-uzerinden-dosya-upload-etmek/" />
+  <meta property="twitter:title" content="Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir?" />
+  <meta property="twitter:description" content="Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var: from django.db import models class Photo(models.Model): image =..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
   
+  
+
 </head>
 
 <body>
@@ -178,10 +180,33 @@
     </nav>
   </header>
   <main>
-  <h1>Resume</h1>
-  <p><a href="resume.html">Buraya tıklayarak özgeçmişimi görüntüleyebilirsiniz.</a>
-(İngilizcedir)</p>
 
+07/2012
+<h1>Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir?</h1>
+<p>Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var:</p>
+<pre><code>from django.db import models
+
+class Photo(models.Model):
+    image = models.ImageField(upload_to="/photos/")&lt;/pre&gt;
+</code></pre>
+<p>Bu modelden bir adet örnek oluşturmak ve ilgili image dosyasını shell üzerinden upload etmek istiyorum, o zaman ne yapıyorum?</p>
+<pre><code>...: from hede.models import Photo
+...: from django.core.files import File
+...: photo = Photo.objects.create(
+         image=File(open("dosyaya/giden/yol.jpg", "r")))&lt;/pre&gt;
+</code></pre>
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 </main>
 </body>
 

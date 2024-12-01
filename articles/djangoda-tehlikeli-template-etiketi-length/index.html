@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: #161917;
+      color: #B2A497;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    pre {
+      padding: 2em;
+      background: #261917;
+      font-size: .8em;
+    }
+
+    code {
+      border: 1px dashed gray;
+      font-size: 0.8em;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      line-height: 1.73em;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      line-height: 1.61em;
+    }
+
+    h3 {
+      line-height: 1.48em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: wheat;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 0 10px;
+      border-left: 5px solid #B2A497
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+
+    ul {
+      margin: 8px 0 0 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    ul#articles li {
+      list-style-type: none !important;
+      color: gray;
+    }
+
+    ul#articles {
+      padding: 0
+    }
+
+    body {}
+
+    a {
+      text-decoration: none;
+      color: darkkhaki;
+    }
+
+    a.active {
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: wheat;
+    }
+
+    main {
+      margin: 40px auto;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    img {
+      width: 100%
+    }
+
+    nav {
+      // background: linear-gradient(360deg, #6e1313, #9B2821);
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      gap: 40px;
+    }
+
+    main,
+    header {
+      padding-left: 1em;
+      padding-right: 1em;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
+    }
+
+    .pagination {
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 500px) {
+      main {
+        padding: 20px 5px
+      }
+
+      ul#articles li a {
+        display: block
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
+    crossorigin="anonymous"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="TR-tr">
+
+  
+  
+
+  <!-- Primary Meta Tags -->
+  <title>A Dangerous Template Tag in Django: `length` — Mirat Can Bayrak</title>
+  <meta name="title" content="A Dangerous Template Tag in Django: `length`" />
+  <meta name="description" content="While working on a new project today, I noticed that rendering a particular part of a template was unusually slow. The issue was traced to a QuerySet..." />
+  <link rel='canonical' href="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length/">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length/" />
+  <meta property="og:title" content="A Dangerous Template Tag in Django: `length` - Mirat Can Bayrak" />
+  <meta property="og:description" content="While working on a new project today, I noticed that rendering a particular part of a template was unusually slow. The issue was traced to a QuerySet..." />
+  <meta property="og:image" content="https://mirat.dev" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url"
+    content="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length/" />
+  <meta property="twitter:title" content="A Dangerous Template Tag in Django: `length`" />
+  <meta property="twitter:description" content="While working on a new project today, I noticed that rendering a particular part of a template was unusually slow. The issue was traced to a QuerySet..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
+  
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a  href="/">Home</a>
+      <a  href="/articles/">Articles</a>
+      <a  href="/notes/">Notes</a>
+      <a  href="/projects/">Projects</a>
+      <a target="_blank" href="/resume/resume.html">Resume</a>
+    </nav>
+  </header>
+  <main>
+
+01/2014
+<h1>A Dangerous Template Tag in Django: `length`</h1>
+<p>While working on a new project today, I noticed that rendering a particular part of a template was unusually slow. The issue was traced to a <code>QuerySet</code> being passed through the <code>length</code> template filter:</p>
+<pre class="prettyprint">
+{% if BlaBla.all|length == 5 %}  
+    ..  
+{% endif %}  
+</pre><p>When I checked the implementation of the <code>length</code> filter, I saw that it simply passes the given value to Python's <code>len</code> function (<a href="https://github.com/django/django/blob/master/django/template/defaultfilters.py#L577">source</a>):</p>
+<pre class="prettyprint lang-python">
+@register.filter(is_safe=False)  
+def length(value):  
+    """Returns the length of the value - useful for lists."""  
+    try:  
+        return len(value)  
+    except (ValueError, TypeError):  
+        return 0  
+</pre><p>This is where the trouble begins. If you use <code>len()</code> on a <code>QuerySet</code>, it fetches all the rows from the database, converts them into a list in memory, and then calculates the length of that list. This can cause significant performance issues with large tables, both in terms of memory usage and database server load.</p>
+<p>Using <code>Sqldebugshell</code>, I observed the query executed by the <code>len</code> function on a <code>QuerySet</code>:</p>
+<pre class="prettyprint lang-sql">
+In [6]: len(BlaBla.objects.all())  
+
+SELECT `c..`.`id`,  
+       `c..`.`i..`,  
+       `c..`.`p..`,  
+       `c..`.`c..`,  
+       `c..`.`s..`,  
+       `c..`.`i..`,  
+       `c..`.`i..`,  
+       `c..`.`u..`,  
+       `c..`.`u..`,  
+       `c..`.`s..`,  
+       `c..`.`c..`,  
+       `channel_customstream`.`t..`  
+FROM `channel_customstream`  
+</pre><p>As you can see, it retrieves all columns for every row in the model, causing unnecessary data to be loaded.</p>
+<p>In contrast, the <code>count()</code> method allows <code>QuerySet</code> objects to run a <code>COUNT</code> query directly on the database:</p>
+<pre class="prettyprint lang-sql">
+In [5]: CustomStream.objects.count()  
+
+SELECT COUNT(*)  
+FROM `channel_customstream`  
+</pre><h3>Key Takeaway</h3>
+<p>Do <strong>not</strong> use the <code>length</code> template filter if you expect it to execute a database <code>COUNT</code> query. It doesn’t. Instead, explicitly use the <code>count()</code> method for <code>QuerySet</code> objects to avoid unnecessary memory usage and database overhead.</p>
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+</main>
+</body>
+
+</html>
