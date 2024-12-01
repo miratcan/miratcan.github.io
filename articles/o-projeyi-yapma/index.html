@@ -84,6 +84,10 @@
       text-decoration: underline;
     }
 
+    a.tag {
+      color: darkolivegreen;
+    }
+
     a:hover {
       color: wheat;
     }
@@ -149,20 +153,20 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Bir Projeyi Yapmamaya Nasıl Karar Veriyorum? — Mirat Can Bayrak</title>
-  <meta name="title" content="Bir Projeyi Yapmamaya Nasıl Karar Veriyorum?" />
-  <meta name="description" content="Ben program yazmaya orta okulda merak salmış olsam da ilk Django çalışmaya, büyük bir şey inşa etmeye karar vermem Eskişehir için ilan sitesi yapmak..." />
+  <title>How I Decide Not to Start a Project — Mirat Can Bayrak</title>
+  <meta name="title" content="How I Decide Not to Start a Project" />
+  <meta name="description" content="Although my interest in programming began in middle school, my journey into Django and building something substantial started with an idea to create a..." />
   <link rel='canonical' href="https://mirat.dev/articles/o-projeyi-yapma/">
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://mirat.dev/articles/o-projeyi-yapma/" />
-  <meta property="og:title" content="Bir Projeyi Yapmamaya Nasıl Karar Veriyorum? - Mirat Can Bayrak" />
-  <meta property="og:description" content="Ben program yazmaya orta okulda merak salmış olsam da ilk Django çalışmaya, büyük bir şey inşa etmeye karar vermem Eskişehir için ilan sitesi yapmak..." />
+  <meta property="og:title" content="How I Decide Not to Start a Project - Mirat Can Bayrak" />
+  <meta property="og:description" content="Although my interest in programming began in middle school, my journey into Django and building something substantial started with an idea to create a..." />
   <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
     content="https://mirat.dev/articles/o-projeyi-yapma/" />
-  <meta property="twitter:title" content="Bir Projeyi Yapmamaya Nasıl Karar Veriyorum?" />
-  <meta property="twitter:description" content="Ben program yazmaya orta okulda merak salmış olsam da ilk Django çalışmaya, büyük bir şey inşa etmeye karar vermem Eskişehir için ilan sitesi yapmak..." />
+  <meta property="twitter:title" content="How I Decide Not to Start a Project" />
+  <meta property="twitter:description" content="Although my interest in programming began in middle school, my journey into Django and building something substantial started with an idea to create a..." />
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
@@ -182,23 +186,33 @@
   <main>
 
 07/2016
-<h1>Bir Projeyi Yapmamaya Nasıl Karar Veriyorum?</h1>
-<p>Ben program yazmaya orta okulda merak salmış olsam da ilk Django çalışmaya, büyük bir şey inşa etmeye karar vermem Eskişehir için ilan sitesi yapmak istemem ile başlamıştı. Her zaman hayalini kurduğum şeyleri inşa etmeye çalıştım. Bir internet marangozu olarak bir sürü oyuncak yaptım. Ben oyuncak diyorum yabancılar side-project diyor, garaj projesi diyen de var bunlara. Hala da yenilerini yapma isteği ile doluyum. Ancak artık yeni bir oyuncağın inşasına başlamak oldukça zor oluyor. Baya çok filtreden geçiriyorum artık aklıma gelen fikirleri. Bunları not almak istedim:</p>
-<h2>Gerçek Bir Sorunu Çözmüyorsa Yapma</h2>
-<p>"<em>Şöyle bir şey olsa güzel olurdu</em>" kalıbında bir cümleyle başladıysa at gitsin. İnsanlar güzel şeylere "<em>hmm güzelmiş</em>" der geçer, gerçekten önemseyecekleri şeyler sorunlarını çözüyordur. "<em>İnsanların şöyle bir sorunu var ben de bunu ..... şeklinde çözeceğim</em>" kalıbı ile kurmamış isen ilk cümleni o projeyi yapma.</p>
-<h2>Kendin Kullanmayacaksan Yapma</h2>
-<p>En iyi okuyucun sen olduğun gibi, en iyi müşterin de sensin. Öyle bir şey bul ki kimse kullanmasa bile sen kullan. Hem tutmazsa üzülmezsin.</p>
-<h2>Reklam Geliri Hedefliyorsan Yapma</h2>
-<p>Reklam geliri demek binlerce kişiye ulaşmak, o binlerce kişiyi tekrar tekrar defalarca yaptığın siteye/uygulamaya girmeye ikna etmek demek. Her ne kadar entegrasyonu bir "adsense çakmak" kadar kolay gözükse de gözüktüğü kadar kolay değil.</p>
-<h2>Sonucu Çabuk Görmeyeceksen Yapma</h2>
-<p>Benim 1.5 yıl uğraştığım proje de var, 3 yıl uğraştığım da. Malesef en çok tutanı bir haftada yaptığım oldu: <a href="http://ffanony.appspot.com/">ffanony</a>. Yaptıktan 2 sene sonra bile bir yere iş görüşmesine gittiğimde tanınıyordum. Deneyim olarak görsem de uzun süre harcadığım projeleri harcanmış zaman olarak görüyorum. Eğer elindeki projeyi inşa etmen çalışma saati olarak 1 haftalık mesaiden fazla sürecekse (8x7=54 saat), 3'den fazla sayfadan oluşacak ise yapma.</p>
-<h2>Ne İşe Yaradığını Tek Cümlede Anlatamıyorsan Yapma</h2>
-<p>"<em>Sorulara fotoğraf çekerek cevap verilen soru-cevap platformu.</em>" cümlesi ile resm.in projesini tanımlayabiliyorum. Ama daha önce yaptığım bir cubb.in projesi vardı ki onun ne olduğunu baya paragraf paragraf yazmam lazım. Projenize isim bulduktan sonra ilk iş onu başkasına anlatırken kullanacağınız cümleyi düşünün, eğer cümle üç satırlık bir cümle oluyorsa büyük ihtimalle yanlış yoldasınız demektir. Ben cubb.in projesinde baya "<em>insanlar beni anlamıyo yeaa</em>" diye tribe girmiştim ki salak olan bendim aslında.</p>
-<h2>3 Gün Sonra Hala Heyecanlandırmıyorsa Yapma</h2>
-<p>Bu benim için kişisel bir ölçüt ama heyecanlanıyorsanız kolayca. Aklınıza gelen fikirin üzerine 1 hafta geçsin, bakın bakalım hala heyecanlanıyor musunuz. Eğer heyecan geçiyor ise yapmayın.</p>
-<p>Eğer sizin de aklınıza gelen başka vazgeçme sebepleri varsa lütfen yorum olarak ekleyin. Görüşmek üzere.</p>
+<h1>How I Decide Not to Start a Project</h1>
+<p>Although my interest in programming began in middle school, my journey into Django and building something substantial started with an idea to create a classified ads site for <a href="https://en.wikipedia.org/wiki/Eski%C5%9Fehir">Eskişehir</a>. I've always tried to build things I dream of. As an "internet carpenter," I've crafted many "toys." I call them toys; others might call them side projects or garage projects. Even now, I’m brimming with the desire to create new ones. However, starting a new "toy" has become increasingly difficult. I now run my ideas through several filters before diving in. Here’s a list I wanted to share:</p>
+<h2>If It Doesn't Solve a Real Problem, Don’t Do It</h2>
+<p>If the idea starts with the phrase, <em>"It would be nice if something like this existed,"</em> discard it immediately. People acknowledge "nice" things with a quick <em>"hmm, that’s cool"</em> and move on. Things that truly matter to them solve their actual problems. If you can’t frame your idea as, <em>"People have this problem, and I will solve it by...,"</em> then don’t start that project.</p>
+<h2>If You Won’t Use It Yourself, Don’t Do It</h2>
+<p>Just as you are your best reader, you are also your best customer. Find something so useful that even if no one else uses it, you will. This way, you won’t feel disappointed if it doesn’t gain traction.</p>
+<h2>If You’re Relying on Ad Revenue, Don’t Do It</h2>
+<p>Ad revenue means reaching thousands of users and convincing them to repeatedly return to your site or app. While integrating ads might seem as simple as "just slapping on AdSense," it’s far more complicated in practice.</p>
+<h2>If You Can’t See Results Quickly, Don’t Do It</h2>
+<p>I’ve worked on projects that took me 1.5 years and others that spanned 3 years. Unfortunately, my most successful project was one I made in a week: <a href="http://ffanony.appspot.com/">ffanony</a>. Even two years later, it was recognized during job interviews. While I value the experience, I often see the time spent on long projects as wasted. If building your project will take more than a week of full-time effort (54 hours) or will require more than three pages, don’t do it.</p>
+<h2>If You Can’t Explain It in One Sentence, Don’t Do It</h2>
+<p>For example, I can summarize my project <em>resm.in</em> in one sentence: <em>"A Q&amp;A platform where users answer questions by taking photos."</em> However, I had another project called <em>cubb.in</em> that required paragraphs to explain. After naming your project, think about how you’ll describe it to someone. If it takes a three-line sentence to explain, you’re probably on the wrong track. With <em>cubb.in,</em> I spent a lot of time lamenting, <em>"Why don’t people understand me?"</em> The real problem was me, not them.</p>
+<h2>If You’re Not Excited About It After Three Days, Don’t Do It</h2>
+<p>This one is personal but crucial. If an idea excites you, give it a week. Revisit it after some time and see if you’re still excited. If the excitement fades, don’t pursue it.</p>
+<hr>
+<p>If you have any other reasons for deciding not to pursue a project, feel free to share them in the comments. See you next time!</p>
 
 
+
+  <ul>
+    <li>
+        <a href="../tag/entrepreneural/">
+          All posts tagged entrepreneural
+        </a>
+      </li>
+    
+  </ul>
 
 
 <script src="https://utteranc.es/client.js"
