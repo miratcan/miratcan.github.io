@@ -4,18 +4,26 @@ body:
 
 Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var:
 
-    from django.db import models
+<pre class="prettyprint lang-python">
+from django.db import models
 
-    class Photo(models.Model):
-        image = models.ImageField(upload_to="/photos/")</pre>
+class Photo(models.Model):
+    image = models.ImageField(upload_to="/photos/")</pre>
+</pre>
 
 Bu modelden bir adet örnek oluşturmak ve ilgili image dosyasını shell üzerinden upload etmek istiyorum, o zaman ne yapıyorum?
 
-    ...: from hede.models import Photo
-    ...: from django.core.files import File
-    ...: photo = Photo.objects.create(
-             image=File(open("dosyaya/giden/yol.jpg", "r")))</pre>
+<pre class="prettyprint lang-python">
+...: from hede.models import Photo
+...: from django.core.files import File
+...: photo = Photo.objects.create(
+         image=File(open("dosyaya/giden/yol.jpg", "r")))
+</pre>
 ---
 author: Mirat
 ---
 pub_date: 2012-07-29
+---
+tags: technical
+---
+has_code: yes

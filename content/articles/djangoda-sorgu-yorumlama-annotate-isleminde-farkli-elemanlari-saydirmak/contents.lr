@@ -50,3 +50,5 @@ Burada çözüm, yapılan sorguyu tekrarlardan uzak tutarak yapmak. Yani yazarla
 pub_date: 2012-03-16
 ---
 has_code: yes
+---
+tags: technical

@@ -6,7 +6,6 @@ has_code: true
 ---
 author: Mirat
 ---
-
 body:
 
 > Bu yazıyı bitmiş bir makale değil de benim tuttuğum notlardan oluşan bir yazı olarak düşünmek daha doğru. O yüzden bölük bölçük ve bitmemiş durumda zamanla düzelte düzelte adam edeceğim.
@@ -143,3 +142,5 @@ b.hello()
 
 Bu arada yeri gelmişken hemen belirtmek gerekir ki _new_ ifadesi ise aslında yeni bir obje oluştururken, ona verdiğiniz inşa edici fonksiyonun prototipine bakıyor.
 
+---
+tags: technical
