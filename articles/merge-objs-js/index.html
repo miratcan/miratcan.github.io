@@ -138,22 +138,27 @@
   
 
   <!-- Primary Meta Tags -->
-  <title> — Mirat Can Bayrak</title>
-  <meta name="title" content="" />
-  <meta name="description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <link rel='canonical' href="https://mirat.dev/articles/">
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mirat.dev/articles/" />
-  <meta property="og:title" content=" - Mirat Can Bayrak" />
-  <meta property="og:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="og:image" content="https://mirat.dev/miratcan.jpeg" />
+  <title>How to merge two objects in javascript? — Mirat Can Bayrak</title>
+  <meta name="title" content="How to merge two objects in javascript?" />
+  <meta name="description" content="1. Using the Spread Operator (...) const obj1 = { a: 1, b: 2 }; const obj2 = { c: 3, d: 4 }; const obj3 = { ...obj1, ...obj2 }; console.log(obj3); //..." />
+  <link rel='canonical' href="https://mirat.dev/articles/merge-objs-js/">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mirat.dev/articles/merge-objs-js/" />
+  <meta property="og:title" content="How to merge two objects in javascript? - Mirat Can Bayrak" />
+  <meta property="og:description" content="1. Using the Spread Operator (...) const obj1 = { a: 1, b: 2 }; const obj2 = { c: 3, d: 4 }; const obj3 = { ...obj1, ...obj2 }; console.log(obj3); //..." />
+  <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/articles/" />
-  <meta property="twitter:title" content="" />
-  <meta property="twitter:description" content="Saçma proje üreticisi, kız babası, yazılım geliştiricisi" />
-  <meta property="twitter:image" content="https://mirat.dev/miratcan.jpeg" />
+    content="https://mirat.dev/articles/merge-objs-js/" />
+  <meta property="twitter:title" content="How to merge two objects in javascript?" />
+  <meta property="twitter:description" content="1. Using the Spread Operator (...) const obj1 = { a: 1, b: 2 }; const obj2 = { c: 3, d: 4 }; const obj3 = { ...obj1, ...obj2 }; console.log(obj3); //..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
   
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+
 </head>
 
 <body>
@@ -184,88 +189,43 @@
   </header>
   <main>
 
-<nav>
-  
-  
-  <a href="/articles/tag/entrepreneural/">entrepreneural</a>
-  
-  
-  
-  <a href="/articles/tag/personal/">personal</a>
-  
-  
-  
-  <a href="/articles/tag/technical/">technical</a>
-  
-  
-  
-  <a href="/articles/tag/entrepreneurial/">entrepreneurial</a>
-  
-  
-  
-  <a href="/articles/tag/javascript-notes/">javascript-notes</a>
-  
-  
-</nav>
+12/2024
+<h1>How to merge two objects in javascript?</h1>
+<h2>1. Using the Spread Operator (<code>...</code>)</h2>
+<pre class="prettyprint lang-js">
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+
+const obj3 = { ...obj1, ...obj2 };
+console.log(obj3); // Output: { a: 1, b: 2, c: 3, d: 4 }
+</pre><h3>2. Using <code>Object.assign()</code></h3>
+<pre class="prettyprint lang-js">
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+
+const obj3 = Object.assign({}, obj1, obj2);
+console.log(obj3); // Output: { a: 1, b: 2, c: 3, d: 4 }
+</pre>
 
 
-<ul id="articles">
-  
+  <ul>
     <li>
-      <a href="merge-objs-js/">How to merge two objects in javascript?</a> <small>12/2024</small>
-    </li>
-  
-    <li>
-      <a href="bueyuek-kizim-hakkinda/">My Olive</a> <small>10/2023</small>
-    </li>
-  
-    <li>
-      <a href="161-satir-javascript-ile-10k-dolar-yapmak/">Earning $10K with 161 Lines of JavaScript</a> <small>09/2023</small>
-    </li>
-  
-    <li>
-      <a href="neden-blog-yazamiyorsun/">Why Can&#39;t You Blog?</a> <small>08/2023</small>
-    </li>
-  
-    <li>
-      <a href="internetguzeldir-in-akibeti/">InternetGuzeldir&#39;in Akibeti</a> <small>08/2023</small>
-    </li>
-  
-    <li>
-      <a href="terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/">Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım</a> <small>08/2023</small>
-    </li>
-  
-    <li>
-      <a href="bir-evcil-hayvan-olarak-salyangoz/">Snails as Pets: Why I Chose Them?</a> <small>12/2022</small>
-    </li>
-  
-    <li>
-      <a href="web3e-asina-olmayan-birine-nftyi-nasil-aciklarsiniz/">How to Explain NFTs to Someone Unfamiliar with Web3</a> <small>11/2022</small>
-    </li>
-  
-    <li>
-      <a href="kod-repolarini-diskimde-nasil-sakliyorum/">How I Store My Code Repositories on Disk?</a> <small>11/2022</small>
-    </li>
-  
-    <li>
-      <a href="yazilimci-girisimciler-nereye-gitti/">Why Developer Entrepreneurs Becoming Fewer?</a> <small>11/2022</small>
-    </li>
-  
-</ul>
-  
-
-<div class="pagination">
-  
-  <span class="disabled">&laquo; Previous</span>
-  
-  | 1 |
-  
-  <a href="page/2/">Next &raquo;</a>
-  
-</div>
+        <a href="../tag/javascript-notes/">
+          All posts tagged javascript-notes
+        </a>
+      </li>
+    
+  </ul>
 
 
-
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 </main>
 </body>
 
