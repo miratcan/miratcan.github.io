@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: #161917;
+      color: #B2A497;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    pre {
+      padding: 2em;
+      background: #261917;
+      font-size: .8em;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      line-height: 1.73em;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      line-height: 1.61em;
+    }
+
+    h3 {
+      line-height: 1.48em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: wheat;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 0 10px;
+      border-left: 5px solid #B2A497
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+
+    ul {
+      margin: 8px 0 0 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    ul#articles li {
+      list-style-type: none !important;
+      color: gray;
+    }
+
+    ul#articles {
+      padding: 0
+    }
+
+    body {}
+
+    a {
+      text-decoration: none;
+      color: darkkhaki;
+    }
+
+    a:hover {
+      color: wheat;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    img {
+      width: 100%
+    }
+
+    nav {
+      background: linear-gradient(360deg, #6e1313, #9B2821);
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .pagination {
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 500px) {
+      main {
+        padding: 20px 5px
+      }
+
+      ul#articles li a {
+        display: block
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
+    crossorigin="anonymous"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="TR-tr">
+
+  
+  
+
+  <!-- Primary Meta Tags -->
+  <title>Tornado ve Node.js Arasında Seçim Yapmak — Mirat Can Bayrak</title>
+  <meta name="title" content="Tornado ve Node.js Arasında Seçim Yapmak" />
+  <meta name="description" content="Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim..." />
+  <link rel='canonical' href="https://mirat.dev/articles/tornado-ve-nodejs-arasinda-secim-yapmak/">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mirat.dev/articles/tornado-ve-nodejs-arasinda-secim-yapmak/" />
+  <meta property="og:title" content="Tornado ve Node.js Arasında Seçim Yapmak - Mirat Can Bayrak" />
+  <meta property="og:description" content="Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim..." />
+  <meta property="og:image" content="https://mirat.dev" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url"
+    content="https://mirat.dev/articles/tornado-ve-nodejs-arasinda-secim-yapmak/" />
+  <meta property="twitter:title" content="Tornado ve Node.js Arasında Seçim Yapmak" />
+  <meta property="twitter:description" content="Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
+  
+  
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/projects/">Projects</a>
+      <a target="_blank" href="/resume/resume.html">Resume</a>
+    </nav>
+  </header>
+  <main>
+
+<h1>Tornado ve Node.js Arasında Seçim Yapmak</h1>
+<p>Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim için. Hem bir sosyal medya aracının oluşturulurken ne gibi badireler atlattığını görmüş oldum. Hem de bir yazılım geliştirici olarak daha önce hiç el atmadığım meselelere el atmak durumunda kaldım. Benim için oldukça çetrefilli ama bir yandan da oldukça zevkli bir iş oldu. Keşke daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarımız tekrar kesişir.</p>
+<p>Şu anda ise ilk göz ağrım bilsin'i tekrar ayağa kaldırmak için elime bir fırsat geçti. Geçerli sosyal medya araçlarının zayıflığı ve bilsin'in neden güçlü bir araç olacağı konusunda okuldaki jüriye yaptığım sunum oldukça ikna edici oldu ve şu bilsin resmi olarak bitirme projem haline dönüştü. Ancak çok çalışmam gerek çünkü şu anda her ne kadar kırık dökük de olsa çalışan bir alet (tool) görünümü verse de aslında kafamdaki ideolojiden ve sağlamlıktan uzak durumda.</p>
+<p>Projeye daha önce başlarken yaptığım yanlış teknoloji seçimlerini ve kervan yolda düzülür diyip yolda yol değiştirmeleri (gerçekten çok fazla enerji ve kaybı oluyor) tekrar yaşamamak için mümkün olduğunca belgeli, planlı davranmaya çalışıyor. Çıkacak sorunları mümkün olduğunca ön görmeye çalışıyorum. Blog üzerinden çok fazla ayrıntı vermeyi uygun görmüyorum ama projenin %90'ının sağlam restFul api oluşturmaktan geçtiğini ve mümkün olduğunca akışkan bir yapıda olacağını söyleyebilirim. Tabi bu noktada Django kullanmak bir az saçma oluyor zira api yazmak için context processorlere ya da template sistemine ihtiyaç duymuyorum. Bunun yanında Django ile long pooling yapmak ya da websockets kullanmak deveyi at yarışına sokmak gibi bir şey olurdu.</p>
+<p>Bu noktada Node.js gel beni kullan diye göz kırpıyor, diğer kolumda da Tornado var. Bunları kendimce karşılaştırmaya çalıştım ancak eğer yanlış bilgi verdiğimi, yanıldığımı düşünüyorsanız lütfen yorum bırakın.</p>
+<h2> Performans</h2>
+<p>Node.js Google beyin V8 adlı javascript motorunu kullanıyor. Javascript kodları derlenip makina diline çevriliyor. Bu da kallavi bir hız demek. Tornado ise bunu ta ki Python 3.3 çıkana kadar yapamayacak(mış). İzlediğim node.js sunumunda yapılan testte ki bu test sadece bir "hello world" testi. Node.js saniyede 4340 cevap verebilirken tornado ise sadece 2344 cevap verebilmiş. Sözün özü Node.js performans konusunda Tornado'yu ikiye katlıyor.</p>
+<h2>Dil Yapısı</h2>
+<p>Bu noktada Tornado golünü atıyor zira hiç bir programcının Python varken Javascript kullanmak isteyeceğini sanmıyorum. Javascript'in iğrenç bir syntax yapısı var. Bu Python sever birinin şahsi fikri olmakla beraber, pek çok kişinin de noktalı virgül ya da memeli parantezler ile boğuşmak isteyeceğini sanmıyorum. Hoş, syntax olayı CofeeScript sayesinde çözülebiliyor ancak yine de dahili standartlaşmış kütüphanelerin eksikliği hissediliyor. Bir each döngüsü yaratmak için bile harici bir kütüphaneye ihtiyaç duymak, bende huzursuzluğa yol açıyor. Yengeç burcu programcılar için önermiyorum. :)</p>
+<p>İkinci olarak javascript ilk defa browser dışında bir mecrada iş görmeye başladığı için bir çok kütüphane olgunlaşmamış durumda. Halbu ki Python 1994 de 1.0 versiyonuna ulaştı yıllardır her konuda kütüphane geliştirilmekte kendisi için. Node.js nin şu anki versiyonu 0.4.1 Tornado'nun ise 2.1.1.</p>
+<p>Üçüncü olarak, Javascript in doğal halinin etkinlik tabanlı (event-driven) bir dil olduğunu bu yüzden geliştirilen kütüphanelerin haliyle asenkron kütüphaneler olduğunu. Python ise aslında sıralı (satır satır) işlenen bir dil olması itibari ile Tornado ile kullanacağınız kütüphanelerin özel olarak asenkron olarak yazılmış kütüphaneler olması gerektiğini eklemem gerekiyor. Anlayacağınız Tornado içinde mysqllib'i direkt olarak import edip kullanamıyorsunuz. Bunun yerine asenkron çalışacak şekilde tasarlanmış mysql kütüphanesi ne ise onu bulup kullanmanız gerekiyor.</p>
+<p>Ancak ilginçtir ki her ne kadar Tornado daha olgun olsa da içerisinde bir session management olayı bulundurmuyor. Bu bana çok garip geldi. Sanırım Django'da ki:</p>
+<pre><code>if user.is_authenticated():
+    ...
+    ...
+</code></pre>
+<p>Türevi sorular soramayacağımız manasına geliyor Tornado'ya. Belki authentication olayları başka türlü cookie tabanlı atraksiyonlarla (OAuth?) çözülüyordur bilemiyorum.</p>
+<h2>Topluluk</h2>
+<p>Node.js'in çok heyecanlı bir topluluk henüz bir velet olmasına rağmen inanılmaz ilgi görüyor. Aşağıdaki bu rakamlar söylediğimi kanıtlar nitelikte: (Fork, Takipçi ve İlgili Depo sayılarını Github'dan aldım)</p>
+<table>
+<thead><tr>
+<th></th>
+<th>Fork</th>
+<th>Takipçi</th>
+<th>İlgili Depo </th>
+<th>  Eposta Listesi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tornado</td>
+<td>510          </td>
+<td> 3,313</td>
+<td>364</td>
+<td>1779</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>1,339        </td>
+<td>11,944</td>
+<td>5842</td>
+<td>6590</td>
+</tr>
+</tbody>
+</table>
+<h2>Sonuç</h2>
+<p>Sonuç olarak Node.js topluluk ve performans olarak Tornado'yu dövüyor gözüküyor. Ancak sanırım geliştiriciler arasında bir garip moda ya da trendin peşinden hızla gitme durumu var. Yeni bir teknoloji afili bir sunumla anlatılıp da bir kaç yerde yazılıp çizildiği zaman hurra herkes o tarafa gidiyor. Sonra herkes sakinleşiyor hangi dili rahat kullanıyorsa onu kullanmaya devam ediyor. Bu yüzden bu 7000 kişilik e-posta listelerini falan biraz şişirilmiş rakamlar olarak görüyorum. Ayrıca bu devasa kitleden kaç tanesi gerçek bir iş görebilmek üzere sizin ofisinize gelip çalışabilecek insanlardır bunu hesap etmek gerek. üç mü beş mi?</p>
+<p>Bunun yanında Node.js teoride bu kadar ilgi görmesine rağmen, henüz kendisini savaş arenasında görmüş değiliz. Gerçek - büyük projelerde ne gibi problemler çıkaracağı konusunda pek fikrimiz yok. Tornado ise halihazırda Facebook'un ve FriendFeed'in ağır işlerini gören bir sistem.</p>
+<p>Bütün bunlara dayanarak, üzülerek Node.js ye bizimle değilsin diyorum. Zira saniyede 4bin request karşılayabiliyor olması bende yarattığı rahatsızlık hissini gidermeye yetmiyor. Zaten bir gün sunucularım altından kalkamayacağım bir yükle karşılaşırsa zaten para kazanıyorum demektir bir sunucu daha koyarım.</p>
+<p>Kaynaklar:</p>
+<ul>
+<li><a href="http://nodejs.org/">http://nodejs.org/</a></li>
+<li><a href="http://www.tornadoweb.org/">http://www.tornadoweb.org/</a></li>
+<li>Node.js mailing list</li>
+<li>Tornado mailing list</li>
+<li>The History of Python</li>
+<li>What are the disadvantages of using Node.js?</li>
+<li>What are the disadvantages/drawbacks of using Tornado as a primary web server, not just for real time activity?</li>
+<li>Node.js is Cancer</li>
+</ul>
+
+<hr />
+07/2016
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+</main>
+</body>
+
+</html>

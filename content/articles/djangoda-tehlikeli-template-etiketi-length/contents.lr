@@ -1,0 +1,69 @@
+title:
+
+A Dangerous Template Tag in Django: `length`  
+---
+author: Mirat
+---
+body:
+
+While working on a new project today, I noticed that rendering a particular part of a template was unusually slow. The issue was traced to a `QuerySet` being passed through the `length` template filter:  
+
+<pre class="prettyprint">
+{% if BlaBla.all|length == 5 %}  
+    ..  
+{% endif %}  
+</pre>
+
+When I checked the implementation of the `length` filter, I saw that it simply passes the given value to Python's `len` function ([source](https://github.com/django/django/blob/master/django/template/defaultfilters.py#L577)):  
+
+<pre class="prettyprint lang-python">
+@register.filter(is_safe=False)  
+def length(value):  
+    """Returns the length of the value - useful for lists."""  
+    try:  
+        return len(value)  
+    except (ValueError, TypeError):  
+        return 0  
+</pre>
+
+This is where the trouble begins. If you use `len()` on a `QuerySet`, it fetches all the rows from the database, converts them into a list in memory, and then calculates the length of that list. This can cause significant performance issues with large tables, both in terms of memory usage and database server load.  
+
+Using `Sqldebugshell`, I observed the query executed by the `len` function on a `QuerySet`:  
+
+<pre class="prettyprint lang-sql">
+In [6]: len(BlaBla.objects.all())  
+
+SELECT `c..`.`id`,  
+       `c..`.`i..`,  
+       `c..`.`p..`,  
+       `c..`.`c..`,  
+       `c..`.`s..`,  
+       `c..`.`i..`,  
+       `c..`.`i..`,  
+       `c..`.`u..`,  
+       `c..`.`u..`,  
+       `c..`.`s..`,  
+       `c..`.`c..`,  
+       `channel_customstream`.`t..`  
+FROM `channel_customstream`  
+</pre>
+
+As you can see, it retrieves all columns for every row in the model, causing unnecessary data to be loaded.  
+
+In contrast, the `count()` method allows `QuerySet` objects to run a `COUNT` query directly on the database:  
+
+<pre class="prettyprint lang-sql">
+In [5]: CustomStream.objects.count()  
+
+SELECT COUNT(*)  
+FROM `channel_customstream`  
+</pre>
+
+### Key Takeaway  
+
+Do **not** use the `length` template filter if you expect it to execute a database `COUNT` query. It doesn’t. Instead, explicitly use the `count()` method for `QuerySet` objects to avoid unnecessary memory usage and database overhead.  
+
+---
+pub_date: 2014-01-15
+---
+has_code: yes

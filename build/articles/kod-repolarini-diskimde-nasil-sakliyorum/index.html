@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: #161917;
+      color: #B2A497;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    pre {
+      padding: 2em;
+      background: #261917;
+      font-size: .8em;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      line-height: 1.73em;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      line-height: 1.61em;
+    }
+
+    h3 {
+      line-height: 1.48em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: wheat;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 0 10px;
+      border-left: 5px solid #B2A497
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+
+    ul {
+      margin: 8px 0 0 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    ul#articles li {
+      list-style-type: none !important;
+      color: gray;
+    }
+
+    ul#articles {
+      padding: 0
+    }
+
+    body {}
+
+    a {
+      text-decoration: none;
+      color: darkkhaki;
+    }
+
+    a:hover {
+      color: wheat;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    img {
+      width: 100%
+    }
+
+    nav {
+      background: linear-gradient(360deg, #6e1313, #9B2821);
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .pagination {
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 500px) {
+      main {
+        padding: 20px 5px
+      }
+
+      ul#articles li a {
+        display: block
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
+    crossorigin="anonymous"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="TR-tr">
+
+  
+  
+
+  <!-- Primary Meta Tags -->
+  <title>How I Store My Code Repositories on Disk? — Mirat Can Bayrak</title>
+  <meta name="title" content="How I Store My Code Repositories on Disk?" />
+  <meta name="description" content="If you&#39;re using macOS, you might have noticed that folder names shown in the graphical interface don’t always match what you see in the terminal. For..." />
+  <link rel='canonical' href="https://mirat.dev/articles/kod-repolarini-diskimde-nasil-sakliyorum/">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mirat.dev/articles/kod-repolarini-diskimde-nasil-sakliyorum/" />
+  <meta property="og:title" content="How I Store My Code Repositories on Disk? - Mirat Can Bayrak" />
+  <meta property="og:description" content="If you&#39;re using macOS, you might have noticed that folder names shown in the graphical interface don’t always match what you see in the terminal. For..." />
+  <meta property="og:image" content="https://mirat.dev" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url"
+    content="https://mirat.dev/articles/kod-repolarini-diskimde-nasil-sakliyorum/" />
+  <meta property="twitter:title" content="How I Store My Code Repositories on Disk?" />
+  <meta property="twitter:description" content="If you&#39;re using macOS, you might have noticed that folder names shown in the graphical interface don’t always match what you see in the terminal. For..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
+  
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/projects/">Projects</a>
+      <a target="_blank" href="/resume/resume.html">Resume</a>
+    </nav>
+  </header>
+  <main>
+
+<h1>How I Store My Code Repositories on Disk?</h1>
+<p>If you're using macOS, you might have noticed that folder names shown in the graphical interface don’t always match what you see in the terminal. For example, the folder displayed as "Belgeler" (Documents) in Finder appears as "Documents" when accessed from the terminal. I wanted my folder structure to match this pattern. Specifically, I wanted a folder named "Code" that would appear as "Kodlar" in the graphical interface, just like other system folders. Here’s how it looks now:</p>
+<p><img src="ss1.png" alt="Screenshot"></p>
+<p>When I list the same folder in the terminal, it shows up like this:</p>
+<p><img src="ss2.png" alt="Screenshot"></p>
+<p>On macOS, you can make a folder display a localized name in Finder by appending <code>.localized</code> to its name, creating a <code>.localized</code> subfolder inside it, and placing a <code>tr.strings</code> file inside that subfolder. Let’s go through an example. Suppose you have a folder named <code>Ships</code> and you want Finder to display it as "Gemiler."</p>
+<p>First, create the necessary folder structure using the <code>-p</code> flag, which lets you create nested folders in one command:</p>
+<pre class="prettyprint lang-bsh">$ mkdir -p Ships.localized/.localized/</pre><p>Without the <code>-p</code> flag, you’d need to manually create <code>Ships.localized</code> first, then the <code>.localized</code> folder inside it.</p>
+<p>Next, add a line to the <code>tr.strings</code> file inside the <code>.localized</code> folder to specify that "Ships" should appear as "Gemiler":</p>
+<pre class="prettyprint lang-bsh">$ echo '"Ships" = "Gemiler"' > Ships.localized/.localized/tr.strings</pre><p>After doing this, Finder will display the <code>Ships</code> folder as "Gemiler."</p>
+<p>Using this method, I localized my <code>Code</code> folder and organized it into the following subfolders:
+<img src="ss4.png" alt="Screenshot"></p>
+<p>Here’s a quick breakdown of the subfolders:</p>
+<ul>
+<li><strong>Daimi (Permanent):</strong> Contains repositories I’m actively maintaining, like my blog or the "interneti güzel" project.  </li>
+<li><strong>Güncel (Current):</strong> Holds whatever project I’m currently working on.  </li>
+<li><strong>Arşiv (Archive)</strong> and <strong>Geçici (Temporary):</strong> These are self-explanatory.</li>
+</ul>
+<p>If you have other methods for organizing folders or know how to localize folder names without using the <code>.localized</code> extension, feel free to share them in the comments.</p>
+<p>Good luck!</p>
+
+<hr />
+11/2022
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+</main>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+title: Earning $10K with 161 Lines of JavaScript
+---
+body:
+
+Recently, [Ali](http://aligundogdu.com) and I were browsing [Flippa](https://flippa.com), a marketplace where people auction their apps, websites, or blogs. For those unfamiliar, it's a platform where you can buy and sell digital assets.
+
+While checking out the listings, I stumbled upon a seemingly pointless website called [timenite](https://timenite.com). When you visit the site, it displays a countdown timer showing the time left until the next Fortnite season. That’s literally all it does. There’s also AdSense ads displayed above and below the timer.
+
+At first glance, it seemed like just a trivial toy of a site. But then I noticed on Flippa that the site was reportedly earning $200 per month, and this revenue figure was verified by Flippa. Suddenly, this "toy" turned into something much more interesting in my eyes.
+
+Here’s why: the site had been live for four years, likely built in just a single weekend, required zero maintenance, and had been generating $200 per month for three of those years. Let’s do the math:  
+**12 months × $200 × 3 years = $7,200**  
+On top of that, it was listed for sale on Flippa for $3,500.
+
+Out of curiosity, I looked into the site’s structure and found that it was just a simple HTML page and a [161-line JavaScript file](https://github.com/Centerpoint-Gaming/timenite/blob/main/scripts/main.js). That was it. While writing this post, the site was already sold, so if you visit its [Flippa listing](https://flippa.com/11545762-a-4-year-old-simple-website-that-shows-a-countdown-to-the-next-season-on-fortnite-earning-2100-per-year-through-adsense-and-epic-s-support-a-creator), you’ll get a 404 error.
+
+Whoever built this site earned $7,200 from AdSense and then another $3,500 from the sale—totaling $10,700.
+
+Honestly, I’m jealous. 🙂
+
+Naturally, I started digging to find out who created this. Such ideas often come from kids in those "fortunate" countries. But this time, it was different. The [project is public on GitHub](https://github.com/Centerpoint-Gaming/timenite), where I found out it was built by Priyam Raj. I even found his [personal website](https://priyamraj.com).
+
+Turns out, he’s a young guy living in Bangalore, India. Judging by this photo from 2009, he seems to have come from a very modest background. But despite that, he had access to computers and the internet.
+
+![Photo](hero.jpg)
+
+In his own words, Priyam describes himself like this:
+
+> Whether it be a film, a book, or just a simple tool, I want to keep creating useful stuff until my time on this planet.
+
+Isn’t that a cool story?
+
+Why am I sharing this? To challenge my own opinion. In a [previous post](/blog/yazilimci-girisimciler-nereye-gitti/), I argued that the rising time and knowledge costs of software development are the reasons we don’t see as many entrepreneurial developers these days. But I was wrong. You can still make something worthwhile with a good idea and a simple implementation.
+
+Even if you’re from a developing country.
+
+---
+description: 
+---
+pub_date: 2023-09-09
+---
+tags: entrepreneural

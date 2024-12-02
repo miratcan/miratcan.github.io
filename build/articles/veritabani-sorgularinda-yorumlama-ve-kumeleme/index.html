@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: #161917;
+      color: #B2A497;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    pre {
+      padding: 2em;
+      background: #261917;
+      font-size: .8em;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      line-height: 1.73em;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      line-height: 1.61em;
+    }
+
+    h3 {
+      line-height: 1.48em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: wheat;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 0 10px;
+      border-left: 5px solid #B2A497
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+
+    ul {
+      margin: 8px 0 0 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    ul#articles li {
+      list-style-type: none !important;
+      color: gray;
+    }
+
+    ul#articles {
+      padding: 0
+    }
+
+    body {}
+
+    a {
+      text-decoration: none;
+      color: darkkhaki;
+    }
+
+    a:hover {
+      color: wheat;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    img {
+      width: 100%
+    }
+
+    nav {
+      background: linear-gradient(360deg, #6e1313, #9B2821);
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .pagination {
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 500px) {
+      main {
+        padding: 20px 5px
+      }
+
+      ul#articles li a {
+        display: block
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
+    crossorigin="anonymous"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="TR-tr">
+
+  
+  
+
+  <!-- Primary Meta Tags -->
+  <title>Veritabanı sorgularında yorumlama ve kümeleme. — Mirat Can Bayrak</title>
+  <meta name="title" content="Veritabanı sorgularında yorumlama ve kümeleme." />
+  <meta name="description" content="Django&#39;nun veritabanı katmanı size basit sorgular yapma imkanı tanıdığı gibi, çeşitli yorumlama (annotation) ve kümeleme (aggregation) işlemleri..." />
+  <link rel='canonical' href="https://mirat.dev/articles/veritabani-sorgularinda-yorumlama-ve-kumeleme/">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mirat.dev/articles/veritabani-sorgularinda-yorumlama-ve-kumeleme/" />
+  <meta property="og:title" content="Veritabanı sorgularında yorumlama ve kümeleme. - Mirat Can Bayrak" />
+  <meta property="og:description" content="Django&#39;nun veritabanı katmanı size basit sorgular yapma imkanı tanıdığı gibi, çeşitli yorumlama (annotation) ve kümeleme (aggregation) işlemleri..." />
+  <meta property="og:image" content="https://mirat.dev" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url"
+    content="https://mirat.dev/articles/veritabani-sorgularinda-yorumlama-ve-kumeleme/" />
+  <meta property="twitter:title" content="Veritabanı sorgularında yorumlama ve kümeleme." />
+  <meta property="twitter:description" content="Django&#39;nun veritabanı katmanı size basit sorgular yapma imkanı tanıdığı gibi, çeşitli yorumlama (annotation) ve kümeleme (aggregation) işlemleri..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
+  
+  
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/projects/">Projects</a>
+      <a target="_blank" href="/resume/resume.html">Resume</a>
+    </nav>
+  </header>
+  <main>
+
+<h1>Veritabanı sorgularında yorumlama ve kümeleme.</h1>
+<p>Django'nun veritabanı katmanı size basit sorgular yapma imkanı tanıdığı gibi, çeşitli yorumlama (annotation) ve kümeleme (aggregation) işlemleri yapmanıza da imkan sağlıyor. Söz gelimi bir kullanıcının gelir giderini tuttuğumuz transaction adında bir modelimiz olduğunu farzedelim.</p>
+<pre><code>from django.contrib.auth.models import User
+
+class Transaction(models.Model):
+    user = models.ForeignKey(User)
+    balance = models.IntegerField()
+    description = models.CharField(max_length=255)&lt;/pre&gt;
+</code></pre>
+<p>Şimdi de x kullanıcısı için bir kaç adet işlem oluşturalım:</p>
+<pre><code>... : from django.contrib.auth.models import User
+... : user_x = User.objects.get(...)
+... : Transaction.objects.create(
+... :     user=user_x,
+... :     balance=200,
+... :     description="Cebimde 200 lira var")
+... :
+... : Transaction.objects.create(
+... :     user=user_x,
+... :     balance=-15,
+... :     description="Taksi parası")
+... : 
+... : Transaction.objects.create(
+... :     user=user_x,
+... :     balance=-120,
+... :     description="Mutfak alışverişi")&lt;/pre&gt;
+</code></pre>
+<p>Kullanıcı 3 adet işlem yaptı. Şu an kayıtlı olan bütün transaction objelerinden yola çıkarak ve kümeleme metodunu kullanarak kullanıcının toplam para durumuna bakalım.</p>
+<pre><code>... : from django.db.models import Sum
+... : Transaction.objects.all().aggregate(total=Sum('balance'))
+... : {'total': 65 }
+</code></pre>
+<p>Gördüğünüz gibi bütün balance değerlerini toplayarak bize (+200 - 15 - 120 = 65) sonucunu gönderdi. Eğer istersek yorumlama özelliğini kullanarak kullanıcıları direkt olarak balans durumları ile birlikte alabiliriz.</p>
+<pre>... : user_x = User.objects.get(...).annotate(\
+... :     balance=Sum("transaction__balance"))
+... : user_x.balance
+... : 65</pre><p>Burada yaptığımız şey Django'ya şunu söylemek oldu:</p>
+<blockquote><p>User nesnesini al, ancak transaction içerisindeki balance değerlerini toplayıp, balance adında yeni bir kolon olarak ekle.</p>
+</blockquote>
+<p>Tabi burada sadece Sum fonksiyonu ile sınırlı değilsiniz. Count, Max, Avg gibi bir çok metod mevcut. Daha fazla bilgi için şuraya bakabilirsiniz:</p>
+<p><a href="https://docs.djangoproject.com/en/dev/topics/db/aggregation/" title="https://docs.djangoproject.com/en/dev/topics/db/aggregation/">https://docs.djangoproject.com/en/dev/topics/db/aggregation/</a></p>
+
+<hr />
+02/2012
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+</main>
+</body>
+
+</html>

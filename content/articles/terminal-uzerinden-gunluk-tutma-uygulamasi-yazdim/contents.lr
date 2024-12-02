@@ -1,0 +1,64 @@
+title: Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım
+---
+pub_date: 2023-08-12
+---
+has_code: yes
+---
+body:
+
+Günlük tutmak çeşitli duygu ve düşüncelerimi kolayca kaydetmek sonra da
+okumak istiyordum. Bunu da en kısa yoldan nasıl yaparım diye düşünüyor iken
+telefonda [Daylio](https://daylio.net/) uygulamasını buldum. Uygulama çok
+güzel hatta ne yaparken nasıl hissettiğini kaydederek sonrasında çeşitli
+raporlar alabiliyor ve mesela "Kitap okumadığım zamanlarda daha depresif
+oluyormuşum" gibi sonuçlar çıkarabiliyorsunuz. İyi bir kendini loglama
+uygulamasından bekleyebileceğiniz her şey var anlayacağınız ama bir sorun var. 
+
+Ben telefonu alıp bir şeyler yazmaya aşırı üşenen biriyim, hatta telefon benim
+için eşim ve annemle konuşma, tuvalete girince de twitter karıştırma cihazı
+olmaktan ileri geçemiyor. 
+
+Ben de madem günlerimin çoğu bilgisayar başında terminal karşısında geçiyor,
+kendime basit bir uygulama yapayım tivit atar gibi daha sonra hatırlamak
+isteyeceğim şeyleri kaydedeyim dedim. Çalışırken şu şekilde basitçe metin
+dosyalarına kayıtlar atabiliyorum:
+
+<pre class="prettyprint lang-bsh">
+$ kaydet "Bugun işteki ilk günüm."
+</pre>
+
+Bu komut eğer yoksa o günün tarihi ile günlüğünüzü kaydetmek için
+ayarladığınız klasöre bir dosya açıyor örneğin: 2023-07-30.txt sonra da günün
+saatini yazdığınız metne ekleyip bir satır ekliyor.
+
+<pre class="prettyprint">
+2023-07-30.txt
+09:01:00 Günaydın canım kendim.
+09:03:00 Bugün işteki ilk günüm.
+</pre>
+
+Evet farkındayım çok ahım şahım bir şey değil oldukça severek kullanıyorum.
+Bir de günlük tuttuğum klasörü Google Drive ile cihazlar arası senkronize
+edebilmeye de başladım. 
+
+Siz de kullanmak isterseniz şu komutla direkt yükleyebilirsiniz:
+
+<pre class="prettyprint lang-bsh">
+$ pip3 install kaydet
+</pre>
+
+Daha sonrasında --help ile çağırarak nasıl kullanıdığını inceleyebilirsiniz:
+
+<pre class="prettyprint lang-bsh">
+$ kaydet --help
+</pre>
+
+Bir hata bildirmek ya da yeni bir özellik eklemek isterseniz
+[github](https://github.com/miratcan/kaydet) reposuna beklerim.
+
+Görüşmek üzere.
+
+(Bir ara blog yazıları nasıl düzgün bitirilir konusunu çalışmam lazım)
+
+---
+tags: technical

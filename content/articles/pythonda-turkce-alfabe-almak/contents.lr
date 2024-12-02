@@ -1,0 +1,62 @@
+title: Handling Non-Turkish Characters in Forms: A Pythonic Approach
+---
+pub_date: 2014-07-18
+---
+body:
+
+Recently, I faced a task where I needed to raise an error if any non-Turkish characters were present in a form input. To address this, I started with the simplest approach: creating a list of Turkish characters manually. If the input contained characters outside this list, an error would be raised. Here's a snippet of my initial implementation:
+
+<pre class="prettyprint lang-python">
+# -*- coding: utf-8 -*-
+def turkish_chars_validator(string):
+    turkish_chars = 'ABCÇD...'
+    # Logic for validation
+</pre>
+
+## The Problem with Hardcoding Turkish Characters
+
+However, my team lead pointed out an issue: our project avoids specifying # -*- coding: utf-8 -*- at the top of files. Including it often leads to Turkish docstrings and comments creeping into the project, which we wanted to avoid for consistency.
+
+This led me to think there must be a library in Python that handles Turkish characters, especially since localization libraries often include methods and variables for such tasks. My initial thought was to check the string module, which has a letters variable that adapts to the current locale.
+
+## Experimenting with the locale Module
+Using the locale module, I tested this approach:
+
+<pre class="prettyprint lang-python">
+from locale import LC_ALL, setlocale
+from string import letters
+
+setlocale(LC_ALL, 'tr_TR.utf8')
+print(letters)
+</pre>
+
+To my surprise, the output did not include Turkish-specific characters despite setting the locale to tr_TR.utf8. When I tried Turkish_Turkey.1254, the output was closer but still contained unexpected characters:
+
+<pre>
+abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
+ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS
+</pre>
+
+This approach turned out to be unreliable for my requirements. Furthermore, using setlocale in a Django project can lead to significant issues, as noted in Python's documentation:
+
+> It is generally a bad idea to call setlocale() in some library routine, since as a side effect it affects the entire program. Saving and restoring it is almost as bad: it is expensive and affects other threads that happen to run before the settings have been restored.
+
+## The Final Solution
+After trying a few more methods, including regular expressions, I settled on a simple and effective solution. I manually defined the Turkish alphabet as a Unicode string, ensuring it was consistent and covered all cases. Here's the final implementation:
+
+<pre class="prettyprint lang-python">
+alpha = 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ' \
+        'abcçdefgğhıijklmnoöprsştuüvyz'.encode('utf-8').decode('utf-8')
+
+def invalid_chars(text, charset=alpha):
+    return set(filter(lambda c: c not in charset, list(text)))
+</pre>
+
+## Lessons Learned
+
+When solving problems, the simplest solution is often the best. Overcomplicating problems is a trap that many engineers, including myself, sometimes fall into. In this case, returning to basics provided a straightforward and reliable fix.
+
+---
+author: Mirat
+---
+has_code: yes

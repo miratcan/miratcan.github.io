@@ -1,0 +1,49 @@
+pub_date: 2023-08-22
+tags: a, b, c
+-------------------------------------------------------------------------------
+
+# What Should Developers Pay Attention to When Writing a Resume?
+
+## Your Resume Should Be in PDF Format
+
+PDF is a distribution format. If you’re sending a document for review or 
+reading—not for editing—you shouldn’t send it as a Word file. This is one ofthe
+the basic rules of internet etiquette.
+
+## Your Resume Should Be Free of Spelling Errors
+
+Many resumes I come across fail to pay attention to even the simplestspelling
+spelling rules. Spelling mistakes can lead to your immediate rejection.
+Writing properly isn’t difficult, so take the time to proofread.
+
+## Your Resume Shouldn’t Exceed One Page
+
+Imagine being an HR representative tasked with reviewing 100 resumes int 
+a day. How would you feel if you had to read a 4-page document for just one 
+candidate? You’d probably start reading it with a heavy sigh, and in that 
+negative mindset, it’s unlikely you’d view the resume favorably.
+
+Put yourself in the reader’s shoes and try to fit everything they need to 
+know into a maximum of two pages.
+
+## Mention Things That Excite You
+
+The person reading your resume will try to pick up clues about both your
+technical skills and whether your personality fits the team.
+
+Instead of generic phrases like "reading books" or "listening to music," 
+mention something you genuinely enjoy that relates to your profession. 
+Did you have fun creating a platformer game with LUA? Or was it building a 
+cardboard elevator in school and making it stop at the right floor?
+
+## Have a Github Account
+
+When I say sharing code on Github is a plus, people often think they need to
+publish a big project or library. In fact, you can share small scripts as Gists.
+
+For example, you might share a script that calculates Fibonacci numbers, 
+performs a bubble sort, or [splits a word into its syllables](https://gist.github.com/miratcan/9196ae2591b1f34ab645520a767ced17).
+
+Sharing these gives people trying to evaluate you a great opportunity to 
+understand how you think, how well you follow coding standards, and what 
+details you focus on.

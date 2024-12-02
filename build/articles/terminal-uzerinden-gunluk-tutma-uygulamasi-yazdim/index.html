@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: #161917;
+      color: #B2A497;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    pre {
+      padding: 2em;
+      background: #261917;
+      font-size: .8em;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      line-height: 1.73em;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      line-height: 1.61em;
+    }
+
+    h3 {
+      line-height: 1.48em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: wheat;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 0 10px;
+      border-left: 5px solid #B2A497
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+
+    ul {
+      margin: 8px 0 0 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    ul#articles li {
+      list-style-type: none !important;
+      color: gray;
+    }
+
+    ul#articles {
+      padding: 0
+    }
+
+    body {}
+
+    a {
+      text-decoration: none;
+      color: darkkhaki;
+    }
+
+    a:hover {
+      color: wheat;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    img {
+      width: 100%
+    }
+
+    nav {
+      background: linear-gradient(360deg, #6e1313, #9B2821);
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .pagination {
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 500px) {
+      main {
+        padding: 20px 5px
+      }
+
+      ul#articles li a {
+        display: block
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
+    crossorigin="anonymous"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="TR-tr">
+
+  
+  
+
+  <!-- Primary Meta Tags -->
+  <title>Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım — Mirat Can Bayrak</title>
+  <meta name="title" content="Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım" />
+  <meta name="description" content="Günlük tutmak çeşitli duygu ve düşüncelerimi kolayca kaydetmek sonra da okumak istiyordum. Bunu da en kısa yoldan nasıl yaparım diye düşünüyor iken..." />
+  <link rel='canonical' href="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/" />
+  <meta property="og:title" content="Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım - Mirat Can Bayrak" />
+  <meta property="og:description" content="Günlük tutmak çeşitli duygu ve düşüncelerimi kolayca kaydetmek sonra da okumak istiyordum. Bunu da en kısa yoldan nasıl yaparım diye düşünüyor iken..." />
+  <meta property="og:image" content="https://mirat.dev" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url"
+    content="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/" />
+  <meta property="twitter:title" content="Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım" />
+  <meta property="twitter:description" content="Günlük tutmak çeşitli duygu ve düşüncelerimi kolayca kaydetmek sonra da okumak istiyordum. Bunu da en kısa yoldan nasıl yaparım diye düşünüyor iken..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
+  
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/projects/">Projects</a>
+      <a target="_blank" href="/resume/resume.html">Resume</a>
+    </nav>
+  </header>
+  <main>
+
+<h1>Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım</h1>
+<p>Günlük tutmak çeşitli duygu ve düşüncelerimi kolayca kaydetmek sonra da
+okumak istiyordum. Bunu da en kısa yoldan nasıl yaparım diye düşünüyor iken
+telefonda <a href="https://daylio.net/">Daylio</a> uygulamasını buldum. Uygulama çok
+güzel hatta ne yaparken nasıl hissettiğini kaydederek sonrasında çeşitli
+raporlar alabiliyor ve mesela "Kitap okumadığım zamanlarda daha depresif
+oluyormuşum" gibi sonuçlar çıkarabiliyorsunuz. İyi bir kendini loglama
+uygulamasından bekleyebileceğiniz her şey var anlayacağınız ama bir sorun var.</p>
+<p>Ben telefonu alıp bir şeyler yazmaya aşırı üşenen biriyim, hatta telefon benim
+için eşim ve annemle konuşma, tuvalete girince de twitter karıştırma cihazı
+olmaktan ileri geçemiyor.</p>
+<p>Ben de madem günlerimin çoğu bilgisayar başında terminal karşısında geçiyor,
+kendime basit bir uygulama yapayım tivit atar gibi daha sonra hatırlamak
+isteyeceğim şeyleri kaydedeyim dedim. Çalışırken şu şekilde basitçe metin
+dosyalarına kayıtlar atabiliyorum:</p>
+<pre class="prettyprint lang-bsh">
+$ kaydet "Bugun işteki ilk günüm."
+</pre><p>Bu komut eğer yoksa o günün tarihi ile günlüğünüzü kaydetmek için
+ayarladığınız klasöre bir dosya açıyor örneğin: 2023-07-30.txt sonra da günün
+saatini yazdığınız metne ekleyip bir satır ekliyor.</p>
+<pre class="prettyprint">
+2023-07-30.txt
+09:01:00 Günaydın canım kendim.
+09:03:00 Bugün işteki ilk günüm.
+</pre><p>Evet farkındayım çok ahım şahım bir şey değil oldukça severek kullanıyorum.
+Bir de günlük tuttuğum klasörü Google Drive ile cihazlar arası senkronize
+edebilmeye de başladım.</p>
+<p>Siz de kullanmak isterseniz şu komutla direkt yükleyebilirsiniz:</p>
+<pre class="prettyprint lang-bsh">
+$ pip3 install kaydet
+</pre><p>Daha sonrasında --help ile çağırarak nasıl kullanıdığını inceleyebilirsiniz:</p>
+<pre class="prettyprint lang-bsh">
+$ kaydet --help
+</pre><p>Bir hata bildirmek ya da yeni bir özellik eklemek isterseniz
+<a href="https://github.com/miratcan/kaydet">github</a> reposuna beklerim.</p>
+<p>Görüşmek üzere.</p>
+<p>(Bir ara blog yazıları nasıl düzgün bitirilir konusunu çalışmam lazım)</p>
+
+<hr />
+08/2023
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+</main>
+</body>
+
+</html>

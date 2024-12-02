@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: #161917;
+      color: #B2A497;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    pre {
+      padding: 2em;
+      background: #261917;
+      font-size: .8em;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      line-height: 1.73em;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      line-height: 1.61em;
+    }
+
+    h3 {
+      line-height: 1.48em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: wheat;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 0 10px;
+      border-left: 5px solid #B2A497
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+
+    ul {
+      margin: 8px 0 0 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    ul#articles li {
+      list-style-type: none !important;
+      color: gray;
+    }
+
+    ul#articles {
+      padding: 0
+    }
+
+    body {}
+
+    a {
+      text-decoration: none;
+      color: darkkhaki;
+    }
+
+    a:hover {
+      color: wheat;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    img {
+      width: 100%
+    }
+
+    nav {
+      background: linear-gradient(360deg, #6e1313, #9B2821);
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      gap: 40px;
+    }
+
+    main,
+    nav {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .pagination {
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 500px) {
+      main {
+        padding: 20px 5px
+      }
+
+      ul#articles li a {
+        display: block
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
+    crossorigin="anonymous"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="TR-tr">
+
+  
+  
+
+  <!-- Primary Meta Tags -->
+  <title>Making a Copy of a List in Python — Mirat Can Bayrak</title>
+  <meta name="title" content="Making a Copy of a List in Python" />
+  <meta name="description" content="In Python, assignment works by reference. For example, when you try to copy a list like this: list = another_list, you encounter a peculiar (but..." />
+  <link rel='canonical' href="https://mirat.dev/articles/pythonda-listenin-kopyasini-almak/">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mirat.dev/articles/pythonda-listenin-kopyasini-almak/" />
+  <meta property="og:title" content="Making a Copy of a List in Python - Mirat Can Bayrak" />
+  <meta property="og:description" content="In Python, assignment works by reference. For example, when you try to copy a list like this: list = another_list, you encounter a peculiar (but..." />
+  <meta property="og:image" content="https://mirat.dev" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url"
+    content="https://mirat.dev/articles/pythonda-listenin-kopyasini-almak/" />
+  <meta property="twitter:title" content="Making a Copy of a List in Python" />
+  <meta property="twitter:description" content="In Python, assignment works by reference. For example, when you try to copy a list like this: list = another_list, you encounter a peculiar (but..." />
+  <meta property="twitter:image" content="https://mirat.dev" />
+  
+  
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/projects/">Projects</a>
+      <a target="_blank" href="/resume/resume.html">Resume</a>
+    </nav>
+  </header>
+  <main>
+
+<h1>Making a Copy of a List in Python</h1>
+<p>In Python, assignment works by reference. For example, when you try to copy a list like this: <code>list = another_list</code>, you encounter a peculiar (but actually intended) behavior:</p>
+<pre class="prettyprint lang-python">
+a = ["a","b","c"]
+>>> b = a
+>>> b.append("d")
+>>> print a, b
+['a', 'b', 'c', 'd'] ['a', 'b', 'c', 'd']
+</pre><p>This behavior applies to objects as well. When you assign an object like this: object = another_object, you're creating a reference to the original object:</p>
+<pre class="prettyprint lang-python">
+>>> class obj:
+...     def __init__(self):
+...         self.counter = 0
+...     def inc(self):
+...         self.counter += 1
+... 
+>>> a = obj()
+>>> b = a
+>>> a.inc()
+>>> print a.counter
+1
+>>> print b.counter
+1
+</pre><p>When you want to make a copy of a variable or object, there are several methods to achieve that. The most elegant method I’ve found for copying data structures (such as lists, tuples, dictionaries, etc.) is as follows:</p>
+<pre class="prettyprint lang-python">
+>>> a = ["a","b","c"]
+>>> b = list(a)
+>>> print a , b
+['a', 'b', 'c'] ['a', 'b', 'c']
+>>> a.append("d")
+>>> print a, b
+['a', 'b', 'c', 'd'] ['a', 'b', 'c']
+</pre><p>What if we want to copy an object? For that, there is a copy module:</p>
+<pre class="prettyprint lang-python">
+>>> class obj:
+...     def __init__(self):
+...         self.counter = 0
+...     def inc(self):
+...         self.counter += 1
+... 
+>>> a = obj()
+>>> from copy import copy
+>>> b = copy(a)
+>>> a.inc()
+>>> b.inc()
+>>> b.inc()
+>>> b.inc()
+>>> print a.counter, b.counter
+1 3
+</pre><p>If we import the deepcopy function from the copy module and use it, we can make a recursive copy of an object.</p>
+
+<hr />
+07/2011
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+</main>
+</body>
+
+</html>
