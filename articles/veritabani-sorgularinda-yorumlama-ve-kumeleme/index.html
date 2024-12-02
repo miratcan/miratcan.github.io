@@ -155,6 +155,9 @@
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
 
 </head>
 
@@ -189,15 +192,16 @@
 02/2012
 <h1>Veritabanı sorgularında yorumlama ve kümeleme.</h1>
 <p>Django'nun veritabanı katmanı size basit sorgular yapma imkanı tanıdığı gibi, çeşitli yorumlama (annotation) ve kümeleme (aggregation) işlemleri yapmanıza da imkan sağlıyor. Söz gelimi bir kullanıcının gelir giderini tuttuğumuz transaction adında bir modelimiz olduğunu farzedelim.</p>
-<pre><code>from django.contrib.auth.models import User
+<pre class="prettyprint lang-python">
+from django.contrib.auth.models import User
 
 class Transaction(models.Model):
     user = models.ForeignKey(User)
     balance = models.IntegerField()
-    description = models.CharField(max_length=255)&lt;/pre&gt;
-</code></pre>
-<p>Şimdi de x kullanıcısı için bir kaç adet işlem oluşturalım:</p>
-<pre><code>... : from django.contrib.auth.models import User
+    description = models.CharField(max_length=255)</pre>
+</pre><p>Şimdi de x kullanıcısı için bir kaç adet işlem oluşturalım:</p>
+<pre class="prettyprint lang-python">
+... : from django.contrib.auth.models import User
 ... : user_x = User.objects.get(...)
 ... : Transaction.objects.create(
 ... :     user=user_x,
@@ -212,24 +216,36 @@ class Transaction(models.Model):
 ... : Transaction.objects.create(
 ... :     user=user_x,
 ... :     balance=-120,
-... :     description="Mutfak alışverişi")&lt;/pre&gt;
-</code></pre>
-<p>Kullanıcı 3 adet işlem yaptı. Şu an kayıtlı olan bütün transaction objelerinden yola çıkarak ve kümeleme metodunu kullanarak kullanıcının toplam para durumuna bakalım.</p>
-<pre><code>... : from django.db.models import Sum
+... :     description="Mutfak alışverişi")</pre>
+</pre>
+Kullanıcı 3 adet işlem yaptı. Şu an kayıtlı olan bütün transaction objelerinden yola çıkarak ve kümeleme metodunu kullanarak kullanıcının toplam para durumuna bakalım.
+
+<pre class="prettyprint lang-python">
+... : from django.db.models import Sum
 ... : Transaction.objects.all().aggregate(total=Sum('balance'))
 ... : {'total': 65 }
-</code></pre>
-<p>Gördüğünüz gibi bütün balance değerlerini toplayarak bize (+200 - 15 - 120 = 65) sonucunu gönderdi. Eğer istersek yorumlama özelliğini kullanarak kullanıcıları direkt olarak balans durumları ile birlikte alabiliriz.</p>
-<pre>... : user_x = User.objects.get(...).annotate(\
+</pre><p>Gördüğünüz gibi bütün balance değerlerini toplayarak bize (+200 - 15 - 120 = 65) sonucunu gönderdi. Eğer istersek yorumlama özelliğini kullanarak kullanıcıları direkt olarak balans durumları ile birlikte alabiliriz.</p>
+<pre class="prettyprint lang-python">
+... : user_x = User.objects.get(...).annotate(\
 ... :     balance=Sum("transaction__balance"))
 ... : user_x.balance
-... : 65</pre><p>Burada yaptığımız şey Django'ya şunu söylemek oldu:</p>
+... : 65
+</pre><p>Burada yaptığımız şey Django'ya şunu söylemek oldu:</p>
 <blockquote><p>User nesnesini al, ancak transaction içerisindeki balance değerlerini toplayıp, balance adında yeni bir kolon olarak ekle.</p>
 </blockquote>
 <p>Tabi burada sadece Sum fonksiyonu ile sınırlı değilsiniz. Count, Max, Avg gibi bir çok metod mevcut. Daha fazla bilgi için şuraya bakabilirsiniz:</p>
 <p><a href="https://docs.djangoproject.com/en/dev/topics/db/aggregation/" title="https://docs.djangoproject.com/en/dev/topics/db/aggregation/">https://docs.djangoproject.com/en/dev/topics/db/aggregation/</a></p>
 
 
+
+  <ul>
+    <li>
+        <a href="../tag/technical/">
+          All posts tagged technical
+        </a>
+      </li>
+    
+  </ul>
 
 
 <script src="https://utteranc.es/client.js"

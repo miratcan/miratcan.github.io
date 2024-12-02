@@ -155,6 +155,9 @@
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
 
 </head>
 
@@ -189,19 +192,28 @@
 07/2012
 <h1>Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir?</h1>
 <p>Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var:</p>
-<pre><code>from django.db import models
+<pre class="prettyprint lang-python">
+from django.db import models
 
 class Photo(models.Model):
-    image = models.ImageField(upload_to="/photos/")&lt;/pre&gt;
-</code></pre>
-<p>Bu modelden bir adet örnek oluşturmak ve ilgili image dosyasını shell üzerinden upload etmek istiyorum, o zaman ne yapıyorum?</p>
-<pre><code>...: from hede.models import Photo
+    image = models.ImageField(upload_to="/photos/")</pre>
+</pre><p>Bu modelden bir adet örnek oluşturmak ve ilgili image dosyasını shell üzerinden upload etmek istiyorum, o zaman ne yapıyorum?</p>
+<pre class="prettyprint lang-python">
+...: from hede.models import Photo
 ...: from django.core.files import File
 ...: photo = Photo.objects.create(
-         image=File(open("dosyaya/giden/yol.jpg", "r")))&lt;/pre&gt;
-</code></pre>
+         image=File(open("dosyaya/giden/yol.jpg", "r")))
+</pre>
 
 
+  <ul>
+    <li>
+        <a href="../tag/technical/">
+          All posts tagged technical
+        </a>
+      </li>
+    
+  </ul>
 
 
 <script src="https://utteranc.es/client.js"
