@@ -20,6 +20,11 @@
       font-size: .8em;
     }
 
+    code {
+      border: 1px dashed gray;
+      font-size: 0.8em;
+    }
+
     h1 {
       font-size: 1.4em;
       line-height: 1.73em;
@@ -75,12 +80,19 @@
       color: darkkhaki;
     }
 
+    a.active {
+      text-decoration: underline;
+    }
+
+    a.tag {
+      color: darkolivegreen;
+    }
+
     a:hover {
       color: wheat;
     }
 
     main {
-      max-width: 800px;
       margin: 40px auto;
       box-sizing: border-box;
       overflow: auto;
@@ -91,20 +103,24 @@
     }
 
     nav {
-      background: linear-gradient(360deg, #6e1313, #9B2821);
+      // background: linear-gradient(360deg, #6e1313, #9B2821);
       height: fit-content;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       padding-top: 1em;
       padding-bottom: 1em;
       gap: 40px;
     }
 
     main,
-    nav {
+    header {
       padding-left: 1em;
       padding-right: 1em;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
     }
 
     .pagination {
@@ -158,9 +174,12 @@
 <body>
   <header>
     <nav>
-      <a href="/">Home</a>
-      <a href="/articles/">Articles</a>
-      <a href="/projects/">Projects</a>
+      <a {% if this._path=='/' %} class="active" {% endif %} href="/">Home</a>
+      <a {% if this._path=='/articles' %} class="active" {% endif %} href="/articles/">Articles</a>
+      <a {% if this._path=='/notes' %} class="active" {% endif %} href="/notes/">Notes</a>
+      <a {% if this._path=='/projects' %} class="active" {% endif %} href="/projects/">Projects</a>
+      <a {% if this._path=='/links' %} class="active" {% endif %} href="/links/">Links</a>
+      <a {% if this._path=='/products-i-like' %} class="active" {% endif %} href="/products-i-like/">Products I Like</a>
       <a target="_blank" href="/resume/resume.html">Resume</a>
     </nav>
   </header>

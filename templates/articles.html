@@ -6,14 +6,28 @@
 
 <ul>
 {% for child in this.children if child.children %}
-<li><a href="{{ child.path }}">{{ child.record_label }}</a></li>
+<li>
+  <a href="{{ child.path }}">{{ child.record_label }}</a><br />\
+</li>
 {% endfor %}
 </ul>
-
-    <ul id="articles">
-    {% for post in this.pagination.items %}
-    <li><a href="{{ post|url }}">{{ post.title }}</a> <small>{{ post.pub_date }}</small></li>
-    {% endfor %}
-    </ul>
-    {{ render_pagination(this.pagination) }}
+<ul id="articles">
+  {% for post in this.pagination.items %}
+  <li>
+    <p>
+      <a href="{{ post|url }}">{{ post.title }}</a>
+      {% if post.pub_date %}
+        <small>{{ post.pub_date.strftime('%m/%Y') }}</small>
+      {% endif %}
+      {% if post.tags %}
+        <br />
+        {% for t in post.tags -%}
+          <a class="tag" href="{{ ('/articles@tag/' ~ t)|url }}">{{ t }}</a>
+        {% endfor %}
+      {% endif %}
+    </p>
+  </li>
+  {% endfor %}
+</ul>
+  {{ render_pagination(this.pagination) }}
 {% endblock %}
