@@ -2,21 +2,11 @@
 {% from "macros/pagination.html" import render_pagination %}
 {% block title %}{{ this.title }}{% endblock %}
 {% block body %}
-<nav>
-  {% with is_active = this.path != '/' and this.path.endswith('personal/') %}
-  <a {% if is_active %}class="active" {% endif %}href="/articles/tag/personal/">Personal</a>
-  {% endwith %}
-
-  {% with is_active = this.path != '/' and this.path.endswith('entrepreneurial/') %}
-  <a {% if is_active %}class="active" {% endif %} href="/articles/tag/entrepreneurial/">Entrepreneurial</a>
-  {% endwith %}
-
-  {% with is_active = this.path != '/' and this.path.endswith('technical/') %}
-  <a {% if is_active %}class="active" {% endif %}href="/articles/tag/technical/">Technical</a>
-  {% endwith %}
-</nav>
+{% with tags=this.children.distinct('tags') %}
+{% include "_tags.html" %}
+{% endwith %}
 {% block articles %}
 {% with posts=this.pagination.items %}{% include "_articles.html" %}{% endwith %}
-{{ render_pagination(this.pagination) }}
+  {{ render_pagination(this.pagination) }}
 {% endblock %}
 {% endblock %}
