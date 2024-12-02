@@ -1,0 +1,29 @@
+title: How to merge two objects in javascript?
+---
+body:
+
+## 1. Using the Spread Operator (`...`)
+
+<pre class="prettyprint lang-js">
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+
+const obj3 = { ...obj1, ...obj2 };
+console.log(obj3); // Output: { a: 1, b: 2, c: 3, d: 4 }
+</pre>
+
+### 2. Using `Object.assign()`
+
+<pre class="prettyprint lang-js">
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+
+const obj3 = Object.assign({}, obj1, obj2);
+console.log(obj3); // Output: { a: 1, b: 2, c: 3, d: 4 }
+</pre>
+---
+has_code: yes
+---
+pub_date: 2024-12-02
+---
+tags: javascript
