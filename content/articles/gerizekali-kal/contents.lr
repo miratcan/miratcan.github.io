@@ -8,13 +8,17 @@ body:
 
 Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu sebepten yapıyorum. Mesela geçen gün şöyle bir şey yapmışım:
 
-    val = ... # (1)
-    try:
-        a = int(val)
-    except ValueError:
-        a = None
+<pre class="prettyprint lang-python">
+val = ... # (1)
+try:
+    a = int(val)
+except ValueError:
+    a = None
+</pre>
 
 Burada val değeri integer, integer'a çevirilebilir bir string ya da None gelecek (1). Ben de demişim ki eğer None gelirse None set edeyim, diğer durumlarda ise integer'a çevireyim. Zira int fonksiyonunun integer'a çeviremediğinde ValueError kaldırdığından eminim. Bu kodu çalıştırmaya bile ihtiyaç duymadan göndermişim (burada kendime hakaretler yağdırıyorum) Sonra anladım ki int(None) ValueError değil TypeError kaldırıyor. Kodum testten döndü :)
 
 Geliştirme yaparken tek satırdaki tırnak işaretini değiştirsek o satırın çalışıp çalışmadığını görmeden hiç bir yere göndermemek, kendini gerizekalı kabul etmek gerek.
 
+---
+has_code: yes

@@ -1,33 +1,22 @@
 {% extends "layout.html" %}
-{% from "macros/article.html" import render_article %}
 {% from "macros/pagination.html" import render_pagination %}
 {% block title %}{{ this.title }}{% endblock %}
 {% block body %}
+<nav>
+  {% with is_active = this.path != '/' and this.path.endswith('personal/') %}
+  <a {% if is_active %}class="active" {% endif %}href="/articles/tag/personal/">Personal</a>
+  {% endwith %}
 
-<ul>
-{% for child in this.children if child.children %}
-<li>
-  <a href="{{ child.path }}">{{ child.record_label }}</a><br />\
-</li>
-{% endfor %}
-</ul>
-<ul id="articles">
-  {% for post in this.pagination.items %}
-  <li>
-    <p>
-      <a href="{{ post|url }}">{{ post.title }}</a>
-      {% if post.pub_date %}
-        <small>{{ post.pub_date.strftime('%m/%Y') }}</small>
-      {% endif %}
-      {% if post.tags %}
-        <br />
-        {% for t in post.tags -%}
-          <a class="tag" href="{{ ('/articles@tag/' ~ t)|url }}">{{ t }}</a>
-        {% endfor %}
-      {% endif %}
-    </p>
-  </li>
-  {% endfor %}
-</ul>
-  {{ render_pagination(this.pagination) }}
+  {% with is_active = this.path != '/' and this.path.endswith('entrepreneurial/') %}
+  <a {% if is_active %}class="active" {% endif %} href="/articles/tag/entrepreneurial/">Entrepreneurial</a>
+  {% endwith %}
+
+  {% with is_active = this.path != '/' and this.path.endswith('technical/') %}
+  <a {% if is_active %}class="active" {% endif %}href="/articles/tag/technical/">Technical</a>
+  {% endwith %}
+</nav>
+{% block articles %}
+{% with posts=this.pagination.items %}{% include "_articles.html" %}{% endwith %}
+{{ render_pagination(this.pagination) }}
+{% endblock %}
 {% endblock %}

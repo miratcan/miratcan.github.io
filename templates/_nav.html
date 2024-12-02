@@ -1,0 +1,23 @@
+<nav>
+  <a {% if this._path=='/' %} class="active" {% endif %} href="/">Home</a>
+  {% with is_active = this.path != '/' and this.path.startswith('/articles') %}
+  <a {% if is_active %} class="active" {% endif %} href="/articles/">Articles</a>
+  {% endwith %}
+
+  {% with is_active = this.path != '/' and this.path.startswith('/notes') %}
+  <a {% if is_active %} class="active" {% endif %} href="/notes/">Notes</a>
+  {% endwith %}
+
+  {% with is_active = this.path != '/' and this.path.startswith('/projects') %}
+  <a {% if is_active %} class="active" {% endif %} href="/projects/">Projects</a>
+  {% endwith %}
+
+  {% with is_active = this.path != '/' and this.path.startswith('/links') %}
+  <a {% if is_active %} class="active" {% endif %} href="/links/">Links</a>
+  {% endwith %}
+  {% with is_active = this.path != '/' and this.path.startswith('/products-i-like') %}
+  <a {% if is_active %} class="active" {% endif %} href="/products-i-like/">Products I Like</a>
+  {% endwith %}
+
+  <a target="_blank" href="/resume/resume.html">Resume</a>
+</nav>
