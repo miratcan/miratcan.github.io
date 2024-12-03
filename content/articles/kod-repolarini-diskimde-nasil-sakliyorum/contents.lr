@@ -16,17 +16,23 @@ On macOS, you can make a folder display a localized name in Finder by appending 
 
 First, create the necessary folder structure using the `-p` flag, which lets you create nested folders in one command:
 
-<pre class="prettyprint lang-bsh">$ mkdir -p Ships.localized/.localized/</pre>
+
+```console
+$ mkdir -p Ships.localized/.localized/
+```
 
 Without the `-p` flag, you’d need to manually create `Ships.localized` first, then the `.localized` folder inside it.
 
 Next, add a line to the `tr.strings` file inside the `.localized` folder to specify that "Ships" should appear as "Gemiler":
 
-<pre class="prettyprint lang-bsh">$ echo '"Ships" = "Gemiler"' > Ships.localized/.localized/tr.strings</pre>
+```console
+$ echo '"Ships" = "Gemiler"' > Ships.localized/.localized/tr.strings
+```
 
 After doing this, Finder will display the `Ships` folder as "Gemiler."
 
 Using this method, I localized my `Code` folder and organized it into the following subfolders:
+
 ![Screenshot](ss4.png)
 
 Here’s a quick breakdown of the subfolders:  

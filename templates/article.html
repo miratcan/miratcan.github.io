@@ -6,8 +6,7 @@
 {% block description %}{{ this.description|truncate(155) or this.body|striptags|truncate(155) }}{% endblock %}
 {% block extra_head %}
   {% if this.has_code %}
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+    <link rel="stylesheet" href="{{ get_pygments_stylesheet()|url }}">
   {% endif %}
 {% endblock %}
 {% block meta_img %}{% if this.attachments.get('hero.png') %}{{ this.attachments.get('hero.png').path}}{% endif %}{% if this.attachments.get('hero.jpg') %}{{ this.attachments.get('hero.jpg').path}}{% endif %}{% endblock %}

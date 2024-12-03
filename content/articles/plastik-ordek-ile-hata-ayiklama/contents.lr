@@ -1,16 +1,18 @@
-title: Plastik Ördek İle Hata Ayıklama
+title: Debugging with a Rubber Duck
 ---
 author: Mirat
 ---
 body:
 
-Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. [Gökmen](https://twitter.com/gkmngrgn)'de aynı şeyi söylüyordu hatta, "*birine sorarken problemi çözüyorum*" diyordu. Bunun olmasının sebebi sorunu başkasına anlatabilmek için mevzuyu önce zihinde düzenlemek zorunda oluşumuz. İfade edebilmek için bunu yapmak zorunda kalıyor insan, yapabilince de çözümü kendisi buluveriyor.
+It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the solution while explaining it. My friend [Gökmen](https://twitter.com/gkmngrgn) says the same thing. He often remarks, *"I solve the problem while asking someone about it."*  
 
-Neyse bugün [reddit](http://reddit.com)'de Rubber Duck Debugging diye bir şey [gördüm](http://www.reddit.com/r/todayilearned/comments/1tmviq/til_that_rubber_duck_debugging_is_when_a/). Tam bu bahsettiğim şeye yarıyor. Bilgisayarın yanına bir tane plastik ördek koyuyorsun. Sorunu, kodunu ona anlatıyorsun. İfade etmeye çalışırken problemi ve karşındaki kodu zihninde düzenlemek zorunda kalıyorsun bu da çözümü bulmanı sağlıyor.
+This happens because when we try to explain an issue to someone else, we’re forced to organize the details in our minds first. To articulate the problem, we break it down and think more clearly about it, and often, that’s enough to find the solution ourselves.
 
-![](https://31.media.tumblr.com/6cb3ff8a8faf41c2c3a9fe20daa42fbc/tumblr_inline_mycps0OjJg1qdjsvv.jpg)
+Today, I stumbled across something on [Reddit](http://reddit.com) called *Rubber Duck Debugging* ([link](http://www.reddit.com/r/todayilearned/comments/1tmviq/til_that_rubber_duck_debugging_is_when_a/)), and it’s exactly what I’ve been talking about. The concept is simple: keep a rubber duck on your desk. When you encounter a problem, explain it to the duck. As you try to verbalize the issue and describe your code, you’re naturally forced to organize your thoughts. This often leads to finding the solution on your own.
 
-Bu metod [The Pragmatic Programmer](http://en.wikipedia.org/wiki/The_Pragmatic_Programmer) adlı kitapta bir hikayede geçmiş ilk defa. Biraz deli işi ama denenebilir. İşe yarar gibi gözüküyor.
+![Rubber Duck](rubber-duck.jpg)
+
+This method was first introduced in a story in *[The Pragmatic Programmer](http://en.wikipedia.org/wiki/The_Pragmatic_Programmer)*. Sure, it might sound a little quirky, but it seems like it could work. Why not give it a shot?
 ---
 pub_date: 2013-12-25
 ---

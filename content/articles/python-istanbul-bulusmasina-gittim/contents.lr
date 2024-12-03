@@ -1,28 +1,43 @@
-title: Python İstanbul Buluşmasına Gittim
+title: I Attended a Python Istanbul Meetup
 ---
 author: Mirat
 ---
 body:
 
-Bir önceki yazımda Facebook'a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı tekrar açmak zorunda kaldım; zira okuldaki elemanlarla başka bir şekilde iletişim kurmam imkansız. "Bari hesabımı açtım gelen saçma sapan davetler kimden geliyorsa engelleyeyim de kurtulayım" derken hiç bakmadığım etkinlikler sayfasına baktım. Bir de ne göreyim? kırk yılın başı mantıklı bir etkinlik daveti gelmiş...
+In my previous post, I went on a rant about Facebook and proudly announced that I’d closed my account. But, thanks to finals week, I had to reopen it — there was simply no other way to communicate with my classmates. As I reopened my account, I thought, *“Well, if I’m going to do this, I might as well block all the spammy invitations once and for all.”* That’s when I stumbled upon something shocking: an actually useful event invitation!
 
-![davet](http://3.bp.blogspot.com/-nVqiULJXkCA/TuUhFakKXfI/AAAAAAAACxA/3AT4olBDWwU/s1600/Screenshot%2Bat%2B2011-12-11%2B23%253A19%253A08.png)
+![PyIst Invitation](ss.png)
 
-Bu [pyist](http://pyist.net/) buluşmalarını daha önce bir kaç kez duymuş, gitmek istemiştim ancak nasip olmamıştı. Bu gün sonunda buluşmalarından birine katılmayı başardım. Yaklaşık 3-4 saat boyunca oldukça keyifli bir sohbet oldu. [Mengü](http://www.mengu.net/) bize güzel bir [TurboGears](http://turbogears.org/) sunumu yaptı. Özet geçmek gerekirse Pylons ile Django arasında kalan bir framework TurboGears. Sizi template sistemi seçmek, orm seçmek gibi özgürlüklere kavuştururken yönetim paneli vermek ya da veri modellerinden formlar üretmek gibi nimetlerden de mahrum bırakmıyor.
+I’d heard about the [PyIST](http://pyist.net/) meetups a few times before and wanted to attend, but it had never worked out. This time, I finally managed to join one of their gatherings. It turned out to be a delightful experience with a lively discussion lasting about 3–4 hours. [Mengü](http://www.mengu.net/) gave an excellent presentation on [TurboGears](http://turbogears.org/), a Python web framework. 
 
-Her ne kadar sunum eksiksiz olsa da biz Django Cumhuriyeti'nin elamanları olarak "Neden TurboGears kullanayım ki?" sorusuna pek tatmin edici cevap alamadık diye düşünüyorum. Örneğin Django'da [SqlAlchemy](http://www.sqlalchemy.org/) kullanmak oldukça Django ORM'si varken anlamlı gelemedi bana. Şimdiye kadar Django'nun sorgu setlerinin işimi görmediği hiç olmadı. (Ancak yinede kişisel görüşüm olarak Django'nun generic foreign keyler'lere ulaşırken, sorgular biraz karmaşıklaştığı anda çekilmez olabildiğini söylemem gerek). Neyse sözü fazla uzatmadan Django'nun bana henüz "artık yeter ben senin ihtiyacını karşılayamıyorum başkasına git" demedi. Belki zamanla kalkıştığım işler karmaşıklaşır Django bana yetmemeye başlar orasını bilemiyorum. Sanırım biraz da zevk meselesi bu yazılım geliştirme çatıları arası geçişler yapmak.
+## The Framework Debate: TurboGears vs. Django
 
-Bunun dışında "abi bu Javascript sevilir mi yeaaa" türevinde çıkışlar yaparak gelecek cevapları tarttım. Ben nefret ediyorsam herkes etmeli değil mi?  Herkes onun antik bir dil olduğu konusunda hemfikir ancak bu başaçıkılmaz olduğu anlamına gelmiyor. Arkadaşların bu konuda okumamı önerdikleri kitap ise [Douglas Crockfold](http://www.crockford.com/)'un [Javascript: The Good Parts kitabı](http://shop.oreilly.com/product/9780596517748.do). Mümkün olan en yakın zamanda almayı planlıyorum. Artık e-book olarak ya da A4 kağıtlarda değil de gerçekten kütüphanemde dursa iyi olacak bu tip kaynakları. (Ekrandan yazı okumaktan nefret ettiğimi söylemiş miydim?)
+In short, TurboGears sits somewhere between Pylons and Django. It offers flexibility, allowing you to choose your template engine and ORM, but still provides conveniences like admin panels and form generation from data models.
 
-Not: Bahsi geçen kitabı araştırırken Douglas denen abinin 2009'da Özgür Yazılım ve Açık Kaynak Günleri'ne geldiğini ve orada uzun bir konuşma yaptığını öğrendim. İzlemek için [buraya tıklayabilirsiniz](http://www.fazlamesai.net/?a=article&amp;sid=5269)
+While the presentation was comprehensive, those of us from the "Django Republic" weren’t entirely sold. The question *“Why should I switch to TurboGears?”* didn’t quite get the answer we were hoping for. For example, using [SQLAlchemy](http://www.sqlalchemy.org/) within Django felt unnecessary when Django’s ORM already does the job well enough for most cases. (That said, I have to admit, when it comes to queries involving generic foreign keys, Django can get a bit messy.)
 
-Aslına bakarsanız buluşma her ne kadar güzel geçti ise de koskoca İstanbul'dan sadece 8 kişinin bir araya gelebilmesi garip geldi bana. Geliştirici tayfasının yani işi devamlı bir şeyler öğrenmek olan insanların bir arada olmaya çok daha fazla ihtiyacı var. Bilgi paylaştıkça çoğalır geyiği tam bu noktada çok işe yarayan bir klişe. Her ne kadar artık yeni iletişim yöntemleri ile bilgi paylaşılabiliyor, soru sorulabiliyor ya da laf atılabiliyor olsa da. Bir masanın etrafında oturup çay-bira içerken konuşmak, el kol hareketleri ve mimikleri kullanmak hala icat edilmiş en hızlı ve verimli iletişim çeşidi. Ayrıca güzel hatıra fotoğraflarına da sebep olabiliyor:
+For now, Django hasn’t given me the *“I’m not enough for you anymore”* message. Maybe as the complexity of my projects grows, I’ll find its limits, but for now, we’re good. I guess switching frameworks often boils down to personal preference.
 
-![hararetli konuşmalar](http://4.bp.blogspot.com/-Z5CTKrb5fXI/TuUsqKwQbRI/AAAAAAAACxM/_aud-Fkl5Gw/s1600/p20111211-164251%2B%25281%2529.jpg)
+## JavaScript: Love It or Hate It?
 
-Uzun uzun topluluk olmanın neden önemli olduğunu uzun uzun anlatmama gerek yok sanırım hemfikirizdir. Yazıyı burada ufak ufak noktalıyorum. Yine 4 paragraf yazıyı doğrultmak için 2 saatten fazla zaman harcadım :). Ancak [Oğuz](http://ogomogo.com/)'un bana gösterdiği [şu twit](https://twitter.com/#!/nedbat/status/145904822955163648) düşünülmeye değer.
+At some point during the meetup, I tested the waters with a cheeky comment: *“Can anyone actually love JavaScript?”* If I hate it, everyone else must, right? While we agreed it’s an ancient language, the group pointed out that doesn’t make it unmanageable. They recommended I check out [Douglas Crockford](http://www.crockford.com/)'s book, [*JavaScript: The Good Parts*](http://shop.oreilly.com/product/9780596517748.do). I plan to buy a physical copy soon because I’m tired of e-books and printing PDFs. (Did I mention I hate reading on screens?)
 
-Boston, Zuckerberg'in Facebook'un temellerini attığı üniversiteyi bıraktığı şehir. Topluluğun bu kadar güçlü olması sebep mi? Yoksa sonuç mu?
+By the way, while researching the book, I discovered Crockford gave a long talk at the 2009 Free Software and Open Source Days event. If you're curious, [you can watch it here](http://www.fazlamesai.net/?a=article&amp;sid=5269).
+
+## The Meetup Vibes
+
+Although the meetup was great, I couldn’t help but feel surprised that only eight people showed up in a city as massive as Istanbul. Developers — people whose job is to constantly learn — need these kinds of gatherings more than most. The cliché *“Knowledge grows when shared”* feels very appropriate here. Sure, you can share ideas, ask questions, or throw out quips online, but nothing beats sitting around a table with tea (or beer) and chatting face-to-face. It’s still the fastest and most effective form of communication — plus, you get some great memories and photos out of it.
+
+![Lively Discussion](meeting.jpg)
+
+## Wrapping It Up
+
+I don’t think I need to explain why building a community is so important — we’re probably on the same page here. I’ll end the post here, though it took me over two hours to get these four paragraphs just right. (Writing isn’t always easy!)
+
+Before I go, here’s some food for thought: [Oğuz](http://ogomogo.com/) showed me [this tweet](https://twitter.com/#!/nedbat/status/145904822955163648). It makes you wonder: 
+
+Boston, the city where Zuckerberg dropped out of university to build Facebook — is the strength of its developer community the cause of its success or the result of it?
+
 ---
 pub_date: 2011-02-26
 ---
