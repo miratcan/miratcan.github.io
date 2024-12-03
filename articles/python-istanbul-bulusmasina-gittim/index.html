@@ -16,8 +16,8 @@
 
     pre {
       padding: 2em;
-      background: #261917;
       font-size: .8em;
+      background: black;
     }
 
     code {
@@ -110,6 +110,16 @@
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      border: 1px solid gray;
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
 
       header,
@@ -138,20 +148,20 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Python İstanbul Buluşmasına Gittim — Mirat Can Bayrak</title>
-  <meta name="title" content="Python İstanbul Buluşmasına Gittim" />
-  <meta name="description" content="Bir önceki yazımda Facebook&#39;a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı..." />
+  <title>I Attended a Python Istanbul Meetup — Mirat Can Bayrak</title>
+  <meta name="title" content="I Attended a Python Istanbul Meetup" />
+  <meta name="description" content="In my previous post, I went on a rant about Facebook and proudly announced that I’d closed my account. But, thanks to finals week, I had to reopen it —..." />
   <link rel='canonical' href="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim/">
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim/" />
-  <meta property="og:title" content="Python İstanbul Buluşmasına Gittim - Mirat Can Bayrak" />
-  <meta property="og:description" content="Bir önceki yazımda Facebook&#39;a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı..." />
+  <meta property="og:title" content="I Attended a Python Istanbul Meetup - Mirat Can Bayrak" />
+  <meta property="og:description" content="In my previous post, I went on a rant about Facebook and proudly announced that I’d closed my account. But, thanks to finals week, I had to reopen it —..." />
   <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
     content="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim/" />
-  <meta property="twitter:title" content="Python İstanbul Buluşmasına Gittim" />
-  <meta property="twitter:description" content="Bir önceki yazımda Facebook&#39;a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı..." />
+  <meta property="twitter:title" content="I Attended a Python Istanbul Meetup" />
+  <meta property="twitter:description" content="In my previous post, I went on a rant about Facebook and proudly announced that I’d closed my account. But, thanks to finals week, I had to reopen it —..." />
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
@@ -183,17 +193,24 @@
   <main>
 
 02/2011
-<h1>Python İstanbul Buluşmasına Gittim</h1>
-<p>Bir önceki yazımda Facebook'a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı tekrar açmak zorunda kaldım; zira okuldaki elemanlarla başka bir şekilde iletişim kurmam imkansız. "Bari hesabımı açtım gelen saçma sapan davetler kimden geliyorsa engelleyeyim de kurtulayım" derken hiç bakmadığım etkinlikler sayfasına baktım. Bir de ne göreyim? kırk yılın başı mantıklı bir etkinlik daveti gelmiş...</p>
-<p><img src="http://3.bp.blogspot.com/-nVqiULJXkCA/TuUhFakKXfI/AAAAAAAACxA/3AT4olBDWwU/s1600/Screenshot%2Bat%2B2011-12-11%2B23%253A19%253A08.png" alt="davet"></p>
-<p>Bu <a href="http://pyist.net/">pyist</a> buluşmalarını daha önce bir kaç kez duymuş, gitmek istemiştim ancak nasip olmamıştı. Bu gün sonunda buluşmalarından birine katılmayı başardım. Yaklaşık 3-4 saat boyunca oldukça keyifli bir sohbet oldu. <a href="http://www.mengu.net/">Mengü</a> bize güzel bir <a href="http://turbogears.org/">TurboGears</a> sunumu yaptı. Özet geçmek gerekirse Pylons ile Django arasında kalan bir framework TurboGears. Sizi template sistemi seçmek, orm seçmek gibi özgürlüklere kavuştururken yönetim paneli vermek ya da veri modellerinden formlar üretmek gibi nimetlerden de mahrum bırakmıyor.</p>
-<p>Her ne kadar sunum eksiksiz olsa da biz Django Cumhuriyeti'nin elamanları olarak "Neden TurboGears kullanayım ki?" sorusuna pek tatmin edici cevap alamadık diye düşünüyorum. Örneğin Django'da <a href="http://www.sqlalchemy.org/">SqlAlchemy</a> kullanmak oldukça Django ORM'si varken anlamlı gelemedi bana. Şimdiye kadar Django'nun sorgu setlerinin işimi görmediği hiç olmadı. (Ancak yinede kişisel görüşüm olarak Django'nun generic foreign keyler'lere ulaşırken, sorgular biraz karmaşıklaştığı anda çekilmez olabildiğini söylemem gerek). Neyse sözü fazla uzatmadan Django'nun bana henüz "artık yeter ben senin ihtiyacını karşılayamıyorum başkasına git" demedi. Belki zamanla kalkıştığım işler karmaşıklaşır Django bana yetmemeye başlar orasını bilemiyorum. Sanırım biraz da zevk meselesi bu yazılım geliştirme çatıları arası geçişler yapmak.</p>
-<p>Bunun dışında "abi bu Javascript sevilir mi yeaaa" türevinde çıkışlar yaparak gelecek cevapları tarttım. Ben nefret ediyorsam herkes etmeli değil mi?  Herkes onun antik bir dil olduğu konusunda hemfikir ancak bu başaçıkılmaz olduğu anlamına gelmiyor. Arkadaşların bu konuda okumamı önerdikleri kitap ise <a href="http://www.crockford.com/">Douglas Crockfold</a>'un <a href="http://shop.oreilly.com/product/9780596517748.do">Javascript: The Good Parts kitabı</a>. Mümkün olan en yakın zamanda almayı planlıyorum. Artık e-book olarak ya da A4 kağıtlarda değil de gerçekten kütüphanemde dursa iyi olacak bu tip kaynakları. (Ekrandan yazı okumaktan nefret ettiğimi söylemiş miydim?)</p>
-<p>Not: Bahsi geçen kitabı araştırırken Douglas denen abinin 2009'da Özgür Yazılım ve Açık Kaynak Günleri'ne geldiğini ve orada uzun bir konuşma yaptığını öğrendim. İzlemek için <a href="http://www.fazlamesai.net/?a=article&amp;sid=5269">buraya tıklayabilirsiniz</a></p>
-<p>Aslına bakarsanız buluşma her ne kadar güzel geçti ise de koskoca İstanbul'dan sadece 8 kişinin bir araya gelebilmesi garip geldi bana. Geliştirici tayfasının yani işi devamlı bir şeyler öğrenmek olan insanların bir arada olmaya çok daha fazla ihtiyacı var. Bilgi paylaştıkça çoğalır geyiği tam bu noktada çok işe yarayan bir klişe. Her ne kadar artık yeni iletişim yöntemleri ile bilgi paylaşılabiliyor, soru sorulabiliyor ya da laf atılabiliyor olsa da. Bir masanın etrafında oturup çay-bira içerken konuşmak, el kol hareketleri ve mimikleri kullanmak hala icat edilmiş en hızlı ve verimli iletişim çeşidi. Ayrıca güzel hatıra fotoğraflarına da sebep olabiliyor:</p>
-<p><img src="http://4.bp.blogspot.com/-Z5CTKrb5fXI/TuUsqKwQbRI/AAAAAAAACxM/_aud-Fkl5Gw/s1600/p20111211-164251%2B%25281%2529.jpg" alt="hararetli konuşmalar"></p>
-<p>Uzun uzun topluluk olmanın neden önemli olduğunu uzun uzun anlatmama gerek yok sanırım hemfikirizdir. Yazıyı burada ufak ufak noktalıyorum. Yine 4 paragraf yazıyı doğrultmak için 2 saatten fazla zaman harcadım :). Ancak <a href="http://ogomogo.com/">Oğuz</a>'un bana gösterdiği <a href="https://twitter.com/#!/nedbat/status/145904822955163648">şu twit</a> düşünülmeye değer.</p>
-<p>Boston, Zuckerberg'in Facebook'un temellerini attığı üniversiteyi bıraktığı şehir. Topluluğun bu kadar güçlü olması sebep mi? Yoksa sonuç mu?</p>
+<h1>I Attended a Python Istanbul Meetup</h1>
+<p>In my previous post, I went on a rant about Facebook and proudly announced that I’d closed my account. But, thanks to finals week, I had to reopen it — there was simply no other way to communicate with my classmates. As I reopened my account, I thought, <em>“Well, if I’m going to do this, I might as well block all the spammy invitations once and for all.”</em> That’s when I stumbled upon something shocking: an actually useful event invitation!</p>
+<p><img src="ss.png" alt="PyIst Invitation"></p>
+<p>I’d heard about the <a href="http://pyist.net/">PyIST</a> meetups a few times before and wanted to attend, but it had never worked out. This time, I finally managed to join one of their gatherings. It turned out to be a delightful experience with a lively discussion lasting about 3–4 hours. <a href="http://www.mengu.net/">Mengü</a> gave an excellent presentation on <a href="http://turbogears.org/">TurboGears</a>, a Python web framework.</p>
+<h2>The Framework Debate: TurboGears vs. Django</h2>
+<p>In short, TurboGears sits somewhere between Pylons and Django. It offers flexibility, allowing you to choose your template engine and ORM, but still provides conveniences like admin panels and form generation from data models.</p>
+<p>While the presentation was comprehensive, those of us from the "Django Republic" weren’t entirely sold. The question <em>“Why should I switch to TurboGears?”</em> didn’t quite get the answer we were hoping for. For example, using <a href="http://www.sqlalchemy.org/">SQLAlchemy</a> within Django felt unnecessary when Django’s ORM already does the job well enough for most cases. (That said, I have to admit, when it comes to queries involving generic foreign keys, Django can get a bit messy.)</p>
+<p>For now, Django hasn’t given me the <em>“I’m not enough for you anymore”</em> message. Maybe as the complexity of my projects grows, I’ll find its limits, but for now, we’re good. I guess switching frameworks often boils down to personal preference.</p>
+<h2>JavaScript: Love It or Hate It?</h2>
+<p>At some point during the meetup, I tested the waters with a cheeky comment: <em>“Can anyone actually love JavaScript?”</em> If I hate it, everyone else must, right? While we agreed it’s an ancient language, the group pointed out that doesn’t make it unmanageable. They recommended I check out <a href="http://www.crockford.com/">Douglas Crockford</a>'s book, <a href="http://shop.oreilly.com/product/9780596517748.do"><em>JavaScript: The Good Parts</em></a>. I plan to buy a physical copy soon because I’m tired of e-books and printing PDFs. (Did I mention I hate reading on screens?)</p>
+<p>By the way, while researching the book, I discovered Crockford gave a long talk at the 2009 Free Software and Open Source Days event. If you're curious, <a href="http://www.fazlamesai.net/?a=article&amp;sid=5269">you can watch it here</a>.</p>
+<h2>The Meetup Vibes</h2>
+<p>Although the meetup was great, I couldn’t help but feel surprised that only eight people showed up in a city as massive as Istanbul. Developers — people whose job is to constantly learn — need these kinds of gatherings more than most. The cliché <em>“Knowledge grows when shared”</em> feels very appropriate here. Sure, you can share ideas, ask questions, or throw out quips online, but nothing beats sitting around a table with tea (or beer) and chatting face-to-face. It’s still the fastest and most effective form of communication — plus, you get some great memories and photos out of it.</p>
+<p><img src="meeting.jpg" alt="Lively Discussion"></p>
+<h2>Wrapping It Up</h2>
+<p>I don’t think I need to explain why building a community is so important — we’re probably on the same page here. I’ll end the post here, though it took me over two hours to get these four paragraphs just right. (Writing isn’t always easy!)</p>
+<p>Before I go, here’s some food for thought: <a href="http://ogomogo.com/">Oğuz</a> showed me <a href="https://twitter.com/#!/nedbat/status/145904822955163648">this tweet</a>. It makes you wonder:</p>
+<p>Boston, the city where Zuckerberg dropped out of university to build Facebook — is the strength of its developer community the cause of its success or the result of it?</p>
 
 
 

@@ -16,8 +16,8 @@
 
     pre {
       padding: 2em;
-      background: #261917;
       font-size: .8em;
+      background: black;
     }
 
     code {
@@ -110,6 +110,16 @@
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      border: 1px solid gray;
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
 
       header,
@@ -155,8 +165,7 @@
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+    <link rel="stylesheet" href="../../static/pygments.css">
   
 
 </head>

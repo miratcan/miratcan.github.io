@@ -16,8 +16,8 @@
 
     pre {
       padding: 2em;
-      background: #261917;
       font-size: .8em;
+      background: black;
     }
 
     code {
@@ -108,6 +108,16 @@
 
     .pagination {
       text-align: center;
+    }
+
+    p:has(> img:only-child) {
+      border: 1px solid gray;
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      max-width: 80%;
     }
 
     @media only screen and (max-width: 500px) {

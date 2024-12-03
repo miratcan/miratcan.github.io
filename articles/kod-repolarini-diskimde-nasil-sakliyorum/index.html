@@ -16,8 +16,8 @@
 
     pre {
       padding: 2em;
-      background: #261917;
       font-size: .8em;
+      background: black;
     }
 
     code {
@@ -110,6 +110,16 @@
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      border: 1px solid gray;
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
 
       header,
@@ -155,8 +165,7 @@
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+    <link rel="stylesheet" href="../../static/pygments.css">
   
 
 </head>
@@ -193,11 +202,15 @@
 <p><img src="ss2.png" alt="Screenshot"></p>
 <p>On macOS, you can make a folder display a localized name in Finder by appending <code>.localized</code> to its name, creating a <code>.localized</code> subfolder inside it, and placing a <code>tr.strings</code> file inside that subfolder. Let’s go through an example. Suppose you have a folder named <code>Ships</code> and you want Finder to display it as "Gemiler."</p>
 <p>First, create the necessary folder structure using the <code>-p</code> flag, which lets you create nested folders in one command:</p>
-<pre class="prettyprint lang-bsh">$ mkdir -p Ships.localized/.localized/</pre><p>Without the <code>-p</code> flag, you’d need to manually create <code>Ships.localized</code> first, then the <code>.localized</code> folder inside it.</p>
+<div class="hll"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>Ships.localized/.localized/
+</pre></div>
+<p>Without the <code>-p</code> flag, you’d need to manually create <code>Ships.localized</code> first, then the <code>.localized</code> folder inside it.</p>
 <p>Next, add a line to the <code>tr.strings</code> file inside the <code>.localized</code> folder to specify that "Ships" should appear as "Gemiler":</p>
-<pre class="prettyprint lang-bsh">$ echo '"Ships" = "Gemiler"' > Ships.localized/.localized/tr.strings</pre><p>After doing this, Finder will display the <code>Ships</code> folder as "Gemiler."</p>
-<p>Using this method, I localized my <code>Code</code> folder and organized it into the following subfolders:
-<img src="ss4.png" alt="Screenshot"></p>
+<div class="hll"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&quot;Ships&quot; = &quot;Gemiler&quot;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>Ships.localized/.localized/tr.strings
+</pre></div>
+<p>After doing this, Finder will display the <code>Ships</code> folder as "Gemiler."</p>
+<p>Using this method, I localized my <code>Code</code> folder and organized it into the following subfolders:</p>
+<p><img src="ss4.png" alt="Screenshot"></p>
 <p>Here’s a quick breakdown of the subfolders:</p>
 <ul>
 <li><strong>Daimi (Permanent):</strong> Contains repositories I’m actively maintaining, like my blog or the "interneti güzel" project.  </li>

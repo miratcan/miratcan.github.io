@@ -16,8 +16,8 @@
 
     pre {
       padding: 2em;
-      background: #261917;
       font-size: .8em;
+      background: black;
     }
 
     code {
@@ -110,6 +110,16 @@
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      border: 1px solid gray;
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
 
       header,
@@ -183,11 +193,7 @@
 <nav>
   
   
-  <a href="/articles/tag/personal/">#personal</a>
-  
-  
-  
-  <a href="/articles/tag/technical/">#technical</a>
+  <a href="/articles/tag/javascript-notes/">#javascript-notes</a>
   
   
   
@@ -195,7 +201,11 @@
   
   
   
-  <a href="/articles/tag/javascript-notes/">#javascript-notes</a>
+  <a href="/articles/tag/personal/">#personal</a>
+  
+  
+  
+  <a href="/articles/tag/technical/">#technical</a>
   
   
 </nav>
@@ -204,7 +214,7 @@
 <ul id="articles">
   
     <li>
-      <a href="../../python-istanbul-bulusmasina-gittim/">Python İstanbul Buluşmasına Gittim</a> <small>02/2011</small>
+      <a href="../../python-istanbul-bulusmasina-gittim/">I Attended a Python Istanbul Meetup</a> <small>02/2011</small>
     </li>
   
     <li>

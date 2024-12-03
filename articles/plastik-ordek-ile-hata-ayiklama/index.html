@@ -16,8 +16,8 @@
 
     pre {
       padding: 2em;
-      background: #261917;
       font-size: .8em;
+      background: black;
     }
 
     code {
@@ -110,6 +110,16 @@
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      border: 1px solid gray;
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
 
       header,
@@ -138,20 +148,20 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Plastik Ördek İle Hata Ayıklama — Mirat Can Bayrak</title>
-  <meta name="title" content="Plastik Ördek İle Hata Ayıklama" />
-  <meta name="description" content="Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. Gökmen&#39;de..." />
+  <title>Debugging with a Rubber Duck — Mirat Can Bayrak</title>
+  <meta name="title" content="Debugging with a Rubber Duck" />
+  <meta name="description" content="It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the..." />
   <link rel='canonical' href="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama/">
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama/" />
-  <meta property="og:title" content="Plastik Ördek İle Hata Ayıklama - Mirat Can Bayrak" />
-  <meta property="og:description" content="Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. Gökmen&#39;de..." />
+  <meta property="og:title" content="Debugging with a Rubber Duck - Mirat Can Bayrak" />
+  <meta property="og:description" content="It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the..." />
   <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
     content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama/" />
-  <meta property="twitter:title" content="Plastik Ördek İle Hata Ayıklama" />
-  <meta property="twitter:description" content="Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. Gökmen&#39;de..." />
+  <meta property="twitter:title" content="Debugging with a Rubber Duck" />
+  <meta property="twitter:description" content="It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the..." />
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
@@ -183,11 +193,12 @@
   <main>
 
 12/2013
-<h1>Plastik Ördek İle Hata Ayıklama</h1>
-<p>Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. <a href="https://twitter.com/gkmngrgn">Gökmen</a>'de aynı şeyi söylüyordu hatta, "<em>birine sorarken problemi çözüyorum</em>" diyordu. Bunun olmasının sebebi sorunu başkasına anlatabilmek için mevzuyu önce zihinde düzenlemek zorunda oluşumuz. İfade edebilmek için bunu yapmak zorunda kalıyor insan, yapabilince de çözümü kendisi buluveriyor.</p>
-<p>Neyse bugün <a href="http://reddit.com">reddit</a>'de Rubber Duck Debugging diye bir şey <a href="http://www.reddit.com/r/todayilearned/comments/1tmviq/til_that_rubber_duck_debugging_is_when_a/">gördüm</a>. Tam bu bahsettiğim şeye yarıyor. Bilgisayarın yanına bir tane plastik ördek koyuyorsun. Sorunu, kodunu ona anlatıyorsun. İfade etmeye çalışırken problemi ve karşındaki kodu zihninde düzenlemek zorunda kalıyorsun bu da çözümü bulmanı sağlıyor.</p>
-<p><img src="https://31.media.tumblr.com/6cb3ff8a8faf41c2c3a9fe20daa42fbc/tumblr_inline_mycps0OjJg1qdjsvv.jpg" alt=""></p>
-<p>Bu metod <a href="http://en.wikipedia.org/wiki/The_Pragmatic_Programmer">The Pragmatic Programmer</a> adlı kitapta bir hikayede geçmiş ilk defa. Biraz deli işi ama denenebilir. İşe yarar gibi gözüküyor.</p>
+<h1>Debugging with a Rubber Duck</h1>
+<p>It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the solution while explaining it. My friend <a href="https://twitter.com/gkmngrgn">Gökmen</a> says the same thing. He often remarks, <em>"I solve the problem while asking someone about it."</em></p>
+<p>This happens because when we try to explain an issue to someone else, we’re forced to organize the details in our minds first. To articulate the problem, we break it down and think more clearly about it, and often, that’s enough to find the solution ourselves.</p>
+<p>Today, I stumbled across something on <a href="http://reddit.com">Reddit</a> called <em>Rubber Duck Debugging</em> (<a href="http://www.reddit.com/r/todayilearned/comments/1tmviq/til_that_rubber_duck_debugging_is_when_a/">link</a>), and it’s exactly what I’ve been talking about. The concept is simple: keep a rubber duck on your desk. When you encounter a problem, explain it to the duck. As you try to verbalize the issue and describe your code, you’re naturally forced to organize your thoughts. This often leads to finding the solution on your own.</p>
+<p><img src="rubber-duck.jpg" alt="Rubber Duck"></p>
+<p>This method was first introduced in a story in <em><a href="http://en.wikipedia.org/wiki/The_Pragmatic_Programmer">The Pragmatic Programmer</a></em>. Sure, it might sound a little quirky, but it seems like it could work. Why not give it a shot?</p>
 
 
 

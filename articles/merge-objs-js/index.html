@@ -16,8 +16,8 @@
 
     pre {
       padding: 2em;
-      background: #261917;
       font-size: .8em;
+      background: black;
     }
 
     code {
@@ -110,6 +110,16 @@
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      border: 1px solid gray;
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
 
       header,
@@ -155,8 +165,7 @@
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+    <link rel="stylesheet" href="../../static/pygments.css">
   
 
 </head>
@@ -188,20 +197,18 @@
 12/2024
 <h1>How to merge two objects in javascript?</h1>
 <h2>1. Using the Spread Operator (<code>...</code>)</h2>
-<pre class="prettyprint lang-js">
-const obj1 = { a: 1, b: 2 };
-const obj2 = { c: 3, d: 4 };
+<div class="hll"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">obj1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">obj2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">obj3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">obj1</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">obj2</span><span class="w"> </span><span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj3</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: { a: 1, b: 2, c: 3, d: 4 }</span>
+</pre></div>
+<h3>2. Using <code>Object.assign()</code></h3>
+<div class="hll"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">obj1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">obj2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">obj3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span><span class="w"> </span><span class="nx">obj1</span><span class="p">,</span><span class="w"> </span><span class="nx">obj2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj3</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: { a: 1, b: 2, c: 3, d: 4 }</span>
+</pre></div>
 
-const obj3 = { ...obj1, ...obj2 };
-console.log(obj3); // Output: { a: 1, b: 2, c: 3, d: 4 }
-</pre><h3>2. Using <code>Object.assign()</code></h3>
-<pre class="prettyprint lang-js">
-const obj1 = { a: 1, b: 2 };
-const obj2 = { c: 3, d: 4 };
-
-const obj3 = Object.assign({}, obj1, obj2);
-console.log(obj3); // Output: { a: 1, b: 2, c: 3, d: 4 }
-</pre>
 
 
   <ul>
