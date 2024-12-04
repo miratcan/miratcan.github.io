@@ -148,20 +148,20 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak. — Mirat Can Bayrak</title>
-  <meta name="title" content="Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak." />
-  <meta name="description" content="Python İstanbul mail grubuna ilginç bir soru geldi, buraya not edeyim dedim. Arkadaşın bir Category, Author ve Post adında üç adet modeli var: class..." />
-  <link rel='canonical' href="https://mirat.dev/articles/djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/">
+  <title>How to merge two tables in Lua? — Mirat Can Bayrak</title>
+  <meta name="title" content="How to merge two tables in Lua?" />
+  <meta name="description" content="local function loopMethod(dict1, dict2) local merged_dict = {} for k, v in pairs(dict1) do merged_dict[k] = {} table.insert(merged_dict[k], v) end for..." />
+  <link rel='canonical' href="https://mirat.dev/articles/how-to-merge-two-tables-in-lua/">
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/" />
-  <meta property="og:title" content="Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak. - Mirat Can Bayrak" />
-  <meta property="og:description" content="Python İstanbul mail grubuna ilginç bir soru geldi, buraya not edeyim dedim. Arkadaşın bir Category, Author ve Post adında üç adet modeli var: class..." />
+  <meta property="og:url" content="https://mirat.dev/articles/how-to-merge-two-tables-in-lua/" />
+  <meta property="og:title" content="How to merge two tables in Lua? - Mirat Can Bayrak" />
+  <meta property="og:description" content="local function loopMethod(dict1, dict2) local merged_dict = {} for k, v in pairs(dict1) do merged_dict[k] = {} table.insert(merged_dict[k], v) end for..." />
   <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/articles/djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/" />
-  <meta property="twitter:title" content="Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak." />
-  <meta property="twitter:description" content="Python İstanbul mail grubuna ilginç bir soru geldi, buraya not edeyim dedim. Arkadaşın bir Category, Author ve Post adında üç adet modeli var: class..." />
+    content="https://mirat.dev/articles/how-to-merge-two-tables-in-lua/" />
+  <meta property="twitter:title" content="How to merge two tables in Lua?" />
+  <meta property="twitter:description" content="local function loopMethod(dict1, dict2) local merged_dict = {} for k, v in pairs(dict1) do merged_dict[k] = {} table.insert(merged_dict[k], v) end for..." />
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
@@ -194,63 +194,28 @@
   </header>
   <main>
 
-03/2012
-<h1>Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak.</h1>
-<p>Python İstanbul mail grubuna <a href="https://groups.google.com/forum/?fromgroups#!topic/python-istanbul/IAscvyQ7Euk">ilginç bir soru geldi</a>, buraya not edeyim dedim.</p>
-<p>Arkadaşın bir Category, Author ve Post adında üç adet modeli var:</p>
-<pre class="prettyprint lang-python">
-class Category(models.Model):
-    slug = ...
-    name = ...
+12/2024
+<h1>How to merge two tables in Lua?</h1>
+<div class="hll"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">loopMethod</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">merged_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">dict1</span><span class="p">)</span> <span class="kr">do</span>
+        <span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="nb">table.insert</span><span class="p">(</span><span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">v</span><span class="p">)</span>
+    <span class="kr">end</span>
+    <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">dict2</span><span class="p">)</span> <span class="kr">do</span>
+        <span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="nb">table.insert</span><span class="p">(</span><span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">v</span><span class="p">)</span>
+    <span class="kr">end</span>
+    <span class="kr">return</span> <span class="n">merged_dict</span>
+<span class="kr">end</span>
+</pre></div>
 
-class Post(models.Model)
-    title = ...
-    category = ForeignKey(Category)
-    author = ...
-
-class Author(models.Model):
-    name = ...
-</pre><p>Sorgulamak istenilen şey ise, kategori listesini her bir kategoride yazısı olan yazar sayılarıyla birlikte listelemek. Yani şöyle bir liste:</p>
-<table>
-<thead><tr>
-<th>category_id</th>
-<th>category</th>
-<th>name</th>
-<th>author_count</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>Django</td>
-<td>4</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Python</td>
-<td>3</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>Burada arkadaş bu sonuçları elde edebilmek için aşağıdaki gibi kümeleme kullanmış (<a href="http://miratcan.tumblr.com/post/18246437693/veritaban-sorgular-nda-yorumlama-ve-kumeleme">şurda bahsetmiştim</a>)</p>
-<pre class="prettyprint lang-python">
-    Category.objects.annotate(\
-        author_count=Count('post__author')).order_by('-author_count')</pre>
-</pre><p>Burda beklenilen şey kategorilerin post_author'ların sayımı birlikte gelmesi. Ancak yanlış giden bir şey var ki iki author var ise bunlar 2'şer Post yaptı ise toplam 4 yazar varmış gibi gözüküyor.</p>
-<p>Burada çözüm, yapılan sorguyu tekrarlardan uzak tutarak yapmak. Yani yazarları say ama unique (bunun Türkçe'si nedir?) say dememiz gerekiyor. Bunun için distinct adında bir parametre varmış:</p>
-<pre class="prettyprint lang-python">
-    Category.objects.annotate(\
-        author_count=Count('post__author', distinct=True)
-        ).order_by('-author_count')
-</pre>
 
 
   <ul>
     <li>
-        <a href="../tag/technical/">
-          All posts tagged technical
+        <a href="../tag/lua-notes/">
+          All posts tagged lua-notes
         </a>
       </li>
     

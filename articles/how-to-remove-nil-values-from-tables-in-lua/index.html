@@ -148,22 +148,24 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Debugging with a Rubber Duck — Mirat Can Bayrak</title>
-  <meta name="title" content="Debugging with a Rubber Duck" />
-  <meta name="description" content="It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the..." />
-  <link rel='canonical' href="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama/">
+  <title>How to remove nil values from tables in Lua? — Mirat Can Bayrak</title>
+  <meta name="title" content="How to remove nil values from tables in Lua?" />
+  <meta name="description" content="Method 1: Using table.filter (Use this) local function remove_nil_values(t) return table.filter(t, function(x) return x ~= nil end) end Method 2: Using..." />
+  <link rel='canonical' href="https://mirat.dev/articles/how-to-remove-nil-values-from-tables-in-lua/">
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama/" />
-  <meta property="og:title" content="Debugging with a Rubber Duck - Mirat Can Bayrak" />
-  <meta property="og:description" content="It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the..." />
+  <meta property="og:url" content="https://mirat.dev/articles/how-to-remove-nil-values-from-tables-in-lua/" />
+  <meta property="og:title" content="How to remove nil values from tables in Lua? - Mirat Can Bayrak" />
+  <meta property="og:description" content="Method 1: Using table.filter (Use this) local function remove_nil_values(t) return table.filter(t, function(x) return x ~= nil end) end Method 2: Using..." />
   <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama/" />
-  <meta property="twitter:title" content="Debugging with a Rubber Duck" />
-  <meta property="twitter:description" content="It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the..." />
+    content="https://mirat.dev/articles/how-to-remove-nil-values-from-tables-in-lua/" />
+  <meta property="twitter:title" content="How to remove nil values from tables in Lua?" />
+  <meta property="twitter:description" content="Method 1: Using table.filter (Use this) local function remove_nil_values(t) return table.filter(t, function(x) return x ~= nil end) end Method 2: Using..." />
   <meta property="twitter:image" content="https://mirat.dev" />
   
+  
+    <link rel="stylesheet" href="../../static/pygments.css">
   
 
 </head>
@@ -192,24 +194,27 @@
   </header>
   <main>
 
-12/2013
-<h1>Debugging with a Rubber Duck</h1>
-<p>It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the solution while explaining it. My friend <a href="https://twitter.com/gkmngrgn">Gökmen</a> says the same thing. He often remarks, <em>"I solve the problem while asking someone about it."</em></p>
-<p>This happens because when we try to explain an issue to someone else, we’re forced to organize the details in our minds first. To articulate the problem, we break it down and think more clearly about it, and often, that’s enough to find the solution ourselves.</p>
-<p>Today, I stumbled across something on <a href="http://reddit.com">Reddit</a> called <em>Rubber Duck Debugging</em> (<a href="http://www.reddit.com/r/todayilearned/comments/1tmviq/til_that_rubber_duck_debugging_is_when_a/">link</a>), and it’s exactly what I’ve been talking about. The concept is simple: keep a rubber duck on your desk. When you encounter a problem, explain it to the duck. As you try to verbalize the issue and describe your code, you’re naturally forced to organize your thoughts. This often leads to finding the solution on your own.</p>
-<p><img src="rubber-duck.jpg" alt="Rubber Duck"></p>
-<p>This method was first introduced in a story in <em><a href="http://en.wikipedia.org/wiki/The_Pragmatic_Programmer">The Pragmatic Programmer</a></em>. Sure, it might sound a little quirky, but it seems like it could work. Why not give it a shot?</p>
+
+<h1>How to remove nil values from tables in Lua?</h1>
+<h2>Method 1: Using <code>table.filter</code> (Use this)</h2>
+<div class="hll"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">remove_nil_values</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="kr">return</span> <span class="n">table</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="kr">return</span> <span class="n">x</span> <span class="o">~=</span> <span class="kc">nil</span> <span class="kr">end</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+<h2>Method 2: Using pairs and conditions</h2>
+<p><strong>Method 1: Using <code>pairs</code> and a conditional statement</strong></p>
+<div class="hll"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">remove_nil_values</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">new_t</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="kr">do</span>
+        <span class="kr">if</span> <span class="n">v</span> <span class="o">~=</span> <span class="kc">nil</span> <span class="kr">then</span>
+            <span class="nb">table.insert</span><span class="p">(</span><span class="n">new_t</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="kr">end</span>
+    <span class="kr">end</span>
+    <span class="kr">return</span> <span class="n">new_t</span>
+<span class="kr">end</span>
+</pre></div>
 
 
-
-  <ul>
-    <li>
-        <a href="../tag/technical/">
-          All posts tagged technical
-        </a>
-      </li>
-    
-  </ul>
 
 
 <script src="https://utteranc.es/client.js"

@@ -148,20 +148,20 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak. — Mirat Can Bayrak</title>
-  <meta name="title" content="Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak." />
-  <meta name="description" content="Python İstanbul mail grubuna ilginç bir soru geldi, buraya not edeyim dedim. Arkadaşın bir Category, Author ve Post adında üç adet modeli var: class..." />
-  <link rel='canonical' href="https://mirat.dev/articles/djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/">
+  <title>How to reverse a string in Python? — Mirat Can Bayrak</title>
+  <meta name="title" content="How to reverse a string in Python?" />
+  <meta name="description" content="Method 1: Using slicing &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = s[::-1] &gt;&gt;&gt; print(s2) tset Method 2: Using for loop (Don&#39;t use it) &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = &#34;&#34; &gt;&gt;&gt; for..." />
+  <link rel='canonical' href="https://mirat.dev/articles/how-to-reverse-a-string-in-python/">
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/" />
-  <meta property="og:title" content="Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak. - Mirat Can Bayrak" />
-  <meta property="og:description" content="Python İstanbul mail grubuna ilginç bir soru geldi, buraya not edeyim dedim. Arkadaşın bir Category, Author ve Post adında üç adet modeli var: class..." />
+  <meta property="og:url" content="https://mirat.dev/articles/how-to-reverse-a-string-in-python/" />
+  <meta property="og:title" content="How to reverse a string in Python? - Mirat Can Bayrak" />
+  <meta property="og:description" content="Method 1: Using slicing &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = s[::-1] &gt;&gt;&gt; print(s2) tset Method 2: Using for loop (Don&#39;t use it) &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = &#34;&#34; &gt;&gt;&gt; for..." />
   <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/articles/djangoda-sorgu-yorumlama-annotate-isleminde-farkli-elemanlari-saydirmak/" />
-  <meta property="twitter:title" content="Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak." />
-  <meta property="twitter:description" content="Python İstanbul mail grubuna ilginç bir soru geldi, buraya not edeyim dedim. Arkadaşın bir Category, Author ve Post adında üç adet modeli var: class..." />
+    content="https://mirat.dev/articles/how-to-reverse-a-string-in-python/" />
+  <meta property="twitter:title" content="How to reverse a string in Python?" />
+  <meta property="twitter:description" content="Method 1: Using slicing &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = s[::-1] &gt;&gt;&gt; print(s2) tset Method 2: Using for loop (Don&#39;t use it) &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = &#34;&#34; &gt;&gt;&gt; for..." />
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
@@ -194,63 +194,29 @@
   </header>
   <main>
 
-03/2012
-<h1>Django&#39;da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak.</h1>
-<p>Python İstanbul mail grubuna <a href="https://groups.google.com/forum/?fromgroups#!topic/python-istanbul/IAscvyQ7Euk">ilginç bir soru geldi</a>, buraya not edeyim dedim.</p>
-<p>Arkadaşın bir Category, Author ve Post adında üç adet modeli var:</p>
-<pre class="prettyprint lang-python">
-class Category(models.Model):
-    slug = ...
-    name = ...
+12/2024
+<h1>How to reverse a string in Python?</h1>
+<h2>Method 1: Using slicing</h2>
+<div class="hll"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s1</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> 
+<span class="n">tset</span>
+</pre></div>
+<h2>Method 2: Using for loop (Don't use it)</h2>
+<div class="hll"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s1</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s1</span><span class="p">:</span>
+<span class="o">...</span>    <span class="n">s2</span> <span class="o">=</span> <span class="n">char</span> <span class="o">+</span> <span class="n">s2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+<span class="n">tset</span>
+</pre></div>
 
-class Post(models.Model)
-    title = ...
-    category = ForeignKey(Category)
-    author = ...
-
-class Author(models.Model):
-    name = ...
-</pre><p>Sorgulamak istenilen şey ise, kategori listesini her bir kategoride yazısı olan yazar sayılarıyla birlikte listelemek. Yani şöyle bir liste:</p>
-<table>
-<thead><tr>
-<th>category_id</th>
-<th>category</th>
-<th>name</th>
-<th>author_count</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>Django</td>
-<td>4</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Python</td>
-<td>3</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>Burada arkadaş bu sonuçları elde edebilmek için aşağıdaki gibi kümeleme kullanmış (<a href="http://miratcan.tumblr.com/post/18246437693/veritaban-sorgular-nda-yorumlama-ve-kumeleme">şurda bahsetmiştim</a>)</p>
-<pre class="prettyprint lang-python">
-    Category.objects.annotate(\
-        author_count=Count('post__author')).order_by('-author_count')</pre>
-</pre><p>Burda beklenilen şey kategorilerin post_author'ların sayımı birlikte gelmesi. Ancak yanlış giden bir şey var ki iki author var ise bunlar 2'şer Post yaptı ise toplam 4 yazar varmış gibi gözüküyor.</p>
-<p>Burada çözüm, yapılan sorguyu tekrarlardan uzak tutarak yapmak. Yani yazarları say ama unique (bunun Türkçe'si nedir?) say dememiz gerekiyor. Bunun için distinct adında bir parametre varmış:</p>
-<pre class="prettyprint lang-python">
-    Category.objects.annotate(\
-        author_count=Count('post__author', distinct=True)
-        ).order_by('-author_count')
-</pre>
 
 
   <ul>
     <li>
-        <a href="../tag/technical/">
-          All posts tagged technical
+        <a href="../tag/python-notes/">
+          All posts tagged python-notes
         </a>
       </li>
     
