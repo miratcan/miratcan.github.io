@@ -1,0 +1,29 @@
+title: How to remove nil values from tables in Lua?
+---
+body:
+
+## Method 1: Using `table.filter` (Use this)
+
+```lua
+local function remove_nil_values(t)
+    return table.filter(t, function(x) return x ~= nil end)
+end
+```
+
+## Method 2: Using pairs and conditions
+
+**Method 1: Using `pairs` and a conditional statement**
+
+```lua
+local function remove_nil_values(t)
+    local new_t = {}
+    for k, v in pairs(t) do
+        if v ~= nil then
+            table.insert(new_t, v)
+        end
+    end
+    return new_t
+end
+```
+---
+has_code: yes

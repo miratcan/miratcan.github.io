@@ -1,0 +1,28 @@
+title: How to reverse a string in Python?
+---
+body:
+
+## Method 1: Using slicing
+
+```python
+>>> s1 = "test"
+>>> s2 = s[::-1]
+>>> print(s2) 
+tset
+```
+## Method 2: Using for loop (Don't use it)
+
+```python
+>>> s1 = "test"
+>>> s2 = ""
+>>> for char in s1:
+...    s2 = char + s2
+>>> print(s2)
+tset
+```
+---
+pub_date: 2024-12-04
+---
+tags: python-notes
+---
+has_code: yes

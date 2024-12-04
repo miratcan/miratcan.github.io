@@ -1,0 +1,24 @@
+title: How to merge two tables in Lua?
+---
+tags: lua-notes
+---
+body:
+
+```lua
+local function loopMethod(dict1, dict2)
+    local merged_dict = {}
+    for k, v in pairs(dict1) do
+        merged_dict[k] = {}
+        table.insert(merged_dict[k], v)
+    end
+    for k, v in pairs(dict2) do
+        merged_dict[k] = merged_dict[k] or {}
+        table.insert(merged_dict[k], v)
+    end
+    return merged_dict
+end
+```
+---
+has_code: yes
+---
+pub_date: 2024-12-04

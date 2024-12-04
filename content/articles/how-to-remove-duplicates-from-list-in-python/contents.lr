@@ -1,0 +1,26 @@
+title: How to remove duplicates from list in Python?
+---
+body:
+
+## Method 1: Using set
+
+```python
+>>> _list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> unique = list(set(_list))
+>>> print(unique)
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+## Method 2: Using dict from keys
+
+```python
+>>> _list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> unique = list(dict.fromkeys(_list))
+>>> print(unique)
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+---
+pub_date: 2024-12-04
+---
+has_code: yes
