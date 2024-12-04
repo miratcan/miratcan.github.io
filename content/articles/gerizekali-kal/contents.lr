@@ -1,4 +1,4 @@
-title: Gerizekalı Kal
+title: Don't Be a Dummy: A Developer's Tale
 ---
 pub_date: 2016-07-02
 ---
@@ -6,19 +6,23 @@ author: Mirat
 ---
 body:
 
-Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu sebepten yapıyorum. Mesela geçen gün şöyle bir şey yapmışım:
+When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn't have. This is a big mistake. I often make the most absurd errors because of it. Take this example from the other day:  
 
-<pre class="prettyprint lang-python">
-val = ... # (1)
+```python
+val = ...  # (1)
 try:
     a = int(val)
 except ValueError:
     a = None
-</pre>
+```
 
-Burada val değeri integer, integer'a çevirilebilir bir string ya da None gelecek (1). Ben de demişim ki eğer None gelirse None set edeyim, diğer durumlarda ise integer'a çevireyim. Zira int fonksiyonunun integer'a çeviremediğinde ValueError kaldırdığından eminim. Bu kodu çalıştırmaya bile ihtiyaç duymadan göndermişim (burada kendime hakaretler yağdırıyorum) Sonra anladım ki int(None) ValueError değil TypeError kaldırıyor. Kodum testten döndü :)
+Here, the `val` variable can be an integer, a string that can be converted into an integer, or `None` (1). I thought, "If it's `None`, I'll just set it to `None`; for all other cases, I'll convert it to an integer." After all, I was *certain* that the `int` function raises a `ValueError` if it can't convert something.  
 
-Geliştirme yaparken tek satırdaki tırnak işaretini değiştirsek o satırın çalışıp çalışmadığını görmeden hiç bir yere göndermemek, kendini gerizekalı kabul etmek gerek.
+Feeling smug about my logic, I didn't even bother running the code before pushing it (this is where I start yelling at myself internally). Later, I realized that **`int(None)` doesn't raise a `ValueError`—it raises a `TypeError`.** My code failed during testing.  
+
+## Lesson Learned: Test Everything  
+
+Even if you're changing something as trivial as a quote in a single line of code, make sure you test it first. Otherwise, you'll end up like me: assuming you're a genius and realizing you were being a dummy all along. 😅
 
 ---
 has_code: yes
