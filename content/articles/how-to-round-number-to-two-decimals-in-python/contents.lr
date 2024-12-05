@@ -1,0 +1,19 @@
+title: How to round number to two decimals in Python?
+---
+body:
+
+```python
+>>> number = 1.234
+>>> number = round(number, 2)
+>>> print(number)
+1.23
+```
+
+---
+description: Use round function: number = round(number)
+---
+tags: python-notes
+---
+has_code: yes
+---
+pub_date: 2024-12-05
