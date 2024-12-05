@@ -159,20 +159,20 @@
   })(window, document, "clarity", "script", "p841gcyf0p");
 </script>
   <!-- Primary Meta Tags -->
-  <title>Don&#39;t Be a Dummy: A Developer&#39;s Tale — Mirat Can Bayrak</title>
-  <meta name="title" content="Don&#39;t Be a Dummy: A Developer&#39;s Tale" />
-  <meta name="description" content="When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn&#39;t have. This is a big..." />
-  <link rel='canonical' href="https://mirat.dev/articles/gerizekali-kal/">
+  <title>How to reverse a string in Python? — Mirat Can Bayrak</title>
+  <meta name="title" content="How to reverse a string in Python?" />
+  <meta name="description" content="Method 1: Using slicing &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = s[::-1] &gt;&gt;&gt; print(s2) tset Method 2: Using for loop (Don&#39;t use it) &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = &#34;&#34; &gt;&gt;&gt; for..." />
+  <link rel='canonical' href="https://mirat.dev/articles/how-to-reverse-a-string-in-python/">
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/gerizekali-kal/" />
-  <meta property="og:title" content="Don&#39;t Be a Dummy: A Developer&#39;s Tale - Mirat Can Bayrak" />
-  <meta property="og:description" content="When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn&#39;t have. This is a big..." />
+  <meta property="og:url" content="https://mirat.dev/articles/how-to-reverse-a-string-in-python/" />
+  <meta property="og:title" content="How to reverse a string in Python? - Mirat Can Bayrak" />
+  <meta property="og:description" content="Method 1: Using slicing &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = s[::-1] &gt;&gt;&gt; print(s2) tset Method 2: Using for loop (Don&#39;t use it) &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = &#34;&#34; &gt;&gt;&gt; for..." />
   <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/articles/gerizekali-kal/" />
-  <meta property="twitter:title" content="Don&#39;t Be a Dummy: A Developer&#39;s Tale" />
-  <meta property="twitter:description" content="When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn&#39;t have. This is a big..." />
+    content="https://mirat.dev/articles/how-to-reverse-a-string-in-python/" />
+  <meta property="twitter:title" content="How to reverse a string in Python?" />
+  <meta property="twitter:description" content="Method 1: Using slicing &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = s[::-1] &gt;&gt;&gt; print(s2) tset Method 2: Using for loop (Don&#39;t use it) &gt;&gt;&gt; s1 = &#34;test&#34; &gt;&gt;&gt; s2 = &#34;&#34; &gt;&gt;&gt; for..." />
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
@@ -205,26 +205,29 @@
   </header>
   <main>
 
-07/2016
-<h1>Don&#39;t Be a Dummy: A Developer&#39;s Tale</h1>
-<p>When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn't have. This is a big mistake. I often make the most absurd errors because of it. Take this example from the other day:</p>
-<div class="hll"><pre><span></span><span class="n">val</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># (1)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="kc">None</span>
+12/2024
+<h1>How to reverse a string in Python?</h1>
+<h2>Method 1: Using slicing</h2>
+<div class="hll"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s1</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> 
+<span class="n">tset</span>
 </pre></div>
-<p>Here, the <code>val</code> variable can be an integer, a string that can be converted into an integer, or <code>None</code> (1). I thought, "If it's <code>None</code>, I'll just set it to <code>None</code>; for all other cases, I'll convert it to an integer." After all, I was <em>certain</em> that the <code>int</code> function raises a <code>ValueError</code> if it can't convert something.</p>
-<p>Feeling smug about my logic, I didn't even bother running the code before pushing it (this is where I start yelling at myself internally). Later, I realized that <strong><code>int(None)</code> doesn't raise a <code>ValueError</code>—it raises a <code>TypeError</code>.</strong> My code failed during testing.</p>
-<h2>Lesson Learned: Test Everything</h2>
-<p>Even if you're changing something as trivial as a quote in a single line of code, make sure you test it first. Otherwise, you'll end up like me: assuming you're a genius and realizing you were being a dummy all along. 😅</p>
+<h2>Method 2: Using for loop (Don't use it)</h2>
+<div class="hll"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s1</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s1</span><span class="p">:</span>
+<span class="o">...</span>    <span class="n">s2</span> <span class="o">=</span> <span class="n">char</span> <span class="o">+</span> <span class="n">s2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+<span class="n">tset</span>
+</pre></div>
 
 
 
   <ul>
     <li>
-        <a href="../tag/technical/">
-          All posts tagged technical
+        <a href="../tag/python-notes/">
+          All posts tagged python-notes
         </a>
       </li>
     

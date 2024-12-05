@@ -159,20 +159,20 @@
   })(window, document, "clarity", "script", "p841gcyf0p");
 </script>
   <!-- Primary Meta Tags -->
-  <title>Don&#39;t Be a Dummy: A Developer&#39;s Tale — Mirat Can Bayrak</title>
-  <meta name="title" content="Don&#39;t Be a Dummy: A Developer&#39;s Tale" />
-  <meta name="description" content="When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn&#39;t have. This is a big..." />
-  <link rel='canonical' href="https://mirat.dev/articles/gerizekali-kal/">
+  <title>How to remove nil values from tables in Lua? — Mirat Can Bayrak</title>
+  <meta name="title" content="How to remove nil values from tables in Lua?" />
+  <meta name="description" content="Method 1: Using table.filter (Use this) local function remove_nil_values(t) return table.filter(t, function(x) return x ~= nil end) end Method 2: Using..." />
+  <link rel='canonical' href="https://mirat.dev/articles/how-to-remove-nil-values-from-tables-in-lua/">
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/gerizekali-kal/" />
-  <meta property="og:title" content="Don&#39;t Be a Dummy: A Developer&#39;s Tale - Mirat Can Bayrak" />
-  <meta property="og:description" content="When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn&#39;t have. This is a big..." />
+  <meta property="og:url" content="https://mirat.dev/articles/how-to-remove-nil-values-from-tables-in-lua/" />
+  <meta property="og:title" content="How to remove nil values from tables in Lua? - Mirat Can Bayrak" />
+  <meta property="og:description" content="Method 1: Using table.filter (Use this) local function remove_nil_values(t) return table.filter(t, function(x) return x ~= nil end) end Method 2: Using..." />
   <meta property="og:image" content="https://mirat.dev" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url"
-    content="https://mirat.dev/articles/gerizekali-kal/" />
-  <meta property="twitter:title" content="Don&#39;t Be a Dummy: A Developer&#39;s Tale" />
-  <meta property="twitter:description" content="When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn&#39;t have. This is a big..." />
+    content="https://mirat.dev/articles/how-to-remove-nil-values-from-tables-in-lua/" />
+  <meta property="twitter:title" content="How to remove nil values from tables in Lua?" />
+  <meta property="twitter:description" content="Method 1: Using table.filter (Use this) local function remove_nil_values(t) return table.filter(t, function(x) return x ~= nil end) end Method 2: Using..." />
   <meta property="twitter:image" content="https://mirat.dev" />
   
   
@@ -205,30 +205,27 @@
   </header>
   <main>
 
-07/2016
-<h1>Don&#39;t Be a Dummy: A Developer&#39;s Tale</h1>
-<p>When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn't have. This is a big mistake. I often make the most absurd errors because of it. Take this example from the other day:</p>
-<div class="hll"><pre><span></span><span class="n">val</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># (1)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="kc">None</span>
+
+<h1>How to remove nil values from tables in Lua?</h1>
+<h2>Method 1: Using <code>table.filter</code> (Use this)</h2>
+<div class="hll"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">remove_nil_values</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="kr">return</span> <span class="n">table</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="kr">return</span> <span class="n">x</span> <span class="o">~=</span> <span class="kc">nil</span> <span class="kr">end</span><span class="p">)</span>
+<span class="kr">end</span>
 </pre></div>
-<p>Here, the <code>val</code> variable can be an integer, a string that can be converted into an integer, or <code>None</code> (1). I thought, "If it's <code>None</code>, I'll just set it to <code>None</code>; for all other cases, I'll convert it to an integer." After all, I was <em>certain</em> that the <code>int</code> function raises a <code>ValueError</code> if it can't convert something.</p>
-<p>Feeling smug about my logic, I didn't even bother running the code before pushing it (this is where I start yelling at myself internally). Later, I realized that <strong><code>int(None)</code> doesn't raise a <code>ValueError</code>—it raises a <code>TypeError</code>.</strong> My code failed during testing.</p>
-<h2>Lesson Learned: Test Everything</h2>
-<p>Even if you're changing something as trivial as a quote in a single line of code, make sure you test it first. Otherwise, you'll end up like me: assuming you're a genius and realizing you were being a dummy all along. 😅</p>
+<h2>Method 2: Using pairs and conditions</h2>
+<p><strong>Method 1: Using <code>pairs</code> and a conditional statement</strong></p>
+<div class="hll"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">remove_nil_values</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">new_t</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="kr">do</span>
+        <span class="kr">if</span> <span class="n">v</span> <span class="o">~=</span> <span class="kc">nil</span> <span class="kr">then</span>
+            <span class="nb">table.insert</span><span class="p">(</span><span class="n">new_t</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="kr">end</span>
+    <span class="kr">end</span>
+    <span class="kr">return</span> <span class="n">new_t</span>
+<span class="kr">end</span>
+</pre></div>
 
 
-
-  <ul>
-    <li>
-        <a href="../tag/technical/">
-          All posts tagged technical
-        </a>
-      </li>
-    
-  </ul>
 
 
 <script src="https://utteranc.es/client.js"
