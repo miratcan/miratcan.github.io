@@ -10,8 +10,8 @@
       background: #161917;
       color: #B2A497;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
-      line-height: 22px;
+      font-size: 1.08rem;
+      line-height: 1.2em;
     }
 
     pre {
@@ -87,7 +87,7 @@
     main,
     header {
       padding: 1em;
-      max-width: 800px;
+      max-width: 600px;
       margin: 0 auto;
       box-sizing: border-box;
     }
@@ -99,11 +99,13 @@
     nav {
       display: flex;
       align-content: center;
-      gap: 0 1em;
+      gap: .5em 1em;
+      flex-wrap: wrap;
     }
 
     main nav {
       background: #333;
+      padding: .5em;
     }
 
     .pagination {
@@ -205,7 +207,6 @@
   </header>
   <main>
 
-07/2016
 <h1>Don&#39;t Be a Dummy: A Developer&#39;s Tale</h1>
 <p>When you spend enough time working on software development, you sometimes develop an overconfidence that you really shouldn't have. This is a big mistake. I often make the most absurd errors because of it. Take this example from the other day:</p>
 <div class="hll"><pre><span></span><span class="n">val</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># (1)</span>
@@ -219,6 +220,7 @@
 <h2>Lesson Learned: Test Everything</h2>
 <p>Even if you're changing something as trivial as a quote in a single line of code, make sure you test it first. Otherwise, you'll end up like me: assuming you're a genius and realizing you were being a dummy all along. 😅</p>
 
+07/2016
 
 
   <ul>

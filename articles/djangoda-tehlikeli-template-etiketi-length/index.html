@@ -10,8 +10,8 @@
       background: #161917;
       color: #B2A497;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
-      line-height: 22px;
+      font-size: 1.08rem;
+      line-height: 1.2em;
     }
 
     pre {
@@ -87,7 +87,7 @@
     main,
     header {
       padding: 1em;
-      max-width: 800px;
+      max-width: 600px;
       margin: 0 auto;
       box-sizing: border-box;
     }
@@ -99,11 +99,13 @@
     nav {
       display: flex;
       align-content: center;
-      gap: 0 1em;
+      gap: .5em 1em;
+      flex-wrap: wrap;
     }
 
     main nav {
       background: #333;
+      padding: .5em;
     }
 
     .pagination {
@@ -205,7 +207,6 @@
   </header>
   <main>
 
-01/2014
 <h1>A Dangerous Template Tag in Django: `length`</h1>
 <p>While working on a new project today, I noticed that rendering a particular part of a template was unusually slow. The issue was traced to a <code>QuerySet</code> being passed through the <code>length</code> template filter:</p>
 <pre class="prettyprint">
@@ -249,6 +250,7 @@ FROM `channel_customstream`
 </pre><h3>Key Takeaway</h3>
 <p>Do <strong>not</strong> use the <code>length</code> template filter if you expect it to execute a database <code>COUNT</code> query. It doesn’t. Instead, explicitly use the <code>count()</code> method for <code>QuerySet</code> objects to avoid unnecessary memory usage and database overhead.</p>
 
+01/2014
 
 
   <ul>

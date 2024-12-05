@@ -10,8 +10,8 @@
       background: #161917;
       color: #B2A497;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
-      line-height: 22px;
+      font-size: 1.08rem;
+      line-height: 1.2em;
     }
 
     pre {
@@ -87,7 +87,7 @@
     main,
     header {
       padding: 1em;
-      max-width: 800px;
+      max-width: 600px;
       margin: 0 auto;
       box-sizing: border-box;
     }
@@ -99,11 +99,13 @@
     nav {
       display: flex;
       align-content: center;
-      gap: 0 1em;
+      gap: .5em 1em;
+      flex-wrap: wrap;
     }
 
     main nav {
       background: #333;
+      padding: .5em;
     }
 
     .pagination {
@@ -205,7 +207,6 @@
   </header>
   <main>
 
-02/2012
 <h1>Veritabanı sorgularında yorumlama ve kümeleme.</h1>
 <p>Django'nun veritabanı katmanı size basit sorgular yapma imkanı tanıdığı gibi, çeşitli yorumlama (annotation) ve kümeleme (aggregation) işlemleri yapmanıza da imkan sağlıyor. Söz gelimi bir kullanıcının gelir giderini tuttuğumuz transaction adında bir modelimiz olduğunu farzedelim.</p>
 <pre class="prettyprint lang-python">
@@ -252,6 +253,7 @@ Kullanıcı 3 adet işlem yaptı. Şu an kayıtlı olan bütün transaction obje
 <p>Tabi burada sadece Sum fonksiyonu ile sınırlı değilsiniz. Count, Max, Avg gibi bir çok metod mevcut. Daha fazla bilgi için şuraya bakabilirsiniz:</p>
 <p><a href="https://docs.djangoproject.com/en/dev/topics/db/aggregation/" title="https://docs.djangoproject.com/en/dev/topics/db/aggregation/">https://docs.djangoproject.com/en/dev/topics/db/aggregation/</a></p>
 
+02/2012
 
 
   <ul>

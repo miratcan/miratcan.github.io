@@ -10,8 +10,8 @@
       background: #161917;
       color: #B2A497;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
-      line-height: 22px;
+      font-size: 1.08rem;
+      line-height: 1.2em;
     }
 
     pre {
@@ -87,7 +87,7 @@
     main,
     header {
       padding: 1em;
-      max-width: 800px;
+      max-width: 600px;
       margin: 0 auto;
       box-sizing: border-box;
     }
@@ -99,11 +99,13 @@
     nav {
       display: flex;
       align-content: center;
-      gap: 0 1em;
+      gap: .5em 1em;
+      flex-wrap: wrap;
     }
 
     main nav {
       background: #333;
+      padding: .5em;
     }
 
     .pagination {
@@ -205,7 +207,6 @@
   </header>
   <main>
 
-07/2014
 <h1>Handling Non-Turkish Characters in Forms: A Pythonic Approach</h1>
 <p>Recently, I faced a task where I needed to raise an error if any non-Turkish characters were present in a form input. To address this, I started with the simplest approach: creating a list of Turkish characters manually. If the input contained characters outside this list, an error would be raised. Here's a snippet of my initial implementation:</p>
 <pre class="prettyprint lang-python">
@@ -242,6 +243,7 @@ def invalid_chars(text, charset=alpha):
 </pre><h2>Lessons Learned</h2>
 <p>When solving problems, the simplest solution is often the best. Overcomplicating problems is a trap that many engineers, including myself, sometimes fall into. In this case, returning to basics provided a straightforward and reliable fix.</p>
 
+07/2014
 
 
   <ul>
