@@ -135,18 +135,23 @@
     main> :first-child {
       margin-top: 0;
     }
+
+    table {
+      width: 100%;
+    }
+
+    table th,
+    table td {
+      border: 1px solid gray;
+    }
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
-    crossorigin="anonymous"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="content-language" content="TR-tr">
 
   {% set default_title = 'Ana Sayfa' %}
   {% set default_desc = 'Saçma proje üreticisi, kız babası, yazılım geliştiricisi' %}
-
+  {% include "_stats.html" %}
   <!-- Primary Meta Tags -->
   <title>{% block title %}Ana Sayfa{% endblock %} — Mirat Can Bayrak</title>
   <meta name="title" content="{{ self.title() }}" />

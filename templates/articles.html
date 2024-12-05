@@ -5,8 +5,6 @@
 {% with tags=this.children.distinct('tags') %}
 {% include "_tags.html" %}
 {% endwith %}
-{% block articles %}
 {% with posts=this.pagination.items %}{% include "_articles.html" %}{% endwith %}
   {{ render_pagination(this.pagination) }}
-{% endblock %}
 {% endblock %}

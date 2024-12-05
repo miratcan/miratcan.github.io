@@ -2,4 +2,47 @@ _model: page
 ---
 title: Links
 ---
-body: Not ready yet.
+body:
+
+
+## Frontend Development
+
+ - [Sizzy Browser](https://sizzy.io): A web browser customized for frontend developers. It has useful and accelerating features such as being able to show a change you made on multiple device resolutions at the same time.
+
+## Fun Games
+
+ - [0.A.D.](https://play0ad.com/game-info/project-overview/): Real-time strategy game similar to Age Of Empires.
+ - [Julius](https://github.com/bvschaik/julius/wiki/Julius-release): Open source rebuilt version of Julius Caesar III game. It can run on many platforms.
+ - [OpenRA](https://www.openra.net/): Open source and modern rewrite of OpenRa Red Alert game. All operating systems support Linux, OSX and Windows.
+ - [A Dark Room](https://adarkroom.doublespeakgames.com/):  A text-based adventure game that starts off simple but gradually becomes more intricate and immersive.
+ - [Z Type](https://zty.pe/): The best typing speed game I've ever seen.
+ - [Business Tour](https://store.steampowered.com/app/397900/Business_Tour__Board_Game_with_Online_Multiplayer/): An online Monopoly-like game; we played it a lot with friends during the pandemic.
+
+## Educational Games
+
+ - [Elevator Saga](http://play.elevatorsaga.com/): A coding game where you program the behavior of an elevator using JavaScript. In each level, you modify the elevator's behavior to transport the target number of people to their desired floors.
+ - [Untrusted](http://alexnisnevich.github.io/untrusted/): A roguelike game where you need to modify the game's code to progress through the levels. (Javascript)
+ - [Vim Golf](https://www.vimgolf.com/): Various puzzles to develop skills in Vim.
+ - [Vim Adventures](https://vim-adventures.com/): I think this is a great game that can make learn to use vim. 
+
+## Git
+ - [Gitmoji](https://gitmoji.dev/): Emojis that you can add to commit messages when using Git.
+
+## ADHD
+
+(Yea I'm diagnosed too)
+
+ - [How do I keep my focus as developer with ADHD](https://medium.com/@mgundogdu/how-do-i-keep-my-focus-as-developer-with-adhd-attention-deficit-hyperactivity-disorder-526ba045321b)
+
+## Guides & Cheat Sheets
+
+ - [Http Status](https://httpstat.us/) A website that lists all HTTP status codes. Also you can test them here.
+
+
+## Tools
+
+ - [Guard.io](https://guard.io): Helps you to organize, share, track and bookmark any link on the web.
+ - [Typora](https://typora.io/):  A markdown-based note-taking app that provides a highly enjoyable experience both as a reader and a writer. It removes the preview window, mode switcher, syntax symbols of the markdown source code, and all other unnecessary distractions. Instead, it features a real live preview that helps you concentrate on the content itself. It made me switch from Notion. The only downside is that it isn't free (it costs $14).
+
+
+
