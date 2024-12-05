@@ -1,5 +1,5 @@
 {% macro render_article(post, from_index=false) %}
-{% if post.pub_date %}{{ post.pub_date.strftime('%m/%Y') }}{% endif %}
 <h1>{{ post.title }}</h1>
 {{ post.body }}
+{% if post.pub_date %}{{ post.pub_date.strftime('%m/%Y') }}{% endif %}
 {% endmacro %}
