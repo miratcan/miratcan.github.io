@@ -36,8 +36,13 @@ body:
 
 ## Guides & Cheat Sheets
 
- - [Http Status](https://httpstat.us/) A website that lists all HTTP status codes. Also you can test them here.
+ - [Http Status](https://httpstat.us/): A website that lists all HTTP status codes. Also you can test them here.
+ - [Layout Patterns](https://web.dev/patterns/layout): A must-have resource for front-end development that lists the most commonly used CSS patterns—perfect to refer to whenever you're stuck.
+ - [Lua Cheatsheet](https://devhints.io/lua)
 
+## Books & Resources 
+
+ - [DeepJs](https://exploringjs.com/deep-js/toc.html): The free online version of the book Deep JavaScript: Theory and Techniques written by Dr. Axel Rauschmayer.
 
 ## Tools
 

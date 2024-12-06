@@ -1,4 +1,4 @@
-title: Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım
+title: I Built an App for Journaling from the Terminal
 ---
 pub_date: 2023-08-12
 ---
@@ -6,59 +6,39 @@ has_code: yes
 ---
 body:
 
-Günlük tutmak çeşitli duygu ve düşüncelerimi kolayca kaydetmek sonra da
-okumak istiyordum. Bunu da en kısa yoldan nasıl yaparım diye düşünüyor iken
-telefonda [Daylio](https://daylio.net/) uygulamasını buldum. Uygulama çok
-güzel hatta ne yaparken nasıl hissettiğini kaydederek sonrasında çeşitli
-raporlar alabiliyor ve mesela "Kitap okumadığım zamanlarda daha depresif
-oluyormuşum" gibi sonuçlar çıkarabiliyorsunuz. İyi bir kendini loglama
-uygulamasından bekleyebileceğiniz her şey var anlayacağınız ama bir sorun var. 
+I wanted a way to easily record and later revisit my thoughts and feelings, so I started looking for the simplest method to do so. That’s when I stumbled upon the [Daylio](https://daylio.net/) app on my phone. It’s an excellent app that allows you to log how you feel during different activities and generate insightful reports. For example, you can discover patterns like, “I feel more down when I don’t read books.” It has everything you’d expect from a good self-tracking app.
 
-Ben telefonu alıp bir şeyler yazmaya aşırı üşenen biriyim, hatta telefon benim
-için eşim ve annemle konuşma, tuvalete girince de twitter karıştırma cihazı
-olmaktan ileri geçemiyor. 
+But there’s a catch: I’m incredibly lazy when it comes to picking up my phone to write something down. For me, my phone is basically a device for chatting with my spouse and mom, and scrolling through Twitter in the bathroom.
 
-Ben de madem günlerimin çoğu bilgisayar başında terminal karşısında geçiyor,
-kendime basit bir uygulama yapayım tivit atar gibi daha sonra hatırlamak
-isteyeceğim şeyleri kaydedeyim dedim. Çalışırken şu şekilde basitçe metin
-dosyalarına kayıtlar atabiliyorum:
+Since I spend most of my time in front of a computer, often staring at a terminal, I thought, “Why not build a simple app for myself to quickly jot down things I might want to remember later, just like sending a tweet?” That’s how I created this tool, which lets me save entries directly into text files with a simple command:
 
-<pre class="prettyprint lang-bsh">
-$ kaydet "Bugun işteki ilk günüm."
-</pre>
+```bash
+$ kaydet "Today was my first day at work."
+```
 
-Bu komut eğer yoksa o günün tarihi ile günlüğünüzü kaydetmek için
-ayarladığınız klasöre bir dosya açıyor örneğin: 2023-07-30.txt sonra da günün
-saatini yazdığınız metne ekleyip bir satır ekliyor.
+If the tool doesn’t find a file for that day in the directory you’ve set for your journal, it creates one using the current date (e.g., 2023-07-30.txt). Then, it appends your note along with a timestamp as a new line in the file:
 
-<pre class="prettyprint">
+```text
 2023-07-30.txt
-09:01:00 Günaydın canım kendim.
-09:03:00 Bugün işteki ilk günüm.
-</pre>
+09:01:00 Good morning, me.
+09:03:00 Today was my first day at work.
+```
 
-Evet farkındayım çok ahım şahım bir şey değil oldukça severek kullanıyorum.
-Bir de günlük tuttuğum klasörü Google Drive ile cihazlar arası senkronize
-edebilmeye de başladım. 
+I know it’s not a groundbreaking innovation, but I really enjoy using it. Plus, I’ve started syncing my journal folder across devices using Google Drive.
 
-Siz de kullanmak isterseniz şu komutla direkt yükleyebilirsiniz:
+If you’d like to give it a try, you can install it with this command:
 
-<pre class="prettyprint lang-bsh">
+```bash
 $ pip3 install kaydet
-</pre>
+```
 
-Daha sonrasında --help ile çağırarak nasıl kullanıdığını inceleyebilirsiniz:
+After installing, you can explore how it works by running the --help flag:
 
-<pre class="prettyprint lang-bsh">
+```bash
 $ kaydet --help
-</pre>
+```
 
-Bir hata bildirmek ya da yeni bir özellik eklemek isterseniz
-[github](https://github.com/miratcan/kaydet) reposuna beklerim.
-
-Görüşmek üzere.
-
-(Bir ara blog yazıları nasıl düzgün bitirilir konusunu çalışmam lazım)
+If you want to report a bug or suggest a new feature, feel free to drop by the [GitHub](https://github.com/miratcan/kaydet) repo.
 
 ---
 tags: technical
