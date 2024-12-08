@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
   <style>
@@ -149,7 +149,7 @@
   </style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="content-language" content="TR-tr">
+  <meta http-equiv="content-language" content="en">
 
   
   
@@ -161,21 +161,25 @@
   })(window, document, "clarity", "script", "p841gcyf0p");
 </script>
   <!-- Primary Meta Tags -->
-  <title>I Built an App for Journaling from the Terminal — Mirat Can Bayrak</title>
-  <meta name="title" content="I Built an App for Journaling from the Terminal" />
-  <meta name="description" content="I wanted a way to easily record and later revisit my thoughts and feelings, so I started looking for the simplest method to do so. That’s when I..." />
+  <title>Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım — Mirat Can Bayrak</title>
   <link rel='canonical' href="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/">
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/" />
-  <meta property="og:title" content="I Built an App for Journaling from the Terminal - Mirat Can Bayrak" />
-  <meta property="og:description" content="I wanted a way to easily record and later revisit my thoughts and feelings, so I started looking for the simplest method to do so. That’s when I..." />
-  <meta property="og:image" content="https://mirat.dev" />
+  
+  <meta name="title" content="Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım - Mirat Can
+  Bayrak" />
+  <meta name="description" content="" />
+  <meta property="og:type" content="website" />
+<meta property="og:url" content="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim" />
+<meta property="og:title" content="Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım - Mirat Can
+  Bayrak" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url"
-    content="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/" />
-  <meta property="twitter:title" content="I Built an App for Journaling from the Terminal" />
-  <meta property="twitter:description" content="I wanted a way to easily record and later revisit my thoughts and feelings, so I started looking for the simplest method to do so. That’s when I..." />
-  <meta property="twitter:image" content="https://mirat.dev" />
+<meta property="twitter:url" content="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim" />
+<meta property="twitter:title" content="Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım - Mirat Can
+  Bayrak" />
+<meta property="twitter:description" content="" />
+<meta property="twitter:image" content="https://mirat.dev/articles/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim" />
+  
   
   
     <link rel="stylesheet" href="../../static/pygments.css">
@@ -207,25 +211,43 @@
   </header>
   <main>
 
-<h1>I Built an App for Journaling from the Terminal</h1>
-<p>I wanted a way to easily record and later revisit my thoughts and feelings, so I started looking for the simplest method to do so. That’s when I stumbled upon the <a href="https://daylio.net/">Daylio</a> app on my phone. It’s an excellent app that allows you to log how you feel during different activities and generate insightful reports. For example, you can discover patterns like, “I feel more down when I don’t read books.” It has everything you’d expect from a good self-tracking app.</p>
-<p>But there’s a catch: I’m incredibly lazy when it comes to picking up my phone to write something down. For me, my phone is basically a device for chatting with my spouse and mom, and scrolling through Twitter in the bathroom.</p>
-<p>Since I spend most of my time in front of a computer, often staring at a terminal, I thought, “Why not build a simple app for myself to quickly jot down things I might want to remember later, just like sending a tweet?” That’s how I created this tool, which lets me save entries directly into text files with a simple command:</p>
-<div class="hll"><pre><span></span>$<span class="w"> </span>kaydet<span class="w"> </span><span class="s2">&quot;Today was my first day at work.&quot;</span>
-</pre></div>
-<p>If the tool doesn’t find a file for that day in the directory you’ve set for your journal, it creates one using the current date (e.g., 2023-07-30.txt). Then, it appends your note along with a timestamp as a new line in the file:</p>
-<div class="hll"><pre><span></span>2023-07-30.txt
-09:01:00 Good morning, me.
-09:03:00 Today was my first day at work.
-</pre></div>
-<p>I know it’s not a groundbreaking innovation, but I really enjoy using it. Plus, I’ve started syncing my journal folder across devices using Google Drive.</p>
-<p>If you’d like to give it a try, you can install it with this command:</p>
-<div class="hll"><pre><span></span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>kaydet
-</pre></div>
-<p>After installing, you can explore how it works by running the --help flag:</p>
-<div class="hll"><pre><span></span>$<span class="w"> </span>kaydet<span class="w"> </span>--help
-</pre></div>
-<p>If you want to report a bug or suggest a new feature, feel free to drop by the <a href="https://github.com/miratcan/kaydet">GitHub</a> repo.</p>
+<h1>Terminal Üzerinden Günlük Tutmak İçin Uygulama Yazdım</h1>
+<p>Günlük tutmak çeşitli duygu ve düşüncelerimi kolayca kaydetmek sonra da
+okumak istiyordum. Bunu da en kısa yoldan nasıl yaparım diye düşünüyor iken
+telefonda <a href="https://daylio.net/">Daylio</a> uygulamasını buldum. Uygulama çok
+güzel hatta ne yaparken nasıl hissettiğini kaydederek sonrasında çeşitli
+raporlar alabiliyor ve mesela "Kitap okumadığım zamanlarda daha depresif
+oluyormuşum" gibi sonuçlar çıkarabiliyorsunuz. İyi bir kendini loglama
+uygulamasından bekleyebileceğiniz her şey var anlayacağınız ama bir sorun var.</p>
+<p>Ben telefonu alıp bir şeyler yazmaya aşırı üşenen biriyim, hatta telefon benim
+için eşim ve annemle konuşma, tuvalete girince de twitter karıştırma cihazı
+olmaktan ileri geçemiyor.</p>
+<p>Ben de madem günlerimin çoğu bilgisayar başında terminal karşısında geçiyor,
+kendime basit bir uygulama yapayım tivit atar gibi daha sonra hatırlamak
+isteyeceğim şeyleri kaydedeyim dedim. Çalışırken şu şekilde basitçe metin
+dosyalarına kayıtlar atabiliyorum:</p>
+<pre class="prettyprint lang-bsh">
+$ kaydet "Bugun işteki ilk günüm."
+</pre><p>Bu komut eğer yoksa o günün tarihi ile günlüğünüzü kaydetmek için
+ayarladığınız klasöre bir dosya açıyor örneğin: 2023-07-30.txt sonra da günün
+saatini yazdığınız metne ekleyip bir satır ekliyor.</p>
+<pre class="prettyprint">
+2023-07-30.txt
+09:01:00 Günaydın canım kendim.
+09:03:00 Bugün işteki ilk günüm.
+</pre><p>Evet farkındayım çok ahım şahım bir şey değil oldukça severek kullanıyorum.
+Bir de günlük tuttuğum klasörü Google Drive ile cihazlar arası senkronize
+edebilmeye de başladım.</p>
+<p>Siz de kullanmak isterseniz şu komutla direkt yükleyebilirsiniz:</p>
+<pre class="prettyprint lang-bsh">
+$ pip3 install kaydet
+</pre><p>Daha sonrasında --help ile çağırarak nasıl kullanıdığını inceleyebilirsiniz:</p>
+<pre class="prettyprint lang-bsh">
+$ kaydet --help
+</pre><p>Bir hata bildirmek ya da yeni bir özellik eklemek isterseniz
+<a href="https://github.com/miratcan/kaydet">github</a> reposuna beklerim.</p>
+<p>Görüşmek üzere.</p>
+<p>(Bir ara blog yazıları nasıl düzgün bitirilir konusunu çalışmam lazım)</p>
 
 08/2023
 
