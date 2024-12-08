@@ -3,15 +3,58 @@
 
 <head>
   <style>
+    @font-face {
+      font-family: Dos;
+      src: url(/dos.ttf);
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .screen {
+      width: 800px;
+      height: 600px;
+      overflow-y: scroll;
+
+      margin: 0 auto;
+      padding: 0;
+      background: #0000af;
+    }
+
+    .screen *:not(pre) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
     html,
     body {
       min-height: 100%;
       margin: 0;
-      background: #261917;
-      color: #B2A497;
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 1rem;
-      line-height: 1.2em;
+      padding: 1rem;
+      background: #000;
+      color: lightgray;
+      font-family: 'Dos', monospace;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -1px;
+      vertical-align: center;
     }
 
     pre {
@@ -25,9 +68,23 @@
       font-size: 0.8em;
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    li,
+    table,
+    blockquote {
+      margin: 0 0 1rem 0;
+    }
+
     h1 {
       font-size: 1.4em;
       line-height: 1.73em;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     h2 {
@@ -46,19 +103,14 @@
     }
 
     blockquote {
-      margin: 0;
       padding: 0 1em;
-      border-left: .25em solid #B2A497;
-      border-bottom: .25em solid #B2A497;
+      border-left: 2px solid #B2A497;
+      border-bottom: 2px solid #B2A497;
     }
 
     .youtube-video {
       aspect-ratio: 16 / 9;
       width: 100%;
-    }
-
-    li {
-      margin-bottom: .25em;
     }
 
     ul#articles li {
@@ -72,7 +124,7 @@
 
     a {
       text-decoration: none;
-      color: darkkhaki;
+      color: #ae0c0a;
     }
 
     a.active {
@@ -86,26 +138,36 @@
 
     main,
     header {
-      padding: 1em;
-      max-width: 600px;
       margin: 0 auto;
       box-sizing: border-box;
     }
 
-    header {
-      border-bottom: 1px dashed darkgray;
+    main {
+      margin: 1rem 0;
+      padding: 0 1rem;
+    }
+
+    main a {
+      color: inherit;
+      text-decoration: underline;
     }
 
     nav {
       display: flex;
       align-content: center;
-      gap: .5em 1em;
+      gap: 0 1rem;
       flex-wrap: wrap;
+      background: lightgray;
+      padding: 0 1rem;
     }
 
     main nav {
-      background: #333;
-      padding: .5em;
+      background: #04a7af;
+      padding: 0 1rem;
+    }
+
+    main nav a {
+      color: #0000af;
     }
 
     .pagination {
@@ -113,7 +175,6 @@
     }
 
     p:has(> img:only-child) {
-      border: 1px solid gray;
       display: flex;
       justify-content: center;
     }
@@ -168,10 +229,13 @@
 </head>
 
 <body>
-  <header>
-    {% include "_nav.html" %}
-  </header>
-  <main>{% block body %}{% endblock %}</main>
+  <div class="screen">
+    <header>
+      {% include "_nav.html" %}
+    </header>
+    <main>{% block body %}{% endblock %}</main>
+  </div>
+  {% block after_screen %}{% endblock %}
 </body>
 
 </html>
