@@ -24,3 +24,7 @@ body:
 pub_date: 2024-12-04
 ---
 has_code: yes
+---
+meta_desc: A quick reference for removing duplicates from a list in Python.
+---
+tags: python-notes

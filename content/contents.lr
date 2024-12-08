@@ -1,5 +1,6 @@
 body:
-<img src="mirat.png">
+
+![](mirat.png)
 Hello,
 
 My name is Mirat, but some of my friends call me Miro. I was born in 1984. Professionally, I want people to define me as a good programmer and entrepreneur, and I am striving in that direction.
@@ -13,3 +14,7 @@ If you would like to work together, you can reach me through the following platf
 - Consulting: [Superpeer](https://superpeer.com/miratcan/-/yazilim-danismanlik)
 ---
 title: 
+---
+meta_desc: My name is Mirat, but some of my friends call me Miro. I was born in 1984. Professionally, I want people to define me as a good programmer and entrepreneur, and I am striving in that direction.
+---
+meta_img: mirat.png

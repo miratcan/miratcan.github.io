@@ -26,3 +26,5 @@ pub_date: 2024-12-04
 tags: python-notes
 ---
 has_code: yes
+---
+meta_desc: A quick reference for reversing a string in Python.

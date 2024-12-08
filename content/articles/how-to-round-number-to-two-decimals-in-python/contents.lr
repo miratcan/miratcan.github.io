@@ -17,3 +17,5 @@ tags: python-notes
 has_code: yes
 ---
 pub_date: 2024-12-05
+---
+meta_desc: A quick reference for rounding numbers to two decimals in Python.

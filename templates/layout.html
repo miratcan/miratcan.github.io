@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
   <style>
@@ -149,27 +149,21 @@
   </style>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="content-language" content="TR-tr">
+  <meta http-equiv="content-language" content="en">
 
-  {% set default_title = 'Ana Sayfa' %}
+  {% set default_title = 'Home Page' %}
   {% set default_desc = 'Saçma proje üreticisi, kız babası, yazılım geliştiricisi' %}
   {% include "_stats.html" %}
   <!-- Primary Meta Tags -->
-  <title>{% block title %}Ana Sayfa{% endblock %} — Mirat Can Bayrak</title>
-  <meta name="title" content="{{ self.title() }}" />
-  <meta name="description" content="{% block description %}{{ default_desc }}{% endblock %}" />
+  <title>{% block title %}Home{% endblock %} — Mirat Can Bayrak</title>
   <link rel='canonical' href="{{ config.PROJECT.url }}{% if this._path != '/' %}{{ this._path }}{% endif %}/">
-  <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
-  <meta property="og:url" content="{{config.PROJECT.url}}{% if this._path != '/' %}{{ this._path }}{% endif %}/" />
-  <meta property="og:title" content="{{ self.title() }} - Mirat Can Bayrak" />
-  <meta property="og:description" content="{{ self.description() }}" />
-  <meta property="og:image" content="{{config.PROJECT.url}}{% block meta_img %}/miratcan.jpeg{% endblock %}" />
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url"
-    content="{{ config.PROJECT.url }}{% if this._path != '/' %}{{ this._path }}{% endif %}/" />
-  <meta property="twitter:title" content="{{ self.title() }}" />
-  <meta property="twitter:description" content="{{ self.description() }}" />
-  <meta property="twitter:image" content="{{ config.PROJECT.url }}{{ self.meta_img() }}" />
+  {% with meta_type='website', meta_url=[config.PROJECT.url, this._path]|join, meta_title=[self.title(), ' - Mirat Can
+  Bayrak']|join, meta_desc =this.meta_desc, meta_img=[config.PROJECT.url, this._path, this.meta_img]|join %}
+  <meta name="title" content="{{ meta_title }}" />
+  <meta name="description" content="{{ meta_desc }}" />
+  {% include "meta/_og.html" %}
+  {% include "meta/_tw.html" %}
+  {% endwith %}
   {% block extra_head %}{% endblock %}
 </head>
 

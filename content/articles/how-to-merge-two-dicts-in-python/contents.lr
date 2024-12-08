@@ -40,3 +40,5 @@ tags: python-notes
 has_code: yes
 ---
 pub_date: 2024-12-04
+---
+meta_desc: Quick reference for merging two dictionaries in Python.
