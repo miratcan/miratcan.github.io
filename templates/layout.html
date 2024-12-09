@@ -10,7 +10,7 @@
 
     :root {
       --c0: #000000;
-      --c1: #0000aa;
+      --c1: #000080;
       --c2: #00aaaa;
       --c3: #00aa00;
       --c4: #aa00aa;
@@ -27,6 +27,18 @@
       --c15: #ffffff;
       --ln: 2px;
       --gap: 1rem;
+      --fs: 16px;
+      --lh: 18px;
+    }
+
+    em {
+      color: var(--c4);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: normal;
+      color: var(--c15);
     }
 
     ::-webkit-scrollbar {
@@ -44,10 +56,8 @@
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-      background: #555;
+      background: var(--c4);
     }
-
-    .screen {}
 
     .screen *:not(pre) {
       font-size: inherit;
@@ -69,15 +79,16 @@
       background: var(--c1);
       color: var(--c7);
       font-family: 'Dos', monospace;
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: -1px;
+      font-size: var(--fs);
+      line-height: var(--lh);
       vertical-align: center;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
     }
 
     pre {
-      padding: 2em;
-      font-size: .8em;
+      font-family: inherit;
+      padding: 1rem;
       background: black;
     }
 
@@ -95,7 +106,12 @@
     li,
     table,
     blockquote {
+      font-weight: normal;
       margin: 0 0 1rem 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
     }
 
     h1 {
@@ -140,12 +156,12 @@
       padding: 0 0 0 1em;
     }
 
-    a {
+    nav a {
       text-decoration: none;
       color: var(--c0);
     }
 
-    a span {
+    nav a span {
       color: var(--c5);
     }
 
@@ -170,7 +186,7 @@
     }
 
     main a {
-      color: var(--c11);
+      color: var(--c10);
       text-decoration: underline;
     }
 
@@ -204,6 +220,7 @@
     p:has(> img:only-child) {
       display: flex;
       justify-content: center;
+      border: calc(var(--ln) * 2) double var(--c3)
     }
 
     img {

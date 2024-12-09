@@ -13,8 +13,7 @@ But there’s a catch: I’m incredibly lazy when it comes to picking up my phon
 Since I spend most of my time in front of a computer, often staring at a terminal, I thought, “Why not build a simple app for myself to quickly jot down things I might want to remember later, just like sending a tweet?” That’s how I created this tool, which lets me save entries directly into text files with a simple command:
 
 ```bash
-$ kaydet "Today was my first day at work."
-```
+$ kaydet "Today was my first day at work."```
 
 If the tool doesn’t find a file for that day in the directory you’ve set for your journal, it creates one using the current date (e.g., 2023-07-30.txt). Then, it appends your note along with a timestamp as a new line in the file:
 

@@ -8,9 +8,11 @@ While checking out the listings, I stumbled upon a seemingly pointless website c
 
 At first glance, it seemed like just a trivial toy of a site. But then I noticed on Flippa that the site was reportedly earning $200 per month, and this revenue figure was verified by Flippa. Suddenly, this "toy" turned into something much more interesting in my eyes.
 
-Here’s why: the site had been live for four years, likely built in just a single weekend, required zero maintenance, and had been generating $200 per month for three of those years. Let’s do the math:  
-**12 months × $200 × 3 years = $7,200**  
-On top of that, it was listed for sale on Flippa for $3,500.
+Here’s why: the site had been live for four years, likely built in just a single weekend, required zero maintenance, and had been generating $200 per month for three of those years. Let’s do the math: 
+
+12 months x $200 x 3 years = *$7,200*
+
+On top of that, it was listed for sale on Flippa for **$3,500**.
 
 Out of curiosity, I looked into the site’s structure and found that it was just a simple HTML page and a [161-line JavaScript file](https://github.com/Centerpoint-Gaming/timenite/blob/main/scripts/main.js). That was it. While writing this post, the site was already sold, so if you visit its [Flippa listing](https://flippa.com/11545762-a-4-year-old-simple-website-that-shows-a-countdown-to-the-next-season-on-fortnite-earning-2100-per-year-through-adsense-and-epic-s-support-a-creator), you’ll get a 404 error.
 
