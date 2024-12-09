@@ -1,8 +1,99 @@
 _model: page
 ---
-title: Resume
+title: Mirat Can Bayrak - Resume
 ---
 body:
 
-[Buraya tıklayarak özgeçmişimi görüntüleyebilirsiniz.](resume.html)
-(İngilizcedir)
+<table style="float:right; background: black;">
+<tbody>
+<tr><td><strong>Location</strong></td><td>Istanbul, GMT+3</td></tr>
+<tr><td><strong>Email</strong></td><td><a href="mailto:mirat.bayrak@gmail.com">mirat.bayrak@gmail.com</a></td></tr>
+<tr><td><strong>Phone</strong></td><td><a href="tel:+905066788505">+90 0506 678 85 05</a></td></tr>
+<tr><td><strong>LinkedIn</strong></td><td><a href="https://www.linkedin.com/in/mirat-can-bayrak">Mirat Can Bayrak</a></td></tr>
+<tr><td><strong>GitHub</strong></td><td><a href="https://github.com/miratcan">miratcan</a></td></tr>
+</tbody></table>
+
+## **Summary**  
+- **10+ years of professional experience** in software development, working across diverse roles and industries.  
+- **Self-motivated and result-oriented**; excellent client communication and collaboration skills.  
+- **Proactive and decisive**; thrives in taking initiative and ownership of challenges.  
+- Dedicated and organized professional with strong multitasking abilities.  
+- Proud **father of two daughters**, balancing work and family life.  
+
+## **Key Skills**  
+
+### **General**  
+- Clean Code Principles | Testing: Unit, Functional, Integration  
+- Functional & OOP Programming | Multithreading & Multitasking  
+- Strong English Communication  
+
+### **Python**  
+- Frameworks: Django, FastAPI, Flask, WebPy, Django-Rest-Framework  
+- Tools: Scrapy, Selenium, Requests, BeautifulSoup, Celery  
+- Other: Google App Engine, MQTT Brokers, PyGtk  
+
+### **JavaScript**  
+- Libraries & Frameworks: ReactJS, Web3JS, NextJS, HTMX  
+- Testing: MochaJS  
+
+### **HTML/CSS**  
+- Semantic HTML5, CSS3, LESS/SASS  
+- Responsive Design & Accessibility  
+
+### **Blockchain**  
+- **Smart Contract Development**: EVM, Solidity, ERC20, ERC721, ERC1155  
+- **Tools**: Truffle Suite, Eth-Brownie | Gas Management & Auditing  
+- **Blockchain Concepts**: Blocks, Transactions, Events (Logs), Upgradable Contracts  
+
+## **Professional Experience**  
+
+### **Metaverse INC.**  
+**Blockchain & Full Stack Developer**  
+*March 2021 – April 2022 | Izmir, Turkey*  
+- Developed an NFT marketplace with multi-blockchain support.  
+- Transitioned from blockchain developer to a full-stack developer role.  
+- Designed and implemented smart contracts and scalable backend architecture.  
+
+### **Radity**  
+**Software Architect**  
+*March 2021 – March 2022 | Zurich, Switzerland*  
+- Provided architectural guidance for client software projects.  
+- Led teams in delivering solutions for various industries with a focus on maintainability and scalability.  
+
+### **Metglobal DMG**  
+**Software Development Manager | Python Developer**  
+*August 2017 – January 2021 | Istanbul, Turkey*  
+- Promoted from Python Developer to Software Development Manager.  
+- Oversaw the development of booking systems used by hotels globally.  
+- Streamlined development processes and improved team productivity.  
+
+### **Reachpod**  
+**Python Developer**  
+*October 2014 – July 2016 | Istanbul, Turkey*  
+- Built features for a social media management and monitoring tool.  
+- Integrated multiple social media APIs to enhance platform functionality.  
+
+### **Markafoni**  
+**Python Developer**  
+*May 2013 – September 2014 | Istanbul, Turkey*  
+- Contributed to the backend development of a leading Turkish shopping portal with 20M+ unique monthly visitors.  
+
+## **Education**  
+
+- **Maltepe University**: Visual Communication Design | 2008-02012  
+- **Anadolu University**: Fine Arts – Painting *(Not Graduated)* | 2004-2007  
+- **Uskudar Cagribey Anatolian High School**: 1998-2002  
+
+## **References**  
+- **Tolga Bilbey**: Former colleague at Metglobal INC. ([LinkedIn Profile](#))  
+- **Burak Bayburtlu**: Former colleague at Metaverse INC. ([LinkedIn Profile](#))  
+
+## **Contact Details**  
+
+- **Address**: Cumhuriyet Mah. Şehit Basri Bey CAD. Demirtaş Özçelik Sitesi, No: 40, Blok: C, DR: 8, Uşak, Turkey  
+- **Phone**: (+90) 0506 678 85 05  
+
+---
+meta_desc: Experienced Python, Javascript, and Solidity developer who is open to remote jobs.
+---
+meta_img: face.jpeg

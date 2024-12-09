@@ -11,7 +11,7 @@ const obj3 = { ...obj1, ...obj2 };
 console.log(obj3); // Output: { a: 1, b: 2, c: 3, d: 4 }
 ```
 
-### 2. Using `Object.assign()`
+## 2. Using `Object.assign()`
 
 
 ```javascript
