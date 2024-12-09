@@ -10,7 +10,7 @@
 
     :root {
       --c0: #000000;
-      --c1: #0000aa;
+      --c1: #000080;
       --c2: #00aaaa;
       --c3: #00aa00;
       --c4: #aa00aa;
@@ -27,6 +27,17 @@
       --c15: #ffffff;
       --ln: 2px;
       --gap: 1rem;
+      --fs: 16px;
+      --lh: 18px;
+    }
+
+    em {
+      color: var(--c4);
+      font-style: normal;
+    }
+
+    strong {
+      color: var(--c15);
     }
 
     ::-webkit-scrollbar {
@@ -46,8 +57,6 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
-
-    .screen {}
 
     .screen *:not(pre) {
       font-size: inherit;
@@ -69,15 +78,16 @@
       background: var(--c1);
       color: var(--c7);
       font-family: 'Dos', monospace;
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: -1px;
+      font-size: var(--fs);
+      line-height: var(--lh);
       vertical-align: center;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
     }
 
     pre {
-      padding: 2em;
-      font-size: .8em;
+      font-family: inherit;
+      padding: 1rem;
       background: black;
     }
 
@@ -95,7 +105,12 @@
     li,
     table,
     blockquote {
+      font-weight: normal;
       margin: 0 0 1rem 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
     }
 
     h1 {
@@ -140,12 +155,12 @@
       padding: 0 0 0 1em;
     }
 
-    a {
+    nav a {
       text-decoration: none;
       color: var(--c0);
     }
 
-    a span {
+    nav a span {
       color: var(--c5);
     }
 
@@ -170,7 +185,7 @@
     }
 
     main a {
-      color: var(--c11);
+      color: var(--c10);
       text-decoration: underline;
     }
 
@@ -204,6 +219,7 @@
     p:has(> img:only-child) {
       display: flex;
       justify-content: center;
+      border: calc(var(--ln) * 4) double var(--c4)
     }
 
     img {
@@ -308,7 +324,7 @@
 <p>This happens because when we try to explain an issue to someone else, we’re forced to organize the details in our minds first. To articulate the problem, we break it down and think more clearly about it, and often, that’s enough to find the solution ourselves.</p>
 <p>Today, I stumbled across something on <a href="http://reddit.com">Reddit</a> called <em>Rubber Duck Debugging</em> (<a href="http://www.reddit.com/r/todayilearned/comments/1tmviq/til_that_rubber_duck_debugging_is_when_a/">link</a>), and it’s exactly what I’ve been talking about. The concept is simple: keep a rubber duck on your desk. When you encounter a problem, explain it to the duck. As you try to verbalize the issue and describe your code, you’re naturally forced to organize your thoughts. This often leads to finding the solution on your own.</p>
 <p><img src="rubber-duck.jpg" alt="Rubber Duck"></p>
-<p>This method was first introduced in a story in <em><a href="http://en.wikipedia.org/wiki/The_Pragmatic_Programmer">The Pragmatic Programmer</a></em>. Sure, it might sound a little quirky, but it seems like it could work. Why not give it a shot?</p>
+<p>This method was first introduced in a story in <a href="http://en.wikipedia.org/wiki/The_Pragmatic_Programmer">The Pragmatic Programmer</a>. Sure, it might sound a little quirky, but it seems like it could work. Why not give it a shot?</p>
 
 12/2013
 

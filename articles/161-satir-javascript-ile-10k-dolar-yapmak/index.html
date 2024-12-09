@@ -10,7 +10,7 @@
 
     :root {
       --c0: #000000;
-      --c1: #0000aa;
+      --c1: #000080;
       --c2: #00aaaa;
       --c3: #00aa00;
       --c4: #aa00aa;
@@ -27,6 +27,17 @@
       --c15: #ffffff;
       --ln: 2px;
       --gap: 1rem;
+      --fs: 16px;
+      --lh: 18px;
+    }
+
+    em {
+      color: var(--c4);
+      font-style: normal;
+    }
+
+    strong {
+      color: var(--c15);
     }
 
     ::-webkit-scrollbar {
@@ -46,8 +57,6 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
-
-    .screen {}
 
     .screen *:not(pre) {
       font-size: inherit;
@@ -69,15 +78,16 @@
       background: var(--c1);
       color: var(--c7);
       font-family: 'Dos', monospace;
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: -1px;
+      font-size: var(--fs);
+      line-height: var(--lh);
       vertical-align: center;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
     }
 
     pre {
-      padding: 2em;
-      font-size: .8em;
+      font-family: inherit;
+      padding: 1rem;
       background: black;
     }
 
@@ -95,7 +105,12 @@
     li,
     table,
     blockquote {
+      font-weight: normal;
       margin: 0 0 1rem 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
     }
 
     h1 {
@@ -140,12 +155,12 @@
       padding: 0 0 0 1em;
     }
 
-    a {
+    nav a {
       text-decoration: none;
       color: var(--c0);
     }
 
-    a span {
+    nav a span {
       color: var(--c5);
     }
 
@@ -170,7 +185,7 @@
     }
 
     main a {
-      color: var(--c11);
+      color: var(--c10);
       text-decoration: underline;
     }
 
@@ -204,6 +219,7 @@
     p:has(> img:only-child) {
       display: flex;
       justify-content: center;
+      border: calc(var(--ln) * 4) double var(--c4)
     }
 
     img {
@@ -307,9 +323,9 @@
 <p>Recently, <a href="http://aligundogdu.com">Ali</a> and I were browsing <a href="https://flippa.com">Flippa</a>, a marketplace where people auction their apps, websites, or blogs. For those unfamiliar, it's a platform where you can buy and sell digital assets.</p>
 <p>While checking out the listings, I stumbled upon a seemingly pointless website called <a href="https://timenite.com">timenite</a>. When you visit the site, it displays a countdown timer showing the time left until the next Fortnite season. That’s literally all it does. There’s also AdSense ads displayed above and below the timer.</p>
 <p>At first glance, it seemed like just a trivial toy of a site. But then I noticed on Flippa that the site was reportedly earning $200 per month, and this revenue figure was verified by Flippa. Suddenly, this "toy" turned into something much more interesting in my eyes.</p>
-<p>Here’s why: the site had been live for four years, likely built in just a single weekend, required zero maintenance, and had been generating $200 per month for three of those years. Let’s do the math:<br>
-<strong>12 months × $200 × 3 years = $7,200</strong><br>
-On top of that, it was listed for sale on Flippa for $3,500.</p>
+<p>Here’s why: the site had been live for four years, likely built in just a single weekend, required zero maintenance, and had been generating $200 per month for three of those years. Let’s do the math:</p>
+<p>12 months x $200 x 3 years = <em>$7,200</em></p>
+<p>On top of that, it was listed for sale on Flippa for <strong>$3,500</strong>.</p>
 <p>Out of curiosity, I looked into the site’s structure and found that it was just a simple HTML page and a <a href="https://github.com/Centerpoint-Gaming/timenite/blob/main/scripts/main.js">161-line JavaScript file</a>. That was it. While writing this post, the site was already sold, so if you visit its <a href="https://flippa.com/11545762-a-4-year-old-simple-website-that-shows-a-countdown-to-the-next-season-on-fortnite-earning-2100-per-year-through-adsense-and-epic-s-support-a-creator">Flippa listing</a>, you’ll get a 404 error.</p>
 <p>Whoever built this site earned $7,200 from AdSense and then another $3,500 from the sale—totaling $10,700.</p>
 <p>Honestly, I’m jealous. 🙂</p>
