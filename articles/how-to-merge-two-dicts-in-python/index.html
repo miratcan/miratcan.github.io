@@ -37,6 +37,7 @@
     }
 
     strong {
+      font-weight: normal;
       color: var(--c15);
     }
 
@@ -55,7 +56,7 @@
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-      background: #555;
+      background: var(--c4);
     }
 
     .screen *:not(pre) {
@@ -219,7 +220,7 @@
     p:has(> img:only-child) {
       display: flex;
       justify-content: center;
-      border: calc(var(--ln) * 4) double var(--c4)
+      border: calc(var(--ln) * 2) double var(--c3)
     }
 
     img {
