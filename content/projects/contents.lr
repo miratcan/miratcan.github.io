@@ -15,7 +15,7 @@ A simple journaling script I wrote for my own needs. Initially created in 2016, 
  * [Github](https://github.com/miratcan/kaydet)
  * [PyPI](https://pypi.org/project/kaydet/)
 
-## Internet Güzeldir
+## Internet Guzeldir
 
 A Python script that generates a categorized link directory website (web directory) by using an Excel file stored on Google Drive as a data source, along with a sample website created with it.
 

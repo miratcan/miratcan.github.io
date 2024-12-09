@@ -8,19 +8,38 @@
       src: url(/dos.ttf);
     }
 
-    /* width */
-    ::-webkit-scrollbar {
-      width: 10px;
+    :root {
+      --c0: #000000;
+      --c1: #0000aa;
+      --c2: #00aaaa;
+      --c3: #00aa00;
+      --c4: #aa00aa;
+      --c5: #aa0000;
+      --c6: #aa5500;
+      --c7: #aaaaaa;
+      --c8: #555555;
+      --c9: #5555ff;
+      --c10: #55ffff;
+      --c12: #55ff55;
+      --c12: #ff55ff;
+      --c13: #ff5555;
+      --c14: #ffff55;
+      --c15: #ffffff;
+      --ln: 2px;
+      --gap: 1rem;
     }
 
-    /* Track */
+    ::-webkit-scrollbar {
+      width: var(--gap)
+    }
+
     ::-webkit-scrollbar-track {
-      background: #f1f1f1;
+      background: var(--c7);
     }
 
     /* Handle */
     ::-webkit-scrollbar-thumb {
-      background: #888;
+      background: var(--c8);
     }
 
     /* Handle on hover */
@@ -28,28 +47,27 @@
       background: #555;
     }
 
-    .screen {
-      width: 800px;
-      height: 600px;
-      overflow-y: scroll;
-
-      margin: 0 auto;
-      padding: 0;
-      background: #0000af;
-    }
+    .screen {}
 
     .screen *:not(pre) {
       font-size: inherit;
       line-height: inherit;
     }
 
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
     html,
     body {
-      min-height: 100%;
       margin: 0;
-      padding: 1rem;
-      background: #000;
-      color: lightgray;
+      padding: 0;
+    }
+
+    body {
+      background: var(--c1);
+      color: var(--c7);
       font-family: 'Dos', monospace;
       font-size: 18px;
       line-height: 24px;
@@ -64,8 +82,8 @@
     }
 
     code {
-      border: 1px dashed gray;
-      font-size: 0.8em;
+      color: var(--c3);
+      font-family: inherit;
     }
 
     h1,
@@ -99,7 +117,7 @@
     h1,
     h2,
     h3 {
-      color: wheat;
+      color: var(--c14);
     }
 
     blockquote {
@@ -115,7 +133,7 @@
 
     ul#articles li {
       list-style-type: square;
-      color: gray;
+      color: var(--c2);
     }
 
     ul#articles {
@@ -124,7 +142,11 @@
 
     a {
       text-decoration: none;
-      color: #ae0c0a;
+      color: var(--c0);
+    }
+
+    a span {
+      color: var(--c5);
     }
 
     a.active {
@@ -148,26 +170,31 @@
     }
 
     main a {
-      color: inherit;
+      color: var(--c11);
       text-decoration: underline;
     }
 
     nav {
+      background: var(--c7);
+      padding: 0 1rem;
+    }
+
+    nav .wrapper {
       display: flex;
       align-content: center;
       gap: 0 1rem;
       flex-wrap: wrap;
-      background: lightgray;
-      padding: 0 1rem;
+
     }
 
     main nav {
-      background: #04a7af;
-      padding: 0 1rem;
+      background: transparent;
+      padding: 1rem;
+      border: 4px double var(--c3);
     }
 
     main nav a {
-      color: #0000af;
+      // color: var(--c2);
     }
 
     .pagination {
@@ -233,7 +260,11 @@
     <header>
       {% include "_nav.html" %}
     </header>
-    <main>{% block body %}{% endblock %}</main>
+    <main>
+      <div class="wrapper">
+        {% block body %}{% endblock %}
+      </div>
+    </main>
   </div>
   {% block after_screen %}{% endblock %}
 </body>
