@@ -397,6 +397,12 @@
 <p>the <code>var</code> statement is used for defining variables. Like arguments in functions you can define multiple variable types by giving type to last one. In this example, foo, bar and baz is booleans.</p>
 <div class="hll"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="w"> </span><span class="kt">bool</span>
 </pre></div>
+<p>If variables are not initialized, their defaults are:</p>
+<ul>
+<li>0 for numeric types,</li>
+<li>false for the boolean type, and</li>
+<li>"" (the empty string) for strings.</li>
+</ul>
 <h3>Variable Scopes</h3>
 <p>Variables scoped by packages and functions. and they can be initialized like this:</p>
 <div class="hll"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span>
@@ -436,6 +442,200 @@
 </ul>
 <blockquote><p><em>Note</em>: The int, uint, and uintptr types are usually 32 bits wide on 32-bit systems and 64 bits wide on 64-bit systems. When you need an integer value you should use int unless you have a specific reason to use a sized or unsigned integer type.</p>
 </blockquote>
+<h2>Type Castings</h2>
+<p>The expression NewType(OldTypeVariable) converts the value OldTypeVariable to the NewType.</p>
+<div class="hll"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">42</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">u</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uint</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+</pre></div>
+<h2>Constants</h2>
+<p>Constants are same with variables but they are not mutable. They can be string, number or boolean values. const keyword used to define constant instead of var.</p>
+<div class="hll"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">pi</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">3.14</span>
+</pre></div>
+<h2>Loops</h2>
+<p>Other languages has while and for loops but Golang has only for loop. But it can be used to construct while loop and infinitive loops too.</p>
+<p>Most basic usage is like the javascript, in same line you initialize the variable, set the condition to continue loop and an executor to change your variable. Only difference is you don't put them inside a pharantesis.</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sum</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">i</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sum</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>By the way you dont need to initialize your variable in for loop, you can use pre initialized variable.</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sum</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">sum</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sum</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>And you dont need to type your executor to the for loop. This usage is basically while loop in other languages:</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sum</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">sum</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sum</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>And... you can create infinite loop by using for loop without any parameters like this:</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h2>Control Flows</h2>
+<h3>If Statements</h3>
+<p>If statements are like for loops but you only create a condition</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;math&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">sqrt</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">sqrt</span><span class="p">(</span><span class="o">-</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;i&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprint</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nx">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+<p>Like walrus operator in Python, you can define variable and check that in same line in golang:</p>
+<div class="hll"><pre><span></span><span class="kd">func</span><span class="w"> </span><span class="nx">pow</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="nx">lim</span><span class="w"> </span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Pow</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">);</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">lim</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">v</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">lim</span>
+<span class="p">}</span>
+</pre></div>
+<h3>Switch statements</h3>
+<p>Switch statements are used to create sequence of if else conditions like other languages. Switch statements are evaluated from top to bottom.</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;runtime&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Go runs on &quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">GOOS</span><span class="p">;</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;darwin&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;OS X.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;linux&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Linux.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">default</span><span class="p">:</span>
+<span class="w">        </span><span class="c1">// freebsd, openbsd,</span>
+<span class="w">        </span><span class="c1">// plan9, windows...</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s.\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">os</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>Also you can use predefined variables to create switch blocks:</p>
+<div class="hll"><pre><span></span><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">t</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">()</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">12</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Good morning!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">()</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">17</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Good afternoon.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">default</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Good evening.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h3>Defers</h3>
+<p>I didn't see this concept before. Defers are functions to call when a caller function is finished. When a function is finished, it's deferred calls are executed last in first out order:</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;counting&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>This code will print 0 to 9 after main function is finished</p>
+<h2>Pointers</h2>
+<p>Go supports pointers, which store the memory address of a value.</p>
+<ul>
+<li><p>The <code>&amp;</code> operator is used to obtain the pointer to a variable.</p>
+<div class="hll"><pre><span></span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">42</span>
+<span class="nx">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">i</span>
+</pre></div>
+</li>
+<li><p>The <code>*</code> operator is used to access or update the value the pointer refers to.</p>
+<div class="hll"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="c1">// reads the value of i through the pointer p</span>
+<span class="o">*</span><span class="nx">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">21</span><span class="w">         </span><span class="c1">// updates the value of i through the pointer p</span>
+</pre></div>
+</li>
+</ul>
+<p>This process is called <strong>"dereferencing"</strong> or <strong>"indirecting."</strong></p>
+<h2>Structs</h2>
+<p>A struct is a collection of fields.</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">Vector</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">X</span><span class="w"> </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">Y</span><span class="w"> </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Vector</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>They are initialized with {} and their values are accessed by dot.</p>
+<h3>Pointers to Structs</h3>
+<p>When you're accessing struct instances via pointers, you can access it's fields without using *</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">Vertex</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">X</span><span class="w"> </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">Y</span><span class="w"> </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Vertex</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">p</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">v</span>
+<span class="w">        </span><span class="c1">// (*p).X = 1e9 &lt; -- You can do it like that but there&#39;s a shortcut:</span>
+<span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e9</span><span class="w"> </span><span class="c1">// This is the shortcut.</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<h2>Arrays</h2>
 
 12/2024
 
