@@ -636,6 +636,117 @@
 <span class="p">}</span>
 </pre></div>
 <h2>Arrays</h2>
+<p>In golang, arrays can not be resized. O_o They are defined as [number of elements]Type. For example <code>var a [10]int</code> creates an array called a with 10 integers.</p>
+<h3>Slices</h3>
+<p>In golang slices are used create sliced views for arrays. They are defined as <code>[]Type = Array[low: high]</code>. For example: <code>var s []int = a[1:4]</code> creates a s variable which is slice from the a array by getting first and fourth elements.</p>
+<p>Note that slices are not copies, they are references. The referenced array is changed, slice is changed too. Here is an example that creates names array and creates two slices from it. When you check the output you can see that when referenced array (names) are changed, a and b slices are changed too:</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">names</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;John&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Paul&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;George&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Ringo&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">names</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">names</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">b</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">names</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;XXX&quot;</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">names</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<h3>Slice Literals</h3>
+<p>Slice literals are shorcut for defining an array and getting a slice from it IMO.</p>
+<p>This is an array literal:</p>
+<div class="hll"><pre><span></span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">bool</span><span class="p">{</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">}</span>
+</pre></div>
+<p>And this creates the same array as above, then builds a slice that references it:</p>
+<div class="hll"><pre><span></span><span class="p">[]</span><span class="kt">bool</span><span class="p">{</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">}</span>
+</pre></div>
+<p>Here is a bigger example. In this case we're creating 3 slices q, r and s without defining their arrays. Also you can see that we can use structs to define array types.</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">q</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">bool</span><span class="p">{</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span>
+<span class="w">        </span><span class="nx">b</span><span class="w"> </span><span class="kt">bool</span>
+<span class="w">    </span><span class="p">}{</span>
+<span class="w">        </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote><p>Slices are dynamically sized, so this usage is actually to create array like structures which are dynamically sized. You can add or remove items from slices instead of arrays.</p>
+</blockquote>
+<p>When slice low and high points are not described, lowest and highest available points will be used. For example if a is an array with 10 elements, a[:10] means a[0:10], or a[3:] means a[:10].</p>
+<h3>Slice Length and Capacity</h3>
+<p>A slice has two key properties: <strong>length</strong> and <strong>capacity</strong>.</p>
+<ul>
+<li><strong>Length</strong>: The number of elements the slice currently holds.  </li>
+<li><strong>Capacity</strong>: The total number of elements available in the underlying array, starting from the first element of the slice.</li>
+</ul>
+<p>You can retrieve the length and capacity of a slice <code>s</code> using the expressions <code>len(s)</code> and <code>cap(s)</code>.</p>
+<p>Slices can be extended by re-slicing them, as long as they don’t exceed their capacity.<br>
+Try modifying one of the slice operations in the example program to extend the slice beyond its capacity and observe the result.</p>
+<div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Slice the slice to give it zero length.</span>
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Extend its length.</span>
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Drop its first two values.</span>
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="w">    </span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;len=%d cap=%d %v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<h2>Arrays or Slices How to Choose?</h2>
+<p><strong>Arrays</strong>:</p>
+<ul>
+<li>Perform slightly better when their size is fixed.  </li>
+<li>Minimal runtime overhead.  </li>
+<li>Commonly used for low-level and fixed-size data structures.  </li>
+</ul>
+<p><strong>Slices</strong>:</p>
+<ul>
+<li>More flexible and practical.  </li>
+<li>Adds a minimal abstraction layer over arrays, which introduces slight runtime overhead.  </li>
+<li>Preferred in most cases, as they better align with Go's standard data structures.  </li>
+</ul>
+<p>If the size is fixed and doesn't change often, consider using an array. However, if a dynamic size or flexibility is required, slices are the better choice.</p>
 
 12/2024
 
