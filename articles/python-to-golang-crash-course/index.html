@@ -266,21 +266,21 @@
   })(window, document, "clarity", "script", "p841gcyf0p");
 </script>
   <!-- Primary Meta Tags -->
-  <title>Python to Golang Crash Course — Mirat Can Bayrak</title>
+  <title>Golang Crash Course from a Pythonista — Mirat Can Bayrak</title>
   <link rel='canonical' href="https://mirat.dev/articles/python-to-golang-crash-course/">
   
-  <meta name="title" content="Python to Golang Crash Course - Mirat Can
+  <meta name="title" content="Golang Crash Course from a Pythonista - Mirat Can
   Bayrak" />
   <meta name="description" content="As a Python developer I wanted to learn Golang, and this is my notes." />
   <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mirat.dev/articles/python-to-golang-crash-course" />
-<meta property="og:title" content="Python to Golang Crash Course - Mirat Can
+<meta property="og:title" content="Golang Crash Course from a Pythonista - Mirat Can
   Bayrak" />
 <meta property="og:description" content="As a Python developer I wanted to learn Golang, and this is my notes." />
 <meta property="og:image" content="https://mirat.dev/articles/python-to-golang-crash-course" />
   <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content="https://mirat.dev/articles/python-to-golang-crash-course" />
-<meta property="twitter:title" content="Python to Golang Crash Course - Mirat Can
+<meta property="twitter:title" content="Golang Crash Course from a Pythonista - Mirat Can
   Bayrak" />
 <meta property="twitter:description" content="As a Python developer I wanted to learn Golang, and this is my notes." />
 <meta property="twitter:image" content="https://mirat.dev/articles/python-to-golang-crash-course" />
@@ -322,7 +322,7 @@
       <div class="wrapper">
         
 
-<h1>Python to Golang Crash Course</h1>
+<h1>Golang Crash Course from a Pythonista</h1>
 <h2>File Structure</h2>
 <p>Executable programs must have a <code>main</code> function, and the package name must be defined as follows:</p>
 <div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -635,9 +635,24 @@
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
+<h2>Arrays and Slices</h2>
+<p>In Golang there are two kind of data types which is used contain multiple values of a type: arrays and slices. Arrays are primitive, they contain static number of elements but they are slightly faster. Slices are most commonly used, they can be resized, changed etc.</p>
+<p><strong>Arrays</strong>:</p>
+<ul>
+<li>Perform slightly better when their size is fixed.  </li>
+<li>Minimal runtime overhead.  </li>
+<li>Commonly used for low-level and fixed-size data structures.  </li>
+</ul>
+<p><strong>Slices</strong>:</p>
+<ul>
+<li>More flexible and practical.  </li>
+<li>Adds a minimal abstraction layer over arrays, which introduces slight runtime overhead.  </li>
+<li>Preferred in most cases, as they better align with Go's standard data structures.  </li>
+</ul>
+<p>If the size is fixed and doesn't change often, consider using an array. However, if a dynamic size or flexibility is required, slices are the better choice.</p>
 <h2>Arrays</h2>
 <p>In golang, arrays can not be resized. O_o They are defined as [number of elements]Type. For example <code>var a [10]int</code> creates an array called a with 10 integers.</p>
-<h3>Slices</h3>
+<h2>Slices</h2>
 <p>In golang slices are used create sliced views for arrays. They are defined as <code>[]Type = Array[low: high]</code>. For example: <code>var s []int = a[1:4]</code> creates a s variable which is slice from the a array by getting first and fourth elements.</p>
 <p>Note that slices are not copies, they are references. The referenced array is changed, slice is changed too. Here is an example that creates names array and creates two slices from it. When you check the output you can see that when referenced array (names) are changed, a and b slices are changed too:</p>
 <div class="hll"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -733,20 +748,6 @@ Try modifying one of the slice operations in the example program to extend the s
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;len=%d cap=%d %v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
-<h2>Arrays or Slices How to Choose?</h2>
-<p><strong>Arrays</strong>:</p>
-<ul>
-<li>Perform slightly better when their size is fixed.  </li>
-<li>Minimal runtime overhead.  </li>
-<li>Commonly used for low-level and fixed-size data structures.  </li>
-</ul>
-<p><strong>Slices</strong>:</p>
-<ul>
-<li>More flexible and practical.  </li>
-<li>Adds a minimal abstraction layer over arrays, which introduces slight runtime overhead.  </li>
-<li>Preferred in most cases, as they better align with Go's standard data structures.  </li>
-</ul>
-<p>If the size is fixed and doesn't change often, consider using an array. However, if a dynamic size or flexibility is required, slices are the better choice.</p>
 
 12/2024
 
