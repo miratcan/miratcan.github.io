@@ -1,21 +1,426 @@
-title: Python to Golang Crash Course [Draft]
+title: Python to Golang Crash Course
 ---
 body:
 
-## Imports
+## File Structure  
 
-## String Formatting
+Executable programs must have a `main` function, and the package name must be defined as follows:  
 
-## Printing
+```golang
+package main
 
-## Control Flows
+func main() {
+  // Do something here.
+}
+```  
+
+## Imports  
+
+Packages can be imported using their relative paths like this:  
+
+```golang
+package main
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+func main() {
+	fmt.Println("My favorite number is", rand.Intn(10))
+}
+```  
+
+## Visibility  
+
+Items within packages that start with capital letters are exported and can be accessed by other packages. This will raise an error because `pi` is not exported:  
+
+```golang
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	fmt.Println(math.pi)
+}
+```  
+
+## Functions  
+
+In Golang, functions are defined using the `func` keyword instead of `def`. Parameters and return types must be explicitly defined, like this:  
+
+```golang
+package main
+
+import "fmt"
+
+func add(x int, y int) int {
+	return x + y
+}
+
+func main() {
+	fmt.Println(add(42, 13))
+}
+```  
+
+You can also simplify parameter type declarations by only specifying the type for the last parameter. The preceding parameters will be assumed to be of the same type. In this example, both `x` and `y` are integers:  
+
+```golang
+func add(x, y int) int {
+	return x + y
+}
+```  
+
+## Named Return Values  
+
+In Golang, return values can be named. In this example, the `split` function returns two named values, `x` and `y`. These names can help document the purpose of the return values:  
+
+```golang
+package main
+
+import "fmt"
+
+func split(sum int) (x, y int) {
+	x = sum * 4 / 9
+	y = sum - x
+	return
+}
+
+func main() {
+	fmt.Println(split(17))
+}
+```  
+
+If you do not name your return values, the function will use a "naked" return. Avoid naked returns as much as possible, especially in larger functions, as they make code harder to read and understand. 
+
+## Variables
+
+the `var` statement is used for defining variables. Like arguments in functions you can define multiple variable types by giving type to last one. In this example, foo, bar and baz is booleans.
+
+```golang
+var foo, bar, baz bool
+```
+
+If variables are not initialized, their defaults are:
+
+ - 0 for numeric types,
+ - false for the boolean type, and
+ - "" (the empty string) for strings.
+
+### Variable Scopes
+
+Variables scoped by packages and functions. and they can be initialized like this:
+
+```golang
+var foo, bar, baz bool = true, true, false
+```
+
+When you're creating variables with initializers, you don't need to explain their types. This will give the same result:
+
+```golang
+var foo, bar, baz = true, true, false
+```
+
+If you're using variables with initializers, defining a variable can be shortened like this:
+
+```golang
+foo, bar, baz := true, true, false
+```
+
+When you use :=, you don't need to use var statement.
+
+## Types
+
+Here is the list of types in Golang:
+
+ - bool
+ - string
+ - int
+  - int8 
+  - int16
+  - int32 
+  - int64
+ - uint
+  - uint8 
+  - uint16
+  - uint32
+  - uint64
+  - uintptr
+ - byte (alias for uint8)
+ - rune (alias for int32, represents a Unicode code point)
+ - float32 float64
+ -complex64
+ - complex128
+
+> *Note*: The int, uint, and uintptr types are usually 32 bits wide on 32-bit systems and 64 bits wide on 64-bit systems. When you need an integer value you should use int unless you have a specific reason to use a sized or unsigned integer type.
+
+## Type Castings
+
+The expression NewType(OldTypeVariable) converts the value OldTypeVariable to the NewType.
+
+```golang
+var i int = 42
+var f float64 = float64(i)
+var u uint = uint(f)
+```
+
+## Constants
+
+Constants are same with variables but they are not mutable. They can be string, number or boolean values. const keyword used to define constant instead of var.
+
+```golang
+const pi float = 3.14
+```
 
 ## Loops
 
-## Error Handling
+Other languages has while and for loops but Golang has only for loop. But it can be used to construct while loop and infinitive loops too.
+
+Most basic usage is like the javascript, in same line you initialize the variable, set the condition to continue loop and an executor to change your variable. Only difference is you don't put them inside a pharantesis.
+
+```golang
+package main
+
+import "fmt"
+
+func main() {
+	sum := 0
+	for i := 0; i < 10; i++ {
+		sum += i
+	}
+	fmt.Println(sum)
+}
+```
+
+By the way you dont need to initialize your variable in for loop, you can use pre initialized variable.
+
+```golang
+package main
+
+import "fmt"
+
+func main() {
+	sum := 1
+	for ; sum < 1000; {
+		sum += sum
+	}
+	fmt.Println(sum)
+}
+```
+
+And you dont need to type your executor to the for loop. This usage is basically while loop in other languages:
+
+```golang
+package main
+
+import "fmt"
+
+func main() {
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+	}
+	fmt.Println(sum)
+}
+```
+
+And... you can create infinite loop by using for loop without any parameters like this:
+
+```golang
+package main
+
+func main() {
+	for {
+	}
+}
+```
+## Control Flows
+
+### If Statements
+
+If statements are like for loops but you only create a condition
+
+```golang
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func sqrt(x float64) string {
+	if x < 0 {
+		return sqrt(-x) + "i"
+	}
+	return fmt.Sprint(math.Sqrt(x))
+}
+
+func main() {
+	fmt.Println(sqrt(2), sqrt(-4))
+}
+```
+
+Like walrus operator in Python, you can define variable and check that in same line in golang:
+
+```golang
+func pow(x, n, lim float64) float64 {
+	if v := math.Pow(x, n); v < lim {
+		return v
+	}
+	return lim
+}
+```
+### Switch statements
+
+Switch statements are used to create sequence of if else conditions like other languages. Switch statements are evaluated from top to bottom.
+
+```golang
+package main
+
+import (
+	"fmt"
+	"runtime"
+)
+
+func main() {
+	fmt.Print("Go runs on ")
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.\n", os)
+	}
+}
+```
+
+Also you can use predefined variables to create switch blocks:
+
+```golang
+func main() {
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+}
+```
+
+### Defers
+
+I didn't see this concept before. Defers are functions to call when a caller function is finished. When a function is finished, it's deferred calls are executed last in first out order:
+
+```golang
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
+}
+```
+
+This code will print 0 to 9 after main function is finished
+## Pointers 
+
+Go supports pointers, which store the memory address of a value.
+
+- The `&` operator is used to obtain the pointer to a variable.
+  ```go
+  i := 42
+  p = &i
+  ```
+
+- The `*` operator is used to access or update the value the pointer refers to.
+  ```go
+  fmt.Println(*p) // reads the value of i through the pointer p
+  *p = 21         // updates the value of i through the pointer p
+  ```
+
+This process is called **"dereferencing"** or **"indirecting."**
+
+## Structs
+
+A struct is a collection of fields.
+
+```golang
+package main
+
+import "fmt"
+
+type Vector struct {
+	X int
+	Y int
+}
+
+func main() {
+	v := Vector{1, 2}
+	v.X = 4
+	fmt.Println(v.X)
+}
+```
+
+They are initialized with {} and their values are accessed by dot. 
+
+### Pointers to Structs
+
+When you're accessing struct instances via pointers, you can access it's fields without using *
+
+```golang
+package main
+
+import "fmt"
+
+type Vertex struct {
+	X int
+	Y int
+}
+
+func main() {
+	v := Vertex{1, 2}
+	p := &v
+        // (*p).X = 1e9 < -- You can do it like that but there's a shortcut:
+	p.X = 1e9 // This is the shortcut.
+	fmt.Println(v)
+}
+```
+
+## Arrays
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ---
 meta_desc: As a Python developer I wanted to learn Golang, and this is my notes.
 ---
 pub_date: 2024-12-11
+---
+has_code: yes
