@@ -266,21 +266,21 @@
   })(window, document, "clarity", "script", "p841gcyf0p");
 </script>
   <!-- Primary Meta Tags -->
-  <title>Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir? — Mirat Can Bayrak</title>
+  <title>How to Upload Files via Django Shell? — Mirat Can Bayrak</title>
   <link rel='canonical' href="https://mirat.dev/articles/djangoda-shell-uzerinden-dosya-upload-etmek/">
   
-  <meta name="title" content="Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir? - Mirat Can
+  <meta name="title" content="How to Upload Files via Django Shell? - Mirat Can
   Bayrak" />
   <meta name="description" content="" />
   <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mirat.dev/articles/djangoda-shell-uzerinden-dosya-upload-etmek" />
-<meta property="og:title" content="Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir? - Mirat Can
+<meta property="og:title" content="How to Upload Files via Django Shell? - Mirat Can
   Bayrak" />
 <meta property="og:description" content="" />
 <meta property="og:image" content="https://mirat.dev/articles/djangoda-shell-uzerinden-dosya-upload-etmek" />
   <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content="https://mirat.dev/articles/djangoda-shell-uzerinden-dosya-upload-etmek" />
-<meta property="twitter:title" content="Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir? - Mirat Can
+<meta property="twitter:title" content="How to Upload Files via Django Shell? - Mirat Can
   Bayrak" />
 <meta property="twitter:description" content="" />
 <meta property="twitter:image" content="https://mirat.dev/articles/djangoda-shell-uzerinden-dosya-upload-etmek" />
@@ -322,27 +322,27 @@
       <div class="wrapper">
         
 
-<h1>Django&#39;da Shell Üzerinden Nasıl Dosya  Upload Edilir?</h1>
-<p>Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var:</p>
-<pre class="prettyprint lang-python">
-from django.db import models
+<h1>How to Upload Files via Django Shell?</h1>
+<p>Here’s a quick note on how to upload a file through Django's shell. Let’s say I have a model that contains an image field:</p>
+<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
-class Photo(models.Model):
-    image = models.ImageField(upload_to="/photos/")</pre>
-</pre><p>Bu modelden bir adet örnek oluşturmak ve ilgili image dosyasını shell üzerinden upload etmek istiyorum, o zaman ne yapıyorum?</p>
-<pre class="prettyprint lang-python">
-...: from hede.models import Photo
-...: from django.core.files import File
-...: photo = Photo.objects.create(
-         image=File(open("dosyaya/giden/yol.jpg", "r")))
-</pre>
+<span class="k">class</span> <span class="nc">Photo</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s2">&quot;/photos/&quot;</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</pre></div>
+<p>Now, I want to create an instance of this model and upload an image file through the shell. What steps should I take? Here's how:</p>
+<div class="hll"><pre><span></span><span class="o">...</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">hede.models</span> <span class="kn">import</span> <span class="n">Photo</span>
+<span class="o">...</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">django.core.files</span> <span class="kn">import</span> <span class="n">File</span>
+<span class="o">...</span><span class="p">:</span> <span class="n">photo</span> <span class="o">=</span> <span class="n">Photo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+         <span class="n">image</span><span class="o">=</span><span class="n">File</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dosyaya/giden/yol.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)))</span>
+</pre></div>
+
 07/2012
 
 
   <ul>
     <li>
-        <a href="../tag/technical/">
-          All posts tagged technical
+        <a href="../tag/django-notes/">
+          All posts tagged django-notes
         </a>
       </li>
     
