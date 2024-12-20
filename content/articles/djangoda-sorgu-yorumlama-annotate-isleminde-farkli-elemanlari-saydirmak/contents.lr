@@ -1,54 +1,71 @@
-title: Django'da Sorgu Yorumlama (annotate) İşleminde Farklı Elemanları Saydırmak.
+title: Counting Unique Elements in Django Queries Using `annotate`
 ---
 author: Mirat
 ---
 body:
 
-Python İstanbul mail grubuna [ilginç bir soru geldi](https://groups.google.com/forum/?fromgroups#!topic/python-istanbul/IAscvyQ7Euk), buraya not edeyim dedim.
+An interesting question popped up on the **Python Istanbul** mailing group, and I thought it would be useful to take note of it here. You can find the original discussion [here](https://groups.google.com/forum/?fromgroups#!topic/python-istanbul/IAscvyQ7Euk).
 
-Arkadaşın bir Category, Author ve Post adında üç adet modeli var:
+A developer has three models: **Category**, **Author**, and **Post**. Here's how they are structured:
 
-<pre class="prettyprint lang-python">
+```python
 class Category(models.Model):
     slug = ...
     name = ...
 
-class Post(models.Model)
+class Post(models.Model):
     title = ...
-    category = ForeignKey(Category)
-    author = ...
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    author = models.ForeignKey('Author', on_delete=models.CASCADE)
 
 class Author(models.Model):
     name = ...
-</pre>
+```
 
-Sorgulamak istenilen şey ise, kategori listesini her bir kategoride yazısı olan yazar sayılarıyla birlikte listelemek. Yani şöyle bir liste:
+The goal is to generate a list of categories along with the number of **unique authors** who have written posts for each category. For example, the desired result might look like this:
 
-| category_id  | category | name | author_count | 
-|--------------|----------|------|--------------|
-| 2            | Django   | 4    | 1            |
-| 1            | Python   | 3    | 3            |
+| `category_id` | `category` | `post_count` | `author_count` |
+|---------------|------------|--------------|----------------|
+| 2             | Django     | 4            | 1              |
+| 1             | Python     | 3            | 3              |
 
-Burada arkadaş bu sonuçları elde edebilmek için aşağıdaki gibi kümeleme kullanmış ([şurda bahsetmiştim](http://miratcan.tumblr.com/post/18246437693/veritaban-sorgular-nda-yorumlama-ve-kumeleme))
+## The Initial Query
 
-<pre class="prettyprint lang-python">
-    Category.objects.annotate(\
-        author_count=Count('post__author')).order_by('-author_count')</pre>
-</pre>
+To get this result, the user used **grouping** and wrote the following query:
 
-Burda beklenilen şey kategorilerin post_author'ların sayımı birlikte gelmesi. Ancak yanlış giden bir şey var ki iki author var ise bunlar 2'şer Post yaptı ise toplam 4 yazar varmış gibi gözüküyor.
+```python
+Category.objects.annotate(
+    author_count=Count('post__author')
+).order_by('-author_count')
+```
 
-Burada çözüm, yapılan sorguyu tekrarlardan uzak tutarak yapmak. Yani yazarları say ama unique (bunun Türkçe'si nedir?) say dememiz gerekiyor. Bunun için distinct adında bir parametre varmış:
+At first glance, this looks like it should work: it retrieves the number of authors for each category by using `Count` on `post__author`. However, there's a problem.
 
-<pre class="prettyprint lang-python">
-    Category.objects.annotate(\
-        author_count=Count('post__author', distinct=True)
-        ).order_by('-author_count')
-</pre>
+## The Problem: Counting Non-Unique Authors
+
+If an author has multiple posts in a category, they are counted multiple times. For instance, if two authors each write two posts in the same category, this query will count four authors instead of two. This leads to incorrect results.
+
+## The Solution: Using `distinct=True`
+
+To fix this issue, you need to ensure that the query only counts **unique authors** for each category. Django provides the `distinct=True` parameter for the `Count` function, which ensures that duplicates are excluded. Here's the corrected query:
+
+```python
+Category.objects.annotate(
+    author_count=Count('post__author', distinct=True)
+).order_by('-author_count')
+```
+
+With this modification, the query correctly counts the unique authors for each category, providing the desired results.
+
+## Why Use `distinct`?
+
+The `distinct=True` parameter ensures that duplicates are ignored when counting. Without it, `Count` includes all occurrences, which can lead to inflated numbers when there are multiple posts by the same author in a category.
+
+This approach is both efficient and clean, making it a valuable tool for similar use cases where unique counts are needed in Django queries.
 
 ---
 pub_date: 2012-03-16
 ---
 has_code: yes
 ---
-tags: technical
+tags: django-notes

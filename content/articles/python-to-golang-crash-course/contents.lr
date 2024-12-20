@@ -1,4 +1,4 @@
-title: Python to Golang Crash Course
+title: Golang Crash Course from a Pythonista
 ---
 body:
 
@@ -538,12 +538,81 @@ func printSlice(s []int) {
 }
 ```
 
+### Making Slices
 
+There's a command called make, which is used to create an empty slice with given size.
 
+```golang
+a := make([]int, 5)
+```
 
+You can also define it's capacity (maximum size). In this example we have a slice with 5 zeros and it\'s maximum capacity is 10.
 
+```golang
+a := make([]int, 5, 10)
+```
 
+### Slices inside slices
 
+Slices can contain other slices. Here's an example of tic tac toe game board. It\'s simply a 2D array.
+
+```golang
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	// Create a tic-tac-toe board.
+	board := [][]string{  // [][] --> Slice contains slices.
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
+
+	// The players take turns.
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
+
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
+}
+```
+
+This is equavelent for this in Python:
+
+```python
+board = [
+  ['_', '_', '_'],
+  ['_', '_', '_'],
+  ['_', '_', '_']
+]
+
+board[0][0] = "X"
+board[2][2] = "O"
+board[1][2] = "X"
+board[1][0] = "O"
+board[0][2] = "X"
+
+for row in board:
+  print(' '.join(row))
+```
+
+Actually this is the long way to define board in Python you can just do this:
+
+```python
+board = [['_'] * 3] * 3
+```
+
+### Appending
+
+In Golang appending to a slice is done by append function. I'm not sure why is this not a method of a slice but probably lack of methods causing this. 
 
 ---
 meta_desc: As a Python developer I wanted to learn Golang, and this is my notes.

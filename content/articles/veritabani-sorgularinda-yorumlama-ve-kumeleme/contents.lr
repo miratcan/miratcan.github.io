@@ -1,67 +1,113 @@
-title: Veritabanı sorgularında yorumlama ve kümeleme.
+title: # Mastering Database Query Interpretation and Aggregation in Django
 ---
 author: Mirat
 ---
 body:
 
-Django'nun veritabanı katmanı size basit sorgular yapma imkanı tanıdığı gibi, çeşitli yorumlama (annotation) ve kümeleme (aggregation) işlemleri yapmanıza da imkan sağlıyor. Söz gelimi bir kullanıcının gelir giderini tuttuğumuz transaction adında bir modelimiz olduğunu farzedelim.
+Django's ORM (Object-Relational Mapping) not only allows developers to perform simple database queries but also provides powerful tools for **query annotations** and **data aggregation**. This guide will demonstrate how to utilize these features effectively with practical examples.
 
-<pre class="prettyprint lang-python">
+## What are Annotations and Aggregations in Django?
+Annotations allow you to enrich your querysets by adding calculated fields, while aggregations let you compute values like sums, averages, and counts directly from your database. These features are essential for creating efficient, dynamic queries in Django.
+
+## Example: Tracking User Transactions
+
+Let’s consider a model named `Transaction` designed to record a user’s income and expenses:
+
+```python
 from django.contrib.auth.models import User
 
 class Transaction(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     balance = models.IntegerField()
-    description = models.CharField(max_length=255)</pre>
-</pre>
+    description = models.CharField(max_length=255)
+```
 
-Şimdi de x kullanıcısı için bir kaç adet işlem oluşturalım:
+### Step 1: Adding Transactions for a User
 
-<pre class="prettyprint lang-python">
-... : from django.contrib.auth.models import User
-... : user_x = User.objects.get(...)
-... : Transaction.objects.create(
-... :     user=user_x,
-... :     balance=200,
-... :     description="Cebimde 200 lira var")
-... :
-... : Transaction.objects.create(
-... :     user=user_x,
-... :     balance=-15,
-... :     description="Taksi parası")
-... : 
-... : Transaction.objects.create(
-... :     user=user_x,
-... :     balance=-120,
-... :     description="Mutfak alışverişi")</pre>
-</pre>
-Kullanıcı 3 adet işlem yaptı. Şu an kayıtlı olan bütün transaction objelerinden yola çıkarak ve kümeleme metodunu kullanarak kullanıcının toplam para durumuna bakalım.
+We'll create a few transactions for a user `x`:
 
-<pre class="prettyprint lang-python">
-... : from django.db.models import Sum
-... : Transaction.objects.all().aggregate(total=Sum('balance'))
-... : {'total': 65 }
-</pre>
+```python
+from django.contrib.auth.models import User
 
-Gördüğünüz gibi bütün balance değerlerini toplayarak bize (+200 - 15 - 120 = 65) sonucunu gönderdi. Eğer istersek yorumlama özelliğini kullanarak kullanıcıları direkt olarak balans durumları ile birlikte alabiliriz.
+user_x = User.objects.get(...)  # Replace with your lookup criteria
+Transaction.objects.create(
+    user=user_x,
+    balance=200,
+    description="I have 200 units in my pocket"
+)
 
-<pre class="prettyprint lang-python">
-... : user_x = User.objects.get(...).annotate(\
-... :     balance=Sum("transaction__balance"))
-... : user_x.balance
-... : 65
-</pre>
+Transaction.objects.create(
+    user=user_x,
+    balance=-15,
+    description="Taxi fare"
+)
 
-Burada yaptığımız şey Django'ya şunu söylemek oldu:
+Transaction.objects.create(
+    user=user_x,
+    balance=-120,
+    description="Grocery shopping"
+)
+```
 
-> User nesnesini al, ancak transaction içerisindeki balance değerlerini toplayıp, balance adında yeni bir kolon olarak ekle.
+The user now has three transactions recorded in the database. Let’s calculate the total balance by leveraging Django's aggregation functions.
 
-Tabi burada sadece Sum fonksiyonu ile sınırlı değilsiniz. Count, Max, Avg gibi bir çok metod mevcut. Daha fazla bilgi için şuraya bakabilirsiniz:
+## Step 2: Calculating Total Balance with Aggregation
 
-[https://docs.djangoproject.com/en/dev/topics/db/aggregation/](https://docs.djangoproject.com/en/dev/topics/db/aggregation/ "https://docs.djangoproject.com/en/dev/topics/db/aggregation/")
+Django makes it easy to calculate totals using aggregation methods like `Sum`:
+
+```python
+from django.db.models import Sum
+Transaction.objects.all().aggregate(total=Sum('balance'))
+# Output: {'total': 65}
+```
+
+In this case, Django adds up all the `balance` values and returns the total (`+200 - 15 - 120 = 65`).
+
+## Step 3: Annotating Users with Total Balance
+
+If you want to fetch users along with their total balances directly, use the annotation feature:
+
+```python
+user_x = User.objects.annotate(
+    balance=Sum("transaction__balance")
+).get(id=user_x.id)
+
+user_x.balance
+# Output: 65
+```
+
+### What Does This Query Do?
+
+Here’s what Django is instructed to do:
+
+> Fetch the `User` object and calculate the sum of `balance` values from the related `Transaction` objects. Add this value as a new field named `balance`.
+
+## Advanced Aggregation Techniques
+
+Django supports several aggregation functions to meet diverse needs:
+
+- **`Sum`**: Calculate the total of a field.
+- **`Count`**: Count the number of rows.
+- **`Max`**: Find the maximum value.
+- **`Avg`**: Compute the average value.
+
+These tools make Django’s ORM incredibly flexible for data analysis and reporting.
+
+## Why Use Django's ORM for Aggregations?
+
+Using Django's built-in ORM for aggregations is not only convenient but also ensures optimal performance by offloading calculations to the database level. This approach minimizes the overhead on your application server.
+
+## Learn More About Django Aggregations
+
+Django’s aggregation framework is powerful and well-documented. For a deeper dive, visit the official documentation:
+
+[https://docs.djangoproject.com/en/dev/topics/db/aggregation/](https://docs.djangoproject.com/en/dev/topics/db/aggregation/)
+
+By mastering these techniques, you can write cleaner, more efficient code while making the most of Django’s capabilities for handling complex data operations.
+
 ---
 pub_date: 2012-02-25
 ---
 has_code: yes
 ---
-tags: technical
+tags: django-notes

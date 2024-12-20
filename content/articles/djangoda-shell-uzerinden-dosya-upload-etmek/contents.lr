@@ -1,29 +1,29 @@
-title: Django'da Shell Üzerinden Nasıl Dosya  Upload Edilir?
+title: How to Upload Files via Django Shell?
 ---
 body:
 
-Kısaca buraya not alıp çıkıcam, şöyle içinde bir imaj barındıran modelim var:
+Here’s a quick note on how to upload a file through Django's shell. Let’s say I have a model that contains an image field:
 
-<pre class="prettyprint lang-python">
+```python
 from django.db import models
 
 class Photo(models.Model):
     image = models.ImageField(upload_to="/photos/")</pre>
-</pre>
+```
 
-Bu modelden bir adet örnek oluşturmak ve ilgili image dosyasını shell üzerinden upload etmek istiyorum, o zaman ne yapıyorum?
+Now, I want to create an instance of this model and upload an image file through the shell. What steps should I take? Here's how:
 
-<pre class="prettyprint lang-python">
+```python
 ...: from hede.models import Photo
 ...: from django.core.files import File
 ...: photo = Photo.objects.create(
          image=File(open("dosyaya/giden/yol.jpg", "r")))
-</pre>
+```
 ---
 author: Mirat
 ---
 pub_date: 2012-07-29
 ---
-tags: technical
+tags: django-notes
 ---
 has_code: yes
