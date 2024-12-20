@@ -612,7 +612,73 @@ board = [['_'] * 3] * 3
 
 ### Appending
 
-In Golang appending to a slice is done by append function. I'm not sure why is this not a method of a slice but probably lack of methods causing this. 
+In Golang appending to a slice is done by `append` function. I'm not sure why is this not a method of a slice but probably lack of methods causing this. Append function takes slice as first parameter rest of parameters are things to add to that slice.
+
+```golang
+var s []int
+printSlice(s)
+s = append(s, 1)
+printSlice(s)
+```
+
+This is equavelent to this code block in Python:
+
+```golang
+s = []
+print(s)
+s.append(1)
+print(s)
+```
+
+## Range
+
+Range is enumuerate in Python. Used to run over loops for every element and their indexes.
+
+
+```golang
+package main
+
+import "fmt"
+
+var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+func main() {
+	for i, v := range pow {
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
+}
+
+```
+
+This is equavelent to this code block in Python
+
+```python
+pow = [1, 2, 4, 8, 16, 32, 64, 128]
+for i, v in enumerate(pow):
+  print(2 ** i, '=', v)
+```
+
+Using index and value together is not madatory, you can by pass one of them. For example by passing the index:
+
+```golang
+var lst = []str{'A', 'B', 'C'}
+for _, value := range lst {  // Prints values
+    fmt.Printf(value)
+}
+for i, _ := range lst {  // Prints indexes
+    fmt.Printf(i)
+}
+```
+
+This is equavelent to this code block in Python:
+
+```python
+lst = ['A', 'B', 'C']
+for _, value in enumerate(lst):
+  print(value)
+for i, _ in enumerate(lst):
+  print(value)
+```
 
 ---
 meta_desc: As a Python developer I wanted to learn Golang, and this is my notes.
