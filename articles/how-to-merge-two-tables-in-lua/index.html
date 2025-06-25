@@ -315,7 +315,7 @@
     <a  href="/products/"><span>W</span>ishlist</a>
     
 
-    <a href="/resume/"><span>R</span>esume</a>
+    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
   </div>
 </nav>
     </header>
@@ -324,17 +324,17 @@
         
 
 <h1>How to merge two tables in Lua?</h1>
-<div class="hll"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">loopMethod</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">)</span>
-    <span class="kd">local</span> <span class="n">merged_dict</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">dict1</span><span class="p">)</span> <span class="kr">do</span>
-        <span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="nb">table.insert</span><span class="p">(</span><span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">v</span><span class="p">)</span>
-    <span class="kr">end</span>
-    <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">dict2</span><span class="p">)</span> <span class="kr">do</span>
-        <span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="ow">or</span> <span class="p">{}</span>
-        <span class="nb">table.insert</span><span class="p">(</span><span class="n">merged_dict</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">v</span><span class="p">)</span>
-    <span class="kr">end</span>
-    <span class="kr">return</span> <span class="n">merged_dict</span>
+<div class="hll"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">loopMethod</span><span class="p">(</span><span class="nv">dict1</span><span class="p">,</span><span class="w"> </span><span class="nv">dict2</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">merged_dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">k</span><span class="p">,</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">dict1</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nv">merged_dict</span><span class="p">[</span><span class="nv">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">merged_dict</span><span class="p">[</span><span class="nv">k</span><span class="p">],</span><span class="w"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">k</span><span class="p">,</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">dict2</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nv">merged_dict</span><span class="p">[</span><span class="nv">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">merged_dict</span><span class="p">[</span><span class="nv">k</span><span class="p">]</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">merged_dict</span><span class="p">[</span><span class="nv">k</span><span class="p">],</span><span class="w"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">merged_dict</span>
 <span class="kr">end</span>
 </pre></div>
 

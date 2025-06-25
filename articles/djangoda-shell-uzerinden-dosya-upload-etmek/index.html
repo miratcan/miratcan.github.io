@@ -315,7 +315,7 @@
     <a  href="/products/"><span>W</span>ishlist</a>
     
 
-    <a href="/resume/"><span>R</span>esume</a>
+    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
   </div>
 </nav>
     </header>
@@ -325,14 +325,14 @@
 
 <h1>How to Upload Files via Django Shell?</h1>
 <p>Here’s a quick note on how to upload a file through Django's shell. Let’s say I have a model that contains an image field:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="hll"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
 
-<span class="k">class</span> <span class="nc">Photo</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Photo</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s2">&quot;/photos/&quot;</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </pre></div>
 <p>Now, I want to create an instance of this model and upload an image file through the shell. What steps should I take? Here's how:</p>
-<div class="hll"><pre><span></span><span class="o">...</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">hede.models</span> <span class="kn">import</span> <span class="n">Photo</span>
-<span class="o">...</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">django.core.files</span> <span class="kn">import</span> <span class="n">File</span>
+<div class="hll"><pre><span></span><span class="o">...</span><span class="p">:</span> <span class="kn">from</span><span class="w"> </span><span class="nn">hede.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Photo</span>
+<span class="o">...</span><span class="p">:</span> <span class="kn">from</span><span class="w"> </span><span class="nn">django.core.files</span><span class="w"> </span><span class="kn">import</span> <span class="n">File</span>
 <span class="o">...</span><span class="p">:</span> <span class="n">photo</span> <span class="o">=</span> <span class="n">Photo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
          <span class="n">image</span><span class="o">=</span><span class="n">File</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dosyaya/giden/yol.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)))</span>
 </pre></div>

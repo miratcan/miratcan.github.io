@@ -315,7 +315,7 @@
     <a  href="/products/"><span>W</span>ishlist</a>
     
 
-    <a href="/resume/"><span>R</span>esume</a>
+    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
   </div>
 </nav>
     </header>
@@ -331,7 +331,7 @@
 </pre></div>
 <p>When I checked the implementation of the <code>length</code> filter, I saw that it simply passes the given value to Python's <code>len</code> function (<a href="https://github.com/django/django/blob/master/django/template/defaultfilters.py#L577">source</a>):</p>
 <div class="hll"><pre><span></span><span class="nd">@register</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
-<span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>  
+<span class="k">def</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>  
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the length of the value - useful for lists.&quot;&quot;&quot;</span>  
     <span class="k">try</span><span class="p">:</span>  
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  

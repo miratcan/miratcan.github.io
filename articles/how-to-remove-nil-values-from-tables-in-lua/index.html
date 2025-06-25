@@ -315,7 +315,7 @@
     <a  href="/products/"><span>W</span>ishlist</a>
     
 
-    <a href="/resume/"><span>R</span>esume</a>
+    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
   </div>
 </nav>
     </header>
@@ -325,20 +325,20 @@
 
 <h1>How to remove nil values from tables in Lua?</h1>
 <h2>Method 1: Using <code>table.filter</code> (Use this)</h2>
-<div class="hll"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">remove_nil_values</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="kr">return</span> <span class="n">table</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="kr">return</span> <span class="n">x</span> <span class="o">~=</span> <span class="kc">nil</span> <span class="kr">end</span><span class="p">)</span>
+<div class="hll"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">remove_nil_values</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">table</span><span class="p">.</span><span class="nf">filter</span><span class="p">(</span><span class="nv">t</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="kr">end</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 <h2>Method 2: Using pairs and conditions</h2>
 <p><strong>Method 1: Using <code>pairs</code> and a conditional statement</strong></p>
-<div class="hll"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">remove_nil_values</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="kd">local</span> <span class="n">new_t</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="kr">do</span>
-        <span class="kr">if</span> <span class="n">v</span> <span class="o">~=</span> <span class="kc">nil</span> <span class="kr">then</span>
-            <span class="nb">table.insert</span><span class="p">(</span><span class="n">new_t</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-        <span class="kr">end</span>
-    <span class="kr">end</span>
-    <span class="kr">return</span> <span class="n">new_t</span>
+<div class="hll"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">remove_nil_values</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">new_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">k</span><span class="p">,</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">new_t</span><span class="p">,</span><span class="w"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">new_t</span>
 <span class="kr">end</span>
 </pre></div>
 

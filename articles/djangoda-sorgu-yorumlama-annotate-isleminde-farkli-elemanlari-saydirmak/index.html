@@ -315,7 +315,7 @@
     <a  href="/products/"><span>W</span>ishlist</a>
     
 
-    <a href="/resume/"><span>R</span>esume</a>
+    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
   </div>
 </nav>
     </header>
@@ -326,16 +326,16 @@
 <h1>Counting Unique Elements in Django Queries Using `annotate`</h1>
 <p>An interesting question popped up on the <strong>Python Istanbul</strong> mailing group, and I thought it would be useful to take note of it here. You can find the original discussion <a href="https://groups.google.com/forum/?fromgroups#!topic/python-istanbul/IAscvyQ7Euk">here</a>.</p>
 <p>A developer has three models: <strong>Category</strong>, <strong>Author</strong>, and <strong>Post</strong>. Here's how they are structured:</p>
-<div class="hll"><pre><span></span><span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="hll"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">slug</span> <span class="o">=</span> <span class="o">...</span>
     <span class="n">name</span> <span class="o">=</span> <span class="o">...</span>
 
-<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="o">...</span>
     <span class="n">category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Category</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
     <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;Author&#39;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Author</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="o">...</span>
 </pre></div>
 <p>The goal is to generate a list of categories along with the number of <strong>unique authors</strong> who have written posts for each category. For example, the desired result might look like this:</p>
