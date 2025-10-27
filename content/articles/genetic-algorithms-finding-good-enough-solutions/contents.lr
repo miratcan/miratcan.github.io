@@ -42,6 +42,11 @@ These are our possible solution sets that sum to 30. All these arrays are arrang
 
 ### 1. Creating a Population
 
+<video width="100%" controls autoplay loop muted>
+  <source src="population.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 Creating a population simply means producing random solution sets.
 
 ```python
