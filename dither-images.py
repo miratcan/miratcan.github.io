@@ -13,7 +13,7 @@ except ImportError:
     sys.exit(1)
 
 
-def dither_image(filepath, max_width=500, dark_color=(0, 0, 0), light_color=(178, 164, 151)):
+def dither_image(filepath, max_width=800, dark_color=(0, 0, 0), light_color=(178, 164, 151)):
     """Apply dithering to a single image with custom colors"""
     try:
         # Open image
