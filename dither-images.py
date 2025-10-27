@@ -13,8 +13,8 @@ except ImportError:
     sys.exit(1)
 
 
-def dither_image(filepath, max_width=500):
-    """Apply dithering to a single image"""
+def dither_image(filepath, max_width=500, dark_color=(0, 0, 0), light_color=(178, 164, 151)):
+    """Apply dithering to a single image with custom colors"""
     try:
         # Open image
         img = Image.open(filepath)
@@ -30,10 +30,29 @@ def dither_image(filepath, max_width=500):
             img = img.convert('RGB')
 
         # Convert to 1-bit (black & white with Floyd-Steinberg dithering)
-        dithered = img.convert('1', dither=Image.FLOYDSTEINBERG)
+        dithered_bw = img.convert('1', dither=Image.FLOYDSTEINBERG)
 
-        # Save back to same file
-        dithered.save(filepath, optimize=True)
+        # Create a new RGB image with custom colors
+        # Map black (0) to dark_color and white (255) to light_color
+        width, height = dithered_bw.size
+        colored = Image.new('RGB', (width, height))
+        pixels = colored.load()
+        bw_pixels = dithered_bw.load()
+
+        for y in range(height):
+            for x in range(width):
+                # 0 = black in 1-bit image, 255 = white
+                if bw_pixels[x, y] == 0:
+                    pixels[x, y] = dark_color
+                else:
+                    pixels[x, y] = light_color
+
+        # Save as PNG for clean 2-color output (no JPEG artifacts)
+        # Change extension to .png if needed
+        if filepath.lower().endswith(('.jpg', '.jpeg')):
+            filepath = filepath.rsplit('.', 1)[0] + '.png'
+
+        colored.save(filepath, 'PNG', optimize=True)
         return True
     except Exception as e:
         print(f"Warning: Could not dither {filepath}: {e}")
