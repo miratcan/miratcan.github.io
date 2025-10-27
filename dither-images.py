@@ -92,12 +92,16 @@ def fix_html_image_references(build_path):
                     with open(filepath, 'r', encoding='utf-8') as f:
                         content = f.read()
 
-                    # Replace .jpg and .jpeg with .png in image references
+                    # Replace .jpg and .jpeg with .png in RELATIVE image references only
+                    # Don't touch external URLs (http://, https://)
+                    import re
                     original_content = content
-                    content = content.replace('.jpg"', '.png"')
-                    content = content.replace('.jpeg"', '.png"')
-                    content = content.replace('.jpg)', '.png)')
-                    content = content.replace('.jpeg)', '.png)')
+
+                    # Match relative paths only (not starting with http:// or https://)
+                    # Pattern: non-http URL followed by .jpg or .jpeg
+                    content = re.sub(r'(?<!https:)(?<!http:)(["\(][^"\')\s]*?)\.jpe?g(["\)])', r'\1.png\2', content)
+                    # Also handle src="image.jpg" style without leading path
+                    content = re.sub(r'(src=")([^/][^"]*?)\.jpe?g(")', r'\1\2.png\3', content)
 
                     if content != original_content:
                         with open(filepath, 'w', encoding='utf-8') as f:
