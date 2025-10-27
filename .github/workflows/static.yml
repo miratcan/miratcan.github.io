@@ -37,8 +37,12 @@ jobs:
           python-version: '3.x'
       - name: Install Lektor
         run: pip install lektor
+      - name: Install Pillow for dithering
+        run: pip install Pillow
       - name: Build site
         run: lektor build -O build
+      - name: Dither images
+        run: python dither-images.py build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
