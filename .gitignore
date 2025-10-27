@@ -1,1 +1,9 @@
+# Lektor build cache (only ignore cache, keep build output)
+build/.lektor/
+
+# Lektor deployment scratch worktrees
+temp/
+deploy-master/
+
+# macOS
 .DS_Store

@@ -3,6 +3,9 @@ name = Mirat Can Bayrak
 url = https://mirat.dev
 locale = tr_TR
 
+[env.production]
+target_path = build
+
 [servers.ghpages]
 target = ghpages://miratcan/miratcan.github.io
 

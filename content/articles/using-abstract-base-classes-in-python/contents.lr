@@ -1,0 +1,64 @@
+title: Using Abstract Base Classes in Python
+---
+body:
+
+For years I marked “abstract” methods in Python by raising `NotImplementedError`. Chances are most of us have written something like this:
+
+```python
+class UserBase:
+    def get(self, id):
+        raise NotImplementedError
+
+
+class Users(UserBase):
+    pass
+
+
+users = Users()      # <- Instance is created just fine
+users.get(1)         # <- Boom: NotImplementedError at call time
+```
+
+The pattern works: treat `UserBase` as the parent, crash if a subclass forgets to implement a method, and move on. This is a flavour of duck typing—“if it quacks like a duck…”—because we only notice the missing method when we try to use it.
+
+Today I finally learned the native way to express the same intention. Python ships with a solid solution in the `abc` module:
+
+```python
+from abc import ABC, abstractmethod
+
+
+class UserBase(ABC):
+
+    @abstractmethod
+    def get(self, id):
+        """Return a user by id."""
+        raise NotImplementedError
+
+
+class Users(UserBase):
+    pass
+
+
+users = Users()      # <- Crash immediately: abstract method not implemented
+```
+
+The change looks tiny, but it delivers a huge payoff:
+
+- **Catch errors earlier.** Missing implementations trigger during instantiation, not deep inside runtime code.
+- **Document intent in code.** `@abstractmethod` spells out the contract: “this method must be overridden.”
+- **Unlock editor and static-analysis help.** IDEs highlight missing overrides, offer auto-complete, and enable safer refactors.
+- **Increase team confidence.** Another developer can’t forget an abstract method without Python complaining before merge.
+- **Improve readability.** Anyone scanning the class immediately understands which methods a subclass must provide.
+- **Design cleaner APIs.** Base classes behave like real interfaces instead of loose conventions.
+- **Simplify testing.** When you build fakes or mocks, it’s obvious which methods are required.
+- **Move closer to design by contract.** The code clearly states what it expects, reducing accidental calls that fail in production.
+
+Long story short: the “we’ve always done it this way” approach is often fine, yet Python usually offers a clearer, safer alternative. If you’ve replaced any long-standing Python habit with a better modern solution, share it—I’d love to learn from it, and maybe it will light the way for someone else. 💡
+
+---
+tags: python-notes
+---
+has_code: yes
+---
+pub_date: 2025-09-02
+---
+meta_desc: Why switching from NotImplementedError to Abstract Base Classes makes Python interfaces safer, clearer, and easier to maintain.

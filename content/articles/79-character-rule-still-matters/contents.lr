@@ -1,0 +1,68 @@
+title: The 79-Character Rule Still Matters
+---
+body:
+
+The Python community has recommended a 79-character line limit for two decades. That guideline is neither an accident nor an arbitrary personal preference. It probably started life as a gentle suggestion to lower the barrier for newcomers, but especially when you work on a team I see it as a rule that deserves close enforcement. Here’s why.
+
+## 1. Big Screens: Welcome to the Tennis Match
+
+Every now and then I open a file and the lines run on forever. I maximise the editor and begin reading. Within seconds it feels like a tennis match: my eyes dart from the far left to the far right, sometimes I literally tilt my head. And there’s no Maria Sharapova around to make that effort worthwhile.
+
+Age does not help either. Dropping down a line while keeping track of indentation gets harder. I catch myself pressing a finger against the screen just to hold the starting column.
+
+## 2. Small Screens: Oil Wrestling with Scrollbars
+
+Desk time is limited. Sometimes I work at the kitchen table, sometimes on the balcony. I’m writing this piece in a café called Fırın Diyarı, enduring their tragic tea. The story is always the same: both horizontal and vertical scrollbars appear, and now I’m wrestling with them.
+
+Touchpads make it even worse. Grabbing those tiny scrollbars is fiddly, and once you catch one you have to feather it to reach the end of a line. Authors can write long lines in seconds; readers pay the ergonomic price. Short lines make that pain disappear.
+
+## 3. Pull Requests: The Highway to “Approve and Forget”
+
+Pull request views are narrower than full editors. Navigation bars sit on top, file trees on the left, and code fights for the remaining space. Long lines are twice as exhausting here—eyes drift, focus drops, reviewers skim.
+
+And when review feels like a chore, approvals turn into rubber stamps. Pull requests are résumés: if they are hard to read they get ignored or waved through. Enforcing the 79-character limit is therefore not just about ergonomics; it’s about code quality.
+
+## 4. Writing Code: A Cat with Its Whiskers Trimmed
+
+Python’s Zen offers a tiny but powerful reminder:
+
+> Flat is better than nested.
+
+Paying attention to that sentence leads me to better designs. Deeply nested structures eventually show up as technical debt. Imagine code like this:
+
+```python
+if user:
+    if user.is_active:
+        if user.has_permission("admin"):
+            if not user.is_banned:
+                do_sensitive_operation()
+```
+
+If you are used to long lines, that shape may not bother you. The moment you decide to honour the 79-character rule—and maybe your editor shows a soft limit marker—you naturally refactor. The early return version is cleaner and safer:
+
+```python
+if not user:
+    return
+if not user.is_active:
+    return
+if not user.has_permission("admin"):
+    return
+if user.is_banned:
+    return
+do_sensitive_operation()
+```
+
+Enforcing a short line width nudges you toward flatter, clearer code.
+
+## Final Thoughts and a Public Service Announcement
+
+It’s 2025. Monitors are bigger, editors are smarter, but humans haven’t changed—and for a few more years at least, we still write code for humans. Keep the 79-character rule close. Your teammates, reviewers, and future self will thank you.
+
+---
+tags: python-notes
+---
+has_code: yes
+---
+pub_date: 2025-10-10
+---
+meta_desc: Why the classic 79-character line limit still improves readability, collaboration, and code quality in 2025.

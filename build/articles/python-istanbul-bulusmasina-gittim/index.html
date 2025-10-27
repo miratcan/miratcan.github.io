@@ -1,33 +1,137 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
   <style>
+    @font-face {
+      font-family: Dos;
+      src: url(/dos.ttf);
+    }
+
+    :root {
+      --c0: #000000;
+      --c1: #000080;
+      --c2: #00aaaa;
+      --c3: #00aa00;
+      --c4: #aa00aa;
+      --c5: #aa0000;
+      --c6: #aa5500;
+      --c7: #aaaaaa;
+      --c8: #555555;
+      --c9: #5555ff;
+      --c10: #1fdbdb;
+      --c12: #55ff55;
+      --c12: #ff55ff;
+      --c13: #ff5555;
+      --c14: #ffff55;
+      --c15: #ffffff;
+      --ln: 2px;
+      --gap: 1rem;
+      --fs: 16px;
+      --lh: 24px;
+    }
+
+    em {
+      color: var(--c6);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: normal;
+      color: var(--c15);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap)
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--c7);
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: var(--c8);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--c4);
+    }
+
+    .screen *:not(pre) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
     html,
     body {
-      min-height: 100%;
       margin: 0;
-      background: #161917;
-      color: #B2A497;
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
-      line-height: 22px;
+      padding: 0;
+    }
+
+    body {
+      background: var(--c0);
+      color: var(--c7);
+      font-family: 'Dos', monospace;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      vertical-align: center;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+      letter-spacing: -1px;
     }
 
     pre {
-      padding: 2em;
-      background: #261917;
-      font-size: .8em;
+      font-family: inherit;
+      padding: 1rem;
+      background: #111;
+      border: 1px solid gray;
+      overflow-y: scroll;
+    }
+
+    code {
+      color: var(--c3);
+      font-family: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    li,
+    table,
+    blockquote {
+      font-weight: normal;
+      margin: 0 0 1rem 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+    }
+
+    li {
+      margin: 0;
     }
 
     h1 {
       font-size: 1.4em;
       line-height: 1.73em;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     h2 {
       font-size: 1.3em;
       line-height: 1.61em;
+      border-bottom: 4px double var(--c4);
     }
 
     h3 {
@@ -37,13 +141,13 @@
     h1,
     h2,
     h3 {
-      color: wheat;
+      color: var(--c14);
     }
 
     blockquote {
-      margin: 0;
-      padding: 0 10px;
-      border-left: 5px solid #B2A497
+      padding: 0 1em;
+      border-left: 2px solid #B2A497;
+      border-bottom: 2px solid #B2A497;
     }
 
     .youtube-video {
@@ -51,69 +155,93 @@
       width: 100%;
     }
 
-    ul {
-      margin: 8px 0 0 0;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
     ul#articles li {
-      list-style-type: none !important;
-      color: gray;
+      list-style-type: square;
+      color: var(--c2);
     }
 
     ul#articles {
-      padding: 0
+      padding: 0 0 0 1em;
     }
 
-    body {}
-
-    a {
+    nav a {
       text-decoration: none;
-      color: darkkhaki;
+      color: var(--c0);
     }
 
-    a:hover {
-      color: wheat;
+    nav a span {
+      color: var(--c5);
     }
 
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      box-sizing: border-box;
-      overflow: auto;
+    a.active {
+      text-decoration: underline;
     }
 
-    img {
-      width: 100%
-    }
-
-    nav {
-      background: linear-gradient(360deg, #6e1313, #9B2821);
-      height: fit-content;
-      display: flex;
-      align-items: center;
+    a.tag {
+      color: darkolivegreen;
       justify-content: center;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      gap: 40px;
     }
 
     main,
+    header {
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    main {
+      margin: 1rem 0;
+      padding: 0 1rem;
+    }
+
+    main a {
+      color: var(--c10);
+      text-decoration: underline;
+    }
+
     nav {
-      padding-left: 1em;
-      padding-right: 1em;
+      background: var(--c7);
+      padding: 0 1rem;
+    }
+
+    nav .wrapper {
+      display: flex;
+      align-content: center;
+      gap: 0 1rem;
+      flex-wrap: wrap;
+
+    }
+
+    main nav,
+    table {
+      background: transparent;
+      padding: 1rem;
+      border: 4px double var(--c3);
+      margin: 0 auto;
+    }
+
+    main nav a {
+      // color: var(--c2);
     }
 
     .pagination {
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: calc(var(--ln) * 2) double var(--c3)
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
+
+      header,
       main {
-        padding: 20px 5px
+        padding: 1em;
       }
 
       ul#articles li a {
@@ -125,66 +253,111 @@
       margin-top: 0;
     }
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
-    crossorigin="anonymous"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="content-language" content="TR-tr">
+  <meta http-equiv="content-language" content="en">
 
   
   
-
+  <script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
   <!-- Primary Meta Tags -->
-  <title>Python İstanbul Buluşmasına Gittim — Mirat Can Bayrak</title>
-  <meta name="title" content="Python İstanbul Buluşmasına Gittim" />
-  <meta name="description" content="Bir önceki yazımda Facebook&#39;a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı..." />
+  <title>I Attended a Python Istanbul Meetup — Mirat Can Bayrak</title>
   <link rel='canonical' href="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim/">
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim/" />
-  <meta property="og:title" content="Python İstanbul Buluşmasına Gittim - Mirat Can Bayrak" />
-  <meta property="og:description" content="Bir önceki yazımda Facebook&#39;a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı..." />
-  <meta property="og:image" content="https://mirat.dev" />
+  
+  <meta name="title" content="I Attended a Python Istanbul Meetup - Mirat Can
+  Bayrak" />
+  <meta name="description" content="" />
+  <meta property="og:type" content="website" />
+<meta property="og:url" content="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim" />
+<meta property="og:title" content="I Attended a Python Istanbul Meetup - Mirat Can
+  Bayrak" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url"
-    content="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim/" />
-  <meta property="twitter:title" content="Python İstanbul Buluşmasına Gittim" />
-  <meta property="twitter:description" content="Bir önceki yazımda Facebook&#39;a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı..." />
-  <meta property="twitter:image" content="https://mirat.dev" />
+<meta property="twitter:url" content="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim" />
+<meta property="twitter:title" content="I Attended a Python Istanbul Meetup - Mirat Can
+  Bayrak" />
+<meta property="twitter:description" content="" />
+<meta property="twitter:image" content="https://mirat.dev/articles/python-istanbul-bulusmasina-gittim" />
+  
   
   
 
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/articles/">Articles</a>
-      <a href="/projects/">Projects</a>
-      <a target="_blank" href="/resume/resume.html">Resume</a>
-    </nav>
-  </header>
-  <main>
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
 
-<h1>Python İstanbul Buluşmasına Gittim</h1>
-<p>Bir önceki yazımda Facebook'a sövüp saymış, hesabımı kapattığımı bir zafer konuşması edasıyla anlatmıştım. Ancak final haftası sebebiyle hesabımı tekrar açmak zorunda kaldım; zira okuldaki elemanlarla başka bir şekilde iletişim kurmam imkansız. "Bari hesabımı açtım gelen saçma sapan davetler kimden geliyorsa engelleyeyim de kurtulayım" derken hiç bakmadığım etkinlikler sayfasına baktım. Bir de ne göreyim? kırk yılın başı mantıklı bir etkinlik daveti gelmiş...</p>
-<p><img src="http://3.bp.blogspot.com/-nVqiULJXkCA/TuUhFakKXfI/AAAAAAAACxA/3AT4olBDWwU/s1600/Screenshot%2Bat%2B2011-12-11%2B23%253A19%253A08.png" alt="davet"></p>
-<p>Bu <a href="http://pyist.net/">pyist</a> buluşmalarını daha önce bir kaç kez duymuş, gitmek istemiştim ancak nasip olmamıştı. Bu gün sonunda buluşmalarından birine katılmayı başardım. Yaklaşık 3-4 saat boyunca oldukça keyifli bir sohbet oldu. <a href="http://www.mengu.net/">Mengü</a> bize güzel bir <a href="http://turbogears.org/">TurboGears</a> sunumu yaptı. Özet geçmek gerekirse Pylons ile Django arasında kalan bir framework TurboGears. Sizi template sistemi seçmek, orm seçmek gibi özgürlüklere kavuştururken yönetim paneli vermek ya da veri modellerinden formlar üretmek gibi nimetlerden de mahrum bırakmıyor.</p>
-<p>Her ne kadar sunum eksiksiz olsa da biz Django Cumhuriyeti'nin elamanları olarak "Neden TurboGears kullanayım ki?" sorusuna pek tatmin edici cevap alamadık diye düşünüyorum. Örneğin Django'da <a href="http://www.sqlalchemy.org/">SqlAlchemy</a> kullanmak oldukça Django ORM'si varken anlamlı gelemedi bana. Şimdiye kadar Django'nun sorgu setlerinin işimi görmediği hiç olmadı. (Ancak yinede kişisel görüşüm olarak Django'nun generic foreign keyler'lere ulaşırken, sorgular biraz karmaşıklaştığı anda çekilmez olabildiğini söylemem gerek). Neyse sözü fazla uzatmadan Django'nun bana henüz "artık yeter ben senin ihtiyacını karşılayamıyorum başkasına git" demedi. Belki zamanla kalkıştığım işler karmaşıklaşır Django bana yetmemeye başlar orasını bilemiyorum. Sanırım biraz da zevk meselesi bu yazılım geliştirme çatıları arası geçişler yapmak.</p>
-<p>Bunun dışında "abi bu Javascript sevilir mi yeaaa" türevinde çıkışlar yaparak gelecek cevapları tarttım. Ben nefret ediyorsam herkes etmeli değil mi?  Herkes onun antik bir dil olduğu konusunda hemfikir ancak bu başaçıkılmaz olduğu anlamına gelmiyor. Arkadaşların bu konuda okumamı önerdikleri kitap ise <a href="http://www.crockford.com/">Douglas Crockfold</a>'un <a href="http://shop.oreilly.com/product/9780596517748.do">Javascript: The Good Parts kitabı</a>. Mümkün olan en yakın zamanda almayı planlıyorum. Artık e-book olarak ya da A4 kağıtlarda değil de gerçekten kütüphanemde dursa iyi olacak bu tip kaynakları. (Ekrandan yazı okumaktan nefret ettiğimi söylemiş miydim?)</p>
-<p>Not: Bahsi geçen kitabı araştırırken Douglas denen abinin 2009'da Özgür Yazılım ve Açık Kaynak Günleri'ne geldiğini ve orada uzun bir konuşma yaptığını öğrendim. İzlemek için <a href="http://www.fazlamesai.net/?a=article&amp;sid=5269">buraya tıklayabilirsiniz</a></p>
-<p>Aslına bakarsanız buluşma her ne kadar güzel geçti ise de koskoca İstanbul'dan sadece 8 kişinin bir araya gelebilmesi garip geldi bana. Geliştirici tayfasının yani işi devamlı bir şeyler öğrenmek olan insanların bir arada olmaya çok daha fazla ihtiyacı var. Bilgi paylaştıkça çoğalır geyiği tam bu noktada çok işe yarayan bir klişe. Her ne kadar artık yeni iletişim yöntemleri ile bilgi paylaşılabiliyor, soru sorulabiliyor ya da laf atılabiliyor olsa da. Bir masanın etrafında oturup çay-bira içerken konuşmak, el kol hareketleri ve mimikleri kullanmak hala icat edilmiş en hızlı ve verimli iletişim çeşidi. Ayrıca güzel hatıra fotoğraflarına da sebep olabiliyor:</p>
-<p><img src="http://4.bp.blogspot.com/-Z5CTKrb5fXI/TuUsqKwQbRI/AAAAAAAACxM/_aud-Fkl5Gw/s1600/p20111211-164251%2B%25281%2529.jpg" alt="hararetli konuşmalar"></p>
-<p>Uzun uzun topluluk olmanın neden önemli olduğunu uzun uzun anlatmama gerek yok sanırım hemfikirizdir. Yazıyı burada ufak ufak noktalıyorum. Yine 4 paragraf yazıyı doğrultmak için 2 saatten fazla zaman harcadım :). Ancak <a href="http://ogomogo.com/">Oğuz</a>'un bana gösterdiği <a href="https://twitter.com/#!/nedbat/status/145904822955163648">şu twit</a> düşünülmeye değer.</p>
-<p>Boston, Zuckerberg'in Facebook'un temellerini attığı üniversiteyi bıraktığı şehir. Topluluğun bu kadar güçlü olması sebep mi? Yoksa sonuç mu?</p>
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
 
-<hr />
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+<h1>I Attended a Python Istanbul Meetup</h1>
+<p>In my previous post, I went on a rant about Facebook and proudly announced that I’d closed my account. But, thanks to finals week, I had to reopen it — there was simply no other way to communicate with my classmates. As I reopened my account, I thought, <em>“Well, if I’m going to do this, I might as well block all the spammy invitations once and for all.”</em> That’s when I stumbled upon something shocking: an actually useful event invitation!</p>
+<p><img src="ss.png" alt="PyIst Invitation"></p>
+<p>I’d heard about the <a href="http://pyist.net/">PyIST</a> meetups a few times before and wanted to attend, but it had never worked out. This time, I finally managed to join one of their gatherings. It turned out to be a delightful experience with a lively discussion lasting about 3–4 hours. <a href="http://www.mengu.net/">Mengü</a> gave an excellent presentation on <a href="http://turbogears.org/">TurboGears</a>, a Python web framework.</p>
+<h2>The Framework Debate: TurboGears vs. Django</h2>
+<p>In short, TurboGears sits somewhere between Pylons and Django. It offers flexibility, allowing you to choose your template engine and ORM, but still provides conveniences like admin panels and form generation from data models.</p>
+<p>While the presentation was comprehensive, those of us from the "Django Republic" weren’t entirely sold. The question <em>“Why should I switch to TurboGears?”</em> didn’t quite get the answer we were hoping for. For example, using <a href="http://www.sqlalchemy.org/">SQLAlchemy</a> within Django felt unnecessary when Django’s ORM already does the job well enough for most cases. (That said, I have to admit, when it comes to queries involving generic foreign keys, Django can get a bit messy.)</p>
+<p>For now, Django hasn’t given me the <em>“I’m not enough for you anymore”</em> message. Maybe as the complexity of my projects grows, I’ll find its limits, but for now, we’re good. I guess switching frameworks often boils down to personal preference.</p>
+<h2>JavaScript: Love It or Hate It?</h2>
+<p>At some point during the meetup, I tested the waters with a cheeky comment: <em>“Can anyone actually love JavaScript?”</em> If I hate it, everyone else must, right? While we agreed it’s an ancient language, the group pointed out that doesn’t make it unmanageable. They recommended I check out <a href="http://www.crockford.com/">Douglas Crockford</a>'s book, <a href="http://shop.oreilly.com/product/9780596517748.do"><em>JavaScript: The Good Parts</em></a>. I plan to buy a physical copy soon because I’m tired of e-books and printing PDFs. (Did I mention I hate reading on screens?)</p>
+<p>By the way, while researching the book, I discovered Crockford gave a long talk at the 2009 Free Software and Open Source Days event. If you're curious, <a href="http://www.fazlamesai.net/?a=article&amp;sid=5269">you can watch it here</a>.</p>
+<h2>The Meetup Vibes</h2>
+<p>Although the meetup was great, I couldn’t help but feel surprised that only eight people showed up in a city as massive as Istanbul. Developers — people whose job is to constantly learn — need these kinds of gatherings more than most. The cliché <em>“Knowledge grows when shared”</em> feels very appropriate here. Sure, you can share ideas, ask questions, or throw out quips online, but nothing beats sitting around a table with tea (or beer) and chatting face-to-face. It’s still the fastest and most effective form of communication — plus, you get some great memories and photos out of it.</p>
+<p><img src="meeting.jpg" alt="Lively Discussion"></p>
+<h2>Wrapping It Up</h2>
+<p>I don’t think I need to explain why building a community is so important — we’re probably on the same page here. I’ll end the post here, though it took me over two hours to get these four paragraphs just right. (Writing isn’t always easy!)</p>
+<p>Before I go, here’s some food for thought: <a href="http://ogomogo.com/">Oğuz</a> showed me <a href="https://twitter.com/#!/nedbat/status/145904822955163648">this tweet</a>. It makes you wonder:</p>
+<p>Boston, the city where Zuckerberg dropped out of university to build Facebook — is the strength of its developer community the cause of its success or the result of it?</p>
+
 02/2011
 
 
+  <ul>
+    <li>
+        <a href="../tag/personal/">
+          All posts tagged personal
+        </a>
+      </li>
+    
+  </ul>
 
+
+
+      </div>
+    </main>
+  </div>
+  
 <script src="https://utteranc.es/client.js"
         repo="miratcan/miratcan.github.io"
         issue-term="title"
@@ -193,7 +366,7 @@
         crossorigin="anonymous"
         async>
 </script>
-</main>
+
 </body>
 
 </html>

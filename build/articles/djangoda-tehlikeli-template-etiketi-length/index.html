@@ -1,33 +1,137 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
   <style>
+    @font-face {
+      font-family: Dos;
+      src: url(/dos.ttf);
+    }
+
+    :root {
+      --c0: #000000;
+      --c1: #000080;
+      --c2: #00aaaa;
+      --c3: #00aa00;
+      --c4: #aa00aa;
+      --c5: #aa0000;
+      --c6: #aa5500;
+      --c7: #aaaaaa;
+      --c8: #555555;
+      --c9: #5555ff;
+      --c10: #1fdbdb;
+      --c12: #55ff55;
+      --c12: #ff55ff;
+      --c13: #ff5555;
+      --c14: #ffff55;
+      --c15: #ffffff;
+      --ln: 2px;
+      --gap: 1rem;
+      --fs: 16px;
+      --lh: 24px;
+    }
+
+    em {
+      color: var(--c6);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: normal;
+      color: var(--c15);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap)
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--c7);
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: var(--c8);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--c4);
+    }
+
+    .screen *:not(pre) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
     html,
     body {
-      min-height: 100%;
       margin: 0;
-      background: #161917;
-      color: #B2A497;
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
-      line-height: 22px;
+      padding: 0;
+    }
+
+    body {
+      background: var(--c0);
+      color: var(--c7);
+      font-family: 'Dos', monospace;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      vertical-align: center;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+      letter-spacing: -1px;
     }
 
     pre {
-      padding: 2em;
-      background: #261917;
-      font-size: .8em;
+      font-family: inherit;
+      padding: 1rem;
+      background: #111;
+      border: 1px solid gray;
+      overflow-y: scroll;
+    }
+
+    code {
+      color: var(--c3);
+      font-family: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    li,
+    table,
+    blockquote {
+      font-weight: normal;
+      margin: 0 0 1rem 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+    }
+
+    li {
+      margin: 0;
     }
 
     h1 {
       font-size: 1.4em;
       line-height: 1.73em;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     h2 {
       font-size: 1.3em;
       line-height: 1.61em;
+      border-bottom: 4px double var(--c4);
     }
 
     h3 {
@@ -37,13 +141,13 @@
     h1,
     h2,
     h3 {
-      color: wheat;
+      color: var(--c14);
     }
 
     blockquote {
-      margin: 0;
-      padding: 0 10px;
-      border-left: 5px solid #B2A497
+      padding: 0 1em;
+      border-left: 2px solid #B2A497;
+      border-bottom: 2px solid #B2A497;
     }
 
     .youtube-video {
@@ -51,69 +155,93 @@
       width: 100%;
     }
 
-    ul {
-      margin: 8px 0 0 0;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
     ul#articles li {
-      list-style-type: none !important;
-      color: gray;
+      list-style-type: square;
+      color: var(--c2);
     }
 
     ul#articles {
-      padding: 0
+      padding: 0 0 0 1em;
     }
 
-    body {}
-
-    a {
+    nav a {
       text-decoration: none;
-      color: darkkhaki;
+      color: var(--c0);
     }
 
-    a:hover {
-      color: wheat;
+    nav a span {
+      color: var(--c5);
     }
 
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      box-sizing: border-box;
-      overflow: auto;
+    a.active {
+      text-decoration: underline;
     }
 
-    img {
-      width: 100%
-    }
-
-    nav {
-      background: linear-gradient(360deg, #6e1313, #9B2821);
-      height: fit-content;
-      display: flex;
-      align-items: center;
+    a.tag {
+      color: darkolivegreen;
       justify-content: center;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      gap: 40px;
     }
 
     main,
+    header {
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    main {
+      margin: 1rem 0;
+      padding: 0 1rem;
+    }
+
+    main a {
+      color: var(--c10);
+      text-decoration: underline;
+    }
+
     nav {
-      padding-left: 1em;
-      padding-right: 1em;
+      background: var(--c7);
+      padding: 0 1rem;
+    }
+
+    nav .wrapper {
+      display: flex;
+      align-content: center;
+      gap: 0 1rem;
+      flex-wrap: wrap;
+
+    }
+
+    main nav,
+    table {
+      background: transparent;
+      padding: 1rem;
+      border: 4px double var(--c3);
+      margin: 0 auto;
+    }
+
+    main nav a {
+      // color: var(--c2);
     }
 
     .pagination {
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: calc(var(--ln) * 2) double var(--c3)
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
+
+      header,
       main {
-        padding: 20px 5px
+        padding: 1em;
       }
 
       ul#articles li a {
@@ -125,89 +253,137 @@
       margin-top: 0;
     }
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
-    crossorigin="anonymous"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="content-language" content="TR-tr">
+  <meta http-equiv="content-language" content="en">
 
   
   
-
+  <script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
   <!-- Primary Meta Tags -->
-  <title>Django&#39;da tehlikeli template etiketi: length. — Mirat Can Bayrak</title>
-  <meta name="title" content="Django&#39;da tehlikeli template etiketi: length." />
-  <meta name="description" content="Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni&#39;den ayrıldım onu bilhare..." />
+  <title>This Django Template Tag is Killing Your Performance — Mirat Can Bayrak</title>
   <link rel='canonical' href="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length/">
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length/" />
-  <meta property="og:title" content="Django&#39;da tehlikeli template etiketi: length. - Mirat Can Bayrak" />
-  <meta property="og:description" content="Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni&#39;den ayrıldım onu bilhare..." />
-  <meta property="og:image" content="https://mirat.dev" />
+  
+  <meta name="title" content="This Django Template Tag is Killing Your Performance - Mirat Can
+  Bayrak" />
+  <meta name="description" content="" />
+  <meta property="og:type" content="website" />
+<meta property="og:url" content="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length" />
+<meta property="og:title" content="This Django Template Tag is Killing Your Performance - Mirat Can
+  Bayrak" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url"
-    content="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length/" />
-  <meta property="twitter:title" content="Django&#39;da tehlikeli template etiketi: length." />
-  <meta property="twitter:description" content="Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni&#39;den ayrıldım onu bilhare..." />
-  <meta property="twitter:image" content="https://mirat.dev" />
+<meta property="twitter:url" content="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length" />
+<meta property="twitter:title" content="This Django Template Tag is Killing Your Performance - Mirat Can
+  Bayrak" />
+<meta property="twitter:description" content="" />
+<meta property="twitter:image" content="https://mirat.dev/articles/djangoda-tehlikeli-template-etiketi-length" />
   
   
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night-bright.min.css" />
+  
+    <link rel="stylesheet" href="../../static/pygments.css">
   
 
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/articles/">Articles</a>
-      <a href="/projects/">Projects</a>
-      <a target="_blank" href="/resume/resume.html">Resume</a>
-    </nav>
-  </header>
-  <main>
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
 
-<h1>Django&#39;da tehlikeli template etiketi: length.</h1>
-<p>Bugün yeni projeyle uğraşırken template içinde bir noktanın baya yavaş render edildiğini hissettim. (Bu arada Markafoni'den ayrıldım onu bilhare anlatırım.) Template içerisinde bir QuerySet length template filtresiyle çağırılıyordu:</p>
-<pre class="prettyprint"><code>{% if BlaBla.all|length == 5 %}
-    ..
-{% endif %}</code></pre><p>length template filtresini açıp baktığımda verilen değeri len fonksiyonuna geçirdiğini <a href="https://github.com/django/django/blob/master/django/template/defaultfilters.py#L577">gördüm</a>:</p>
-<pre class="prettyprint"><code>@register.filter(is_safe=False)
-def length(value):
-    """Returns the length of the value - useful for lists."""
-    try:
-        return len(value)
-    except (ValueError, TypeError):
-        return 0</code></pre><p>İşte tam da arıza burada başlıyor. Len fonksiyonu ile bir QuerySet'in uzunluğunu almaya çalıştığınızda QuerySet'in tamamını veritabanından alıp, bir listeye dönüştürüp ardından listenin uzunluğunu alıyor. Bu da devasa tablolarda hem memory sıkıntısı, hem de veritabanı sunucularını gereksiz meşgul etmek demek. Sqldebugshell ile len metodunun nasıl bir sorgu çalıştırdığına baktığımda manzara şu şekilde:</p>
-<pre class="prettyprint"><code>In [6]: len(BlaBla.objects.all())
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
 
-SELECT `c..`.`id`,
-       `c..`.`i..`,
-       `c..`.`p..`,
-       `c..`.`c..`,
-       `c..`.`s..`,
-       `c..`.`i..`,
-       `c..`.`i..`,
-       `c..`.`u..`,
-       `c..`.`u..`,
-       `c..`.`s..`,
-       `c..`.`c..`,
-       `channel_customstream`.`t..`
-FROM `channel_customstream`</code></pre><p>Görüldüğü üzere o modele ait her şeyi toplayarak alan bir sorgu oluşturdu. Halbuki count metodu QuerySet'lerin direkt olarak veritabanında Count çalıştırması sağlanabiliyor:</p>
-<pre class="prettyprint"><code>In [5]: CustomStream.objects.count()
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
 
-SELECT COUNT(*)
-FROM `channel_customstream`</code></pre><p>Diyeceğim o ki, length etiketini count sorgusu yaptığını sanarak kullanmayınız.</p>
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
 
-<hr />
+    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+<h1>This Django Template Tag is Killing Your Performance</h1>
+<p>While working on a new project today, I noticed that rendering a particular part of a template was unusually slow. The issue was traced to a <code>QuerySet</code> being passed through the <code>length</code> template filter:</p>
+<div class="hll"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">BlaBla.all</span><span class="o">|</span><span class="nf">length</span> <span class="o">==</span> <span class="m">5</span> <span class="cp">%}</span>  
+    ..  
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+</pre></div>
+<p>When I checked the implementation of the <code>length</code> filter, I saw that it simply passes the given value to Python's <code>len</code> function (<a href="https://github.com/django/django/blob/master/django/template/defaultfilters.py#L577">source</a>):</p>
+<div class="hll"><pre><span></span><span class="nd">@register</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
+<span class="k">def</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>  
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the length of the value - useful for lists.&quot;&quot;&quot;</span>  
+    <span class="k">try</span><span class="p">:</span>  
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>  
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+<p>This is where the trouble begins. If you use <code>len()</code> on a <code>QuerySet</code>, it fetches all the rows from the database, converts them into a list in memory, and then calculates the length of that list. This can cause significant performance issues with large tables, both in terms of memory usage and database server load.</p>
+<p>Using <code>Sqldebugshell</code>, I observed the query executed by the <code>len</code> function on a <code>QuerySet</code>:</p>
+<div class="hll"><pre><span></span><span class="k">In</span><span class="w"> </span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">BlaBla</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="k">all</span><span class="p">())</span><span class="w">  </span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">i</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">p</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">s</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">i</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">i</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">u</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">u</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">s</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="k">c</span><span class="p">..</span><span class="o">`</span><span class="p">,</span><span class="w">  </span>
+<span class="w">       </span><span class="o">`</span><span class="n">channel_customstream</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">t</span><span class="p">..</span><span class="o">`</span><span class="w">  </span>
+<span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="n">channel_customstream</span><span class="o">`</span>
+</pre></div>
+<p>As you can see, it retrieves all columns for every row in the model, causing unnecessary data to be loaded.</p>
+<p>In contrast, the <code>count()</code> method allows <code>QuerySet</code> objects to run a <code>COUNT</code> query directly on the database:</p>
+<div class="hll"><pre><span></span><span class="k">In</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span><span class="w"> </span><span class="n">CustomStream</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="k">count</span><span class="p">()</span><span class="w">  </span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">  </span>
+<span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="n">channel_customstream</span><span class="o">`</span>
+</pre></div>
+<h3>Key Takeaway</h3>
+<p>Do <strong>not</strong> use the <code>length</code> template filter if you expect it to execute a database <code>COUNT</code> query. It doesn’t. Instead, explicitly use the <code>count()</code> method for <code>QuerySet</code> objects to avoid unnecessary memory usage and database overhead.</p>
+
 01/2014
 
 
+  <ul>
+    <li>
+        <a href="../tag/django-notes/">
+          All posts tagged django-notes
+        </a>
+      </li>
+    
+  </ul>
 
+
+
+      </div>
+    </main>
+  </div>
+  
 <script src="https://utteranc.es/client.js"
         repo="miratcan/miratcan.github.io"
         issue-term="title"
@@ -216,7 +392,7 @@ FROM `channel_customstream`</code></pre><p>Diyeceğim o ki, length etiketini cou
         crossorigin="anonymous"
         async>
 </script>
-</main>
+
 </body>
 
 </html>

@@ -1,33 +1,137 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
   <style>
+    @font-face {
+      font-family: Dos;
+      src: url(/dos.ttf);
+    }
+
+    :root {
+      --c0: #000000;
+      --c1: #000080;
+      --c2: #00aaaa;
+      --c3: #00aa00;
+      --c4: #aa00aa;
+      --c5: #aa0000;
+      --c6: #aa5500;
+      --c7: #aaaaaa;
+      --c8: #555555;
+      --c9: #5555ff;
+      --c10: #1fdbdb;
+      --c12: #55ff55;
+      --c12: #ff55ff;
+      --c13: #ff5555;
+      --c14: #ffff55;
+      --c15: #ffffff;
+      --ln: 2px;
+      --gap: 1rem;
+      --fs: 16px;
+      --lh: 24px;
+    }
+
+    em {
+      color: var(--c6);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: normal;
+      color: var(--c15);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap)
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--c7);
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: var(--c8);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--c4);
+    }
+
+    .screen *:not(pre) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
     html,
     body {
-      min-height: 100%;
       margin: 0;
-      background: #161917;
-      color: #B2A497;
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
-      line-height: 22px;
+      padding: 0;
+    }
+
+    body {
+      background: var(--c0);
+      color: var(--c7);
+      font-family: 'Dos', monospace;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      vertical-align: center;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+      letter-spacing: -1px;
     }
 
     pre {
-      padding: 2em;
-      background: #261917;
-      font-size: .8em;
+      font-family: inherit;
+      padding: 1rem;
+      background: #111;
+      border: 1px solid gray;
+      overflow-y: scroll;
+    }
+
+    code {
+      color: var(--c3);
+      font-family: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    li,
+    table,
+    blockquote {
+      font-weight: normal;
+      margin: 0 0 1rem 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+    }
+
+    li {
+      margin: 0;
     }
 
     h1 {
       font-size: 1.4em;
       line-height: 1.73em;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     h2 {
       font-size: 1.3em;
       line-height: 1.61em;
+      border-bottom: 4px double var(--c4);
     }
 
     h3 {
@@ -37,13 +141,13 @@
     h1,
     h2,
     h3 {
-      color: wheat;
+      color: var(--c14);
     }
 
     blockquote {
-      margin: 0;
-      padding: 0 10px;
-      border-left: 5px solid #B2A497
+      padding: 0 1em;
+      border-left: 2px solid #B2A497;
+      border-bottom: 2px solid #B2A497;
     }
 
     .youtube-video {
@@ -51,69 +155,93 @@
       width: 100%;
     }
 
-    ul {
-      margin: 8px 0 0 0;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
     ul#articles li {
-      list-style-type: none !important;
-      color: gray;
+      list-style-type: square;
+      color: var(--c2);
     }
 
     ul#articles {
-      padding: 0
+      padding: 0 0 0 1em;
     }
 
-    body {}
-
-    a {
+    nav a {
       text-decoration: none;
-      color: darkkhaki;
+      color: var(--c0);
     }
 
-    a:hover {
-      color: wheat;
+    nav a span {
+      color: var(--c5);
     }
 
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      box-sizing: border-box;
-      overflow: auto;
+    a.active {
+      text-decoration: underline;
     }
 
-    img {
-      width: 100%
-    }
-
-    nav {
-      background: linear-gradient(360deg, #6e1313, #9B2821);
-      height: fit-content;
-      display: flex;
-      align-items: center;
+    a.tag {
+      color: darkolivegreen;
       justify-content: center;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      gap: 40px;
     }
 
     main,
+    header {
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    main {
+      margin: 1rem 0;
+      padding: 0 1rem;
+    }
+
+    main a {
+      color: var(--c10);
+      text-decoration: underline;
+    }
+
     nav {
-      padding-left: 1em;
-      padding-right: 1em;
+      background: var(--c7);
+      padding: 0 1rem;
+    }
+
+    nav .wrapper {
+      display: flex;
+      align-content: center;
+      gap: 0 1rem;
+      flex-wrap: wrap;
+
+    }
+
+    main nav,
+    table {
+      background: transparent;
+      padding: 1rem;
+      border: 4px double var(--c3);
+      margin: 0 auto;
+    }
+
+    main nav a {
+      // color: var(--c2);
     }
 
     .pagination {
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: calc(var(--ln) * 2) double var(--c3)
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
+
+      header,
       main {
-        padding: 20px 5px
+        padding: 1em;
       }
 
       ul#articles li a {
@@ -125,60 +253,99 @@
       margin-top: 0;
     }
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
-    crossorigin="anonymous"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="content-language" content="TR-tr">
+  <meta http-equiv="content-language" content="en">
 
   
   
-
+  <script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
   <!-- Primary Meta Tags -->
-  <title>Plastik Ördek İle Hata Ayıklama — Mirat Can Bayrak</title>
-  <meta name="title" content="Plastik Ördek İle Hata Ayıklama" />
-  <meta name="description" content="Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. Gökmen&#39;de..." />
+  <title>Debugging with a Rubber Duck — Mirat Can Bayrak</title>
   <link rel='canonical' href="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama/">
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama/" />
-  <meta property="og:title" content="Plastik Ördek İle Hata Ayıklama - Mirat Can Bayrak" />
-  <meta property="og:description" content="Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. Gökmen&#39;de..." />
-  <meta property="og:image" content="https://mirat.dev" />
+  
+  <meta name="title" content="Debugging with a Rubber Duck - Mirat Can
+  Bayrak" />
+  <meta name="description" content="" />
+  <meta property="og:type" content="website" />
+<meta property="og:url" content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama" />
+<meta property="og:title" content="Debugging with a Rubber Duck - Mirat Can
+  Bayrak" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url"
-    content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama/" />
-  <meta property="twitter:title" content="Plastik Ördek İle Hata Ayıklama" />
-  <meta property="twitter:description" content="Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. Gökmen&#39;de..." />
-  <meta property="twitter:image" content="https://mirat.dev" />
+<meta property="twitter:url" content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama" />
+<meta property="twitter:title" content="Debugging with a Rubber Duck - Mirat Can
+  Bayrak" />
+<meta property="twitter:description" content="" />
+<meta property="twitter:image" content="https://mirat.dev/articles/plastik-ordek-ile-hata-ayiklama" />
+  
   
   
 
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/articles/">Articles</a>
-      <a href="/projects/">Projects</a>
-      <a target="_blank" href="/resume/resume.html">Resume</a>
-    </nav>
-  </header>
-  <main>
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
 
-<h1>Plastik Ördek İle Hata Ayıklama</h1>
-<p>Çoğu zaman başıma geliyor. Baya karmaşık bir problemi çözmeye çalışırken başkasına sormaya karar verdiğimde soruyu sorarken çözümü buluyorum. <a href="https://twitter.com/gkmngrgn">Gökmen</a>'de aynı şeyi söylüyordu hatta, "<em>birine sorarken problemi çözüyorum</em>" diyordu. Bunun olmasının sebebi sorunu başkasına anlatabilmek için mevzuyu önce zihinde düzenlemek zorunda oluşumuz. İfade edebilmek için bunu yapmak zorunda kalıyor insan, yapabilince de çözümü kendisi buluveriyor.</p>
-<p>Neyse bugün <a href="http://reddit.com">reddit</a>'de Rubber Duck Debugging diye bir şey <a href="http://www.reddit.com/r/todayilearned/comments/1tmviq/til_that_rubber_duck_debugging_is_when_a/">gördüm</a>. Tam bu bahsettiğim şeye yarıyor. Bilgisayarın yanına bir tane plastik ördek koyuyorsun. Sorunu, kodunu ona anlatıyorsun. İfade etmeye çalışırken problemi ve karşındaki kodu zihninde düzenlemek zorunda kalıyorsun bu da çözümü bulmanı sağlıyor.</p>
-<p><img src="https://31.media.tumblr.com/6cb3ff8a8faf41c2c3a9fe20daa42fbc/tumblr_inline_mycps0OjJg1qdjsvv.jpg" alt=""></p>
-<p>Bu metod <a href="http://en.wikipedia.org/wiki/The_Pragmatic_Programmer">The Pragmatic Programmer</a> adlı kitapta bir hikayede geçmiş ilk defa. Biraz deli işi ama denenebilir. İşe yarar gibi gözüküyor.</p>
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
 
-<hr />
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+<h1>Debugging with a Rubber Duck</h1>
+<p>It happens to me all the time. I’ll be working through a particularly complex problem, and as soon as I decide to ask someone else for help, I find the solution while explaining it. My friend <a href="https://twitter.com/gkmngrgn">Gokmen</a> says the same thing. He often remarks, <em>"I solve the problem while asking someone about it."</em></p>
+<p>This happens because when we try to explain an issue to someone else, we’re forced to organize the details in our minds first. To articulate the problem, we break it down and think more clearly about it, and often, that’s enough to find the solution ourselves.</p>
+<p>Today, I stumbled across something on <a href="http://reddit.com">Reddit</a> called <em>Rubber Duck Debugging</em> (<a href="http://www.reddit.com/r/todayilearned/comments/1tmviq/til_that_rubber_duck_debugging_is_when_a/">link</a>), and it’s exactly what I’ve been talking about. The concept is simple: keep a rubber duck on your desk. When you encounter a problem, explain it to the duck. As you try to verbalize the issue and describe your code, you’re naturally forced to organize your thoughts. This often leads to finding the solution on your own.</p>
+<p><img src="rubber-duck.jpg" alt="Rubber Duck"></p>
+<p>This method was first introduced in a story in <a href="http://en.wikipedia.org/wiki/The_Pragmatic_Programmer">The Pragmatic Programmer</a>. Sure, it might sound a little quirky, but it seems like it could work. Why not give it a shot?</p>
+
 12/2013
 
 
+  <ul>
+    <li>
+        <a href="../tag/technical/">
+          All posts tagged technical
+        </a>
+      </li>
+    
+  </ul>
 
+
+
+      </div>
+    </main>
+  </div>
+  
 <script src="https://utteranc.es/client.js"
         repo="miratcan/miratcan.github.io"
         issue-term="title"
@@ -187,7 +354,7 @@
         crossorigin="anonymous"
         async>
 </script>
-</main>
+
 </body>
 
 </html>

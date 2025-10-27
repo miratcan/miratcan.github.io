@@ -1,33 +1,137 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
   <style>
+    @font-face {
+      font-family: Dos;
+      src: url(/dos.ttf);
+    }
+
+    :root {
+      --c0: #000000;
+      --c1: #000080;
+      --c2: #00aaaa;
+      --c3: #00aa00;
+      --c4: #aa00aa;
+      --c5: #aa0000;
+      --c6: #aa5500;
+      --c7: #aaaaaa;
+      --c8: #555555;
+      --c9: #5555ff;
+      --c10: #1fdbdb;
+      --c12: #55ff55;
+      --c12: #ff55ff;
+      --c13: #ff5555;
+      --c14: #ffff55;
+      --c15: #ffffff;
+      --ln: 2px;
+      --gap: 1rem;
+      --fs: 16px;
+      --lh: 24px;
+    }
+
+    em {
+      color: var(--c6);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: normal;
+      color: var(--c15);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap)
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--c7);
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: var(--c8);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--c4);
+    }
+
+    .screen *:not(pre) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
     html,
     body {
-      min-height: 100%;
       margin: 0;
-      background: #161917;
-      color: #B2A497;
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
-      line-height: 22px;
+      padding: 0;
+    }
+
+    body {
+      background: var(--c0);
+      color: var(--c7);
+      font-family: 'Dos', monospace;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      vertical-align: center;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+      letter-spacing: -1px;
     }
 
     pre {
-      padding: 2em;
-      background: #261917;
-      font-size: .8em;
+      font-family: inherit;
+      padding: 1rem;
+      background: #111;
+      border: 1px solid gray;
+      overflow-y: scroll;
+    }
+
+    code {
+      color: var(--c3);
+      font-family: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    li,
+    table,
+    blockquote {
+      font-weight: normal;
+      margin: 0 0 1rem 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+    }
+
+    li {
+      margin: 0;
     }
 
     h1 {
       font-size: 1.4em;
       line-height: 1.73em;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     h2 {
       font-size: 1.3em;
       line-height: 1.61em;
+      border-bottom: 4px double var(--c4);
     }
 
     h3 {
@@ -37,13 +141,13 @@
     h1,
     h2,
     h3 {
-      color: wheat;
+      color: var(--c14);
     }
 
     blockquote {
-      margin: 0;
-      padding: 0 10px;
-      border-left: 5px solid #B2A497
+      padding: 0 1em;
+      border-left: 2px solid #B2A497;
+      border-bottom: 2px solid #B2A497;
     }
 
     .youtube-video {
@@ -51,69 +155,93 @@
       width: 100%;
     }
 
-    ul {
-      margin: 8px 0 0 0;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
     ul#articles li {
-      list-style-type: none !important;
-      color: gray;
+      list-style-type: square;
+      color: var(--c2);
     }
 
     ul#articles {
-      padding: 0
+      padding: 0 0 0 1em;
     }
 
-    body {}
-
-    a {
+    nav a {
       text-decoration: none;
-      color: darkkhaki;
+      color: var(--c0);
     }
 
-    a:hover {
-      color: wheat;
+    nav a span {
+      color: var(--c5);
     }
 
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      box-sizing: border-box;
-      overflow: auto;
+    a.active {
+      text-decoration: underline;
     }
 
-    img {
-      width: 100%
-    }
-
-    nav {
-      background: linear-gradient(360deg, #6e1313, #9B2821);
-      height: fit-content;
-      display: flex;
-      align-items: center;
+    a.tag {
+      color: darkolivegreen;
       justify-content: center;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      gap: 40px;
     }
 
     main,
+    header {
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    main {
+      margin: 1rem 0;
+      padding: 0 1rem;
+    }
+
+    main a {
+      color: var(--c10);
+      text-decoration: underline;
+    }
+
     nav {
-      padding-left: 1em;
-      padding-right: 1em;
+      background: var(--c7);
+      padding: 0 1rem;
+    }
+
+    nav .wrapper {
+      display: flex;
+      align-content: center;
+      gap: 0 1rem;
+      flex-wrap: wrap;
+
+    }
+
+    main nav,
+    table {
+      background: transparent;
+      padding: 1rem;
+      border: 4px double var(--c3);
+      margin: 0 auto;
+    }
+
+    main nav a {
+      // color: var(--c2);
     }
 
     .pagination {
       text-align: center;
     }
 
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: calc(var(--ln) * 2) double var(--c3)
+    }
+
+    img {
+      max-width: 80%;
+    }
+
     @media only screen and (max-width: 500px) {
+
+      header,
       main {
-        padding: 20px 5px
+        padding: 1em;
       }
 
       ul#articles li a {
@@ -125,70 +253,101 @@
       margin-top: 0;
     }
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JB4V7FTEJQ"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-JB4V7FTEJQ'); </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3821665691664234"
-    crossorigin="anonymous"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="content-language" content="TR-tr">
+  <meta http-equiv="content-language" content="en">
 
   
   
-
+  <script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
   <!-- Primary Meta Tags -->
-  <title>Freelance Çalışan Olmak — Mirat Can Bayrak</title>
-  <meta name="title" content="Freelance Çalışan Olmak" />
-  <meta name="description" content="İnsanlar, özellikle bilişim sektöründe olanlar evden çalışmanın çok güzel bir şey olduğunu düşünmeye başladı. İlk bakışta gerçekten de evde çalışma ya..." />
+  <title>Working from Home: An Opportunity or a Challenge? — Mirat Can Bayrak</title>
   <link rel='canonical' href="https://mirat.dev/articles/freelance-calisan-olmak/">
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://mirat.dev/articles/freelance-calisan-olmak/" />
-  <meta property="og:title" content="Freelance Çalışan Olmak - Mirat Can Bayrak" />
-  <meta property="og:description" content="İnsanlar, özellikle bilişim sektöründe olanlar evden çalışmanın çok güzel bir şey olduğunu düşünmeye başladı. İlk bakışta gerçekten de evde çalışma ya..." />
-  <meta property="og:image" content="https://mirat.dev" />
+  
+  <meta name="title" content="Working from Home: An Opportunity or a Challenge? - Mirat Can
+  Bayrak" />
+  <meta name="description" content="" />
+  <meta property="og:type" content="website" />
+<meta property="og:url" content="https://mirat.dev/articles/freelance-calisan-olmak" />
+<meta property="og:title" content="Working from Home: An Opportunity or a Challenge? - Mirat Can
+  Bayrak" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mirat.dev/articles/freelance-calisan-olmak" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url"
-    content="https://mirat.dev/articles/freelance-calisan-olmak/" />
-  <meta property="twitter:title" content="Freelance Çalışan Olmak" />
-  <meta property="twitter:description" content="İnsanlar, özellikle bilişim sektöründe olanlar evden çalışmanın çok güzel bir şey olduğunu düşünmeye başladı. İlk bakışta gerçekten de evde çalışma ya..." />
-  <meta property="twitter:image" content="https://mirat.dev" />
+<meta property="twitter:url" content="https://mirat.dev/articles/freelance-calisan-olmak" />
+<meta property="twitter:title" content="Working from Home: An Opportunity or a Challenge? - Mirat Can
+  Bayrak" />
+<meta property="twitter:description" content="" />
+<meta property="twitter:image" content="https://mirat.dev/articles/freelance-calisan-olmak" />
+  
   
   
 
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/articles/">Articles</a>
-      <a href="/projects/">Projects</a>
-      <a target="_blank" href="/resume/resume.html">Resume</a>
-    </nav>
-  </header>
-  <main>
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
 
-<h1>Freelance Çalışan Olmak</h1>
-<p>İnsanlar, özellikle bilişim sektöründe olanlar evden çalışmanın çok güzel bir şey olduğunu düşünmeye başladı. İlk bakışta gerçekten de evde çalışma ya da uzaktan çalışma fikri oldukça güzel geliyor insanın kulağına. "Öğlen annemin yaptığı yemeği yerim, çıkarım balkona kafama göre sigara içerim, ondan sonra istediğim saatte başlar istediğim saatte bitiririm işi." şeklinde düşünceler uçuşuyor insanın kafasında... Peki gerçekten öyle mi? bana kalırsa pek değil.&nbsp;</p>
-<h3>Freelance Çalışmak ve Sigorta</h3>
-<p>Bir şirkette tam zamanlı olarak çalıştığınızda, eğer kaçak çalışmıyorsanız iş yeriniz sigorta primlerinizi ödemek zorundadır. <strong>Peki ya freelance çalışıyorsanız</strong>? o zaman hiç bir mecburiyetleri yok. Hatta "sigorta primlerimi öde" derseniz, size bir taraflarıyla gülebilirler.</p>
-<p>Tabi şöyle bir çözüm var; verdiğiniz fiyata çalışma süreniz boyunca ödenecek primlerinizin fiyatını ekleyebilir ve bir tanıdığın yanında kendinizi çalışıyor gösterebilirsiniz kendinizi. Ama bunu yaparsanız, piyasadaki sizinle aynı işi yapan kişilerden daha fazla fiyat çekmiş olursunuz. Bu da büyük ihtimalle bu sizin o işi kaybetmeniz manasına gelir.</p>
-<h3>Freelance Çalışmak ve Esnek Çalışma Saatleri</h3>
-<p>Bunu anlatmak için biraz kurgu yapacağım. Şunu düşünün : siz bir yazılımcısınız ve bir şirkette tam zamanlı olarak çalışıyorsunuz. Elinizde bir iş geliyor. İşin ne kadar süreceğini soruyorlar ve diyelim ki 8 gün diyorsunuz. Kabul ediliyor ve işe başlıyorsunuz. Ancak bir süre sonra sorun çıkıyor, işi belirttiğiniz zamanda bitiremeyeceğinizi anlıyorsunuz. Bu noktada yapacağınız şey üstünüze durumu bildirmek ve işin uzayacağını belirtmektir. Zaten ay boyunca çalıştığınızda alacağınız <strong>ücret</strong> aynı olduğundan bu şirket için bir sorun olmaz. Ancak; <strong>freelance bir çalışan iseniz</strong> sürenin uzaması <strong>ücretin artması</strong> demektir. Fazladan çalışmanız gereken günlerin ücretini isterseniz büyük ihtimalle karşı taraf size arıza çıkartır. <strong>Unutmayın ki o işi almış olmanızın en önemli iki sebebi karşı taraftan istediğiniz para ve zamandır</strong>.</p>
-<p>Siz işi çoktan almış olsanız bile bu iki parametreden birini değiştirdiğinizde sizden başka yaptıracak birini bulmak oldukça kolaydır. Bu yüzden değil fiyatı arttırmak, zamanla oynamak gibi bir şansınız da olmaz. İşi kaybetmemek adına normalda çalışacağınız zamandan çok daha fazla çalışarak işi zamanında yetiştirmeye çalışırsınız. Evet <strong>freelance çalışmak esnek çalışma saatlerinizin olmasını sağlar</strong>. Günde 7 saat çalışarak tamamlayacaksanız işi deadline'ı geçirmemek adına günde 10 çalışarak tamamlarsınız. Mis gibi <strong>sürmenaj</strong> olursunuz.</p>
-<h3>Freelance Çalışmak ve Prestij</h3>
-<p>Bu bir Türk geleneğidir, bir genç çalışırken evden çıkmıyorsa o çalışıyor sayılmaz! Siz odanızda amansız bir hastalığa tedavi olabilecek bir algoritma üzerinde çalışıyor olsanız bile, "<strong>Bizim oğlan kapatıyo kendini odalara akşama kadar ne bok yiyo bilmiyorum</strong>" şeklinde lanse edilir tanıdıklara. Zaten dengesiz olmak zorunda olan çalışma saatleriniz bu kötü görüntünüzün cilasını oluşturur. Biri "<strong>kaç para mayış alıyon?</strong>" diye sorulduğunda verecek cevabınız yoktur. "<strong>Nerede çalışıyorsun</strong>" sorusuna verecek cevabınız yoktur. Yaptığınız işin ne olduğu, hatta çalışıp çalışmadığınız konusu bile muallakta sallanmaktadır.</p>
-<h3>Freelance Çalışmak ve Çalışma Ortamının Sağlanması</h3>
-<p><strong>Freelance çalışmak</strong> size muhteşem rahat bir çalışma ortamı sağlar. Örneğin işinizin ortasında eşiniz perde asmak için yardımınızı ister. Kalkıp perdeleri asarsınız. Geriye döndüğünüzde çalışma ile ilgili şevk puanınız 0 olmuştur. Bunun yanında çalan telefonlar, biten ekmek, öğlen ne yiyeceğiniz ufak sorunlarla uğraşırsınız. Ha bu arada Nurhan teyzenin datçadaki yazlığına talip çıkmış mı diye kontrol etmek ulvi görevlerinizin arasındadır. <strong>Evde olmanız kafanızı daha temiz bir hale getirmez. Aksine daha çok bölünmeniz manasını taşır.</strong></p>
-<p>Unutmayın çalışmak için tasarlanmamış bir yerde çalışmak aslında hiç kolay değildir. Ofisteyken oturduğunuz koltuk adı üstünde ofis koltuğudur; ancak evdeyken balkondan aldığınız plastik sandalyenin sırtına yastık koyar oturursunuz. Beliniz ağrır.</p>
-<h3>Freelance Çalışmak ve Open Office çalışma ortamı</h3>
-<p>İşte bu fikir harika, sessiz sakin bir cafe ortamını bulup orada çalışmayı bende çok severim. Örneğin <strong>Starbucks</strong>'a giderim. Orada çok gürültülü olmaz ortam... hem klima olur püfür püfür... ekrandan başımı kaldırdığım zaman duvarlarda güzel fotoğraf ve tablolar... Hatta belki hoşuma gidecek bir bayanla göz göze gelme ihtimalim bile olur. Önce bir kahve içerim. Kahvenin midemi acıtmaması için yanında bir şeyler yemeliyim örneğin havuçlu kek güzel olur. Tabi 6-7 saatimi orada geçireceğime göre karnım da acıkacak... Biraz kafeyi terk eder yemek yer geri dönerim... ve bu harika günün sonunda, o gün kazandığım paranın üçte ikisini kasaya bırakmış bir armut olarak evimin yolunu tutabilirim.</p>
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
 
-<hr />
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+<h1>Working from Home: An Opportunity or a Challenge?</h1>
+<p>The concept of working from home has gained significant traction, particularly in the tech industry. At first glance, it appears to be a dream setup: <strong>no commute, flexible hours, and the comfort of one’s home.</strong> Many imagine leisurely lunches with family, taking breaks at their convenience, and working on their terms.</p>
+<p>But does the reality live up to these expectations? It often depends on the individual’s situation, priorities, and preparedness.</p>
+<h2>Freelancing and Social Security</h2>
+<p>When employed full-time by a company, workers benefit from statutory protections, such as <strong>employer-paid social security contributions.</strong> Freelancers, on the other hand, face a different reality. Employers hiring freelancers are typically <strong>not obligated</strong> to cover such benefits.</p>
+<p>To address this, freelancers may need to factor the cost of social security or similar contributions into their project rates. However, this strategy has its drawbacks. Pricing above market rates to cover additional costs can make it <strong>harder to secure contracts,</strong> especially in competitive fields. For many freelancers, this creates a delicate balancing act between offering <strong>competitive pricing</strong> and ensuring <strong>long-term financial security.</strong></p>
+<h2>Freelancing and Project Timelines</h2>
+<p>One of the perceived benefits of freelancing is <strong>flexibility.</strong> However, this flexibility can come with trade-offs.</p>
+<p>Let’s consider an example: as a full-time employee, if you encounter unexpected challenges that delay project completion, you can often <strong>negotiate an adjusted timeline without financial repercussions.</strong></p>
+<p>In contrast, freelancers usually operate under <strong>fixed contracts.</strong> Extending a project timeline may require additional payment, which clients may resist. Since freelancers are often chosen for their ability to deliver within specific <strong>budgets and timeframes,</strong> requesting changes can jeopardize the professional relationship. This often leads freelancers to work <strong>extended hours to meet deadlines,</strong> potentially compromising their well-being.</p>
+<p>While freelancing allows for flexible scheduling, it also requires <strong>strong self-discipline and time management skills</strong> to prevent burnout.</p>
+<h2>Freelancing and Perceptions</h2>
+<p>Working from home can challenge <strong>societal perceptions of professionalism,</strong> especially in cultures where physical presence in a traditional workplace is equated with productivity. Explaining freelance work to friends and family can sometimes feel like justifying one’s career.</p>
+<p>Questions like <em>"How much do you make?"</em> or <em>"Where do you work?"</em> may arise, highlighting the <strong>ambiguity</strong> of remote and freelance roles for those unfamiliar with these arrangements.</p>
+<p>Establishing <strong>clear boundaries and professional routines</strong> can help freelancers counteract these misconceptions. It’s important to communicate the <strong>value and legitimacy</strong> of one’s work to build respect for non-traditional career paths.</p>
+<h2>The Work Environment</h2>
+<p>A common misconception about freelancing is the assumption that <strong>working from home inherently fosters productivity.</strong> While home offices offer convenience, they also come with unique challenges. Domestic responsibilities,</p>
+
 02/2011
 
 
 
+
+      </div>
+    </main>
+  </div>
+  
 <script src="https://utteranc.es/client.js"
         repo="miratcan/miratcan.github.io"
         issue-term="title"
@@ -197,7 +356,7 @@
         crossorigin="anonymous"
         async>
 </script>
-</main>
+
 </body>
 
 </html>

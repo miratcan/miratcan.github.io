@@ -1,0 +1,65 @@
+title: Fair Task Scheduling Beats Plain Celery Queues
+---
+body:
+
+Background jobs look easy on paper, yet they are far messier in the real world. The default answer in the Python community is usually “just add Celery with an AMQP broker.” That works until you need fairness.
+
+Imagine a service that backs up YouTube channels:
+
+- MrBeast signs in and requests backups for roughly 890 videos.
+- Ahmet signs in with a small channel that has only 10 videos.
+
+If your workers chew through every MrBeast job before even touching Ahmet’s queue, you have just crafted a terrible user experience. Ahmet connected the account, waited four hours, and nothing moved.
+
+### Naïve fixes that hurt
+
+1. **One queue per user on the same worker**
+
+   You keep everything on one server, create a queue per user, and spawn a worker per queue. Before long the worker host begs for mercy—RAM, file descriptors, and Celery bookkeeping all stack up.
+
+2. **One queue per user on dedicated hosts**
+
+   You scale out, spin up worker fleets for large customers, and isolate queues. Congratulations on the USD 2,000 cloud invoice (and the ensuing domestic argument).
+
+Neither option solves the original fairness problem without painful trade-offs.
+
+### Multi-tenant fair scheduling to the rescue
+
+There is a third option: multi-tenant fair scheduling. Instead of consuming jobs in a strict FIFO order, the dispatcher rotates through tenants. Picture a single cauldron full of jobs where every customer dips their own ladle in turn. Large tenants cannot monopolise the queue, and small tenants are not starved.
+
+### Trade-offs you should acknowledge
+
+- **Predictability drops.** Promise-by-exact-hour estimates are hard because work jumps between tenants. (Celery-by-default cannot promise accurate ETAs either.)
+- **Big tenants slow down.** MrBeast will notice occasional waits because he must share the worker pool.
+- **Implementation gets trickier.** You have to balance jobs by both timestamp and tenant identity.
+- **Capacity planning becomes political.** You might decide that premium tenants deserve more turns, or cap the share of free users.
+- **Latency can ripple.** Frequent context switches can shift throughput.
+
+Even with these caveats, fair scheduling is worth it. It respects every customer and keeps the service responsive.
+
+### Use a purpose-built queue instead of bending Celery
+
+Yes, you could bolt fairness into Celery with custom routers, per-user queues, and scripts that rebalance workers. You would also inherit a lifetime of maintenance debt.
+
+A cleaner alternative is [fairque](https://github.com/miratcan/fairque):
+
+```python
+from fairque import FairQueue
+
+queue = FairQueue(redis_url="redis://localhost/0")
+queue.enqueue("backup_video", tenant="mrbeast", video_id=123)
+queue.enqueue("backup_video", tenant="ahmet", video_id=42)
+```
+
+Fairque stores jobs in Redis, performs round-robin dispatch across tenants, and even ships extras such as priorities and DAG support out of the box.
+
+If you ever replaced a “we have always done it this way” Celery pattern with a fairer alternative, share it—I am all ears. Maybe your fix lights the way for someone else, including me. 💡
+
+---
+tags: python-notes
+---
+has_code: yes
+---
+pub_date: 2025-08-21
+---
+meta_desc: Why classic Celery queues starve small tenants and how multi-tenant fair scheduling (with fairque) keeps background tasks balanced.
