@@ -73,6 +73,8 @@ Each row is a solution candidate. Now we will evaluate them.
 
 ### 2. Fitness Function
 
+![Fitness Function Diagram](fitness-function.jpg)
+
 The next stage is writing a function that measures how fit each individual in the population is. This is called the fitness function.
 
 With a simple change, we score how close the individual is to the target we are trying to reach.
