@@ -17,6 +17,8 @@
     <a {% if is_active %} class="active" {% endif %} href="/products/"><span>W</span>ishlist</a>
     {% endwith %}
 
-    <a target="_blank" href="/resume/resume.html"><span>R</span>esume</a>
+    {% with is_active = this.path != '/' and this.path.startswith('/resume') %}
+    <a {% if is_active %} class="active" {% endif %} href="/resume/"><span>R</span>esume</a>
+    {% endwith %}
   </div>
 </nav>
