@@ -5,5 +5,10 @@ build/
 temp/
 deploy-master/
 
+# Python build artifacts
+__pycache__/
+*.egg-info/
+
 # macOS
 .DS_Store
+.content-processed/

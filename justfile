@@ -1,12 +1,11 @@
-# Build the site to build/ directory
+# Build the site with Lektor
 build:
     lektor build -O build
-    /Users/mirat/.local/pipx/venvs/lektor/bin/python dither-images.py build
 
 # Clean build directory and rebuild
 rebuild:
     rm -rf build/*
-    lektor build -O build
+    just build
 
 # Build and commit changes
 commit message="Update site": build
