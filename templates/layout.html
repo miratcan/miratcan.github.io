@@ -4,22 +4,22 @@
 <head>
   <style>
     :root {
-      --c0: #282828;
-      --c1: #cc241d;
-      --c2: #fb4934;
-      --c3: #ebdbb2;
-      --c4: #83a598;
-      --c5: #fe8019;
-      --c6: #b8bb26;
-      --c7: #ebdbb2;
-      --c8: #fbf1c7;
-      --c9: #d3869b;
-      --c10: #fabd2f;
-      --c12: #8ec07c;
-      --c16: #b16286;
-      --c13: #fb4934;
-      --c14: #fabd2f;
-      --c15: #ebdbb2;
+      --c0: #000000;
+      --c1: #000080;
+      --c2: #00aaaa;
+      --c3: #00aa00;
+      --c4: #aa00aa;
+      --c5: #aa0000;
+      --c6: #aa5500;
+      --c7: #aaaaaa;
+      --c8: #555555;
+      --c9: #5555ff;
+      --c10: #1fdbdb;
+      --c12: #55ff55;
+      --c12: #ff55ff;
+      --c13: #ff5555;
+      --c14: #ffff55;
+      --c15: #ffffff;
       --ln: 2px;
       --gap: 1rem;
       --fs: 1.05rem;
@@ -30,13 +30,13 @@
     }
 
     em {
-      color: var(--c5);
+      color: var(--c6);
       font-style: normal;
     }
 
     strong {
-      font-weight: 600;
-      color: var(--c7);
+      font-weight: normal;
+      color: var(--c15);
     }
 
     ::-webkit-scrollbar {
@@ -63,9 +63,8 @@
     }
 
     .wrapper {
-      max-width: 70ch;
+      max-width: 800px;
       margin: 0 auto;
-      box-sizing: border-box;
     }
 
     html,
@@ -76,8 +75,8 @@
 
     body {
       background: var(--c0);
-      color: var(--c1);
-      font-family: Arial, Helvetica, sans-serif;
+      color: var(--c7);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       font-size: var(--fs);
       line-height: var(--lh);
       vertical-align: center;
@@ -97,7 +96,7 @@
     }
 
     code {
-      color: var(--c1);
+      color: var(--c3);
       font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 0.95em;
     }
@@ -111,31 +110,16 @@
     li,
     table,
     blockquote {
+      font-weight: normal;
       margin: 0 0 1rem 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
     }
 
     li {
-      margin: 0.5rem 0;
-    }
-
-    main ul {
-      list-style-type: none;
-      padding: 1rem 0;
-    }
-
-    a {
-      color: var(--c3);
-      outline: 0;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    ::selection {
-      background-color: var(--c2);
-      color: var(--c0);
+      margin: 0.25rem 0;
     }
 
     h1 {
@@ -163,14 +147,14 @@
     h1,
     h2,
     h3 {
-      color: var(--c3);
+      color: var(--c14);
     }
 
     blockquote {
       padding: 0.5rem 1.2rem;
       border-left: 4px solid var(--c2);
       border-bottom: none;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(17, 17, 17, 0.6);
     }
 
     .youtube-video {
@@ -189,11 +173,11 @@
 
     nav a {
       text-decoration: none;
-      color: var(--c3);
+      color: var(--c0);
     }
 
     nav a span {
-      color: var(--c1);
+      color: var(--c5);
     }
 
     a.active {
@@ -201,10 +185,10 @@
     }
 
     a.tag {
-      color: var(--c3);
-      background: transparent;
+      color: var(--c10);
+      background: rgba(31, 219, 219, 0.12);
       padding: 0.1rem 0.5rem;
-      border-radius: 0;
+      border-radius: 999px;
       justify-content: center;
       font-size: var(--fs-small);
     }
@@ -216,14 +200,18 @@
     }
 
     main {
-      margin: auto;
-      max-width: 70ch;
-      padding: 2ch;
+      margin: 2rem 0;
+      padding: 0 1.25rem 2.5rem;
+    }
+
+    main a {
+      color: var(--c10);
+      text-decoration: underline;
     }
 
     nav {
-      background: transparent;
-      padding: 2ch 0 0;
+      background: var(--c7);
+      padding: 0 1rem;
     }
 
     nav .wrapper {
@@ -257,8 +245,10 @@
     }
 
     img {
-      max-width: 100%;
-      image-rendering: auto;
+      max-width: 80%;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
     }
 
     @media only screen and (max-width: 500px) {
