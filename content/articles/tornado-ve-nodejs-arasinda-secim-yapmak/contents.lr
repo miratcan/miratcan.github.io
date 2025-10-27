@@ -1,6 +1,6 @@
-title: Tornado ve Node.js Arasında Seçim Yapmak
+title: Tornado ve Node.js Arasinda Secim Yapmak
 ---
-teaser: Yazılım geliştirme konusunda çalışırken yeterince uzun zaman geçirince insana olmaması gereken özgüven geliyor bu büyük hata. En olmadık hataları bu sebepten yapıyorum.
+teaser: Yazilim gelistirme konusunda calisirken yeterince uzun zaman gecirince insana olmamasi gereken ozguven geliyor bu buyuk hata. En olmadik hatalari bu sebepten yapiyorum.
 ---
 pub_date: 2016-07-02
 ---
@@ -8,50 +8,50 @@ author: Mirat Bayrak
 ---
 body:
 
-Yeni ve artık son okul dönemi ile birlikte Lookremix projesinden ayrılmak zorunda kaldım. Bir startup içerisinde bulunmak oldukça eğitici oldu benim için. Hem bir sosyal medya aracının oluşturulurken ne gibi badireler atlattığını görmüş oldum. Hem de bir yazılım geliştirici olarak daha önce hiç el atmadığım meselelere el atmak durumunda kaldım. Benim için oldukça çetrefilli ama bir yandan da oldukça zevkli bir iş oldu. Keşke daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarımız tekrar kesişir.
+Yeni ve artik son okul donemi ile birlikte Lookremix projesinden ayrilmak zorunda kaldim. Bir startup icerisinde bulunmak oldukca egitici oldu benim icin. Hem bir sosyal medya aracinin olusturulurken ne gibi badireler atlattigini gormus oldum. Hem de bir yazilim gelistirici olarak daha once hic el atmadigim meselelere el atmak durumunda kaldim. Benim icin oldukca cetrefilli ama bir yandan da oldukca zevkli bir is oldu. Keske daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarimiz tekrar kesisir.
 
-Şu anda ise ilk göz ağrım bilsin'i tekrar ayağa kaldırmak için elime bir fırsat geçti. Geçerli sosyal medya araçlarının zayıflığı ve bilsin'in neden güçlü bir araç olacağı konusunda okuldaki jüriye yaptığım sunum oldukça ikna edici oldu ve şu bilsin resmi olarak bitirme projem haline dönüştü. Ancak çok çalışmam gerek çünkü şu anda her ne kadar kırık dökük de olsa çalışan bir alet (tool) görünümü verse de aslında kafamdaki ideolojiden ve sağlamlıktan uzak durumda.
+Su anda ise ilk goz agrim bilsin'i tekrar ayaga kaldirmak icin elime bir firsat gecti. Gecerli sosyal medya araclarinin zayifligi ve bilsin'in neden guclu bir arac olacagi konusunda okuldaki juriye yaptigim sunum oldukca ikna edici oldu ve su bilsin resmi olarak bitirme projem haline donustu. Ancak cok calismam gerek cunku su anda her ne kadar kirik dokuk de olsa calisan bir alet (tool) gorunumu verse de aslinda kafamdaki ideolojiden ve saglamliktan uzak durumda.
 
-Projeye daha önce başlarken yaptığım yanlış teknoloji seçimlerini ve kervan yolda düzülür diyip yolda yol değiştirmeleri (gerçekten çok fazla enerji ve kaybı oluyor) tekrar yaşamamak için mümkün olduğunca belgeli, planlı davranmaya çalışıyor. Çıkacak sorunları mümkün olduğunca ön görmeye çalışıyorum. Blog üzerinden çok fazla ayrıntı vermeyi uygun görmüyorum ama projenin %90'ının sağlam restFul api oluşturmaktan geçtiğini ve mümkün olduğunca akışkan bir yapıda olacağını söyleyebilirim. Tabi bu noktada Django kullanmak bir az saçma oluyor zira api yazmak için context processorlere ya da template sistemine ihtiyaç duymuyorum. Bunun yanında Django ile long pooling yapmak ya da websockets kullanmak deveyi at yarışına sokmak gibi bir şey olurdu.
+Projeye daha once baslarken yaptigim yanlis teknoloji secimlerini ve kervan yolda duzulur diyip yolda yol degistirmeleri (gercekten cok fazla enerji ve kaybi oluyor) tekrar yasamamak icin mumkun oldugunca belgeli, planli davranmaya calisiyor. Cikacak sorunlari mumkun oldugunca on gormeye calisiyorum. Blog uzerinden cok fazla ayrinti vermeyi uygun gormuyorum ama projenin %90'inin saglam restFul api olusturmaktan gectigini ve mumkun oldugunca akiskan bir yapida olacagini soyleyebilirim. Tabi bu noktada Django kullanmak bir az sacma oluyor zira api yazmak icin context processorlere ya da template sistemine ihtiyac duymuyorum. Bunun yaninda Django ile long pooling yapmak ya da websockets kullanmak deveyi at yarisina sokmak gibi bir sey olurdu.
 
-Bu noktada Node.js gel beni kullan diye göz kırpıyor, diğer kolumda da Tornado var. Bunları kendimce karşılaştırmaya çalıştım ancak eğer yanlış bilgi verdiğimi, yanıldığımı düşünüyorsanız lütfen yorum bırakın.
+Bu noktada Node.js gel beni kullan diye goz kirpiyor, diger kolumda da Tornado var. Bunlari kendimce karsilastirmaya calistim ancak eger yanlis bilgi verdigimi, yanildigimi dusunuyorsaniz lutfen yorum birakin.
 
-## Performans
+## Performans
 
-Node.js Google beyin V8 adlı javascript motorunu kullanıyor. Javascript kodları derlenip makina diline çevriliyor. Bu da kallavi bir hız demek. Tornado ise bunu ta ki Python 3.3 çıkana kadar yapamayacak(mış). İzlediğim node.js sunumunda yapılan testte ki bu test sadece bir "hello world" testi. Node.js saniyede 4340 cevap verebilirken tornado ise sadece 2344 cevap verebilmiş. Sözün özü Node.js performans konusunda Tornado'yu ikiye katlıyor.
+Node.js Google beyin V8 adli javascript motorunu kullaniyor. Javascript kodlari derlenip makina diline cevriliyor. Bu da kallavi bir hiz demek. Tornado ise bunu ta ki Python 3.3 cikana kadar yapamayacak(mis). Izledigim node.js sunumunda yapilan testte ki bu test sadece bir "hello world" testi. Node.js saniyede 4340 cevap verebilirken tornado ise sadece 2344 cevap verebilmis. Sozun ozu Node.js performans konusunda Tornado'yu ikiye katliyor.
 
-## Dil Yapısı
+## Dil Yapisi
 
-Bu noktada Tornado golünü atıyor zira hiç bir programcının Python varken Javascript kullanmak isteyeceğini sanmıyorum. Javascript'in iğrenç bir syntax yapısı var. Bu Python sever birinin şahsi fikri olmakla beraber, pek çok kişinin de noktalı virgül ya da memeli parantezler ile boğuşmak isteyeceğini sanmıyorum. Hoş, syntax olayı CofeeScript sayesinde çözülebiliyor ancak yine de dahili standartlaşmış kütüphanelerin eksikliği hissediliyor. Bir each döngüsü yaratmak için bile harici bir kütüphaneye ihtiyaç duymak, bende huzursuzluğa yol açıyor. Yengeç burcu programcılar için önermiyorum. :)
+Bu noktada Tornado golunu atiyor zira hic bir programcinin Python varken Javascript kullanmak isteyecegini sanmiyorum. Javascript'in igrenc bir syntax yapisi var. Bu Python sever birinin sahsi fikri olmakla beraber, pek cok kisinin de noktali virgul ya da memeli parantezler ile bogusmak isteyecegini sanmiyorum. Hos, syntax olayi CofeeScript sayesinde cozulebiliyor ancak yine de dahili standartlasmis kutuphanelerin eksikligi hissediliyor. Bir each dongusu yaratmak icin bile harici bir kutuphaneye ihtiyac duymak, bende huzursuzluga yol aciyor. Yengec burcu programcilar icin onermiyorum. :)
 
-İkinci olarak javascript ilk defa browser dışında bir mecrada iş görmeye başladığı için bir çok kütüphane olgunlaşmamış durumda. Halbu ki Python 1994 de 1.0 versiyonuna ulaştı yıllardır her konuda kütüphane geliştirilmekte kendisi için. Node.js nin şu anki versiyonu 0.4.1 Tornado'nun ise 2.1.1.
+Ikinci olarak javascript ilk defa browser disinda bir mecrada is gormeye basladigi icin bir cok kutuphane olgunlasmamis durumda. Halbu ki Python 1994 de 1.0 versiyonuna ulasti yillardir her konuda kutuphane gelistirilmekte kendisi icin. Node.js nin su anki versiyonu 0.4.1 Tornado'nun ise 2.1.1.
 
-Üçüncü olarak, Javascript in doğal halinin etkinlik tabanlı (event-driven) bir dil olduğunu bu yüzden geliştirilen kütüphanelerin haliyle asenkron kütüphaneler olduğunu. Python ise aslında sıralı (satır satır) işlenen bir dil olması itibari ile Tornado ile kullanacağınız kütüphanelerin özel olarak asenkron olarak yazılmış kütüphaneler olması gerektiğini eklemem gerekiyor. Anlayacağınız Tornado içinde mysqllib'i direkt olarak import edip kullanamıyorsunuz. Bunun yerine asenkron çalışacak şekilde tasarlanmış mysql kütüphanesi ne ise onu bulup kullanmanız gerekiyor.
+Ucuncu olarak, Javascript in dogal halinin etkinlik tabanli (event-driven) bir dil oldugunu bu yuzden gelistirilen kutuphanelerin haliyle asenkron kutuphaneler oldugunu. Python ise aslinda sirali (satir satir) islenen bir dil olmasi itibari ile Tornado ile kullanacaginiz kutuphanelerin ozel olarak asenkron olarak yazilmis kutuphaneler olmasi gerektigini eklemem gerekiyor. Anlayacaginiz Tornado icinde mysqllib'i direkt olarak import edip kullanamiyorsunuz. Bunun yerine asenkron calisacak sekilde tasarlanmis mysql kutuphanesi ne ise onu bulup kullanmaniz gerekiyor.
 
-Ancak ilginçtir ki her ne kadar Tornado daha olgun olsa da içerisinde bir session management olayı bulundurmuyor. Bu bana çok garip geldi. Sanırım Django'da ki:
+Ancak ilginctir ki her ne kadar Tornado daha olgun olsa da icerisinde bir session management olayi bulundurmuyor. Bu bana cok garip geldi. Sanirim Django'da ki:
 
     if user.is_authenticated():
         ...
         ...
 
-Türevi sorular soramayacağımız manasına geliyor Tornado'ya. Belki authentication olayları başka türlü cookie tabanlı atraksiyonlarla (OAuth?) çözülüyordur bilemiyorum.
+Turevi sorular soramayacagimiz manasina geliyor Tornado'ya. Belki authentication olaylari baska turlu cookie tabanli atraksiyonlarla (OAuth?) cozuluyordur bilemiyorum.
 
 ##Topluluk
 
-Node.js'in çok heyecanlı bir topluluk henüz bir velet olmasına rağmen inanılmaz ilgi görüyor. Aşağıdaki bu rakamlar söylediğimi kanıtlar nitelikte: (Fork, Takipçi ve İlgili Depo sayılarını Github'dan aldım)
+Node.js'in cok heyecanli bir topluluk henuz bir velet olmasina ragmen inanilmaz ilgi goruyor. Asagidaki bu rakamlar soyledigimi kanitlar nitelikte: (Fork, Takipci ve Ilgili Depo sayilarini Github'dan aldim)
 
-|           | Fork         | Takipçi   | İlgili Depo |  Eposta Listesi |
+|           | Fork         | Takipci   | Ilgili Depo |  Eposta Listesi |
 |-----------|--------------|-----------|-------------|-------------------|
-| Tornado   | 510          | 3,313     | 364         | 1779              |
-| Node.js   | 1,339        | 11,944    | 5842        | 6590              |
+| Tornado   | 510          | 3,313     | 364         | 1779              |
+| Node.js   | 1,339        | 11,944    | 5842        | 6590              |
 
-##Sonuç
+##Sonuc
 
-Sonuç olarak Node.js topluluk ve performans olarak Tornado'yu dövüyor gözüküyor. Ancak sanırım geliştiriciler arasında bir garip moda ya da trendin peşinden hızla gitme durumu var. Yeni bir teknoloji afili bir sunumla anlatılıp da bir kaç yerde yazılıp çizildiği zaman hurra herkes o tarafa gidiyor. Sonra herkes sakinleşiyor hangi dili rahat kullanıyorsa onu kullanmaya devam ediyor. Bu yüzden bu 7000 kişilik e-posta listelerini falan biraz şişirilmiş rakamlar olarak görüyorum. Ayrıca bu devasa kitleden kaç tanesi gerçek bir iş görebilmek üzere sizin ofisinize gelip çalışabilecek insanlardır bunu hesap etmek gerek. üç mü beş mi?
+Sonuc olarak Node.js topluluk ve performans olarak Tornado'yu dovuyor gozukuyor. Ancak sanirim gelistiriciler arasinda bir garip moda ya da trendin pesinden hizla gitme durumu var. Yeni bir teknoloji afili bir sunumla anlatilip da bir kac yerde yazilip cizildigi zaman hurra herkes o tarafa gidiyor. Sonra herkes sakinlesiyor hangi dili rahat kullaniyorsa onu kullanmaya devam ediyor. Bu yuzden bu 7000 kisilik e-posta listelerini falan biraz sisirilmis rakamlar olarak goruyorum. Ayrica bu devasa kitleden kac tanesi gercek bir is gorebilmek uzere sizin ofisinize gelip calisabilecek insanlardir bunu hesap etmek gerek. uc mu bes mi?
 
-Bunun yanında Node.js teoride bu kadar ilgi görmesine rağmen, henüz kendisini savaş arenasında görmüş değiliz. Gerçek - büyük projelerde ne gibi problemler çıkaracağı konusunda pek fikrimiz yok. Tornado ise halihazırda Facebook'un ve FriendFeed'in ağır işlerini gören bir sistem.
+Bunun yaninda Node.js teoride bu kadar ilgi gormesine ragmen, henuz kendisini savas arenasinda gormus degiliz. Gercek - buyuk projelerde ne gibi problemler cikaracagi konusunda pek fikrimiz yok. Tornado ise halihazirda Facebook'un ve FriendFeed'in agir islerini goren bir sistem.
 
-Bütün bunlara dayanarak, üzülerek Node.js ye bizimle değilsin diyorum. Zira saniyede 4bin request karşılayabiliyor olması bende yarattığı rahatsızlık hissini gidermeye yetmiyor. Zaten bir gün sunucularım altından kalkamayacağım bir yükle karşılaşırsa zaten para kazanıyorum demektir bir sunucu daha koyarım.
+Butun bunlara dayanarak, uzulerek Node.js ye bizimle degilsin diyorum. Zira saniyede 4bin request karsilayabiliyor olmasi bende yarattigi rahatsizlik hissini gidermeye yetmiyor. Zaten bir gun sunucularim altindan kalkamayacagim bir yukle karsilasirsa zaten para kazaniyorum demektir bir sunucu daha koyarim.
 
 Kaynaklar:
 

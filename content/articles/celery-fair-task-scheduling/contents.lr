@@ -2,20 +2,20 @@ title: Fair Task Scheduling Beats Plain Celery Queues
 ---
 body:
 
-Background jobs look easy on paper, yet they are far messier in the real world. The default answer in the Python community is usually “just add Celery with an AMQP broker.” That works until you need fairness.
+Background jobs look easy on paper, yet they are far messier in the real world. The default answer in the Python community is usually "just add Celery with an AMQP broker." That works until you need fairness.
 
 Imagine a service that backs up YouTube channels:
 
 - MrBeast signs in and requests backups for roughly 890 videos.
 - Ahmet signs in with a small channel that has only 10 videos.
 
-If your workers chew through every MrBeast job before even touching Ahmet’s queue, you have just crafted a terrible user experience. Ahmet connected the account, waited four hours, and nothing moved.
+If your workers chew through every MrBeast job before even touching Ahmet's queue, you have just crafted a terrible user experience. Ahmet connected the account, waited four hours, and nothing moved.
 
-### Naïve fixes that hurt
+### Naive fixes that hurt
 
 1. **One queue per user on the same worker**
 
-   You keep everything on one server, create a queue per user, and spawn a worker per queue. Before long the worker host begs for mercy—RAM, file descriptors, and Celery bookkeeping all stack up.
+   You keep everything on one server, create a queue per user, and spawn a worker per queue. Before long the worker host begs for mercy--RAM, file descriptors, and Celery bookkeeping all stack up.
 
 2. **One queue per user on dedicated hosts**
 
@@ -53,7 +53,7 @@ queue.enqueue("backup_video", tenant="ahmet", video_id=42)
 
 Fairque stores jobs in Redis, performs round-robin dispatch across tenants, and even ships extras such as priorities and DAG support out of the box.
 
-If you ever replaced a “we have always done it this way” Celery pattern with a fairer alternative, share it—I am all ears. Maybe your fix lights the way for someone else, including me. 💡
+If you ever replaced a "we have always done it this way" Celery pattern with a fairer alternative, share it--I am all ears. Maybe your fix lights the way for someone else, including me. (idea)
 
 ---
 tags: python-notes

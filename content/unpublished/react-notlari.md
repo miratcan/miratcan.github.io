@@ -1,87 +1,87 @@
-# Javascript Uzmanı Olmayanlar İçin React-Native Anlatımı
+# Javascript Uzmani Olmayanlar Icin React-Native Anlatimi
 
-React Facebook tarafından ortalara atılmış bir javascript kütüphanesi. MVC
-desenli tasarımlarda V (View) katmanını oluşturduğu söylense de redux gibi
-kütüphanelerle birleştiğinde başlı başına bir çalışma tasarım şemasına sahip
-olduğunuz söyleniyor. Bu yazıda sıfırdan başlayarak react native ile bir
-uygulama geliştirmeye çalışacağız.
+React Facebook tarafindan ortalara atilmis bir javascript kutuphanesi. MVC
+desenli tasarimlarda V (View) katmanini olusturdugu soylense de redux gibi
+kutuphanelerle birlestiginde basli basina bir calisma tasarim semasina sahip
+oldugunuz soyleniyor. Bu yazida sifirdan baslayarak react native ile bir
+uygulama gelistirmeye calisacagiz.
 
-> Okumadan Önce:
+> Okumadan Once:
 >
->Hedef işletim sistemim Android, geliştirme yaptığım işletim sistemi ise OSX
->olacak. Bu yüzden örneğin IOS için geliştirme yapmak istiyorsanız bu yazı
->bir yere kadar yeterli olacaktır.
+>Hedef isletim sistemim Android, gelistirme yaptigim isletim sistemi ise OSX
+>olacak. Bu yuzden ornegin IOS icin gelistirme yapmak istiyorsaniz bu yazi
+>bir yere kadar yeterli olacaktir.
 >
->Geliştirme yaptığınız sistemde NodeJS, NPM ve Homebrew kurulu olmalıdır.
+>Gelistirme yaptiginiz sistemde NodeJS, NPM ve Homebrew kurulu olmalidir.
 
-## Getirileri:
+## Getirileri:
 
-1) JSX adında bir markup dili getiriyor, bunu kullanmak zorunlu olmasa da
-şiddetle tavsiye edilmekte. Ha HTML yerine kullanılması avantajlı mı?
-Tartışılır.
+1) JSX adinda bir markup dili getiriyor, bunu kullanmak zorunlu olmasa da
+siddetle tavsiye edilmekte. Ha HTML yerine kullanilmasi avantajli mi?
+Tartisilir.
 
-2) Components - React bir web sayfası ya da uygulamayı tasarlarken HTML
-etiketleri olarak değil de görünüm bileşenleri tasarlamanızı sağlıyor. Ne
-faydası var diyecek olursanız, bileşenler bir kere düzgün tasarlandıktan sonra
-farklı projelerde kullanılabiliyorlar. Örneğin hesap makinesi adında büyük bir
-bileşen yaparsanız bunu yaptığınız farklı farklı uygulamalara takabiliyorsunuz.
+2) Components - React bir web sayfasi ya da uygulamayi tasarlarken HTML
+etiketleri olarak degil de gorunum bilesenleri tasarlamanizi sagliyor. Ne
+faydasi var diyecek olursaniz, bilesenler bir kere duzgun tasarlandiktan sonra
+farkli projelerde kullanilabiliyorlar. Ornegin hesap makinesi adinda buyuk bir
+bilesen yaparsaniz bunu yaptiginiz farkli farkli uygulamalara takabiliyorsunuz.
 
-3) Çift Taraflı Veri Akışı: React componentlerin veriden yola çıkarak
-gösterimini, aynı zamanda da verinin componentlerin durumuyla güncellenmesini
-sağlayabiliyor. Bunu flux adında bir kütüphane ile yapıyor.
+3) Cift Tarafli Veri Akisi: React componentlerin veriden yola cikarak
+gosterimini, ayni zamanda da verinin componentlerin durumuyla guncellenmesini
+saglayabiliyor. Bunu flux adinda bir kutuphane ile yapiyor.
 
-## Avantajları:
+## Avantajlari:
 
-React web sayfalarını render ederken gerçek DOM'u değil de kendi salan DOM'unu
-kullanıyor ve burada güncellemeleri değişiklikleri yaptıktan sonra gerçek DOM'a
-bu değişiklikleri aktarıyor. Bu da muazzam bir performans artışı demek.
+React web sayfalarini render ederken gercek DOM'u degil de kendi salan DOM'unu
+kullaniyor ve burada guncellemeleri degisiklikleri yaptiktan sonra gercek DOM'a
+bu degisiklikleri aktariyor. Bu da muazzam bir performans artisi demek.
 
-React sunucu ve istemci tarafında kullanılabiliyor. React ile hazırladığınız
-componentler sonradan render edilmek zorunda değil.
+React sunucu ve istemci tarafinda kullanilabiliyor. React ile hazirladiginiz
+componentler sonradan render edilmek zorunda degil.
 
-Component ve veri tipleri javascript kodunun okunabilirliğini arttırıyor.
+Component ve veri tipleri javascript kodunun okunabilirligini arttiriyor.
 
-## Sınırlamaları:
+## Sinirlamalari:
 
-React sadece view katmanını temsil ettiği için geliştirme ortamınızı tamamlamak
-adına başka kütüphanelere ihtiyaç duyabiliyorsunuz.
+React sadece view katmanini temsil ettigi icin gelistirme ortaminizi tamamlamak
+adina baska kutuphanelere ihtiyac duyabiliyorsunuz.
 
-React'ın kullandığı JSX markup dili bazı geliştiricilere acayip gözükebiliyor.
+React'in kullandigi JSX markup dili bazi gelistiricilere acayip gozukebiliyor.
 
-### ADIM 1 - GLOBAL GEREKLİ PAKETLERİN KURULMASI:
+### ADIM 1 - GLOBAL GEREKLI PAKETLERIN KURULMASI:
 
-Öncelikle babel pakedini kurmanız gerekiyor. Bu paket javascript yazarken
-ES2015 standardını kullanabilmenizi sağlıyor. ES2015 standardı ile yazdığınız
-javascript kodunun eğer broser desteklemiyor ise downgrade edilmiş bir
-versionunu compile ediyor. Artık modern javascript yazmak için babel kullanmak
-zorunlu gibi bir şey.
+Oncelikle babel pakedini kurmaniz gerekiyor. Bu paket javascript yazarken
+ES2015 standardini kullanabilmenizi sagliyor. ES2015 standardi ile yazdiginiz
+javascript kodunun eger broser desteklemiyor ise downgrade edilmis bir
+versionunu compile ediyor. Artik modern javascript yazmak icin babel kullanmak
+zorunlu gibi bir sey.
 
-$ npm install -g babel babel-cli react-native-cli
+$ npm install -g babel babel-cli react-native-cli
 
-### ADIM 2 - ANDROID SDK'NIN KURULUMU:
+### ADIM 2 - ANDROID SDK'NIN KURULUMU:
 
-Yazacağınız uygulamaların telefonda ya da bir telefon emülatöründe
-çalıştırılması gerekiyor. Eğer yazdığımız kodların sonucunu sanal ya da değil
-bir Android makine üzerinde görmek istiyorsanız (benim senaryomda istiyoruz)
-Android SDK'nın kurulumunu yapmamız gerekiyor.
+Yazacaginiz uygulamalarin telefonda ya da bir telefon emulatorunde
+calistirilmasi gerekiyor. Eger yazdigimiz kodlarin sonucunu sanal ya da degil
+bir Android makine uzerinde gormek istiyorsaniz (benim senaryomda istiyoruz)
+Android SDK'nin kurulumunu yapmamiz gerekiyor.
 
-    $ brew install android-sdk
+    $ brew install android-sdk
 
-Brew güzel alet, Android SDK'nın çıplak haliyle kurulumunu yaptık. Ardından
-yapmamız gereken şey ise ANDROID_HOME ortam değerinin set edilmesi. Bu değer
-Android SDK'yı kurduğunuz yer olmalı.
+Brew guzel alet, Android SDK'nin ciplak haliyle kurulumunu yaptik. Ardindan
+yapmamiz gereken sey ise ANDROID_HOME ortam degerinin set edilmesi. Bu deger
+Android SDK'yi kurdugunuz yer olmali.
 
-Mac sisteminizde aşağıdaki satırı (eğer yoksa) ~/.bashrc, ~/.bash_profiel ya
-da fish kullanıyorsanız adını hatırlamadığım başka bir dosya içine yazmanız
+Mac sisteminizde asagidaki satiri (eger yoksa) ~/.bashrc, ~/.bash_profiel ya
+da fish kullaniyorsaniz adini hatirlamadigim baska bir dosya icine yazmaniz
 gerekiyor:
 
     export ANDROID_HOME=/usr/local/opt/android-sdk
 
-Burada tekrar hatırlatmamda fayda var verdiğimiz yolun SDK'nın kurulu olduğu
-yeri göstermesi gerekiyor. Kontrol edip yolu ona göre gerekiyorsa değiştirin.
+Burada tekrar hatirlatmamda fayda var verdigimiz yolun SDK'nin kurulu oldugu
+yeri gostermesi gerekiyor. Kontrol edip yolu ona gore gerekiyorsa degistirin.
 
-Bu değişkeni doğru olarak değiştirdiyseniz aşağıdaki komutun çıktısı şunun
-gibi olmalıdır:
+Bu degiskeni dogru olarak degistirdiyseniz asagidaki komutun ciktisi sunun
+gibi olmalidir:
 
     ls $ANDROID_HOME
     INSTALL_RECEIPT.json add-ons              build-tools
@@ -90,54 +90,54 @@ gibi olmalıdır:
     etc                  platform-tools       samples
     system-images        tools
 
-Bu aşamadan sonra SDK için çeşitli paketleri yüklememiz gerekiyor.
+Bu asamadan sonra SDK icin cesitli paketleri yuklememiz gerekiyor.
 
-    $ android
+    $ android
 
-Bu komuttan sonra açılacak Android SDK Manager üzerinden şu listelediğim
+Bu komuttan sonra acilacak Android SDK Manager uzerinden su listeledigim
 paketleri kurun:
 
  * Android SDK Build-tools versiyon 23.0.1
  * Android 6.0 (API 23)
- * Local Maven repository for Support Libraries (Extras bölümünde çıkıyor)
+ * Local Maven repository for Support Libraries (Extras bolumunde cikiyor)
 
 
 ![](https://facebook.github.io/react-native/releases/0.23/img/AndroidSDK1.png)
 ![](https://facebook.github.io/react-native/releases/0.23/img/AndroidSDK2.png)
 
 
-### ADIM 3 - REACT NATIVE ILE PROJENIN BAŞLATILMASI
+### ADIM 3 - REACT NATIVE ILE PROJENIN BASLATILMASI
 
-Yukarıdaki kurulumu yaptıktan sonra artık react-native komutu bizim için
-çalıştırılabilir olmalı. Projeyi oluşturabiliriz:
+Yukaridaki kurulumu yaptiktan sonra artik react-native komutu bizim icin
+calistirilabilir olmali. Projeyi olusturabiliriz:
 
     $ react-native init ReactCalculator
 
-Bu komut baya bir indirme yapıyor  ve benim gibi Python geliştiricilerine
-oldukça devasa gözükecek bir proje ağacı yaratıyor.
+Bu komut baya bir indirme yapiyor  ve benim gibi Python gelistiricilerine
+oldukca devasa gozukecek bir proje agaci yaratiyor.
 
     $ cd ReactCalculator
     $ ReactCalculator/ $ ls
     __tests__        app.json         index.ios.js     node_modules
     android          index.android.js ios              package.json
 
-Umuyorum bura oluşturulan js dosyaları compile etme aşamasında eleniyor,
-gereksiz olanlar çalıştırılabilir pakede dahil olmuyordur.
+Umuyorum bura olusturulan js dosyalari compile etme asamasinda eleniyor,
+gereksiz olanlar calistirilabilir pakede dahil olmuyordur.
 
-Bu noktada bilmemiz gereken bazı şeyler şunlar:
+Bu noktada bilmemiz gereken bazi seyler sunlar:
 
-  * React Native paket yöneticisi olarak NPM kullanıyor. Dolayısıyla
-    node_modules dizini kurduğumuz, kuracağımız paketleri barındırıyor.
+  * React Native paket yoneticisi olarak NPM kullaniyor. Dolayisiyla
+    node_modules dizini kurdugumuz, kuracagimiz paketleri barindiriyor.
 
-  * "android" ve "ios" dizinleri android ve ios projeleri için üretilmiş kodu
-    barındırıyor. Android Studio ya da XCode kullanarak açıp, incelenebilir.
+  * "android" ve "ios" dizinleri android ve ios projeleri icin uretilmis kodu
+    barindiriyor. Android Studio ya da XCode kullanarak acip, incelenebilir.
 
-  * index.android.js ve index.ios.jsedosyaları bizim kaynak kodumuzun giriş
-    noktaları oluyor.
+  * index.android.js ve index.ios.jsedosyalari bizim kaynak kodumuzun giris
+    noktalari oluyor.
 
-### ADIM 3 - PROJENIN BAŞLATILMASI
+### ADIM 3 - PROJENIN BASLATILMASI
 
-Projeyi başlatmak için öncelikle Android SDK'nın kurulu olması gerekmekte.
+Projeyi baslatmak icin oncelikle Android SDK'nin kurulu olmasi gerekmekte.
 
 Kaynaklar:
 

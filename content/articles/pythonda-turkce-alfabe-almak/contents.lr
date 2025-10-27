@@ -9,7 +9,7 @@ Recently, I faced a task where I needed to raise an error if any non-Turkish cha
 <pre class="prettyprint lang-python">
 # -*- coding: utf-8 -*-
 def turkish_chars_validator(string):
-    turkish_chars = 'ABCÇD...'
+    turkish_chars = 'ABCCD...'
     # Logic for validation
 </pre>
 
@@ -33,8 +33,8 @@ print(letters)
 To my surprise, the output did not include Turkish-specific characters despite setting the locale to tr_TR.utf8. When I tried Turkish_Turkey.1254, the output was closer but still contained unexpected characters:
 
 <pre>
-abcdefghijklmnopqrstuvwxyzƒsoªµºßàáâaäåæçèéêëìíîïgñòóôoöoùúûüisÿ...
-ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAÄÅÆÇEÉEEIIIIGÑOOOOÖOUUUÜIS
+abcdefghijklmnopqrstuvwxyzsoaoaaaaaaceeeeiiiignoooooouuuuisy...
+ABCDEFGHIJKLMNOPQRSTUVWXYZSOYAAAAAACEEEEIIIIGNOOOOOOUUUUIS
 </pre>
 
 This approach turned out to be unreliable for my requirements. Furthermore, using setlocale in a Django project can lead to significant issues, as noted in Python's documentation:
@@ -45,8 +45,8 @@ This approach turned out to be unreliable for my requirements. Furthermore, usin
 After trying a few more methods, including regular expressions, I settled on a simple and effective solution. I manually defined the Turkish alphabet as a Unicode string, ensuring it was consistent and covered all cases. Here's the final implementation:
 
 <pre class="prettyprint lang-python">
-alpha = 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ' \
-        'abcçdefgğhıijklmnoöprsştuüvyz'.encode('utf-8').decode('utf-8')
+alpha = 'ABCCDEFGGHIIJKLMNOOPRSSTUUVYZ' \
+        'abccdefgghiijklmnooprsstuuvyz'.encode('utf-8').decode('utf-8')
 
 def invalid_chars(text, charset=alpha):
     return set(filter(lambda c: c not in charset, list(text)))

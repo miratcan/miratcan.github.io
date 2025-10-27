@@ -18,11 +18,11 @@ except ValueError:
 
 Here, the `val` variable can be an integer, a string that can be converted into an integer, or `None` (1). I thought, "If it's `None`, I'll just set it to `None`; for all other cases, I'll convert it to an integer." After all, I was *certain* that the `int` function raises a `ValueError` if it can't convert something.  
 
-Feeling smug about my logic, I didn't even bother running the code before pushing it (this is where I start yelling at myself internally). Later, I realized that **`int(None)` doesn't raise a `ValueError`—it raises a `TypeError`.** My code failed during testing.  
+Feeling smug about my logic, I didn't even bother running the code before pushing it (this is where I start yelling at myself internally). Later, I realized that **`int(None)` doesn't raise a `ValueError`--it raises a `TypeError`.** My code failed during testing.  
 
 ## Lesson Learned: Test Everything  
 
-Even if you're changing something as trivial as a quote in a single line of code, make sure you test it first. Otherwise, you'll end up like me: assuming you're a genius and realizing you were being a dummy all along. 😅
+Even if you're changing something as trivial as a quote in a single line of code, make sure you test it first. Otherwise, you'll end up like me: assuming you're a genius and realizing you were being a dummy all along. :)
 
 ---
 has_code: yes

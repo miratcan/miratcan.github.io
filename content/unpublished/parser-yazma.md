@@ -1,33 +1,33 @@
-#Python ile 50 Satırda Hesap Makinesi Yapmak
+#Python ile 50 Satirda Hesap Makinesi Yapmak
 
-Bu yazıda bir aritmetik gösterimin nasıl ayrıştırılıp incelenebileceğini, genel olarak bir ayrıştırıcının nasıl çalışabileceğini anlatacağım. İşimiz bittiğinde 1+2*-(-3+2)/5.6+3 gibi bir matematik işlemini sonuçlandırabilen bir makineye sahip olacağız.
+Bu yazida bir aritmetik gosterimin nasil ayristirilip incelenebilecegini, genel olarak bir ayristiricinin nasil calisabilecegini anlatacagim. Isimiz bittiginde 1+2*-(-3+2)/5.6+3 gibi bir matematik islemini sonuclandirabilen bir makineye sahip olacagiz.
 
-Amacım diller hakkında, basit ve eğlenceli bir ders verebilmek.
+Amacim diller hakkinda, basit ve eglenceli bir ders verebilmek.
 
 #Gramerler
 
-Ayrıştırmanın ve formal gramerlerin nasıl çalıştığını bilmeyenler için küçük bir giriş yapalım. Bir formal grammer bir metnin nasıl ayrıştırılacağına dair hirearşik bir kurallar listesidir. Her kural giriş metninin bir kısmı ile eşleşir.
+Ayristirmanin ve formal gramerlerin nasil calistigini bilmeyenler icin kucuk bir giris yapalim. Bir formal grammer bir metnin nasil ayristirilacagina dair hirearsik bir kurallar listesidir. Her kural giris metninin bir kismi ile eslesir.
 
-Aşağıda 1+2+3+4 girişini işlemek için kullanılabilecek bir kural kümesi var:
+Asagida 1+2+3+4 girisini islemek icin kullanilabilecek bir kural kumesi var:
 
-    Kural #1 - ekle, _ekle+sayı_ VEYA _sayı+sayı_ ifadelerinden oluşur.
+    Kural #1 - ekle, _ekle+sayi_ VEYA _sayi+sayi_ ifadelerinden olusur.
 
- Bu kuralı EBNF şeklinde ifade etmek istediğimizde:
+ Bu kurali EBNF seklinde ifade etmek istedigimizde:
 
-    ekleme: ekleme '+' sayı | sayı '+' sayı;
+    ekleme: ekleme '+' sayi | sayi '+' sayi;
 
-Ayrıştırıcımız her geçişte _ekleme+sayı_ veya _sayı+sayı_ desenine uyan bir bölüm arayacak, bulabildiğinde ise onu bir ekleme işlemine dönüştürecek.
+Ayristiricimiz her geciste _ekleme+sayi_ veya _sayi+sayi_ desenine uyan bir bolum arayacak, bulabildiginde ise onu bir ekleme islemine donusturecek.
 
-Şimdi adım adım tek kurallı ayrıştırıcımızı çalıştıralım:
+Simdi adim adim tek kuralli ayristiricimizi calistiralim:
 
-Adım 1:
+Adim 1:
 
-Girişimiz 1+2+3+4, şeklinde bir metindi, ayrıştırıcımız ilk geçişte bu metini [sayı(1), aritmetik('+') sayı+sayı+sayı olarak işaretler.
+Girisimiz 1+2+3+4, seklinde bir metindi, ayristiricimiz ilk geciste bu metini [sayi(1), aritmetik('+') sayi+sayi+sayi olarak isaretler.
 
-Adım 2:
+Adim 2:
 
-Kural #1'deki _ekle+sayı_ deseni şu anda hiç bir yerde gözükmese de _sayı+sayı_ desenini girişin başında var. Ayrıştırıcımız baştaki _sayı+sayı_ desenini ekleme desenine dönüştürür.
+Kural #1'deki _ekle+sayi_ deseni su anda hic bir yerde gozukmese de _sayi+sayi_ desenini girisin basinda var. Ayristiricimiz bastaki _sayi+sayi_ desenini ekleme desenine donusturur.
 
-Adım 3:
+Adim 3:
 
-Bu geçişte giriş, ekleme + sayı + sayı, ekleme kuralımızdaki ekleme+sayı
+Bu geciste giris, ekleme + sayi + sayi, ekleme kuralimizdaki ekleme+sayi

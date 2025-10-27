@@ -1,29 +1,29 @@
-title: Blogger mı Tumblr mı?
+title: Blogger mi Tumblr mi?
 ---
 author: Mirat
 ---
 body:
 
-Taa 2004 de falan bir blog sahibi olmuş, ancak "ulan insanlar benim neyimi merak etsinler?" sorusuna cevap bulamadığım için baya verimsiz kullanmıştım o blogumu. Hala da çok verimli kullanabiliyor değilim ama en azından yazdığım bazı şeylerin başka insanların işine yarayabileceğini düşünebiliyorum.
+Taa 2004 de falan bir blog sahibi olmus, ancak "ulan insanlar benim neyimi merak etsinler?" sorusuna cevap bulamadigim icin baya verimsiz kullanmistim o blogumu. Hala da cok verimli kullanabiliyor degilim ama en azindan yazdigim bazi seylerin baska insanlarin isine yarayabilecegini dusunebiliyorum.
 
-Neyse gevelemeyeyim, bir süre önce Blogger'dan Tumblr'a geçiş yaptım bütün yazılarımı da taşıdım buraya. Bunun başlıca sebebi Blogger'ın bana göre "kirli" olmasıydı.
+Neyse gevelemeyeyim, bir sure once Blogger'dan Tumblr'a gecis yaptim butun yazilarimi da tasidim buraya. Bunun baslica sebebi Blogger'in bana gore "kirli" olmasiydi.
 
-Mesela yazılarımı **html** olarak yazmayı seviyorum ama blogger benim ayarladığım canım paragraf etiketlerini (**p**) yok edip yerine **br** etiketi koyuyor. Halbu ki ben yazılarımı daha sonra temiz bir şekilde **html** olarak geri alabilmek istiyorum.
+Mesela yazilarimi **html** olarak yazmayi seviyorum ama blogger benim ayarladigim canim paragraf etiketlerini (**p**) yok edip yerine **br** etiketi koyuyor. Halbu ki ben yazilarimi daha sonra temiz bir sekilde **html** olarak geri alabilmek istiyorum.
 
-Bunun yanında blogger'ın kuvvetli bir **widget** arşivi var. Hani blogunuzun sağına soluna en "**çok okunanlar**", "**hakkımda**" falan gibi şeyler yerleştiriyorsunuz ya ondan bahsediyorum. Onlar da sorun çıkarıyor. Misal siz bağlantılarım kırmızı olsun diyorsunuz ancak gelen widget kendi **css** tanımlamalarına sahip. O widget içerisinde linkleriniz kırmızı değil de mavi çıkıyor.
+Bunun yaninda blogger'in kuvvetli bir **widget** arsivi var. Hani blogunuzun sagina soluna en "**cok okunanlar**", "**hakkimda**" falan gibi seyler yerlestiriyorsunuz ya ondan bahsediyorum. Onlar da sorun cikariyor. Misal siz baglantilarim kirmizi olsun diyorsunuz ancak gelen widget kendi **css** tanimlamalarina sahip. O widget icerisinde linkleriniz kirmizi degil de mavi cikiyor.
 
-Son olarak her ne kadar Google, Blogger'ı satın almış olduğu için arama sonuçlarında kıyak yapsa da **html** kodları sebze çorbasını andırdığı için yazılarınızın her hangi bir arama sonucunda bulunması ihtimali çok zor.
+Son olarak her ne kadar Google, Blogger'i satin almis oldugu icin arama sonuclarinda kiyak yapsa da **html** kodlari sebze corbasini andirdigi icin yazilarinizin her hangi bir arama sonucunda bulunmasi ihtimali cok zor.
 
-Bu yüzden Blogger'dan gitmek, basit ve temiz bir yerde kendim ile ilgili yazıları barındırmak istedim. Başlangıçta aklıma Django ya da Google Appengine ile yazılmış bir blog sistemi bulup çatallamak geldi. Buna zaman harcamanın manası yoktu. Alt tarafı belli statik sayfalar olacak ve yazılarımı listeleyecek bir sistem için elbet (manen ve maddi olarak) bedava bir servis bulabilirim.
+Bu yuzden Blogger'dan gitmek, basit ve temiz bir yerde kendim ile ilgili yazilari barindirmak istedim. Baslangicta aklima Django ya da Google Appengine ile yazilmis bir blog sistemi bulup catallamak geldi. Buna zaman harcamanin manasi yoktu. Alt tarafi belli statik sayfalar olacak ve yazilarimi listeleyecek bir sistem icin elbet (manen ve maddi olarak) bedava bir servis bulabilirim.
 
-Daha sonra **Tumblr**'a taşındım. Kendisi her ne kadar liseliler meme paylaşsın, poğça çeksin vintange efekt versin ortamı olarak gözükse de, normal bir yazar gibi davranabilirseniz ve komik animasyonlu gif'leri reblog etmemeyi başarabilirseniz ihtiyaçlarınızı karşılayabilecek bir platform durumunda. Template'lerin %95'i sizi fotoğraf paylaşıp ya da kısacık yazıp geçmeye güdümlüyor. Çoğu template içerisinde içerik alanı 500px lik bir ene sahip. Fontlar ufacık okunması zor. Ancak template yapısı oldukça kolay. Benim yaptığım gibi baştan bir template hazırlayabilirsiniz. Hatta baştan yazmak, var olan template'leri düzenlemekten daha kolay diyebilirim.
+Daha sonra **Tumblr**'a tasindim. Kendisi her ne kadar liseliler meme paylassin, pogca ceksin vintange efekt versin ortami olarak gozukse de, normal bir yazar gibi davranabilirseniz ve komik animasyonlu gif'leri reblog etmemeyi basarabilirseniz ihtiyaclarinizi karsilayabilecek bir platform durumunda. Template'lerin %95'i sizi fotograf paylasip ya da kisacik yazip gecmeye gudumluyor. Cogu template icerisinde icerik alani 500px lik bir ene sahip. Fontlar ufacik okunmasi zor. Ancak template yapisi oldukca kolay. Benim yaptigim gibi bastan bir template hazirlayabilirsiniz. Hatta bastan yazmak, var olan template'leri duzenlemekten daha kolay diyebilirim.
 
-Tumblr'da iki adet can sıkabilecek durum var bunlardan biri her hangi bir widget desteğinin ve yorum sisteminin olmaması.
+Tumblr'da iki adet can sikabilecek durum var bunlardan biri her hangi bir widget desteginin ve yorum sisteminin olmamasi.
 
-Örneğin "**bu yazıyı beğendiyseniz bunu da beğenebilirsiniz**" diye bir artislik yapabilmek isterdim **Tumblr**'da, ancak zaten **Tumblr**'ın Blogger gibi kullanıcıyı bir iç sirkülasyona sokmak gibi bir amacı yok. Yani kullanıcı gelsin bir yazı okusun ve gitsin diyor. Trafik kaynağı olarak kendini değil dışardaki sosyal medya hesaplarınızı ya da arama motorlarını görüyor.
+Ornegin "**bu yaziyi begendiyseniz bunu da begenebilirsiniz**" diye bir artislik yapabilmek isterdim **Tumblr**'da, ancak zaten **Tumblr**'in Blogger gibi kullaniciyi bir ic sirkulasyona sokmak gibi bir amaci yok. Yani kullanici gelsin bir yazi okusun ve gitsin diyor. Trafik kaynagi olarak kendini degil disardaki sosyal medya hesaplarinizi ya da arama motorlarini goruyor.
 
-Yorum konusuna gelince basit iyidir mantığını ben de kanıksıyorum ancak bir blog sisteminde yorum özelliğinin dahili olması gerektiğini bunun bir lüks değil ihtiyaç olduğunu düşünüyorum. **Tumblr** blogunuzda eğer yorum yapılabilmesini istiyorsanız **Disqus** kullanmanız gerekiyor. Disqus hesabı oluşturup, orda bir site yaratıp aldığınız disqus-shortname'i yapıştırıyorsunuz template değerleri alanına.&nbsp;
+Yorum konusuna gelince basit iyidir mantigini ben de kaniksiyorum ancak bir blog sisteminde yorum ozelliginin dahili olmasi gerektigini bunun bir luks degil ihtiyac oldugunu dusunuyorum. **Tumblr** blogunuzda eger yorum yapilabilmesini istiyorsaniz **Disqus** kullanmaniz gerekiyor. Disqus hesabi olusturup, orda bir site yaratip aldiginiz disqus-shortname'i yapistiriyorsunuz template degerleri alanina.&nbsp;
 
-Şimdilik bu kadar...
+Simdilik bu kadar...
 ---
 pub_date: 2012-03-09

@@ -2,9 +2,9 @@ title: Python Parallel Processing Methods: GIL and Its Children
 ---
 body:
 
-🐍 Everyone learning parallel programming in Python will eventually cross paths with it:
+:snake: Everyone learning parallel programming in Python will eventually cross paths with it:
 
-**GIL — Global Interpreter Lock**
+**GIL -- Global Interpreter Lock**
 
 GIL is a structure that has been in Python since the 1990s, allowing only one thread to execute Python code at a time, and it's something that makes us hang our heads in shame next to Golang developers.
 
@@ -12,16 +12,16 @@ GIL is a structure that has been in Python since the 1990s, allowing only one th
 
 This is why true parallelism in Python is part illusion, part workaround.
 
-## 🔹 Threading
+## * Threading
 
 Creates threads at the operating system level.
 However, due to Python's GIL, only one thread can run at a time.
 This is why threading is suitable for IO-bound operations (network, disk, API, etc.).
 Threads run independently, but results are still collected in the main process.
 
-(Bonus: automatically liking your crush's posts also counts as IO-bound 😏)
+(Bonus: automatically liking your crush's posts also counts as IO-bound ;))
 
-## 🔹 Multiprocessing
+## * Multiprocessing
 
 Creates truly separate processes, each with its own GIL.
 Ideal for CPU-bound tasks because it provides real parallelism.
@@ -30,7 +30,7 @@ If the tasks are small, it does more harm than good.
 
 In short: It should be used when "the stone you throw is worth the bird you scare."
 
-## 🔹 Asyncio
+## * Asyncio
 
 Does not create real, operating system-level threads.
 Python's event loop breaks tasks into small pieces and executes them sequentially.

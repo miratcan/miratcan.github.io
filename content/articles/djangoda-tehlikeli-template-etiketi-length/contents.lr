@@ -59,7 +59,7 @@ FROM `channel_customstream`
 
 ### Key Takeaway  
 
-Do **not** use the `length` template filter if you expect it to execute a database `COUNT` query. It doesn’t. Instead, explicitly use the `count()` method for `QuerySet` objects to avoid unnecessary memory usage and database overhead.  
+Do **not** use the `length` template filter if you expect it to execute a database `COUNT` query. It doesn't. Instead, explicitly use the `count()` method for `QuerySet` objects to avoid unnecessary memory usage and database overhead.  
 
 ---
 pub_date: 2014-01-15

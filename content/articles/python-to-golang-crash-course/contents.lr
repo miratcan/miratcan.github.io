@@ -507,7 +507,7 @@ A slice has two key properties: **length** and **capacity**.
 
 You can retrieve the length and capacity of a slice `s` using the expressions `len(s)` and `cap(s)`.
 
-Slices can be extended by re-slicing them, as long as they don’t exceed their capacity.  
+Slices can be extended by re-slicing them, as long as they don't exceed their capacity.  
 Try modifying one of the slice operations in the example program to extend the slice beyond its capacity and observe the result.
 
 

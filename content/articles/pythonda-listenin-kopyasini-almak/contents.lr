@@ -30,7 +30,7 @@ This behavior applies to objects as well. When you assign an object like this: o
 1
 ```
 
-When you want to make a copy of a variable or object, there are several methods to achieve that. The most elegant method I’ve found for copying data structures (such as lists, tuples, dictionaries, etc.) is as follows:
+When you want to make a copy of a variable or object, there are several methods to achieve that. The most elegant method I've found for copying data structures (such as lists, tuples, dictionaries, etc.) is as follows:
 
 ```python
 >>> a = ["a","b","c"]

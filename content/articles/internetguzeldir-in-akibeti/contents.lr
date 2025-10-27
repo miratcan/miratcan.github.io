@@ -6,51 +6,51 @@ has_code: no
 ---
 body:
 
-[InternetGuzeldir](https://internetguzeldir.com), çok büyük hevesle başladığım ve hayalimdeki şekli alması için baya uğraştığım bir proje oldu. Site, [900](https://github.com/miratcan/InternetGuzeldir/blob/master/rebuild.py) satırlık bir Python betiğinin bir [excel dosyası](https://docs.google.com/spreadsheets/d/1mK5BycfvwvuPcekTKIMhPKtsRa0EXe-dGeQsvok5wz4/edit?usp=sharing)nı okumasıyla ortaya çıkıyor. Benim için hem geliştirmesi hem de içerikle doldurması oldukça eğlenceliyken son bir kaç aydır soğuma yaşıyorum. Bunun üç sebebi var:
+[InternetGuzeldir](https://internetguzeldir.com), cok buyuk hevesle basladigim ve hayalimdeki sekli almasi icin baya ugrastigim bir proje oldu. Site, [900](https://github.com/miratcan/InternetGuzeldir/blob/master/rebuild.py) satirlik bir Python betiginin bir [excel dosyasi](https://docs.google.com/spreadsheets/d/1mK5BycfvwvuPcekTKIMhPKtsRa0EXe-dGeQsvok5wz4/edit?usp=sharing)ni okumasiyla ortaya cikiyor. Benim icin hem gelistirmesi hem de icerikle doldurmasi oldukca eglenceliyken son bir kac aydir soguma yasiyorum. Bunun uc sebebi var:
 
 ## 1. Google Beni Sevmiyor :)
 
-Bir web sitesini anlamlı kılan şey ziyaretçileri, ve de onun yan etkisi olarak geliridir. Gelir olarak zaten Türkçe bir site işletiyor olmaktan mütevellit bir şey beklemenin anlamı yok ama üstüne üstlük hiç bir trafik de alamıyorum. Bunu bir kaç SEO forumunda falan araştırdım sordum. Sebebi olarak Google'ın bu tip listeleme sitelerinden hiç hoşlanmadığı, direkt olarak da kalitesiz içerik olarak işaretlediği cevabını aldım. Hatta direkt Google Adsense başvurusundan red aldım.
+Bir web sitesini anlamli kilan sey ziyaretcileri, ve de onun yan etkisi olarak geliridir. Gelir olarak zaten Turkce bir site isletiyor olmaktan mutevellit bir sey beklemenin anlami yok ama ustune ustluk hic bir trafik de alamiyorum. Bunu bir kac SEO forumunda falan arastirdim sordum. Sebebi olarak Google'in bu tip listeleme sitelerinden hic hoslanmadigi, direkt olarak da kalitesiz icerik olarak isaretledigi cevabini aldim. Hatta direkt Google Adsense basvurusundan red aldim.
 
-Bu duruma gıcık olmuş olsam da bir kod parçasının bir web sitesinin içeriğini konumlandırmak için bolca metne ihtiyaç duymasını anlıyorum gibi. 
+Bu duruma gicik olmus olsam da bir kod parcasinin bir web sitesinin icerigini konumlandirmak icin bolca metne ihtiyac duymasini anliyorum gibi. 
 
-### Çözüm
+### Cozum
 
-Site içerisinde makaleler adında bir bölüm olması ve bu bölümde dizin kısmındaki link detay sayfasına link verilmesi.
+Site icerisinde makaleler adinda bir bolum olmasi ve bu bolumde dizin kismindaki link detay sayfasina link verilmesi.
 
-Örneğin:
+Ornegin:
 
-  * Gürültülü Yerlerde Çalışırken İşinizi Kolaylaştıracak 5 Uygulama
-    * Makale  İçi Bağlantılar
+  * Gurultulu Yerlerde Calisirken Isinizi Kolaylastiracak 5 Uygulama
+    * Makale  Ici Baglantilar
       * Noises Online Link Detay Sayfasi
       * Deftonic Link Detay Sayfasi
       * Soundscape World Link Detay Sayfasi
 
-## 2. Excel Kötü Fikirdi
+## 2. Excel Kotu Fikirdi
 
-Sanıyorum bu projeye ilk başladığımda şu no-code furyasından gereksiz etkilendim. Her yerde excell tablosundan site yapın, excel tablosundan ilan sitesi yapın gibi ilanlar düşüyordu önüme. Hatta [Eleman](https://github.com/miratcan/Eleman) projesini de de aynı rüzgarın etkisiyle yapmış olabilirim.
+Saniyorum bu projeye ilk basladigimda su no-code furyasindan gereksiz etkilendim. Her yerde excell tablosundan site yapin, excel tablosundan ilan sitesi yapin gibi ilanlar dusuyordu onume. Hatta [Eleman](https://github.com/miratcan/Eleman) projesini de de ayni ruzgarin etkisiyle yapmis olabilirim.
 
-Excel veritabanı olarak işimi görüyor olsa da uzun bir metin yazmak istediğimde bir hücre içerisine makale sığdırmaya çalışmak işkence oluyor. Haliyle gönderilere daha uzun, daha açıklayıcı metinle giremiyorum. Bunun haricinde veri geçerliliği kontrolü yapmak, kayıtlarda gerekli kolonları mecbur bırakmak gibi şeyler de yapılamıyor. [Şurada](https://zapier.com/blog/database-vs-spreadsheet/) güzel bir yazı var bununla ilgili.
+Excel veritabani olarak isimi goruyor olsa da uzun bir metin yazmak istedigimde bir hucre icerisine makale sigdirmaya calismak iskence oluyor. Haliyle gonderilere daha uzun, daha aciklayici metinle giremiyorum. Bunun haricinde veri gecerliligi kontrolu yapmak, kayitlarda gerekli kolonlari mecbur birakmak gibi seyler de yapilamiyor. [Surada](https://zapier.com/blog/database-vs-spreadsheet/) guzel bir yazi var bununla ilgili.
 
-### Çözüm
+### Cozum
 
-Lektor, Hugo ya da Wordpress gibi metin yazımına daha yatkın bir şeyler kullanmak. Bu blogun altyapısı olarak kullandığım ve Python ile ilgili bir sorun çıktığında daha kolay halledebildiğim için Lektor göz kırpıyor. Hala statik site üretme ve kolayca host etme derdindeyim anlayacağınız.
+Lektor, Hugo ya da Wordpress gibi metin yazimina daha yatkin bir seyler kullanmak. Bu blogun altyapisi olarak kullandigim ve Python ile ilgili bir sorun ciktiginda daha kolay halledebildigim icin Lektor goz kirpiyor. Hala statik site uretme ve kolayca host etme derdindeyim anlayacaginiz.
 
-## 3. Kategori Ağacı İşe Yaramıyor
+## 3. Kategori Agaci Ise Yaramiyor
 
-Kategori ağaçları bir şey tek bir tür ile ifade edilebiliyor ise işe yarıyor. Bunu uzun yoldan öğrendim diyebiliriz :) Örneğin [OpenRA](https://internetguzeldir.com/bilgisayarlar/oyunlar/masaustu-oyunlari/https-www-openra-net.html) linkini ele alalım. Oyun o kadar çok farklı gruba dahil ki bir kategori altında listelenmesi oldukça saçma oluyor. Hem MacOS oyunu, hem Windows Oyunu, hem masaüstü oyunu diye gidiyor liste. O yüzden kategori yerine etiket kullanmalıydım. Stackexchange'de gördüğüm bir [cevap](https://ux.stackexchange.com/questions/40334/why-is-tree-representation-of-data-becoming-unpopular) da bu konuda iyice ikna olmamı sağladı.
+Kategori agaclari bir sey tek bir tur ile ifade edilebiliyor ise ise yariyor. Bunu uzun yoldan ogrendim diyebiliriz :) Ornegin [OpenRA](https://internetguzeldir.com/bilgisayarlar/oyunlar/masaustu-oyunlari/https-www-openra-net.html) linkini ele alalim. Oyun o kadar cok farkli gruba dahil ki bir kategori altinda listelenmesi oldukca sacma oluyor. Hem MacOS oyunu, hem Windows Oyunu, hem masaustu oyunu diye gidiyor liste. O yuzden kategori yerine etiket kullanmaliydim. Stackexchange'de gordugum bir [cevap](https://ux.stackexchange.com/questions/40334/why-is-tree-representation-of-data-becoming-unpopular) da bu konuda iyice ikna olmami sagladi.
 
-### Çözüm
+### Cozum
 
-Kategoriler yerine etiketler kullanmak. Örneğin gelen biri hem türkçe, hem windowsta çalışan hem strateji oyunu arıyor ise bu üç etiketi de seçerek hoşuna giden şeyleri bulabilecek. Bu işi [itch.io'nun browse sayfası](https://itch.io/games/tag-short) oldukça iyi halletmiş gözüküyor.
+Kategoriler yerine etiketler kullanmak. Ornegin gelen biri hem turkce, hem windowsta calisan hem strateji oyunu ariyor ise bu uc etiketi de secerek hosuna giden seyleri bulabilecek. Bu isi [itch.io'nun browse sayfasi](https://itch.io/games/tag-short) oldukca iyi halletmis gozukuyor.
 
-Tabi bu durumda statik sayfa çıktısı almak imkansız hale geliyor, sayfaları dinamik olarak üretmek gerekiyor. Bu durumda da sanıyorum eski dost Django yardıma koşacak.
+Tabi bu durumda statik sayfa ciktisi almak imkansiz hale geliyor, sayfalari dinamik olarak uretmek gerekiyor. Bu durumda da saniyorum eski dost Django yardima kosacak.
 
-## Sonuç
+## Sonuc
 
- * Kategoriler kalkıyor, etiketler geliyor.
- * Site Django ile baştan yazılıyor, makaleler, linkler, etiketler geliyor.
- * SEO uyumlu makaleler yazılıyor, makaleler link arşivindeki detay sayfalarına referanslar içeriyor.
+ * Kategoriler kalkiyor, etiketler geliyor.
+ * Site Django ile bastan yaziliyor, makaleler, linkler, etiketler geliyor.
+ * SEO uyumlu makaleler yaziliyor, makaleler link arsivindeki detay sayfalarina referanslar iceriyor.
 ---
 description: 
 ---

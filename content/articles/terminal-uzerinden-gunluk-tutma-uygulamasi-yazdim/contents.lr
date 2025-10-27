@@ -6,16 +6,16 @@ has_code: yes
 ---
 body:
 
-I wanted a way to easily record and later revisit my thoughts and feelings, so I started looking for the simplest method to do so. That’s when I stumbled upon the [Daylio](https://daylio.net/) app on my phone. It’s an excellent app that allows you to log how you feel during different activities and generate insightful reports. For example, you can discover patterns like, “I feel more down when I don’t read books.” It has everything you’d expect from a good self-tracking app.
+I wanted a way to easily record and later revisit my thoughts and feelings, so I started looking for the simplest method to do so. That's when I stumbled upon the [Daylio](https://daylio.net/) app on my phone. It's an excellent app that allows you to log how you feel during different activities and generate insightful reports. For example, you can discover patterns like, "I feel more down when I don't read books." It has everything you'd expect from a good self-tracking app.
 
-But there’s a catch: I’m incredibly lazy when it comes to picking up my phone to write something down. For me, my phone is basically a device for chatting with my spouse and mom, and scrolling through Twitter in the bathroom.
+But there's a catch: I'm incredibly lazy when it comes to picking up my phone to write something down. For me, my phone is basically a device for chatting with my spouse and mom, and scrolling through Twitter in the bathroom.
 
-Since I spend most of my time in front of a computer, often staring at a terminal, I thought, “Why not build a simple app for myself to quickly jot down things I might want to remember later, just like sending a tweet?” That’s how I created this tool, which lets me save entries directly into text files with a simple command:
+Since I spend most of my time in front of a computer, often staring at a terminal, I thought, "Why not build a simple app for myself to quickly jot down things I might want to remember later, just like sending a tweet?" That's how I created this tool, which lets me save entries directly into text files with a simple command:
 
 ```bash
 $ kaydet "Today was my first day at work."```
 
-If the tool doesn’t find a file for that day in the directory you’ve set for your journal, it creates one using the current date (e.g., 2023-07-30.txt). Then, it appends your note along with a timestamp as a new line in the file:
+If the tool doesn't find a file for that day in the directory you've set for your journal, it creates one using the current date (e.g., 2023-07-30.txt). Then, it appends your note along with a timestamp as a new line in the file:
 
 ```text
 2023-07-30.txt
@@ -23,9 +23,9 @@ If the tool doesn’t find a file for that day in the directory you’ve set for
 09:03:00 Today was my first day at work.
 ```
 
-I know it’s not a groundbreaking innovation, but I really enjoy using it. Plus, I’ve started syncing my journal folder across devices using Google Drive.
+I know it's not a groundbreaking innovation, but I really enjoy using it. Plus, I've started syncing my journal folder across devices using Google Drive.
 
-If you’d like to give it a try, you can install it with this command:
+If you'd like to give it a try, you can install it with this command:
 
 ```bash
 $ pip3 install kaydet

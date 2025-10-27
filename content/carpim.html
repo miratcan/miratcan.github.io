@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Çarpım Oyunu — Miray</title>
+  <title>Carpim Oyunu -- Miray</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <style>
     :root{
@@ -37,7 +37,7 @@
       position:relative;box-shadow:var(--glow);flex:0 0 auto;
     }
     .logo::after{
-      content:"×"; position:absolute; inset:0; display:grid; place-items:center; font-weight:800; font-size:28px; color:#101020;
+      content:"x"; position:absolute; inset:0; display:grid; place-items:center; font-weight:800; font-size:28px; color:#101020;
       text-shadow:0 2px 0 rgba(255,255,255,.6);
     }
     h1{margin:0; font-size:28px; letter-spacing:.2px}
@@ -71,7 +71,7 @@
     .tbl:hover{transform:translateY(-1px)}
     .tbl input{appearance:none; width:22px;height:22px;border-radius:6px;border:2px solid #a1a6ff; display:grid; place-items:center; background:#fff}
     .tbl input:checked{background:linear-gradient(180deg, var(--brand), var(--brand2)); border-color:transparent; box-shadow:var(--glow)}
-    .tbl input:checked::after{content:"✓"; color:#fff; font-weight:900; font-size:14px}
+    .tbl input:checked::after{content:"OK"; color:#fff; font-weight:900; font-size:14px}
     .tbl b{font-size:18px}
     .row{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
     .grow{flex:1}
@@ -147,43 +147,43 @@
     <header>
       <div class="logo" aria-hidden="true"></div>
       <div>
-        <h1>Çarpım Oyunu</h1>
-        <div class="sub">Seç, başla, 10 soruyu en hızlı sen bitir!</div>
+        <h1>Carpim Oyunu</h1>
+        <div class="sub">Sec, basla, 10 soruyu en hizli sen bitir!</div>
       </div>
     </header>
 
-    <nav class="tabs" role="tablist" aria-label="Bölümler">
+    <nav class="tabs" role="tablist" aria-label="Bolumler">
       <button class="tab active" data-tab="play" role="tab" aria-selected="true">Oyna</button>
       <button class="tab" data-tab="scores" role="tab" aria-selected="false">Skorlar</button>
-      <button class="tab" data-tab="stats" role="tab" aria-selected="false">İstatistikler</button>
+      <button class="tab" data-tab="stats" role="tab" aria-selected="false">Istatistikler</button>
     </nav>
 
     <!-- PLAY TAB -->
     <section id="tab-play" class="grid two" role="tabpanel" aria-labelledby="Oyna">
       <div class="card" id="setup">
-        <h2>Hangi çarpımları çalışalım?</h2>
-        <div class="note">En az birini seç. Başlayınca menü saklanır, oyun ekranı açılır.</div>
+        <h2>Hangi carpimlari calisalim?</h2>
+        <div class="note">En az birini sec. Baslayinca menu saklanir, oyun ekrani acilir.</div>
         <div class="table-list" id="tableList"></div>
         <div class="row" style="margin-top:12px">
           <div class="grow"></div>
-          <button class="btn secondary" id="selectAll">Tümünü Seç</button>
+          <button class="btn secondary" id="selectAll">Tumunu Sec</button>
           <button class="btn ghost" id="clearAll">Temizle</button>
-          <button class="btn" id="startBtn">Başla</button>
+          <button class="btn" id="startBtn">Basla</button>
         </div>
-        <div class="warn" id="setupWarn" style="display:none;margin-top:8px">En az bir tablo seçmelisin.</div>
+        <div class="warn" id="setupWarn" style="display:none;margin-top:8px">En az bir tablo secmelisin.</div>
       </div>
 
       <div class="card game" id="game">
         <div class="row" style="justify-content:space-between; margin-bottom:10px">
           <div class="pill">Soru: <span id="qIndex">1</span> / 10</div>
-          <div class="pill">Süre: <span class="timer" id="runTimer">00.0</span></div>
+          <div class="pill">Sure: <span class="timer" id="runTimer">00.0</span></div>
         </div>
-        <div class="progress" aria-label="İlerleme">
+        <div class="progress" aria-label="Ilerleme">
           <div class="bar" id="bar"></div>
         </div>
 
         <div class="qbox" style="margin-top:14px">
-          <div class="ask" id="question">3 × 5 = ?</div>
+          <div class="ask" id="question">3 x 5 = ?</div>
           <div class="ans-row">
             <input class="answer" id="answer" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Cevap kutusu" />
             <button class="btn" id="nextBtn">Sonraki</button>
@@ -196,12 +196,12 @@
         <div class="trophy" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M6 2h12v3h3v3c0 2.8-2.2 5-5 5-.8 2.3-2.9 4-5.4 4H10v2h4v2H6v-2h4v-2H9.4C6.4 17 4 14.6 4 11.6V5H1V2h5zm14 5V5h-2v3c0 .3 0 .7-.1 1.1 1.2-.4 2.1-1.6 2.1-3.1zM6 8V5H4v2c0 1.5.9 2.7 2.1 3.1C6 8.7 6 8.3 6 8z"/></svg>
         </div>
-        <h2 style="text-align:center;margin:6px 0 2px">Bitti! Toplam Süre</h2>
+        <h2 style="text-align:center;margin:6px 0 2px">Bitti! Toplam Sure</h2>
         <div class="finish-time" id="finishTime" style="text-align:center">00.0 sn</div>
         <div class="note" style="text-align:center;margin-top:6px" id="finishNote"></div>
         <div class="row" style="justify-content:center;margin-top:14px">
           <button class="btn secondary" id="playAgain">Yeni Oyun</button>
-          <button class="btn" id="gotoScores">Skorları Gör</button>
+          <button class="btn" id="gotoScores">Skorlari Gor</button>
         </div>
       </div>
     </section>
@@ -210,33 +210,33 @@
     <section id="tab-scores" class="hidden" role="tabpanel" aria-labelledby="Skorlar">
       <div class="card">
         <h2>Skorlar</h2>
-        <div class="note">Her tablo başlığı altında en iyi süreler ve tarihleri saklıyoruz.</div>
+        <div class="note">Her tablo basligi altinda en iyi sureler ve tarihleri sakliyoruz.</div>
         <div class="score-grid" id="scoresGrid"></div>
         <div class="row" style="margin-top:10px">
-          <button class="btn secondary" id="resetData">Tüm Verileri Sil</button>
+          <button class="btn secondary" id="resetData">Tum Verileri Sil</button>
         </div>
       </div>
     </section>
 
     <!-- STATS TAB -->
-    <section id="tab-stats" class="hidden" role="tabpanel" aria-labelledby="İstatistikler">
+    <section id="tab-stats" class="hidden" role="tabpanel" aria-labelledby="Istatistikler">
       <div class="grid two">
         <div class="card">
-          <h2>En Hızlı Yanıtlanan Sorular</h2>
-          <div class="note">En düşük ortalama süreye göre sıralı (en az 3 kez cevaplananlar).</div>
+          <h2>En Hizli Yanitlanan Sorular</h2>
+          <div class="note">En dusuk ortalama sureye gore sirali (en az 3 kez cevaplananlar).</div>
           <div class="table-wrap" style="overflow:auto">
             <table id="fastTable">
-              <thead><tr><th>Soru</th><th>Ortalama Süre</th><th>Doğru Sayısı</th><th>Yanlış Denemeler</th></tr></thead>
+              <thead><tr><th>Soru</th><th>Ortalama Sure</th><th>Dogru Sayisi</th><th>Yanlis Denemeler</th></tr></thead>
               <tbody></tbody>
             </table>
           </div>
         </div>
         <div class="card">
-          <h2>En Çok Zorlanılan Sorular</h2>
-          <div class="note">En yüksek ortalama süreye göre sıralı (en az 3 kez cevaplananlar).</div>
+          <h2>En Cok Zorlanilan Sorular</h2>
+          <div class="note">En yuksek ortalama sureye gore sirali (en az 3 kez cevaplananlar).</div>
           <div class="table-wrap" style="overflow:auto">
             <table id="hardTable">
-              <thead><tr><th>Soru</th><th>Ortalama Süre</th><th>Doğru Sayısı</th><th>Yanlış Denemeler</th></tr></thead>
+              <thead><tr><th>Soru</th><th>Ortalama Sure</th><th>Dogru Sayisi</th><th>Yanlis Denemeler</th></tr></thead>
               <tbody></tbody>
             </table>
           </div>
@@ -245,7 +245,7 @@
     </section>
   </div>
 
-  <footer>Miray için Babası Tarafından Üretilmiştir &lt;3</footer>
+  <footer>Miray icin Babasi Tarafindan Uretilmistir &lt;3</footer>
   <div class="confetti" id="confetti" aria-hidden="true"></div>
 
   <script>
@@ -400,7 +400,7 @@
 
   function showQuestion(){
     const {a,b} = questions[qIndex];
-    questionEl.textContent = `${a} × ${b} = ?`;
+    questionEl.textContent = `${a} x ${b} = ?`;
     answerEl.value = '';
     wrongAttempts = 0;
     qStartedAt = Date.now();
@@ -429,7 +429,7 @@
   function handleNext(){
     const val = parseInt((answerEl.value||'').trim(),10);
     if(Number.isNaN(val)){
-      msgEl.textContent = 'Bir sayı yaz :)';
+      msgEl.textContent = 'Bir sayi yaz :)';
       msgEl.className = 'msg bad';
       answerEl.classList.remove('shake'); void answerEl.offsetWidth; answerEl.classList.add('shake');
       answerEl.focus();
@@ -441,7 +441,7 @@
       // record question time including wrong attempts
       const qTime = Date.now()-qStartedAt;
       currentSession.questions.push({a,b,timeMs:qTime, wrongs: wrongAttempts});
-      msgEl.textContent = 'Harika! Doğru.';
+      msgEl.textContent = 'Harika! Dogru.';
       msgEl.className = 'msg good';
       celebrate();
 
@@ -499,7 +499,7 @@
     // Update pairs stats
     const pairs = readStore(KEYS.PAIRS, {});
     for(const q of currentSession.questions){
-      const key = `${q.a}×${q.b}`;
+      const key = `${q.a}x${q.b}`;
       if(!pairs[key]) pairs[key] = { total:0, totalTimeMs:0, wrongs:0 };
       pairs[key].total++;
       pairs[key].totalTimeMs += q.timeMs;
@@ -509,7 +509,7 @@
 
     // Show finish
     finishTimeEl.textContent = fmtTime(totalMs);
-    finishNoteEl.textContent = `Seçilen tablolar: ${selection.map(x=>x+"’ler").join(', ')}`;
+    finishNoteEl.textContent = `Secilen tablolar: ${selection.map(x=>x+"'ler").join(', ')}`;
     gameEl.classList.add('hidden');
     finishEl.classList.remove('hidden');
 
@@ -527,8 +527,8 @@
     for(let k=1;k<=9;k++){
       const list = lb[k]||[];
       html += `<div class="score-card">
-        <h3>${k}×?</h3>
-        ${list.length===0 ? '<div class="note">Henüz skor yok.</div>' :
+        <h3>${k}x?</h3>
+        ${list.length===0 ? '<div class="note">Henuz skor yok.</div>' :
         `<ul class="score-list">
           ${list.map(item=>`<li><span class="time">${fmtTime(item.timeMs)}</span><span class="date">${new Date(item.dateISO).toLocaleString('tr-TR', trDateOpts)}</span></li>`).join('')}
         </ul>`}
@@ -543,7 +543,7 @@
     const arr = Object.entries(pairs).map(([k, v])=>{
       const avg = v.totalTimeMs / v.total;
       return {key:k, avgMs:avg, total:v.total, wrongs:v.wrongs};
-    }).filter(x=>x.total>=3); // en az 3 kere çözülmüşler
+    }).filter(x=>x.total>=3); // en az 3 kere cozulmusler
     const fastest = [...arr].sort((a,b)=>a.avgMs-b.avgMs).slice(0,12);
     const hardest = [...arr].sort((a,b)=>b.avgMs-a.avgMs).slice(0,12);
 
@@ -554,8 +554,8 @@
       <td>${r.wrongs}</td>
     </tr>`;
 
-    fastTable.innerHTML = fastest.map(row).join('') || `<tr><td colspan="4" class="note" style="padding:12px">İstatistik için yeterli veri yok.</td></tr>`;
-    hardTable.innerHTML = hardest.map(row).join('') || `<tr><td colspan="4" class="note" style="padding:12px">İstatistik için yeterli veri yok.</td></tr>`;
+    fastTable.innerHTML = fastest.map(row).join('') || `<tr><td colspan="4" class="note" style="padding:12px">Istatistik icin yeterli veri yok.</td></tr>`;
+    hardTable.innerHTML = hardest.map(row).join('') || `<tr><td colspan="4" class="note" style="padding:12px">Istatistik icin yeterli veri yok.</td></tr>`;
   }
 
   // ---------- Events ----------
@@ -579,7 +579,7 @@
   });
 
   resetBtn.addEventListener('click', ()=>{
-    if(confirm('Tüm skor ve istatistikleri silmek istediğine emin misin?')){
+    if(confirm('Tum skor ve istatistikleri silmek istedigine emin misin?')){
       localStorage.removeItem(KEYS.LB);
       localStorage.removeItem(KEYS.PAIRS);
       localStorage.removeItem(KEYS.SESS);

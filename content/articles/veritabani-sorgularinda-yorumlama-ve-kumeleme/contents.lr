@@ -11,7 +11,7 @@ Annotations allow you to enrich your querysets by adding calculated fields, whil
 
 ## Example: Tracking User Transactions
 
-Let’s consider a model named `Transaction` designed to record a user’s income and expenses:
+Let's consider a model named `Transaction` designed to record a user's income and expenses:
 
 ```python
 from django.contrib.auth.models import User
@@ -49,7 +49,7 @@ Transaction.objects.create(
 )
 ```
 
-The user now has three transactions recorded in the database. Let’s calculate the total balance by leveraging Django's aggregation functions.
+The user now has three transactions recorded in the database. Let's calculate the total balance by leveraging Django's aggregation functions.
 
 ## Step 2: Calculating Total Balance with Aggregation
 
@@ -78,7 +78,7 @@ user_x.balance
 
 ### What Does This Query Do?
 
-Here’s what Django is instructed to do:
+Here's what Django is instructed to do:
 
 > Fetch the `User` object and calculate the sum of `balance` values from the related `Transaction` objects. Add this value as a new field named `balance`.
 
@@ -91,7 +91,7 @@ Django supports several aggregation functions to meet diverse needs:
 - **`Max`**: Find the maximum value.
 - **`Avg`**: Compute the average value.
 
-These tools make Django’s ORM incredibly flexible for data analysis and reporting.
+These tools make Django's ORM incredibly flexible for data analysis and reporting.
 
 ## Why Use Django's ORM for Aggregations?
 
@@ -99,11 +99,11 @@ Using Django's built-in ORM for aggregations is not only convenient but also ens
 
 ## Learn More About Django Aggregations
 
-Django’s aggregation framework is powerful and well-documented. For a deeper dive, visit the official documentation:
+Django's aggregation framework is powerful and well-documented. For a deeper dive, visit the official documentation:
 
 [https://docs.djangoproject.com/en/dev/topics/db/aggregation/](https://docs.djangoproject.com/en/dev/topics/db/aggregation/)
 
-By mastering these techniques, you can write cleaner, more efficient code while making the most of Django’s capabilities for handling complex data operations.
+By mastering these techniques, you can write cleaner, more efficient code while making the most of Django's capabilities for handling complex data operations.
 
 ---
 pub_date: 2012-02-25

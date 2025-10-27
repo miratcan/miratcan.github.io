@@ -45,14 +45,14 @@ A bookmarking and sharing service designed for following topics instead of peopl
 
 ## Bavula Ne Koysam?
 
-A simple web application to help create a packing list for travel. It’s still [online](http://bavulanekoysam.appspot.com). I initially wrote it using App Engine, but I plan to rewrite it to function solely as a frontend application.
+A simple web application to help create a packing list for travel. It's still [online](http://bavulanekoysam.appspot.com). I initially wrote it using App Engine, but I plan to rewrite it to function solely as a frontend application.
 
  * [Web Archive](https://web.archive.org/web/20210515145133/https://bavulanekoysam.appspot.com/)
  * [Github](https://github.com/miratcan/BavulaNeKoysam)
 
 ## Filika
 
-A terminal application I wrote for backing up FriendFeed accounts as it was shutting down. It also downloaded all shared images and MP3s. To ensure compatibility on all users' computers, I only used standard Python libraries. It’s no longer functional since FriendFeed has closed, but it may interest those working with APIs and downloads.
+A terminal application I wrote for backing up FriendFeed accounts as it was shutting down. It also downloaded all shared images and MP3s. To ensure compatibility on all users' computers, I only used standard Python libraries. It's no longer functional since FriendFeed has closed, but it may interest those working with APIs and downloads.
 
  * [GitHub](https://gist.github.com/miratcan/89aff1ae486e91dd0ca8).
 
