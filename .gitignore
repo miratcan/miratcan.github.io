@@ -1,5 +1,5 @@
-# Lektor build cache (only ignore cache, keep build output)
-build/.lektor/
+# Lektor build directory (GitHub Actions handles building)
+build/
 
 # Lektor deployment scratch worktrees
 temp/
