@@ -6,7 +6,7 @@
 {% block description %}{{ this.description|truncate(155) or this.body|striptags|truncate(155) }}{% endblock %}
 {% block extra_head %}
   {% if this.has_code %}
-    <link rel="stylesheet" href="{{ get_pygments_stylesheet()|url }}">
+    <link rel="stylesheet" href="{{ "static/pygments.css"|asseturl }}">
   {% endif %}
 {% endblock %}
 {% block meta_img %}{% if this.attachments.get('hero.png') %}{{ this.attachments.get('hero.png').path}}{% endif %}{% if this.attachments.get('hero.jpg') %}{{ this.attachments.get('hero.jpg').path}}{% endif %}{% endblock %}
