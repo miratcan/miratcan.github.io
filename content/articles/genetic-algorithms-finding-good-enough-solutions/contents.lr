@@ -1,0 +1,314 @@
+title: Genetic Algorithms: Finding Good Enough Solutions
+---
+body:
+
+I know we live in the AI era; it almost feels like every article must be about it. Yet computer science has algorithms that can solve many problems brilliantly. I believe two of the most important are "Genetic Algorithms" and "Wave Function Collapse." I will talk about wave function collapse in another article, but here I want to discuss genetic algorithms.
+
+## What Are Genetic Algorithms Good For?
+
+When you face a problem, you may not need the perfect solution. If you want the absolute best answer, you can use brute force (trial and error); however, trying every possibility one by one is often practically impossible. Let me give you a few examples:
+
+- Visiting every store in a shopping mall with the least walking distance. (My wife does this automatically, but still)
+- Determining the most efficient room layout (furniture placement).
+- Planning a tour among cities to visit on vacation with the shortest route. (I prefer sticking to one place and having fries and beer until the vacation ends, but someone must need this)
+- Scheduling daily tasks in an order that finishes them in the shortest time.
+- Meeting all household needs in the best way with a limited budget.
+
+This is where genetic algorithms come in: Instead of trying every possibility one by one, they produce "good enough" solutions through an evolution process inspired by nature.
+
+## How Does a Genetic Algorithm Work?
+
+Let's proceed with a very simple problem and its solution. Suppose we are trying to obtain 6 single-digit numbers that sum to 30. Yes, I know this can be solved with brute force, but let's keep it simple to learn.
+
+Our possible solutions would look like this:
+
+```
+5 + 5 + 5 + 5 + 5 + 5 = 30
+7 + 3 + 5 + 1 + 9 + 5 = 30
+1 + 1 + 1 + 9 + 9 + 9 = 30
+...
+...
+```
+
+To solve a problem with a genetic algorithm, you must be able to represent solution candidates (i.e., individuals) in a suitable way, usually as an array or similar structure. In fact, in most applications this representation is a one-dimensional vector (array) because it is easier to process.
+
+In this example, we can express our solution sets as arrays like this:
+
+```python
+[[5, 5, 5, 5, 5, 5], [7, 3, 5, 1, 9, 5], [1, 1, 1, 9, 9, 9]]
+```
+
+These are our possible solution sets that sum to 30. All these arrays are arranged to give a total of 30. So what will we do to reach a solution with a genetic algorithm?
+
+### 1. Creating a Population
+
+Creating a population simply means producing random solution sets.
+
+```python
+from random import randint
+
+POPULATION_SIZE = 10
+NUM_OF_GENES = 6
+
+# Function that produces random digits from 0-9
+figure = lambda: randint(0, 9)
+
+population = []
+for i in range(POPULATION_SIZE):
+    individual = []
+    for j in range(NUM_OF_GENES):
+        individual.append(figure())
+    population.append(individual)
+
+print(population)
+```
+
+The screen output will look something like this:
+
+```
+[[8, 6, 3, 3, 4, 2], [2, 8, 4, 6, 6, 3], [8, 9, 3, 4, 4, 2]]
+```
+
+Each row is a solution candidate. Now we will evaluate them.
+
+### 2. Fitness Function
+
+The next stage is writing a function that measures how fit each individual in the population is. This is called the fitness function.
+
+With a simple change, we score how close the individual is to the target we are trying to reach.
+
+Why do we do this?
+
+By scoring all individuals, we can determine whose children will be passed to the next generation.
+
+In our example, the fitness should give a higher score the closer the sum of the array is to 30. In Python, it would be written like this:
+
+```python
+TARGET_SUM = 30
+
+def calculate_fitness(individual):
+    total = sum(individual)
+    return abs(TARGET_SUM - total)
+
+fitness_values = [calculate_fitness(individual) for individual in population]
+
+for i, individual in enumerate(population):
+    print(f"Individual {i+1}: {individual} - Fitness: {fitness_values[i]}")
+```
+
+In the output below, Individual 2 and Individual 3 are closer to our solution. The smaller the fitness, the closer our solution is to perfect.
+
+```
+Individual 1: [8, 6, 3, 3, 4] - Fitness: 6
+Individual 2: [2, 8, 4, 6, 6] - Fitness: 4
+Individual 3: [8, 9, 3, 4, 4] - Fitness: 4
+```
+
+### 3. Selection Stage
+
+Now we move to the next stage of our genetic algorithm: In this stage, we will determine how fit the individuals in the population are and decide whose children will pass to the next generation.
+
+There are various methods used when making this decision: Tournament Selection, Roulette Selection, Elitist Selection, etc. I will not go into all of them to avoid lengthening the article, but we will use Tournament Selection here.
+
+When making Tournament Selection, the decision is not just about selecting the best individuals.
+
+Just like in real life, some struggle for everything while others can progress far enough to reproduce just because they are lucky.
+
+I think the part I love about genetic algorithms might be that they work like a small simulation of real life.
+
+Anyway, this stage of the genetic algorithm is called selection.
+
+Individuals with higher fitness values are more likely to pass their genes to the next generation. However, this does not mean that individuals with lower fitness values will be completely excluded.
+
+Because sometimes low-fitness individuals also contribute to the process by preserving evolutionary diversity.
+
+```python
+import random
+
+# Fitness calculation function
+def calculate_fitness(individual):
+    # We wrote this above.
+
+def tournament_selection(population, tournament_size):
+    selected = []
+
+    # Get the best half through tournament selection
+    for _ in range(len(population) // 2):
+        # Select 'tournament_size' random individuals
+        tournament = random.sample(population, tournament_size)
+
+        # Select the best individual in the tournament (the one with the highest fitness)
+        best = max(tournament, key=calculate_fitness)
+        selected.append(best)
+
+    # Select the remaining half randomly
+    while len(selected) < len(population):
+        individual = random.choice(population)
+        selected.append(individual)
+
+    return selected
+
+# Example usage:
+population = [
+    [8, 6, 3, 3, 4],  # Individual 1
+    [2, 8, 4, 6, 6],  # Individual 2
+    [8, 9, 3, 4, 4],  # Individual 3
+    [7, 2, 6, 1, 5],  # Individual 4
+    [5, 5, 5, 5, 5],  # Individual 5
+    [9, 1, 8, 7, 6],  # Individual 6
+]
+
+tournament_size = 3
+new_population = tournament_selection(population, tournament_size)
+
+# Print the new population
+for i, individual in enumerate(new_population):
+    fitness = calculate_fitness(individual)
+    print(f"Individual {i+1}: {individual} - Fitness: {fitness}")
+```
+
+### 4. Crossover Stage (Marriage)
+
+Now we have a list of selected individuals, what we will do is pair these individuals.
+
+There are methods like single-point crossover, two-point crossover, etc., but we will use single-point crossover in this article.
+
+So how do we do crossover? By mixing the genes of selected individuals to produce new children.
+
+In the simplest form, we can crossover the genes of two individuals like this:
+
+```python
+from random import randint
+
+def crossover(parent1, parent2):
+    crossover_point = randint(1, NUM_OF_GENES - 1)
+    child = parent1[:crossover_point] + parent2[crossover_point:]
+    return child
+```
+
+For example, we can expand from the previous generation to collect individuals and create a new generation from their children like this:
+
+```python
+def create_new_generation(population, tournament_size):
+    selected_parents = tournament_selection(population, tournament_size)
+    new_generation = []
+
+    # Create new individuals through crossover
+    for i in range(0, len(selected_parents), 2):
+        parent1 = selected_parents[i]
+        parent2 = selected_parents[i + 1] if i + 1 < len(selected_parents) else selected_parents[0]
+
+        child = crossover(parent1, parent2)
+        new_generation.append(child)
+
+    return new_generation
+```
+
+### 5. Mutation
+
+Just like in evolution, sometimes random changes happen. These can cause even weak individuals to sometimes turn into very strong individuals.
+
+Mutating an individual would be something like this:
+
+```python
+MUTATION_RATE = 0.1
+
+def mutate(individual):
+    if randint(0, 100) < MUTATION_RATE * 100:
+        mutation_point = randint(0, NUM_OF_GENES - 1)
+        individual[mutation_point] = figure()
+    return individual
+```
+
+If we add this mutation to our new generation creation function:
+
+```python
+def create_new_generation(population, tournament_size):
+    selected_parents = tournament_selection(population, tournament_size)
+    new_generation = []
+
+    # Create new individuals through crossover
+    for i in range(0, len(selected_parents), 2):
+        parent1 = selected_parents[i]
+        parent2 = selected_parents[i + 1] if i + 1 < len(selected_parents) else selected_parents[0]
+
+        # Create new child through crossover
+        child = crossover(parent1, parent2)
+
+        # Apply mutation
+        mutated_child = mutate(child)
+
+        # Add to new generation
+        new_generation.append(mutated_child)
+
+    return new_generation
+```
+
+### 6. Loop: Continuing Evolution
+
+Now we have everything we need to run an evolution. We will try to find the best solution by applying all these steps repeatedly.
+
+```python
+for generation in range(100):  # Run for 100 generations
+    # Calculate fitness values of the population
+    fitness_values = [calculate_fitness(individual) for individual in population]
+
+    # Find the best individual
+    best_fit = min(fitness_values)
+    best_index = fitness_values.index(best_fit)
+    best_individual = population[best_index]
+
+    print(f"Generation {generation}: Best Fitness = {best_fit} - {best_individual}")
+
+    if best_fit == 0:
+        break  # Perfect solution found
+
+    # Select new population with tournament selection
+    selected = tournament_selection(population, TOURNAMENT_SIZE)
+    next_generation = []
+
+    # Create new generation with crossover and mutation
+    for i in range(0, POPULATION_SIZE, 2):
+        parent1 = selected[i]
+        parent2 = selected[i+1] if i+1 < len(selected) else selected[0]
+        child1 = mutate(crossover(parent1, parent2))
+        child2 = mutate(crossover(parent2, parent1))
+
+        next_generation.append(child1)
+        next_generation.append(child2)
+
+    # Assign new generation as current population
+    population = next_generation
+```
+
+## Explanations
+
+- **Initial Population**: The `create_initial_population` function creates a population of random individuals of a certain size. Each individual contains random values between 0-9.
+- **Fitness Calculation**: In each generation, the fitness values of all individuals in the population are calculated. Fitness represents the sum of each individual's genetic information.
+- **Tournament Selection**: The `tournament_selection` function selects `tournament_size` random individuals from the population and chooses the one with the best fitness value among them.
+- **Crossover**: The `crossover` function produces a child individual from two parents. The child is formed by combining the parents' genetic information.
+- **Mutation**: The `mutate` function randomly changes each individual with a certain probability (mutation rate).
+- **Genetic Algorithm Loop**: The algorithm runs for a certain number of generations, selecting the best individuals in each generation and creating a new generation.
+
+## Example Output
+
+The output will show the best fitness value in each generation and the best individual in that generation. For example:
+
+```
+Generation 0: Best Fitness = 18 - [8, 6, 3, 3, 4]
+Generation 1: Best Fitness = 20 - [9, 4, 3, 2, 2]
+Generation 2: Best Fitness = 23 - [7, 7, 4, 5, 2]
+...
+Generation 99: Best Fitness = 0 - [0, 0, 0, 0, 0]
+```
+
+This structure will enable the population to produce better solutions over time. If there is interest in the article, I will share fully working code. I would love to hear your feedback!
+
+---
+tags: python-notes
+---
+has_code: yes
+---
+pub_date: 2025-04-28
+---
+meta_desc: How genetic algorithms use evolution-inspired processes to find good-enough solutions for complex optimization problems without brute force.
