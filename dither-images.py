@@ -49,8 +49,12 @@ def dither_image(filepath, max_width=500, dark_color=(0, 0, 0), light_color=(178
 
         # Save as PNG for clean 2-color output (no JPEG artifacts)
         # Change extension to .png if needed
+        original_filepath = filepath
         if filepath.lower().endswith(('.jpg', '.jpeg')):
             filepath = filepath.rsplit('.', 1)[0] + '.png'
+            # Remove old JPEG file after converting to PNG
+            if original_filepath != filepath and os.path.exists(original_filepath):
+                os.remove(original_filepath)
 
         colored.save(filepath, 'PNG', optimize=True)
         return True
@@ -77,6 +81,34 @@ def process_directory(build_path):
     return processed_count, skipped_count
 
 
+def fix_html_image_references(build_path):
+    """Fix HTML files to reference .png instead of .jpg/.jpeg"""
+    fixed_count = 0
+    for root, dirs, files in os.walk(build_path):
+        for filename in files:
+            if filename.endswith('.html'):
+                filepath = os.path.join(root, filename)
+                try:
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        content = f.read()
+
+                    # Replace .jpg and .jpeg with .png in image references
+                    original_content = content
+                    content = content.replace('.jpg"', '.png"')
+                    content = content.replace('.jpeg"', '.png"')
+                    content = content.replace('.jpg)', '.png)')
+                    content = content.replace('.jpeg)', '.png)')
+
+                    if content != original_content:
+                        with open(filepath, 'w', encoding='utf-8') as f:
+                            f.write(content)
+                        fixed_count += 1
+                except Exception as e:
+                    print(f"Warning: Could not fix HTML references in {filepath}: {e}")
+
+    return fixed_count
+
+
 if __name__ == '__main__':
     build_path = sys.argv[1] if len(sys.argv) > 1 else 'build'
 
@@ -89,3 +121,8 @@ if __name__ == '__main__':
     print(f"✓ Dithered {processed} images")
     if skipped > 0:
         print(f"⚠ Skipped {skipped} images due to errors")
+
+    # Fix HTML references to point to .png files
+    print("Fixing HTML image references...")
+    fixed = fix_html_image_references(build_path)
+    print(f"✓ Fixed {fixed} HTML files")
