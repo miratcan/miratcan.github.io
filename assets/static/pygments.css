@@ -1,104 +1,103 @@
-.highlight,
-div.hll {
+.hll {
   background: #111;
   color: var(--c7);
 }
 
-div.hll {
+.hll {
   margin: 1rem 0;
 }
 
-div.hll pre {
+.hll pre {
   margin: 0;
 }
 
-.highlight .hll {
+.hll .hll {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-.highlight .c,
-.highlight .ch,
-.highlight .cm,
-.highlight .c1,
-.highlight .cs {
+.hll .c,
+.hll .ch,
+.hll .cm,
+.hll .c1,
+.hll .cs {
   color: var(--c8);
   font-style: italic;
 }
 
-.highlight .err {
+.hll .err {
   color: var(--c5);
   border-bottom: 1px dotted var(--c5);
 }
 
-.highlight .k,
-.highlight .kc,
-.highlight .kd,
-.highlight .kn,
-.highlight .kp,
-.highlight .kr,
-.highlight .kt,
-.highlight .ow {
+.hll .k,
+.hll .kc,
+.hll .kd,
+.hll .kn,
+.hll .kp,
+.hll .kr,
+.hll .kt,
+.hll .ow {
   color: var(--c9);
   font-weight: 600;
 }
 
-.highlight .o,
-.highlight .go,
-.highlight .gp {
+.hll .o,
+.hll .go,
+.hll .gp {
   color: var(--c15);
 }
 
-.highlight .gh,
-.highlight .na,
-.highlight .nc,
-.highlight .ne,
-.highlight .nf,
-.highlight .nn {
+.hll .gh,
+.hll .na,
+.hll .nc,
+.hll .ne,
+.hll .nf,
+.hll .nn {
   color: var(--c4);
   font-weight: 600;
 }
 
-.highlight .nb,
-.highlight .bp,
-.highlight .nv,
-.highlight .vc,
-.highlight .vg,
-.highlight .vi,
-.highlight .vm {
+.hll .nb,
+.hll .bp,
+.hll .nv,
+.hll .vc,
+.hll .vg,
+.hll .vi,
+.hll .vm {
   color: var(--c10);
 }
 
-.highlight .m,
-.highlight .mf,
-.highlight .mh,
-.highlight .mi,
-.highlight .mo,
-.highlight .il {
+.hll .m,
+.hll .mf,
+.hll .mh,
+.hll .mi,
+.hll .mo,
+.hll .il {
   color: var(--c14);
 }
 
-.highlight .s,
-.highlight .sa,
-.highlight .sb,
-.highlight .sc,
-.highlight .sd,
-.highlight .se,
-.highlight .sh,
-.highlight .si,
-.highlight .sr,
-.highlight .s1,
-.highlight .s2 {
+.hll .s,
+.hll .sa,
+.hll .sb,
+.hll .sc,
+.hll .sd,
+.hll .se,
+.hll .sh,
+.hll .si,
+.hll .sr,
+.hll .s1,
+.hll .s2 {
   color: var(--c6);
 }
 
-.highlight .gi {
+.hll .gi {
   color: var(--c3);
 }
 
-.highlight .gd {
+.hll .gd {
   color: var(--c5);
 }
 
-.highlight .w {
+.hll .w {
   color: inherit;
 }
