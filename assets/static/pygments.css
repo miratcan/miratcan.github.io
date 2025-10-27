@@ -1,18 +1,17 @@
 .hll {
-  background: #111;
+  background: var(--c0);
   color: var(--c7);
-}
-
-.hll {
   margin: 1rem 0;
 }
 
 .hll pre {
+  background: inherit;
   margin: 0;
 }
 
 .hll .hll {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.12);
+  background-color: color-mix(in srgb, var(--c15) 12%, transparent);
 }
 
 .hll .c,
