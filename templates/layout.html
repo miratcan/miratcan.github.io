@@ -3,11 +3,6 @@
 
 <head>
   <style>
-    @font-face {
-      font-family: Dos;
-      src: url(/dos.ttf);
-    }
-
     :root {
       --c0: #000000;
       --c1: #000080;
@@ -78,13 +73,13 @@
     body {
       background: var(--c0);
       color: var(--c7);
-      font-family: 'Dos', monospace;
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       font-size: var(--fs);
       line-height: var(--lh);
       vertical-align: center;
-      font-smooth: never;
-      -webkit-font-smoothing: none;
-      letter-spacing: -1px;
+      font-smoothing: auto;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: normal;
     }
 
     pre {
