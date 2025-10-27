@@ -13,11 +13,17 @@ except ImportError:
     sys.exit(1)
 
 
-def dither_image(filepath):
+def dither_image(filepath, max_width=500):
     """Apply dithering to a single image"""
     try:
         # Open image
         img = Image.open(filepath)
+
+        # Resize if width > max_width while maintaining aspect ratio
+        if img.width > max_width:
+            aspect_ratio = img.height / img.width
+            new_height = int(max_width * aspect_ratio)
+            img = img.resize((max_width, new_height), Image.LANCZOS)
 
         # Convert to RGB if needed (handles RGBA, palette mode, etc)
         if img.mode not in ('RGB', 'L'):
