@@ -37,6 +37,8 @@ jobs:
           python-version: '3.x'
       - name: Install Lektor
         run: pip install lektor
+      - name: Install Lektor plugins
+        run: lektor plugins reinstall
       - name: Install Pillow for dithering
         run: pip install Pillow
       - name: Build site
