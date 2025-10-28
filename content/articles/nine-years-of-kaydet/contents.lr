@@ -1,0 +1,330 @@
+title: Nine Years of Kaydet: From Simple Python Script to AI-Ready Personal Diary
+---
+body:
+
+I have been keeping a personal diary since 2016. Not in a notebook, not in Notion, not in any web app—but in my terminal. The tool I built for this, Kaydet (Turkish for "save"), started as a simple vim wrapper and evolved into something far more interesting: a terminal-native personal diary with AI integration, structured metadata, and full-text search.
+
+Let me walk you through what I learned building and using this tool for nearly a decade.
+
+## The Problem: Context Switching Kills Flow
+
+The core problem Kaydet solves is simple but real: **capturing thoughts without breaking your flow**.
+
+When you are deep in code and want to log something—a decision you made, a bug you fixed, an idea for later—opening Notion or a note-taking app means:
+1. Switching windows (Alt+Tab hell)
+2. Waiting for the app to load
+3. Finding the right page or creating a new one
+4. Coming back to your editor
+
+That is four context switches for one simple thought. By the time you are back, you have lost your train of thought.
+
+Kaydet keeps you in the terminal where power users already live. One command, zero context switches:
+
+```bash
+kaydet "Fixed the staging auth bug, turned out to be a cache TTL issue"
+```
+
+Done. Back to work.
+
+## The Evolution: From Simple to Sophisticated
+
+### Phase 1: The Simple Wrapper Days (2016-2023)
+
+Kaydet started dead simple. My first commit was literally titled "Initialized." The entire tool was probably 20 lines of Python that opened your editor with a timestamped file.
+
+```python
+# Rough approximation of v0.1
+import subprocess, datetime, os
+filename = f"~/.diary/{datetime.date.today()}.txt"
+subprocess.call([os.environ.get('EDITOR', 'vim'), filename])
+```
+
+This worked. For years. I had daily files, I could grep through them, and that was enough.
+
+### Phase 2: Hashtags and Organization (v0.10-v0.19)
+
+Eventually I wanted structure. I started adding hashtags to entries:
+
+```
+14:25: Fixed staging bug #work
+16:30: Morning run felt great #fitness
+```
+
+Then I implemented a clever feature: entries with hashtags were automatically mirrored into tag-specific folders:
+
+```
+~/.kaydet/
+├── 2025-10-28.txt          # Main diary
+├── work/
+│   ├── 2025-10-28.txt      # Auto-mirrored work entries
+│   └── 2025-10-27.txt
+└── fitness/
+    └── 2025-10-25.txt
+```
+
+This was when Kaydet became genuinely useful. I could navigate my work logs, my fitness progress, my personal thoughts—all categorized automatically.
+
+### Phase 3: The AI Moment (v0.24.0 - September 2025)
+
+Then Claude Desktop launched with Model Context Protocol (MCP) support. I realized: **my diary could be a data source for my AI assistant**.
+
+Within days I added MCP integration:
+
+```json
+// claude_desktop_config.json
+{
+  "mcpServers": {
+    "kaydet": {
+      "command": "kaydet-mcp"
+    }
+  }
+}
+```
+
+Now Claude can answer questions like:
+- "What did I work on last sprint?"
+- "Show me my fitness progress this month"
+- "When did I last debug that API issue?"
+
+The AI reads my diary, summarizes it, finds patterns I missed. This was a game-changer.
+
+### Phase 4: Structured Metadata (v0.26.0 - October 2025)
+
+But AI queries exposed a limitation: unstructured text is hard to query precisely. I needed structured data.
+
+I designed a metadata syntax that feels natural in plain text:
+
+```bash
+kaydet "Fixed staging auth bug" commit:38edf60 pr:76 status:done time:2h #work
+kaydet "Lunch meeting" amount:650 currency:TRY billable:yes #work
+kaydet "Deep work on analytics ETL" time:3.5h focus:high #work
+```
+
+The format is `key:value`, and Kaydet automatically:
+- Parses numeric values (`2h` becomes `2.0`, `90m` becomes `1.5`)
+- Supports comparison operators (`time:>2`, `time:>=1`, `time:<5`)
+- Handles ranges (`time:1..3` means between 1 and 3 hours)
+- Allows wildcards (`branch:feature/*`)
+
+This was **the** architectural breakthrough. Suddenly my diary entries were not just text—they were queryable data.
+
+### Phase 5: SQLite Full-Text Search (v0.27.0 - Same Day!)
+
+Metadata required indexed lookups. You cannot grep for `time:>2` efficiently. You need numeric comparison.
+
+I spent one intense day designing and implementing a SQLite index:
+
+**Database schema**:
+- `entries`: id, source_file, timestamp
+- `tags`: entry_id, tag_name (indexed)
+- `words`: entry_id, word (full-text search)
+- `metadata`: entry_id, meta_key, meta_value, numeric_value
+
+Now I could run complex queries:
+
+```bash
+kaydet --search "status:done project:kaydet time:>1"
+```
+
+This generates optimized SQL with JOINs across tags, words, and metadata. Fast, precise, powerful.
+
+## The Technical Challenges
+
+### Challenge 1: Two Sources of Truth
+
+Files are the source of truth (plain text, Git-versionable, human-readable). SQLite is the index (fast queries). How do you keep them in sync?
+
+I built a synchronization layer:
+- Track file modification times in a `synced_files` table
+- When a file changes externally (manual edit, Git pull), detect it
+- Re-parse and re-index the file
+- The `--doctor` command can rebuild the entire database from scratch
+
+This means you can edit diary files in vim, commit them to Git, and Kaydet stays in sync.
+
+### Challenge 2: Stable Entry IDs
+
+I wanted to support editing and deleting entries:
+
+```bash
+kaydet --edit 42      # Edit entry by ID
+kaydet --delete 42    # Delete entry by ID
+```
+
+But how do you assign stable IDs when:
+- Users edit files manually (timestamps change)
+- Multiple daily files exist
+- The database gets rebuilt
+
+My solution: **store the ID in the file itself**:
+
+```
+14:25 [42]: Fixed staging bug | commit:38edf60 | #work
+```
+
+The `[42]` is the entry ID. When rebuilding the database, Kaydet reads existing IDs and only assigns new ones to entries that lack them. Collision detection prevents duplicates.
+
+### Challenge 3: Metadata vs. URLs
+
+My first metadata implementation had a bug. The regex pattern I used would match URLs:
+
+```
+http://example.com  →  parsed as metadata: http=//example.com
+```
+
+I fixed this by requiring metadata keys to:
+- Start with a lowercase letter (not a digit)
+- Contain only `a-z0-9_-` (no slashes, colons, dots)
+
+Now URLs are recognized as plain text, and metadata works correctly.
+
+## The Architecture Today
+
+Kaydet is now a well-structured Python CLI with clear separation of concerns:
+
+**Command layer**: `add`, `search`, `edit`, `delete`, `stats`, `tags`, `reminder`, `doctor`, `browse`
+
+**Core services**:
+- `database.py`: SQLite wrapper (schema, inserts, queries)
+- `parsers.py`: Entry parsing, metadata extraction, tag normalization
+- `sync.py`: File-to-database synchronization
+- `mcp_server.py`: AI integration via Model Context Protocol
+
+**Data model**:
+```python
+@dataclass(frozen=True)
+class Entry:
+    entry_id: Optional[str]
+    timestamp: str
+    lines: Tuple[str, ...]
+    tags: Tuple[str, ...]
+    metadata: Dict[str, str]
+    metadata_numbers: Dict[str, float]
+    source: Path
+```
+
+The entire codebase is ~3,200 lines of Python with 99% test coverage.
+
+## What I Use It For
+
+Here is what nine years of Kaydet looks like in practice:
+
+**Work logging**:
+```bash
+kaydet "Shipped analytics batching feature" commit:a3f89d pr:142 status:done time:4h #work
+kaydet "Investigated prod timeout issue" status:investigating time:1.5h #work #oncall
+```
+
+**Time tracking**:
+```bash
+kaydet "Deep work on ETL pipeline" time:3h focus:high #work
+kaydet "Code review and planning" time:1.5h #work
+```
+
+**Expense tracking**:
+```bash
+kaydet "Lunch with team" amount:850 currency:TRY billable:no #expenses
+kaydet "Conference ticket" amount:2500 currency:TRY billable:yes #expenses
+```
+
+**Personal moments**:
+```bash
+kaydet "Morning run, 5K in 28 minutes" time:0.5h distance:5 #fitness
+kaydet "Read 'Atomic Habits' chapter 3" #reading
+kaydet "Watched Aurora play with her toys for an hour" #personal #family
+```
+
+Then I can query:
+
+```bash
+# What did I ship last week?
+kaydet --search "status:done #work" --since 7d
+
+# How much time did I spend on deep work this month?
+kaydet --search "focus:high time:>2" --since 30d
+
+# Total billable expenses this quarter?
+kaydet --search "billable:yes #expenses" --since 90d
+```
+
+And Claude can answer even richer questions:
+- "Summarize my work accomplishments from last sprint"
+- "How consistent was my fitness routine this month?"
+- "What personal moments did I capture with Aurora?"
+
+## Lessons Learned
+
+### 1. Plain Text Is a Superpower
+
+Kaydet stores everything in plain `.txt` files. This means:
+- I can read my diary without Kaydet installed
+- I can version it in Git
+- I can grep it from the command line
+- It will outlive any database format
+
+The SQLite index is just a cache. If it gets corrupted, `kaydet --doctor` rebuilds it from the text files.
+
+### 2. Structured Data Beats Clever Parsing
+
+I resisted adding metadata for years. I thought "just use hashtags and natural language."
+
+But the moment I added `key:value` pairs, everything clicked. Time tracking, expense logging, work status—all became trivial. And crucially, **AI can reason about structured data** far better than unstructured text.
+
+### 3. Build for Yourself First
+
+Kaydet has exactly zero users besides me. That is by design.
+
+When you build for yourself:
+- You can iterate fearlessly (no backward compatibility burden)
+- You know exactly what features matter
+- You use it every day (instant feedback loop)
+- You can say "no" to everything that does not serve your workflow
+
+This is how you build tools that last nine years.
+
+### 4. Constraints Force Creativity
+
+Terminal-only. Plain text. No GUI. These constraints forced me to think carefully about:
+- Syntax design (metadata must feel natural to type)
+- Search UX (queries must be terse but powerful)
+- Integration points (how do other tools access this data?)
+
+The MCP integration happened *because* Kaydet was plain text and command-line driven. A GUI app would have been harder to integrate.
+
+## What is Next?
+
+Kaydet is in active development. Recent additions:
+- Edit/delete commands (v0.29.0)
+- Enhanced MCP tools for AI assistants (v0.31.0)
+- Textual-based TUI browser (experimental)
+
+I am considering:
+- **Export to static site**: Generate HTML pages from diary entries
+- **Reminders based on patterns**: "You have not logged fitness in 3 days"
+- **Rich text support**: Markdown rendering in the TUI
+- **Mobile companion**: Quick voice-to-text captures that sync to desktop
+
+But honestly? Kaydet already does what I need. It captures my thoughts, it searches them, it feeds them to AI assistants. The core loop is solid.
+
+## Try It (Maybe)
+
+Kaydet is open source: [github.com/miratcan/kaydet](https://github.com/miratcan/kaydet)
+
+But fair warning: this is a personal tool built for my workflow. It might not fit yours. And that is okay.
+
+The real lesson is not "use Kaydet"—it is "build your own Kaydet." Find the friction points in your workflow, build tools that eliminate them, iterate for years until they feel like extensions of your brain.
+
+That is what software craftsmanship looks like: small, personal, refined over time.
+
+---
+pub_date: 2025-10-28
+---
+meta_desc: How I built and evolved Kaydet, a terminal-native personal diary with AI integration, over nine years—from simple Python wrapper to structured metadata and SQLite search.
+---
+has_code: yes
+---
+tags:
+
+retrospective
+technical
+personal
