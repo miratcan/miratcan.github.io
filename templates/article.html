@@ -12,6 +12,16 @@
 {% block meta_img %}{% if this.attachments.get('hero.png') %}{{ this.attachments.get('hero.png').path}}{% endif %}{% if this.attachments.get('hero.jpg') %}{{ this.attachments.get('hero.jpg').path}}{% endif %}{% endblock %}
 
 {% block body %}
+{% if this.is_archived %}
+<div style="background: color-mix(in srgb, var(--accent) 15%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 2rem;">
+  <p style="margin: 0; color: var(--fg);"><strong>⚠️ Archived Article:</strong> This article is very old and may contain outdated or incorrect information. It's kept here for nostalgic and historical reasons.</p>
+</div>
+{% endif %}
+{% if this.language == 'tr' %}
+<div style="background: color-mix(in srgb, var(--accent) 15%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 2rem;">
+  <p style="margin: 0; color: var(--fg);"><strong>🇹🇷 Turkish Content:</strong> This article is written in Turkish. The cultural and emotional nuances cannot be properly translated, so it remains in its original language.</p>
+</div>
+{% endif %}
 {{ render_article(this) }}
 {% if this.tags %}
   <ul>

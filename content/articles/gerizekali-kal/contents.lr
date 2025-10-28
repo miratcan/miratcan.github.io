@@ -1,4 +1,4 @@
-title: Don't Be a Dummy: A Developer's Tale
+title: Stay Foolish: A Developer's Tale
 ---
 pub_date: 2016-07-02
 ---
@@ -24,6 +24,8 @@ Feeling smug about my logic, I didn't even bother running the code before pushin
 
 Even if you're changing something as trivial as a quote in a single line of code, make sure you test it first. Otherwise, you'll end up like me: assuming you're a genius and realizing you were being a dummy all along. :)
 
+---
+meta_desc: A quick lesson on overconfidence in coding—how assuming int(None) raises ValueError instead of TypeError taught me to always test my code.
 ---
 has_code: yes
 ---

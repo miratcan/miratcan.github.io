@@ -1,8 +1,12 @@
----
 title: Tips for Those Looking to Start an Online Business
+---
 author: Mirat
+---
 pub_date: 2011-02-26
 ---
+body:
+
+> **Note**: I wrote this in 2011 based on my experience building a classified and announcement platform. The platforms have changed (Facebook groups → Discord/Slack), but the principles remain the same.
 
 Before you think I'm being arrogant, let me clarify--I'm not claiming to be an expert in the online business world yet. In fact, I'd say I haven't even found the *right* path I want to walk. I didn't learn about this world by working at a specific job, nor do I have friends around me who have ventured into the online business space. The few that did, didn't follow the same journey I'm on. So, my learning process has been pretty difficult, and it still continues. However, after a lot of trial and error, I've made progress. Along the way, I've made hundreds of mistakes, and I'd like to share some of the lessons I've learned in hopes that you can benefit from them.
 
@@ -58,3 +62,10 @@ Stay updated on internet startups and technology trends by following blogs and o
 
 This article wouldn't have been possible without the insights and feedback from the following people: M. Oguz Karaesmen, Rizikoo, Evren Yalcin, Ihsan Candir, Demods, Lufti Gul, Yedincisenol, Metin Gul, Makseli. Thanks to all of you for your valuable input!
 
+---
+tags: indie-hacking
+---
+meta_desc: Hard-earned lessons from building an online business from scratch—from understanding your community before launching, to avoiding premature optimization and staying patient.
+---
+has_code: no
+---

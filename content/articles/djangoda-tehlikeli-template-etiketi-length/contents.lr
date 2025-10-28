@@ -64,6 +64,8 @@ Do **not** use the `length` template filter if you expect it to execute a databa
 ---
 pub_date: 2014-01-15
 ---
+meta_desc: Why Django's length template filter can kill your performance and how using count() instead can save your database from unnecessary load.
+---
 has_code: yes
 ---
 tags: django-notes
