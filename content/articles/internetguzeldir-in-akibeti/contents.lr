@@ -48,7 +48,7 @@ The downside? Static generation becomes impossible. You need dynamic page genera
 
 I abandoned the project. The original vision was right, but the execution needed more work than I was willing to invest. Sometimes knowing when to move on is the real lesson.
 ---
-description: Three critical mistakes I made building a link directory site: fighting Google's algorithms, using Excel as a database, and forcing content into category trees.
+meta_desc: Three critical mistakes I made building a link directory site: fighting Google's algorithms, using Excel as a database, and forcing content into category trees.
 ---
 tags:
 
