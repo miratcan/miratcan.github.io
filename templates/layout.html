@@ -3,21 +3,21 @@
 
   <style>
     :root {
-      --bg: #111821;
-      --fg: #f4f1eb;
-      --accent: #3bded1;
-      --fg-muted: color-mix(in srgb, var(--fg) 55%, var(--bg));
-      --surface: color-mix(in srgb, var(--bg) 82%, var(--fg));
-      --surface-strong: color-mix(in srgb, var(--bg) 72%, var(--fg));
-      --border: color-mix(in srgb, var(--fg) 18%, var(--bg));
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
       --radius: 0px;
       --ln: 2px;
       --gap: 1.5rem;
-      --fs: 1.05rem;
-      --lh: 1.7rem;
-      --fs-small: 0.95rem;
-      --fs-large: clamp(2rem, 2.2vw + 1.5rem, 2.4rem);
-      --fs-medium: 1.45rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
     }
 
     *,
@@ -84,13 +84,13 @@
       color: var(--fg);
     }
 
-    .screen *:not(pre) {
+    .screen *:not(pre):not(.hll) {
       font-size: inherit;
       line-height: inherit;
     }
 
     .wrapper {
-      max-width: 72ch;
+      max-width: 79ch;
       margin: 0 auto;
       padding: 0 1.2rem;
     }
@@ -206,7 +206,7 @@
     h1,
     h2,
     h3 {
-      color: var(--fg);
+      color: #f5f0e5;
     }
 
     blockquote {
@@ -219,7 +219,7 @@
 
     pre {
       font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.92em;
+      font-size: 0.88em;
       padding: 1.35rem;
       background: var(--surface);
       border: 1px solid var(--border);
@@ -230,7 +230,7 @@
     code {
       color: var(--accent);
       font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.95em;
+      font-size: 0.9em;
     }
 
     table {
@@ -661,6 +661,9 @@
     }
 
   </style>
+  {% if this.has_code %}
+  <link rel="stylesheet" href="{{ '/static/pygments.css'|url }}">
+  {% endif %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="content-language" content="en">
