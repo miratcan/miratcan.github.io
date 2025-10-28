@@ -1,0 +1,194 @@
+title: Kaydet: Your Queryable Personal Database—With Zero Friction
+---
+body:
+
+Kaydet is not a diary you read—it's a database you query. Capture your thoughts, track your work, log your life—all from your terminal, in plain text, with zero friction.
+
+## The Problem With Traditional Note-Taking
+
+You're deep in code. A thought hits: "This auth bug is a cache TTL issue."
+
+Opening Notion? Four context switches. Finding the right page? Another minute gone. By the time you're back, your flow is broken.
+
+**Kaydet keeps you in the terminal where you already live.** One command, zero friction:
+
+```bash
+kaydet "Fixed staging auth bug—cache TTL issue #work status:done time:2h"
+```
+
+Done. Back to work in 3 seconds.
+
+## Not a Diary—A Database
+
+Traditional diaries are linear. You write, you read, you flip pages.
+
+Kaydet is **structured, indexed, and queryable**. Every entry becomes searchable data:
+
+```bash
+# What did I ship this week?
+kaydet --search "status:done" --since 7d
+
+# How much deep work did I do this month?
+kaydet --search "focus:high time:>2" --since 30d
+
+# All billable expenses?
+kaydet --search "billable:yes #expense"
+```
+
+Tags (`#work`), metadata (`time:2h`, `status:done`), and full-text search—all in one natural string.
+
+## Plain Text Forever
+
+Everything lives in timestamped `.txt` files:
+
+```
+~/.local/share/kaydet/
+├── 2025-10-26.txt
+├── 2025-10-27.txt
+├── 2025-10-28.txt
+└── index.db  (SQLite cache)
+```
+
+**Human-readable.** Git-versionable. Tool-independent. Your data will outlive any proprietary format.
+
+The SQLite index is just a cache. If it breaks, `kaydet --doctor` rebuilds it from your text files.
+
+## Real-World Usage
+
+**Work Logging**:
+```bash
+kaydet "Shipped analytics feature #work commit:a3f89d pr:142 status:done time:4h"
+kaydet "Investigating prod timeout #work #oncall status:wip time:1.5h"
+```
+
+**Time Tracking**:
+```bash
+kaydet "Deep work on ETL pipeline #work time:3h focus:high"
+kaydet "Code review session #work time:45m"
+```
+
+**Expense Tracking**:
+```bash
+kaydet "Lunch with client #expense amount:850 currency:TRY billable:yes"
+kaydet "Conference ticket #expense amount:2500 currency:TRY billable:yes"
+```
+
+**Personal Moments**:
+```bash
+kaydet "Morning run felt amazing #fitness time:30m distance:5k"
+kaydet "Read Atomic Habits chapter 3 #reading"
+kaydet "Watched Aurora play with her toys #family"
+```
+
+Then **query your life**:
+
+```bash
+kaydet --search "time:>2"           # Long work sessions
+kaydet --search "#work status:done" # Completed tasks
+kaydet --search "billable:yes"      # Invoice data
+kaydet --tags                        # All tags with counts
+```
+
+## Structured Metadata
+
+Kaydet parses `key:value` pairs automatically:
+
+- **Numeric values**: `time:2h` becomes `2.0`, `90m` becomes `1.5`
+- **Comparisons**: `time:>2`, `time:>=1`, `time:<5`
+- **Ranges**: `time:1..3` (between 1 and 3 hours)
+- **Wildcards**: `branch:feature/*`
+
+Everything in one natural string:
+
+```bash
+kaydet "Fixed bug #work #urgent status:done time:2h commit:abc123 pr:76"
+```
+
+Gets stored as:
+
+```
+14:25 [42]: Fixed bug | status:done time:2h commit:abc123 pr:76 | #urgent #work
+```
+
+Clean message, structured metadata, tagged for search.
+
+## AI Integration
+
+Connect Kaydet to Claude Desktop via MCP:
+
+```json
+// claude_desktop_config.json
+{
+  "mcpServers": {
+    "kaydet": {
+      "command": "kaydet-mcp"
+    }
+  }
+}
+```
+
+Ask Claude:
+- "What did I work on this week?"
+- "How consistent was my fitness routine?"
+- "Summarize my accomplishments from last sprint"
+
+Your personal AI with perfect memory of your own data.
+
+## Core Features
+
+- **Terminal-native**: One command, zero friction
+- **Plain text storage**: `.txt` files, human-readable forever
+- **SQLite indexing**: Fast searches across 10,000+ entries
+- **Structured metadata**: `key:value` with numeric comparisons
+- **Edit/Delete by ID**: `kaydet --edit 42`, `kaydet --delete 42`
+- **Browse mode**: Interactive TUI with vim-like navigation
+- **AI-ready**: MCP server for Claude Desktop
+- **Git-friendly**: Version your diary, sync across devices
+
+## Quick Start
+
+Install from GitHub (latest):
+```bash
+pip install git+https://github.com/miratcan/kaydet.git
+```
+
+Or from PyPI (stable):
+```bash
+pip install kaydet
+```
+
+Start logging:
+```bash
+kaydet "First entry #personal"
+kaydet "Working on feature X #work time:2h"
+kaydet --search "#work"
+kaydet --tags
+```
+
+## Why Zero Friction Matters
+
+I built Kaydet in 2016 because I was tired of context switching. Nine years later, I use it every single day—not because it's mine, but because it's the fastest way to capture thoughts without breaking flow.
+
+No apps to open. No pages to find. No sync to wait for. Just terminal → thought → storage → back to work.
+
+**Your thoughts deserve zero friction.**
+
+---
+
+**Links**:
+- [GitHub Repository](https://github.com/miratcan/kaydet)
+- [PyPI Package](https://pypi.org/project/kaydet/)
+- [Development Story: Nine Years of Kaydet](/articles/nine-years-of-kaydet/)
+
+---
+pub_date: 2025-10-28
+---
+meta_desc: Kaydet is not a diary—it's a queryable personal database. Capture thoughts, track work, log life—all from your terminal, in plain text, with zero friction.
+---
+has_code: yes
+---
+tags:
+
+mytools
+technical
+---
