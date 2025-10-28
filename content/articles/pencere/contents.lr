@@ -4,8 +4,14 @@ author: Mirat
 ---
 body:
 
-Webcam'i pencereye sabitledim. Motion adli guvenlik kamerasi  uygulamasina dedim ki webcam'i kullanarak bana dakikada 1 kare kaydet.  24 saat bu kaydi yaptiktan sonra kareleri birlestirip muzigi koymak  kaldi. Fotograf makinasiyla yapildigini biliyorum bu <a href="http://en.wikipedia.org/wiki/Time-lapse">timelapse videolari</a>nin ama webcam ilk sanirim :)
+Webcam'i pencereye sabitledim. Motion adlı güvenlik kamerası uygulamasına dedim ki webcam'i kullanarak bana dakikada 1 kare kaydet. 24 saat bu kaydı yaptıktan sonra kareleri birleştirip müziği koymak kaldı. Fotoğraf makinasıyla yapıldığını biliyorum bu <a href="http://en.wikipedia.org/wiki/Time-lapse">timelapse videolarının</a> ama webcam ilk sanırım :)
 
 <iframe src="http://player.vimeo.com/video/3128868?title=0&amp;byline=0&amp;portrait=0" style="width: 100%; height: 400px;" frameborder="0"></iframe>
 ---
 pub_date: 2010-01-03
+---
+language: tr
+---
+meta_desc: Webcam kullanarak pencereden 24 saatlik timelapse video yapmak - Motion uygulaması ile dakikada 1 kare kaydetme deneyi.
+---
+has_code: no

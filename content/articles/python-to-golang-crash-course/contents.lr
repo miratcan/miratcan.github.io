@@ -1,4 +1,4 @@
-title: Golang Crash Course from a Pythonista [Draft]
+title: Learning Go: A Quick Start Guide
 ---
 body:
 
@@ -686,3 +686,5 @@ meta_desc: As a Python developer I wanted to learn Golang, and this is my notes.
 pub_date: 2024-12-11
 ---
 has_code: yes
+---
+tags: golang-notes

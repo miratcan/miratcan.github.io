@@ -1,6 +1,14 @@
-title: Javascript Uzmani Olmayanlar Icin React-Native Anlatimi
+title: JavaScript Uzmanı Olmayanlar İçin React-Native Anlatımı
 ---
 author: Mirat
+---
+pub_date: 2016-01-01
+---
+is_archived: yes
+---
+language: tr
+---
+meta_desc: 2016 civarından kalma, tamamlanmamış React Native kurulum ve başlangıç rehberi. ES6 ve JSX'e giriş notları.
 ---
 has_code: yes
 ---
