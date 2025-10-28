@@ -1,4 +1,4 @@
-title: InternetGuzeldir'in Akibeti
+title: What I Learned from Building (and Abandoning) InternetGuzeldir
 ---
 pub_date: 2023-08-14
 ---
@@ -6,52 +6,52 @@ has_code: no
 ---
 body:
 
-[InternetGuzeldir](https://internetguzeldir.com), cok buyuk hevesle basladigim ve hayalimdeki sekli almasi icin baya ugrastigim bir proje oldu. Site, [900](https://github.com/miratcan/InternetGuzeldir/blob/master/rebuild.py) satirlik bir Python betiginin bir [excel dosyasi](https://docs.google.com/spreadsheets/d/1mK5BycfvwvuPcekTKIMhPKtsRa0EXe-dGeQsvok5wz4/edit?usp=sharing)ni okumasiyla ortaya cikiyor. Benim icin hem gelistirmesi hem de icerikle doldurmasi oldukca eglenceliyken son bir kac aydir soguma yasiyorum. Bunun uc sebebi var:
+> [InternetGuzeldir](https://internetguzeldir.com) started with genuine excitement. I poured energy into building it exactly how I envisioned: a [900-line Python script](https://github.com/miratcan/InternetGuzeldir/blob/master/rebuild.py) reading an [Excel spreadsheet](https://docs.google.com/spreadsheets/d/1mK5BycfvwvuPcekTKIMhPKtsRa0EXe-dGeQsvok5wz4/edit?usp=sharing) to generate a curated link directory. Development was fun. Filling it with content was engaging. But over the past few months, my enthusiasm has evaporated. Here's why.
 
-## 1. Google Beni Sevmiyor :)
+## Google Hates Directory Sites
 
-Bir web sitesini anlamli kilan sey ziyaretcileri, ve de onun yan etkisi olarak geliridir. Gelir olarak zaten Turkce bir site isletiyor olmaktan mutevellit bir sey beklemenin anlami yok ama ustune ustluk hic bir trafik de alamiyorum. Bunu bir kac SEO forumunda falan arastirdim sordum. Sebebi olarak Google'in bu tip listeleme sitelerinden hic hoslanmadigi, direkt olarak da kalitesiz icerik olarak isaretledigi cevabini aldim. Hatta direkt Google Adsense basvurusundan red aldim.
+A website means nothing without visitors. Revenue doesn't matter much for a Turkish-language site anyway, but I wasn't even getting traffic. After digging through SEO forums, the verdict was clear: Google actively dislikes directory-style sites and flags them as low-quality content. I even got rejected from Google Adsense outright.
 
-Bu duruma gicik olmus olsam da bir kod parcasinin bir web sitesinin icerigini konumlandirmak icin bolca metne ihtiyac duymasini anliyorum gibi. 
+Frustrating? Sure. But I get it. Algorithms need substantial text to properly index content. A bare list of links doesn't cut it.
 
-### Cozum
+**The fix:** Add an articles section that links to individual entries in the directory. For example:
 
-Site icerisinde makaleler adinda bir bolum olmasi ve bu bolumde dizin kismindaki link detay sayfasina link verilmesi.
+- "5 Apps That Help You Work in Noisy Places"
+  - Links to: Noises Online, Deftonic, Soundscape World
 
-Ornegin:
+This gives Google the context it craves while adding genuine value for readers.
 
-  * Gurultulu Yerlerde Calisirken Isinizi Kolaylastiracak 5 Uygulama
-    * Makale  Ici Baglantilar
-      * Noises Online Link Detay Sayfasi
-      * Deftonic Link Detay Sayfasi
-      * Soundscape World Link Detay Sayfasi
+## Excel Was a Terrible Database
 
-## 2. Excel Kotu Fikirdi
+I got swept up in the no-code hype when I started this. Everywhere I looked, people were building sites from spreadsheets. I even made the [Eleman](https://github.com/miratcan/Eleman) project under the same influence.
 
-Saniyorum bu projeye ilk basladigimda su no-code furyasindan gereksiz etkilendim. Her yerde excell tablosundan site yapin, excel tablosundan ilan sitesi yapin gibi ilanlar dusuyordu onume. Hatta [Eleman](https://github.com/miratcan/Eleman) projesini de de ayni ruzgarin etkisiyle yapmis olabilirim.
+Excel works fine as a database—until you need to write longer content. Cramming an article into a single cell is torture. I couldn't add proper descriptions to entries. Data validation? Required fields? Forget it. There's a great breakdown of why this doesn't scale [here](https://zapier.com/blog/database-vs-spreadsheet/).
 
-Excel veritabani olarak isimi goruyor olsa da uzun bir metin yazmak istedigimde bir hucre icerisine makale sigdirmaya calismak iskence oluyor. Haliyle gonderilere daha uzun, daha aciklayici metinle giremiyorum. Bunun haricinde veri gecerliligi kontrolu yapmak, kayitlarda gerekli kolonlari mecbur birakmak gibi seyler de yapilamiyor. [Surada](https://zapier.com/blog/database-vs-spreadsheet/) guzel bir yazi var bununla ilgili.
+**The fix:** Use a proper content management system. Lektor makes sense since I already use it for this blog and can troubleshoot Python issues easily. Static site generation still appeals to me—easy hosting, no backend headaches.
 
-### Cozum
+## Category Trees Don't Work
 
-Lektor, Hugo ya da Wordpress gibi metin yazimina daha yatkin bir seyler kullanmak. Bu blogun altyapisi olarak kullandigim ve Python ile ilgili bir sorun ciktiginda daha kolay halledebildigim icin Lektor goz kirpiyor. Hala statik site uretme ve kolayca host etme derdindeyim anlayacaginiz.
+Category hierarchies only work when something fits cleanly into one bucket. I learned this the hard way. Take [OpenRA](https://internetguzeldir.com/bilgisayarlar/oyunlar/masaustu-oyunlari/https-www-openra-net.html)—it's a macOS game, a Windows game, and a desktop game. Listing it under one category feels arbitrary and broken.
 
-## 3. Kategori Agaci Ise Yaramiyor
+I should've used tags from the start. This [StackExchange answer](https://ux.stackexchange.com/questions/40334/why-is-tree-representation-of-data-becoming-unpopular) drove the point home.
 
-Kategori agaclari bir sey tek bir tur ile ifade edilebiliyor ise ise yariyor. Bunu uzun yoldan ogrendim diyebiliriz :) Ornegin [OpenRA](https://internetguzeldir.com/bilgisayarlar/oyunlar/masaustu-oyunlari/https-www-openra-net.html) linkini ele alalim. Oyun o kadar cok farkli gruba dahil ki bir kategori altinda listelenmesi oldukca sacma oluyor. Hem MacOS oyunu, hem Windows Oyunu, hem masaustu oyunu diye gidiyor liste. O yuzden kategori yerine etiket kullanmaliydim. Stackexchange'de gordugum bir [cevap](https://ux.stackexchange.com/questions/40334/why-is-tree-representation-of-data-becoming-unpopular) da bu konuda iyice ikna olmami sagladi.
+**The fix:** Switch to tags. If someone wants Turkish-language Windows strategy games, they can select all three tags and find what they need. [itch.io's browse page](https://itch.io/games/tag-short) handles this beautifully.
 
-### Cozum
+The downside? Static generation becomes impossible. You need dynamic page generation. Which probably means bringing back Django.
 
-Kategoriler yerine etiketler kullanmak. Ornegin gelen biri hem turkce, hem windowsta calisan hem strateji oyunu ariyor ise bu uc etiketi de secerek hosuna giden seyleri bulabilecek. Bu isi [itch.io'nun browse sayfasi](https://itch.io/games/tag-short) oldukca iyi halletmis gozukuyor.
+## What I Should Have Done
 
-Tabi bu durumda statik sayfa ciktisi almak imkansiz hale geliyor, sayfalari dinamik olarak uretmek gerekiyor. Bu durumda da saniyorum eski dost Django yardima kosacak.
+- ~~Categories are out, tags are in~~
+- ~~Rebuilding from scratch with Django~~
+- ~~Writing SEO-friendly articles that link to directory entries~~
+- ~~Actually making something people can find~~
 
-## Sonuc
-
- * Kategoriler kalkiyor, etiketler geliyor.
- * Site Django ile bastan yaziliyor, makaleler, linkler, etiketler geliyor.
- * SEO uyumlu makaleler yaziliyor, makaleler link arsivindeki detay sayfalarina referanslar iceriyor.
+I abandoned the project. The original vision was right, but the execution needed more work than I was willing to invest. Sometimes knowing when to move on is the real lesson.
 ---
-description: 
+description: Three critical mistakes I made building a link directory site: fighting Google's algorithms, using Excel as a database, and forcing content into category trees.
 ---
-tags: personal
+tags:
+
+retrospective
+product-development
+solopreneurship

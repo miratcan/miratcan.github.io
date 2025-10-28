@@ -6,94 +6,62 @@ body:
 
 Printable version is available [here](/resume/resume.html).
 
-<table style="float:right; background: black;">
+<table class="resume-contact">
 <tbody>
-<tr><td><strong>Location</strong></td><td>Istanbul, GMT+3</td></tr>
+<tr><td><strong>Location</strong></td><td>Usak, Turkey (GMT+3)</td></tr>
 <tr><td><strong>Email</strong></td><td><a href="mailto:mirat.bayrak@gmail.com">mirat.bayrak@gmail.com</a></td></tr>
 <tr><td><strong>Phone</strong></td><td><a href="tel:+905066788505">+90 0506 678 85 05</a></td></tr>
 <tr><td><strong>LinkedIn</strong></td><td><a href="https://www.linkedin.com/in/mirat-can-bayrak">Mirat Can Bayrak</a></td></tr>
 <tr><td><strong>GitHub</strong></td><td><a href="https://github.com/miratcan">miratcan</a></td></tr>
 </tbody></table>
 
-## **Summary**  
-- **10+ years of professional experience** in software development, working across diverse roles and industries.  
-- **Self-motivated and result-oriented**; excellent client communication and collaboration skills.  
-- **Proactive and decisive**; thrives in taking initiative and ownership of challenges.  
-- Dedicated and organized professional with strong multitasking abilities.  
-- Proud **father of two daughters**, balancing work and family life.  
+## **Summary**
+- Full-stack developer with **10+ years of experience** shipping production systems for SaaS, blockchain, and IoT companies.
+- Comfortable owning projects end-to-end: architecture, implementation, delivery, and long-term maintenance.
+- Thrives in async, remote-first teams with high autonomy and clear business outcomes.
 
-## **Key Skills**  
+## **Professional Experience**
 
-### **General**  
-- Clean Code Principles | Testing: Unit, Functional, Integration  
-- Functional & OOP Programming | Multithreading & Multitasking  
-- Strong English Communication  
+### **INOHOM Smart Home Systems**
+**Full Stack Developer**  
+*August 2023 – April 2025 | Remote*
+- Delivered an internal help desk platform with Django, ReactJS, and Chakra UI, replacing a legacy ticketing workflow.
+- Added advanced filtering via Django FilterSet and React Context API state management to reduce support response time.
+- Deployed and maintained the application on internal Linux servers, owning monitoring and release processes.
 
-### **Python**  
-- Frameworks: Django, FastAPI, Flask, WebPy, Django-Rest-Framework  
-- Tools: Scrapy, Selenium, Requests, BeautifulSoup, Celery  
-- Other: Google App Engine, MQTT Brokers, PyGtk  
-
-### **JavaScript**  
-- Libraries & Frameworks: ReactJS, Web3JS, NextJS, HTMX  
-- Testing: MochaJS  
-
-### **HTML/CSS**  
-- Semantic HTML5, CSS3, LESS/SASS  
-- Responsive Design & Accessibility  
-
-### **Blockchain**  
-- **Smart Contract Development**: EVM, Solidity, ERC20, ERC721, ERC1155  
-- **Tools**: Truffle Suite, Eth-Brownie | Gas Management & Auditing  
-- **Blockchain Concepts**: Blocks, Transactions, Events (Logs), Upgradable Contracts  
-
-## **Professional Experience**  
-
-### **Metaverse INC.**  
+### **Metaverse INC.**
 **Blockchain & Full Stack Developer**  
-*March 2021 - April 2022 | Izmir, Turkey*  
-- Developed an NFT marketplace with multi-blockchain support.  
-- Transitioned from blockchain developer to a full-stack developer role.  
-- Designed and implemented smart contracts and scalable backend architecture.  
+*March 2021 – March 2022 | Remote*
+- Built multi-chain NFT marketplace features, including Solidity contracts and Python event-processing services.
+- Modernised a legacy ReactJS front-end, adding Next.js REST APIs and tooling for faster product iterations.
 
-### **Radity**  
+### **Radity**
 **Software Architect**  
-*March 2021 - March 2022 | Zurich, Switzerland*  
-- Provided architectural guidance for client software projects.  
-- Led teams in delivering solutions for various industries with a focus on maintainability and scalability.  
+*March 2021 – April 2022 | Remote*
+- Led architecture decisions for enterprise client projects, from solution design to database migrations.
+- Produced technical specs and onboarding material to keep mixed skill-level teams aligned on delivery.
 
-### **Metglobal DMG**  
-**Software Development Manager | Python Developer**  
-*August 2017 - January 2021 | Istanbul, Turkey*  
-- Promoted from Python Developer to Software Development Manager.  
-- Oversaw the development of booking systems used by hotels globally.  
-- Streamlined development processes and improved team productivity.  
+### **Metglobal DMG**
+**Python Developer → Development Manager**  
+*August 2017 – January 2021 | Istanbul, Turkey*
+- Promoted to manage the Python division responsible for hotel booking engines used worldwide.
+- Coordinated hiring, mentoring, and delivery processes to raise team productivity and code quality.
+- Designed data services and dashboards (Numba, Celery, PostgreSQL) that powered revenue forecasting.
 
-### **Reachpod**  
-**Python Developer**  
-*October 2014 - July 2016 | Istanbul, Turkey*  
-- Built features for a social media management and monitoring tool.  
-- Integrated multiple social media APIs to enhance platform functionality.  
+## **Projects**
+- **Bedri:** Genetic-algorithm text-to-image app that evolves canvases with luminance-based fitness scoring.
+- **Etherboard.io:** On-chain announcement board on Gnosis Chain with investment mechanics in Solidity.
+- **Flipa.live:** Coin-flip betting dApp built on ReactJS and Web3JS with smart-contract settlement.
+- **Eleman:** Dockerised job board pulling data from Airtable, served with FastAPI + React.
 
-### **Markafoni**  
-**Python Developer**  
-*May 2013 - September 2014 | Istanbul, Turkey*  
-- Contributed to the backend development of a leading Turkish shopping portal with 20M+ unique monthly visitors.  
+## **Education**
+- **Maltepe University** — B.A. Visual Communication Design (2008 – 2012)
 
-## **Education**  
-
-- **Maltepe University**: Visual Communication Design | 2008-02012  
-- **Anadolu University**: Fine Arts - Painting *(Not Graduated)* | 2004-2007  
-- **Uskudar Cagribey Anatolian High School**: 1998-2002  
-
-## **References**  
-- **Tolga Bilbey**: Former colleague at Metglobal INC. ([LinkedIn Profile](#))  
-- **Burak Bayburtlu**: Former colleague at Metaverse INC. ([LinkedIn Profile](#))  
-
-## **Contact Details**  
-
-- **Address**: Cumhuriyet Mah. Sehit Basri Bey CAD. Demirtas Ozcelik Sitesi, No: 40, Blok: C, DR: 8, Usak, Turkey  
-- **Phone**: (+90) 0506 678 85 05  
+## **Certifications, Skills & Interests**
+- **Certification:** Resilience Training – Emotional Toughness & Cognitive Flexibility (2024)
+- **Technologies:** Python (Django, FastAPI), JavaScript (ReactJS, NextJS), Solidity, Web3, REST APIs, Celery, Redis, PostgreSQL, Docker, Git, Linux
+- **Core Competencies:** Backend architecture, clean code & reviews, testing strategy, performance optimisation, cross-functional collaboration, mentoring
+- **Soft Skills:** Empathetic leadership, focus under pressure, async-first communication, technical mentorship, calm execution in ambiguity
 
 ---
 meta_desc: Experienced Python, Javascript, and Solidity developer who is open to remote jobs.

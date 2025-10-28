@@ -1,7 +1,12 @@
-<nav>
-  {% for tag in tags %}
-  {% with is_active = this.path != '/' and this.path.endswith(tag ~ '/') %}
-  <a {% if is_active %}class="active" {% endif %}href="/articles@tag/{{ tag }}/">#{{ tag }}</a>
-  {% endwith %}
-  {% endfor %}
+<nav class="tag-list" aria-label="Article tags">
+  {% set current_url = this|url %}
+  <ul>
+    {% for tag in tags %}
+      {% set tag_url = '/articles@tag/' ~ tag ~ '/' %}
+      {% set is_active = current_url.endswith(tag_url) %}
+      <li>
+        <a {% if is_active %}class="active" {% endif %} href="{{ tag_url }}">#{{ tag }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 </nav>

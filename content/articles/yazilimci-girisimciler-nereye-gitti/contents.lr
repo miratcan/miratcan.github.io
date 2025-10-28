@@ -20,7 +20,7 @@ The next generation of developers, however, often entered the field because they
 
 ## 2. **The Time and Knowledge Cost of Software Development Has Increased**
 
-In the early days of platforms like Eksi Sozluk or itiraf.com, creating a successful product required significantly less knowledge and effort. For example, if you examine the [source code of Eksi Sozluk](https://github.com/ssg/sozluk-cgi), you'll find a simple program that generates HTML outputs based on user inputs.
+In the early days of platforms like Eksi Sozluk (a popular Turkish discussion forum similar to Reddit) or itiraf.com (a Turkish confessions site), creating a successful product required significantly less knowledge and effort. For example, if you examine the [source code of Eksi Sozluk](https://github.com/ssg/sozluk-cgi), you'll find a simple program that generates HTML outputs based on user inputs.
 
 Today, the situation is entirely different. Virtualization, frontend development, CSS preprocessors, prototyping, design, and more have added layers of complexity. To build a product now, you need to overcome countless hurdles and acquire a vast amount of knowledge. And this doesn't even include aspects like marketing and copywriting.
 
@@ -40,6 +40,10 @@ For these reasons, I believe the concept of the "developer entrepreneur" is slow
 
 If you have anything to add or disagree with, I'd love to hear your thoughts in the comments!
 ---
+description: Why are fewer developers starting their own ventures? Changed developer profiles, increased complexity of building software, and users expecting everything for free.
+---
 pub_date: 2022-11-05
 ---
-tags: entrepreneurial
+tags:
+
+solopreneurship

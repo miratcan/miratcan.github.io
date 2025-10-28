@@ -44,3 +44,7 @@ pub_date: 2025-08-01
 description: A guide to Python's parallel processing methods: Threading, Multiprocessing, and Asyncio, and how they work around the infamous GIL (Global Interpreter Lock).
 ---
 has_code: yes
+---
+tags:
+
+python-notes

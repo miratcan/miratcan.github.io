@@ -2,18 +2,47 @@ title: Lessons from OneMillionDollar.link
 ---
 body:
 
-> For those who don't know, [onemilliondollar.link](https://onemilliondollar.link) is the latest silly project I made. Its claim is to have the most expensive link on the internet. When you visit the site, there's a link at the top, and you can change it by paying the fee. Each time it changes, the price increases by 20%, starting from 1 dollar and reaching up to 280 dollars. As I write this, it's 340 dollars. Although it has calmed down a bit now, it received a lot of attention. I personally didn't expect it to go beyond 15 dollars.
+> [OneMillionDollar.link](https://onemilliondollar.link) started as a stupid idea: what if I made the most expensive link on the internet? The concept was simple—there's one link on the page, and if you want to change it, you pay. Each time someone does, the price jumps 20%. It started at $1. I thought maybe it'd hit $15 and die. As I write this, it's at $340. Turns out the internet still loves absurd experiments.
 
-1. People's attention span is genuinely five seconds. If explaining something verbally or in writing takes longer than 5 seconds, you've lost them. While working on the project, I kept this five-second rule in mind constantly when designing. I also canceled a lot of possible features for the same reason. Being able to stay simple is a serious virtue.
-2. When doing any work, you need to plan the social media step as the first step. Google's state is obvious, and on platforms like the playstore and appstore, you get lost in the crowd. Whatever product is created must be designed as a content generation machine for social media. Otherwise, except for the first day, no one will type your website's name into the address bar.
-3. When you make something that really takes off, you will definitely get DDOS attacked; I was caught unprepared for the first 3 days. Plan from the start. Also change the default admin panel address, I got brute force attacks there too.
-4. Despite being locked repeatedly due to the DDOS attack I received, I still think SQLite is sufficient for almost all projects. Just don't forget to activate [WAL](https://sqlite.org/wal.html) mode. The furthest you'll go is postgresql.
-5. People are very bored with the serious stuff that big companies do. They miss the old fun days of the internet. Even if you make a page with beavers dancing in CSS, they'll still come.
-6. A filmmaker [friend of mine](https://www.imdb.com/name/nm9214577/) said this: if you tell a very simple story very well, the film will still be good. (I remember him adding that the Mad Max film has almost no story). The same thing applies to entrepreneurs. A simple story but very good execution.
-7. If you're making something for the TR environment, even one button not working means you'll get cursed at. On the other hand, looking good is unfortunately also very important. If [Craigslist](https://craigslist.org/) were in Turkey, it would make 60 liras, not [600 million dollars](https://www.reddit.com/r/todayilearned/comments/1c2mjro/til_craigslist_generates_over_600_million_in/).
-8. After the project reached a certain point, I emailed various big names. Webrazzi, Serdar Kuzuloglu, etc. We could have grown the legend together, but unfortunately no one got back to me. If you wait for someone to hold your hand, you'll be disappointed.
-9. I said social media is now the first step, and unintentionally, when considering ideas that come to mind, I started thinking "would I make a twerk video on TikTok for this?" Maybe you should think about it too =)
-10. I'm extremely grateful to everyone who showed interest in the project. For me, it was a matter of belief, not money, and I think it inspired many people as well.
+## The Five-Second Rule is Real
+
+People's attention span is genuinely five seconds. If your explanation takes longer, you've already lost them. While building this, I ruthlessly cut features that would've added friction. Every "wouldn't it be cool if..." got killed unless it passed the five-second test. Simplicity isn't just a virtue—it's survival.
+
+## Build for Virality, Not SEO
+
+Google is a lost cause for new projects. App stores? You'll drown in the crowd. The harsh truth: if your product doesn't naturally generate social media content, you're done after day one. Nobody's typing your URL into their browser. Design your product to be screenshot-worthy, meme-able, shareable. Make it a content machine first, a product second.
+
+## Success Invites Chaos
+
+The moment something takes off, the internet will try to break it. I got DDOS'd within 48 hours—completely unprepared. Lesson learned: assume success and plan your infrastructure accordingly. Also, change your default admin panel URL. The brute force attacks came fast and furious.
+
+## SQLite Can Handle More Than You Think
+
+Even after getting hammered by attacks, SQLite held up fine. People love to prematurely optimize to PostgreSQL, but honestly? [WAL mode](https://sqlite.org/wal.html) SQLite handles more than you'll ever need. Keep it simple until you actually can't.
+
+## The Internet Misses Weird Stuff
+
+People are exhausted by the sterile, corporate web. They're nostalgic for the weird, playful internet of the 2000s. You could literally make a page of CSS beavers dancing and people would show up. There's a hunger for joy and absurdity that's being completely underserved.
+
+## Simple Story, Perfect Execution
+
+A filmmaker [friend](https://www.imdb.com/name/nm9214577/) once told me: tell a simple story extremely well, and you'll have a good film. He pointed to Mad Max—barely any plot, just flawless execution. The same applies to building things. Don't overcomplicate. Do one thing ridiculously well.
+
+## Design Actually Matters (Unfortunately)
+
+If you're building for a Turkish audience, one broken button means you're getting roasted. And despite what engineers think, aesthetics matter immensely. [Craigslist](https://craigslist.org/) works in the US because it got there first. If it launched in Turkey today with that UI, it'd make 60 liras, not [$600 million](https://www.reddit.com/r/todayilearned/comments/1c2mjro/til_craigslist_generates_over_600_million_in/).
+
+## Nobody's Coming to Save You
+
+When the project took off, I emailed journalists, influencers, tech media. Webrazzi, Serdar Kuzuloglu, everyone I could think of. Radio silence. Zero responses. If you're waiting for gatekeepers to validate your work, you'll be waiting forever. The cavalry isn't coming.
+
+## The TikTok Test
+
+I said social media comes first, right? Now when I evaluate ideas, I unconsciously ask: "Would I make a TikTok video about this?" It's a weirdly effective filter. If you can't imagine creating content around your idea, maybe rethink the idea.
+
+## It Was Never About the Money
+
+I'm grateful to everyone who participated in this ridiculous experiment. For me, it was proof that you can still build weird things on the internet and people will care. That belief matters more than any revenue. And judging by the messages I got, it inspired others to try their own wild ideas too. That's the real win.
 
 ---
 pub_date: 2024-10-13
@@ -21,3 +50,9 @@ pub_date: 2024-10-13
 description: Ten lessons learned from building OneMillionDollar.link, a viral project that reached $340 per link transaction.
 ---
 has_code: no
+---
+tags:
+
+retrospective
+indie-hacking
+solopreneurship

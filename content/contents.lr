@@ -1,20 +1,42 @@
 body:
 
-![](mirat.png)
+<div class="home-hero">
+  <img src="mirat.png" alt="Mirat Can Bayrak">
+  <div class="home-intro">
+    <p>Hello, I'm Mirat&mdash;friends call me Miro. I'm a programmer and solopreneur who loves building things people actually use.</p>
+    <p>Over the years I've shipped experiments like OneMillionDollar.link alongside practical tools such as Kaydet. You can explore more of my work on <a href="https://github.com/miratcan">GitHub</a>.</p>
+  </div>
+</div>
 
-Hello,
+<div class="home-social">
+  <a class="social-link social-link--github" href="https://github.com/miratcan" target="_blank" rel="noopener">GitHub</a>
+  <a class="social-link social-link--twitter" href="http://twitter.com/MiratCanBayrak/" target="_blank" rel="noopener">Twitter</a>
+  <a class="social-link social-link--soundcloud" href="https://soundcloud.com/miratcan" target="_blank" rel="noopener">SoundCloud</a>
+</div>
 
-I'm Mirat (some friends call me Miro). I'm a programmer and solopreneur who loves building things people actually use.
+## Want to work together?
 
-Over the years, I've worked on many small and large projects--from viral experiments like OneMillionDollar.link to practical tools like Kaydet. You can find my work on [Github](https://github.com/miratcan).
-
-I'm also active on [Twitter](http://twitter.com/MiratCanBayrak/) and [Soundcloud](https://soundcloud.com/miratcan).
-
-**Want to work together?**
-
-- Freelance: [Upwork](https://www.upwork.com/freelancers/~01f71b803bc3f9e6b5)
-- Full-time: [Resume](/resume/resume.html), [LinkedIn](https://www.linkedin.com/in/mirat-can-bayrak-791b0314/)
-- Consulting: [Superpeer](https://superpeer.com/miratcan/-/yazilim-danismanlik)
+<div class="home-availability">
+  <div class="home-availability-item">
+    <span>Freelance</span>
+    <div class="home-availability-links">
+      <a href="https://www.upwork.com/freelancers/~01f71b803bc3f9e6b5" target="_blank" rel="noopener">Upwork</a>
+    </div>
+  </div>
+  <div class="home-availability-item">
+    <span>Full-time</span>
+    <div class="home-availability-links">
+      <a href="/resume/resume.html" target="_blank" rel="noopener">Resume</a>
+      <a href="https://www.linkedin.com/in/mirat-can-bayrak-791b0314/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="home-availability-item">
+    <span>Consulting</span>
+    <div class="home-availability-links">
+      <a href="https://superpeer.com/miratcan/-/yazilim-danismanlik" target="_blank" rel="noopener">Superpeer</a>
+    </div>
+  </div>
+</div>
 ---
 title: 
 ---
