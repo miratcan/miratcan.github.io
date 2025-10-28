@@ -1,8 +1,8 @@
-title: Why I Still Use a Tool I Built Nine Years Ago (And Keep Improving It)
+title: Why plain text + SQLite beat every cloud note app for my workflow
 ---
 body:
 
-![Kaydet: Capture • Query • Remember](logo.png)
+![From seed to fruit: the evolution of a personal tool over nine years](cover.webp)
 
 > **TL;DR**: I built [Kaydet](https://github.com/miratcan/kaydet) in 2016 as a simple terminal diary tool and have been using it daily for nine years. What started as a 20-line Python wrapper evolved into a structured personal database with SQLite search, AI integration via Claude's MCP, and metadata-driven queries. This is the story of how a casual side project became mission-critical when a client asked for monthly reports—and how constraints (plain text, terminal-only) forced better design decisions.
 
