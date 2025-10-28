@@ -153,9 +153,8 @@ pip install git+https://github.com/miratcan/kaydet.git
 ```
 
 Or from PyPI (stable):
-```bash
-pip install kaydet
-```
+
+> Don't use PyPI for now, I've lost my account so I can not update my package.
 
 Start logging:
 ```bash
@@ -174,8 +173,8 @@ No apps to open. No pages to find. No sync to wait for. Just terminal → though
 **Your thoughts deserve zero friction.**
 
 ---
-
 **Links**:
+
 - [GitHub Repository](https://github.com/miratcan/kaydet)
 - [PyPI Package](https://pypi.org/project/kaydet/)
 - [Development Story: Nine Years of Kaydet](/articles/nine-years-of-kaydet/)
@@ -191,4 +190,3 @@ tags:
 
 mytools
 technical
----
