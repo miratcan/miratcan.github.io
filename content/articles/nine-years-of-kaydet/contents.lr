@@ -2,6 +2,8 @@ title: Why I Still Use a Tool I Built Nine Years Ago (And Keep Improving It)
 ---
 body:
 
+![From seed to fruit: the evolution of a personal tool over nine years](cover.webp)
+
 I have been keeping a personal diary since 2016. Not in a notebook, not in Notion, not in any web app—but in my terminal. The tool I built for this, Kaydet (Turkish for "save"), started as a simple vim wrapper and evolved into something far more interesting: a terminal-native personal diary with AI integration, structured metadata, and full-text search.
 
 Let me walk you through what I learned building and using this tool for nearly a decade.
@@ -50,6 +52,8 @@ This is how personal projects evolve: slowly, then all at once, when real need h
 
 ### Phase 1: The Simple Wrapper Days (2016-2023)
 
+![A seed just beginning to sprout from soil](1.jpg)
+
 Kaydet started dead simple. My first commit was literally titled "Initialized." The entire tool was probably 20 lines of Python that opened your editor with a timestamped file.
 
 ```python
@@ -62,6 +66,8 @@ subprocess.call([os.environ.get('EDITOR', 'vim'), filename])
 This worked. For years. I had daily files, I could grep through them, and that was enough.
 
 ### Phase 2: Hashtags and Organization (v0.10-v0.19)
+
+![A young seedling with its first two leaves emerging](2.jpg)
 
 Eventually I wanted structure. I started adding hashtags to entries:
 
@@ -85,6 +91,8 @@ Then I implemented a clever feature: entries with hashtags were automatically mi
 This was when Kaydet became genuinely useful. I could navigate my work logs, my fitness progress, my personal thoughts—all categorized automatically.
 
 ### Phase 3: The AI Moment (v0.24.0 - September 2025)
+
+![A seedling growing stronger with multiple leaves and small branches](3.jpg)
 
 Then Claude Desktop launched with Model Context Protocol (MCP) support. I realized: **my diary could be a data source for my AI assistant**.
 
@@ -112,6 +120,8 @@ I remember the first time I asked Claude "what did I work on this week?" and wat
 
 ### Phase 4: Structured Metadata (v0.26.0)
 
+![A well-developed plant with thick stem and many healthy leaves](4.jpg)
+
 But AI queries exposed a limitation: unstructured text is hard to query precisely. I needed structured data.
 
 I designed a metadata syntax that feels natural in plain text:
@@ -131,6 +141,8 @@ The format is `key:value`, and Kaydet automatically:
 This was **the** architectural breakthrough. Suddenly my diary entries were not just text—they were queryable data.
 
 ### Phase 5: SQLite Full-Text Search (v0.27.0 - Same Day!)
+
+![A mature plant bearing fruits, representing the culmination of growth](5.jpg)
 
 Metadata required indexed lookups. You cannot grep for `time:>2` efficiently. You need numeric comparison.
 
@@ -278,6 +290,8 @@ And Claude can answer even richer questions:
 
 ## Lessons Learned
 
+![A mature plant with ripened fruits and seeds, ready to propagate](6.jpg)
+
 ### 1. Plain Text Is a Superpower
 
 Kaydet stores everything in plain `.txt` files. This means:
@@ -352,6 +366,8 @@ pub_date: 2025-10-28
 meta_desc: How I built and evolved Kaydet, a terminal-native personal diary with AI integration, over nine years—from simple Python wrapper to structured metadata and SQLite search.
 ---
 has_code: yes
+---
+meta_img: /articles/nine-years-of-kaydet/cover.webp
 ---
 tags:
 
