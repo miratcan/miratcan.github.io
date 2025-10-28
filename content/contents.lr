@@ -1,7 +1,7 @@
 body:
 
 <div class="home-hero">
-  <img src="mirat.webp" alt="Mirat Can Bayrak">
+  <img src="mirat-resized.webp" alt="Mirat Can Bayrak">
   <div class="home-intro">
     <p>Hello, I'm Mirat&mdash;friends call me Miro. I'm a programmer and solopreneur who loves building things people actually use.</p>
     <p>Over the years I've shipped experiments like OneMillionDollar.link alongside practical tools such as Kaydet. You can explore more of my work on <a href="https://github.com/miratcan">GitHub</a>.</p>
@@ -36,4 +36,4 @@ title:
 ---
 meta_desc: I'm Mirat, a programmer and solopreneur who loves building things people actually use. Creator of OneMillionDollar.link and other viral experiments.
 ---
-meta_img: mirat.webp
+meta_img: mirat-resized.webp
