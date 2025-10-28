@@ -20,11 +20,10 @@ Whoever built this site earned $7,200 from AdSense and then another $3,500 from 
 
 Honestly, I'm jealous. :)
 
-Naturally, I started digging to find out who created this. Such ideas often come from kids in those "fortunate" countries. But this time, it was different. The [project is public on GitHub](https://github.com/Centerpoint-Gaming/timenite), where I found out it was built by Priyam Raj. I even found his [personal website](https://priyamraj.com).
-
-Turns out, he's a young guy living in Bangalore, India. Judging by this photo from 2009, he seems to have come from a very modest background. But despite that, he had access to computers and the internet.
+Naturally, I started digging to find out who created this. The [project is public on GitHub](https://github.com/Centerpoint-Gaming/timenite), where I found out it was built by Priyam Raj, a young developer living in Bangalore, India. I even found his [personal website](https://priyamraj.com).
 
 ![Photo](hero.jpg)
+*Priyam Raj in 2009*
 
 In his own words, Priyam describes himself like this:
 
@@ -33,8 +32,6 @@ In his own words, Priyam describes himself like this:
 Isn't that a cool story?
 
 Why am I sharing this? To challenge my own opinion. In a [previous post](/blog/yazilimci-girisimciler-nereye-gitti/), I argued that the rising time and knowledge costs of software development are the reasons we don't see as many entrepreneurial developers these days. But I was wrong. You can still make something worthwhile with a good idea and a simple implementation.
-
-Even if you're from a developing country.
 
 ---
 meta_desc: How a developer from India made $10,700 with a simple Fortnite countdown timer—161 lines of JavaScript, four years of passive income, then sold it on Flippa.

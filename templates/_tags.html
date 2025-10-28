@@ -1,9 +1,9 @@
 <nav class="tag-list" aria-label="Article tags">
-  {% set current_url = this|url %}
+  {% set current_path = this._path %}
   <ul>
     {% for tag in tags %}
       {% set tag_url = '/articles@tag/' ~ tag ~ '/' %}
-      {% set is_active = current_url.endswith(tag_url) %}
+      {% set is_active = current_path == tag_url %}
       <li>
         <a {% if is_active %}class="active" {% endif %} href="{{ tag_url }}">#{{ tag }}</a>
       </li>
