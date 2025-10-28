@@ -129,9 +129,9 @@ But AI queries exposed a limitation: unstructured text is hard to query precisel
 I designed a metadata syntax that feels natural in plain text:
 
 ```bash
-kaydet "Fixed staging auth bug" commit:38edf60 pr:76 status:done time:2h #work
-kaydet "Lunch meeting" amount:650 currency:TRY billable:yes #work
-kaydet "Deep work on analytics ETL" time:3.5h focus:high #work
+kaydet "Fixed staging auth bug #work commit:38edf60 pr:76 status:done time:2h"
+kaydet "Lunch meeting #work amount:650 currency:TRY billable:yes"
+kaydet "Deep work on analytics ETL #work time:3.5h focus:high"
 ```
 
 The format is `key:value`, and Kaydet automatically:
@@ -249,27 +249,27 @@ Here is what nine years of Kaydet looks like in practice:
 
 **Work logging**:
 ```bash
-kaydet "Shipped analytics batching feature" commit:a3f89d pr:142 status:done time:4h #work
-kaydet "Investigated prod timeout issue" status:investigating time:1.5h #work #oncall
+kaydet "Shipped analytics batching feature #work commit:a3f89d pr:142 status:done time:4h"
+kaydet "Investigated prod timeout issue #work #oncall status:investigating time:1.5h"
 ```
 
 **Time tracking**:
 ```bash
-kaydet "Deep work on ETL pipeline" time:3h focus:high #work
-kaydet "Code review and planning" time:1.5h #work
+kaydet "Deep work on ETL pipeline #work time:3h focus:high"
+kaydet "Code review and planning #work time:1.5h"
 ```
 
 **Expense tracking**:
 ```bash
-kaydet "Lunch with team" amount:850 currency:TRY billable:no #expenses
-kaydet "Conference ticket" amount:2500 currency:TRY billable:yes #expenses
+kaydet "Lunch with team #expenses amount:850 currency:TRY billable:no"
+kaydet "Conference ticket #expenses amount:2500 currency:TRY billable:yes"
 ```
 
 **Personal moments**:
 ```bash
-kaydet "Morning run, 5K in 28 minutes" time:0.5h distance:5 #fitness
-kaydet "Read 'Atomic Habits' chapter 3" #reading
-kaydet "Watched Aurora play with her toys for an hour" #personal #family
+kaydet "Morning run, 5K in 28 minutes #fitness time:0.5h distance:5"
+kaydet "Read 'Atomic Habits' chapter 3 #reading"
+kaydet "Watched Aurora play with her toys for an hour #personal #family"
 ```
 
 Then I can query:
