@@ -1,4 +1,4 @@
-title: Nine Years of Kaydet: From Simple Python Script to AI-Ready Personal Diary
+title: Why I Still Use a Tool I Built Nine Years Ago (And Keep Improving It)
 ---
 body:
 
@@ -27,6 +27,26 @@ kaydet "Fixed the staging auth bug, turned out to be a cache TTL issue"
 Done. Back to work.
 
 ## The Evolution: From Simple to Sophisticated
+
+For years, Kaydet evolved slowly. I used it casually—capturing thoughts here and there, logging work occasionally—but it was never essential to my workflow.
+
+Then last month, something changed.
+
+A client asked me to send monthly activity reports with my invoices. "Can you include a summary of what you worked on this month?" Simple request. Reasonable request. Panic-inducing request.
+
+I had been logging my work in Kaydet all along, but in an unstructured mess:
+
+```
+14:25: Fixed that staging bug
+16:30: Meeting with the team
+09:15: Started working on the analytics feature
+```
+
+How do I turn this into a professional report? How do I filter by project? How do I calculate time spent? How do I prove I actually worked those hours?
+
+That is when I went all-in on Kaydet. Within two weeks, I shipped structured metadata, SQLite indexing, numeric queries, and time tracking. The tool I had been building casually for years suddenly became mission-critical.
+
+This is how personal projects evolve: slowly, then all at once, when real need hits.
 
 ### Phase 1: The Simple Wrapper Days (2016-2023)
 
@@ -88,7 +108,7 @@ Now Claude can answer questions like:
 
 The AI reads my diary, summarizes it, finds patterns I missed. This was a game-changer.
 
-### Phase 4: Structured Metadata (v0.26.0 - October 2025)
+### Phase 4: Structured Metadata (v0.26.0)
 
 But AI queries exposed a limitation: unstructured text is hard to query precisely. I needed structured data.
 
@@ -112,7 +132,7 @@ This was **the** architectural breakthrough. Suddenly my diary entries were not 
 
 Metadata required indexed lookups. You cannot grep for `time:>2` efficiently. You need numeric comparison.
 
-I spent one intense day designing and implementing a SQLite index:
+I spent one intense day designing and implementing a SQLite index. This also meant I could finally get rid of the tag-specific folder mirroring—the database made it obsolete. Better yet, without duplicate entries scattered across tag folders, implementing edit and delete operations became straightforward. One source of truth, one place to modify.
 
 **Database schema**:
 - `entries`: id, source_file, timestamp
