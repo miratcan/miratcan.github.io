@@ -243,6 +243,21 @@ class Entry:
 
 The entire codebase is ~3,200 lines of Python with 99% test coverage.
 
+## From Diary to Database
+
+Somewhere along this journey, I stopped calling Kaydet a "personal diary." That label felt limiting—almost unfair to what it had become.
+
+When you write in a diary, you read it sequentially. You flip pages. You reminisce.
+
+With Kaydet, you **query**. You filter. You aggregate. You ask questions:
+- "How much deep work did I do this month?"
+- "What did I ship in the last sprint?"
+- "Show me all billable expenses from Q3."
+
+This is not a diary you read—it is a **personal knowledge database with zero friction**. Every thought, every work log, every tracked hour becomes structured, indexed, queryable data.
+
+The plain text files make it feel like a diary. The SQLite index and metadata system make it work like a database. That combination—human-readable storage with machine-queryable structure—turned out to be the killer feature I didn't know I was building.
+
 ## What I Use It For
 
 Here is what nine years of Kaydet looks like in practice:
