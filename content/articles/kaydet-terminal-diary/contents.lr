@@ -6,6 +6,19 @@ body:
 
 Kaydet is not a diary you read—it's a database you query. Capture your thoughts, track your work, log your life—all from your terminal, in plain text, with zero friction.
 
+## Install
+
+```bash
+pip install git+https://github.com/miratcan/kaydet.git
+```
+
+Start logging:
+```bash
+kaydet "First entry #personal"
+kaydet "Working on feature X #work time:2h"
+kaydet --search "#work"
+```
+
 ## The Problem With Traditional Note-Taking
 
 You're deep in code. A thought hits: "This auth bug is a cache TTL issue."
@@ -146,25 +159,6 @@ Your personal AI with perfect memory of your own data.
 - **Browse mode**: Interactive TUI with vim-like navigation
 - **AI-ready**: MCP server for Claude Desktop
 - **Git-friendly**: Version your diary, sync across devices
-
-## Quick Start
-
-Install from GitHub (latest):
-```bash
-pip install git+https://github.com/miratcan/kaydet.git
-```
-
-Or from PyPI (stable):
-
-> Don't use PyPI for now, I've lost my account so I can not update my package.
-
-Start logging:
-```bash
-kaydet "First entry #personal"
-kaydet "Working on feature X #work time:2h"
-kaydet --search "#work"
-kaydet --tags
-```
 
 ## Why Zero Friction Matters
 
