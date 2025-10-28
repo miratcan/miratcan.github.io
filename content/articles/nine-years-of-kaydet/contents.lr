@@ -4,6 +4,8 @@ body:
 
 ![From seed to fruit: the evolution of a personal tool over nine years](cover.webp)
 
+> **TL;DR**: I built [Kaydet](https://github.com/miratcan/kaydet) in 2016 as a simple terminal diary tool and have been using it daily for nine years. What started as a 20-line Python wrapper evolved into a structured personal database with SQLite search, AI integration via Claude's MCP, and metadata-driven queries. This is the story of how a casual side project became mission-critical when a client asked for monthly reports—and how constraints (plain text, terminal-only) forced better design decisions.
+
 I have been keeping a personal diary since 2016. Not in a notebook, not in Notion, not in any web app—but in my terminal. The tool I built for this, Kaydet (Turkish for "save"), started as a simple vim wrapper and evolved into something far more interesting: a terminal-native personal diary with AI integration, structured metadata, and full-text search.
 
 Let me walk you through what I learned building and using this tool for nearly a decade.
