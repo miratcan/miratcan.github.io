@@ -674,8 +674,8 @@
   <!-- Primary Meta Tags -->
   <title>{% block title %}Home{% endblock %} — Mirat Can Bayrak</title>
   <link rel='canonical' href="{{ config.PROJECT.url }}{% if this._path != '/' %}{{ this._path }}{% endif %}/">
-  {% with meta_type='website', meta_url=[config.PROJECT.url, this._path]|join, meta_title=[self.title(), ' - Mirat Can
-  Bayrak']|join, meta_desc =this.meta_desc, meta_img=[config.PROJECT.url, this._path, this.meta_img]|join %}
+  {% set meta_image = config.PROJECT.url ~ ('/' ~ this.meta_img if this.meta_img and not this.meta_img.startswith('/') else this.meta_img if this.meta_img else '/mirat-orig.jpg') %}
+  {% with meta_type='website', meta_url=[config.PROJECT.url, this._path]|join, meta_title=[self.title(), ' - Mirat Can Bayrak']|join, meta_desc=this.meta_desc, meta_img=meta_image %}
   <meta name="title" content="{{ meta_title }}" />
   <meta name="description" content="{{ meta_desc }}" />
   {% include "meta/_og.html" %}
