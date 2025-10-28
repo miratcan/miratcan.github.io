@@ -1,10 +1,16 @@
-{% extends "articles.html" %}
+{% extends "layout.html" %}
 {% block title %}{{ this.title }}{% endblock %}
 {% block body %}
-{% with tags=this.parent.children.distinct('tags') %}
-{% include "_tags.html" %}
-{% endwith %}
-{% with posts=this.items %}
-{% include "_articles.html" %}
-{% endwith %}
+<div class="articles-layout">
+  <main class="articles-main">
+    {% with posts=this.items %}
+    {% include "_articles.html" %}
+    {% endwith %}
+  </main>
+  <aside class="articles-sidebar">
+    {% with tags=this.parent.children.distinct('tags') %}
+    {% include "_tags.html" %}
+    {% endwith %}
+  </aside>
+</div>
 {% endblock %}

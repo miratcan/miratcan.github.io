@@ -3,24 +3,18 @@
     <li>
       <a class="article-title" href="{{ post|url }}">{{ post.title }}</a>
       {% set desc = post.description or post.meta_desc %}
-      {% if desc %}
-      <p class="article-description">{{ desc }}</p>
-      {% endif %}
       {% set has_date = post.pub_date %}
+      {% if desc %}
+      <p class="article-description">
+        {{ desc }}{% if has_date %} ({{ post.pub_date.strftime('%b %Y') }}){% endif %}
+      </p>
+      {% endif %}
       {% set tags = post.tags %}
-      {% if has_date or tags %}
+      {% if tags %}
       <p class="article-meta">
-        {% if has_date %}
-        <time datetime="{{ post.pub_date.isoformat() }}">{{ post.pub_date.strftime('%b %Y') }}</time>
-        {% endif %}
-        {% if has_date and tags %}
-        <span class="meta-sep" aria-hidden="true">•</span>
-        {% endif %}
-        {% if tags %}
         {% for tag in tags %}
-        {{ ', ' if not loop.first else '' }}<a href="/articles@tag/{{ tag }}/">#{{ tag }}</a>
+        <a href="/articles@tag/{{ tag }}/">#{{ tag }}</a>
         {% endfor %}
-        {% endif %}
       </p>
       {% endif %}
     </li>
