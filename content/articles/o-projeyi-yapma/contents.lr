@@ -2,7 +2,7 @@ title: How I Decide Not to Start a Project
 ---
 body:
 
-Although my interest in programming began in middle school, my journey into Django and building something substantial started with an idea to create a classified ads site for [Eskisehir](https://en.wikipedia.org/wiki/Eski%C5%9Fehir). I've always tried to build things I dream of. As an "internet carpenter," I've crafted many "toys." I call them toys; others might call them side projects or garage projects. Even now, I'm brimming with the desire to create new ones. However, starting a new "toy" has become increasingly difficult. I now run my ideas through several filters before diving in. Here's a list I wanted to share:
+Although my interest in programming began in middle school, my journey into Django and building something substantial started with an idea to create a classified ads site for [Eskisehir](https://en.wikipedia.org/wiki/Eski%C5%9Fehir) (a Turkish city). I've always tried to build things I dream of. As an "internet carpenter," I've crafted many "toys." I call them toys; others might call them side projects or garage projects. Even now, I'm brimming with the desire to create new ones. However, starting a new "toy" has become increasingly difficult. I now run my ideas through several filters before diving in. Here's a list I wanted to share:
 
 ## If It Doesn't Solve a Real Problem, Don't Do It
 
@@ -18,11 +18,11 @@ Ad revenue means reaching thousands of users and convincing them to repeatedly r
 
 ## If You Can't See Results Quickly, Don't Do It
 
-I've worked on projects that took me 1.5 years and others that spanned 3 years. Unfortunately, my most successful project was one I made in a week: [ffanony](http://ffanony.appspot.com/). Even two years later, it was recognized during job interviews. While I value the experience, I often see the time spent on long projects as wasted. If building your project will take more than a week of full-time effort (54 hours) or will require more than three pages, don't do it.
+I've worked on projects that took me 1.5 years and others that spanned 3 years. Unfortunately, my most successful project was one I made in a week: ffanony (an anonymous posting app for FriendFeed, a now-defunct social platform). Even two years later, it was recognized during job interviews. While I value the experience, I often see the time spent on long projects as wasted. If building your project will take more than a week of full-time effort (54 hours) or will require more than three pages, don't do it.
 
 ## If You Can't Explain It in One Sentence, Don't Do It
 
-For example, I can summarize my project *resm.in* in one sentence: *"A Q&A platform where users answer questions by taking photos."* However, I had another project called *cubb.in* that required paragraphs to explain. After naming your project, think about how you'll describe it to someone. If it takes a three-line sentence to explain, you're probably on the wrong track. With *cubb.in,* I spent a lot of time lamenting, *"Why don't people understand me?"* The real problem was me, not them.
+For example, I can summarize one of my projects in one sentence: *"A Q&A platform where users answer questions by taking photos."* However, I had another project that required paragraphs to explain. After naming your project, think about how you'll describe it to someone. If it takes a three-line sentence to explain, you're probably on the wrong track. I spent a lot of time lamenting, *"Why don't people understand me?"* The real problem was me, not them.
 
 ## If You're Not Excited About It After Three Days, Don't Do It
 

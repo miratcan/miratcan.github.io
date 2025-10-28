@@ -4,7 +4,7 @@ author: Mirat
 ---
 body:
 
-An interesting question popped up on the **Python Istanbul** mailing group, and I thought it would be useful to take note of it here. You can find the original discussion [here](https://groups.google.com/forum/?fromgroups#!topic/python-istanbul/IAscvyQ7Euk).
+An interesting question popped up on the **Python Istanbul** mailing group (a Turkish Python community), and I thought it would be useful to take note of it here. You can find the original discussion [here](https://groups.google.com/forum/?fromgroups#!topic/python-istanbul/IAscvyQ7Euk).
 
 A developer has three models: **Category**, **Author**, and **Post**. Here's how they are structured:
 
