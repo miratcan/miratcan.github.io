@@ -6,7 +6,7 @@ has_code: yes
 ---
 body:
 
-> Bu yazi hala yapim asamasindadir, buldugunuz eksiklikleri [pull request acarak](https://github.com/miratcan/miratcan.github.io/blob/source/content/blog/react-notlari/contents.lr) giderebilir ya da [issue girerek](https://github.com/miratcan/miratcan.github.io/issues) bildirebilirsiniz.
+> Bu yazi hala yapim asamasindadir, buldugunuz eksiklikleri [pull request acarak](https://github.com/miratcan/miratcan.github.io/blob/source/content/articles/react-notlari/contents.lr) giderebilir ya da [issue girerek](https://github.com/miratcan/miratcan.github.io/issues) bildirebilirsiniz.
 
 React Facebook tarafindan ortalara atilmis bir javascript kutuphanesi. MVC desenli tasarimlarda V (View) katmanini olusturdugu soylense de redux gibi kutuphanelerle birlestiginde basli basina bir calisma tasarim semasina sahip oldugunuz soyleniyor. Bu yazida sifirdan baslayarak react native ile bir uygulama gelistirmeye calisacagiz.
 
@@ -214,7 +214,7 @@ Kaynaklar:
 
  * https://www.tutorialspoint.com/react_native/
  * https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html
- * https://kylewbanks.com/blog/react-native-tutorial-part-1-hello-react
+ * https://kylewbanks.com/articles/react-native-tutorial-part-1-hello-react
  * https://facebook.github.io/react-native/docs/getting-started.html
  * https://benmccormick.org/2015/09/14/es5-es6-es2016-es-next-whats-going-on-with-javascript-versioning/
  * https://www.youtube.com/watch?v=Vp4K03xWsgE
