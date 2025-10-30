@@ -16,7 +16,7 @@ Start logging:
 ```bash
 kaydet "First entry #personal"
 kaydet "Working on feature X #work time:2h"
-kaydet --search "#work"
+kaydet --filter "#work"
 ```
 
 ## The Problem With Traditional Note-Taking
@@ -41,16 +41,19 @@ Kaydet is **structured, indexed, and queryable**. Every entry becomes searchable
 
 ```bash
 # What did I ship this week?
-kaydet --search "status:done" --since 7d
+kaydet --filter "status:done since:2025-10-23"
 
 # How much deep work did I do this month?
-kaydet --search "focus:high time:>2" --since 30d
+kaydet --filter "focus:high time:>2"  # Defaults to current month
 
-# All billable expenses?
-kaydet --search "billable:yes #expense"
+# All entries from September?
+kaydet --list --filter "since:2025-09"
+
+# All billable expenses ever?
+kaydet --filter "billable:yes #expense since:0"
 ```
 
-Tags (`#work`), metadata (`time:2h`, `status:done`), and full-text search—all in one natural string.
+Tags (`#work`), metadata (`time:2h`, `status:done`), date filters (`since:2025-09`), and full-text search—all in one natural string.
 
 ## Plain Text Forever
 
@@ -98,9 +101,10 @@ kaydet "Watched Aurora play with her toys #family"
 Then **query your life**:
 
 ```bash
-kaydet --search "time:>2"           # Long work sessions
-kaydet --search "#work status:done" # Completed tasks
-kaydet --search "billable:yes"      # Invoice data
+kaydet --filter "time:>2"           # Long work sessions (current month)
+kaydet --filter "#work status:done" # Completed tasks
+kaydet --filter "billable:yes"      # Invoice data (current month)
+kaydet --list --filter "since:0"    # All entries, all time
 kaydet --tags                        # All tags with counts
 ```
 
@@ -155,6 +159,7 @@ Your personal AI with perfect memory of your own data.
 - **Plain text storage**: `.txt` files, human-readable forever
 - **SQLite indexing**: Fast searches across 10,000+ entries
 - **Structured metadata**: `key:value` with numeric comparisons
+- **Smart date filtering**: `since:` with automatic current-month default
 - **Edit/Delete by ID**: `kaydet --edit 42`, `kaydet --delete 42`
 - **Browse mode**: Interactive TUI with vim-like navigation
 - **AI-ready**: MCP server for Claude Desktop
