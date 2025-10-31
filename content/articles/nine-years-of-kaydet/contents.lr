@@ -197,7 +197,7 @@ But how do you assign stable IDs when:
 My solution: **store the ID in the file itself**:
 
 ```
-14:25 [42]: Fixed staging bug | commit:38edf60 | #work
+14:25 [42]: Fixed staging bug #work commit:38edf60
 ```
 
 The `[42]` is the entry ID. When rebuilding the database, Kaydet reads existing IDs and only assigns new ones to entries that lack them. Collision detection prevents duplicates.
