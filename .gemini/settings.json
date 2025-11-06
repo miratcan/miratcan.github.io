@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "octocode": {
+      "command": "npx",
+      "args": [
+        "octocode-mcp@latest"
+      ]
+    },
+    "github": {
+      "command": "https://api.githubcopilot.com/mcp",
+      "args": []
+    }
+  }
+}

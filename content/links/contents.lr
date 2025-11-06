@@ -4,55 +4,377 @@ title: Links
 ---
 body:
 
+This is a curated list of links to various resources, tools, and interesting websites that I have found useful or entertaining. The list is organized into several categories to make it easier to navigate.
 
-## Frontend Development
+## Entertainment
 
- - [Sizzy Browser](https://sizzy.io): A web browser customized for frontend developers. It has useful and accelerating features such as being able to show a change you made on multiple device resolutions at the same time.
+### Games
 
-## Fun Games
+#### Strategy
 
- - [0.A.D.](https://play0ad.com/game-info/project-overview/): Real-time strategy game similar to Age Of Empires.
- - [Julius](https://github.com/bvschaik/julius/wiki/Julius-release): Open source rebuilt version of Julius Caesar III game. It can run on many platforms.
- - [OpenRA](https://www.openra.net/): Open source and modern rewrite of OpenRa Red Alert game. All operating systems support Linux, OSX and Windows.
- - [A Dark Room](https://adarkroom.doublespeakgames.com/):  A text-based adventure game that starts off simple but gradually becomes more intricate and immersive.
- - [Z Type](https://zty.pe/): The best typing speed game I've ever seen.
- - [Business Tour](https://store.steampowered.com/app/397900/Business_Tour__Board_Game_with_Online_Multiplayer/): An online Monopoly-like game; we played it a lot with friends during the pandemic.
+- [0.A.D.](https://play0ad.com/game-info/project-overview/): Real-time strategy game similar to Age Of Empires.
+- [Julius](https://github.com/bvschaik/julius/wiki/Julius-release): Open source rebuilt version of Julius Caesar III game. It can run on many platforms.
+- [OpenRA](https://www.openra.net/): Open source and modern rewrite of OpenRa Red Alert game. All operating systems support Linux, OSX and Windows.
+- [FlexBox Defense](http://www.flexboxdefense.com/): A tower defense game written to teach FlexBox in CSS. You determine the location and direction of your towers using FlexBox properties.
 
-## Educational Games
+#### Adventure & Puzzle
 
- - [Elevator Saga](http://play.elevatorsaga.com/): A coding game where you program the behavior of an elevator using JavaScript. In each level, you modify the elevator's behavior to transport the target number of people to their desired floors.
- - [Untrusted](http://alexnisnevich.github.io/untrusted/): A roguelike game where you need to modify the game's code to progress through the levels. (Javascript)
- - [Vim Golf](https://www.vimgolf.com/): Various puzzles to develop skills in Vim.
- - [Vim Adventures](https://vim-adventures.com/): I think this is a great game that can make learn to use vim. 
+- [A Dark Room](https://adarkroom.doublespeakgames.com/): A text-based adventure game that starts off simple but gradually becomes more intricate and immersive.
+- [Untrusted](http://alexnisnevich.github.io/untrusted/): A roguelike game where you need to modify the game's code to progress through the levels. (Javascript)
+- [Vim Golf](https://www.vimgolf.com/): Various puzzles to develop skills in Vim.
+- [Vim Adventures](https://vim-adventures.com/): An adventure game to learn VIM.
+- [Hextris](https://hextris.io/): A Tetris-like puzzle-action game.
+- [PrinceJs](https://princejs.com/): The browser-runnable version of the legendary Prince of Persia game.
 
-## Git
- - [Gitmoji](https://gitmoji.dev/): Emojis that you can add to commit messages when using Git.
+#### Typing
 
-## ADHD
+- [Z Type](https://zty.pe/): A typing game where you shoot down words to improve your typing speed and accuracy.
+- [kbs.im](https://kbs.im/): An online practice site that helps you type with 10 fingers on the keyboard and increase your typing speed.
 
-(Yea I'm diagnosed too)
+#### Board Games
 
- - [How do I keep my focus as developer with ADHD](https://medium.com/@mgundogdu/how-do-i-keep-my-focus-as-developer-with-adhd-attention-deficit-hyperactivity-disorder-526ba045321b)
+- [Business Tour](https://store.steampowered.com/app/397900/Business_Tour__Board_Game_with_Online_Multiplayer/): An online Monopoly-like game; we played it a lot with friends during the pandemic.
 
-## Music
+### Music & Audio
 
- - [chiptune.app/](https://chiptune.app/) Great collection of mod, xm, s3m and midi files. You can also login and bookmark the ones you like.
- - [Dubmood Music](https://www.youtube.com/@Dubmood_Music) Youtube channel of famous chiptune musician.
+- [chiptune.app/](https://chiptune.app/) Great collection of mod, xm, s3m and midi files. You can also login and bookmark the ones you like.
+- [Dubmood Music](https://www.youtube.com/@Dubmood_Music) Youtube channel of famous chiptune musician.
+- [Webamp](https://webamp.org/): Winamp running in the browser for those who miss Winamp.
+- [Radio Garden](http://radio.garden/): It allows you to find and listen to a radio station anywhere in the world.
+- [What Song](https://www.what-song.com/): A website that helps you find the music you hear in movies.
+- [Conserve The Sound](https://www.conservethesound.de/): A website with hundreds of sound samples from hundreds of devices.
+- [Table Topy](https://tabletopy.com/): A website containing sound backgrounds, music, and effects that can enrich your imagination while playing FRP.
+- [Audiomass](https://audiomass.co/): Online free audio editor.
+- [Sequencer64](https://www.sequencer64.com/sequencer/session): Online drum machine.
+- [808303 Studio](https://808303.studio/): An online music making tool that allows you to play the TR-808 drum machine and the TB-303 bass synthesizer in sync.
+- [ZzFX](https://killedbyapixel.github.io/ZzFX/): A sound effect synthesizer for game developers or those who need old school sound effects.
 
-## Guides & Cheat Sheets
+### Movies & Docs
 
- - [Http Status](https://httpstat.us/): A website that lists all HTTP status codes. Also you can test them here.
- - [Layout Patterns](https://web.dev/patterns/layout): A must-have resource for front-end development that lists the most commonly used CSS patterns--perfect to refer to whenever you're stuck.
- - [Lua Cheatsheet](https://devhints.io/lua)
+- [Wonder Docs](https://www.youtube.com/c/WonderDocs): A great documentary channel.
+- [Bestwatch.App](https://bestwatch.app/?country=us): This site makes it easier for you to decide by allowing you to sort and filter movies on Netflix according to their IMDB scores.
+- [QuoDB](http://www.quodb.com/): A movie search engine that allows you to search for movies based on the conversations in them.
 
-## Books & Resources 
+### Web Curiosities
 
- - [DeepJs](https://exploringjs.com/deep-js/toc.html): The free online version of the book Deep JavaScript: Theory and Techniques written by Dr. Axel Rauschmayer.
+- [Skyline Webcams](https://www.skylinewebcams.com/): You can watch city cameras from many places in the world from this site.
+- [Lighthouse Map](https://geodienst.github.io/lighthousemap/): A website that lists lighthouses on the world map.
+- [Light Pollution Map](https://www.lightpollutionmap.info/): A web application that shows the light pollution at any location in the world.
+- [Supertunnel App](https://supertunnel.app/): If you had dug from your current location to the other side of the world, where would you have come out?
+- [Window Swap](https://www.window-swap.com/): It turns your computer screen into a window anywhere in the world. You should definitely try it.
+- [Killed By Microsoft](https://killedbymicrosoft.info/): A website listing projects that have been thrown away by Microsoft.
+- [Endless Horse](http://endless.horse/): A horse with endless legs.
+- [Moan My Ip](https://www.moanmyip.com/): There is a woman's voice on this site, she reads your IP number while moaning. #NSFW
+- [Type Something](https://typewritesomething.com/): Typewriter simulator.
+- [Bouncing Cats](https://cat-bounce.com/): Cats bouncing for no reason.
+- [LangoGuesser](https://langoguessr.com/): This site opens a random video from YouTube and you try to guess what language the conversations or song in the video are in.
+- [Web Design Museum](https://www.webdesignmuseum.org/): A web museum that shows the change of famous websites over time and reveals how the atmosphere of the internet has changed over time in a very beautiful way.
+- [Windows 95 emulated in the browser via DOSBox](https://archive.org/details/win95_in_dosbox): You can run Windows 95 on DosBox and experience nostalgia.
+- [Animagraffs](https://animagraffs.com/): A website that contains explanatory infographics on many topics, from how a sewing machine works to how Michael Jackson was able to do the moonwalk.
+- [How Car Works](https://www.howacarworks.com/): A website dedicated to explaining in full detail how a car works. All details from the clutch to the electrical system are mentioned with various graphics and videos.
+- [Vidrepeat](https://vidrepeat.com/): A service that allows you to watch Youtube videos over and over again for X times or Y duration.
 
-## Tools
+## Development
 
- - [Guard.io](https://guard.io): Helps you to organize, share, track and bookmark any link on the web.
- - [Typora](https://typora.io/):  A markdown-based note-taking app that provides a highly enjoyable experience both as a reader and a writer. It removes the preview window, mode switcher, syntax symbols of the markdown source code, and all other unnecessary distractions. Instead, it features a real live preview that helps you concentrate on the content itself. It made me switch from Notion. The only downside is that it isn't free (it costs $14).
+### Programming Languages & Frameworks
 
+#### JavaScript
 
+- [DeepJs](https://exploringjs.com/deep-js/toc.html): The free online version of the book Deep JavaScript: Theory and Techniques written by Dr. Axel Rauschmayer.
+- [Martin Kleppe: 1024+ Seconds of JS Wizardry -- JSConf EU 2013](https://www.youtube.com/watch?v=RTxtiLp1C8Y): A very entertaining presentation about Javascript.
+- [Ink](https://github.com/vadimdemedes/ink): A library that allows you to create command line applications with React.
+- [React Native Instagram](https://github.com/ozcanzaferayan/react-native-instagram): An Instagram clone developed with React Native by Özcan Zafer Ayan. You can learn a lot by examining it.
+- [Best Of JS](https://bestofjs.org/): The site where the best of Javascript projects and libraries are voted and listed.
+- [Modern JS CheatSheet](https://github.com/mbeaudru/modern-js-cheatsheet): Modern javascript cheat sheet.
 
+#### Python
+
+- [Samila](https://github.com/sepandhaghighi/samila): A generative art library written in Python.
+- [Futurecoder](https://futurecoder.io/): An interactive web application that helps you learn Python.
+- [Eleman](https://github.com/miratcan/eleman): A job posting site prepared with the trio of Python, Flask, and Airtable that you can easily publish by editing a few configurations.
+- [PyBtcTurk](https://github.com/erhan/pybtcturk): A Python client for BTCTurk.com prepared by Erhan Büte.
+- [Bandit](https://pypi.org/project/bandit/): A Python library that you can use to scan your Python code for security vulnerabilities.
+- [Python Goose](https://github.com/grangier/python-goose): A Python library for extracting article text from a given link.
+
+#### CSS
+
+- [Layout Patterns](https://web.dev/patterns/layout): A must-have resource for front-end development that lists the most commonly used CSS patterns--perfect to refer to whenever you're stuck.
+- [Awesome CSS Frameworks](https://github.com/troxler/awesome-css-frameworks): A Github repo that tries to bring together and list great CSS frameworks.
+- [Grid Malven](https://grid.malven.co/): A site made for you to learn the logic of grid in CSS very briefly or to cheat when you forget.
+- [SPCSS](https://github.com/susam/spcss): A simple and plain CSS conflict framework for simple text-based websites.
+
+#### Other
+
+- [Lua Cheatsheet](https://devhints.io/lua)
+- [Template Tags and Filters](https://www.djangotemplatetagsandfilters.com/): A page where Django's template tags and filters are listed regularly.
+- [Lib.rs](https://lib.rs/): A list of libraries and CLI applications written in the Rust language.
+
+### Tools & Utilities
+
+#### Terminal & CLI
+
+- [Explain Shell](https://explainshell.com/): A web application that explains in detail how a bash or terminal command works.
+- [Asciinema](https://asciinema.org/): A text-based video recorder and player that records your terminal sessions.
+- [YouPlot](https://github.com/red-data-tools/YouPlot): A great terminal application that allows you to create graphs from the output of programs that produce numeric output on the terminal.
+- [ClipBoard](https://github.com/Slackadays/Clipboard): An advanced clipboard application that runs on the terminal. It also allows you to copy images, files, etc. to the clipboard, just like in graphical interfaces.
+- [Fig](https://fig.io/): A very interesting terminal plugin for OSX.
+
+#### Web Development
+
+- [Netlify](https://www.netlify.com/): A server service that tries to make deployment processes as easy as possible, working with a Git version control system. A free plan is also available in the pricing.
+- [Serverless Stack](https://serverless-stack.com/): A framework that aims to facilitate work when developing in a serverless architecture.
+- [Responsively](https://responsively.app/): An online tool that significantly speeds up the creation of responsive web designs.
+- [Astro Build](https://astro.build/): A tool that aims to increase performance by converting pages developed with development frameworks such as React and Vue into static web pages, purifying them from Javascript as much as possible.
+- [Fast](https://www.fast.design/): An adaptable interface system for modern web experiences.
+- [Awesome Web Effect](https://github.com/lindelof/awesome-web-effect): A page listing many CSS and javascript effects for web pages.
+- [Sizzy Browser](https://sizzy.co/): A customized internet browser for front-end developers. It has useful and accelerating features such as being able to show a change you make on multiple device resolutions at the same time.
+- [MJML](https://documentation.mjml.io/): A markup language that claims to make it easier to design responsive emails.
+- [Metatags.io](https://metatags.io/): A web application that allows you to instantly see how your website's meta tags will look on different platforms and automatically generates the code.
+- [GetForm](https://getform.io/): A web application that allows you to easily add forms to your projects. It has features like exporting the submitted form to a spreadsheet, sending it as a notification to Slack, etc.
+- [Awesome Table](https://awesome-table.com/): A web service that allows you to develop websites and mobile applications in various formats using Google Spreadsheets.
+- [Parse Hub](https://www.parsehub.com/): This service allows you to collect data from websites without writing any code.
+- [Glide](https://www.glideapps.com/): A product that turns your data from sources like Google Sheets, Airtable, Excel, and BigQuery into a mobile application.
+- [Webflow](https://webflow.com/): An online tool for designing and publishing visually stunning websites without coding.
+- [Pory](https://pory.io/): A tool for creating websites from the tables you create with Airtable or the documents in your Notion.
+- [Carrd](https://carrd.co/): A tool for creating simple, single-page, business card-like websites.
+- [Airtable](https://airtable.com/): A service where you can model, store, and update semantic data without any code or database knowledge. Although it imposes various limits on API access, it can be said that it saves software development processes from a great burden.
+- [Baserow](https://baserow.io/): An Airtable alternative, a service where you can model, store, and update semantic data without any code or database knowledge.
+- [Dbdiagram.io](https://dbdiagram.io/home): An online free database design application that I definitely visit and do the database design when I start a project.
+- [Apify](https://apify.com/): A service that hosts data collection scripts for many sites.
+- [Alternative To](https://alternativeto.net/): A tool that helps you find alternatives to websites, tools, and services.
+
+#### Version Control
+
+- [Gitmoji](https://gitmoji.dev/): Emojis that you can add to commit messages when using Git.
+
+### Game Development
+
+- [TerraGen3D](https://github.com/Jaysmito101/TerraGen3D): A terrain generation tool for game developers.
+- [PiskelApp](https://www.piskelapp.com/): A sprite editor for game developers and pixel art lovers.
+- [PixelboxJS](https://github.com/cstoquer/pixelbox): A 2D game development library that includes built-in sprite, map, sound effect, and music editors.
+- [Inkle](https://www.inklestudios.com/ink/): A scripting language and editor developed for writing interactive stories.
+- [Dungeon Scrawl](https://probabletrain.itch.io/dungeon-scrawl): A map making application for game developers.
+- [RPG Maker](https://www.rpgmakerweb.com/): A game engine for making RPG games.
+- [Pico8](https://www.lexaloffle.com/pico-8.php): An imaginary virtual 8-bit game console for game developers. It includes code, sprite, sound, and music editors.
+- [TIC-80](https://tic80.com/): An imaginary virtual 8-bit game console for game developers. It includes code, sprite, sound, and music editors. I can say that it is relatively more capable than Pico-8, but it does not have as strong a community as Pico-8.
+- [Tilekit](https://rxi.itch.io/tilekit): A very capable and intelligent tile editor. It costs $20.
+- [Trigonometry for Games](https://demoman.net/?a=trig-for-games): An online application that teaches trigonometry for game developers.
+
+### Best Practices
+
+- [Use Plaintext Email](https://useplaintext.email/): A website that explains why we should take care to send plain text messages when using e-mail clients, and also provides guidance on this matter.
+- [Keep a Changelog](https://keepachangelog.com/en/1.0.0/): A website that explains the importance of writing a proper changelog and its best practices in software development and release processes.
+
+## Learning & Resources
+
+- [How Long to Read](https://howlongtoread.com/): You give the name of the book, and it tells you the average time it will take to read it. Unfortunately, it only works for English books.
+- [Developer Excuses](http://developerexcuses.com/): A website that helps you find excuses for your faulty and unfinished work if you are a developer.
+- [TrendCat](https://chrome.google.com/webstore/detail/trendcat/efpdjmbhdeindmfegilaloknlpfloefd): A Google Chrome extension developed by Ergenekon Yiğit that lists your Github news feed and the headlines on HackerNews every time you open a tab.
+- [Engineeing Blogs](https://engineeringblogs.google/): A great RSS reader that allows you to follow the blogs of all companies and organizations that have a technology blog, such as Facebook, Docker, Uber, etc., from a single place.
+- [Daily.dev](https://daily.dev/): A Google Chrome extension that shows you news from various sources about software development every time you open a new tab.
+- [Free Programming Books](https://goalkicker.com/): A website that lists free books on many topics such as HTML5, CSS3, JavaScript, PHP, Python.
+- [React Turkish Resource](https://github.com/orcuntuna/react-turkce-kaynak): The Turkish React book written and made public by Orçun Tuna.
+- [Awesome Data Science](https://github.com/academic/awesome-datascience/): A Github repo full of content that will help you find answers to the questions "What is Data Science?" and "What should I study to learn Data Science?".
+- [Web Dev for Beginners](https://github.com/microsoft/Web-Dev-For-Beginners): 24 lessons prepared by Microsoft for those who want to become a web developer.
+- [Codú Community](https://www.youtube.com/channel/UCvI5azOD4eDumpshr00EfIw): Many training videos on frontend development.
+- [Chrome Developers](https://www.youtube.com/user/ChromeDevelopers): Training videos on the use of developer tools in Google Chrome.
+- [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg): Training videos on all topics revolving around Javascript.
+- [Coding Addict](https://www.youtube.com/channel/UCMZFwxv5l-XtKi693qMJptA): Training videos on all topics revolving around Javascript.
+- [Dev Ed](https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q): A YouTube channel that publishes training videos on topics suchs as React, Python, HTML, CSS, Nodejs.
+- [Coding Tech](https://www.youtube.com/channel/UCtxCXg-UvSnTKPOzLH4wJaQ): Training videos on advanced topics such as Rust, Quantum computing, teamwork.
+- [FreeCodeCamp.org](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ): Training videos on many topics such as data structures, game development, computer science.
+- [Networking for Web Developers](https://classroom.udacity.com/courses/ud256/lessons/7090748708/concepts/70675111450923): A free course that explains the basic network information that every developer who develops on the web should know.
+- [Derek Banas](https://www.youtube.com/user/derekbanas): Comprehensive training videos on many topics related to software development.
+- [Traversy Media](https://www.youtube.com/user/TechGuyWeb): A youtube channel that publishes training videos on many topics related to software development.
+- [CodeSTACKr](https://www.youtube.com/channel/UCDCHcqyeQgJ-jVSd6VJkbCw): Various training videos on topics related to software development.
+- [Academind](https://www.youtube.com/c/Academind/): Various training videos on topics related to software development.
+- [Web Dev Simplified](https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw): Various training videos on topics related to software development.
+- [Reinforcement Learning](https://github.com/dennybritz/reinforcement-learning): A wiki containing code, questions, and answers on popular algorithms related to reinforcement learning.
+- [Music Teory Lessons](https://www.musictheory.net/lessons): A free web application that allows you to learn music theory through interactive lessons.
+- [WikiHow](https://www.wikihow.com/Main-Page): A beautiful "how-to" site that shows how to do many things, often with pictures.
+
+## Design
+
+### Resources
+
+#### Icons & Fonts
+
+- [Tabler Icons](https://tabler-icons.io/): Over 1250 icons.
+- [700 CSS Icons](https://css.gg/): 700 CSS icons.
+- [Icon Duck](https://iconduck.com/): Free open source icons and emojis.
+- [Hero Icons](https://heroicons.com/): Free SVG icon sets.
+- [Simple Icons](https://simpleicons.org/): 1880 icon drawings of various brands.
+- [IconScout](https://iconscout.com/): Can convert files to PNG and EPS formats. You can only download five images without registering on the platform.
+- [Fusion.li](https://fusion.li/): A website with SVG icons about blockchain and related topics and brands.
+- [VTF](http://velvetyne.fr/): The website of a design community that produces open source fonts. It contains hundreds of open source fonts.
+- [Type Terms](https://www.supremo.co.uk/typeterms/): A website that will help you learn typography-related terms.
+- [Font Joy](https://fontjoy.com/): An application that helps you create font combinations with the help of machine learning.
+
+#### Colors & Gradients
+
+- [Colorpalettes Earth](https://colorpalettes.earth/): A website that lists color palettes extracted from nature and earth photographs. It is updated daily.
+- [Sorted CSS Colors](https://enes.in/sorted-colors/): An online application that helps you find the CSS name equivalent of the color you want.
+- [ColorLeap](https://colorleap.app/): A website about historical periods and the color palettes used in those periods.
+- [Conic.css](https://conic.style/): A gallery of conic-shaped CSS gradients.
+- [Coolors](https://coolors.co/): Color palette generator.
+- [Grayscale Design](https://grayscale.design/): A color palette generator where brightness values are prioritized over colors.
+- [Gradienta](https://gradienta.io/): A website containing very interesting gradient forms developed with pure CSS.
+- [Shades Generator](https://javisperez.github.io/tailwindcolorshades/): A color shade generation tool for Tailwind.
+- [Trianglify.io](https://trianglify.io/): An online application that allows you to create gradient backgrounds consisting of triangles.
+- [Couleur.io](https://couleur.io/): A color theme generator for websites, I personally like the combinations it produces.
+
+#### Illustrations & Templates
+
+- [Ouch](https://icons8.com/illustrations): Ouch, owned by Icon8, is an illustration site where you can find modern, stylish, and vector drawings to create a better-designed website or application.
+- [Scale by Flexiple](https://2.flexiple.com/scale/all-illustrations): Free drawings to use on your website.
+- [Many Pixels](https://www.manypixels.co/gallery): It has very cute style illustrations that you can use as you wish.
+- [Design Vault](https://designvault.io/): An inspirational website where screenshots of various web and mobile applications are shared.
+- [Templated](https://templated.co/): 867 free HTML5+CSS3 website templates.
+- [UiDeck](https://uideck.com/): Free landing page designs and HTML5 site templates.
+- [HTML5 Up](https://html5up.net/): Free responsive HTML5+CSS3 website templates.
+- [W3Layouts](https://w3layouts.com/): Free responsive HTML5+CSS3 website templates.
+- [Inovatik](https://inovatik.com/): Free responsive HTML5+CSS3 website templates.
+- [UiCookies](https://uicookies.com/): Free responsive HTML5+CSS3 website templates.
+- [TemplateMo](https://templatemo.com/): Free responsive HTML5+CSS3 website templates.
+- [FreeHtml5](https://freehtml5.co): Free and Premium HTML5 Bootstrap site templates.
+- [GrayGrids](https://graygrids.com/): Free and Premium Bootstrap Themes and HTML Web Site Templates.
+- [landing page fyi](https://landingpage.fyi/): A website that shares inspirational landing page examples daily.
+
+### Tools
+
+- [Color Scheme Generator](https://adevade.github.io/color-scheme-generator/): A simple color palette generation tool.
+- [Illustroke](https://illustroke.com/): You write a sentence, and artificial intelligence creates an illustration in SVG format from that sentence.
+- [Stock Img](https://stockimg.ai/): An AI application that can generate graphics such as book covers, stock photos, logos, illustration logos, etc. from the sentence you provide.
+- [Patterned AI](https://www.patterned.ai/): An AI application that creates a pattern for you and shows you how this pattern will look on various products.
+- [CharPad Pro](https://subchristsoftware.itch.io/charpad-pro): A very powerful desktop application that allows you to create game graphics and visuals while remaining faithful to the graphics capacity of the retro computer called Commodore 64. It costs $9 and unfortunately only works on Windows systems.
+- [Excalidraw](https://excalidraw.com/): An application that allows you to draw diagrams and graphics that look like hand drawings.
+- [Vectr](https://vectr.com/): Advanced vector-based drawing program.
+- [Dither It](https://ditherit.com/): An online application that dithers the photos you send.
+- [Tiny Png](https://tinypng.com/): Online png compressor.
+- [SVG Artista](https://svgartista.net/): Converts SVG drawings into animations.
+- [Figma](https://www.figma.com/): A web-oriented, team-based visual design application.
+- [TinkerCad](https://www.tinkercad.com/): A web-based 3D editor designed with children in mind.
+- [Autodraw](https://www.autodraw.com/): An application that replaces your drawings with previously made vector drawings using artificial intelligence.
+- [Canva](https://www.canva.com/): An online editor that you can use to design almost any kind of visual thing.
+- [Squash](https://squoosh.app/): A program that reduces the quality of the images you choose, and also allows you to compare the old and new versions.
+- [Darkmode To](https://darkmode.to/): An online service that allows you to easily add a dark mode feature to your website. It only asks for a one-time payment of $50. I think it's expensive, but someone might want to use it.
+- [Get Waves](https://getwaves.io/): A simple application that allows you to create wave forms without writing code with CSS.
+- [Blob Maker](https://www.blobmaker.app/): A simple application that allows you to create drop forms without writing code with CSS.
+- [Animista](https://animista.net/): An online application that allows you to create CSS animation designs without writing code.
+- [Previewed](https://previewed.app/): A tool that allows you to create marketing materials for the application you are developing.
+- [Floor Plan Lab](https://floorplan.com/): An application that allows you to draw the floor plan of interior spaces.
+- [Diagrams.net](https://app.diagrams.net/): A web application that allows you to draw UML diagrams or diagrams.
+- [Octopus.do](https://octopus.do/): A web application that you can use to create your website's sitemap and design page navigations.
+- [Rasterbator](https://rasterbator.net/): An online application that allows you to turn your photos into large posters by printing them piece by piece.
+
+## Business & Career
+
+### Entrepreneurship
+
+- [Failory](https://www.failory.com/): A website that shares the stories of failed startups.
+- [Open Source Alternatives](https://www.btw.so/open-source-alternatives): Open source alternatives for many paid services.
+- [Small Business](https://www.thebalancesmb.com/): An article site that hosts experts who provide clear and practical advice on entrepreneurship and management. They have accumulated 7,000 articles in 20 years. If you intend to start your own business or grow your existing one, you should definitely study this site like you would a textbook.
+- [Google Cemetery](https://gcemetery.co/): A list of products that Google has discontinued.
+- [Flippa](https://flippa.com/): A marketplace where applications, blogs, and websites are bought and sold.
+- [First 1000](https://www.first1000.co/?mvp=605daa4c27edc200232ce124): A website full of articles explaining how famous startups got their first 1000 users.
+- [Nocode Tech](https://www.nocode.tech/): An online marketplace for intelligent beings who want to start their venture without writing code or with as little coding as possible. These were all the rage for a while, weren't they?
+- [The 1Mb Club](https://1mb.club/): Like the 250Kb club, but they've been a little more generous and limited the upper limit to 1Mb.
+- [The 250Kb Club](https://250kb.club/): The club of those who think it's wrong to download 8mb of javascript and 6mb of assets to view an email list. Inside is a list of websites that require less than 250Kb to download.
+- [The NoCSS Club](https://nocss.club/): A club for websites that don't use CSS.
+
+### Career & Job Search
+
+- [Resume Studio](https://resumestudio.careers/): An application that makes it easier to create a CV using artificial intelligence.
+- [We Work Remotely](https://weworkremotely.com/): A job and recruitment platform that claims to be the largest remote work community in the world.
+- [Just Remote](https://justremote.co): Discover Remote Jobs from around the world. Ditch the commute, work remotely and do what you love, every day, from anywhere.
+- [Toptal](https://www.toptal.com/): A freelance job and recruitment platform.
+- [Soshace](https://soshace.com/): A freelance job and recruitment platform.
+- [Freelancer](https://www.freelancer.com/): A freelance job and recruitment platform.
+- [Upwork](https://www.upwork.com/): A freelance job and recruitment platform.
+- [Remoteok.io/vscode](https://remoteok.io/vscode): Remoteok is a platform where IT jobs suitable for remote work are published. By entering the site from this address, you can search for a job as if you were writing code with VSCode.
+- [Remote Python](https://www.remotepython.com/): A job and recruitment platform focused solely on remote Python developers.
+- [Freelancer Roadmap](https://freelancer.guide/): A guide website that contains almost all the topics you need to become an international freelancer.
+- [Jobspresso](https://jobspresso.co/): A job and recruitment platform for remote-friendly jobs.
+
+### E-commerce & Finance
+
+- [Copy Monkey](https://copymonkey.ai/): An AI application that makes it easy to enter titles and descriptions for the products you sell on Amazon.
+- [Flair](https://flair.ai/): An AI application that can show you how your logo will look on various products.
+- [Gumroad](https://gumroad.com/): A platform that allows you to make money online by selling digital products, memberships, and more.
+- [Stradr](https://stradr.com/): A web application that allows those who are interested in the stock market but cannot afford to invest money to buy and sell on real stock exchanges with fake money, thus allowing you to measure your success as a trader without risking your money.
+- [Finematics](https://www.youtube.com/c/Finematics): A Youtube account with educational videos that simplify various concepts in decentralized finance.
+
+## Productivity & Lifestyle
+
+### Note-taking & Writing
+
+- [Typora](https://typora.io/): A markdown-based note-taking app that provides a highly enjoyable experience both as a reader and a writer. It removes the preview window, mode switcher, syntax symbols of the markdown source code, and all other unnecessary distractions. Instead, it features a real live preview that helps you concentrate on the content itself. It made me switch from Notion.
+- [Obsidian](https://obsidian.md/): Like Notion, but for more technical users and free. You work by editing only Markdown formatted files. It uses your hard drive as the storage location.
+- [Notion](https://www.notion.so/): Your own personal Wikipedia. It allows you to keep your writings, notes, and to-do lists in an organized manner. Since it is cloud-based, you can immediately access your notes from wherever you log in.
+- [MacDown](https://macdown.uranusjr.com/): A Markdown editor with powerful preview capabilities. As the name suggests, it can run on the OSX operating system.
+- [ZenPen](https://zenpen.io/): A minimalistic, distraction-free online text editor.
+
+### AI-powered Tools
+
+- [Ocoya](https://www.ocoya.com/): A web application that helps you prepare, automate, and schedule social media content faster with the help of artificial intelligence.
+- [Copy AI](https://copy.ai): A copywriter AI application that helps more than 1 million people write social media posts, website content, and blog posts in seconds.
+- [myEssai](https://myess.ai/): An AI application that provides comments and suggestions to improve the English article you wrote.
+- [Pharaphrasing Tool](https://app.yaara.ai/paraphraser): An AI application that rewrites an existing English article using different sentences.
+- [Quill Bot](https://quillbot.com/): An online AI application that converts the sentences you provide into other sentences with the same meaning.
+- [Free Subtitles](https://freesubtitles.ai/): You give the video file, and it uses artificial intelligence to create subtitles for the video and gives them back to you. Turkish support is also available.
+- [Lalal.ai](https://www.lalal.ai/): An AI application that removes the lyrics from the music file you provide and gives you the instrumental version.
+- [Beatoven](https://www.beatoven.ai): An AI application that allows you to create unique royalty-free music.
+- [Soundraw](https://soundraw.io/): An AI application that allows you to create unique royalty-free music.
+- [Clean Voice](https://cleanvoice.ai): An AI application that cleans things like mouth smacking and background noise from podcast or speech recordings.
+- [Podcastle](https://podcastle.ai/): An online web application that allows you to record studio-quality audio, clean the audio you record using artificial intelligence, and edit the audio you record.
+- [Vidyo](https://vidyo.ai/): An AI application for shortening long videos. It supports many services such as Youtube, Instagram, Tiktok, Linkedin.
+
+### Utilities
+
+- [Guard.io](https://guard.io): Helps you to organize, share, track and bookmark any link on the web.
+- [Guardio](https://guardo.io/): An advanced bookmark archiver.
+- [Temp Mail](https://temp-mail.to/): A web service that allows you to create and use an instant email address without dealing with registration forms.
+- [OneTimeSecret](https://onetimesecret.com/): An application that allows you to share notes that are completely deleted after being read. For sharing important things like passwords, etc.
+- [Invoice Generator](https://invoice-generator.com/): The invoice generator I use, you can handle your invoicing work quite easily.
+- [Use The Keyboard](https://usethekeyboard.com/): A website that lists the keyboard shortcuts of many applications.
+- [FileZigZag](https://www.filezigzag.com/): Convert any file to another format, it supports hundreds of file types.
+- [Emojı Batch](https://www.emojibatch.com/): A website that allows you to find the emoji you need very quickly.
+- [CopyChar](https://copychar.cc/): It allows you to easily find special characters or emojis.
+- [Oshi.at](https://oshi.at/): Like temp.sh, you can temporarily store your files in the cloud with a command like "curl -T file.txt https://oshi.at". It has a 6GB file size limit and can store your file for 90 days.
+- [Squirt.io](http://squirt.io/): An online tool that allows you to read the text you provide very quickly.
+- [WormHole](https://wormhole.app/): Like Wetransfer, but it sends the files you share with end-to-end encryption and promises to delete them from the servers after 24 hours.
+- [Temp.sh](https://temp.sh/): A temporary upload area that you can use instead of Wetransfer, which you can upload from the terminal with a command like "curl -T file.txt http://temp.sh".
+- [Gifrun](https://gifrun.com/): An online web application for making Gifs from Youtube videos and turning them into NFTs.
+
+### Collaboration & Social Media
+
+- [Buffer](https://buffer.com): A software application for web and mobile designed to manage accounts on social networks by providing tools for planning and analyzing the results of posts on Twitter, Facebook, Instagram, Instagram Stories, Pinterest, and LinkedIn.
+
+### Focus & Ambient Sounds
+
+- [Sound of Colleagues](https://soundofcolleagues.com/): A web application that makes sounds and noises as if you were in the office for those who miss working in the office.
+- [Soundscape World](https://soundscape.world/): It allows you to build music loops that will increase your concentration while working.
+- [Noises Online](https://noises.online/): Background sounds to increase work concentration.
+- [Deftonic](https://defonic.com/): Background sounds for work, sleep or meditation.
+- [Pomodor](https://pomodor.app/): A clean pomodoro application that can provide various statistics.
+- [Deprocrastination](https://www.deprocrastination.co/): A Chrome Extension that solves the problem of productivity and distraction that arises when working from home.
+- [Life At](https://lifeat.io/refer/Cse5eCA62DKy): The best work environment creation application I have ever seen. In addition to providing flowing images that will make you feel like you are in a cafe, library, or by the sea, it also has a built-in note-taking, pomodoro timer, and even a built-in lo-fi music player.
+- [VirtOcean](https://virtocean.com/index.html): A background sound site that allows you to work feeling like you are at the seaside.
+- [Music For Programming](https://musicforprogramming.net/): An online music player that contains non-distracting music that can be listened to while coding. The music choices and the interface are quite successful. I highly recommend it.
+- [I Miss The Office](https://imisstheoffice.eu/): A web application that creates an atmosphere with office sounds for those who miss working in the office during the pandemic.
+- [Tomato Timer](https://tomato-timer.com/): A time keeper for those who work in a pomodoro schedule.
+- [Misty Cafe Cazz Radio](https://misty.cafe/): A web application that offers an atmosphere as if you were working in a cafe on a rainy day listening to jazz.
+
+### Health & Wellness
+
+- [How do I keep my focus as developer with ADHD](https://medium.com/@mgundogdu/how-do-i-keep-my-focus-as-developer-with-adhd-attention-deficit-hyperactivity-disorder-526ba045321b)
+- [Fit Father Project](https://www.fitfatherproject.com/): Fitness and exercise plans designed for fathers.
+- [Free Guided Meditations](https://www.uclahealth.org/marc/mindful-meditations): Free guided meditation audio recordings.
+- [Daylio](https://daylio.webflow.io/): It helps you get to know yourself better by tracking your personal mood.
+- [Linda Hall Meditation](https://www.youtube.com/channel/UCTDiRJp9MeAgZbmwmq4w4GA): If you can listen in English, it contains quite beautiful guided meditation audio recordings.
+- [Breathe](https://midorikocak.github.io/breathe/): A free online application developed by Midori Koçak that allows you to meditate by doing breathing exercises.
+
+### Personal Development
+
+- [Telescope Building with John Dobson](https://www.youtube.com/watch?v=snz7JJlSZvw): A detailed video in which the famous amateur astronomer John Dobson explains how to build a telescope with his own hands, like a lesson.
+- [Animated Knots](https://www.animatedknots.com/): A website that helps you learn sailor knots easily with animations.
