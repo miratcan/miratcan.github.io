@@ -3,7 +3,8 @@ body:
 <div class="home-hero">
   <img src="mirat-resized.webp" alt="Mirat Can Bayrak">
   <div class="home-intro">
-    <p>Hello, I'm Mirat&mdash;friends call me Miro. I'm a programmer and solopreneur who loves building things people actually use.</p>
+    <p>
+Hello, I'm Mirat—friends call me Miro. I'm a programmer, solopreneur, and dad of two who loves turning ideas into things people can use, listen to, or feel.</p>
     <p>Over the years I've shipped experiments like OneMillionDollar.link alongside practical tools such as Kaydet. You can explore more of my work on <a href="https://github.com/miratcan">GitHub</a>.</p>
   </div>
 </div>
