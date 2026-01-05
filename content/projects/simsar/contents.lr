@@ -1,0 +1,100 @@
+_model: page
+---
+title: Simsar MCP - Cryptocurrency Market Data for AI Assistants
+---
+meta_desc: Give your AI the eyes of a trader. MCP server providing real-time crypto prices, 35+ technical indicators, market sentiment, and economic calendar to Claude and other AI assistants.
+---
+body:
+
+# Simsar MCP
+
+**Give your AI the eyes of a trader.**
+
+Simsar is an MCP (Model Context Protocol) server that provides cryptocurrency market data and technical indicators to AI assistants like Claude. Ask your AI about Bitcoin's RSI, market sentiment, or upcoming FOMC meetings—no coding required.
+
+## Quick Start
+
+### Claude Desktop
+
+Add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "simsar": {
+      "command": "uvx",
+      "args": ["simsar-mcp"]
+    }
+  }
+}
+```
+
+### Claude Code
+
+```bash
+claude mcp add simsar -- uvx simsar-mcp
+```
+
+## Features
+
+**48 tools** for comprehensive market analysis:
+
+### Price & Candles
+- Real-time cryptocurrency prices
+- OHLCV candlestick data for any timeframe
+
+### Technical Indicators (35+)
+
+**Moving Averages**: SMA, EMA, WMA, DEMA, TEMA, KAMA, T3, TRIMA
+
+**Momentum**: RSI, MACD, Stochastic, MOM, ROC, CCI, Williams %R, Ultimate Oscillator, TRIX, PPO, APO, CMO
+
+**Trend**: ADX, DX, +DI, -DI, ADXR, Aroon, Aroon Oscillator, Parabolic SAR
+
+**Volume**: OBV, MFI, Accumulation/Distribution, A/D Oscillator
+
+**Volatility**: ATR, NATR, True Range, Bollinger Bands
+
+### Market Sentiment
+- Fear & Greed Index
+- Binance Futures funding rates
+
+### Futures Data
+- Open interest
+- Long/short account ratios
+- Top trader positions
+
+### News & Economic Calendar
+- Crypto, forex, and general market news
+- FOMC, CPI, NFP dates and upcoming events
+
+## Example Prompts
+
+Try asking your AI:
+
+- "What's the RSI for Bitcoin on 4h timeframe?"
+- "Show me ETH funding rate"
+- "When is the next FOMC meeting?"
+- "Get latest crypto news"
+- "What are top traders doing on BTC?"
+- "Is the market fearful or greedy right now?"
+- "Show me MACD crossover for ETH on daily"
+- "What's the open interest trend for BTC futures?"
+
+## Why Simsar?
+
+Most AI assistants can't access real-time market data. Simsar bridges this gap by providing:
+
+- **No API keys required** - Works out of the box
+- **Token-efficient responses** - Compact data format optimized for LLMs
+- **Comprehensive coverage** - From basic prices to advanced indicators
+- **Real-time data** - Always current market information
+
+## Links
+
+- [GitHub](https://github.com/miratcan/simsar-mcp)
+- [PyPI](https://pypi.org/project/simsar-mcp/)
+
+## License
+
+MIT

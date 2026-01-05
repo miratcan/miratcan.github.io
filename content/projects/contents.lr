@@ -7,6 +7,10 @@ body:
 <img src="ss1.png" alt="YAMP Logo" style="width: 100px; float:right; margin-left:10px;" />
 This list is a bit crowded. I've been coding for over 10 years, and since childhood, I've always enjoyed creating things and using my creativity. My friends now call my projects *YAMP* (Yet Another Mirat Project), and I really like the name :)
 
+## [Simsar](/projects/simsar/)
+
+*Give your AI the eyes of a trader.* An MCP server providing cryptocurrency market data and 35+ technical indicators to Claude and other AI assistants.
+
 ## Kaydet
 
 A simple journaling script I wrote for my own needs. Initially created in 2016, I turned it into a Python package in 2023:
