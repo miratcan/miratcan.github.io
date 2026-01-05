@@ -54,5 +54,5 @@ claude mcp add simsar -- uvx --from git+https://github.com/miratcan/simsar-mcp s
 
 ## Links
 
+- Website: https://simsar.trade
 - GitHub: https://github.com/miratcan/simsar-mcp
-- Homepage: https://mirat.dev/projects/simsar/
