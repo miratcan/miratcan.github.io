@@ -20,6 +20,16 @@
   var links = document.querySelectorAll('.lang-filter a[data-lang]');
   var items = document.querySelectorAll('#articles li[data-language]');
 
+  var tagLinks = document.querySelectorAll('.tag-list a');
+
+  function updateTagLinks(lang) {
+    var suffix = (lang && lang !== 'all') ? '#lang=' + lang : '';
+    tagLinks.forEach(function(a) {
+      var base = a.href.split('#')[0];
+      a.href = base + suffix;
+    });
+  }
+
   function filterByLang(lang) {
     items.forEach(function(item) {
       if (lang === 'all' || item.getAttribute('data-language') === lang) {
@@ -35,6 +45,7 @@
         link.classList.remove('active');
       }
     });
+    updateTagLinks(lang);
   }
 
   links.forEach(function(link) {
