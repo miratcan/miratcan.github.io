@@ -4,49 +4,30 @@ body:
 
 Since 2009, I've been building side projects and writing about why they failed. [A classified ads site](../bilsin-com-ilk-girisimim/) that got 40 listings in two years. [A Reddit clone](../linkfloyd-reddit-klonu-turkiye-icin/) that accidentally became one person's music blog. [A viral curiosity engine](../cubbin-viral-buyume-sifir-retention/) with zero retention. [A lottery for websites](../sitepiyango-viral-olup-15-gunde-olmek/) killed by a single blog post in 15 days. I've built over a dozen things. Most of them died. I wrote a [retrospective on each one](/articles@tag/retrospective/), trying to extract the lesson before it faded.
 
-Somewhere around 2016, I noticed a pattern. I was [writing down rules](../o-projeyi-yapma/) for which projects to start and which to avoid. Things like: "If you won't use it yourself, don't build it." "If you can't explain it in one sentence, don't build it." "If you're counting on ad revenue, don't build it." These weren't theories—they were scars.
-
-Around the same time, I became *that friend*. You know the one. Someone in my circle would message me: "Hey, I have this idea for an app..." and I'd spend 30 minutes asking uncomfortable questions. *Who is this for, specifically? Why would they pay? How do you reach them? What happens when someone copies you in a weekend?* Most ideas didn't survive the conversation. The ones that did were better for it.
-
-This kept happening. Different friend groups, different Slack channels, different coffee chats. Always the same questions. Always the same patterns of failure I'd seen in my own projects and now saw in theirs. I was watching people fall into the exact same holes I'd crawled out of 10 years earlier.
+Somewhere around 2016, I started [writing down rules](../o-projeyi-yapma/) for which projects to start and which to avoid. Then I became *that friend*. Someone in my circle would message me with an idea, and I'd spend 30 minutes asking uncomfortable questions until the idea either survived or didn't. This kept happening—different friend groups, different Slack channels, different coffee chats. I was watching people fall into the exact same holes I'd crawled out of years earlier.
 
 So I built [The Slaughterhouse](https://slaughterhouse.mirat.dev/).
 
 ## What It Does
 
-You answer six questions about your idea. Who is it for? What problem does it solve? How do you make money? How do you reach users? Can you actually build it? That's it—the same questions I'd ask you over coffee, except the coffee is replaced by an AI that has the bedside manner of Dr. House.
+You answer six questions about your idea. An AI with the bedside manner of Dr. House runs it through 15 gates—each one a specific failure pattern I've lived through or watched someone else live through:
 
-Your idea then gets run through 15 gates. Each gate is a specific failure pattern I've seen play out over and over—in my own projects and in the hundreds of ideas people have pitched me. Things like:
-
-- **Is the pain real?** Or is this a solution looking for a problem?
+- **Is the pain real?** [bilsin.com](../bilsin-com-ilk-girisimim/) solved a problem nobody was actively looking to solve. I learned this one the hard way.
 - **Can you describe ONE specific user?** Not "millennials" or "small businesses"—a person with a name and a habit.
-- **Will they actually pay?** "We'll figure out monetization later" is not a business model.
+- **Will they actually pay?** [cubb.in](../cubbin-viral-buyume-sifir-retention/) went viral with zero path to revenue. Turns out "viral" and "profitable" are different words.
+- **How do you reach them?** [linkfloyd](../linkfloyd-reddit-klonu-turkiye-icin/) had no distribution strategy beyond "post it and hope."
 - **Can you ship in a month?** If you need a year and a team of ten, you're not building a startup—you're building a corporation.
-- **What happens if the platform you depend on changes its API?** I lost [ffanony](../ffanony-150-satir-kod-ile-viral-olmak/) when Facebook killed FriendFeed. Platform risk is real.
+- **What happens if the platform you depend on disappears?** I lost [ffanony](../ffanony-150-satir-kod-ile-viral-olmak/) when Facebook killed FriendFeed. Gone overnight.
 
-Each gate has three verdicts: **pass**, **bleeder** (wounded but alive), or **killer** (dead, game over). One killer and your idea is done. You get a Wordle-style grid of your results that you can share—or hide in shame.
+Each gate has three verdicts: **pass**, **bleeder** (wounded but alive), or **killer** (dead, game over). One killer and your idea is done. You get a Wordle-style grid you can share—or hide in shame.
 
 ## Why It's Brutal on Purpose
 
-Every other startup validation tool out there is designed to make you feel good. "Great idea! Here are some tips to improve it!" That's not validation—that's a participation trophy.
+Every other validation tool is designed to make you feel good. "Great idea! Here are some tips!" That's not validation—that's a participation trophy.
 
-I designed Slaughterhouse to be the opposite. The UI looks like a Cold War terminal. The copy is condescending. The results are blunt. If your idea sucks, it tells you your idea sucks—and more importantly, *why*.
+When I was building my early projects, nobody told me the truth. Everyone was encouraging. Then I'd spend years on something and watch it die exactly the way someone could have predicted on day one. The kindest thing anyone could have done was to say: "This will fail, and here's why."
 
-This isn't cruelty for its own sake. When I was building my early projects, nobody told me the truth. Not my friends, not the forums, not the startup blogs. Everyone was encouraging. Then I'd spend two years on something and watch it die exactly the way someone could have predicted on day one. The kindest thing anyone could have done for 2010-me was to say: "This will fail, and here's exactly why."
-
-That's what Slaughterhouse does. In about 2 minutes, instead of 2 years.
-
-## The Gates Come From Real Failures
-
-Every single gate in the framework maps to a mistake I've either made or watched someone make:
-
-- **GATE-PAIN** exists because [bilsin.com](../bilsin-com-ilk-girisimim/) solved a problem nobody was actively looking to solve.
-- **GATE-CHANNEL** exists because [linkfloyd](../linkfloyd-reddit-klonu-turkiye-icin/) had no distribution strategy beyond "post it and hope."
-- **GATE-PLATFORM-LEASH** exists because [ffanony](../ffanony-150-satir-kod-ile-viral-olmak/) died the day FriendFeed did.
-- **GATE-MONEY** exists because [cubb.in](../cubbin-viral-buyume-sifir-retention/) went viral with zero path to revenue.
-- **GATE-30-SEC** exists because if users don't get it in 30 seconds, a solo founder can't hand-hold them at scale.
-
-This isn't a framework I copied from a business school textbook. It's 15 years of scar tissue turned into software.
+That's what Slaughterhouse does. In 2 minutes, instead of 2 years.
 
 ## Try It
 
