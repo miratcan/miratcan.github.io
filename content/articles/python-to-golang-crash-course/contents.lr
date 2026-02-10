@@ -585,7 +585,7 @@ s := make([]int, 0, 10000)
 // Now all 10000 appends will be zero-copy, single allocation.
 ```
 
-In Python you dont have this option, `list` grows however it wants and you cant control it. This is Go's philosophy: "I'll give you the tools, you decide."
+In Python's builtin `list` you dont have this option, it grows however it wants. You can use `numpy` to preallocate memory but thats a third party library. In Go this is just how slices work out of the box.
 
 ### Slices inside slices
 
