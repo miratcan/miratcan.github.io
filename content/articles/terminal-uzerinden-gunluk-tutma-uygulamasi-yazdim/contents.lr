@@ -44,4 +44,6 @@ tags: technical
 ---
 meta_desc: I built Kaydet, a simple terminal-based journaling app that saves timestamped entries to daily text files. Install it with pip.
 ---
+redirect_from: /blog/terminal-uzerinden-gunluk-tutma-uygulamasi-yazdim/
+---
 language: en
