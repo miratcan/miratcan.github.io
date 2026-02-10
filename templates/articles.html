@@ -15,3 +15,42 @@
   </aside>
 </div>
 {% endblock %}
+{% block after_screen %}
+<script>
+(function() {
+  var links = document.querySelectorAll('.lang-filter a[data-lang]');
+  var items = document.querySelectorAll('#articles li[data-language]');
+
+  function filterByLang(lang) {
+    items.forEach(function(item) {
+      if (lang === 'all' || item.getAttribute('data-language') === lang) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+    links.forEach(function(link) {
+      if (link.getAttribute('data-lang') === lang) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var lang = this.getAttribute('data-lang');
+      filterByLang(lang);
+      history.replaceState(null, '', lang === 'all' ? location.pathname : '#lang=' + lang);
+    });
+  });
+
+  var hash = location.hash;
+  if (hash && hash.indexOf('#lang=') === 0) {
+    filterByLang(hash.replace('#lang=', ''));
+  }
+})();
+</script>
+{% endblock %}

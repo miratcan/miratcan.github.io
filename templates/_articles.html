@@ -1,6 +1,6 @@
 <ul id="articles" class="article-list">
   {% for post in posts %}
-    <li>
+    <li data-language="{{ post.language or 'en' }}">
       <a class="article-title" href="{{ post|url }}">{{ post.title }}</a>
       {% set desc = post.description or post.meta_desc %}
       {% set has_date = post.pub_date %}
