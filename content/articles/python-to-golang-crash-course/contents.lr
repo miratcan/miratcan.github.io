@@ -682,7 +682,7 @@ for i, _ in enumerate(lst):
 
 ## Maps
 
-Maps are Go's equavelent of Python dictionaries. They map keys to values. You create them with `make` or with a map literal:
+Maps are Go's equavelent of Python dictionaries. They map keys to values. You create them with `make` or with a map literal. The syntax is a bit ugly compared to Python's `{}` but it works:
 
 ```golang
 package main
@@ -783,7 +783,7 @@ Notice that Python needs the `nonlocal` keyword to modify the outer variable, Go
 
 ## Methods
 
-Go doesnt have classes. Instead you define methods on types using a receiver argument. Think of it as attaching a function to a struct:
+Go doesnt have classes. Yeah, you read that right. No classes. Instead you define methods on types using a receiver argument. Its basically attaching a function to a struct and calling it a day:
 
 ```golang
 package main
@@ -840,7 +840,7 @@ func (c *Circle) Scale(factor float64) {
 }
 ```
 
-Without the pointer (`*Circle`), the method would work on a copy and changes wont persist. This is similar to how Python's `self` always acts as a reference.
+Without the pointer (`*Circle`), the method would work on a copy and changes wont persist. In Python you never have to think about this because `self` is always a reference. One more thing to worry about in Go. :/
 
 ## Interfaces
 
@@ -953,7 +953,9 @@ except FileNotFoundError as err:
     print("Error:", err)
 ```
 
-In Go, the pattern is always the same: call a function, check `if err != nil`, handle it. You'll write this pattern hundreds of times. Its verbose but explicit. You can also create custom errors:
+In Go, the pattern is always the same: call a function, check `if err != nil`, handle it. You'll write this pattern hundreds of times. Coming from Python this feels like a massive step backwards. I mean, try/except is one of the best things about Python and they just... didnt add it? Instead you get the same 3 lines of boilerplate after every single function call. O_o
+
+Anyway, you can also create custom errors:
 
 ```golang
 import "errors"
@@ -1026,7 +1028,7 @@ t.start()
 say_hello("main")
 ```
 
-The difference: goroutines are much cheaper than Python threads. You can spawn thousands of goroutines without any issues, and they actually run in paralel (no GIL!).
+OK I have to admit, this is where Go actually impresses me. Goroutines are much cheaper than Python threads. You can spawn thousands of them without any issues, and they actually run in paralel (no GIL!). This is probably the main reason people switch to Go from Python.
 
 ### Channels
 
@@ -1208,11 +1210,11 @@ def add(a, b):
     return a + b
 ```
 
-Key difference: Go uses capitalization for visibility (uppercase = public, lowercase = private). Python uses the `_` prefix convention.
+Key difference: Go uses capitalization for visibility (uppercase = public, lowercase = private). Python uses the `_` prefix convention. I find the capitalization thing weird, it took me a while to stop naming everything lowercase out of habit.
 
 ## String Formatting
 
-Go uses `fmt.Sprintf` for string formatting, which works like C's `sprintf`. As a Python developer I find `%v` (default format) the most useful verb:
+Go uses `fmt.Sprintf` for string formatting, which works like C's `sprintf`. After using Python's f-strings this feels like going back to 2005 but whatever. As a Python developer I find `%v` (default format) the most useful verb:
 
 ```golang
 name := "Mirat"
