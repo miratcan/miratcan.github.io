@@ -378,7 +378,7 @@ This process is called **"dereferencing"** or **"indirecting."**
 
 ## Structs
 
-A struct is a collection of fields.
+A struct is a collection of fields. They are basicly classes without methods in Python.
 
 ```golang
 package main
