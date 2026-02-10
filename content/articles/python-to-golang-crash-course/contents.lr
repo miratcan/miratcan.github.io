@@ -573,6 +573,20 @@ You can also define it's capacity (maximum size). In this example we have a slic
 a := make([]int, 5, 10)
 ```
 
+Now heres the thing about slices that confused me at first: a slice is basicly a struct with 3 fields: a pointer to an underlying array, a length, and a capacity. When you `append` to a slice and it exceeds capacity, Go creates a brand new array (usually 2x the size), copies everything over, and points the slice to the new array. Sounds expensive right?
+
+But actually Python's `list` does the exact same thing under the hood. CPython's `list_resize` function does the same grow-and-copy dance. The difference is Python hides this from you, Go doesnt.
+
+So if you care about performance and you know how many elements you'll need, preallocate the capacity:
+
+```golang
+// You know you'll have 10000 elements? Tell Go upfront.
+s := make([]int, 0, 10000)
+// Now all 10000 appends will be zero-copy, single allocation.
+```
+
+In Python you dont have this option, `list` grows however it wants and you cant control it. This is Go's philosophy: "I'll give you the tools, you decide."
+
 ### Slices inside slices
 
 Slices can contain other slices. Here's an example of tic tac toe game board. It\'s simply a 2D array.
