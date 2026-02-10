@@ -113,3 +113,5 @@ has_code: yes
 tags: django-notes
 ---
 meta_desc: Learn how to use Django's ORM annotations and aggregations to calculate sums, counts, and averages directly at the database level with practical examples.
+---
+language: en

@@ -30,3 +30,5 @@ meta_desc: A quick lesson on overconfidence in coding—how assuming int(None) r
 has_code: yes
 ---
 tags: technical
+---
+language: en

@@ -29,3 +29,5 @@ tags: django-notes
 has_code: yes
 ---
 meta_desc: A quick guide on how to upload files programmatically through Django's shell using ImageField and the File class.
+---
+language: en

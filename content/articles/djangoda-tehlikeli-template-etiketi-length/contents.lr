@@ -69,3 +69,5 @@ meta_desc: Why Django's length template filter can kill your performance and how
 has_code: yes
 ---
 tags: django-notes
+---
+language: en

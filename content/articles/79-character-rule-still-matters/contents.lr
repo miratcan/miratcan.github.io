@@ -65,3 +65,5 @@ has_code: yes
 pub_date: 2025-10-10
 ---
 meta_desc: Why the classic 79-character line limit still improves readability, collaboration, and code quality in 2025.
+---
+language: en

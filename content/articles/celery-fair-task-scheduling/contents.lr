@@ -63,3 +63,5 @@ has_code: yes
 pub_date: 2025-08-21
 ---
 meta_desc: Why classic Celery queues starve small tenants and how multi-tenant fair scheduling (with fairque) keeps background tasks balanced.
+---
+language: en

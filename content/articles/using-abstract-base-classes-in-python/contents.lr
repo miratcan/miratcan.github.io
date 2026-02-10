@@ -62,3 +62,5 @@ has_code: yes
 pub_date: 2025-09-02
 ---
 meta_desc: Why switching from NotImplementedError to Abstract Base Classes makes Python interfaces safer, clearer, and easier to maintain.
+---
+language: en

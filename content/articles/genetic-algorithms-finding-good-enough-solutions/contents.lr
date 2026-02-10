@@ -319,3 +319,5 @@ has_code: yes
 pub_date: 2025-04-28
 ---
 meta_desc: How genetic algorithms use evolution-inspired processes to find good-enough solutions for complex optimization problems without brute force.
+---
+language: en
