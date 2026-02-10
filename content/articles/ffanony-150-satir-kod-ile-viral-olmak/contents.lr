@@ -2,11 +2,11 @@ title: ffanony: How 274 Lines of Code Went More Viral Than My 2-Year Project
 ---
 body:
 
-> I spent two years building [linkfloyd.com](../linkfloyd-reddit-klonu-turkiye-icin/), a Reddit clone for Turkey. It topped out at 40-50 daily users. Then I wrote a [274-line Python script](https://github.com/miratcan/FFAnony/blob/master/app%2Fmain.py) called ffanony—an anonymous confession box for the Turkish FriendFeed community—and it exploded in 10 days. More engagement, more users, more cultural impact than everything I'd built before combined. The script outlived its platform and got remembered years later by people I'd never met. This is what that taught me.
+Back in 2009, I spent two years building [linkfloyd.com](../linkfloyd-reddit-klonu-turkiye-icin/), a Reddit clone for Turkey. It topped out at 40-50 daily users. Then I wrote a [274-line Python script](https://github.com/miratcan/FFAnony/blob/master/app%2Fmain.py) called ffanony—an anonymous confession box—and it collected over 10,000 posts in a matter of weeks. This is the story of how that happened.
 
 ![FriendFeed's Turkish community — the platform where ffanony was born](friendfeed.jpg)
 
-ffanony didn't solve a problem. It captured a *mood*. The Turkish FriendFeed community was passionate, dramatic, and loved gossip. ffanony was a mirror held up to that community's subconscious—a place to anonymously declare love, hurl insults, and drop scandalous confessions. Every post created its own viral loop of speculation: "Who wrote this? Who is this about?"
+ffanony didn't solve a problem. It captured a *mood*. The [Turkish FriendFeed community](https://webrazzi.com/2011/04/29/friendfeed-turkiye/) was passionate, dramatic, and loved gossip (the article is in Turkish—use Google Translate if you're curious). ffanony was a mirror held up to that community's subconscious—a place to anonymously declare love, hurl insults, and drop scandalous confessions. Every post created its own viral loop of speculation: "Who wrote this? Who is this about?"
 
 The core mechanic was dead simple: anonymous posts. But the *engine* was curiosity. Every confession created an irresistible question—"Who posted this?"—that compelled people to engage, speculate, and share.
 
@@ -18,7 +18,7 @@ The entire product was one input field and a submit button. No profiles, no like
 
 Here's the dark side: ffanony existed entirely as a parasite on FriendFeed. When Facebook acquired and [shut down FriendFeed](https://news.ycombinator.com/item?id=9175828), ffanony died instantly. No migration path, no independent user base, no Plan B. The same platform dependency that gave me instant distribution was also a death sentence with a delay timer.
 
-Years later, people still remembered ffanony. They'd mention it in professional settings, at conferences, in casual conversation. Nobody remembered my "serious" projects. A 274-line script that perfectly captured the zeitgeist created more lasting impact than any amount of sophisticated engineering.
+That was 2009. It's been over 15 years now. People still remember ffanony. They mention it in professional settings, at conferences, in casual conversation. Nobody remembers my "serious" projects. A 274-line script that I wrote in a weekend created more lasting impact than any amount of sophisticated engineering I've done before or since. I'm still not sure if that's inspiring or depressing.
 
 ---
 
@@ -50,9 +50,11 @@ The goal isn't to build more. It's to find the point of maximum leverage—where
 
 If you've read this far, you're clearly interested in how ideas can fail. Don't bother figuring it out yourself — I've distilled all my experiences into [The Slaughterhouse](https://slaughterhouse.mirat.dev/), a free business idea evaluator (at least it was free when I wrote this).
 ---
-pub_date: 2010-06-01
+pub_date: 2026-02-10
 ---
-meta_desc: How a 274-line anonymous confession script outperformed years of engineering by capturing perfect Product-Zeitgeist Fit on FriendFeed.
+meta_desc: How a 274-line anonymous confession script collected 10,000+ posts and outperformed my 2-year startup — a story from 2009 about Product-Zeitgeist Fit.
+---
+meta_img: friendfeed.jpg
 ---
 has_code: no
 ---
