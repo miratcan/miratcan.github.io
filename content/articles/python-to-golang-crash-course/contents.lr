@@ -336,8 +336,29 @@ func main() {
 }
 ```
 
-This code will print 0 to 9 after main function is finished
-## Pointers 
+This code will print 0 to 9 after main function is finished.
+
+The most common use of `defer` is closing files or connections. Its basicly Go's answer to Python's `with` statement:
+
+```golang
+file, err := os.Open("data.txt")
+if err != nil {
+	return err
+}
+defer file.Close()
+// work with file, it will be closed when function ends
+```
+
+Python equavelent:
+
+```python
+with open("data.txt") as file:
+    # work with file, it will be closed when block ends
+```
+
+Also used for unlocking mutexes, closing database rows, closing HTTP response bodies etc. Everywhere you'd use `with` or `try/finally` in Python, you use `defer` in Go.
+
+## Pointers
 
 Go supports pointers, which store the memory address of a value.
 
