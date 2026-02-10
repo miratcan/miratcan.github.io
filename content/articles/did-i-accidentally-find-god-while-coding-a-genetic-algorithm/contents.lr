@@ -32,7 +32,7 @@ That's when something clicked in my head.
 
 Natural selection is a magnificent optimization algorithm. Over millions of years, it has adapted organisms to their environments, produced incredibly complex structures — from eyes to brains, wings to immune systems.
 
-But it has a weakness I witnessed firsthand in my algorithm: **it gets stuck in local optima**. It selects what works now but can't anticipate future crises. It ruthlessly eliminates things that seem costly in the short term but are critical in the long run.
+But it has a weakness I witnessed firsthand in my algorithm: **it gets stuck in local optima**. In GA literature, this is known as *premature convergence* — the population homogenizes too quickly, locks onto short-term winners, and stops exploring. It selects what works now but can't anticipate future crises. It ruthlessly eliminates things that seem costly in the short term but are critical in the long run.
 
 What if there are things in nature that "should have been eliminated but weren't"?
 
