@@ -1,0 +1,72 @@
+title: "resm.in: The Photo Q&A Platform Where Two Users Got Married"
+---
+body:
+
+> resm.in was a Q&A platform where all answers had to be photos. Someone asks "What does your desk look like?" and you reply with a picture. Invitation-only, pseudonymous, and deliberately mysterious. It created such authentic human connection that two users who met on the platform ended up getting married. Then I added a feature that let people answer with multiple photos, and the whole identity of the product collapsed. This is the story of the best product I ever built and the worst decision I ever made about it.
+
+## The Insight That Started It All
+
+The idea came from observing users on my previous project, [unpix.in](../unpixin-bitcoin-ile-2500-dolar/). People weren't just curious about each other's selfies—they were curious about each other's *lives*. What does your neighborhood look like? What's the view from your window? What are you eating for breakfast? There was something deeply human about this curiosity, something that text couldn't satisfy.
+
+resm.in was built on that insight: people connect more deeply through visual windows into each other's lives than through any amount of text-based interaction.
+
+## The Invitation System Was a Masterstroke
+
+From day one, resm.in was invitation-only. Each user got 3 invites. This single decision created four powerful effects at once:
+
+1. **Quality control** — every user was vouched for by someone already inside.
+2. **Scarcity** — having an account felt special, which increased engagement.
+3. **Organic marketing** — people talked about wanting to get in, which created buzz.
+4. **Anti-troll protection** — bad actors were filtered out before they could pollute the community.
+
+We also required pseudonyms—no real names, no social media handles. This protected the core curiosity loop. If someone posted a beautiful desk photo, you couldn't just Google them and find their Instagram. The mystery was preserved, and the platform remained the only place to satisfy that curiosity.
+
+## One Question, One Photo: The Constraint That Sparked Creativity
+
+The original format was beautifully simple: someone asks a question, you answer with *one* photo. This constraint forced creativity. You couldn't write a paragraph explaining context. You couldn't post a gallery. You had one shot to visually answer the question, and that limitation produced some of the most creative, thoughtful content I've ever seen on any platform.
+
+The notification system I built was technically sophisticated—grouped notifications like "X, Y, and 3 others liked your photo"—and I was proud of it. But the real magic was in the constraint, not the technology.
+
+## The Feature That Killed the Product
+
+Then a university professor—someone I respected—suggested allowing multiple photos and videos per answer. His reasoning was sound: it would enable instructional content. A recipe answer could show each step. A travel answer could tell a complete story.
+
+I thought it was brilliant. I rebuilt the core data models to support "Stories"—multi-photo, multi-video answers. The technical effort was massive, almost a complete refactor.
+
+The moment it shipped, the platform lost its identity. Suddenly there were two incompatible products living under the same roof:
+
+**Platform A:** An aesthetic, personal expression space. "What are you wearing today?"
+**Platform B:** An instructional, documentary knowledge base. "How do you make tarhana soup?"
+
+The users who loved the intimate, single-photo format were now scrolling past recipe tutorials. The elevator pitch—previously crystal clear—became impossible. "It's a Q&A platform where you answer with photos... or multiple photos... or videos... it's kind of like Stories but also tutorials..." I'd failed the Elevator Pitch Test.
+
+## The Problems I Couldn't Solve
+
+Even without the identity crisis, resm.in had structural issues I never cracked:
+
+**Content exhaustion:** Because the platform was organized around questions rather than communities, popular questions would get asked over and over. "What does your desk look like?" has a shelf life. I needed something like subreddits or groups to keep generating fresh contexts for the same visual curiosity—the same "sub-community" model I should have built for [linkfloyd](../linkfloyd-reddit-klonu-turkiye-icin/)—but I never did.
+
+**The globalization wall:** I had a manual curation system where I'd merge similar questions and curate the best content. This worked beautifully for a small Turkish community. It was completely impossible to scale to other languages. The magic required human touch, and human touch doesn't scale.
+
+**Mobile-first behavior, web-first architecture:** Photo sharing is inherently a mobile behavior. My entire platform was built as a Django monolith optimized for desktop browsers. The gap between user behavior and technical architecture grew wider every month, and I didn't have the skills or resources to bridge it.
+
+## Two Users Got Married
+
+Despite everything that went wrong strategically, the core hypothesis was validated in the most profound way possible: two users who met on resm.in fell in love and got married. They connected through the authentic visual windows into each other's lives—exactly the kind of connection the platform was designed to create.
+
+That marriage is proof that the insight was right. The execution just couldn't sustain it.
+
+If you've read this far, you're clearly interested in how ideas can fail. Don't bother figuring it out yourself — I've distilled all my experiences into [The Slaughterhouse](https://slaughterhouse.mirat.dev/), a free business idea evaluator (at least it was free when I wrote this).
+---
+pub_date: 2016-01-01
+---
+meta_desc: How resm.in, an invitation-only photo Q&A platform, validated its core insight when two users got married—then died from a single feature that shattered its identity.
+---
+has_code: no
+---
+tags:
+
+solopreneurship
+retrospective
+---
+language: en

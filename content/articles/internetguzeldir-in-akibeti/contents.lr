@@ -46,7 +46,9 @@ The downside? Static generation becomes impossible. You need dynamic page genera
 - ~~Writing SEO-friendly articles that link to directory entries~~
 - ~~Actually making something people can find~~
 
-I abandoned the project. The original vision was right, but the execution needed more work than I was willing to invest. Sometimes knowing when to move on is the real lesson.
+I abandoned the project. The original vision was right, but the execution needed more work than I was willing to invest. Sometimes knowing when to move on is the real lesson. Funny enough, [sitepiyango.com](../sitepiyango-viral-olup-15-gunde-olmek/) had 363 sites that were essentially a ready-made web directory—and I killed it without ever realizing the pivot opportunity.
+
+If you've read this far, you're clearly interested in how ideas can fail. Don't bother figuring it out yourself — I've distilled all my experiences into [The Slaughterhouse](https://slaughterhouse.mirat.dev/), a free business idea evaluator (at least it was free when I wrote this).
 ---
 meta_desc: Three critical mistakes I made building a link directory site: fighting Google's algorithms, using Excel as a database, and forcing content into category trees.
 ---

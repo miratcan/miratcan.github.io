@@ -1,0 +1,54 @@
+title: "linkfloyd: Building a Reddit Clone for Turkey (and Missing the Point)"
+---
+body:
+
+> I spent two years building linkfloyd.com, a Reddit clone for Turkey with "channels" instead of subreddits. I built a complex moderation system, notification framework, and channel hierarchy. The whole platform topped out at 40-50 daily active users—almost entirely in the music channel, almost entirely driven by one power user named mavibalon who used it as her personal music curation archive. I had built a generic platform that accidentally became a niche product, and I was too proud to notice.
+
+## The Platform Trap
+
+My vision was ambitious: a flexible, "play-doh" platform where various communities would form around different topics. If the tool was generic enough, I reasoned, different user types would shape it to their needs. Reddit proved the model worked. I just needed to make a Turkish version.
+
+This is the platform trap. You look at a successful platform in its current form and try to replicate it, forgetting that every successful platform started as a focused product first. Amazon was a bookstore. Facebook was a college directory. Reddit started as a single page of links submitted by its founders. None of them launched as the platform they eventually became.
+
+I skipped the "product" step and went straight to "platform." The result was a tool that was okay at everything and great at nothing. Ironically, my simplest project—[ffanony, a 150-line script](../ffanony-150-satir-kod-ile-viral-olmak/)—generated more engagement in 10 days than linkfloyd managed in two years.
+
+## The Signal I Ignored
+
+The music channel was alive. A user named mavibalon used linkfloyd as her personal archive for music she wanted to listen to later—essentially a public "listen later" queue. Other users loved her curation. They showed up daily not for linkfloyd, but for mavibalon's taste.
+
+This was the market speaking to me, clearly and loudly: "We don't want a generic community platform. We want a social music curation tool." I even built her a custom bookmarklet to make sharing easier. I recognized the signal at the individual level but failed to recognize it at the strategic level.
+
+If I had pivoted to being "the best social music curation platform"—a simple tool where curators share and annotate music discoveries—I might have had something real. Instead, I kept pushing the generic platform, complete with its complex channel system and moderation framework that the music community neither needed nor wanted.
+
+## Sunk Cost as a Prison
+
+Part of why I couldn't pivot was the code I'd already written. I had spent months building channel management, moderation tools, permission systems—all the "big site" infrastructure. Throwing that away to build a simple music curation tool felt like waste. The sunk cost of the generic platform became a prison that kept me from building the specific product my users actually wanted.
+
+Here's the truth about code: it's a liability, not an asset. Every line you write is a line you have to maintain, a line that constrains your future decisions, a line that makes pivoting harder. The moderation system I was so proud of was actively preventing me from serving my actual users.
+
+## Validate Before You Build
+
+The most expensive mistake was building the platform at all before validating the core hypothesis. I could have started a Facebook Group called "linkfloyd - share interesting links" and tested whether Turkish users would actually participate in a link-sharing community. Cost: zero. Time: one afternoon.
+
+If the group took off, I'd have validated demand risk before tackling technical risk. If it didn't, I'd have saved two years of my life. Either way, I'd have discovered the mavibalon pattern earlier and cheaper. I'd already [spent two years on bilsin.com](../bilsin-com-ilk-girisimim/) with the same result—building before validating. You'd think I'd have learned.
+
+## The Power User You're Not Serving
+
+mavibalon wasn't just a user—she was the entire value proposition. Without her curation, the music channel was empty. Without the music channel, linkfloyd was empty. My most engaged user was doing the most important job on the platform, and I wasn't building tools to make her life better. I wasn't finding more people like her. I wasn't even acknowledging that my platform's success was entirely dependent on one person's hobby.
+
+Your 1% of users—the power users who create the content everyone else consumes—are your most valuable asset. Your job is to identify them, understand their workflow, remove their friction, and make them feel like heroes. I did the opposite: I kept building features for the 99% who weren't there yet, instead of doubling down on the 1% who already were.
+
+If you've read this far, you're clearly interested in how ideas can fail. Don't bother figuring it out yourself — I've distilled all my experiences into [The Slaughterhouse](https://slaughterhouse.mirat.dev/), a free business idea evaluator (at least it was free when I wrote this).
+---
+pub_date: 2014-01-01
+---
+meta_desc: How building a Reddit clone for Turkey taught me to follow organic traction, avoid the platform trap, and validate before writing a single line of code.
+---
+has_code: no
+---
+tags:
+
+solopreneurship
+retrospective
+---
+language: en

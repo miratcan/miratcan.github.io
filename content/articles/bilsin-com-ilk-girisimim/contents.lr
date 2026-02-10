@@ -1,0 +1,60 @@
+title: bilsin.com: My First Startup and Everything I Did Wrong
+---
+body:
+
+> In 2010, I was a Fine Arts student in Eskisehir, Turkey, trying to buy second-hand furniture. The local news site eskisehir.net charged 20 TL per listing. I thought: "What if every city had its own free classifieds site?" So I bought my first programming book, learned Django, and built bilsin.com. Two years later, I had 40 listings across five cities, zero revenue, and a therapist. This is what I learned.
+
+## Distribution Eats Product for Breakfast
+
+The moment that hit me hardest came when I finally understood why my competitors were winning. eskisehir.net wasn't a classifieds site—it was a *news site* that happened to have a classifieds section. People showed up for the news and stayed for the listings. ekşiduyuru wasn't a classifieds site either—it was built on top of ekşisözlük's millions of users. They had traffic *by default*.
+
+I had built a technically better product than ekşiduyuru. My categories were cleaner, my UI was nicer. None of it mattered. They had distribution; I didn't. "Build it and they will come" is a lie. The real question before building anything is: "Where will people discover this for the first time?"
+
+## Know Who You're Building For
+
+My first go-to-market strategy was visiting second-hand furniture shops in person and showing them the site. These were people who couldn't find a login button. They didn't know their own email addresses. I had to manually edit every listing they posted because the Turkish was barely readable. I even redesigned my login button to look exactly like Facebook's, because that was the only thing they recognized.
+
+If your users can't onboard themselves, you can't scale. I was building a self-service platform for people who needed full-service hand-holding. The operational burden was unsustainable from day one.
+
+## A Pivot That Changed Nothing
+
+When the city-wide approach failed, I pivoted to smaller groups: university departments, specific classes at Anadolu University. "Second-year Social Sciences students can post notes here!" It felt clever. It changed absolutely nothing.
+
+The core problem was traffic. I didn't have it, and changing the target audience didn't create it. I just moved the same broken model to a different segment. A real pivot would have addressed *why* nobody was showing up, not *who* wasn't showing up.
+
+## The Numbers Don't Lie
+
+After two years, here's what I had to show:
+
+- Istanbul: 32 listings (each one begged and pleaded for)
+- Ankara: 3 listings
+- Eskisehir: 3 listings
+- Izmir: 0 listings
+- Barcelona: 0 listings (yes, I tried Barcelona)
+
+Zero organic growth. Zero repeat usage. Zero revenue. Every single listing came from me personally asking someone to post something. If you have to beg people to use your product, you don't have product-market fit. You have a hobby.
+
+## Then Facebook Killed It
+
+The final blow came when Facebook launched Groups. Suddenly, people could post classifieds right where they already spent their time. No new app, no new login, no new URL to remember. My entire value proposition evaporated overnight, and it wasn't even a competitor that killed me—it was a feature update from a company that didn't know I existed.
+
+## What bilsin.com Actually Was
+
+My friends started calling my projects "YAMP"—Yet Another Mirat Project. It stung, but they weren't wrong. bilsin.com was the first in a long series of failures that would eventually include [sitepiyango](../sitepiyango-viral-olup-15-gunde-olmek/), [cubb.in](../cubbin-viral-buyume-sifir-retention/), [linkfloyd](../linkfloyd-reddit-klonu-turkiye-icin/), and [many others](../). But it was also the project that taught me to code, taught me that a beautiful positioning statement ("What if the internet brought us closer to the people we already know?") means nothing without distribution, and taught me that two years is way too long to spend on something with zero traction.
+
+I should have set kill criteria before starting: "If I don't have X users in 6 months, I'm done." I didn't, and I paid the price in time, energy, and therapist bills. But I also didn't quit building things. Sometimes the most important lesson from a failure is that you survived it.
+
+If you've read this far, you're clearly interested in how ideas can fail. Don't bother figuring it out yourself — I've distilled all my experiences into [The Slaughterhouse](https://slaughterhouse.mirat.dev/), a free business idea evaluator (at least it was free when I wrote this).
+---
+pub_date: 2010-01-01
+---
+meta_desc: How my first startup bilsin.com taught me that distribution beats product, know your audience, and set kill criteria before you start.
+---
+has_code: no
+---
+tags:
+
+solopreneurship
+retrospective
+---
+language: en

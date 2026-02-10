@@ -1,0 +1,60 @@
+title: "unpix.in: How Bitcoin Made Me $2,500 (and Why It Stopped)"
+---
+body:
+
+> unpix.in was the project where everything I'd learned about curiosity mechanics, viral loops, and monetization finally clicked—at least for a while. Users uploaded photos, set a dollar target, and shared a pixelated version. Visitors tipped Bitcoin to gradually de-pixelate the image. I took a 10% cut. In one year, $25,000 in Bitcoin changed hands and I netted $2,500 in profit. Then Bitcoin's price started climbing, people stopped spending it on curiosity, and the whole thing quietly dissolved. This is the story of my most financially successful project and why "successful" still meant "dead."
+
+## Built on Every Previous Failure
+
+unpix.in was a deliberate synthesis of lessons learned the hard way. From [ffanony](../ffanony-150-satir-kod-ile-viral-olmak/), I knew curiosity was the most powerful hook. From [cubb.in](../cubbin-viral-buyume-sifir-retention/), I learned two things: pixelation is cheaper than blurring (a CPU lesson from a server crash), and you can't build a viral loop that makes people look bad for sharing. From [sitepiyango](../sitepiyango-viral-olup-15-gunde-olmek/), I learned that "free exposure" creates entitlement and complaints, while paid transactions create ownership.
+
+The mechanic was simple: upload a photo, set a Bitcoin target amount, share the pixelated link. Visitors tip Bitcoin to de-pixelate. Every tip instantly split—90% to the creator, 10% to the platform. Money never sat in the system. The name "unpix.in" came directly from the de-*pix*elation mechanic—a direct descendant of cubb.in's blurring, but computationally lighter.
+
+## The Reddit Moderator Who Changed Everything
+
+I launched on Reddit and got modest traction. Then a moderator of /r/girlsgonebitcoin noticed the project and asked to promote it in their community. That single partnership became the primary growth channel.
+
+The dynamic was beautiful: content creators would upload photos, share the pixelated links in the subreddit, and tell their audience "tip to reveal." They did their own marketing. They were motivated by direct financial return, not exposure or lottery tickets. When the incentive is money, you don't have to beg people to participate.
+
+## Proactive Safety in a Risky Market
+
+I knew NSFW content would arrive, so I prepared before it did. Content creators had to submit a verification photo—their face, an ID card, and a handwritten "unpix.in" note. This prevented revenge porn. I also added manual moderation, reviewing every submission before it went live.
+
+For the homepage, I curated only selected posts as a "showcase." Everything else was accessible only via direct link. This kept the site's public identity clean while allowing the NSFW market to operate through its own channels.
+
+## The $2,500 That Proved the Model
+
+In one year, approximately $25,000 worth of Bitcoin transactions flowed through the platform. My 10% cut netted $2,500 in real, measurable profit. Not venture capital, not theoretical revenue—actual money earned from a product people voluntarily paid to use.
+
+An unexpected use case emerged: users started uploading Steam wallet QR codes worth $100 and setting a $200 target. The QR code became readable around $130, turning it into a "first to scan wins" lottery. People loved it. The platform was generating creative use cases I'd never anticipated.
+
+## Why It Died Anyway
+
+Three forces killed unpix.in, and none of them were the product's fault:
+
+**Bitcoin became too valuable to spend.** As the price climbed, people shifted from "spending" Bitcoin to "holding" it. Why tip $5 worth of Bitcoin on a photo when that same Bitcoin might be worth $50 next year? The transaction currency became a speculative asset, and speculative assets don't get spent on curiosity.
+
+**The creator pool had a ceiling.** The intersection of "has a Bitcoin wallet," "creates NSFW content," and "is willing to verify identity" was a very small Venn diagram. I hit the market ceiling and couldn't grow beyond it. I never calculated the total addressable market before building, and by the time I realized how small it was, the growth had already flatlined.
+
+**The creator ROI spiral.** As tipping decreased, creators earned less per post. Lower earnings meant less motivation to create. Fewer posts meant less content for visitors. Less content meant fewer tips. The negative feedback loop was slow but relentless, and I didn't build any tools to counteract it—no analytics dashboards for creators, no follower systems, no notifications to keep them engaged.
+
+## The Pivot I Never Made
+
+unpix.in validated the core mechanic: people will pay small amounts to satisfy curiosity. What I should have done was treat the Bitcoin-and-NSFW market as a first step—a proving ground—and build a bridge to mainstream payment methods and broader content categories.
+
+A "stair-step strategy": use the niche market to validate and generate revenue, then use that proof to expand into a larger addressable market. Instead, I stayed on the first step until the stair crumbled beneath me. But the curiosity insight from unpix.in's users—people wanting to see each other's real lives, not just their bodies—became the foundation for [resm.in](../resmin-fotograf-ile-soru-cevap/), the best product I ever built.
+
+If you've read this far, you're clearly interested in how ideas can fail. Don't bother figuring it out yourself — I've distilled all my experiences into [The Slaughterhouse](https://slaughterhouse.mirat.dev/), a free business idea evaluator (at least it was free when I wrote this).
+---
+pub_date: 2016-06-01
+---
+meta_desc: How unpix.in turned curiosity into $2,500 in Bitcoin revenue, then died when the currency became too valuable to spend and the creator pool hit its ceiling.
+---
+has_code: no
+---
+tags:
+
+solopreneurship
+retrospective
+---
+language: en

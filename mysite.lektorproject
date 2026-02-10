@@ -7,7 +7,7 @@ locale = tr_TR
 target_path = build
 
 [servers.ghpages]
-target = ghpages://miratcan/miratcan.github.io
+target = ghpages://miratcan/miratcan.github.io?branch=main
 
 [packages]
 lektor-tags = 0.5.1

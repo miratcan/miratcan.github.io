@@ -1,0 +1,56 @@
+title: "cubb.in: Viral Growth, Zero Retention"
+---
+body:
+
+> cubb.in was a curiosity machine. You uploaded a photo, set a target number of unique visitors, and got a link with a heavily blurred version. Share the link, get people to visit, and watch the photo gradually de-blur. The hook was irresistible—people clicked. The famous anonymous blogger "aynebilim" used it for a face reveal and crashed my server. But here's the thing: nobody ever came back. I had built the world's most viral dead end.
+
+## The Mechanic Worked Too Well (and Not Well Enough)
+
+cubb.in was designed as a synthesis of everything I'd learned. From [ffanony](../ffanony-150-satir-kod-ile-viral-olmak/), I took the power of curiosity as a hook. From [sitepiyango](../sitepiyango-viral-olup-15-gunde-olmek/), I borrowed the unique visitor counter as an engagement mechanic. From [bilsin](../bilsin-com-ilk-girisimim/), I learned to avoid login friction—so cubb.in had no accounts at all.
+
+The result was a near-perfect viral trigger. A blurred photo with a "help me de-blur this" call to action was catnip. People couldn't resist clicking. Traffic spiked immediately and massively.
+
+But traffic is not a product. Traffic is a symptom. And the disease underneath was that cubb.in was a one-ride roller coaster with no reason to get back in line.
+
+## The Server Crash That Taught Me to Fix Instead of Flee
+
+When "aynebilim"—a famous anonymous blogger—used cubb.in for a face reveal, the traffic surge killed my VPS. The unique visitor counter was scanning thousands of records on every hit, and the image rendering was triggering on every single percentage of progress. It was architecturally doomed to crash at the first sign of real traction.
+
+But unlike [sitepiyango](../sitepiyango-viral-olup-15-gunde-olmek/), I didn't panic and shut it down. I diagnosed the problem, switched image rendering to 10% increments instead of every percent, and got it running again. Small victory, but a real one. I was learning to respond to crises instead of running from them.
+
+## The Broken Viral Loop Nobody Talks About
+
+Here's the part that killed cubb.in: the act of sharing the link was socially toxic.
+
+Clicking a cubb.in link to see someone's blurred photo? That was curiosity. But *sharing* that link to your own followers? That signaled you were nosy, gossipy, or—depending on the photo's nature—creepy. Sharing conferred negative social capital on the sharer.
+
+A viral loop only works when sharing makes you look good—smart, funny, generous, in-the-know. cubb.in did the opposite. People consumed the content but refused to spread it, because spreading it said something unflattering about them.
+
+This is the social capital test that every viral product needs to pass: "What does sharing this say about the person who shares it?" If the answer is anything negative, your loop is broken before it starts.
+
+## The Aynebilim Twist
+
+In a memorable twist, the anonymous blogger who caused the server crash uploaded a photo that was *already* blurred. When the visitor target was reached and the image "de-blurred," it remained blurred. She revealed it was a joke.
+
+It was funny, but it also exposed a fundamental fragility in the reward system. If the payoff could be gamed or disappointing, the trust that powered the curiosity loop would erode. People don't click twice if the first click was a letdown.
+
+## The Firework Problem
+
+cubb.in was a firework—spectacular, brief, and impossible to relight. There was no second act. Once you'd played the game (uploaded a photo or clicked a link), there was zero reason to return. No feed, no community, no ongoing value. The combination of massive traffic spikes and 100% churn meant the product was structurally incapable of sustaining itself.
+
+Viral growth without retention is a vanity metric. Before building for growth, you need to answer: "Why will someone come back for the 2nd, 3rd, and 10th time?" I never had an answer to that question, and no amount of clever mechanics could substitute for one. When I built [unpix.in](../unpixin-bitcoin-ile-2500-dolar/) later, I'd at least solve the motivation problem—by adding money to the equation.
+
+If you've read this far, you're clearly interested in how ideas can fail. Don't bother figuring it out yourself — I've distilled all my experiences into [The Slaughterhouse](https://slaughterhouse.mirat.dev/), a free business idea evaluator (at least it was free when I wrote this).
+---
+pub_date: 2012-06-01
+---
+meta_desc: How cubb.in engineered the perfect curiosity hook but failed because viral growth without retention is just a firework—spectacular and brief.
+---
+has_code: no
+---
+tags:
+
+solopreneurship
+retrospective
+---
+language: en

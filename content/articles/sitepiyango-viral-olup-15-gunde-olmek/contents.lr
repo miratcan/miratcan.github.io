@@ -1,0 +1,69 @@
+title: sitepiyango: Going Viral and Dying in 15 Days
+---
+body:
+
+> sitepiyango.com had the most creative mechanic I've ever designed. You linked to my site, and every unique visitor you sent became a lottery ticket. Each night, a random winner was drawn, and for 24 hours, their website was displayed full-screen on sitepiyango.com via an iframe. 363 sites signed up organically. Then one blogger with 50-60K followers wrote a single negative post, and the entire thing collapsed in 15 days. I panicked and killed it without trying a single pivot. It remains my biggest regret.
+
+## The Mechanic Was Genuinely Brilliant
+
+Here's how it worked: you put a link to sitepiyango.com on your blog. Every unique visitor who clicked through to my site earned you one lottery ticket. More traffic you sent, more tickets you got. Every night, a winner was drawn at random, and their site was displayed in a full-page iframe on sitepiyango.com for 24 hours.
+
+The incentive design was elegant. Bloggers would write articles *about* sitepiyango to earn more tickets, creating a viral content loop. 363 sites joined organically, with zero marketing spend. The participation barrier was as low as it gets: just add a link.
+
+## The Second-Order Effect I Never Saw Coming
+
+The iframe display was the centerpiece—the "whole point" of the project, I thought. But I never asked: "Could this actually *harm* the winner?"
+
+When a random visitor landed on sitepiyango and saw the winning site in an iframe, one of two things happened: they weren't interested and bounced immediately, or they *were* interested, clicked into the iframe, and left sitepiyango—which also registered as a bounce. Either way, the winning site got hammered with high bounce rates.
+
+In 2012, Google was actively penalizing high bounce rates in its ranking algorithm. I was unknowingly giving winners a gift that poisoned their SEO.
+
+## One Blogger Ended Everything
+
+A well-known blogger with 50-60K followers won the lottery. Their bounce rate spiked. They wrote a devastating post essentially saying: "sitepiyango will destroy your SEO ranking. Remove your links immediately."
+
+They weren't wrong. The bounce rate problem was real. But the reaction was nuclear. Every blogger who read that post panicked and pulled their links. Domino effect. Within 15 days, traffic went to zero.
+
+## The Biggest Mistake: I Killed It Instead of Fixing It
+
+This is the part that still haunts me. I had 363 sites, organic growth, a viral loop that worked, and a *solvable* problem. The bounce rate issue was a bug in the mechanism, not a flaw in the value proposition.
+
+I could have replaced the iframe with a redirect. Same exposure for the winner, zero bounce rate impact. I could have added category targeting—tech blogs see tech blogs, fashion blogs see fashion blogs—reducing irrelevant traffic. I could have turned the 363 registered sites into a web directory, giving permanent backlinks to participants instead of a one-night lottery.
+
+I tried none of these. I panicked, got emotional, and shut the whole thing down.
+
+## The Pattern I Finally Recognized
+
+Here's the cruel irony: with [bilsin.com](../bilsin-com-ilk-girisimim/), I spent two years on a project with zero traction. With sitepiyango, I killed a project with 363 organic participants after just 15 days of trouble. I was doing it exactly backwards—sustaining failures and killing successes.
+
+The difference was emotional. bilsin gave me hope ("maybe tomorrow it'll work"). sitepiyango gave me pain ("that blogger destroyed everything"). Neither was a data-driven decision.
+
+## Mechanism vs. Value: The Confusion That Kills Products
+
+When people suggested changing the iframe, I said: "But the iframe IS the point of sitepiyango!" I was confusing the mechanism with the value. The value was exposure—showing someone's site to new visitors. The iframe was just one way to deliver that value. When the mechanism caused problems, I should have swapped the mechanism, not killed the product.
+
+This is a mistake I see everywhere: founders who fall in love with a specific implementation and can't separate it from the underlying value they're providing. Your feature is replaceable. Your value proposition isn't.
+
+## What I'd Do With 48 Hours and a Clear Head
+
+Day 1-2: Panic. That's fine, it's human.
+Day 3: Stop. Breathe. Ask the community: "How can we fix the bounce rate issue?"
+Day 4-7: Build the simplest fix (replace iframe with redirect).
+Day 8-15: Deploy, announce, test.
+
+I had 15 days. That was enough time to save it. I just didn't know that yet. At least when [cubb.in](../cubbin-viral-buyume-sifir-retention/) crashed under traffic later, I remembered this lesson and fixed the problem instead of killing the project.
+
+If you've read this far, you're clearly interested in how ideas can fail. Don't bother figuring it out yourself — I've distilled all my experiences into [The Slaughterhouse](https://slaughterhouse.mirat.dev/), a free business idea evaluator (at least it was free when I wrote this).
+---
+pub_date: 2012-01-01
+---
+meta_desc: How sitepiyango.com attracted 363 sites organically, got killed by one blogger's post, and why I should have pivoted instead of panicking.
+---
+has_code: no
+---
+tags:
+
+solopreneurship
+retrospective
+---
+language: en
