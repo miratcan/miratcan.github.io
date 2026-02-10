@@ -36,7 +36,7 @@ jobs:
         with:
           python-version: '3.13'
       - name: Install Lektor
-        run: pip install lektor
+        run: pip install setuptools lektor
       - name: Install Lektor plugins
         run: lektor plugins reinstall
       - name: Build site
