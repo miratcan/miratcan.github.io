@@ -2,11 +2,11 @@ title: I Became the Friend Who Kills Your Startup Ideas. Then I Automated Myself
 ---
 body:
 
-> **TL;DR:** I spent 15 years failing at side projects and writing post-mortems. I turned every lesson into [The Slaughterhouse](https://slaughterhouse.mirat.dev/)—a free AI tool that runs your startup idea through 15 brutal gates and tells you if it'll die before you waste months finding out.
+> **TL;DR:** I spent 15 years failing at side projects so you don't have to. I turned every lesson into [The Slaughterhouse](https://slaughterhouse.mirat.dev/)—a free AI tool that runs your startup idea through 15 brutal gates and tells you if it'll die before you waste months finding out.
 
 Since 2009, I've been building side projects and writing about why they failed. I've built over a dozen things—classified ads sites, Reddit clones, viral experiments, web lotteries. Most of them died. I wrote a [retrospective on each one](/articles@tag/retrospective/), trying to extract the lesson before it faded.
 
-After enough failures, I became *that friend*. Someone would message me with an idea, and I'd spend 30 minutes asking uncomfortable questions until the idea either survived or didn't. Different friend groups, different Slack channels, different coffee chats—same patterns, same holes I'd crawled out of years earlier.
+After enough failures, I became *that friend*. "Hey, can I run something by you?" — and thirty minutes later, we'd both know if the idea was worth another weekend or already dead. Different friend groups, different Slack channels, different coffee chats—same patterns, same holes I'd crawled out of years earlier.
 
 So I built [The Slaughterhouse](https://slaughterhouse.mirat.dev/).
 
@@ -20,7 +20,7 @@ Each gate has three verdicts: **pass**, **bleeder** (wounded but alive), or **ki
 
 Every other validation tool is designed to make you feel good. "Great idea! Here are some tips!" That's not validation—that's a participation trophy.
 
-When I was building my early projects, nobody told me the truth. Everyone was encouraging. Then I'd spend years on something and watch it die exactly the way someone could have predicted on day one. The kindest thing anyone could have done was to say: "This will fail, and here's why."
+When I was building my early projects, nobody told me the truth. Including me. Everyone was encouraging. Then I'd spend years on something and watch it die exactly the way someone could have predicted on day one. The kindest thing anyone could have done was to say: "This will fail, and here's why."
 
 That's what Slaughterhouse does. In 2 minutes, instead of 2 years.
 
