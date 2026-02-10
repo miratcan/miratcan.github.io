@@ -47,6 +47,8 @@ for frame in range(frames):
     print(f"{frame}th frame rendered")
 ```
 
+*[Orijinal yazi](https://pythontr.blogspot.com/2009/01/erime-efekti.html) PythonTR blogunda yayinlanmistir.*
+
 ---
 author: Mirat
 ---
