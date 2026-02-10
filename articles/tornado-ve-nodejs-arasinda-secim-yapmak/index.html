@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+  </style>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="tr">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>Tornado ve Node.js Arasinda Secim Yapmak — Mirat Can Bayrak</title>
+  <link rel='canonical' href="https://mirat.dev/articles/tornado-ve-nodejs-arasinda-secim-yapmak/">
+  
+  
+  <meta name="title" content="Tornado ve Node.js Arasinda Secim Yapmak — Mirat Can Bayrak" />
+  <meta name="description" content="Tornado ve Node.js karsilastirmasi: performans, dil yapisi, asenkron kutuphaneler ve topluluk desteği uzerine notlarim." />
+  <meta property="og:type" content="article" />
+<meta property="og:url" content="https://mirat.dev/articles/tornado-ve-nodejs-arasinda-secim-yapmak/" />
+<meta property="og:title" content="Tornado ve Node.js Arasinda Secim Yapmak — Mirat Can Bayrak" />
+<meta property="og:description" content="Tornado ve Node.js karsilastirmasi: performans, dil yapisi, asenkron kutuphaneler ve topluluk desteği uzerine notlarim." />
+<meta property="og:image" content="https://mirat.dev/mirat-orig.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/articles/tornado-ve-nodejs-arasinda-secim-yapmak/" />
+<meta name="twitter:title" content="Tornado ve Node.js Arasinda Secim Yapmak — Mirat Can Bayrak" />
+<meta name="twitter:description" content="Tornado ve Node.js karsilastirmasi: performans, dil yapisi, asenkron kutuphaneler ve topluluk desteği uzerine notlarim." />
+<meta name="twitter:image" content="https://mirat.dev/mirat-orig.jpg" />
+  
+  
+  
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Tornado ve Node.js Arasinda Secim Yapmak",
+  "datePublished": "2016-07-02",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "https://mirat.dev/articles/tornado-ve-nodejs-arasinda-secim-yapmak/",
+  "inLanguage": "tr",
+  "description": "Tornado ve Node.js karsilastirmasi: performans, dil yapisi, asenkron kutuphaneler ve topluluk deste\u011fi uzerine notlarim."
+}
+</script>
+
+</head>
+
+
+
+
+
+
+
+<body class="page-articles-tornado-ve-nodejs-arasinda-secim-yapmak model-article">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+
+<div style="background: color-mix(in srgb, var(--accent) 15%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 2rem;">
+  <p style="margin: 0; color: var(--fg);"><strong>⚠️ Archived Article:</strong> This article is very old and may contain outdated or incorrect information. It's kept here for nostalgic and historical reasons.</p>
+</div>
+
+
+<div style="background: color-mix(in srgb, var(--accent) 15%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 2rem;">
+  <p style="margin: 0; color: var(--fg);"><strong>🇹🇷 Turkish Content:</strong> This article is written in Turkish. The cultural and emotional nuances cannot be properly translated, so it remains in its original language.</p>
+</div>
+
+
+<h1>Tornado ve Node.js Arasinda Secim Yapmak</h1>
+
+<div class="article-meta">
+  July 2016 · written at age 32
+</div>
+
+<p>Yeni ve artik son okul donemi ile birlikte Lookremix projesinden ayrilmak zorunda kaldim. Bir startup icerisinde bulunmak oldukca egitici oldu benim icin. Hem bir sosyal medya aracinin olusturulurken ne gibi badireler atlattigini gormus oldum. Hem de bir yazilim gelistirici olarak daha once hic el atmadigim meselelere el atmak durumunda kaldim. Benim icin oldukca cetrefilli ama bir yandan da oldukca zevkli bir is oldu. Keske daha fazla devam edebilseydim diyorum ama belli olmaz belki ileride yollarimiz tekrar kesisir.</p>
+<p>Su anda ise ilk goz agrim bilsin'i tekrar ayaga kaldirmak icin elime bir firsat gecti. Gecerli sosyal medya araclarinin zayifligi ve bilsin'in neden guclu bir arac olacagi konusunda okuldaki juriye yaptigim sunum oldukca ikna edici oldu ve su bilsin resmi olarak bitirme projem haline donustu. Ancak cok calismam gerek cunku su anda her ne kadar kirik dokuk de olsa calisan bir alet (tool) gorunumu verse de aslinda kafamdaki ideolojiden ve saglamliktan uzak durumda.</p>
+<p>Projeye daha once baslarken yaptigim yanlis teknoloji secimlerini ve kervan yolda duzulur diyip yolda yol degistirmeleri (gercekten cok fazla enerji ve kaybi oluyor) tekrar yasamamak icin mumkun oldugunca belgeli, planli davranmaya calisiyor. Cikacak sorunlari mumkun oldugunca on gormeye calisiyorum. Blog uzerinden cok fazla ayrinti vermeyi uygun gormuyorum ama projenin %90'inin saglam restFul api olusturmaktan gectigini ve mumkun oldugunca akiskan bir yapida olacagini soyleyebilirim. Tabi bu noktada Django kullanmak bir az sacma oluyor zira api yazmak icin context processorlere ya da template sistemine ihtiyac duymuyorum. Bunun yaninda Django ile long pooling yapmak ya da websockets kullanmak deveyi at yarisina sokmak gibi bir sey olurdu.</p>
+<p>Bu noktada Node.js gel beni kullan diye goz kirpiyor, diger kolumda da Tornado var. Bunlari kendimce karsilastirmaya calistim ancak eger yanlis bilgi verdigimi, yanildigimi dusunuyorsaniz lutfen yorum birakin.</p>
+<h2>Performans</h2>
+<p>Node.js Google beyin V8 adli javascript motorunu kullaniyor. Javascript kodlari derlenip makina diline cevriliyor. Bu da kallavi bir hiz demek. Tornado ise bunu ta ki Python 3.3 cikana kadar yapamayacak(mis). Izledigim node.js sunumunda yapilan testte ki bu test sadece bir "hello world" testi. Node.js saniyede 4340 cevap verebilirken tornado ise sadece 2344 cevap verebilmis. Sozun ozu Node.js performans konusunda Tornado'yu ikiye katliyor.</p>
+<h2>Dil Yapisi</h2>
+<p>Bu noktada Tornado golunu atiyor zira hic bir programcinin Python varken Javascript kullanmak isteyecegini sanmiyorum. Javascript'in igrenc bir syntax yapisi var. Bu Python sever birinin sahsi fikri olmakla beraber, pek cok kisinin de noktali virgul ya da memeli parantezler ile bogusmak isteyecegini sanmiyorum. Hos, syntax olayi CofeeScript sayesinde cozulebiliyor ancak yine de dahili standartlasmis kutuphanelerin eksikligi hissediliyor. Bir each dongusu yaratmak icin bile harici bir kutuphaneye ihtiyac duymak, bende huzursuzluga yol aciyor. Yengec burcu programcilar icin onermiyorum. :)</p>
+<p>Ikinci olarak javascript ilk defa browser disinda bir mecrada is gormeye basladigi icin bir cok kutuphane olgunlasmamis durumda. Halbu ki Python 1994 de 1.0 versiyonuna ulasti yillardir her konuda kutuphane gelistirilmekte kendisi icin. Node.js nin su anki versiyonu 0.4.1 Tornado'nun ise 2.1.1.</p>
+<p>Ucuncu olarak, Javascript in dogal halinin etkinlik tabanli (event-driven) bir dil oldugunu bu yuzden gelistirilen kutuphanelerin haliyle asenkron kutuphaneler oldugunu. Python ise aslinda sirali (satir satir) islenen bir dil olmasi itibari ile Tornado ile kullanacaginiz kutuphanelerin ozel olarak asenkron olarak yazilmis kutuphaneler olmasi gerektigini eklemem gerekiyor. Anlayacaginiz Tornado icinde mysqllib'i direkt olarak import edip kullanamiyorsunuz. Bunun yerine asenkron calisacak sekilde tasarlanmis mysql kutuphanesi ne ise onu bulup kullanmaniz gerekiyor.</p>
+<p>Ancak ilginctir ki her ne kadar Tornado daha olgun olsa da icerisinde bir session management olayi bulundurmuyor. Bu bana cok garip geldi. Sanirim Django'da ki:</p>
+<pre><code>if user.is_authenticated():
+    ...
+    ...
+</code></pre>
+<p>Turevi sorular soramayacagimiz manasina geliyor Tornado'ya. Belki authentication olaylari baska turlu cookie tabanli atraksiyonlarla (OAuth?) cozuluyordur bilemiyorum.</p>
+<h2>Topluluk</h2>
+<p>Node.js'in cok heyecanli bir topluluk henuz bir velet olmasina ragmen inanilmaz ilgi goruyor. Asagidaki bu rakamlar soyledigimi kanitlar nitelikte: (Fork, Takipci ve Ilgili Depo sayilarini Github'dan aldim)</p>
+<table>
+<thead><tr>
+<th></th>
+<th>Fork</th>
+<th>Takipci</th>
+<th>Ilgili Depo</th>
+<th>Eposta Listesi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tornado</td>
+<td>510</td>
+<td>3,313</td>
+<td>364</td>
+<td>1779</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>1,339</td>
+<td>11,944</td>
+<td>5842</td>
+<td>6590</td>
+</tr>
+</tbody>
+</table>
+<h2>Sonuc</h2>
+<p>Sonuc olarak Node.js topluluk ve performans olarak Tornado'yu dovuyor gozukuyor. Ancak sanirim gelistiriciler arasinda bir garip moda ya da trendin pesinden hizla gitme durumu var. Yeni bir teknoloji afili bir sunumla anlatilip da bir kac yerde yazilip cizildigi zaman hurra herkes o tarafa gidiyor. Sonra herkes sakinlesiyor hangi dili rahat kullaniyorsa onu kullanmaya devam ediyor. Bu yuzden bu 7000 kisilik e-posta listelerini falan biraz sisirilmis rakamlar olarak goruyorum. Ayrica bu devasa kitleden kac tanesi gercek bir is gorebilmek uzere sizin ofisinize gelip calisabilecek insanlardir bunu hesap etmek gerek. uc mu bes mi?</p>
+<p>Bunun yaninda Node.js teoride bu kadar ilgi gormesine ragmen, henuz kendisini savas arenasinda gormus degiliz. Gercek - buyuk projelerde ne gibi problemler cikaracagi konusunda pek fikrimiz yok. Tornado ise halihazirda Facebook'un ve FriendFeed'in agir islerini goren bir sistem.</p>
+<p>Butun bunlara dayanarak, uzulerek Node.js ye bizimle degilsin diyorum. Zira saniyede 4bin request karsilayabiliyor olmasi bende yarattigi rahatsizlik hissini gidermeye yetmiyor. Zaten bir gun sunucularim altindan kalkamayacagim bir yukle karsilasirsa zaten para kazaniyorum demektir bir sunucu daha koyarim.</p>
+<p>Kaynaklar:</p>
+<ul>
+<li><a href="http://nodejs.org/">http://nodejs.org/</a></li>
+<li><a href="http://www.tornadoweb.org/">http://www.tornadoweb.org/</a></li>
+<li>Node.js mailing list</li>
+<li>Tornado mailing list</li>
+<li>The History of Python</li>
+<li>What are the disadvantages of using Node.js?</li>
+<li>What are the disadvantages/drawbacks of using Tornado as a primary web server, not just for real time activity?</li>
+<li>Node.js is Cancer</li>
+</ul>
+
+
+
+  <ul>
+    <li>
+        <a href="../../articles@tag/technical/">
+          All posts tagged technical
+        </a>
+      </li>
+    
+  </ul>
+
+
+
+
+      </div>
+    </main>
+  </div>
+  
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+</body>
+
+</html>

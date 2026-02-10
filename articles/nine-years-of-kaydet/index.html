@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+  </style>
+  
+  <link rel="stylesheet" href="../../static/pygments.css">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="en">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>Why plain text + SQLite beat every cloud note app for my workflow — Mirat Can Bayrak</title>
+  <link rel='canonical' href="https://mirat.dev/articles/nine-years-of-kaydet/">
+  
+  
+  <meta name="title" content="Why plain text + SQLite beat every cloud note app for my workflow — Mirat Can Bayrak" />
+  <meta name="description" content="How I built and evolved Kaydet, a terminal-native personal diary with AI integration, over nine years—from simple Python wrapper to structured metadata and SQLite search." />
+  <meta property="og:type" content="article" />
+<meta property="og:url" content="https://mirat.dev/articles/nine-years-of-kaydet/" />
+<meta property="og:title" content="Why plain text + SQLite beat every cloud note app for my workflow — Mirat Can Bayrak" />
+<meta property="og:description" content="How I built and evolved Kaydet, a terminal-native personal diary with AI integration, over nine years—from simple Python wrapper to structured metadata and SQLite search." />
+<meta property="og:image" content="https://mirat.dev/articles/nine-years-of-kaydet/cover.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/articles/nine-years-of-kaydet/" />
+<meta name="twitter:title" content="Why plain text + SQLite beat every cloud note app for my workflow — Mirat Can Bayrak" />
+<meta name="twitter:description" content="How I built and evolved Kaydet, a terminal-native personal diary with AI integration, over nine years—from simple Python wrapper to structured metadata and SQLite search." />
+<meta name="twitter:image" content="https://mirat.dev/articles/nine-years-of-kaydet/cover.webp" />
+  
+  
+  
+    <link rel="stylesheet" href="../../static/pygments.css?h=a019983c">
+  
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why plain text + SQLite beat every cloud note app for my workflow",
+  "datePublished": "2025-10-28",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "https://mirat.dev/articles/nine-years-of-kaydet/",
+  "inLanguage": "en",
+  "description": "How I built and evolved Kaydet, a terminal-native personal diary with AI integration, over nine years\u2014from simple Python wrapper to structured metadata and SQLite search."
+}
+</script>
+
+</head>
+
+
+
+
+
+
+
+<body class="page-articles-nine-years-of-kaydet model-article">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+
+
+
+<h1>Why plain text + SQLite beat every cloud note app for my workflow</h1>
+
+<div class="article-meta">
+  October 2025 · written at age 41
+</div>
+
+<p><img src="cover.webp" alt="From seed to fruit: the evolution of a personal tool over nine years"></p>
+<blockquote><p><strong>TL;DR</strong>: I built <a href="https://github.com/miratcan/kaydet">Kaydet</a> in 2016 as a simple terminal diary tool and have been using it daily for nine years. What started as a 20-line Python wrapper evolved into a structured personal database with SQLite search, AI integration via Claude's MCP, and metadata-driven queries. This is the story of how a casual side project became mission-critical when a client asked for monthly reports—and how constraints (plain text, terminal-only) forced better design decisions.</p>
+</blockquote>
+<p>I have been keeping a personal diary since 2016. Not in a notebook, not in Notion, not in any web app—but in my terminal. The tool I built for this, Kaydet (Turkish for "save"), started as a simple vim wrapper and evolved into something far more interesting: a terminal-native personal diary with AI integration, structured metadata, and full-text search.</p>
+<p>Let me walk you through what I learned building and using this tool for nearly a decade.</p>
+<h2>The Problem: Context Switching Kills Flow</h2>
+<p>The core problem Kaydet solves is simple but real: <strong>capturing thoughts without breaking your flow</strong>.</p>
+<p>When you are deep in code and want to log something—a decision you made, a bug you fixed, an idea for later—opening Notion or a note-taking app means:</p>
+<ol>
+<li>Switching windows (Alt+Tab hell)</li>
+<li>Waiting for the app to load</li>
+<li>Finding the right page or creating a new one</li>
+<li>Coming back to your editor</li>
+</ol>
+<p>That is four context switches for one simple thought. By the time you are back, you have lost your train of thought.</p>
+<p>Kaydet keeps you in the terminal where power users already live. One command, zero context switches:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Fixed the staging auth bug, turned out to be a cache TTL issue&quot;</span>
+</pre></div>
+<p>Done. Back to work.</p>
+<h2>The Evolution: From Simple to Sophisticated</h2>
+<p>For years, Kaydet evolved slowly. I used it casually—capturing thoughts here and there, logging work occasionally—but it was never essential to my workflow.</p>
+<p>Then last month, something changed.</p>
+<p>A client asked me to send monthly activity reports with my invoices. "Can you include a summary of what you worked on this month?" Simple request. Reasonable request. Panic-inducing request.</p>
+<p>I had been logging my work in Kaydet all along, but in an unstructured mess:</p>
+<pre><code>14:25: Fixed that staging bug
+16:30: Meeting with the team
+09:15: Started working on the analytics feature
+</code></pre>
+<p>How do I turn this into a professional report? How do I filter by project? How do I calculate time spent? How do I prove I actually worked those hours?</p>
+<p>That is when I went all-in on Kaydet. Within two weeks, I shipped structured metadata, SQLite indexing, numeric queries, and time tracking. The tool I had been building casually for years suddenly became mission-critical.</p>
+<p>This is how personal projects evolve: slowly, then all at once, when real need hits.</p>
+<h3>Phase 1: The Simple Wrapper Days (2016-2023)</h3>
+<p><img src="1.jpg" alt="A seed just beginning to sprout from soil"></p>
+<p>Kaydet started dead simple. My first commit was literally titled "Initialized." The entire tool was probably 20 lines of Python that opened your editor with a timestamped file.</p>
+<div class="hll"><pre><span></span><span class="c1"># Rough approximation of v0.1</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span><span class="o">,</span><span class="w"> </span><span class="nn">datetime</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;~/.diary/</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EDITOR&#39;</span><span class="p">,</span> <span class="s1">&#39;vim&#39;</span><span class="p">),</span> <span class="n">filename</span><span class="p">])</span>
+</pre></div>
+<p>This worked. For years. I had daily files, I could grep through them, and that was enough.</p>
+<h3>Phase 2: Hashtags and Organization (v0.10-v0.19)</h3>
+<p><img src="2.jpg" alt="A young seedling with its first two leaves emerging"></p>
+<p>Eventually I wanted structure. I started adding hashtags to entries:</p>
+<pre><code>14:25: Fixed staging bug #work
+16:30: Morning run felt great #fitness
+</code></pre>
+<p>Then I implemented a clever feature: entries with hashtags were automatically mirrored into tag-specific folders:</p>
+<pre><code>~/.kaydet/
+├── 2025-10-28.txt          # Main diary
+├── work/
+│   ├── 2025-10-28.txt      # Auto-mirrored work entries
+│   └── 2025-10-27.txt
+└── fitness/
+    └── 2025-10-25.txt
+</code></pre>
+<p>This was when Kaydet became genuinely useful. I could navigate my work logs, my fitness progress, my personal thoughts—all categorized automatically.</p>
+<h3>Phase 3: The AI Moment (v0.24.0 - September 2025)</h3>
+<p><img src="3.jpg" alt="A seedling growing stronger with multiple leaves and small branches"></p>
+<p>Then Claude Desktop launched with Model Context Protocol (MCP) support. I realized: <strong>my diary could be a data source for my AI assistant</strong>.</p>
+<p>Within days I added MCP integration:</p>
+<div class="hll"><pre><span></span><span class="c1">// claude_desktop_config.json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;kaydet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kaydet-mcp&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>Now Claude can answer questions like:</p>
+<ul>
+<li>"What did I work on last sprint?"</li>
+<li>"Show me my fitness progress this month"</li>
+<li>"When did I last debug that API issue?"</li>
+</ul>
+<p>The AI reads my diary, summarizes it, finds patterns I missed. This was a game-changer.</p>
+<p>I remember the first time I asked Claude "what did I work on this week?" and watched it scan through my entries, pulling out accomplishments I had already forgotten. It felt like having a second brain—one with perfect recall.</p>
+<h3>Phase 4: Structured Metadata (v0.26.0)</h3>
+<p><img src="4.jpg" alt="A well-developed plant with thick stem and many healthy leaves"></p>
+<p>But AI queries exposed a limitation: unstructured text is hard to query precisely. I needed structured data.</p>
+<p>I designed a metadata syntax that feels natural in plain text:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Fixed staging auth bug #work commit:38edf60 pr:76 status:done time:2h&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Lunch meeting #work amount:650 currency:TRY billable:yes&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Deep work on analytics ETL #work time:3.5h focus:high&quot;</span>
+</pre></div>
+<p>The format is <code>key:value</code>, and Kaydet automatically:</p>
+<ul>
+<li>Parses numeric values (<code>2h</code> becomes <code>2.0</code>, <code>90m</code> becomes <code>1.5</code>)</li>
+<li>Supports comparison operators (<code>time:&gt;2</code>, <code>time:&gt;=1</code>, <code>time:&lt;5</code>)</li>
+<li>Handles ranges (<code>time:1..3</code> means between 1 and 3 hours)</li>
+<li>Allows wildcards (<code>branch:feature/*</code>)</li>
+</ul>
+<p>This was <strong>the</strong> architectural breakthrough. Suddenly my diary entries were not just text—they were queryable data.</p>
+<h3>Phase 5: SQLite Full-Text Search (v0.27.0 - Same Day!)</h3>
+<p><img src="5.jpg" alt="A mature plant bearing fruits, representing the culmination of growth"></p>
+<p>Metadata required indexed lookups. You cannot grep for <code>time:&gt;2</code> efficiently. You need numeric comparison.</p>
+<p>I spent one intense day designing and implementing a SQLite index. This also meant I could finally get rid of the tag-specific folder mirroring—the database made it obsolete. Better yet, without duplicate entries scattered across tag folders, implementing edit and delete operations became straightforward. One source of truth, one place to modify.</p>
+<p><strong>Database schema</strong>:</p>
+<ul>
+<li><code>entries</code>: id, source_file, timestamp</li>
+<li><code>tags</code>: entry_id, tag_name (indexed)</li>
+<li><code>words</code>: entry_id, word (full-text search)</li>
+<li><code>metadata</code>: entry_id, meta_key, meta_value, numeric_value</li>
+</ul>
+<p>Now I could run complex queries:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span>--search<span class="w"> </span><span class="s2">&quot;status:done project:kaydet time:&gt;1&quot;</span>
+</pre></div>
+<p>This generates optimized SQL with JOINs across tags, words, and metadata. Fast, precise, powerful.</p>
+<h2>The Technical Challenges</h2>
+<p>The story sounds smooth when you read it like this—Phase 1, Phase 2, Phase 3. But building this was messy. I hit real engineering problems that had no obvious solutions. Here are the three that taught me the most.</p>
+<h3>Challenge 1: Two Sources of Truth</h3>
+<p>Files are the source of truth (plain text, Git-versionable, human-readable). SQLite is the index (fast queries). How do you keep them in sync?</p>
+<p>I built a synchronization layer:</p>
+<ul>
+<li>Track file modification times in a <code>synced_files</code> table</li>
+<li>When a file changes externally (manual edit, Git pull), detect it</li>
+<li>Re-parse and re-index the file</li>
+<li>The <code>--doctor</code> command can rebuild the entire database from scratch</li>
+</ul>
+<p>This means you can edit diary files in vim, commit them to Git, and Kaydet stays in sync.</p>
+<h3>Challenge 2: Stable Entry IDs</h3>
+<p>I wanted to support editing and deleting entries:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span>--edit<span class="w"> </span><span class="m">42</span><span class="w">      </span><span class="c1"># Edit entry by ID</span>
+kaydet<span class="w"> </span>--delete<span class="w"> </span><span class="m">42</span><span class="w">    </span><span class="c1"># Delete entry by ID</span>
+</pre></div>
+<p>But how do you assign stable IDs when:</p>
+<ul>
+<li>Users edit files manually (timestamps change)</li>
+<li>Multiple daily files exist</li>
+<li>The database gets rebuilt</li>
+</ul>
+<p>My solution: <strong>store the ID in the file itself</strong>:</p>
+<pre><code>14:25 [42]: Fixed staging bug #work commit:38edf60
+</code></pre>
+<p>The <code>[42]</code> is the entry ID. When rebuilding the database, Kaydet reads existing IDs and only assigns new ones to entries that lack them. Collision detection prevents duplicates.</p>
+<h3>Challenge 3: Metadata vs. URLs</h3>
+<p>My first metadata implementation had a bug. The regex pattern I used would match URLs:</p>
+<pre><code>http://example.com  →  parsed as metadata: http=//example.com
+</code></pre>
+<p>I fixed this by requiring metadata keys to:</p>
+<ul>
+<li>Start with a lowercase letter (not a digit)</li>
+<li>Contain only <code>a-z0-9_-</code> (no slashes, colons, dots)</li>
+</ul>
+<p>Now URLs are recognized as plain text, and metadata works correctly.</p>
+<h2>The Architecture Today</h2>
+<p>Kaydet is now a well-structured Python CLI with clear separation of concerns:</p>
+<p><strong>Command layer</strong>: <code>add</code>, <code>search</code>, <code>edit</code>, <code>delete</code>, <code>stats</code>, <code>tags</code>, <code>reminder</code>, <code>doctor</code>, <code>browse</code></p>
+<p><strong>Core services</strong>:</p>
+<ul>
+<li><code>database.py</code>: SQLite wrapper (schema, inserts, queries)</li>
+<li><code>parsers.py</code>: Entry parsing, metadata extraction, tag normalization</li>
+<li><code>sync.py</code>: File-to-database synchronization</li>
+<li><code>mcp_server.py</code>: AI integration via Model Context Protocol</li>
+</ul>
+<p><strong>Data model</strong>:</p>
+<div class="hll"><pre><span></span><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Entry</span><span class="p">:</span>
+    <span class="n">entry_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">timestamp</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">lines</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="n">metadata</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+    <span class="n">metadata_numbers</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+    <span class="n">source</span><span class="p">:</span> <span class="n">Path</span>
+</pre></div>
+<p>The entire codebase is ~3,200 lines of Python with 99% test coverage.</p>
+<h2>From Diary to Database</h2>
+<p>Somewhere along this journey, I stopped calling Kaydet a "personal diary." That label felt limiting—almost unfair to what it had become.</p>
+<p>When you write in a diary, you read it sequentially. You flip pages. You reminisce.</p>
+<p>With Kaydet, you <strong>query</strong>. You filter. You aggregate. You ask questions:</p>
+<ul>
+<li>"How much deep work did I do this month?"</li>
+<li>"What did I ship in the last sprint?"</li>
+<li>"Show me all billable expenses from Q3."</li>
+</ul>
+<p>This is not a diary you read—it is a <strong>personal knowledge database with zero friction</strong>. Every thought, every work log, every tracked hour becomes structured, indexed, queryable data.</p>
+<p>The plain text files make it feel like a diary. The SQLite index and metadata system make it work like a database. That combination—human-readable storage with machine-queryable structure—turned out to be the killer feature I didn't know I was building.</p>
+<h2>What I Use It For</h2>
+<p>Here is what nine years of Kaydet looks like in practice:</p>
+<p><strong>Work logging</strong>:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Shipped analytics batching feature #work commit:a3f89d pr:142 status:done time:4h&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Investigated prod timeout issue #work #oncall status:investigating time:1.5h&quot;</span>
+</pre></div>
+<p><strong>Time tracking</strong>:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Deep work on ETL pipeline #work time:3h focus:high&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Code review and planning #work time:1.5h&quot;</span>
+</pre></div>
+<p><strong>Expense tracking</strong>:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Lunch with team #expenses amount:850 currency:TRY billable:no&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Conference ticket #expenses amount:2500 currency:TRY billable:yes&quot;</span>
+</pre></div>
+<p><strong>Personal moments</strong>:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Morning run, 5K in 28 minutes #fitness time:0.5h distance:5&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Read &#39;Atomic Habits&#39; chapter 3 #reading&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Watched Aurora play with her toys for an hour #personal #family&quot;</span>
+</pre></div>
+<p>Then I can query:</p>
+<div class="hll"><pre><span></span><span class="c1"># What did I ship last week?</span>
+kaydet<span class="w"> </span>--search<span class="w"> </span><span class="s2">&quot;status:done #work&quot;</span><span class="w"> </span>--since<span class="w"> </span>7d
+
+<span class="c1"># How much time did I spend on deep work this month?</span>
+kaydet<span class="w"> </span>--search<span class="w"> </span><span class="s2">&quot;focus:high time:&gt;2&quot;</span><span class="w"> </span>--since<span class="w"> </span>30d
+
+<span class="c1"># Total billable expenses this quarter?</span>
+kaydet<span class="w"> </span>--search<span class="w"> </span><span class="s2">&quot;billable:yes #expenses&quot;</span><span class="w"> </span>--since<span class="w"> </span>90d
+</pre></div>
+<p>And Claude can answer even richer questions:</p>
+<ul>
+<li>"Summarize my work accomplishments from last sprint"</li>
+<li>"How consistent was my fitness routine this month?"</li>
+<li>"What personal moments did I capture with Aurora?"</li>
+</ul>
+<h2>Lessons Learned</h2>
+<p><img src="6.jpg" alt="A mature plant with ripened fruits and seeds, ready to propagate"></p>
+<h3>1. Plain Text Is a Superpower</h3>
+<p>Kaydet stores everything in plain <code>.txt</code> files. This means:</p>
+<ul>
+<li>I can read my diary without Kaydet installed</li>
+<li>I can version it in Git</li>
+<li>I can grep it from the command line</li>
+<li>It will outlive any database format</li>
+</ul>
+<p>The SQLite index is just a cache. If it gets corrupted, <code>kaydet --doctor</code> rebuilds it from the text files.</p>
+<h3>2. Structured Data Beats Clever Parsing</h3>
+<p>I resisted adding metadata for years. I thought "just use hashtags and natural language."</p>
+<p>But the moment I added <code>key:value</code> pairs, everything clicked. Time tracking, expense logging, work status—all became trivial. And crucially, <strong>AI can reason about structured data</strong> far better than unstructured text.</p>
+<h3>3. Build for Yourself First</h3>
+<p>Kaydet has exactly zero users besides me. That is by design.</p>
+<p>When you build for yourself:</p>
+<ul>
+<li>You can iterate fearlessly (no backward compatibility burden)</li>
+<li>You know exactly what features matter</li>
+<li>You use it every day (instant feedback loop)</li>
+<li>You can say "no" to everything that does not serve your workflow</li>
+</ul>
+<p>This is how you build tools that last nine years.</p>
+<h3>4. Constraints Force Creativity</h3>
+<p>Terminal-only. Plain text. No GUI. These constraints forced me to think carefully about:</p>
+<ul>
+<li>Syntax design (metadata must feel natural to type)</li>
+<li>Search UX (queries must be terse but powerful)</li>
+<li>Integration points (how do other tools access this data?)</li>
+</ul>
+<p>The MCP integration happened <em>because</em> Kaydet was plain text and command-line driven. A GUI app would have been harder to integrate.</p>
+<h2>What is Next?</h2>
+<p>Kaydet is in active development. Recent additions:</p>
+<ul>
+<li>Edit/delete commands (v0.29.0)</li>
+<li>Enhanced MCP tools for AI assistants (v0.31.0)</li>
+<li>Textual-based TUI browser (experimental)</li>
+</ul>
+<p>I am considering:</p>
+<ul>
+<li><strong>Export to static site</strong>: Generate HTML pages from diary entries</li>
+<li><strong>Reminders based on patterns</strong>: "You have not logged fitness in 3 days"</li>
+<li><strong>Rich text support</strong>: Markdown rendering in the TUI</li>
+<li><strong>Mobile companion</strong>: Quick voice-to-text captures that sync to desktop</li>
+</ul>
+<p>But honestly? Kaydet already does what I need. It captures my thoughts, it searches them, it feeds them to AI assistants. The core loop is solid.</p>
+<h2>Try It (Maybe)</h2>
+<p>Kaydet is open source: <a href="https://github.com/miratcan/kaydet">github.com/miratcan/kaydet</a></p>
+<p>But fair warning: this is a personal tool built for my workflow. It might not fit yours. And that is okay.</p>
+<p>The real lesson is not "use Kaydet"—it is "build your own Kaydet." Find the friction points in your workflow, build tools that eliminate them, iterate for years until they feel like extensions of your brain.</p>
+<p>That is what software craftsmanship looks like: small, personal, refined over time.</p>
+
+
+
+  <ul>
+    <li>
+        <a href="../../articles@tag/retrospective/">
+          All posts tagged retrospective
+        </a>
+      </li>
+    <li>
+        <a href="../../articles@tag/technical/">
+          All posts tagged technical
+        </a>
+      </li>
+    <li>
+        <a href="../../articles@tag/personal/">
+          All posts tagged personal
+        </a>
+      </li>
+    
+  </ul>
+
+
+
+
+      </div>
+    </main>
+  </div>
+  
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+</body>
+
+</html>

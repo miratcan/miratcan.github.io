@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+  </style>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="en">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>The Fool in That Story Is Me — Mirat Can Bayrak</title>
+  <link rel='canonical' href="https://mirat.dev/articles/o-hikayedeki-mal-benim/">
+  
+  
+  <meta name="title" content="The Fool in That Story Is Me — Mirat Can Bayrak" />
+  <meta name="description" content="The story of how I embarrassed myself on national TV, became a Hürriyet headline, and learned that having a story to tell is better than having none at all." />
+  <meta property="og:type" content="article" />
+<meta property="og:url" content="https://mirat.dev/articles/o-hikayedeki-mal-benim/" />
+<meta property="og:title" content="The Fool in That Story Is Me — Mirat Can Bayrak" />
+<meta property="og:description" content="The story of how I embarrassed myself on national TV, became a Hürriyet headline, and learned that having a story to tell is better than having none at all." />
+<meta property="og:image" content="https://mirat.dev/mirat-orig.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/articles/o-hikayedeki-mal-benim/" />
+<meta name="twitter:title" content="The Fool in That Story Is Me — Mirat Can Bayrak" />
+<meta name="twitter:description" content="The story of how I embarrassed myself on national TV, became a Hürriyet headline, and learned that having a story to tell is better than having none at all." />
+<meta name="twitter:image" content="https://mirat.dev/mirat-orig.jpg" />
+  
+  
+  
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Fool in That Story Is Me",
+  "datePublished": "2013-12-17",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "https://mirat.dev/articles/o-hikayedeki-mal-benim/",
+  "inLanguage": "en",
+  "description": "The story of how I embarrassed myself on national TV, became a H\u00fcrriyet headline, and learned that having a story to tell is better than having none at all."
+}
+</script>
+
+</head>
+
+
+
+
+
+
+
+<body class="page-articles-o-hikayedeki-mal-benim model-article">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+
+
+
+<h1>The Fool in That Story Is Me</h1>
+
+<div class="article-meta">
+  December 2013 · written at age 29
+</div>
+
+<p>A while ago, I think it's been about 2 years, I filled out a form for the "Who Wants to Be a Millionaire?" quiz show. A year later, I got a call to come for the auditions.</p>
+<p>I went... The first interview was a chat. There was a pleasant woman at the table, and all I had to do was have a conversation with her. We talked about who I am, where I'm from, and so on. From her face and eyes, I could tell she was looking to see if I could express myself clearly and, although I hate this word, whether I left a positive vibe. We joked around a lot. It went well. I went home.</p>
+<p>A week later, I got called for the second round. I thought to myself, "I might have a chance here, I passed the first round." This time, we would take a test, and they would also check how we appear on camera. The test consisted of 20 questions worth 60,000 lira. I finished the questions, and then they put me in a room. There were 5 people in front of me.</p>
+<p>In a small room with 6 people, I'm the only man. I answered more than half of the questions correctly, and they told me this was a very successful result. Since the questions were about 60,000 lira, it was rare to get everything correct. But I wasn't as relaxed as in the first interview because there was a small camera watching me. When they noticed I was tense, they turned off the camera, and I started talking more comfortably. It was a casual conversation, and the questions were good. Again, there was a lot of humor. My confidence was pretty high because I answered the questions well, and that made me feel more at ease. "You're going to be on the show..."</p>
+<p>The day of the show came. They first did a test recording. This time, the recording was in the actual show's studio. The studio was kind of empty, and I was a little nervous, but not too bad, I was okay. The sound of my voice through the microphone was quite rich during the test recordings. I was speaking a little from my diaphragm. I was so close to getting carried away and saying, "I've worn chains from your longing..." like I was giving a poetry recital. Then they said, "This guy looks so comfortable in front of the camera. Let's have him go first."</p>
+<p>The recordings started, and as soon as the previous contestant's segment ended, they called me in. I walked into the studio, and as soon as I entered, something changed inside me. The fog machines kicked in, and the audience started clapping. <a href="http://www.youtube.com/watch?v=0XgURkjHSLE">Here's the music</a>. While all of this was happening, I climbed up onto that seemingly luxurious but actually quite uncomfortable chair. "Why should I be nervous? I'm fine," I thought, but I suddenly felt like I had shifted to another dimension. The floor was burning hot, my hands were freezing, and I could almost hear my heartbeat in my ears.</p>
+<p>Kenan Isik was sitting in front of me. It was just a few questions I needed to answer, but I couldn't think straight. I was trying to introduce myself, but I was stumbling over my words. Kenan Isik asked me what my profession was, and I tried to explain but couldn't manage it. While waiting in the room, I had a joke prepared in my head.</p>
+<p><em>"With the money I win here, I'll move over to the next studio for a dating show, hehe..."</em></p>
+<p>No one laughed... Thank goodness they cut all that out during the editing.</p>
+<p>The questions started, and I answered them quickly. Once I passed the questions about time, I thought I'd be able to relax. The fifth question came:</p>
+<p><em>"What is the clothing the Speaker of the Grand National Assembly is required to wear at the podium?"</em></p>
+<p>Frak or tuxedo crossed my mind. Ataturk came to my mind. Frak or tuxedo. But I couldn't remember what the lower part of the outfit was. If I saw the tail, I would say frak. Then, I imagined a man standing at the podium, and he was wearing a robe. Suddenly, I remembered what wearing a robe symbolized:</p>
+<p>"<strong>I cover all the ideological symbols I possess and am here with my mind.</strong>" That's what wearing a robe represents. A person who wears a robe is signaling that they are impartial and will not let their own ideologies affect their role. In fact, when we look at those who wear robes, we see that they are judges, lawyers, and marriage officers--people who are expected to act as impartial arbiters. So, it made sense that the Speaker of the Assembly, being the one ensuring fairness, would wear a robe. All of this thought process took me about two seconds. I said the answer out loud, all awkwardly:</p>
+<p><em>"I thought if it's related to a judicial role, they would wear a robe..."</em></p>
+<p>I was eliminated. I couldn't even explain the reasoning behind my answer. The next day, I made it to the main page of <a href="http://hurriyet.com.tr">Hurriyet</a>. The headline read: "<strong>HE GAVE SUCH AN ANSWER YOU WON'T BELIEVE IT</strong>" and it became a news story. Everyone thought I was referring to a religious robe, and I was bombarded with criticism on Twitter. A bunch of girls started adding me on Facebook. I think they pick people based on how much attention they get. It's hard to handle the amount of bad comments that flood in. Being called an idiot in the newspaper is not something everyone can bear. I felt like a 13-year-old kid wanting to hide under the covers and never come out.</p>
+<p>In the following days, I became somewhat of a "minor celebrity." I went to buy bread, and the baker recognized me. On the dolmus, people would spot me and start laughing, and we'd laugh together. Thankfully, once I calmed down, it didn't feel so bad anymore. Having a story to tell is better than having none at all.</p>
+
+
+
+  <ul>
+    <li>
+        <a href="../../articles@tag/personal/">
+          All posts tagged personal
+        </a>
+      </li>
+    
+  </ul>
+
+
+
+
+      </div>
+    </main>
+  </div>
+  
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+</body>
+
+</html>

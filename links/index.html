@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+  </style>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="en">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>Home — Mirat Can Bayrak</title>
+  <link rel='canonical' href="https://mirat.dev/links/">
+  
+  
+  <meta name="title" content="Home — Mirat Can Bayrak" />
+  <meta name="description" content="" />
+  <meta property="og:type" content="website" />
+<meta property="og:url" content="https://mirat.dev/links/" />
+<meta property="og:title" content="Home — Mirat Can Bayrak" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mirat.dev/mirat-orig.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/links/" />
+<meta name="twitter:title" content="Home — Mirat Can Bayrak" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image" content="https://mirat.dev/mirat-orig.jpg" />
+  
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  }
+  </script>
+  
+</head>
+
+
+
+
+
+
+
+<body class="page-links model-page">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  class="active"  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+  <h1>Links</h1>
+  <p>This is a curated list of links to various resources, tools, and interesting websites that I have found useful or entertaining. The list is organized into several categories to make it easier to navigate.</p>
+<h2>Friends</h2>
+<ul>
+<li><a href="https://aligundogdu.com/">Ali Gündoğdu</a></li>
+<li><a href="https://omercan.io/">Ömercan Balandi</a></li>
+<li><a href="https://gokmengorgen.net/">Gökmen Görgen</a></li>
+<li><a href="https://marif.dev/">M. Arif</a></li>
+</ul>
+<h2>Entertainment</h2>
+<h3>Games</h3>
+<h4>Strategy</h4>
+<ul>
+<li><a href="https://play0ad.com/game-info/project-overview/">0.A.D.</a>: Real-time strategy game similar to Age Of Empires.</li>
+<li><a href="https://github.com/bvschaik/julius/wiki/Julius-release">Julius</a>: Open source rebuilt version of Julius Caesar III game. It can run on many platforms.</li>
+<li><a href="https://www.openra.net/">OpenRA</a>: Open source and modern rewrite of OpenRa Red Alert game. All operating systems support Linux, OSX and Windows.</li>
+<li><a href="http://www.flexboxdefense.com/">FlexBox Defense</a>: A tower defense game written to teach FlexBox in CSS. You determine the location and direction of your towers using FlexBox properties.</li>
+</ul>
+<h4>Adventure &amp; Puzzle</h4>
+<ul>
+<li><a href="https://adarkroom.doublespeakgames.com/">A Dark Room</a>: A text-based adventure game that starts off simple but gradually becomes more intricate and immersive.</li>
+<li><a href="http://alexnisnevich.github.io/untrusted/">Untrusted</a>: A roguelike game where you need to modify the game's code to progress through the levels. (Javascript)</li>
+<li><a href="https://www.vimgolf.com/">Vim Golf</a>: Various puzzles to develop skills in Vim.</li>
+<li><a href="https://vim-adventures.com/">Vim Adventures</a>: An adventure game to learn VIM.</li>
+<li><a href="https://hextris.io/">Hextris</a>: A Tetris-like puzzle-action game.</li>
+<li><a href="https://princejs.com/">PrinceJs</a>: The browser-runnable version of the legendary Prince of Persia game.</li>
+</ul>
+<h4>Typing</h4>
+<ul>
+<li><a href="https://zty.pe/">Z Type</a>: A typing game where you shoot down words to improve your typing speed and accuracy.</li>
+<li><a href="https://kbs.im/">kbs.im</a>: An online practice site that helps you type with 10 fingers on the keyboard and increase your typing speed.</li>
+</ul>
+<h4>Board Games</h4>
+<ul>
+<li><a href="https://store.steampowered.com/app/397900/Business_Tour__Board_Game_with_Online_Multiplayer/">Business Tour</a>: An online Monopoly-like game; we played it a lot with friends during the pandemic.</li>
+</ul>
+<h3>Music &amp; Audio</h3>
+<ul>
+<li><a href="https://chiptune.app/">chiptune.app/</a> Great collection of mod, xm, s3m and midi files. You can also login and bookmark the ones you like.</li>
+<li><a href="https://www.youtube.com/@Dubmood_Music">Dubmood Music</a> Youtube channel of famous chiptune musician.</li>
+<li><a href="https://webamp.org/">Webamp</a>: Winamp running in the browser for those who miss Winamp.</li>
+<li><a href="http://radio.garden/">Radio Garden</a>: It allows you to find and listen to a radio station anywhere in the world.</li>
+<li><a href="https://www.what-song.com/">What Song</a>: A website that helps you find the music you hear in movies.</li>
+<li><a href="https://www.conservethesound.de/">Conserve The Sound</a>: A website with hundreds of sound samples from hundreds of devices.</li>
+<li><a href="https://tabletopy.com/">Table Topy</a>: A website containing sound backgrounds, music, and effects that can enrich your imagination while playing FRP.</li>
+<li><a href="https://audiomass.co/">Audiomass</a>: Online free audio editor.</li>
+<li><a href="https://www.sequencer64.com/sequencer/session">Sequencer64</a>: Online drum machine.</li>
+<li><a href="https://808303.studio/">808303 Studio</a>: An online music making tool that allows you to play the TR-808 drum machine and the TB-303 bass synthesizer in sync.</li>
+<li><a href="https://killedbyapixel.github.io/ZzFX/">ZzFX</a>: A sound effect synthesizer for game developers or those who need old school sound effects.</li>
+</ul>
+<h3>Movies &amp; Docs</h3>
+<ul>
+<li><a href="https://www.youtube.com/c/WonderDocs">Wonder Docs</a>: A great documentary channel.</li>
+<li><a href="https://bestwatch.app/?country=us">Bestwatch.App</a>: This site makes it easier for you to decide by allowing you to sort and filter movies on Netflix according to their IMDB scores.</li>
+<li><a href="http://www.quodb.com/">QuoDB</a>: A movie search engine that allows you to search for movies based on the conversations in them.</li>
+</ul>
+<h3>Web Curiosities</h3>
+<ul>
+<li><a href="https://www.skylinewebcams.com/">Skyline Webcams</a>: You can watch city cameras from many places in the world from this site.</li>
+<li><a href="https://geodienst.github.io/lighthousemap/">Lighthouse Map</a>: A website that lists lighthouses on the world map.</li>
+<li><a href="https://www.lightpollutionmap.info/">Light Pollution Map</a>: A web application that shows the light pollution at any location in the world.</li>
+<li><a href="https://supertunnel.app/">Supertunnel App</a>: If you had dug from your current location to the other side of the world, where would you have come out?</li>
+<li><a href="https://www.window-swap.com/">Window Swap</a>: It turns your computer screen into a window anywhere in the world. You should definitely try it.</li>
+<li><a href="https://killedbymicrosoft.info/">Killed By Microsoft</a>: A website listing projects that have been thrown away by Microsoft.</li>
+<li><a href="http://endless.horse/">Endless Horse</a>: A horse with endless legs.</li>
+<li><a href="https://www.moanmyip.com/">Moan My Ip</a>: There is a woman's voice on this site, she reads your IP number while moaning. #NSFW</li>
+<li><a href="https://typewritesomething.com/">Type Something</a>: Typewriter simulator.</li>
+<li><a href="https://cat-bounce.com/">Bouncing Cats</a>: Cats bouncing for no reason.</li>
+<li><a href="https://langoguessr.com/">LangoGuesser</a>: This site opens a random video from YouTube and you try to guess what language the conversations or song in the video are in.</li>
+<li><a href="https://www.webdesignmuseum.org/">Web Design Museum</a>: A web museum that shows the change of famous websites over time and reveals how the atmosphere of the internet has changed over time in a very beautiful way.</li>
+<li><a href="https://archive.org/details/win95_in_dosbox">Windows 95 emulated in the browser via DOSBox</a>: You can run Windows 95 on DosBox and experience nostalgia.</li>
+<li><a href="https://animagraffs.com/">Animagraffs</a>: A website that contains explanatory infographics on many topics, from how a sewing machine works to how Michael Jackson was able to do the moonwalk.</li>
+<li><a href="https://www.howacarworks.com/">How Car Works</a>: A website dedicated to explaining in full detail how a car works. All details from the clutch to the electrical system are mentioned with various graphics and videos.</li>
+<li><a href="https://vidrepeat.com/">Vidrepeat</a>: A service that allows you to watch Youtube videos over and over again for X times or Y duration.</li>
+</ul>
+<h2>Development</h2>
+<h3>Programming Languages &amp; Frameworks</h3>
+<h4>JavaScript</h4>
+<ul>
+<li><a href="https://exploringjs.com/deep-js/toc.html">DeepJs</a>: The free online version of the book Deep JavaScript: Theory and Techniques written by Dr. Axel Rauschmayer.</li>
+<li><a href="https://www.youtube.com/watch?v=RTxtiLp1C8Y">Martin Kleppe: 1024+ Seconds of JS Wizardry -- JSConf EU 2013</a>: A very entertaining presentation about Javascript.</li>
+<li><a href="https://github.com/vadimdemedes/ink">Ink</a>: A library that allows you to create command line applications with React.</li>
+<li><a href="https://github.com/ozcanzaferayan/react-native-instagram">React Native Instagram</a>: An Instagram clone developed with React Native by Özcan Zafer Ayan. You can learn a lot by examining it.</li>
+<li><a href="https://bestofjs.org/">Best Of JS</a>: The site where the best of Javascript projects and libraries are voted and listed.</li>
+<li><a href="https://github.com/mbeaudru/modern-js-cheatsheet">Modern JS CheatSheet</a>: Modern javascript cheat sheet.</li>
+</ul>
+<h4>Python</h4>
+<ul>
+<li><a href="https://github.com/sepandhaghighi/samila">Samila</a>: A generative art library written in Python.</li>
+<li><a href="https://futurecoder.io/">Futurecoder</a>: An interactive web application that helps you learn Python.</li>
+<li><a href="https://github.com/miratcan/eleman">Eleman</a>: A job posting site prepared with the trio of Python, Flask, and Airtable that you can easily publish by editing a few configurations.</li>
+<li><a href="https://github.com/erhan/pybtcturk">PyBtcTurk</a>: A Python client for BTCTurk.com prepared by Erhan Büte.</li>
+<li><a href="https://pypi.org/project/bandit/">Bandit</a>: A Python library that you can use to scan your Python code for security vulnerabilities.</li>
+<li><a href="https://github.com/grangier/python-goose">Python Goose</a>: A Python library for extracting article text from a given link.</li>
+</ul>
+<h4>CSS</h4>
+<ul>
+<li><a href="https://web.dev/patterns/layout">Layout Patterns</a>: A must-have resource for front-end development that lists the most commonly used CSS patterns--perfect to refer to whenever you're stuck.</li>
+<li><a href="https://github.com/troxler/awesome-css-frameworks">Awesome CSS Frameworks</a>: A Github repo that tries to bring together and list great CSS frameworks.</li>
+<li><a href="https://grid.malven.co/">Grid Malven</a>: A site made for you to learn the logic of grid in CSS very briefly or to cheat when you forget.</li>
+<li><a href="https://github.com/susam/spcss">SPCSS</a>: A simple and plain CSS conflict framework for simple text-based websites.</li>
+</ul>
+<h4>Other</h4>
+<ul>
+<li><a href="https://devhints.io/lua">Lua Cheatsheet</a></li>
+<li><a href="https://www.djangotemplatetagsandfilters.com/">Template Tags and Filters</a>: A page where Django's template tags and filters are listed regularly.</li>
+<li><a href="https://lib.rs/">Lib.rs</a>: A list of libraries and CLI applications written in the Rust language.</li>
+</ul>
+<h3>Tools &amp; Utilities</h3>
+<h4>Terminal &amp; CLI</h4>
+<ul>
+<li><a href="https://explainshell.com/">Explain Shell</a>: A web application that explains in detail how a bash or terminal command works.</li>
+<li><a href="https://asciinema.org/">Asciinema</a>: A text-based video recorder and player that records your terminal sessions.</li>
+<li><a href="https://github.com/red-data-tools/YouPlot">YouPlot</a>: A great terminal application that allows you to create graphs from the output of programs that produce numeric output on the terminal.</li>
+<li><a href="https://github.com/Slackadays/Clipboard">ClipBoard</a>: An advanced clipboard application that runs on the terminal. It also allows you to copy images, files, etc. to the clipboard, just like in graphical interfaces.</li>
+<li><a href="https://fig.io/">Fig</a>: A very interesting terminal plugin for OSX.</li>
+</ul>
+<h4>Web Development</h4>
+<ul>
+<li><a href="https://www.netlify.com/">Netlify</a>: A server service that tries to make deployment processes as easy as possible, working with a Git version control system. A free plan is also available in the pricing.</li>
+<li><a href="https://serverless-stack.com/">Serverless Stack</a>: A framework that aims to facilitate work when developing in a serverless architecture.</li>
+<li><a href="https://responsively.app/">Responsively</a>: An online tool that significantly speeds up the creation of responsive web designs.</li>
+<li><a href="https://astro.build/">Astro Build</a>: A tool that aims to increase performance by converting pages developed with development frameworks such as React and Vue into static web pages, purifying them from Javascript as much as possible.</li>
+<li><a href="https://www.fast.design/">Fast</a>: An adaptable interface system for modern web experiences.</li>
+<li><a href="https://github.com/lindelof/awesome-web-effect">Awesome Web Effect</a>: A page listing many CSS and javascript effects for web pages.</li>
+<li><a href="https://sizzy.co/">Sizzy Browser</a>: A customized internet browser for front-end developers. It has useful and accelerating features such as being able to show a change you make on multiple device resolutions at the same time.</li>
+<li><a href="https://documentation.mjml.io/">MJML</a>: A markup language that claims to make it easier to design responsive emails.</li>
+<li><a href="https://metatags.io/">Metatags.io</a>: A web application that allows you to instantly see how your website's meta tags will look on different platforms and automatically generates the code.</li>
+<li><a href="https://getform.io/">GetForm</a>: A web application that allows you to easily add forms to your projects. It has features like exporting the submitted form to a spreadsheet, sending it as a notification to Slack, etc.</li>
+<li><a href="https://awesome-table.com/">Awesome Table</a>: A web service that allows you to develop websites and mobile applications in various formats using Google Spreadsheets.</li>
+<li><a href="https://www.parsehub.com/">Parse Hub</a>: This service allows you to collect data from websites without writing any code.</li>
+<li><a href="https://www.glideapps.com/">Glide</a>: A product that turns your data from sources like Google Sheets, Airtable, Excel, and BigQuery into a mobile application.</li>
+<li><a href="https://webflow.com/">Webflow</a>: An online tool for designing and publishing visually stunning websites without coding.</li>
+<li><a href="https://pory.io/">Pory</a>: A tool for creating websites from the tables you create with Airtable or the documents in your Notion.</li>
+<li><a href="https://carrd.co/">Carrd</a>: A tool for creating simple, single-page, business card-like websites.</li>
+<li><a href="https://airtable.com/">Airtable</a>: A service where you can model, store, and update semantic data without any code or database knowledge. Although it imposes various limits on API access, it can be said that it saves software development processes from a great burden.</li>
+<li><a href="https://baserow.io/">Baserow</a>: An Airtable alternative, a service where you can model, store, and update semantic data without any code or database knowledge.</li>
+<li><a href="https://dbdiagram.io/home">Dbdiagram.io</a>: An online free database design application that I definitely visit and do the database design when I start a project.</li>
+<li><a href="https://apify.com/">Apify</a>: A service that hosts data collection scripts for many sites.</li>
+<li><a href="https://alternativeto.net/">Alternative To</a>: A tool that helps you find alternatives to websites, tools, and services.</li>
+</ul>
+<h4>Version Control</h4>
+<ul>
+<li><a href="https://gitmoji.dev/">Gitmoji</a>: Emojis that you can add to commit messages when using Git.</li>
+</ul>
+<h3>Game Development</h3>
+<ul>
+<li><a href="https://github.com/Jaysmito101/TerraGen3D">TerraGen3D</a>: A terrain generation tool for game developers.</li>
+<li><a href="https://www.piskelapp.com/">PiskelApp</a>: A sprite editor for game developers and pixel art lovers.</li>
+<li><a href="https://github.com/cstoquer/pixelbox">PixelboxJS</a>: A 2D game development library that includes built-in sprite, map, sound effect, and music editors.</li>
+<li><a href="https://www.inklestudios.com/ink/">Inkle</a>: A scripting language and editor developed for writing interactive stories.</li>
+<li><a href="https://probabletrain.itch.io/dungeon-scrawl">Dungeon Scrawl</a>: A map making application for game developers.</li>
+<li><a href="https://www.rpgmakerweb.com/">RPG Maker</a>: A game engine for making RPG games.</li>
+<li><a href="https://www.lexaloffle.com/pico-8.php">Pico8</a>: An imaginary virtual 8-bit game console for game developers. It includes code, sprite, sound, and music editors.</li>
+<li><a href="https://tic80.com/">TIC-80</a>: An imaginary virtual 8-bit game console for game developers. It includes code, sprite, sound, and music editors. I can say that it is relatively more capable than Pico-8, but it does not have as strong a community as Pico-8.</li>
+<li><a href="https://rxi.itch.io/tilekit">Tilekit</a>: A very capable and intelligent tile editor. It costs $20.</li>
+<li><a href="https://demoman.net/?a=trig-for-games">Trigonometry for Games</a>: An online application that teaches trigonometry for game developers.</li>
+</ul>
+<h3>Best Practices</h3>
+<ul>
+<li><a href="https://useplaintext.email/">Use Plaintext Email</a>: A website that explains why we should take care to send plain text messages when using e-mail clients, and also provides guidance on this matter.</li>
+<li><a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>: A website that explains the importance of writing a proper changelog and its best practices in software development and release processes.</li>
+</ul>
+<h2>Learning &amp; Resources</h2>
+<ul>
+<li><a href="https://howlongtoread.com/">How Long to Read</a>: You give the name of the book, and it tells you the average time it will take to read it. Unfortunately, it only works for English books.</li>
+<li><a href="http://developerexcuses.com/">Developer Excuses</a>: A website that helps you find excuses for your faulty and unfinished work if you are a developer.</li>
+<li><a href="https://chrome.google.com/webstore/detail/trendcat/efpdjmbhdeindmfegilaloknlpfloefd">TrendCat</a>: A Google Chrome extension developed by Ergenekon Yiğit that lists your Github news feed and the headlines on HackerNews every time you open a tab.</li>
+<li><a href="https://engineeringblogs.google/">Engineeing Blogs</a>: A great RSS reader that allows you to follow the blogs of all companies and organizations that have a technology blog, such as Facebook, Docker, Uber, etc., from a single place.</li>
+<li><a href="https://daily.dev/">Daily.dev</a>: A Google Chrome extension that shows you news from various sources about software development every time you open a new tab.</li>
+<li><a href="https://goalkicker.com/">Free Programming Books</a>: A website that lists free books on many topics such as HTML5, CSS3, JavaScript, PHP, Python.</li>
+<li><a href="https://github.com/orcuntuna/react-turkce-kaynak">React Turkish Resource</a>: The Turkish React book written and made public by Orçun Tuna.</li>
+<li><a href="https://github.com/academic/awesome-datascience/">Awesome Data Science</a>: A Github repo full of content that will help you find answers to the questions "What is Data Science?" and "What should I study to learn Data Science?".</li>
+<li><a href="https://github.com/microsoft/Web-Dev-For-Beginners">Web Dev for Beginners</a>: 24 lessons prepared by Microsoft for those who want to become a web developer.</li>
+<li><a href="https://www.youtube.com/channel/UCvI5azOD4eDumpshr00EfIw">Codú Community</a>: Many training videos on frontend development.</li>
+<li><a href="https://www.youtube.com/user/ChromeDevelopers">Chrome Developers</a>: Training videos on the use of developer tools in Google Chrome.</li>
+<li><a href="https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg">The Net Ninja</a>: Training videos on all topics revolving around Javascript.</li>
+<li><a href="https://www.youtube.com/channel/UCMZFwxv5l-XtKi693qMJptA">Coding Addict</a>: Training videos on all topics revolving around Javascript.</li>
+<li><a href="https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q">Dev Ed</a>: A YouTube channel that publishes training videos on topics suchs as React, Python, HTML, CSS, Nodejs.</li>
+<li><a href="https://www.youtube.com/channel/UCtxCXg-UvSnTKPOzLH4wJaQ">Coding Tech</a>: Training videos on advanced topics such as Rust, Quantum computing, teamwork.</li>
+<li><a href="https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ">FreeCodeCamp.org</a>: Training videos on many topics such as data structures, game development, computer science.</li>
+<li><a href="https://classroom.udacity.com/courses/ud256/lessons/7090748708/concepts/70675111450923">Networking for Web Developers</a>: A free course that explains the basic network information that every developer who develops on the web should know.</li>
+<li><a href="https://www.youtube.com/user/derekbanas">Derek Banas</a>: Comprehensive training videos on many topics related to software development.</li>
+<li><a href="https://www.youtube.com/user/TechGuyWeb">Traversy Media</a>: A youtube channel that publishes training videos on many topics related to software development.</li>
+<li><a href="https://www.youtube.com/channel/UCDCHcqyeQgJ-jVSd6VJkbCw">CodeSTACKr</a>: Various training videos on topics related to software development.</li>
+<li><a href="https://www.youtube.com/c/Academind/">Academind</a>: Various training videos on topics related to software development.</li>
+<li><a href="https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw">Web Dev Simplified</a>: Various training videos on topics related to software development.</li>
+<li><a href="https://github.com/dennybritz/reinforcement-learning">Reinforcement Learning</a>: A wiki containing code, questions, and answers on popular algorithms related to reinforcement learning.</li>
+<li><a href="https://www.musictheory.net/lessons">Music Teory Lessons</a>: A free web application that allows you to learn music theory through interactive lessons.</li>
+<li><a href="https://www.wikihow.com/Main-Page">WikiHow</a>: A beautiful "how-to" site that shows how to do many things, often with pictures.</li>
+</ul>
+<h2>Design</h2>
+<h3>Resources</h3>
+<h4>Icons &amp; Fonts</h4>
+<ul>
+<li><a href="https://tabler-icons.io/">Tabler Icons</a>: Over 1250 icons.</li>
+<li><a href="https://css.gg/">700 CSS Icons</a>: 700 CSS icons.</li>
+<li><a href="https://iconduck.com/">Icon Duck</a>: Free open source icons and emojis.</li>
+<li><a href="https://heroicons.com/">Hero Icons</a>: Free SVG icon sets.</li>
+<li><a href="https://simpleicons.org/">Simple Icons</a>: 1880 icon drawings of various brands.</li>
+<li><a href="https://iconscout.com/">IconScout</a>: Can convert files to PNG and EPS formats. You can only download five images without registering on the platform.</li>
+<li><a href="https://fusion.li/">Fusion.li</a>: A website with SVG icons about blockchain and related topics and brands.</li>
+<li><a href="http://velvetyne.fr/">VTF</a>: The website of a design community that produces open source fonts. It contains hundreds of open source fonts.</li>
+<li><a href="https://www.supremo.co.uk/typeterms/">Type Terms</a>: A website that will help you learn typography-related terms.</li>
+<li><a href="https://fontjoy.com/">Font Joy</a>: An application that helps you create font combinations with the help of machine learning.</li>
+</ul>
+<h4>Colors &amp; Gradients</h4>
+<ul>
+<li><a href="https://colorpalettes.earth/">Colorpalettes Earth</a>: A website that lists color palettes extracted from nature and earth photographs. It is updated daily.</li>
+<li><a href="https://enes.in/sorted-colors/">Sorted CSS Colors</a>: An online application that helps you find the CSS name equivalent of the color you want.</li>
+<li><a href="https://colorleap.app/">ColorLeap</a>: A website about historical periods and the color palettes used in those periods.</li>
+<li><a href="https://conic.style/">Conic.css</a>: A gallery of conic-shaped CSS gradients.</li>
+<li><a href="https://coolors.co/">Coolors</a>: Color palette generator.</li>
+<li><a href="https://grayscale.design/">Grayscale Design</a>: A color palette generator where brightness values are prioritized over colors.</li>
+<li><a href="https://gradienta.io/">Gradienta</a>: A website containing very interesting gradient forms developed with pure CSS.</li>
+<li><a href="https://javisperez.github.io/tailwindcolorshades/">Shades Generator</a>: A color shade generation tool for Tailwind.</li>
+<li><a href="https://trianglify.io/">Trianglify.io</a>: An online application that allows you to create gradient backgrounds consisting of triangles.</li>
+<li><a href="https://couleur.io/">Couleur.io</a>: A color theme generator for websites, I personally like the combinations it produces.</li>
+</ul>
+<h4>Illustrations &amp; Templates</h4>
+<ul>
+<li><a href="https://icons8.com/illustrations">Ouch</a>: Ouch, owned by Icon8, is an illustration site where you can find modern, stylish, and vector drawings to create a better-designed website or application.</li>
+<li><a href="https://2.flexiple.com/scale/all-illustrations">Scale by Flexiple</a>: Free drawings to use on your website.</li>
+<li><a href="https://www.manypixels.co/gallery">Many Pixels</a>: It has very cute style illustrations that you can use as you wish.</li>
+<li><a href="https://designvault.io/">Design Vault</a>: An inspirational website where screenshots of various web and mobile applications are shared.</li>
+<li><a href="https://templated.co/">Templated</a>: 867 free HTML5+CSS3 website templates.</li>
+<li><a href="https://uideck.com/">UiDeck</a>: Free landing page designs and HTML5 site templates.</li>
+<li><a href="https://html5up.net/">HTML5 Up</a>: Free responsive HTML5+CSS3 website templates.</li>
+<li><a href="https://w3layouts.com/">W3Layouts</a>: Free responsive HTML5+CSS3 website templates.</li>
+<li><a href="https://inovatik.com/">Inovatik</a>: Free responsive HTML5+CSS3 website templates.</li>
+<li><a href="https://uicookies.com/">UiCookies</a>: Free responsive HTML5+CSS3 website templates.</li>
+<li><a href="https://templatemo.com/">TemplateMo</a>: Free responsive HTML5+CSS3 website templates.</li>
+<li><a href="https://freehtml5.co">FreeHtml5</a>: Free and Premium HTML5 Bootstrap site templates.</li>
+<li><a href="https://graygrids.com/">GrayGrids</a>: Free and Premium Bootstrap Themes and HTML Web Site Templates.</li>
+<li><a href="https://landingpage.fyi/">landing page fyi</a>: A website that shares inspirational landing page examples daily.</li>
+</ul>
+<h3>Tools</h3>
+<ul>
+<li><a href="https://adevade.github.io/color-scheme-generator/">Color Scheme Generator</a>: A simple color palette generation tool.</li>
+<li><a href="https://illustroke.com/">Illustroke</a>: You write a sentence, and artificial intelligence creates an illustration in SVG format from that sentence.</li>
+<li><a href="https://stockimg.ai/">Stock Img</a>: An AI application that can generate graphics such as book covers, stock photos, logos, illustration logos, etc. from the sentence you provide.</li>
+<li><a href="https://www.patterned.ai/">Patterned AI</a>: An AI application that creates a pattern for you and shows you how this pattern will look on various products.</li>
+<li><a href="https://subchristsoftware.itch.io/charpad-pro">CharPad Pro</a>: A very powerful desktop application that allows you to create game graphics and visuals while remaining faithful to the graphics capacity of the retro computer called Commodore 64. It costs $9 and unfortunately only works on Windows systems.</li>
+<li><a href="https://excalidraw.com/">Excalidraw</a>: An application that allows you to draw diagrams and graphics that look like hand drawings.</li>
+<li><a href="https://vectr.com/">Vectr</a>: Advanced vector-based drawing program.</li>
+<li><a href="https://ditherit.com/">Dither It</a>: An online application that dithers the photos you send.</li>
+<li><a href="https://tinypng.com/">Tiny Png</a>: Online png compressor.</li>
+<li><a href="https://svgartista.net/">SVG Artista</a>: Converts SVG drawings into animations.</li>
+<li><a href="https://www.figma.com/">Figma</a>: A web-oriented, team-based visual design application.</li>
+<li><a href="https://www.tinkercad.com/">TinkerCad</a>: A web-based 3D editor designed with children in mind.</li>
+<li><a href="https://www.autodraw.com/">Autodraw</a>: An application that replaces your drawings with previously made vector drawings using artificial intelligence.</li>
+<li><a href="https://www.canva.com/">Canva</a>: An online editor that you can use to design almost any kind of visual thing.</li>
+<li><a href="https://squoosh.app/">Squash</a>: A program that reduces the quality of the images you choose, and also allows you to compare the old and new versions.</li>
+<li><a href="https://darkmode.to/">Darkmode To</a>: An online service that allows you to easily add a dark mode feature to your website. It only asks for a one-time payment of $50. I think it's expensive, but someone might want to use it.</li>
+<li><a href="https://getwaves.io/">Get Waves</a>: A simple application that allows you to create wave forms without writing code with CSS.</li>
+<li><a href="https://www.blobmaker.app/">Blob Maker</a>: A simple application that allows you to create drop forms without writing code with CSS.</li>
+<li><a href="https://animista.net/">Animista</a>: An online application that allows you to create CSS animation designs without writing code.</li>
+<li><a href="https://previewed.app/">Previewed</a>: A tool that allows you to create marketing materials for the application you are developing.</li>
+<li><a href="https://floorplan.com/">Floor Plan Lab</a>: An application that allows you to draw the floor plan of interior spaces.</li>
+<li><a href="https://app.diagrams.net/">Diagrams.net</a>: A web application that allows you to draw UML diagrams or diagrams.</li>
+<li><a href="https://octopus.do/">Octopus.do</a>: A web application that you can use to create your website's sitemap and design page navigations.</li>
+<li><a href="https://rasterbator.net/">Rasterbator</a>: An online application that allows you to turn your photos into large posters by printing them piece by piece.</li>
+</ul>
+<h2>Business &amp; Career</h2>
+<h3>Entrepreneurship</h3>
+<ul>
+<li><a href="https://www.failory.com/">Failory</a>: A website that shares the stories of failed startups.</li>
+<li><a href="https://www.btw.so/open-source-alternatives">Open Source Alternatives</a>: Open source alternatives for many paid services.</li>
+<li><a href="https://www.thebalancesmb.com/">Small Business</a>: An article site that hosts experts who provide clear and practical advice on entrepreneurship and management. They have accumulated 7,000 articles in 20 years. If you intend to start your own business or grow your existing one, you should definitely study this site like you would a textbook.</li>
+<li><a href="https://gcemetery.co/">Google Cemetery</a>: A list of products that Google has discontinued.</li>
+<li><a href="https://flippa.com/">Flippa</a>: A marketplace where applications, blogs, and websites are bought and sold.</li>
+<li><a href="https://www.first1000.co/?mvp=605daa4c27edc200232ce124">First 1000</a>: A website full of articles explaining how famous startups got their first 1000 users.</li>
+<li><a href="https://www.nocode.tech/">Nocode Tech</a>: An online marketplace for intelligent beings who want to start their venture without writing code or with as little coding as possible. These were all the rage for a while, weren't they?</li>
+<li><a href="https://1mb.club/">The 1Mb Club</a>: Like the 250Kb club, but they've been a little more generous and limited the upper limit to 1Mb.</li>
+<li><a href="https://250kb.club/">The 250Kb Club</a>: The club of those who think it's wrong to download 8mb of javascript and 6mb of assets to view an email list. Inside is a list of websites that require less than 250Kb to download.</li>
+<li><a href="https://nocss.club/">The NoCSS Club</a>: A club for websites that don't use CSS.</li>
+</ul>
+<h3>Career &amp; Job Search</h3>
+<ul>
+<li><a href="https://resumestudio.careers/">Resume Studio</a>: An application that makes it easier to create a CV using artificial intelligence.</li>
+<li><a href="https://weworkremotely.com/">We Work Remotely</a>: A job and recruitment platform that claims to be the largest remote work community in the world.</li>
+<li><a href="https://justremote.co">Just Remote</a>: Discover Remote Jobs from around the world. Ditch the commute, work remotely and do what you love, every day, from anywhere.</li>
+<li><a href="https://www.toptal.com/">Toptal</a>: A freelance job and recruitment platform.</li>
+<li><a href="https://soshace.com/">Soshace</a>: A freelance job and recruitment platform.</li>
+<li><a href="https://www.freelancer.com/">Freelancer</a>: A freelance job and recruitment platform.</li>
+<li><a href="https://www.upwork.com/">Upwork</a>: A freelance job and recruitment platform.</li>
+<li><a href="https://remoteok.io/vscode">Remoteok.io/vscode</a>: Remoteok is a platform where IT jobs suitable for remote work are published. By entering the site from this address, you can search for a job as if you were writing code with VSCode.</li>
+<li><a href="https://www.remotepython.com/">Remote Python</a>: A job and recruitment platform focused solely on remote Python developers.</li>
+<li><a href="https://freelancer.guide/">Freelancer Roadmap</a>: A guide website that contains almost all the topics you need to become an international freelancer.</li>
+<li><a href="https://jobspresso.co/">Jobspresso</a>: A job and recruitment platform for remote-friendly jobs.</li>
+</ul>
+<h3>E-commerce &amp; Finance</h3>
+<ul>
+<li><a href="https://copymonkey.ai/">Copy Monkey</a>: An AI application that makes it easy to enter titles and descriptions for the products you sell on Amazon.</li>
+<li><a href="https://flair.ai/">Flair</a>: An AI application that can show you how your logo will look on various products.</li>
+<li><a href="https://gumroad.com/">Gumroad</a>: A platform that allows you to make money online by selling digital products, memberships, and more.</li>
+<li><a href="https://stradr.com/">Stradr</a>: A web application that allows those who are interested in the stock market but cannot afford to invest money to buy and sell on real stock exchanges with fake money, thus allowing you to measure your success as a trader without risking your money.</li>
+<li><a href="https://www.youtube.com/c/Finematics">Finematics</a>: A Youtube account with educational videos that simplify various concepts in decentralized finance.</li>
+</ul>
+<h2>Productivity &amp; Lifestyle</h2>
+<h3>Note-taking &amp; Writing</h3>
+<ul>
+<li><a href="https://typora.io/">Typora</a>: A markdown-based note-taking app that provides a highly enjoyable experience both as a reader and a writer. It removes the preview window, mode switcher, syntax symbols of the markdown source code, and all other unnecessary distractions. Instead, it features a real live preview that helps you concentrate on the content itself. It made me switch from Notion.</li>
+<li><a href="https://obsidian.md/">Obsidian</a>: Like Notion, but for more technical users and free. You work by editing only Markdown formatted files. It uses your hard drive as the storage location.</li>
+<li><a href="https://www.notion.so/">Notion</a>: Your own personal Wikipedia. It allows you to keep your writings, notes, and to-do lists in an organized manner. Since it is cloud-based, you can immediately access your notes from wherever you log in.</li>
+<li><a href="https://macdown.uranusjr.com/">MacDown</a>: A Markdown editor with powerful preview capabilities. As the name suggests, it can run on the OSX operating system.</li>
+<li><a href="https://zenpen.io/">ZenPen</a>: A minimalistic, distraction-free online text editor.</li>
+</ul>
+<h3>AI-powered Tools</h3>
+<ul>
+<li><a href="https://www.ocoya.com/">Ocoya</a>: A web application that helps you prepare, automate, and schedule social media content faster with the help of artificial intelligence.</li>
+<li><a href="https://copy.ai">Copy AI</a>: A copywriter AI application that helps more than 1 million people write social media posts, website content, and blog posts in seconds.</li>
+<li><a href="https://myess.ai/">myEssai</a>: An AI application that provides comments and suggestions to improve the English article you wrote.</li>
+<li><a href="https://app.yaara.ai/paraphraser">Pharaphrasing Tool</a>: An AI application that rewrites an existing English article using different sentences.</li>
+<li><a href="https://quillbot.com/">Quill Bot</a>: An online AI application that converts the sentences you provide into other sentences with the same meaning.</li>
+<li><a href="https://freesubtitles.ai/">Free Subtitles</a>: You give the video file, and it uses artificial intelligence to create subtitles for the video and gives them back to you. Turkish support is also available.</li>
+<li><a href="https://www.lalal.ai/">Lalal.ai</a>: An AI application that removes the lyrics from the music file you provide and gives you the instrumental version.</li>
+<li><a href="https://www.beatoven.ai">Beatoven</a>: An AI application that allows you to create unique royalty-free music.</li>
+<li><a href="https://soundraw.io/">Soundraw</a>: An AI application that allows you to create unique royalty-free music.</li>
+<li><a href="https://cleanvoice.ai">Clean Voice</a>: An AI application that cleans things like mouth smacking and background noise from podcast or speech recordings.</li>
+<li><a href="https://podcastle.ai/">Podcastle</a>: An online web application that allows you to record studio-quality audio, clean the audio you record using artificial intelligence, and edit the audio you record.</li>
+<li><a href="https://vidyo.ai/">Vidyo</a>: An AI application for shortening long videos. It supports many services such as Youtube, Instagram, Tiktok, Linkedin.</li>
+</ul>
+<h3>Utilities</h3>
+<ul>
+<li><a href="https://guard.io">Guard.io</a>: Helps you to organize, share, track and bookmark any link on the web.</li>
+<li><a href="https://guardo.io/">Guardio</a>: An advanced bookmark archiver.</li>
+<li><a href="https://temp-mail.to/">Temp Mail</a>: A web service that allows you to create and use an instant email address without dealing with registration forms.</li>
+<li><a href="https://onetimesecret.com/">OneTimeSecret</a>: An application that allows you to share notes that are completely deleted after being read. For sharing important things like passwords, etc.</li>
+<li><a href="https://invoice-generator.com/">Invoice Generator</a>: The invoice generator I use, you can handle your invoicing work quite easily.</li>
+<li><a href="https://usethekeyboard.com/">Use The Keyboard</a>: A website that lists the keyboard shortcuts of many applications.</li>
+<li><a href="https://www.filezigzag.com/">FileZigZag</a>: Convert any file to another format, it supports hundreds of file types.</li>
+<li><a href="https://www.emojibatch.com/">Emojı Batch</a>: A website that allows you to find the emoji you need very quickly.</li>
+<li><a href="https://copychar.cc/">CopyChar</a>: It allows you to easily find special characters or emojis.</li>
+<li><a href="https://oshi.at/">Oshi.at</a>: Like temp.sh, you can temporarily store your files in the cloud with a command like "curl -T file.txt <a href="https://oshi.at">https://oshi.at</a>". It has a 6GB file size limit and can store your file for 90 days.</li>
+<li><a href="http://squirt.io/">Squirt.io</a>: An online tool that allows you to read the text you provide very quickly.</li>
+<li><a href="https://wormhole.app/">WormHole</a>: Like Wetransfer, but it sends the files you share with end-to-end encryption and promises to delete them from the servers after 24 hours.</li>
+<li><a href="https://temp.sh/">Temp.sh</a>: A temporary upload area that you can use instead of Wetransfer, which you can upload from the terminal with a command like "curl -T file.txt <a href="http://temp.sh">http://temp.sh</a>".</li>
+<li><a href="https://gifrun.com/">Gifrun</a>: An online web application for making Gifs from Youtube videos and turning them into NFTs.</li>
+</ul>
+<h3>Collaboration &amp; Social Media</h3>
+<ul>
+<li><a href="https://buffer.com">Buffer</a>: A software application for web and mobile designed to manage accounts on social networks by providing tools for planning and analyzing the results of posts on Twitter, Facebook, Instagram, Instagram Stories, Pinterest, and LinkedIn.</li>
+</ul>
+<h3>Focus &amp; Ambient Sounds</h3>
+<ul>
+<li><a href="https://soundofcolleagues.com/">Sound of Colleagues</a>: A web application that makes sounds and noises as if you were in the office for those who miss working in the office.</li>
+<li><a href="https://soundscape.world/">Soundscape World</a>: It allows you to build music loops that will increase your concentration while working.</li>
+<li><a href="https://noises.online/">Noises Online</a>: Background sounds to increase work concentration.</li>
+<li><a href="https://defonic.com/">Deftonic</a>: Background sounds for work, sleep or meditation.</li>
+<li><a href="https://pomodor.app/">Pomodor</a>: A clean pomodoro application that can provide various statistics.</li>
+<li><a href="https://www.deprocrastination.co/">Deprocrastination</a>: A Chrome Extension that solves the problem of productivity and distraction that arises when working from home.</li>
+<li><a href="https://lifeat.io/refer/Cse5eCA62DKy">Life At</a>: The best work environment creation application I have ever seen. In addition to providing flowing images that will make you feel like you are in a cafe, library, or by the sea, it also has a built-in note-taking, pomodoro timer, and even a built-in lo-fi music player.</li>
+<li><a href="https://virtocean.com/index.html">VirtOcean</a>: A background sound site that allows you to work feeling like you are at the seaside.</li>
+<li><a href="https://musicforprogramming.net/">Music For Programming</a>: An online music player that contains non-distracting music that can be listened to while coding. The music choices and the interface are quite successful. I highly recommend it.</li>
+<li><a href="https://imisstheoffice.eu/">I Miss The Office</a>: A web application that creates an atmosphere with office sounds for those who miss working in the office during the pandemic.</li>
+<li><a href="https://tomato-timer.com/">Tomato Timer</a>: A time keeper for those who work in a pomodoro schedule.</li>
+<li><a href="https://misty.cafe/">Misty Cafe Cazz Radio</a>: A web application that offers an atmosphere as if you were working in a cafe on a rainy day listening to jazz.</li>
+</ul>
+<h3>Health &amp; Wellness</h3>
+<ul>
+<li><a href="https://medium.com/@mgundogdu/how-do-i-keep-my-focus-as-developer-with-adhd-attention-deficit-hyperactivity-disorder-526ba045321b">How do I keep my focus as developer with ADHD</a></li>
+<li><a href="https://www.fitfatherproject.com/">Fit Father Project</a>: Fitness and exercise plans designed for fathers.</li>
+<li><a href="https://www.uclahealth.org/marc/mindful-meditations">Free Guided Meditations</a>: Free guided meditation audio recordings.</li>
+<li><a href="https://daylio.webflow.io/">Daylio</a>: It helps you get to know yourself better by tracking your personal mood.</li>
+<li><a href="https://www.youtube.com/channel/UCTDiRJp9MeAgZbmwmq4w4GA">Linda Hall Meditation</a>: If you can listen in English, it contains quite beautiful guided meditation audio recordings.</li>
+<li><a href="https://midorikocak.github.io/breathe/">Breathe</a>: A free online application developed by Midori Koçak that allows you to meditate by doing breathing exercises.</li>
+</ul>
+<h3>Personal Development</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=snz7JJlSZvw">Telescope Building with John Dobson</a>: A detailed video in which the famous amateur astronomer John Dobson explains how to build a telescope with his own hands, like a lesson.</li>
+<li><a href="https://www.animatedknots.com/">Animated Knots</a>: A website that helps you learn sailor knots easily with animations.</li>
+</ul>
+
+
+      </div>
+    </main>
+  </div>
+  
+</body>
+
+</html>

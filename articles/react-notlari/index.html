@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+  </style>
+  
+  <link rel="stylesheet" href="../../static/pygments.css">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="tr">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>JavaScript Uzmanı Olmayanlar İçin React-Native Anlatımı — Mirat Can Bayrak</title>
+  <link rel='canonical' href="https://mirat.dev/articles/react-notlari/">
+  
+  
+  <meta name="title" content="JavaScript Uzmanı Olmayanlar İçin React-Native Anlatımı — Mirat Can Bayrak" />
+  <meta name="description" content="2016 civarından kalma, tamamlanmamış React Native kurulum ve başlangıç rehberi. ES6 ve JSX&#39;e giriş notları." />
+  <meta property="og:type" content="article" />
+<meta property="og:url" content="https://mirat.dev/articles/react-notlari/" />
+<meta property="og:title" content="JavaScript Uzmanı Olmayanlar İçin React-Native Anlatımı — Mirat Can Bayrak" />
+<meta property="og:description" content="2016 civarından kalma, tamamlanmamış React Native kurulum ve başlangıç rehberi. ES6 ve JSX&#39;e giriş notları." />
+<meta property="og:image" content="https://mirat.dev/mirat-orig.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/articles/react-notlari/" />
+<meta name="twitter:title" content="JavaScript Uzmanı Olmayanlar İçin React-Native Anlatımı — Mirat Can Bayrak" />
+<meta name="twitter:description" content="2016 civarından kalma, tamamlanmamış React Native kurulum ve başlangıç rehberi. ES6 ve JSX&#39;e giriş notları." />
+<meta name="twitter:image" content="https://mirat.dev/mirat-orig.jpg" />
+  
+  
+  
+    <link rel="stylesheet" href="../../static/pygments.css?h=a019983c">
+  
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "JavaScript Uzman\u0131 Olmayanlar \u0130\u00e7in React-Native Anlat\u0131m\u0131",
+  "datePublished": "2016-01-01",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "https://mirat.dev/articles/react-notlari/",
+  "inLanguage": "tr",
+  "description": "2016 civar\u0131ndan kalma, tamamlanmam\u0131\u015f React Native kurulum ve ba\u015flang\u0131\u00e7 rehberi. ES6 ve JSX\u0027e giri\u015f notlar\u0131."
+}
+</script>
+
+</head>
+
+
+
+
+
+
+
+<body class="page-articles-react-notlari model-article">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+
+<div style="background: color-mix(in srgb, var(--accent) 15%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 2rem;">
+  <p style="margin: 0; color: var(--fg);"><strong>⚠️ Archived Article:</strong> This article is very old and may contain outdated or incorrect information. It's kept here for nostalgic and historical reasons.</p>
+</div>
+
+
+<div style="background: color-mix(in srgb, var(--accent) 15%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 2rem;">
+  <p style="margin: 0; color: var(--fg);"><strong>🇹🇷 Turkish Content:</strong> This article is written in Turkish. The cultural and emotional nuances cannot be properly translated, so it remains in its original language.</p>
+</div>
+
+
+<h1>JavaScript Uzmanı Olmayanlar İçin React-Native Anlatımı</h1>
+
+<div class="article-meta">
+  January 2016 · written at age 32
+</div>
+
+<blockquote><p>Bu yazi hala yapim asamasindadir, buldugunuz eksiklikleri <a href="https://github.com/miratcan/miratcan.github.io/blob/source/content/articles/react-notlari/contents.lr">pull request acarak</a> giderebilir ya da <a href="https://github.com/miratcan/miratcan.github.io/issues">issue girerek</a> bildirebilirsiniz.</p>
+</blockquote>
+<p>React Facebook tarafindan ortalara atilmis bir javascript kutuphanesi. MVC desenli tasarimlarda V (View) katmanini olusturdugu soylense de redux gibi kutuphanelerle birlestiginde basli basina bir calisma tasarim semasina sahip oldugunuz soyleniyor. Bu yazida sifirdan baslayarak react native ile bir uygulama gelistirmeye calisacagiz.</p>
+<blockquote><p>Okumadan Once:</p>
+<p>Hedef isletim sistemim Android, gelistirme yaptigim isletim sistemi ise OSX olacak. Bu yuzden ornegin IOS icin gelistirme yapmak istiyorsaniz bu yazi bir yere kadar yeterli olacaktir. Gelistirme yaptiginiz sistemde NodeJS, NPM, Watchman ve Homebrew kurulu olmalidir. Eger kurulu degillerse asagidaki komutlari kullanarak yukleyebilirsiniz:</p>
+</blockquote>
+<pre class="prettyprint lang-bash"><code>$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ brew install nodejs watchman</code></pre><h2>Getirileri:</h2>
+<ol>
+<li>JSX adinda bir markup dili getiriyor, bunu kullanmak zorunlu olmasa da siddetle tavsiye edilmekte. Ha HTML yerine kullanilmasi avantajli mi? Tartisilir.</li>
+<li>Components - React bir web sayfasi ya da uygulamayi tasarlarken HTML etiketleri olarak degil de gorunum bilesenleri tasarlamanizi sagliyor. Ne faydasi var diyecek olursaniz, bilesenler bir kere duzgun tasarlandiktan sonra farkli projelerde kullanilabiliyorlar. Ornegin hesap makinesi adinda buyuk bir bilesen yaparsaniz bunu yaptiginiz farkli farkli uygulamalara takabiliyorsunuz.</li>
+<li>Cift Tarafli Veri Akisi: React componentlerin veriden yola cikarak gosterimini, ayni zamanda da verinin componentlerin durumuyla guncellenmesini saglayabiliyor. Bunu flux adinda bir kutuphane ile yapiyor.</li>
+</ol>
+<h2>Avantajlari:</h2>
+<ol>
+<li>React ile ilgili donen cay kahve muhabbetlerinde bile soylenir ama ben yine de burada tekrar edeyim:  React web sayfalarini render ederken gercek DOM'u degil de kendi salan DOM'unu kullaniyor ve burada guncellemeleri degisiklikleri yaptiktan sonra gercek DOM'a bu degisiklikleri aktariyor. Bu da muazzam bir performans artisi demek.</li>
+<li>React sunucu ve istemci tarafinda kullanilabiliyor. React ile hazirladiginiz componentler sonradan render edilmek zorunda degil.</li>
+<li>Component ve veri tipleri javascript kodunun okunabilirligini arttiriyor.</li>
+</ol>
+<h2>Sinirlamalari:</h2>
+<ol>
+<li>React sadece view katmanini temsil ettigi icin gelistirme ortaminizi tamamlamak adina baska kutuphanelere ihtiyac duyabiliyorsunuz. React'in kullandigi JSX markup dili bazi gelistiricilere acayip gozukebiliyor.</li>
+</ol>
+<h2>GELISTIRME ORTAMININ KURULMASI</h2>
+<p>Simdiye kadar yaptigim denemelerde gelistirme ortaminin kurulmasi bana gelistirme yapmanin en zor kismiymis gibi geldi. Zira Android SDK'nin ve SDK icerisinde bulunmasi gereken paketlerin kurulumunu anlatan birden falza dokuman var.</p>
+<h3>ADIM 1 - GLOBAL GEREKLI PAKETLERIN KURULMASI:</h3>
+<p>Oncelikle babel pakedini kurmaniz gerekiyor. Bu paket javascript yazarken ES6 standardini kullanabilmenizi sagliyor. ES6 standardi ile yazdiginiz javascript kodunun eger broser desteklemiyor ise downgrade edilmis bir versionunu compile ediyor. Artik modern javascript yazmak icin babel kullanmak
+zorunlu gibi bir sey.</p>
+<pre class="prettyprint lang-bash"><code>$ npm install -g babel babel-cli react-native-cli</code></pre><blockquote><p>NOT: Bagzi yerlerde React Native ES2015 standardini kullaniyor gibi bir seyler okuyabilirsiniz. ES2015, ES6'nin draft hali yani ES6 standardinin bitirilmeden onceki halini ifade ediyor.</p>
+</blockquote>
+<h3>ADIM 2 - ANDROID SDK'NIN KURULUMU:</h3>
+<p>Yazacaginiz uygulamalarin telefonda ya da bir telefon emulatorunde calistirilmasi gerekiyor. Eger yazdigimiz kodlarin sonucunu sanal ya da degil bir Android makine uzerinde gormek istiyorsaniz (benim senaryomda istiyoruz) Android SDK'nin kurulumunu yapmamiz gerekiyor.</p>
+<pre class="prettyprint lang-bash"><code>brew tap caskroom/cask
+$ brew cask install android-sdk</code></pre><p>Brew guzel alet, Android SDK'nin ciplak haliyle kurulumunu yaptik. Ardindan yapmamiz gereken sey ise ANDROID_HOME ortam degerinin set edilmesi. Bu deger Android SDK'yi kurdugunuz yer olmali.</p>
+<p>Unix sisteminizde asagidaki satiri (eger yoksa) ~/.bashrc, ~/.bash_profiel ya da fish kullaniyorsaniz adini hatirlamadigim baska bir dosya icine yazmaniz gerekiyor:</p>
+<pre class="prettyprint lang-bash"><code>export ANDROID_HOME=/usr/local/share/android-sdk</code></pre><p>Burada tekrar hatirlatmamda fayda var verdigimiz yolun SDK'nin kurulu oldugu yeri gostermesi gerekiyor. Kontrol edip yolu ona gore gerekiyorsa degistirin.</p>
+<p>Bu degiskeni dogru olarak degistirdiyseniz asagidaki komutun ciktisi sunun gibi olmalidir:</p>
+<pre class="prettyprint lang-bash"><code>$ ls $ANDROID_HOME
+INSTALL_RECEIPT.json add-ons              build-tools
+extras               platforms            sources
+temp                 README               bin
+etc                  platform-tools       samples
+system-images        tools</code></pre><p>Bu asamadan sonra SDK icin cesitli paketlerin yuklenmesi gerekiyor. React Native'in kendi dokumantasyonu bu konuda biraz eski, su an baktigimda Android Studio kurmaya, oradan gorsel arabirim uzerinden cesitli kutuphaneleri elle yuklemeye yonlendiriyor ama bunlara gerek olmadigini gordum. Eger Android SDK dogru bir sekilde kuruldu ve tanimlandiyda ilk calistirma sirasinda React Native gerekli paketleri kuruyor.</p>
+<h3>ADIM 3 - TELEFONUN TANITILMASI</h3>
+<p>Bu islem basit, Android telefonunuzun once gelistirici modunu acacak. Sonra da USB den bilgisayariniza baglayacaksiniz. Bu islemleri yaptiktan sonra su komutu verdiginizde sunun gibi bir cikti gormelisiniz:</p>
+<pre class="prettyprint"><code class="language-bash">$ adb devices
+List of devices attached
+
+TELEFON MODELI</code></pre><p>Eger telefonunuz bu listede gozukmuyorsa emin olmaniz gereken seyler sunlar.</p>
+<ol>
+<li>Telefonunuz USB ile bagli olmali.</li>
+<li>Telefonunuz sadece sarj ya da fotograf makinesi modunda degil MTP modunda bagli olmali.</li>
+<li>Telefonunuzun gelistirici secenekleri acik olmali.</li>
+<li>Gelistirici secenekleri icerisindeki USB uzerinden hata ayiklama secenegi acik olmali.</li>
+</ol>
+<p>Eger butun bunlari sagladiysaniz ve yine de bilgisayariniz bir cihaz gormuyorsa, telefonunuzu bilgisayarinizdan ayirin, adb servisini oldurun, telefonunuzu takin ve tekrar adb devices komutunu verin. Benim telefonum USB kablosu her cikarildiginda USB Uzerinden Hata Ayiklama secenegini kapatiyor, eger cikar tak yaptiysaniz hata ayiklamanin hala acik oldugundan emin olun.</p>
+<p>Bu arada sanal bir Android makine olusturup bunun uzerinde gelistirme yapmak da mumkun ancak ben bu sekilde, gercek bir telefon uzerinde calismayi daha mantikli buldum. Sanal makine icin -zaten gercegi varken- CPU, disk alani, RAM harcamak, gelistirme yaparken surekli tab yaparak ya da pencereleri hizalamaya calisarak sanal makineyi takip etmektense bilgisayarin yanina telefonunuzu koymak ve degisiklikleri oradan takip etmek cok daha mantikli geldi bana.</p>
+<h2>REACT NATIVE ILE PROJENIN BASLATILMASI</h2>
+<p>Yukaridaki adimlari takip ettikten sonra artik react-native komutu bizim icin calistirilabilir olmali:</p>
+<pre class="prettyprint lang-bash"><code>$ react-native init ReactHello</code></pre><p>Bu komut baya bir indirme yapiyor ve bana cok devasa gozuken bir dizin agaci yaratiyor. Daha hic bir sey yapmadan 22.700 tane dosya olustu proje dizinimin icinde. Bu bana biraz sevimsiz geldi acikcasi ama soguyup birakacak degilim.</p>
+<pre class="prettyprint lang-bash"><code>$ cd ReactHello
+$ ReactHello/ $ ls
+__tests__        app.json         index.ios.js     node_modules <-- icinde bi dunya dosya var.
+android          index.android.js ios              package.json</code></pre><p>Neyse, bu noktada bilmemiz gereken bazi seyler sunlar:</p>
+<ul>
+<li>React Native paket yoneticisi olarak NPM kullaniyor. Dolayisiyla node_modules dizini kurdugumuz, kuracagimiz paketleri barindiriyor.</li>
+<li>"android" ve "ios" dizinleri android ve ios projeleri icin uretilmis kodu barindiriyor. Android Studio ya da XCode kullanarak acip, incelenebilir.</li>
+<li>index.android.js ve index.ios.jsedosyalari bizim kaynak kodumuzun giris noktalari oluyor.</li>
+</ul>
+<p>Simdi de bu bos projeyi Android uzerinde calistiralim:</p>
+<pre class="prettyprint lang-bash"><code>$ react-native run-android</code></pre><p>Bu komut baya bir indirme yapacak, daha once kurdugumuz Android SDK uzerine, React Native'in calismasi icin gerekli olan paketleri kuracak. Iyi haber bu islemin sadece 1 defa yapilacak olmasi. Eger sansimiz yerindeyse telefonumuzda sunun gibi bir ekran gormeliyiz:</p>
+<p style="text-align:center"><img src="https://kylewbanks.com/images/post/react-native-tutorial-1.png" /></p><p>Bu ekrandayken telefonu salladiginizda karsiniza cesitli gelistirici secenekleri cikacak. Bunlari biraz kurcalayin ne oldugunu anlamaya calisin. Ilerde lazim olacaklar.</p>
+<h2>Hello World</h2>
+<p>Simdi yukarda index.android.js ve index.ios.js dosyalarimizin bulundugunu, bunlarin iki farkli cihaz icin uretilmis kodlar oldugunu soylemistik. Simdi bu iki dosyayi sifirlayip bastan yazarak React'in ve React Native'in nasil calistigini biraz inceleyelim. Iki dosyanin da icini bosaltin ve asagidaki satirlari ekleyin:</p>
+<pre class="prettyprint lang-bash"><code>import React, { Component } from 'react';
+import {
+    Text,
+    AppRegistry
+} from 'react-native';</code></pre><p>Simdiye kadar sadece kurulumla konfigurasyon ile gecirmistik zamanimizi, simdi ise ilk defa elimizi tasin altina attik ve Javascript yazmaya basladik. React Native Javascript yaziminda ES6 standardini kullaniyor. Yukarodaki kod parcacigindaki import yonergeleri de bu standarda ait yonergeler. Daha once gormediyseniz soyle basitce aciklayayim. 'react' pakedinden React ve Component'i, react-native pakedinden de Text ve AppRegistry dosyalarini import ediyoruz. Eger bir paketten export edilmemis bir seyi import etmeye calisiyorsak bunu kivrimli parantezler icinde yaziyoruz. ES6'daki import yonergeleri icin <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">Mozilla vakfinin dokumani</a>na goz atabilirsiniz.</p>
+<p>Bu arada yeri gelmisken soyleyeyim bu yaziyi yazarken-React ortamini incelerken ES6 spesifikasyonuna asina oldum. Neredeyse Javascript cok guzel olmus diyecegim. Dili butun sacmaliklarindan ayiklamislar.ES6 hakkinda daha fazla bilgi sahip olmak icin <a href="http://es6-features.org/#Constants">su</a> ve <a href="https://github.com/lukehoban/es6features">su</a> sayfalara goz atabilirsiniz. Ayrica bunlari okumak sikici gelirse Ustun Ozgur'un Youtube'da cok guzel bir <a href="https://www.youtube.com/watch?v=Vp4K03xWsgE">sunum</a>u var.</p>
+<p>Simdi devam edelim ve ilk bilesenimizi (componentimizi ekleyelim). Component dedigimiz sey aslinda bir gosterimi ifade eden sinif. Bu siniflar alt siniflara sahip olabiliyor. Bir hesap makinesi bileseni yaratip, o bilesenin icerisine de tus bilesenlerini koyabiliyoruz mesela.</p>
+<pre class="prettyprint lang-javascript"><code>class ReactHello extends Component {
+    render() {
+        return (
+            &lt;Text&gt;Selam, React!&lt;/Text&gt;
+       )
+    }
+}</code></pre><p>Burada ReactHello sinifi Component ana sinifindan turemekte. Bu syntax'da ES6'nin bir hediyesi bu arada. Neyse, goreceginiz gibi sinifimiz (ya da bilesenimiz) sadece bir render fonksiyonuna sahip, ve bu fonksiyon icerisinde XML benzeri bir yazim dili iceriyor, adi da JSX. Bunun ne oldugunu birazdan anlatacagim biz simdilik devam edelim.</p>
+<p>Son olarak yapmamiz gereken sey componentimizin, uygulamamizin ana gorunumu oldugunu belirtmek. Bunun icin soyle bir hareket cekiyoruz.</p>
+<pre class="prettyprint lang-javascript"><code>AppRegistry.registerComponent('ReactHello', () => ReactHello);</code></pre><p>urada uygulamamizin sahip oldugu bileseni uygulamamizin ana bileseni olarak belirlemis oluyoruz. React Native projenin klasor adini projenin ana bilesen ismi olarak kullaniyor. Yani klasor ismimiz 'ReachNaber' olsaydi register ederken:</p>
+<pre class="prettyprint lang-javascript"><code>AppRegistry.registerComponent('ReactNaber', () => ReactHello);</code></pre><p>Seklinde kaydedecektik. Neticede uygulamamizin son hali su sekilde olmali:</p>
+<pre class="prettyprint lang-javascript"><code>import React, { Component } from 'react';
+import {
+    Text,
+    AppRegistry
+} from 'react-native';
+
+class ReactHello extends Component {
+    render() {
+        return (
+            &lt;Text&gt;Selam, React!&lt;/Text&gt;
+        )
+    }
+}
+
+AppRegistry.registerComponent('ReactHello', () => ReactHello);
+</code></pre><p>imdi uygulamamizi tekrar run komutu vererek calistirabiliriz, ya da hic kapatmadiysak telefonu sallayip, cikan menuden reload edebiliriz. Ekrana selam, React! yazmaktan baska hic bir sey yapamayan rezil uygulamamizin calisiyor olmasi lazim.</p>
+<h2>JSX</h2>
+<p>Su return ettigimiz XML benzeri yazim var ya. Bu yazim JSX olarak adlandiriliyor. HTML de degil Javascript de degil. React tarafindan sunulan bir Javascript eki (kutuphane degil). Javascript notasyonuna uymuyor. Bu yuzden de beni biraz rahatsiz etti acikcasi. Bir JSX blogu yazarken aslinda React yazdigimiz kodu sunun gibi bir cevrime sokuyor:</p>
+<pre class="prettyprint"><code>// JSX Kodu:
+&lt;MyButton color=&quot;blue&quot; shadowSize={2}&gt;
+  Click Me
+&lt;/MyButton&gt;</code></pre><pre class="prettyprint"><code>// Javascript Ciktisi:
+React.createElement(MyButton, {color: 'blue', shadowSize: 2}, 'Click Me')</code></pre><p>Yani compile edilene kadar editor icinde Javascript, JSX karisik bir syntax goruyorsunuz. Bunun elestirilecek bir kac yonu var. Yillarca tasarim, yazim ve mantigi ayirmaya ugrasmis ve bunu basarmisken boyle bir kod yazmak tarih oncesine donmus gibi hissettiriyor. JSX yazarken dikkat etmeniz ve hep hatirinizda tutmaniz gereken sey calisma asamasina gelindiginde Javascript koduna donusecek bir sey yazdiginiz. Bu yuzden ornegin eger bir degisken kullaniyorsaniz bunun JSX'in icinde bulundugu scope'da tanimli olmasi gerekiyor. Ha evet tam yeri geldi su anda, JSX icerisinde degiskenler ve ifadeler kullanabiliyoruz:</p>
+<pre class="prettyprint lang-javascript"><code>import React, { Component } from 'react';
+import {
+    Text,
+    AppRegistry
+} from 'react-native';
+
+class ReactHello extends Component {
+    render() {
+        let name = 'Mirat';
+        return (
+            &lt;Text&gt;Selam, React! ben {name} Uc arti bes {3+5} eder.&lt;/Text&gt;
+        )
+    }
+}
+
+AppRegistry.registerComponent('ReactHello', () => ReactHello);</code></pre><p>Kullanmak istedigimiz degiskeni ya da ifadeyi {} icerisinde yazmamiz yeterli oluyor.</p>
+<p>Kaynaklar:</p>
+<ul>
+<li><a href="https://www.tutorialspoint.com/react_native/">https://www.tutorialspoint.com/react_native/</a></li>
+<li><a href="https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html">https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html</a></li>
+<li><a href="https://kylewbanks.com/articles/react-native-tutorial-part-1-hello-react">https://kylewbanks.com/articles/react-native-tutorial-part-1-hello-react</a></li>
+<li><a href="https://facebook.github.io/react-native/docs/getting-started.html">https://facebook.github.io/react-native/docs/getting-started.html</a></li>
+<li><a href="https://benmccormick.org/2015/09/14/es5-es6-es2016-es-next-whats-going-on-with-javascript-versioning/">https://benmccormick.org/2015/09/14/es5-es6-es2016-es-next-whats-going-on-with-javascript-versioning/</a></li>
+<li><a href="https://www.youtube.com/watch?v=Vp4K03xWsgE">https://www.youtube.com/watch?v=Vp4K03xWsgE</a></li>
+<li><a href="https://facebook.github.io/react/docs/components-and-props.html">https://facebook.github.io/react/docs/components-and-props.html</a></li>
+<li><a href="https://facebook.github.io/react/docs/jsx-in-depth.html">https://facebook.github.io/react/docs/jsx-in-depth.html</a></li>
+</ul>
+
+
+
+
+
+
+      </div>
+    </main>
+  </div>
+  
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+</body>
+
+</html>

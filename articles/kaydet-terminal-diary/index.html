@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+  </style>
+  
+  <link rel="stylesheet" href="../../static/pygments.css">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="en">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>Kaydet: Your Queryable Personal Database—With Zero Friction — Mirat Can Bayrak</title>
+  <link rel='canonical' href="https://mirat.dev/articles/kaydet-terminal-diary/">
+  
+  
+  <meta name="title" content="Kaydet: Your Queryable Personal Database—With Zero Friction — Mirat Can Bayrak" />
+  <meta name="description" content="Kaydet is not a diary—it&#39;s a queryable personal database. Capture thoughts, track work, log life—all from your terminal, in plain text, with zero friction." />
+  <meta property="og:type" content="article" />
+<meta property="og:url" content="https://mirat.dev/articles/kaydet-terminal-diary/" />
+<meta property="og:title" content="Kaydet: Your Queryable Personal Database—With Zero Friction — Mirat Can Bayrak" />
+<meta property="og:description" content="Kaydet is not a diary—it&#39;s a queryable personal database. Capture thoughts, track work, log life—all from your terminal, in plain text, with zero friction." />
+<meta property="og:image" content="https://mirat.dev/articles/kaydet-terminal-diary/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/articles/kaydet-terminal-diary/" />
+<meta name="twitter:title" content="Kaydet: Your Queryable Personal Database—With Zero Friction — Mirat Can Bayrak" />
+<meta name="twitter:description" content="Kaydet is not a diary—it&#39;s a queryable personal database. Capture thoughts, track work, log life—all from your terminal, in plain text, with zero friction." />
+<meta name="twitter:image" content="https://mirat.dev/articles/kaydet-terminal-diary/logo.png" />
+  
+  
+  
+    <link rel="stylesheet" href="../../static/pygments.css?h=a019983c">
+  
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Kaydet: Your Queryable Personal Database\u2014With Zero Friction",
+  "datePublished": "2025-10-28",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "https://mirat.dev/articles/kaydet-terminal-diary/",
+  "inLanguage": "en",
+  "description": "Kaydet is not a diary\u2014it\u0027s a queryable personal database. Capture thoughts, track work, log life\u2014all from your terminal, in plain text, with zero friction."
+}
+</script>
+
+</head>
+
+
+
+
+
+
+
+<body class="page-articles-kaydet-terminal-diary model-article">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+
+
+
+<h1>Kaydet: Your Queryable Personal Database—With Zero Friction</h1>
+
+<div class="article-meta">
+  October 2025 · written at age 41
+</div>
+
+<p><img src="logo.png" alt="Kaydet: Capture • Query • Remember"></p>
+<p>Kaydet is not a diary you read—it's a database you query. Capture your thoughts, track your work, log your life—all from your terminal, in plain text, with zero friction.</p>
+<h2>Install</h2>
+<div class="hll"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/miratcan/kaydet.git
+</pre></div>
+<p>Start logging:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;First entry #personal&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Working on feature X #work time:2h&quot;</span>
+kaydet<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;#work&quot;</span>
+</pre></div>
+<h2>The Problem With Traditional Note-Taking</h2>
+<p>You're deep in code. A thought hits: "This auth bug is a cache TTL issue."</p>
+<p>Opening Notion? Four context switches. Finding the right page? Another minute gone. By the time you're back, your flow is broken.</p>
+<p><strong>Kaydet keeps you in the terminal where you already live.</strong> One command, zero friction:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Fixed staging auth bug—cache TTL issue #work status:done time:2h&quot;</span>
+</pre></div>
+<p>Done. Back to work in 3 seconds.</p>
+<h2>Not a Diary—A Database</h2>
+<p>Traditional diaries are linear. You write, you read, you flip pages.</p>
+<p>Kaydet is <strong>structured, indexed, and queryable</strong>. Every entry becomes searchable data:</p>
+<div class="hll"><pre><span></span><span class="c1"># What did I ship this week?</span>
+kaydet<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;status:done since:2025-10-23&quot;</span>
+
+<span class="c1"># How much deep work did I do this month?</span>
+kaydet<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;focus:high time:&gt;2&quot;</span><span class="w">  </span><span class="c1"># Defaults to current month</span>
+
+<span class="c1"># All entries from September?</span>
+kaydet<span class="w"> </span>--list<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;since:2025-09&quot;</span>
+
+<span class="c1"># All billable expenses ever?</span>
+kaydet<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;billable:yes #expense since:0&quot;</span>
+</pre></div>
+<p>Tags (<code>#work</code>), metadata (<code>time:2h</code>, <code>status:done</code>), date filters (<code>since:2025-09</code>), and full-text search—all in one natural string.</p>
+<h2>Plain Text Forever</h2>
+<p>Everything lives in timestamped <code>.txt</code> files:</p>
+<pre><code>~/.local/share/kaydet/
+├── 2025-10-26.txt
+├── 2025-10-27.txt
+├── 2025-10-28.txt
+└── index.db  (SQLite cache)
+</code></pre>
+<p><strong>Human-readable.</strong> Git-versionable. Tool-independent. Your data will outlive any proprietary format.</p>
+<p>The SQLite index is just a cache. If it breaks, <code>kaydet --doctor</code> rebuilds it from your text files.</p>
+<h2>Real-World Usage</h2>
+<p><strong>Work Logging</strong>:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Shipped analytics feature #work commit:a3f89d pr:142 status:done time:4h&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Investigating prod timeout #work #oncall status:wip time:1.5h&quot;</span>
+</pre></div>
+<p><strong>Time Tracking</strong>:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Deep work on ETL pipeline #work time:3h focus:high&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Code review session #work time:45m&quot;</span>
+</pre></div>
+<p><strong>Expense Tracking</strong>:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Lunch with client #expense amount:850 currency:TRY billable:yes&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Conference ticket #expense amount:2500 currency:TRY billable:yes&quot;</span>
+</pre></div>
+<p><strong>Personal Moments</strong>:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Morning run felt amazing #fitness time:30m distance:5k&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Read Atomic Habits chapter 3 #reading&quot;</span>
+kaydet<span class="w"> </span><span class="s2">&quot;Watched Aurora play with her toys #family&quot;</span>
+</pre></div>
+<p>Then <strong>query your life</strong>:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;time:&gt;2&quot;</span><span class="w">           </span><span class="c1"># Long work sessions (current month)</span>
+kaydet<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;#work status:done&quot;</span><span class="w"> </span><span class="c1"># Completed tasks</span>
+kaydet<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;billable:yes&quot;</span><span class="w">      </span><span class="c1"># Invoice data (current month)</span>
+kaydet<span class="w"> </span>--list<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;since:0&quot;</span><span class="w">    </span><span class="c1"># All entries, all time</span>
+kaydet<span class="w"> </span>--tags<span class="w">                        </span><span class="c1"># All tags with counts</span>
+</pre></div>
+<h2>Structured Metadata</h2>
+<p>Kaydet parses <code>key:value</code> pairs automatically:</p>
+<ul>
+<li><strong>Numeric values</strong>: <code>time:2h</code> becomes <code>2.0</code>, <code>90m</code> becomes <code>1.5</code></li>
+<li><strong>Comparisons</strong>: <code>time:&gt;2</code>, <code>time:&gt;=1</code>, <code>time:&lt;5</code></li>
+<li><strong>Ranges</strong>: <code>time:1..3</code> (between 1 and 3 hours)</li>
+<li><strong>Wildcards</strong>: <code>branch:feature/*</code></li>
+</ul>
+<p>Everything in one natural string:</p>
+<div class="hll"><pre><span></span>kaydet<span class="w"> </span><span class="s2">&quot;Fixed bug #work #urgent status:done time:2h commit:abc123 pr:76&quot;</span>
+</pre></div>
+<p>Gets stored as:</p>
+<pre><code>14:25 [42]: Fixed bug | status:done time:2h commit:abc123 pr:76 | #urgent #work
+</code></pre>
+<p>Clean message, structured metadata, tagged for search.</p>
+<h2>AI Integration</h2>
+<p>Connect Kaydet to Claude Desktop via MCP:</p>
+<div class="hll"><pre><span></span><span class="c1">// claude_desktop_config.json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;kaydet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kaydet-mcp&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>Ask Claude:</p>
+<ul>
+<li>"What did I work on this week?"</li>
+<li>"How consistent was my fitness routine?"</li>
+<li>"Summarize my accomplishments from last sprint"</li>
+</ul>
+<p>Your personal AI with perfect memory of your own data.</p>
+<h2>Core Features</h2>
+<ul>
+<li><strong>Terminal-native</strong>: One command, zero friction</li>
+<li><strong>Plain text storage</strong>: <code>.txt</code> files, human-readable forever</li>
+<li><strong>SQLite indexing</strong>: Fast searches across 10,000+ entries</li>
+<li><strong>Structured metadata</strong>: <code>key:value</code> with numeric comparisons</li>
+<li><strong>Smart date filtering</strong>: <code>since:</code> with automatic current-month default</li>
+<li><strong>Edit/Delete by ID</strong>: <code>kaydet --edit 42</code>, <code>kaydet --delete 42</code></li>
+<li><strong>Browse mode</strong>: Interactive TUI with vim-like navigation</li>
+<li><strong>AI-ready</strong>: MCP server for Claude Desktop</li>
+<li><strong>Git-friendly</strong>: Version your diary, sync across devices</li>
+</ul>
+<h2>Why Zero Friction Matters</h2>
+<p>I built Kaydet in 2016 because I was tired of context switching. Nine years later, I use it every single day—not because it's mine, but because it's the fastest way to capture thoughts without breaking flow.</p>
+<p>No apps to open. No pages to find. No sync to wait for. Just terminal → thought → storage → back to work.</p>
+<p><strong>Your thoughts deserve zero friction.</strong></p>
+
+
+
+  <ul>
+    <li>
+        <a href="../../articles@tag/mytools/">
+          All posts tagged mytools
+        </a>
+      </li>
+    <li>
+        <a href="../../articles@tag/technical/">
+          All posts tagged technical
+        </a>
+      </li>
+    
+  </ul>
+
+
+
+
+      </div>
+    </main>
+  </div>
+  
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+</body>
+
+</html>

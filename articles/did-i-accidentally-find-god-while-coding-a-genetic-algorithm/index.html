@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+  </style>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="en">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>Did I Accidentally Find God While Coding a Genetic Algorithm? — Mirat Can Bayrak</title>
+  <link rel='canonical' href="https://mirat.dev/articles/did-i-accidentally-find-god-while-coding-a-genetic-algorithm/">
+  
+  
+  <meta name="title" content="Did I Accidentally Find God While Coding a Genetic Algorithm? — Mirat Can Bayrak" />
+  <meta name="description" content="A software developer&#39;s thought experiment: what genetic algorithms, local optima, and the mystery of music reveal about evolution and design." />
+  <meta property="og:type" content="article" />
+<meta property="og:url" content="https://mirat.dev/articles/did-i-accidentally-find-god-while-coding-a-genetic-algorithm/" />
+<meta property="og:title" content="Did I Accidentally Find God While Coding a Genetic Algorithm? — Mirat Can Bayrak" />
+<meta property="og:description" content="A software developer&#39;s thought experiment: what genetic algorithms, local optima, and the mystery of music reveal about evolution and design." />
+<meta property="og:image" content="https://mirat.dev/mirat-orig.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/articles/did-i-accidentally-find-god-while-coding-a-genetic-algorithm/" />
+<meta name="twitter:title" content="Did I Accidentally Find God While Coding a Genetic Algorithm? — Mirat Can Bayrak" />
+<meta name="twitter:description" content="A software developer&#39;s thought experiment: what genetic algorithms, local optima, and the mystery of music reveal about evolution and design." />
+<meta name="twitter:image" content="https://mirat.dev/mirat-orig.jpg" />
+  
+  
+  
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Did I Accidentally Find God While Coding a Genetic Algorithm?",
+  "datePublished": "2026-02-10",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "https://mirat.dev/articles/did-i-accidentally-find-god-while-coding-a-genetic-algorithm/",
+  "inLanguage": "en",
+  "description": "A software developer\u0027s thought experiment: what genetic algorithms, local optima, and the mystery of music reveal about evolution and design."
+}
+</script>
+
+</head>
+
+
+
+
+
+
+
+<body class="page-articles-did-i-accidentally-find-god-while-coding-a-genetic-algorithm model-article">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+
+
+
+<h1>Did I Accidentally Find God While Coding a Genetic Algorithm?</h1>
+
+<div class="article-meta">
+  February 2026 · written at age 42
+</div>
+
+<p><em>A software developer's thought experiment from code to cosmos</em></p>
+<p>I'm building a bot that trades crypto markets automatically. Its name is Jarvis. It uses a <a href="https://en.wikipedia.org/wiki/Genetic_algorithm">genetic algorithm</a> — meaning I simulate Darwin's natural selection in code. I generate hundreds of strategy "individuals," pit them against each other, the fittest survive and reproduce, the weak get eliminated. Over generations, the system optimizes itself.</p>
+<p>It works. Beautifully.</p>
+<p>Until it doesn't.</p>
+<h2>The Crisis</h2>
+<p>My backtests start from 2017. The system evolves over generations, getting stronger, more profitable. Then we hit 2021 — and every single individual crashes. Total extinction.</p>
+<p>When I investigated why, what I found made me think deeply: the system had been <strong>eliminating</strong> features like sentiment analysis and the fear/greed index over generations. Why? Because under normal market conditions, these features were unnecessary overhead. Extra computation, extra complexity, but near-zero contribution to profit. Natural selection is ruthless — it eliminates everything that doesn't provide an advantage.</p>
+<p>But in 2021, those eliminated features were exactly what would have saved them. When the market was swept up in wild euphoria, an individual that could read the fear/greed index would have said "stop, this isn't sustainable." But those individuals had been eliminated generations ago.</p>
+<h2>The Intervention</h2>
+<p>My solution: I <strong>force-protected</strong> certain features. I didn't leave them to evolution. In the code, I declared: "Sentiment analysis and fear/greed features <strong>must</strong> exist in every individual. These are not optional traits — they're core firmware."</p>
+<p>I intervened as a designer. I protected things that seemed meaningless from the individuals' own perspective, that looked like dead weight in the short term but were critical in the big picture. Because I could see the big picture — the individuals couldn't.</p>
+<p>After this intervention, the system survived both normal markets and crisis periods.</p>
+<p>That's when something clicked in my head.</p>
+<h2>Evolution Is a Brilliant Mechanism — But Is It Enough on Its Own?</h2>
+<p>Natural selection is a magnificent optimization algorithm. Over millions of years, it has adapted organisms to their environments, produced incredibly complex structures — from eyes to brains, wings to immune systems.</p>
+<p>But it has a weakness I witnessed firsthand in my algorithm: <strong>it gets stuck in <a href="https://en.wikipedia.org/wiki/Local_optimum">local optima</a></strong>. In GA literature, this is known as <em><a href="https://en.wikipedia.org/wiki/Premature_convergence">premature convergence</a></em> — the population homogenizes too quickly, locks onto short-term winners, and stops exploring. It selects what works now but can't anticipate future crises. It ruthlessly eliminates things that seem costly in the short term but are critical in the long run.</p>
+<p>What if there are things in nature that "should have been eliminated but weren't"?</p>
+<h2>Music</h2>
+<p>This is where music enters the stage.</p>
+<p>Music is an evolutionary anomaly. Think about it: it doesn't help you survive, it doesn't feed you, it doesn't protect you from predators, it provides no direct reproductive advantage. It consumes brain power, burns energy, takes time. A feature that natural selection should have labeled "unnecessary cost" and eliminated.</p>
+<p>But it wasn't eliminated.</p>
+<p>In 300,000 years of human history, across every culture, every continent, every era — music exists. No civilization has ever existed without it. We find <a href="https://en.wikipedia.org/wiki/Divje_Babe_Flute">40,000-year-old bone flutes</a>. Even language isn't this universal — languages diverged, but the drive to produce rhythmic sound is the same everywhere.</p>
+<p>"But music has evolutionary benefits!" you might object. I thought so too, and looked into it:</p>
+<p><strong>Lullabies for babies?</strong> A baby is crying — a simple "shh" sound works just fine. Melody is unnecessary.</p>
+<p><strong>Rhythm around the campfire?</strong> Zero survival value. Pure energy waste.</p>
+<p><strong>Warning signals in danger?</strong> A single scream is sufficient. Rhythm is unnecessary.</p>
+<p><strong>Pre-hunt rituals?</strong> No proven pragmatic benefit.</p>
+<p>None of these explain why music <strong>wasn't eliminated</strong>. They only show that "a pre-existing feature was later found useful." It's a chicken-and-egg problem: did music evolve for these benefits, or was it already there and we just found uses for it?</p>
+<p>There's a famous counter-argument here: <strong><a href="https://en.wikipedia.org/wiki/Spandrel_%28biology%29">the spandrel hypothesis</a></strong>. Stephen Jay Gould argued that some traits aren't adaptations at all — they're architectural byproducts, like the triangular spaces (spandrels) that inevitably appear when you place a dome on arches. Music, the argument goes, is just a happy accident — a side effect of language, pattern recognition, and motor control combining in interesting ways.</p>
+<p>It's a fair point. But here's what bothers me: spandrels are typically <em>neutral</em>. They don't cost anything. Music <em>does</em>. It consumes enormous cognitive resources, takes years to master, and has persisted for at least 40,000 years across every known culture. Evolution is remarkably efficient at eliminating costly neutral traits. The fact that music survived isn't just surprising — it's suspicious.</p>
+<p>And music isn't alone. Consider <strong>consciousness</strong> — the subjective experience of being. A <a href="https://en.wikipedia.org/wiki/Philosophical_zombie">philosophical zombie</a> that behaves identically to us but has no inner experience would be just as fit for survival. Why did evolution produce something as metabolically expensive as self-awareness? Or consider <strong>the aesthetic sense</strong> — why do we find sunsets beautiful? Why does a mathematical proof feel "elegant"? These experiences have no obvious survival function, yet they're universal across cultures.</p>
+<h2>The Protected Feature</h2>
+<p>Let's return to Jarvis.</p>
+<p>Sentiment analysis and fear/greed features looked unnecessary under normal market conditions. The system kept eliminating them. I intervened as a designer and protected them — because I could see the big picture.</p>
+<p>Could music be humanity's "sentiment analysis"? In normal times — while hunting, building shelter, gathering food — it seems unnecessary. But perhaps a designer placed it there and didn't allow it to be eliminated. Perhaps in the big picture, it serves a function we can't yet fully see.</p>
+<p>Or perhaps its function is something too large to be defined by the word "function." Perhaps music is the signature that a system is "more than just a survival machine."</p>
+<h2>The Obvious Objection</h2>
+<p>I can hear the scientist in the room: "You're just describing gaps in our current understanding. Give science enough time and we'll find perfectly natural explanations for music, consciousness, and aesthetics."</p>
+<p>Maybe. And I genuinely mean that — maybe science will explain all of it. I'm not arguing against that possibility. History is full of "God of the gaps" arguments that collapsed once we understood the underlying mechanism.</p>
+<p>But here's what I find interesting: in my algorithm, the gap wasn't a gap in <em>knowledge</em>. I understood perfectly well <em>why</em> the system eliminated sentiment analysis. The mechanism was clear. The problem was that <strong>the mechanism itself was insufficient</strong>. Natural selection, working exactly as designed, produced a system that was locally optimal but globally fragile.</p>
+<p>The question isn't "what don't we understand about evolution?" The question is "what if we understand it perfectly well, and it still isn't enough?"</p>
+<h2>What I'm Claiming and What I'm Not</h2>
+<p>Let me be clear: I'm not saying "God exists, and I proved it." This is not proof — it's an <strong>observation</strong>. An analogy from a real experience in my own code that made me think about bigger questions.</p>
+<p>What I am claiming is this: evolution is a brilliant mechanism, but left to its own devices, it gets stuck in local optima and can't see the big picture. In my algorithm, this was plainly visible. And in nature too — with things like music, consciousness, and the aesthetic sense — there are features that seem too costly to be spandrels and too universal to be accidents.</p>
+<p>This doesn't prove the existence of a fine-tuner. But I think it opens a question worth sitting with — not rushing to answer, but genuinely sitting with:</p>
+<p>What if some things persist not because they're useful, but because they were meant to?</p>
+
+
+
+  <ul>
+    <li>
+        <a href="../../articles@tag/thoughts/">
+          All posts tagged thoughts
+        </a>
+      </li>
+    
+  </ul>
+
+
+
+
+      </div>
+    </main>
+  </div>
+  
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+</body>
+
+</html>

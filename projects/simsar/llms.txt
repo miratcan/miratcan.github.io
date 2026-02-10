@@ -1,0 +1,58 @@
+# Simsar MCP
+
+> Give your AI the eyes of a trader. MCP server providing cryptocurrency market data and technical indicators to AI assistants like Claude.
+
+Simsar is an MCP (Model Context Protocol) server that enables AI assistants to access real-time cryptocurrency market data without requiring users to write code.
+
+## Installation
+
+### Claude Desktop
+Add to `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "simsar": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/miratcan/simsar-mcp", "simsar-mcp"]
+    }
+  }
+}
+```
+
+### Claude Code
+```bash
+claude mcp add simsar -- uvx --from git+https://github.com/miratcan/simsar-mcp simsar-mcp
+```
+
+## Available Tools (48 total)
+
+### Price & Candles
+- get_price: Current cryptocurrency price
+- get_candles: OHLCV candlestick data
+
+### Technical Indicators
+- Moving Averages: get_sma, get_ema, get_wma, get_dema, get_tema, get_kama, get_t3, get_trima
+- Momentum: get_rsi, get_macd, get_stochastic, get_mom, get_roc, get_cci, get_willr, get_ultosc, get_trix, get_ppo, get_apo, get_cmo
+- Trend: get_adx, get_dx, get_plus_di, get_minus_di, get_adxr, get_aroon, get_aroonosc, get_sar
+- Volume: get_obv, get_mfi, get_ad, get_adosc
+- Volatility: get_atr, get_natr, get_trange, get_bollinger_bands
+- Other: get_stochrsi, get_bop
+
+### Sentiment
+- get_fear_greed: Crypto Fear & Greed Index
+- get_funding_rates: Binance Futures funding rates
+
+### Futures
+- get_open_interest: Open interest data
+- get_long_short_ratio: Long/short account ratio
+- get_top_trader_ratio: Top trader positions
+
+### News & Calendar
+- get_news: Market news (crypto, forex, general)
+- get_economic_calendar: FOMC, CPI, NFP dates
+- get_next_events: Upcoming economic events
+
+## Links
+
+- Website: https://simsar.trade
+- GitHub: https://github.com/miratcan/simsar-mcp

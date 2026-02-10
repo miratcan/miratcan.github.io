@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+  </style>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="tr">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>Mola — Mirat Can Bayrak</title>
+  <link rel='canonical' href="https://mirat.dev/articles/mola/">
+  
+  
+  <meta name="title" content="Mola — Mirat Can Bayrak" />
+  <meta name="description" content="Şehirlerarası otobüste burun kanaması, muavin Emre ve yol kenarında yabancılarla piknik." />
+  <meta property="og:type" content="article" />
+<meta property="og:url" content="https://mirat.dev/articles/mola/" />
+<meta property="og:title" content="Mola — Mirat Can Bayrak" />
+<meta property="og:description" content="Şehirlerarası otobüste burun kanaması, muavin Emre ve yol kenarında yabancılarla piknik." />
+<meta property="og:image" content="https://mirat.dev/mirat-orig.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/articles/mola/" />
+<meta name="twitter:title" content="Mola — Mirat Can Bayrak" />
+<meta name="twitter:description" content="Şehirlerarası otobüste burun kanaması, muavin Emre ve yol kenarında yabancılarla piknik." />
+<meta name="twitter:image" content="https://mirat.dev/mirat-orig.jpg" />
+  
+  
+  
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Mola",
+  "datePublished": "2009-06-12",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "https://mirat.dev/articles/mola/",
+  "inLanguage": "tr",
+  "description": "\u015eehirleraras\u0131 otob\u00fcste burun kanamas\u0131, muavin Emre ve yol kenar\u0131nda yabanc\u0131larla piknik."
+}
+</script>
+
+</head>
+
+
+
+
+
+
+
+<body class="page-articles-mola model-article">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/products/"><span>W</span>ishlist</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+
+<div class="photo-post">
+  <div class="photo-post-images">
+    
+      
+      <img src="photo-1.jpg" alt="Mola" loading="lazy">
+      
+    
+  </div>
+  
+  <div class="photo-post-body">
+    <p>Gözlerimi açtığımda kaç saattir uyuduğumu bilmiyordum,</p>
+<p>Klima gözlerimi kurutuyor, güneş ise bu tahribatı derinleştiriyordu. Pencerenin önünden ard arda geçen besili büyük baş hayvanlar pek hareketsizdi. Sıcağın ıhlamur ve dut kokusunu pencereye vurduğundan emindim. Bense üzerime soğuk hava üfleyen plastik ızgaradan gelen küf kokusunu duyabiliyordum sadece.</p>
+<p>Kırmızı ışıkta durduk sonra. Motorun tekerleklerle bağı kesilince otobüsün hoplamaya başlaması yanımda oturan ayran memeli kızı epeyce zorlamaya başladı. Kollarını önünde kavuşturarak kontrolden çıkmış bir havai fişek gösterisi gibi her yöne savrulan yerlerini kamufle etmeye çalışıyor bir yandan da adeta bir poker suratı ile o ecel terlerini döken kendisi değilmiş gibi camdan dışarı bakıyordu.</p>
+<p>Ara bir mahalledeydik -kasaba desem daha doğru olur- ana yoldan çıkalı yaklaşık 20 dakika olmuştu. Yeşil yandığında bu kadar yayanın içinden nasıl geçeceğimizi bilemiyordum çünkü semt pazarının ağzında duruyorduk. İnsan yürüyüşü hızında ilerlemeye başlamışken bir çocukla göz göze geldim. Annesinin elini sımsıkı tutmuş bana bakıyor ve korkudan ölüyordu. İlk başta bana bakıyor olabileceğini düşünmedim içeriği görmesi o ışıkta pek mümkün değildi fakat besbelli gözlerini bana dikmişti.</p>
+<p>Elimin üzerine düşen damla ile sebebini anladım. Sıcakta fazla durmaktan mütevellit burnum kanıyordu. Sadece çocuk korkmamış anlaşılan muavin bizim süt ürünleri ablanın yanında belirdi. O ana kadar kimse pek ilgilenmemişti ama muavinin o inanılmaz tedirginlik ve telaştaki ses tonuyla bana "bir şeyiniz mi var?" diye sormasıyla etrafımdaki herkes sağlık görevlisi kesildi. Önce kolonyalı mendiller geldi sonra su.. Dışarı çıkıp hava almak ister misin diye sordu muavin. "Siz" ile başlayan dialoğu "Sen"e dönüşmüştü. Anlaşılan acıma duygusuyla yakın hissetti bana kendini.</p>
+<p>Küçük bir coşkuyla kabul ettim teklifi, çünkü gerçekten bunalmıştım. Otobüs semt pazarının oldukça ilerisinde, kasabanın dışında durdu. Aşağıya indiğimizde bana hava almaktan bahseden adam burnumun dibinde yaktı sigarasını... Adam dediğime bakma 18-19 yaşındaydı.</p>
+<p>Üçüncü ya da dördüncü nefesten sonra açılış cümlesini yapıştırdı, "Nerelisin abi?" diye sordu. Böyle zamanlarda İstanbul demek hava atıyormuşum gibi bir his uyandırdığından baba memleketini söyledim. "Güzel yer oralar..." demekle yetindi. Yüz ifadesi ise hayatında ilk defa duyduğunu ele veriyordu. Mavi gömleğinin önü iki düğme kadar açık, terlemiş ve kemikli göğsü gözüküyordu. İşin nedir-gücün nedir? Diye devam etti.</p>
+<p>Okul bitince napacaksın? İlerde nerede yaşamayı düşünüyorsun? Evlenmeyi düşünüyor musun?... Bu basit gözüken sorular hep yormuştur beni. Çünkü en karmaşık şeylerin basit ve net cevaplarını ister insanlar. Okul bitince ne yapacağımı da bilmiyorum nerede yaşayacağımı da!</p>
+<p>Ben sorgudan kurtulmaya çalışırken otobüsten inen insanları fark ettim. Sanki şuna bak der gibi bir kafa işareti yaptım (muavin) Emre'ye. Diğer yolcular da içeride sıkılmış dışarı çıkmak istemişlerdi. Kapıdan ilk çıkan bıyıklı kel ve komik suratlı olan pet şişeyi kafasından aşağı boca etti, suratını eli ile sıyırdı ve ekoseli kumaş mendilini ensesine koydu. Hanımı ise dirseğinde çantası eli ağzında hayretle bakıyordu kocasına. Emre öksürme ve gülme arası dumanı dışarıya vererek güldü bu görüntüye. Bende gülümsedim fakat genzimden ağzıma gelen kan tadı gülmeme engel oldu.</p>
+<p>Hemen herkes indi araçtan. Yolun etrafı gölgelik bir ormandı. Şehir çocuğu olmanın verdiği cahillikten ötürü bu uzun ağaçların adını bilmiyordum ama rüzgarla birlikte çıkardıkları ses çok güzeldi. Hava yine sıcaktı, ağaçlığın ardındaki tepeden nemli fakat serin bir rüzgar iniyordu arada sırada. O anlarda göğüsler inip kalkıyordu ferahlıkla dolmak için. Yerler canlı uzun çimenlerle doluydu. İnsanların pek dur etmediği bu yerde toprak temizdi.</p>
+<p>Sanki herkes bu anı bekliyormuş gibi önce örtüler serildi yere. Önce ayrı ayrı oturdu insanlar. Sonra nereden çıktıysa bir plastik top peydah oldu. Tamam dedim bir pikniğim eksikti bu halimle. Elimle topak yaptığım bir kağıt mendili burnuma bastırıyor kafamı yukarı doğru kaldırmış insanlara bakıyordum. Kafam yukarı duruyor ve ben aşağı bakıyor olduğumdan tam anlamıyla ölü balık gibi bakışlar atıyordum ve bir İngiliz lordu gibi dimdik yürüyordum.</p>
+<p>Tahmin ettiğim gibi önce sigara içmeyen gençler sonra sigara içen gençler paslaşmaya başladı, ortada ise küçük çocuklar topun peşine koşmaya çalışıyor düşüp düşüp gülüyorlardı. Bu olurken Türk annesi iç güdülerine sahip teyzeler bu çocukların acıkacağını düşünerek yiyecek birşeyler arayışına girdiler. Bende dahil herkesin yüzünde aptal bir gülümseme ve mutluluk vardı. Sanki bir süreliğine kocaman bir aile olmak için sessiz bir anlaşma imzalamış gibiydik. Otobüste bulunan topkeklere birkaç kişinin yolluğunu ekleyip paylaştık.</p>
+<p>Bu kadar farklı katmandan insanı bir arada göremezsiniz sanırım. Kumaş pantolonu buruşturmadan yere çökmeye çalışan iş adamı tipli adam, "elektriğimi alsın" diye mırıldanarak usulca ucuz terliğimsi ayakkabısını ve kalın ten rengi çorabını çıkartan teyze, esmer çizgili zayıf yüzü ve takkesiyle tespih çekeçocukları seyreden amca, guruptan biraz daha öteye oturmayı tercih eden ergen ertesi sevgililer ve yaşıtım olduğunu tahmin ettiğim i-podu, güneş gözlüğü ve beyaz spor giyimi ile otobüsün en cool kızı oradaydı. Hep birlikte büyükçe bir örtünün önüne oturmuş neşeli günler filmindeki gibi burun buruna topkek yiyor, plastik pet bardaktan kola içiyorduk.</p>
+<p>Kadınlar ve çocuklar hemen kaynaştı ardından erkekler sohbete daldılar. Emre'nin evlenmek için para biriktirmeye çalıştığını öğrendim. Kendine güvenen ve yorulmaz bir tavrı vardı. Zamanla geçeceğini bildiğim için bu halinin pek saygı gösteremedim ama yinede sevdim onu... iyi çocuktu ya da ortam bana öyle hissetirmişti..</p>
+<p>Orada yaklaşık 45 dakika geçirdik. İstemeye istemeye otobüse geri döndük. Benim burnum geçmiş ama bu sefer boynum tutulmuştu yukarı bakmaktan... yine de yol eğlenceli geçmeye devam etti o molamızdan sonra. Arkada bir gurup şarkı söylemeye başladı teyzeler utanarak ve iki yana sallanarak eşlik ediyor, amcalar küresel ısınmadan bahsediyor, çocuklar ise sebepsiz gülüyor ağlıyor ya da bağırıyorlardı. Ta ki bizim muavin televizyona film koyana kadar. Önce şarkı söyleyenlerin sesi azaldı sonra on dakika içinde eski halimizi aldık. Sadece bir çocuğun ağlaması kaldı.</p>
+
+  </div>
+  
+</div>
+
+
+
+      </div>
+    </main>
+  </div>
+  
+
+
+</body>
+
+</html>
