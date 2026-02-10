@@ -567,6 +567,8 @@ There's a command called `make`, which is used to create an empty slice with giv
 a := make([]int, 5)
 ```
 
+> *Personal rant:* Why is `make` a thing? You dont need it for variables, you dont need it for arrays, but suddenly for slices you need a special builtin function? Something like `var s []int(0, 10000)` would be just as explicit and way more consistent with the rest of the language. I think `make` exists because Go's type system cant handle constructor parameters, so they had to bolt on a separate function. Not great design IMO.
+
 You can also define it's capacity (maximum size). In this example we have a slice with 5 zeros and it\'s maximum capacity is 10.
 
 ```golang
