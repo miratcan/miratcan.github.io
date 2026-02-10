@@ -2,6 +2,8 @@ title: I Became the Friend Who Kills Your Startup Ideas. Then I Automated Myself
 ---
 body:
 
+> **TL;DR:** I spent 15 years failing at side projects and writing post-mortems. I turned every lesson into [The Slaughterhouse](https://slaughterhouse.mirat.dev/)—a free AI tool that runs your startup idea through 15 brutal gates and tells you if it'll die before you waste months finding out.
+
 Since 2009, I've been building side projects and writing about why they failed. [A classified ads site](../bilsin-com-ilk-girisimim/) that got 40 listings in two years. [A Reddit clone](../linkfloyd-reddit-klonu-turkiye-icin/) that accidentally became one person's music blog. [A viral curiosity engine](../cubbin-viral-buyume-sifir-retention/) with zero retention. [A lottery for websites](../sitepiyango-viral-olup-15-gunde-olmek/) killed by a single blog post in 15 days. I've built over a dozen things. Most of them died. I wrote a [retrospective on each one](/articles@tag/retrospective/), trying to extract the lesson before it faded.
 
 Somewhere around 2016, I started [writing down rules](../o-projeyi-yapma/) for which projects to start and which to avoid. Then I became *that friend*. Someone in my circle would message me with an idea, and I'd spend 30 minutes asking uncomfortable questions until the idea either survived or didn't. This kept happening—different friend groups, different Slack channels, different coffee chats. I was watching people fall into the exact same holes I'd crawled out of years earlier.
@@ -10,14 +12,7 @@ So I built [The Slaughterhouse](https://slaughterhouse.mirat.dev/).
 
 ## What It Does
 
-You answer six questions about your idea. An AI with the bedside manner of Dr. House runs it through 15 gates—each one a specific failure pattern I've lived through or watched someone else live through:
-
-- **Is the pain real?** [bilsin.com](../bilsin-com-ilk-girisimim/) solved a problem nobody was actively looking to solve. I learned this one the hard way.
-- **Can you describe ONE specific user?** Not "millennials" or "small businesses"—a person with a name and a habit.
-- **Will they actually pay?** [cubb.in](../cubbin-viral-buyume-sifir-retention/) went viral with zero path to revenue. Turns out "viral" and "profitable" are different words.
-- **How do you reach them?** [linkfloyd](../linkfloyd-reddit-klonu-turkiye-icin/) had no distribution strategy beyond "post it and hope."
-- **Can you ship in a month?** If you need a year and a team of ten, you're not building a startup—you're building a corporation.
-- **What happens if the platform you depend on disappears?** I lost [ffanony](../ffanony-150-satir-kod-ile-viral-olmak/) when Facebook killed FriendFeed. Gone overnight.
+You answer six questions about your idea. An AI with the bedside manner of Dr. House runs it through 15 gates—each one a specific failure pattern I've lived through or watched someone else live through. Is the pain real? ([bilsin.com](../bilsin-com-ilk-girisimim/) taught me that one.) Can you actually reach your users? ([linkfloyd](../linkfloyd-reddit-klonu-turkiye-icin/) had no plan beyond "post it and hope.") Will they pay? ([cubb.in](../cubbin-viral-buyume-sifir-retention/) went viral with zero revenue path.) What if your platform disappears? ([ffanony](../ffanony-150-satir-kod-ile-viral-olmak/) died overnight when Facebook killed FriendFeed.)
 
 Each gate has three verdicts: **pass**, **bleeder** (wounded but alive), or **killer** (dead, game over). One killer and your idea is done. You get a Wordle-style grid you can share—or hide in shame.
 
