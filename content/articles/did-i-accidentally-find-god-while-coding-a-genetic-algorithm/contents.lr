@@ -4,15 +4,11 @@ body:
 
 *A software developer's thought experiment from code to cosmos*
 
-<hr>
-
 I'm building a bot that trades crypto markets automatically. Its name is Jarvis. It uses a genetic algorithm — meaning I simulate Darwin's natural selection in code. I generate hundreds of strategy "individuals," pit them against each other, the fittest survive and reproduce, the weak get eliminated. Over generations, the system optimizes itself.
 
 It works. Beautifully.
 
 Until it doesn't.
-
-<hr>
 
 ## The Crisis
 
@@ -21,8 +17,6 @@ My backtests start from 2017. The system evolves over generations, getting stron
 When I investigated why, what I found made me think deeply: the system had been **eliminating** features like sentiment analysis and the fear/greed index over generations. Why? Because under normal market conditions, these features were unnecessary overhead. Extra computation, extra complexity, but near-zero contribution to profit. Natural selection is ruthless — it eliminates everything that doesn't provide an advantage.
 
 But in 2021, those eliminated features were exactly what would have saved them. When the market was swept up in wild euphoria, an individual that could read the fear/greed index would have said "stop, this isn't sustainable." But those individuals had been eliminated generations ago.
-
-<hr>
 
 ## The Intervention
 
@@ -34,8 +28,6 @@ After this intervention, the system survived both normal markets and crisis peri
 
 That's when something clicked in my head.
 
-<hr>
-
 ## Evolution Is a Brilliant Mechanism — But Is It Enough on Its Own?
 
 Natural selection is a magnificent optimization algorithm. Over millions of years, it has adapted organisms to their environments, produced incredibly complex structures — from eyes to brains, wings to immune systems.
@@ -43,8 +35,6 @@ Natural selection is a magnificent optimization algorithm. Over millions of year
 But it has a weakness I witnessed firsthand in my algorithm: **it gets stuck in local optima**. It selects what works now but can't anticipate future crises. It ruthlessly eliminates things that seem costly in the short term but are critical in the long run.
 
 What if there are things in nature that "should have been eliminated but weren't"?
-
-<hr>
 
 ## Music
 
@@ -68,8 +58,6 @@ In 300,000 years of human history, across every culture, every continent, every 
 
 None of these explain why music **wasn't eliminated**. They only show that "a pre-existing feature was later found useful." It's a chicken-and-egg problem: did music evolve for these benefits, or was it already there and we just found uses for it?
 
-<hr>
-
 ## The Protected Feature
 
 Let's return to Jarvis.
@@ -79,8 +67,6 @@ Sentiment analysis and fear/greed features looked unnecessary under normal marke
 Could music be humanity's "sentiment analysis"? In normal times — while hunting, building shelter, gathering food — it seems unnecessary. But perhaps a designer placed it there and didn't allow it to be eliminated. Perhaps in the big picture, it serves a function we can't yet fully see.
 
 Or perhaps its function is something too large to be defined by the word "function." Perhaps music is the signature that a system is "more than just a survival machine."
-
-<hr>
 
 ## What I'm Claiming and What I'm Not
 
