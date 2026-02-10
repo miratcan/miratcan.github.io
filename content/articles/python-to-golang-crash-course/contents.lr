@@ -397,7 +397,22 @@ func main() {
 }
 ```
 
-They are initialized with {} and their values are accessed by dot. 
+They are initialized with `{}` and their values are accessed by dot. If you're familiar with Python's `dataclass`, structs are pretty much the same thing:
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class Vector:
+    x: int
+    y: int
+
+v = Vector(1, 2)
+v.x = 4
+print(v.x)
+```
+
+Actually `dataclass` is a better comparison than regular classes because structs also give you equality comparison and string representation for free, just like `dataclass` does with `__eq__` and `__repr__`.
 
 ### Pointers to Structs
 
