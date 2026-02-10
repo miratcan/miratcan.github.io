@@ -4,7 +4,7 @@ body:
 
 *A software developer's thought experiment from code to cosmos*
 
-I'm building a bot that trades crypto markets automatically. Its name is Jarvis. It uses a genetic algorithm — meaning I simulate Darwin's natural selection in code. I generate hundreds of strategy "individuals," pit them against each other, the fittest survive and reproduce, the weak get eliminated. Over generations, the system optimizes itself.
+I'm building a bot that trades crypto markets automatically. Its name is Jarvis. It uses a [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm) — meaning I simulate Darwin's natural selection in code. I generate hundreds of strategy "individuals," pit them against each other, the fittest survive and reproduce, the weak get eliminated. Over generations, the system optimizes itself.
 
 It works. Beautifully.
 
@@ -32,7 +32,7 @@ That's when something clicked in my head.
 
 Natural selection is a magnificent optimization algorithm. Over millions of years, it has adapted organisms to their environments, produced incredibly complex structures — from eyes to brains, wings to immune systems.
 
-But it has a weakness I witnessed firsthand in my algorithm: **it gets stuck in local optima**. In GA literature, this is known as *premature convergence* — the population homogenizes too quickly, locks onto short-term winners, and stops exploring. It selects what works now but can't anticipate future crises. It ruthlessly eliminates things that seem costly in the short term but are critical in the long run.
+But it has a weakness I witnessed firsthand in my algorithm: **it gets stuck in [local optima](https://en.wikipedia.org/wiki/Local_optimum)**. In GA literature, this is known as *[premature convergence](https://en.wikipedia.org/wiki/Premature_convergence)* — the population homogenizes too quickly, locks onto short-term winners, and stops exploring. It selects what works now but can't anticipate future crises. It ruthlessly eliminates things that seem costly in the short term but are critical in the long run.
 
 What if there are things in nature that "should have been eliminated but weren't"?
 
@@ -44,7 +44,7 @@ Music is an evolutionary anomaly. Think about it: it doesn't help you survive, i
 
 But it wasn't eliminated.
 
-In 300,000 years of human history, across every culture, every continent, every era — music exists. No civilization has ever existed without it. We find 40,000-year-old bone flutes. Even language isn't this universal — languages diverged, but the drive to produce rhythmic sound is the same everywhere.
+In 300,000 years of human history, across every culture, every continent, every era — music exists. No civilization has ever existed without it. We find [40,000-year-old bone flutes](https://en.wikipedia.org/wiki/Divje_Babe_Flute). Even language isn't this universal — languages diverged, but the drive to produce rhythmic sound is the same everywhere.
 
 "But music has evolutionary benefits!" you might object. I thought so too, and looked into it:
 
@@ -62,7 +62,7 @@ There's a famous counter-argument here: **[the spandrel hypothesis](https://en.w
 
 It's a fair point. But here's what bothers me: spandrels are typically *neutral*. They don't cost anything. Music *does*. It consumes enormous cognitive resources, takes years to master, and has persisted for at least 40,000 years across every known culture. Evolution is remarkably efficient at eliminating costly neutral traits. The fact that music survived isn't just surprising — it's suspicious.
 
-And music isn't alone. Consider **consciousness** — the subjective experience of being. A philosophical zombie that behaves identically to us but has no inner experience would be just as fit for survival. Why did evolution produce something as metabolically expensive as self-awareness? Or consider **the aesthetic sense** — why do we find sunsets beautiful? Why does a mathematical proof feel "elegant"? These experiences have no obvious survival function, yet they're universal across cultures.
+And music isn't alone. Consider **consciousness** — the subjective experience of being. A [philosophical zombie](https://en.wikipedia.org/wiki/Philosophical_zombie) that behaves identically to us but has no inner experience would be just as fit for survival. Why did evolution produce something as metabolically expensive as self-awareness? Or consider **the aesthetic sense** — why do we find sunsets beautiful? Why does a mathematical proof feel "elegant"? These experiences have no obvious survival function, yet they're universal across cultures.
 
 ## The Protected Feature
 
