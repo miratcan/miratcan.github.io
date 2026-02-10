@@ -47,6 +47,10 @@ for frame in range(frames):
     print(f"{frame}th frame rendered")
 ```
 
+<iframe src="https://player.vimeo.com/video/3781912?title=0&byline=0&portrait=0" class="youtube-video" frameborder="0" allowfullscreen></iframe>
+
+<iframe src="https://player.vimeo.com/video/2870963?title=0&byline=0&portrait=0" class="youtube-video" frameborder="0" allowfullscreen></iframe>
+
 *[Orijinal yazi](https://pythontr.blogspot.com/2009/01/erime-efekti.html) PythonTR blogunda yayinlanmistir.*
 
 ---
