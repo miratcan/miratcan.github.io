@@ -2,6 +2,7 @@
 {% from "macros/pagination.html" import render_pagination %}
 {% block title %}{{ this.title }}{% endblock %}
 {% block body %}
+<h1>Articles</h1>
 <div class="articles-layout">
   <main class="articles-main">
     {% with posts=this.pagination.items %}{% include "_articles.html" %}{% endwith %}

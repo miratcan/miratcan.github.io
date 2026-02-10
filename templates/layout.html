@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="{% block lang %}en{% endblock %}">
+<head>
+  <meta charset="utf-8">
   <style>
     :root {
       --bg: #0a0c09;
@@ -708,7 +709,7 @@
   {% endif %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="content-language" content="{% block content_lang %}en{% endblock %}">
 
   {% set default_title = 'Home Page' %}
   {% set default_desc = 'Saçma proje üreticisi, kız babası, yazılım geliştiricisi' %}
@@ -717,7 +718,7 @@
   <title>{% block title %}Home{% endblock %} — Mirat Can Bayrak</title>
   <link rel='canonical' href="{{ config.PROJECT.url }}{% if this._path != '/' %}{{ this._path }}{% endif %}/">
   {% set meta_image = config.PROJECT.url ~ ('/' ~ this.meta_img if this.meta_img and not this.meta_img.startswith('/') else this.meta_img if this.meta_img else '/mirat-orig.jpg') %}
-  {% with meta_type='website', meta_url=[config.PROJECT.url, this._path]|join, meta_title=[self.title(), ' - Mirat Can Bayrak']|join, meta_desc=this.meta_desc, meta_img=meta_image %}
+  {% with meta_type='article' if this._model == 'article' else 'website', meta_url=config.PROJECT.url ~ (this._path if this._path == '/' else this._path ~ '/'), meta_title=[self.title(), ' — Mirat Can Bayrak']|join, meta_desc=this.meta_desc, meta_img=meta_image %}
   <meta name="title" content="{{ meta_title }}" />
   <meta name="description" content="{{ meta_desc }}" />
   {% include "meta/_og.html" %}

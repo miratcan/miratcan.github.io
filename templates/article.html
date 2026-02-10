@@ -3,6 +3,8 @@
 
 {% block title %}{{ this.title }}{% endblock %}
 {% block og_type %}article{% endblock %}
+{% block lang %}{{ this.language or 'en' }}{% endblock %}
+{% block content_lang %}{{ this.language or 'en' }}{% endblock %}
 {% block description %}{{ this.description|truncate(155) or this.body|striptags|truncate(155) }}{% endblock %}
 {% block extra_head %}
   {% if this.has_code %}
