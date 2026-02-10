@@ -1,42 +1,50 @@
-title: ffanony: How 150 Lines of Code Went More Viral Than My 2-Year Project
+title: ffanony: How 274 Lines of Code Went More Viral Than My 2-Year Project
 ---
 body:
 
-> I spent two years building [linkfloyd.com](../linkfloyd-reddit-klonu-turkiye-icin/), a Reddit clone for Turkey. It topped out at 40-50 daily users. Then I wrote a 150-line Python script called ffanony—an anonymous confession box for the Turkish FriendFeed community—and it exploded in 10 days. More engagement, more users, more cultural impact than everything I'd built before combined. The script outlived its platform and got remembered years later by people I'd never met. This is what that taught me.
+> I spent two years building [linkfloyd.com](../linkfloyd-reddit-klonu-turkiye-icin/), a Reddit clone for Turkey. It topped out at 40-50 daily users. Then I wrote a [274-line Python script](https://github.com/miratcan/FFAnony/blob/master/app%2Fmain.py) called ffanony—an anonymous confession box for the Turkish FriendFeed community—and it exploded in 10 days. More engagement, more users, more cultural impact than everything I'd built before combined. The script outlived its platform and got remembered years later by people I'd never met. This is what that taught me.
 
-## Product-Zeitgeist Fit Is a Real Thing
+![FriendFeed's Turkish community — the platform where ffanony was born](friendfeed.jpg)
 
 ffanony didn't solve a problem. It captured a *mood*. The Turkish FriendFeed community was passionate, dramatic, and loved gossip. ffanony was a mirror held up to that community's subconscious—a place to anonymously declare love, hurl insults, and drop scandalous confessions. Every post created its own viral loop of speculation: "Who wrote this? Who is this about?"
 
-Product-Market Fit is about solving a problem. Product-Zeitgeist Fit is about capturing the cultural energy of a specific community at a specific moment. The latter is rarer, more explosive, and almost impossible to plan for. But when you hit it, 150 lines of code can outperform years of engineering.
+The core mechanic was dead simple: anonymous posts. But the *engine* was curiosity. Every confession created an irresistible question—"Who posted this?"—that compelled people to engage, speculate, and share.
+
+Something fascinating happened early on. A user named Ali admitted to faking the initial risqué photos as a troll. But his fake content didn't kill the platform—it *launched* it. By demonstrating what was possible, he created social proof and a competitive dynamic that triggered a wave of real users posting similar content.
+
+![ffanony's entire interface — one text field and a submit button](ffanony-ui.png)
+
+The entire product was one input field and a submit button. No profiles, no likes, no comments (on the tool itself—the discussion happened on FriendFeed). Meanwhile, my "serious" projects had complex channel systems, moderation tools, and notification frameworks. All that complexity didn't create engagement. A single input field did.
+
+Here's the dark side: ffanony existed entirely as a parasite on FriendFeed. When Facebook acquired and [shut down FriendFeed](https://news.ycombinator.com/item?id=9175828), ffanony died instantly. No migration path, no independent user base, no Plan B. The same platform dependency that gave me instant distribution was also a death sentence with a delay timer.
+
+Years later, people still remembered ffanony. They'd mention it in professional settings, at conferences, in casual conversation. Nobody remembered my "serious" projects. A 274-line script that perfectly captured the zeitgeist created more lasting impact than any amount of sophisticated engineering.
+
+---
+
+*What follows are the lessons I extracted from this experience. The cool story ends here—feel free to skip if that's all you came for.*
+
+## Product-Zeitgeist Fit Is a Real Thing
+
+Product-Market Fit is about solving a problem. Product-Zeitgeist Fit is about capturing the cultural energy of a specific community at a specific moment. The latter is rarer, more explosive, and almost impossible to plan for. But when you hit it, 274 lines of code can outperform years of engineering.
 
 ## The Curiosity Gap Is Everything
 
-The core mechanic was dead simple: anonymous posts. But the *engine* was curiosity. Every confession created an irresistible question—"Who posted this?"—that compelled people to engage, speculate, and share. The strongest products don't just provide answers; they create compelling questions.
+The strongest products don't just provide answers; they create compelling questions. This is the same principle that makes reality TV addictive and gossip columns immortal. Engineer a curiosity gap into your product, and you won't need a marketing budget.
 
-This is the same principle that makes reality TV addictive and gossip columns immortal. Engineer a curiosity gap into your product, and you won't need a marketing budget.
-
-## The Accidental Seeding Strategy
-
-Something fascinating happened early on. A user named Ali admitted to faking the initial risqué photos as a troll. But his fake content didn't kill the platform—it *launched* it. By demonstrating what was possible, he created social proof and a competitive dynamic that triggered a wave of real users posting similar content.
+## Seed Your Community
 
 An empty community is a dead community. Sometimes the first spark needs to be manufactured. Ali did it accidentally, but the lesson is intentional: seed your community to show users what's possible, even if the initial content isn't authentic.
 
 ## Simplicity Is a Feature, Not a Limitation
 
-ffanony had one input field and a submit button. That was the entire product. No profiles, no likes, no comments (on the tool itself—the discussion happened on FriendFeed). This wasn't a limitation—it was the design. The simplicity made it robust, easy to maintain, and impossible to misunderstand.
+The simplicity made ffanony robust, easy to maintain, and impossible to misunderstand. Don't confuse complexity with value.
 
-Meanwhile, my "serious" projects had complex channel systems, moderation tools, and notification frameworks. All that complexity didn't create engagement. A single input field did.
-
-## The Platform Risk Was Total
-
-Here's the dark side: ffanony existed entirely as a parasite on FriendFeed. When Facebook acquired and shut down FriendFeed, ffanony died instantly. No migration path, no independent user base, no Plan B. The same platform dependency that gave me instant distribution was also a death sentence with a delay timer.
+## Platform Risk Is Real
 
 Building on someone else's platform is a deal with the devil. You get a rocket-powered launch, but you're flying on someone else's rocket. When they change direction—or explode—you go down with them. I never owned the relationship with my users, and when the platform disappeared, so did everything I'd built.
 
-## The Real Lesson: Impact Per Line of Code
-
-Years later, people still remembered ffanony. They'd mention it in professional settings, at conferences, in casual conversation. Nobody remembered my "serious" projects. A 150-line script that perfectly captured the zeitgeist created more lasting impact than any amount of sophisticated engineering.
+## Impact Per Line of Code
 
 The goal isn't to build more. It's to find the point of maximum leverage—where the smallest effort creates the largest impact. Sometimes that's a two-year platform. Usually, it's something much simpler that you're too busy over-engineering to notice. The curiosity mechanic I stumbled upon here would become the foundation of [cubb.in](../cubbin-viral-buyume-sifir-retention/) and eventually [unpix.in](../unpixin-bitcoin-ile-2500-dolar/)—each one iterating on what ffanony taught me about human curiosity.
 
@@ -44,7 +52,7 @@ If you've read this far, you're clearly interested in how ideas can fail. Don't 
 ---
 pub_date: 2010-06-01
 ---
-meta_desc: How a 150-line anonymous confession script outperformed years of engineering by capturing perfect Product-Zeitgeist Fit on FriendFeed.
+meta_desc: How a 274-line anonymous confession script outperformed years of engineering by capturing perfect Product-Zeitgeist Fit on FriendFeed.
 ---
 has_code: no
 ---
