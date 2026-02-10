@@ -1,5 +1,9 @@
 {% macro render_article(post, from_index=false) %}
 <h1>{{ post.title }}</h1>
+{% if post.pub_date %}
+<div class="article-meta">
+  {{ post.pub_date.strftime('%B %Y') }} · written at age {{ post.pub_date.year - 1984 }}
+</div>
+{% endif %}
 {{ post.body }}
-{% if post.pub_date %}{{ post.pub_date.strftime('%m/%Y') }}{% endif %}
 {% endmacro %}
