@@ -725,6 +725,16 @@
   {% include "meta/_tw.html" %}
   {% endwith %}
   {% block extra_head %}{% endblock %}
+  {% block jsonld %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Mirat Can Bayrak",
+    "url": "{{ config.PROJECT.url }}"
+  }
+  </script>
+  {% endblock %}
 </head>
 
 {% if this._path is defined %}

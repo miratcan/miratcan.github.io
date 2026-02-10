@@ -27,4 +27,6 @@ pub_date: 2024-12-02
 ---
 tags: javascript-notes
 ---
+meta_desc: Two ways to merge objects in JavaScript: the spread operator (...) and Object.assign(). Quick code examples for both methods.
+---
 language: en

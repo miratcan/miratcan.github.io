@@ -28,4 +28,6 @@ end
 ---
 has_code: yes
 ---
+meta_desc: Two methods to remove nil values from Lua tables: table.filter and manual iteration with pairs. Quick code snippets included.
+---
 language: en

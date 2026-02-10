@@ -145,4 +145,6 @@ Bu arada yeri gelmisken hemen belirtmek gerekir ki _new_ ifadesi ise aslinda yen
 ---
 tags: technical
 ---
+meta_desc: JavaScript'te nesne yonelimli programlama notlarim: variable scope, closures, prototypal inheritance ve constructor fonksiyonlar.
+---
 language: tr

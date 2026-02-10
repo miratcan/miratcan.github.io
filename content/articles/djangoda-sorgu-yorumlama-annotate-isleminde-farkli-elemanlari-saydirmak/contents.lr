@@ -70,4 +70,6 @@ has_code: yes
 ---
 tags: django-notes
 ---
+meta_desc: How to count unique elements per group in Django using annotate() with Count and distinct=True. A practical ORM query example.
+---
 language: en

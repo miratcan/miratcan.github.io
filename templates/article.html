@@ -11,6 +11,33 @@
     <link rel="stylesheet" href="{{ "static/pygments.css"|asseturl }}">
   {% endif %}
 {% endblock %}
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ this.title|tojson }},
+  "datePublished": "{{ this.pub_date }}",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "{{ config.PROJECT.url }}"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "{{ config.PROJECT.url }}{{ this._path }}/",
+  "inLanguage": "{{ this.language or 'en' }}"
+  {%- if this.meta_desc %},
+  "description": {{ this.meta_desc|tojson }}
+  {%- endif %}
+  {%- if this.attachments.get('hero.png') or this.attachments.get('hero.jpg') %},
+  "image": "{{ config.PROJECT.url }}{{ (this.attachments.get('hero.png') or this.attachments.get('hero.jpg')).url_path }}"
+  {%- endif %}
+}
+</script>
+{% endblock %}
 {% block meta_img %}{% if this.attachments.get('hero.png') %}{{ this.attachments.get('hero.png').path}}{% endif %}{% if this.attachments.get('hero.jpg') %}{{ this.attachments.get('hero.jpg').path}}{% endif %}{% endblock %}
 
 {% block body %}

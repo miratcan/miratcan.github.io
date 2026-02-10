@@ -18,4 +18,6 @@ pub_date: 2013-12-25
 ---
 tags: technical
 ---
+meta_desc: Rubber duck debugging explained — why explaining your code to a rubber duck helps you find bugs. A technique from The Pragmatic Programmer.
+---
 language: en
