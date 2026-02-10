@@ -1,0 +1,73 @@
+title: Defensive Programming in Python
+---
+body:
+
+When developing software, especially in large projects, it becomes really hard to trust the consistency of values and objects coming into your functions as parameters. Even if you try to keep your test coverage wide, you'll inevitably fall victim to some inconsistency somewhere. In languages like Java, these kinds of issues seem to be less of a problem. But when developing with Python, the comfort Python gives you starts to become a disadvantage after a while. Let me tell you about something that happened to me the other day.
+
+I had a function like this -- if the post object inside the incoming notification object still exists in the database, `push_service` will be called:
+
+```python
+def process_notification(notification):
+    ...
+    ...
+    ...
+    push_service.push(notification)
+```
+
+So I added a check like this:
+
+```python
+def process_notification(notification):
+    ...
+    ...
+    ...
+    if not post_operations.get_post_by_id(notification.post_id):
+        return False
+    push_service.push(notification)
+```
+
+This code blew up after going live, because some notifications had `post_id` set to `None`. This is exactly where defensive programming comes in. You could call it Murphy's Law applied to software. Writing code while assuming that everything that can go wrong will go wrong. I should have written this example defensively, like this:
+
+```python
+def process_notification(notification):
+    ...
+    ...
+    ...
+    if hasattr('post_id', notification) and \
+       notification.post_id is not None and \
+       not post_operations.get_post_by_id(notification.post_id):
+        return False
+    push_service.push(notification)
+```
+
+If you ask me, "paranoid programming" would be a more accurate name for this. The `post_id` attribute always exists on the notification object, but what if someone decides to delete that attribute from the object for whatever reason? What if it comes but it's `None`? You think about these things and add the necessary checks.
+
+But what if someone sends a completely different object instead of a notification? We should check for that too. It happened to me -- in another bug, the incoming notification object didn't even have the notification attributes.
+
+```python
+from notifications.models import Notification
+
+def process_notification(notification):
+    assert type(notification) is Notification, \
+           'This method must be called with Notification object.'
+    ...
+    ...
+    ...
+    if hasattr('post_id', notification) and \
+       notification.post_id is not None and \
+       not post_operations.get_post_by_id(notification.post_id):
+        return False
+    push_service.push(notification)
+```
+
+You can keep hardening your code like this. Of course, the time spent, the increased complexity from all the checks -- these things can make you regret going defensive. How defensive should you be? That's still a bit of a question mark for me. I think you need to go with your gut on this one.
+---
+pub_date: 2017-07-26
+---
+has_code: yes
+---
+tags: technical
+---
+meta_desc: A real-world example of defensive programming in Python -- when post_id came as None in production and everything blew up.
+---
+language: en
