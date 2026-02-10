@@ -1,4 +1,4 @@
-title: Learning Go: A Quick Start Guide
+title: Python to Go Crash Course: Learn Golang as a Python Developer
 ---
 body:
 
@@ -680,8 +680,570 @@ for i, _ in enumerate(lst):
   print(value)
 ```
 
+## Maps
+
+Maps are Go's equavelent of Python dictionaries. They map keys to values. You create them with `make` or with a map literal:
+
+```golang
+package main
+
+import "fmt"
+
+func main() {
+	m := make(map[string]int)
+	m["alice"] = 25
+	m["bob"] = 30
+	fmt.Println(m)
+	fmt.Println(m["alice"])
+
+	// Delete a key
+	delete(m, "bob")
+	fmt.Println(m)
+
+	// Check if key exists
+	val, ok := m["bob"]
+	fmt.Println(val, ok) // 0 false
+}
+```
+
+This is equavelent to this code block in Python:
+
+```python
+m = {}
+m["alice"] = 25
+m["bob"] = 30
+print(m)
+print(m["alice"])
+
+del m["bob"]
+print(m)
+
+val = m.get("bob")
+print(val, val is not None)  # None False
+```
+
+Map literals look like struct literals but keys are required:
+
+```golang
+m := map[string]int{
+	"alice": 25,
+	"bob":   30,
+}
+```
+
+Which is the same as Python's:
+
+```python
+m = {"alice": 25, "bob": 30}
+```
+
+## Closures
+
+Go functions can be closures. A closure is a function that references variables from outside its body. This is basicly same as Python closures:
+
+```golang
+package main
+
+import "fmt"
+
+func counter() func() int {
+	count := 0
+	return func() int {
+		count++
+		return count
+	}
+}
+
+func main() {
+	c := counter()
+	fmt.Println(c()) // 1
+	fmt.Println(c()) // 2
+	fmt.Println(c()) // 3
+}
+```
+
+Python equavelent:
+
+```python
+def counter():
+    count = 0
+    def increment():
+        nonlocal count
+        count += 1
+        return count
+    return increment
+
+c = counter()
+print(c())  # 1
+print(c())  # 2
+print(c())  # 3
+```
+
+Notice that Python needs the `nonlocal` keyword to modify the outer variable, Go doesnt need anything special.
+
+## Methods
+
+Go doesnt have classes. Instead you define methods on types using a receiver argument. Think of it as attaching a function to a struct:
+
+```golang
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+type Circle struct {
+	Radius float64
+}
+
+func (c Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
+}
+
+func (c Circle) Perimeter() float64 {
+	return 2 * math.Pi * c.Radius
+}
+
+func main() {
+	c := Circle{Radius: 5}
+	fmt.Println(c.Area())
+	fmt.Println(c.Perimeter())
+}
+```
+
+Python equavelent:
+
+```python
+import math
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return math.pi * self.radius ** 2
+
+    def perimeter(self):
+        return 2 * math.pi * self.radius
+
+c = Circle(5)
+print(c.area())
+print(c.perimeter())
+```
+
+If you want a method to modify the struct, use a pointer receiver:
+
+```golang
+func (c *Circle) Scale(factor float64) {
+	c.Radius *= factor
+}
+```
+
+Without the pointer (`*Circle`), the method would work on a copy and changes wont persist. This is similar to how Python's `self` always acts as a reference.
+
+## Interfaces
+
+Interfaces in Go are implemented implicitly. If a type has all the methods that an interface requires, it automaticly implements that interface. No `implements` keyword needed:
+
+```golang
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+type Shape interface {
+	Area() float64
+}
+
+type Circle struct {
+	Radius float64
+}
+
+type Rectangle struct {
+	Width, Height float64
+}
+
+func (c Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
+}
+
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
+}
+
+func printArea(s Shape) {
+	fmt.Printf("Area: %.2f\n", s.Area())
+}
+
+func main() {
+	printArea(Circle{Radius: 5})
+	printArea(Rectangle{Width: 3, Height: 4})
+}
+```
+
+Python equavelent using abstract base classes:
+
+```python
+from abc import ABC, abstractmethod
+import math
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return math.pi * self.radius ** 2
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+def print_area(s):
+    print(f"Area: {s.area():.2f}")
+
+print_area(Circle(5))
+print_area(Rectangle(3, 4))
+```
+
+The big difference: in Python you explicitly inherit from `Shape`. In Go, `Circle` and `Rectangle` implement `Shape` automaticly just by having an `Area()` method. This is called "structural typing" or basicly "duck typing at compile time." Pretty cool IMO.
+
+## Error Handling
+
+Go doesnt have try/except. Instead functions return errors as a second return value. This is probably the biggest culture shock for Python developers:
+
+```golang
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	file, err := os.Open("nonexistent.txt")
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	defer file.Close()
+	fmt.Println("File opened:", file.Name())
+}
+```
+
+Python equavelent:
+
+```python
+try:
+    file = open("nonexistent.txt")
+    print("File opened:", file.name)
+    file.close()
+except FileNotFoundError as err:
+    print("Error:", err)
+```
+
+In Go, the pattern is always the same: call a function, check `if err != nil`, handle it. You'll write this pattern hundreds of times. Its verbose but explicit. You can also create custom errors:
+
+```golang
+import "errors"
+
+func divide(a, b float64) (float64, error) {
+	if b == 0 {
+		return 0, errors.New("division by zero")
+	}
+	return a / b, nil
+}
+
+result, err := divide(10, 0)
+if err != nil {
+	fmt.Println(err) // division by zero
+}
+```
+
+Python equavelent:
+
+```python
+def divide(a, b):
+    if b == 0:
+        raise ValueError("division by zero")
+    return a / b
+
+try:
+    result = divide(10, 0)
+except ValueError as err:
+    print(err)
+```
+
+## Goroutines and Channels
+
+This is where Go really shines compared to Python. Goroutines are lightweight threads managed by the Go runtime. You start one by just putting `go` before a function call:
+
+```golang
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func sayHello(name string) {
+	for i := 0; i < 3; i++ {
+		fmt.Println("Hello from", name)
+		time.Sleep(100 * time.Millisecond)
+	}
+}
+
+func main() {
+	go sayHello("goroutine")
+	sayHello("main")
+}
+```
+
+Python equavelent using threading:
+
+```python
+import threading
+import time
+
+def say_hello(name):
+    for _ in range(3):
+        print(f"Hello from {name}")
+        time.sleep(0.1)
+
+t = threading.Thread(target=say_hello, args=("thread",))
+t.start()
+say_hello("main")
+```
+
+The difference: goroutines are much cheaper than Python threads. You can spawn thousands of goroutines without any issues, and they actually run in paralel (no GIL!).
+
+### Channels
+
+Channels are how goroutines communicate. They are typed pipes you can send and receive values through:
+
+```golang
+package main
+
+import "fmt"
+
+func sum(numbers []int, ch chan int) {
+	total := 0
+	for _, n := range numbers {
+		total += n
+	}
+	ch <- total // Send total to channel
+}
+
+func main() {
+	numbers := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+	ch := make(chan int)
+	go sum(numbers[:5], ch)
+	go sum(numbers[5:], ch)
+
+	a, b := <-ch, <-ch // Receive from channel
+	fmt.Println(a, b, a+b)
+}
+```
+
+Python equavelent using `queue.Queue`:
+
+```python
+import threading
+import queue
+
+def sum_numbers(numbers, q):
+    q.put(sum(numbers))
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+q = queue.Queue()
+
+t1 = threading.Thread(target=sum_numbers, args=(numbers[:5], q))
+t2 = threading.Thread(target=sum_numbers, args=(numbers[5:], q))
+t1.start()
+t2.start()
+
+a = q.get()
+b = q.get()
+print(a, b, a + b)
+```
+
+## Select
+
+Select lets a goroutine wait on multiple channel operations. It's like a switch statement but for channels:
+
+```golang
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	ch1 := make(chan string)
+	ch2 := make(chan string)
+
+	go func() {
+		time.Sleep(100 * time.Millisecond)
+		ch1 <- "one"
+	}()
+
+	go func() {
+		time.Sleep(200 * time.Millisecond)
+		ch2 <- "two"
+	}()
+
+	for i := 0; i < 2; i++ {
+		select {
+		case msg := <-ch1:
+			fmt.Println("Received from ch1:", msg)
+		case msg := <-ch2:
+			fmt.Println("Received from ch2:", msg)
+		}
+	}
+}
+```
+
+Python doesnt have a direct equavelent for this. The closest thing would be using `asyncio.wait` with `FIRST_COMPLETED`:
+
+```python
+import asyncio
+
+async def task1():
+    await asyncio.sleep(0.1)
+    return "one"
+
+async def task2():
+    await asyncio.sleep(0.2)
+    return "two"
+
+async def main():
+    tasks = [asyncio.create_task(task1()), asyncio.create_task(task2())]
+    for coro in asyncio.as_completed(tasks):
+        result = await coro
+        print(f"Received: {result}")
+
+asyncio.run(main())
+```
+
+## Packages and Modules
+
+Go uses modules for dependency management. Every Go project starts with `go mod init`:
+
+```bash
+$ mkdir myproject && cd myproject
+$ go mod init github.com/username/myproject
+```
+
+This creates a `go.mod` file (similar to Python's `requirements.txt` or `pyproject.toml`). When you import external packages, `go mod tidy` downloads them:
+
+```bash
+$ go mod tidy
+```
+
+Your project structure looks like this:
+
+```
+myproject/
+├── go.mod
+├── go.sum        # lock file (like pip freeze)
+├── main.go
+└── utils/
+    └── helpers.go
+```
+
+Importing your own packages:
+
+```golang
+// main.go
+package main
+
+import (
+	"fmt"
+	"github.com/username/myproject/utils"
+)
+
+func main() {
+	fmt.Println(utils.Add(1, 2))
+}
+```
+
+```golang
+// utils/helpers.go
+package utils
+
+func Add(a, b int) int {  // Uppercase = exported
+	return a + b
+}
+```
+
+Python equavelent structure:
+
+```python
+# myproject/
+# ├── pyproject.toml
+# ├── main.py
+# └── utils/
+#     ├── __init__.py
+#     └── helpers.py
+
+# main.py
+from utils.helpers import add
+print(add(1, 2))
+
+# utils/helpers.py
+def add(a, b):
+    return a + b
+```
+
+Key difference: Go uses capitalization for visibility (uppercase = public, lowercase = private). Python uses the `_` prefix convention.
+
+## String Formatting
+
+Go uses `fmt.Sprintf` for string formatting, which works like C's `sprintf`. As a Python developer I find `%v` (default format) the most useful verb:
+
+```golang
+name := "Mirat"
+age := 33
+s := fmt.Sprintf("My name is %s and I'm %d years old", name, age)
+fmt.Println(s)
+```
+
+Python equavelent:
+
+```python
+name = "Mirat"
+age = 33
+s = f"My name is {name} and I'm {age} years old"
+print(s)
+```
+
+Common format verbs in Go:
+
+| Verb | Description | Python equivalent |
+|------|-------------|-------------------|
+| `%v` | Default format | `{}` in f-strings |
+| `%s` | String | `%s` or `{:s}` |
+| `%d` | Integer | `%d` or `{:d}` |
+| `%f` | Float | `%f` or `{:f}` |
+| `%t` | Boolean | - |
+| `%T` | Type of value | `type()` |
+| `%+v` | Struct with field names | `repr()` |
+
 ---
-meta_desc: As a Python developer I wanted to learn Golang, and this is my notes.
+meta_desc: A Python developer's guide to learning Go — covering syntax, types, structs, interfaces, error handling, goroutines, channels, and modules with side-by-side Python comparisons.
 ---
 pub_date: 2024-12-11
 ---
