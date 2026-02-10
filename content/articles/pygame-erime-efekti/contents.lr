@@ -1,0 +1,59 @@
+title: Pygame ile Erime Efekti
+---
+pub_date: 2009-01-18
+---
+body:
+
+Malum sinav zamani yazacak hic vaktim yok fekat su spor olsun diye yaptigim calismayi yayinlamadan edemedim. Kod cok kisa ve cok acik. Siki bir inceleme ile ne yaptigini anlayabilirsiniz. Hatta bu bulmacamsi bir yazi olsun, siz cozun nasil calistigini :)
+
+```python
+from os.path import join
+from random import choice
+
+from pygame import display, image, surfarray
+
+
+class Screen:
+
+    def __init__(self, name, resolution):
+        display.set_mode(resolution, 0, 24)
+        display.set_caption(name)
+        self.surface = display.get_surface()
+        self.width, self.height = resolution
+
+
+def blurize(array):
+    for y in range(2, len(array) - 2):
+        for x in range(2, len(array[y]) - 2):
+            array[x][y] = array[x + choice((-1, 0, 1))][y + choice((-1, 0, 1))]
+
+
+res = (440, 440)
+screen = Screen("Rendering...", res)
+img = image.load("melt.jpg")
+screen.surface.blit(img, (0, 0))
+array = surfarray.pixels3d(screen.surface)
+display.update()
+
+frames = 400
+for frame in range(frames):
+    image.save(
+        surfarray.make_surface(array),
+        join("output/", f"{frames - frame}.png"),
+    )
+    if frame > 25:
+        blurize(array)
+    display.update()
+    print(f"{frame}th frame rendered")
+```
+
+---
+author: Mirat
+---
+has_code: yes
+---
+tags: technical
+---
+meta_desc: Pygame ve Python ile bir gorsel uzerine erime efekti uygulayan kisa bir kod ornegi.
+---
+language: tr
