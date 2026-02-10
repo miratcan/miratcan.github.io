@@ -41,6 +41,32 @@
 {% block meta_img %}{% if this.attachments.get('hero.png') %}{{ this.attachments.get('hero.png').path}}{% endif %}{% if this.attachments.get('hero.jpg') %}{{ this.attachments.get('hero.jpg').path}}{% endif %}{% endblock %}
 
 {% block body %}
+{% if 'quote' in this.tags %}
+<div class="quote-post">
+  <blockquote>
+    {{ this.body }}
+  </blockquote>
+</div>
+{% elif 'video' in this.tags %}
+<div class="video-post">
+  {{ this.body }}
+</div>
+{% elif 'photo' in this.tags %}
+<div class="photo-post">
+  <div class="photo-post-images">
+    {% for attachment in this.attachments.images %}
+      {% if not attachment.attachment_filename.startswith('hero') %}
+      <img src="{{ attachment|url }}" alt="{{ this.title }}" loading="lazy">
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% if this.body %}
+  <div class="photo-post-body">
+    {{ this.body }}
+  </div>
+  {% endif %}
+</div>
+{% else %}
 {% if this.is_archived %}
 <div style="background: color-mix(in srgb, var(--accent) 15%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 2rem;">
   <p style="margin: 0; color: var(--fg);"><strong>⚠️ Archived Article:</strong> This article is very old and may contain outdated or incorrect information. It's kept here for nostalgic and historical reasons.</p>
@@ -63,9 +89,11 @@
     {% endfor %}
   </ul>
 {% endif %}
+{% endif %}
 
 {% endblock %}
 {% block after_screen %}
+{% if 'quote' not in this.tags and 'photo' not in this.tags and 'video' not in this.tags %}
 <script src="https://utteranc.es/client.js"
         repo="miratcan/miratcan.github.io"
         issue-term="title"
@@ -74,4 +102,5 @@
         crossorigin="anonymous"
         async>
 </script>
+{% endif %}
 {% endblock %}
