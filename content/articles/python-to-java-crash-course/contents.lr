@@ -1,0 +1,1465 @@
+title: Python to Java Crash Course: Learn Java as a Python Developer
+---
+body:
+
+## File Structure
+
+In Java, every file must contain a class, and the filename must match the class name. Your entry point is the `main` method inside that class:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Do something here.
+    }
+}
+```
+
+In Python, there's no strict entry point requirement, but the common pattern is:
+
+```python
+if __name__ == '__main__':
+    # Do something here.
+```
+
+The difference is that Java enforces this at the compiler level — your program won't compile without a class and a `public static void main`. Python's `if __name__` is just a convention. Also the filename must be `Main.java` — it has to match the class name. In Python you can name your file whatever you want. This feels unnecessarily restrictive coming from Python.
+
+## Imports
+
+Packages can be imported using their full path:
+
+```java
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+```
+
+You can also use wildcard imports to import everything from a package:
+
+```java
+import java.util.*;
+```
+
+Python's import syntax is similar:
+
+```python
+import math                    # Java: import java.lang.Math;
+from math import sqrt          # Java: import static java.lang.Math.sqrt;
+from math import *             # Java: import java.lang.Math.*;
+```
+
+One key difference: Java doesn't care about unused imports — they just get ignored. Python also doesn't enforce this, but linters will complain in both languages. Java IDEs usually auto-organize imports for you which is nice.
+
+## Visibility
+
+Java has four visibility levels:
+
+```java
+public class Example {
+    public int publicField;       // accessible from everywhere
+    protected int protectedField; // accessible from same package + subclasses
+    int packageField;             // accessible from same package (default, no keyword)
+    private int privateField;     // accessible only within this class
+}
+```
+
+In Python, visibility is just a convention: prefix with `_` for "private" and `__` for name mangling. But nothing actually prevents you from accessing `_private_var` from outside.
+
+> Four visibility modifiers. Coming from Python where you just slap an underscore and call it a day, this feels like overkill. But I have to admit, having actual `private` fields that the compiler enforces is kind of nice. No more "please don't touch this" — it's "you literally can't touch this."
+
+## Functions (Methods)
+
+In Java, there are no standalone functions. Everything must live inside a class. So even a simple "add two numbers" function needs a class wrapper:
+
+```java
+public class Calculator {
+    public static int add(int x, int y) {
+        return x + y;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(add(42, 13));
+    }
+}
+```
+
+Python equivalent:
+
+```python
+def add(x: int, y: int) -> int:
+    return x + y
+
+print(add(42, 13))
+```
+
+> You have to write a class just to add two numbers. `public static int add(int x, int y)` — that's 7 tokens before you even get to the parameter names. Python does it in 3: `def add(x, y)`. This is the verbosity tax you pay in Java, and you pay it on every single method.
+
+The big difference: Java's type declarations are enforced by the compiler. Python's type hints are just annotations — they don't prevent you from passing a string where an int is expected.
+
+## Method Overloading
+
+Java supports method overloading — multiple methods with the same name but different parameter types:
+
+```java
+public class Printer {
+    public static void print(int x) {
+        System.out.println("Integer: " + x);
+    }
+
+    public static void print(String s) {
+        System.out.println("String: " + s);
+    }
+
+    public static void print(int x, int y) {
+        System.out.println("Two integers: " + x + ", " + y);
+    }
+}
+```
+
+Python doesn't have method overloading. You'd use default parameters, `*args`, or `@singledispatch`:
+
+```python
+from functools import singledispatch
+
+@singledispatch
+def print_value(x):
+    print(f"Unknown: {x}")
+
+@print_value.register(int)
+def _(x):
+    print(f"Integer: {x}")
+
+@print_value.register(str)
+def _(x):
+    print(f"String: {x}")
+```
+
+Go didn't have overloading either, so this is actually a nice feature. The compiler resolves which method to call based on the argument types. Clean and simple.
+
+## Variables
+
+Java requires you to declare the type of every variable:
+
+```java
+int x = 5;
+double pi = 3.14;
+boolean active = true;
+String name = "Mirat";
+```
+
+Since Java 10, you can use `var` for local variables with type inference:
+
+```java
+var x = 5;          // compiler infers int
+var pi = 3.14;      // compiler infers double
+var name = "Mirat"; // compiler infers String
+```
+
+Python just lets you assign directly:
+
+```python
+x = 5
+pi = 3.14
+active = True
+name = "Mirat"
+```
+
+The `var` keyword in Java 10+ feels familiar coming from Python — the compiler figures out the type for you. But you can only use `var` for local variables, not for fields or method parameters. So it's a half measure.
+
+And then there are the semicolons. Every. Single. Line. Ends. With. A. Semicolon. O_o
+
+If Java variables are not initialized, the defaults depend on where they're declared:
+- Instance/class fields get defaults: `0` for numeric types, `false` for boolean, `null` for objects
+- Local variables have no defaults — you must initialize them before use, or the compiler will complain
+
+## Types
+
+### Primitive Types
+
+Java has 8 primitive types:
+
+| Type | Size | Range | Python equivalent |
+|------|------|-------|-------------------|
+| `byte` | 8 bits | -128 to 127 | `int` |
+| `short` | 16 bits | -32,768 to 32,767 | `int` |
+| `int` | 32 bits | -2^31 to 2^31-1 | `int` |
+| `long` | 64 bits | -2^63 to 2^63-1 | `int` |
+| `float` | 32 bits | ~7 decimal digits | `float` |
+| `double` | 64 bits | ~15 decimal digits | `float` |
+| `boolean` | - | true/false | `bool` |
+| `char` | 16 bits | Unicode character | `str` (single char) |
+
+### Wrapper Classes
+
+Every primitive has a wrapper class: `Integer`, `Double`, `Boolean`, `Character`, etc. You need these when working with generics and collections:
+
+```java
+int x = 5;              // primitive
+Integer y = 5;           // wrapper object (autoboxing)
+int z = y;               // back to primitive (unboxing)
+
+// You MUST use wrappers with generics:
+List<Integer> numbers = new ArrayList<>();  // List<int> won't compile!
+```
+
+In Python, there's no distinction — everything is an object. `5` is an `int` object, `True` is a `bool` object. You never have to think about "is this a primitive or a wrapper?" Java makes you deal with this duality everywhere.
+
+> Autoboxing and unboxing happen automatically, so most of the time you don't notice. But then you try `List<int>` and the compiler slaps you. O_o
+
+## Type Casting
+
+Java has a C-style cast syntax:
+
+```java
+int i = 42;
+double f = (double) i;   // widening — always safe
+int j = (int) 3.99;      // narrowing — truncates to 3, no rounding!
+```
+
+Python equivalent:
+
+```python
+i = 42
+f = float(i)
+j = int(3.99)    # also truncates to 3
+```
+
+Java distinguishes between widening (safe, automatic) and narrowing (lossy, requires explicit cast). Widening happens automatically:
+
+```java
+int x = 5;
+double y = x;    // automatic widening, no cast needed
+```
+
+For strings, you can't just cast — you need parse methods:
+
+```java
+int n = Integer.parseInt("42");       // String to int
+String s = String.valueOf(42);        // int to String
+String s2 = Integer.toString(42);     // also works
+```
+
+Python is more forgiving: `int("42")` just works. In Java you always need to remember which parse method to use.
+
+## Constants
+
+Java uses the `final` keyword for constants:
+
+```java
+final double PI = 3.14159;
+PI = 3.0;  // Compile error!
+```
+
+Python doesn't have real constants. The convention is to use `UPPER_CASE` names:
+
+```python
+PI = 3.14159  # Convention only, you can still do PI = 3.0
+```
+
+Java's `final` is enforced by the compiler — you literally cannot reassign it. I actually like this. Python's `typing.Final` is just a hint for type checkers, it doesn't actually prevent reassignment at runtime. Java gives you a real guarantee here.
+
+## Strings
+
+Java strings are immutable (same as Python), but the comparison trap is brutal:
+
+```java
+String a = "hello";
+String b = "hello";
+String c = new String("hello");
+
+System.out.println(a == b);       // true (string pool)
+System.out.println(a == c);       // false!!! O_o
+System.out.println(a.equals(c));  // true
+```
+
+> The `==` vs `.equals()` trap. In Python, `==` compares values and `is` compares identity. In Java, `==` compares identity for objects and `.equals()` compares values. Every Java beginner falls into this trap at least once. It's infuriating.
+
+String formatting in Java is verbose compared to Python's f-strings:
+
+```java
+String name = "Mirat";
+int age = 33;
+
+// String.format (like Python's .format())
+String s = String.format("My name is %s and I'm %d years old", name, age);
+
+// Text blocks (Java 15+) — triple quotes like Python!
+String json = """
+        {
+            "name": "%s",
+            "age": %d
+        }
+        """.formatted(name, age);
+
+// String concatenation (simple but ugly for complex strings)
+String s2 = "My name is " + name + " and I'm " + age + " years old";
+```
+
+Python equivalent:
+
+```python
+name = "Mirat"
+age = 33
+s = f"My name is {name} and I'm {age} years old"
+```
+
+No f-strings in Java. You're stuck with `String.format()` or text blocks with `.formatted()`. It works but it's nowhere near as clean as Python's f-strings.
+
+For string building in loops, use `StringBuilder` instead of `+` concatenation:
+
+```java
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i < 10; i++) {
+    sb.append("item ").append(i).append(", ");
+}
+String result = sb.toString();
+```
+
+Python equivalent:
+
+```python
+result = ", ".join(f"item {i}" for i in range(10))
+```
+
+## Loops
+
+Java has four types of loops:
+
+```java
+// Classic for loop
+for (int i = 0; i < 10; i++) {
+    System.out.println(i);
+}
+
+// Enhanced for loop (for-each)
+int[] numbers = {1, 2, 3, 4, 5};
+for (int n : numbers) {
+    System.out.println(n);
+}
+
+// While loop
+int i = 0;
+while (i < 10) {
+    System.out.println(i);
+    i++;
+}
+
+// Do-while loop (executes at least once)
+int j = 0;
+do {
+    System.out.println(j);
+    j++;
+} while (j < 10);
+```
+
+Python equivalents:
+
+```python
+# Classic for loop → range()
+for i in range(10):
+    print(i)
+
+# Enhanced for loop → direct iteration
+numbers = [1, 2, 3, 4, 5]
+for n in numbers:
+    print(n)
+
+# While loop
+i = 0
+while i < 10:
+    print(i)
+    i += 1
+
+# Do-while → Python doesn't have this!
+j = 0
+while True:
+    print(j)
+    j += 1
+    if j >= 10:
+        break
+```
+
+The `do-while` loop is something Python doesn't have. It guarantees the body executes at least once. Not something you need often, but when you do, it's nice to have it built into the language.
+
+## If Statements
+
+Java requires parentheses around conditions:
+
+```java
+if (x > 0) {
+    System.out.println("positive");
+} else if (x < 0) {
+    System.out.println("negative");
+} else {
+    System.out.println("zero");
+}
+```
+
+Python equivalent:
+
+```python
+if x > 0:
+    print("positive")
+elif x < 0:
+    print("negative")
+else:
+    print("zero")
+```
+
+The ternary operator syntax is different:
+
+```java
+// Java
+String result = x > 0 ? "positive" : "negative";
+```
+
+```python
+# Python
+result = "positive" if x > 0 else "negative"
+```
+
+Java's ternary is more concise. Python's reads more like English. Matter of taste I think.
+
+## Switch Statements
+
+Java has both the classic switch and the new switch expressions (Java 14+):
+
+```java
+// Classic switch
+switch (day) {
+    case "MON":
+    case "TUE":
+    case "WED":
+    case "THU":
+    case "FRI":
+        System.out.println("Weekday");
+        break;
+    case "SAT":
+    case "SUN":
+        System.out.println("Weekend");
+        break;
+    default:
+        System.out.println("Unknown");
+}
+
+// Switch expressions (Java 14+) — much cleaner
+String type = switch (day) {
+    case "MON", "TUE", "WED", "THU", "FRI" -> "Weekday";
+    case "SAT", "SUN" -> "Weekend";
+    default -> "Unknown";
+};
+```
+
+Python equivalent (3.10+):
+
+```python
+match day:
+    case "MON" | "TUE" | "WED" | "THU" | "FRI":
+        print("Weekday")
+    case "SAT" | "SUN":
+        print("Weekend")
+    case _:
+        print("Unknown")
+```
+
+The new switch expression syntax in Java 14+ is actually really nice. No more `break` statements, arrow syntax, and it can return a value. The classic switch with fall-through and mandatory `break` is a well-known source of bugs — I'm glad they fixed it.
+
+## Arrays
+
+Java arrays have a fixed size and are declared with the type:
+
+```java
+int[] numbers = new int[5];           // array of 5 zeros
+int[] primes = {2, 3, 5, 7, 11};     // array literal
+String[] names = new String[3];       // array of 3 nulls
+```
+
+Python doesn't have fixed-size arrays. You'd use a list:
+
+```python
+numbers = [0] * 5
+primes = [2, 3, 5, 7, 11]
+names = [None] * 3
+```
+
+Working with arrays in Java feels clunky because utility methods are static:
+
+```java
+import java.util.Arrays;
+
+int[] arr = {5, 3, 1, 4, 2};
+Arrays.sort(arr);
+System.out.println(Arrays.toString(arr));  // [1, 2, 3, 4, 5]
+System.out.println(arr.length);            // 5 (it's a field, not a method!)
+```
+
+> Why `Arrays.sort(arr)` instead of `arr.sort()`? Why `Arrays.toString(arr)` instead of just printing the array? Because arrays are primitive-like and don't have methods. Python's `list.sort()` and `print(list)` just work. Java makes you import a utility class. And `.length` is a field not a method — no parentheses. But `String.length()` IS a method — with parentheses. Consistency? Never heard of it.
+
+## Lists (ArrayList)
+
+`ArrayList` is Java's resizable list, similar to Python's `list`:
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+List<String> names = new ArrayList<>();
+names.add("Alice");
+names.add("Bob");
+names.add("Charlie");
+
+System.out.println(names.get(0));     // Alice
+System.out.println(names.size());     // 3
+names.remove("Bob");
+names.set(0, "Alicia");
+
+// Iterate
+for (String name : names) {
+    System.out.println(name);
+}
+```
+
+Python equivalent:
+
+```python
+names = []
+names.append("Alice")
+names.append("Bob")
+names.append("Charlie")
+
+print(names[0])       # Alice
+print(len(names))     # 3
+names.remove("Bob")
+names[0] = "Alicia"
+
+for name in names:
+    print(name)
+```
+
+Notice how Java needs generics: `List<String>`. You can't use primitive types here — `List<int>` won't compile, you need `List<Integer>`. O_o
+
+Also: `names.get(0)` instead of `names[0]`, `names.size()` instead of `len(names)`, `names.set(0, x)` instead of `names[0] = x`. Everything is a method call. Python's syntax is just cleaner for this.
+
+You can also create immutable lists:
+
+```java
+// Java 9+
+List<String> immutable = List.of("Alice", "Bob", "Charlie");
+// immutable.add("Dave");  // throws UnsupportedOperationException!
+```
+
+Python equivalent:
+
+```python
+immutable = ("Alice", "Bob", "Charlie")  # tuple
+```
+
+## Maps (HashMap)
+
+`HashMap` is Java's equivalent of Python dictionaries:
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+Map<String, Integer> ages = new HashMap<>();
+ages.put("Alice", 25);
+ages.put("Bob", 30);
+
+System.out.println(ages.get("Alice"));       // 25
+System.out.println(ages.containsKey("Bob")); // true
+System.out.println(ages.getOrDefault("Charlie", 0));  // 0
+
+ages.remove("Bob");
+
+// Iterate
+for (Map.Entry<String, Integer> entry : ages.entrySet()) {
+    System.out.println(entry.getKey() + ": " + entry.getValue());
+}
+```
+
+Python equivalent:
+
+```python
+ages = {}
+ages["Alice"] = 25
+ages["Bob"] = 30
+
+print(ages["Alice"])         # 25
+print("Bob" in ages)         # True
+print(ages.get("Charlie", 0))  # 0
+
+del ages["Bob"]
+
+for key, value in ages.items():
+    print(f"{key}: {value}")
+```
+
+Map literals in Java 9+:
+
+```java
+Map<String, Integer> ages = Map.of(
+    "Alice", 25,
+    "Bob", 30
+);
+```
+
+Python's dict syntax is much cleaner: `{"Alice": 25, "Bob": 30}`. Java's `Map.of()` is an improvement over `new HashMap<>()` + `put()` but still not as elegant. And `Map.of()` creates an immutable map, which might not be what you want.
+
+## Sets (HashSet)
+
+`HashSet` is Java's equivalent of Python's `set`:
+
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+Set<String> fruits = new HashSet<>();
+fruits.add("Apple");
+fruits.add("Banana");
+fruits.add("Apple");  // duplicate, ignored
+
+System.out.println(fruits.size());        // 2
+System.out.println(fruits.contains("Apple"));  // true
+fruits.remove("Banana");
+```
+
+Python equivalent:
+
+```python
+fruits = set()
+fruits.add("Apple")
+fruits.add("Banana")
+fruits.add("Apple")  # duplicate, ignored
+
+print(len(fruits))        # 2
+print("Apple" in fruits)  # True
+fruits.remove("Banana")
+```
+
+Pretty much the same concept. Java just needs more typing (literally and figuratively).
+
+## Iterating Collections
+
+Java gives you several ways to iterate:
+
+```java
+List<String> names = List.of("Alice", "Bob", "Charlie");
+
+// Enhanced for loop
+for (String name : names) {
+    System.out.println(name);
+}
+
+// With index (no built-in enumerate!)
+for (int i = 0; i < names.size(); i++) {
+    System.out.println(i + ": " + names.get(i));
+}
+
+// Iterator
+var it = names.iterator();
+while (it.hasNext()) {
+    System.out.println(it.next());
+}
+
+// forEach with lambda
+names.forEach(name -> System.out.println(name));
+
+// Streams (functional style)
+names.stream()
+     .filter(name -> name.startsWith("A"))
+     .map(String::toUpperCase)
+     .forEach(System.out::println);
+```
+
+Python equivalent:
+
+```python
+names = ["Alice", "Bob", "Charlie"]
+
+for name in names:
+    print(name)
+
+for i, name in enumerate(names):
+    print(f"{i}: {name}")
+
+# Filter and transform
+for name in names:
+    if name.startswith("A"):
+        print(name.upper())
+
+# Or with list comprehension
+print([name.upper() for name in names if name.startswith("A")])
+```
+
+Java doesn't have a built-in `enumerate()`. You either use a classic `for` with index or use `IntStream`. The streams API is powerful though — more on that later.
+
+## Classes and Objects
+
+Java is all about classes. Everything lives in a class:
+
+```java
+public class Person {
+    private String name;
+    private int age;
+
+    // Constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter
+    public String getName() {
+        return name;
+    }
+
+    // Setter
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', age=" + age + "}";
+    }
+}
+```
+
+Python equivalent:
+
+```python
+class Person:
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self.age = age
+
+    def __repr__(self):
+        return f"Person(name='{self.name}', age={self.age})"
+```
+
+Look at the difference. Java needs explicit getters and setters, explicit `this`, explicit access modifiers, explicit return types on every method. Python's version is 7 lines. Java's is 20+.
+
+Java 16+ has `record` classes that reduce this boilerplate significantly:
+
+```java
+public record Person(String name, int age) {}
+// That's it! You get constructor, getters, toString, equals, hashCode for free.
+```
+
+This is like Python's `@dataclass`:
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class Person:
+    name: str
+    age: int
+```
+
+Records are a huge improvement. If you're on Java 16+, use them whenever you can.
+
+## Inheritance
+
+Java uses `extends` for class inheritance:
+
+```java
+public class Animal {
+    protected String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public void speak() {
+        System.out.println(name + " makes a sound");
+    }
+}
+
+public class Dog extends Animal {
+    public Dog(String name) {
+        super(name);
+    }
+
+    @Override
+    public void speak() {
+        System.out.println(name + " barks");
+    }
+}
+```
+
+Python equivalent:
+
+```python
+class Animal:
+    def __init__(self, name: str):
+        self.name = name
+
+    def speak(self):
+        print(f"{self.name} makes a sound")
+
+class Dog(Animal):
+    def speak(self):
+        print(f"{self.name} barks")
+```
+
+Java has single inheritance only — a class can extend only one other class. No multiple inheritance. Python allows multiple inheritance (with MRO to handle the diamond problem). Java uses interfaces instead, which I'll cover next.
+
+The `@Override` annotation is optional but recommended — it tells the compiler "I intend to override a parent method" and it'll catch you if the parent method doesn't exist or you misspelled it. Python doesn't have this, and I wish it did.
+
+## Interfaces
+
+Interfaces define a contract that classes must follow:
+
+```java
+public interface Shape {
+    double area();
+    double perimeter();
+}
+
+public class Circle implements Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public double perimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+```
+
+Python equivalent using abstract base classes:
+
+```python
+from abc import ABC, abstractmethod
+import math
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self) -> float:
+        pass
+
+    @abstractmethod
+    def perimeter(self) -> float:
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius: float):
+        self.radius = radius
+
+    def area(self) -> float:
+        return math.pi * self.radius ** 2
+
+    def perimeter(self) -> float:
+        return 2 * math.pi * self.radius
+```
+
+A class can implement multiple interfaces (this is Java's answer to no multiple inheritance):
+
+```java
+public class Robot implements Drawable, Movable, Serializable {
+    // must implement all methods from all three interfaces
+}
+```
+
+Java 8+ allows default methods in interfaces — methods with actual implementations:
+
+```java
+public interface Greetable {
+    default String greet() {
+        return "Hello, " + getName();
+    }
+    String getName();  // abstract, must be implemented
+}
+```
+
+Compared to Go's implicit interface implementation (if you have the methods, you implement the interface), Java requires the explicit `implements` keyword. This is more verbose but has the advantage of being explicit — you always know which interfaces a class implements just by reading its declaration.
+
+## Abstract Classes
+
+Abstract classes are a middle ground between interfaces and concrete classes:
+
+```java
+public abstract class Vehicle {
+    protected String brand;
+
+    public Vehicle(String brand) {
+        this.brand = brand;
+    }
+
+    // Abstract method — subclasses must implement
+    public abstract void start();
+
+    // Concrete method — inherited as-is
+    public void honk() {
+        System.out.println("Beep!");
+    }
+}
+
+public class Car extends Vehicle {
+    public Car(String brand) {
+        super(brand);
+    }
+
+    @Override
+    public void start() {
+        System.out.println(brand + " engine starting...");
+    }
+}
+```
+
+Python equivalent:
+
+```python
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    def __init__(self, brand: str):
+        self.brand = brand
+
+    @abstractmethod
+    def start(self):
+        pass
+
+    def honk(self):
+        print("Beep!")
+
+class Car(Vehicle):
+    def start(self):
+        print(f"{self.brand} engine starting...")
+```
+
+When to use interface vs abstract class in Java:
+- **Interface**: When you want to define a contract. A class can implement multiple interfaces.
+- **Abstract class**: When you want to share code (fields, constructors, concrete methods) between related classes. A class can only extend one abstract class.
+
+In Python, ABC handles both cases. Java forces you to think about this distinction upfront.
+
+## Generics
+
+Generics let you write type-safe code that works with different types:
+
+```java
+public class Box<T> {
+    private T content;
+
+    public Box(T content) {
+        this.content = content;
+    }
+
+    public T getContent() {
+        return content;
+    }
+}
+
+// Usage
+Box<String> stringBox = new Box<>("Hello");
+Box<Integer> intBox = new Box<>(42);
+String s = stringBox.getContent();  // no cast needed
+```
+
+Python equivalent:
+
+```python
+from typing import TypeVar, Generic
+
+T = TypeVar('T')
+
+class Box(Generic[T]):
+    def __init__(self, content: T):
+        self.content = content
+
+    def get_content(self) -> T:
+        return self.content
+
+string_box: Box[str] = Box("Hello")
+int_box: Box[int] = Box(42)
+```
+
+### Bounded Types
+
+You can restrict what types a generic can accept:
+
+```java
+// T must be a Number or its subclass
+public static <T extends Number> double sum(List<T> list) {
+    double total = 0;
+    for (T item : list) {
+        total += item.doubleValue();
+    }
+    return total;
+}
+```
+
+### Wildcards
+
+Java has wildcards for more flexible generics:
+
+```java
+List<?> anything = new ArrayList<String>();           // any type
+List<? extends Number> numbers = new ArrayList<Integer>();  // Number or subclass
+List<? super Integer> integers = new ArrayList<Number>();   // Integer or superclass
+```
+
+> Type erasure is the big gotcha. Java generics are a compile-time feature only — at runtime, `Box<String>` and `Box<Integer>` are both just `Box`. The type information is erased. This means you can't do `new T()` or `instanceof T` at runtime. Python's generics are also just hints (no runtime effect), so this is actually similar, but Java's erasure can cause surprising issues with reflection and casting.
+
+## Exception Handling
+
+Java uses `try/catch/finally` (Python uses `try/except/finally`):
+
+```java
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Error: " + e.getMessage());
+} catch (Exception e) {
+    System.out.println("Something else went wrong: " + e);
+} finally {
+    System.out.println("This always runs");
+}
+```
+
+Python equivalent:
+
+```python
+try:
+    result = 10 / 0
+except ZeroDivisionError as e:
+    print(f"Error: {e}")
+except Exception as e:
+    print(f"Something else went wrong: {e}")
+finally:
+    print("This always runs")
+```
+
+### Checked vs Unchecked Exceptions
+
+This is Java's most controversial feature. Java has two kinds of exceptions:
+
+- **Checked exceptions**: You MUST handle them or declare them with `throws`. The compiler won't let you ignore them.
+- **Unchecked exceptions** (`RuntimeException` subclasses): No handling required.
+
+```java
+// Checked exception — compiler forces you to handle it
+public String readFile(String path) throws IOException {
+    return Files.readString(Path.of(path));
+}
+
+// You must either catch it:
+try {
+    String content = readFile("data.txt");
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+// Or declare that your method also throws it:
+public void process() throws IOException {
+    String content = readFile("data.txt");
+}
+```
+
+Python doesn't have checked exceptions — you handle them if you want to, or let them bubble up. No compiler enforcement.
+
+> Checked exceptions sound great in theory — "force developers to handle errors!" In practice, everyone just wraps them in `RuntimeException` or adds `throws Exception` to everything. The Go people went the opposite direction with explicit error returns. Python's approach (just let it crash and catch what you want) is honestly the most pragmatic IMO.
+
+## Null Handling
+
+Java's `null` is the source of the infamous `NullPointerException` (NPE):
+
+```java
+String name = null;
+System.out.println(name.length());  // NullPointerException! 💥
+```
+
+Python equivalent:
+
+```python
+name = None
+print(len(name))  # TypeError: object of type 'NoneType' has no len()
+```
+
+Java 8+ introduced `Optional<T>` to help deal with null:
+
+```java
+import java.util.Optional;
+
+Optional<String> maybeName = Optional.ofNullable(getName());
+
+// Safe ways to use Optional
+String name = maybeName.orElse("Unknown");
+maybeName.ifPresent(n -> System.out.println("Hello, " + n));
+String upper = maybeName.map(String::toUpperCase).orElse("NO NAME");
+```
+
+Python equivalent:
+
+```python
+name = get_name()  # might return None
+
+# Common patterns
+name = name if name is not None else "Unknown"
+# or
+name = name or "Unknown"  # careful: also catches empty string!
+```
+
+> Tony Hoare called `null` his "billion dollar mistake." Java's `Optional` tries to fix this decades later. It's better than raw null checks but the problem is that nothing forces you to use `Optional` — old APIs still return null everywhere. At least Python's `None` gives you a `TypeError` with a clear message instead of the cryptic NPE.
+
+## Enums
+
+Java enums are powerful — they're actually full classes:
+
+```java
+public enum Planet {
+    MERCURY(3.303e+23, 2.4397e6),
+    VENUS(4.869e+24, 6.0518e6),
+    EARTH(5.976e+24, 6.37814e6);
+
+    private final double mass;
+    private final double radius;
+
+    Planet(double mass, double radius) {
+        this.mass = mass;
+        this.radius = radius;
+    }
+
+    public double surfaceGravity() {
+        final double G = 6.67300E-11;
+        return G * mass / (radius * radius);
+    }
+}
+
+// Usage
+double gravity = Planet.EARTH.surfaceGravity();
+```
+
+Python equivalent:
+
+```python
+from enum import Enum
+
+class Planet(Enum):
+    MERCURY = (3.303e+23, 2.4397e6)
+    VENUS = (4.869e+24, 6.0518e6)
+    EARTH = (5.976e+24, 6.37814e6)
+
+    def __init__(self, mass, radius):
+        self.mass = mass
+        self.radius = radius
+
+    def surface_gravity(self):
+        G = 6.67300e-11
+        return G * self.mass / (self.radius ** 2)
+
+gravity = Planet.EARTH.surface_gravity()
+```
+
+Java enums can have constructors, fields, and methods. They can even implement interfaces. This is one of Java's genuinely great features — enums are first-class citizens, not just named constants.
+
+## Lambda Expressions
+
+Java 8 introduced lambda expressions:
+
+```java
+import java.util.List;
+import java.util.function.Predicate;
+
+List<String> names = List.of("Alice", "Bob", "Charlie", "Dave");
+
+// Lambda with type inference
+names.stream()
+     .filter(name -> name.length() > 3)
+     .forEach(name -> System.out.println(name));
+
+// Method reference (shorthand)
+names.forEach(System.out::println);
+
+// Assigning to a functional interface
+Predicate<String> isLong = s -> s.length() > 5;
+```
+
+Python equivalent:
+
+```python
+names = ["Alice", "Bob", "Charlie", "Dave"]
+
+# Lambda
+list(filter(lambda name: len(name) > 3, names))
+
+# List comprehension (more Pythonic)
+[name for name in names if len(name) > 3]
+
+# Assigning a lambda
+is_long = lambda s: len(s) > 5
+```
+
+Java lambdas require a "functional interface" (an interface with exactly one abstract method). You can't just pass a random function — it must match an interface. Common ones: `Predicate<T>`, `Function<T,R>`, `Consumer<T>`, `Supplier<T>`.
+
+Python lambdas are limited to a single expression. Java lambdas can have multiple statements with curly braces:
+
+```java
+// Multi-line lambda in Java
+names.forEach(name -> {
+    String upper = name.toUpperCase();
+    System.out.println("Hello, " + upper + "!");
+});
+```
+
+## Streams API
+
+Streams are Java's functional programming toolkit for collections:
+
+```java
+import java.util.List;
+import java.util.stream.Collectors;
+
+List<String> names = List.of("Alice", "Bob", "Charlie", "Dave", "Eve");
+
+// Filter, transform, collect
+List<String> result = names.stream()
+    .filter(name -> name.length() > 3)
+    .map(String::toUpperCase)
+    .sorted()
+    .collect(Collectors.toList());
+// result: [ALICE, CHARLIE, DAVE]
+
+// Reduce
+int totalLength = names.stream()
+    .mapToInt(String::length)
+    .sum();
+
+// Group by
+Map<Integer, List<String>> byLength = names.stream()
+    .collect(Collectors.groupingBy(String::length));
+```
+
+Python equivalent:
+
+```python
+names = ["Alice", "Bob", "Charlie", "Dave", "Eve"]
+
+# List comprehension
+result = sorted([name.upper() for name in names if len(name) > 3])
+
+# Sum
+total_length = sum(len(name) for name in names)
+
+# Group by
+from itertools import groupby
+by_length = {k: list(v) for k, v in groupby(sorted(names, key=len), key=len)}
+```
+
+Streams are lazy — intermediate operations (`filter`, `map`, `sorted`) don't execute until a terminal operation (`collect`, `sum`, `forEach`) is called. This is similar to Python generators.
+
+> I actually think the streams API is pretty good. The chaining syntax is readable and you can see the data transformation pipeline clearly. Python's list comprehension is more concise for simple cases, but for complex transformations with multiple steps, streams can be more readable. That's a hot take, I know.
+
+## Concurrency
+
+### Threads
+
+Java has real multithreading — no GIL:
+
+```java
+// Creating a thread
+Thread thread = new Thread(() -> {
+    for (int i = 0; i < 5; i++) {
+        System.out.println("Thread: " + i);
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+    }
+});
+thread.start();
+
+// Wait for it to finish
+thread.join();
+```
+
+Python equivalent:
+
+```python
+import threading
+import time
+
+def worker():
+    for i in range(5):
+        print(f"Thread: {i}")
+        time.sleep(0.1)
+
+t = threading.Thread(target=worker)
+t.start()
+t.join()
+```
+
+### ExecutorService (Thread Pools)
+
+For managing multiple threads, use `ExecutorService`:
+
+```java
+import java.util.concurrent.*;
+
+ExecutorService executor = Executors.newFixedThreadPool(4);
+
+List<Future<String>> futures = new ArrayList<>();
+for (int i = 0; i < 10; i++) {
+    final int taskId = i;
+    futures.add(executor.submit(() -> {
+        Thread.sleep(100);
+        return "Result from task " + taskId;
+    }));
+}
+
+for (Future<String> future : futures) {
+    System.out.println(future.get());  // blocks until result is ready
+}
+
+executor.shutdown();
+```
+
+Python equivalent:
+
+```python
+from concurrent.futures import ThreadPoolExecutor
+import time
+
+def task(task_id):
+    time.sleep(0.1)
+    return f"Result from task {task_id}"
+
+with ThreadPoolExecutor(max_workers=4) as executor:
+    futures = [executor.submit(task, i) for i in range(10)]
+    for future in futures:
+        print(future.result())
+```
+
+### CompletableFuture (Async)
+
+`CompletableFuture` is Java's answer to async/await patterns:
+
+```java
+CompletableFuture<String> future = CompletableFuture
+    .supplyAsync(() -> fetchData())
+    .thenApply(data -> process(data))
+    .thenApply(result -> format(result));
+
+String result = future.get();  // blocks until done
+```
+
+### Virtual Threads (Java 21+)
+
+Virtual threads are lightweight threads managed by the JVM — similar to goroutines in Go:
+
+```java
+// Java 21+
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    for (int i = 0; i < 100_000; i++) {
+        final int taskId = i;
+        executor.submit(() -> {
+            Thread.sleep(Duration.ofSeconds(1));
+            return taskId;
+        });
+    }
+}
+// 100,000 virtual threads — no problem!
+```
+
+> Java has real multithreading with no GIL. This is a huge advantage over Python, same as Go. And with virtual threads in Java 21+, you can spawn hundreds of thousands of lightweight threads — just like goroutines. If concurrency is your main reason for leaving Python, both Java and Go are solid choices.
+
+## Packages and Build Tools
+
+Java projects use package declarations and build tools:
+
+```java
+// src/com/example/myapp/Main.java
+package com.example.myapp;
+
+import com.example.myapp.utils.Helper;
+
+public class Main {
+    public static void main(String[] args) {
+        Helper.doSomething();
+    }
+}
+```
+
+The directory structure must match the package name:
+
+```
+myproject/
+├── pom.xml (Maven) or build.gradle (Gradle)
+├── src/
+│   └── main/
+│       └── java/
+│           └── com/
+│               └── example/
+│                   └── myapp/
+│                       ├── Main.java
+│                       └── utils/
+│                           └── Helper.java
+└── target/ or build/
+```
+
+Python equivalent structure:
+
+```python
+# myproject/
+# ├── pyproject.toml
+# ├── src/
+# │   └── myapp/
+# │       ├── __init__.py
+# │       ├── main.py
+# │       └── utils/
+# │           ├── __init__.py
+# │           └── helper.py
+```
+
+### Maven vs Gradle
+
+Java has two major build tools:
+
+**Maven** (XML-based):
+```xml
+<!-- pom.xml -->
+<dependencies>
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.10.1</version>
+    </dependency>
+</dependencies>
+```
+
+**Gradle** (Groovy/Kotlin-based):
+```groovy
+// build.gradle
+dependencies {
+    implementation 'com.google.code.gson:gson:2.10.1'
+}
+```
+
+Python equivalent:
+```toml
+# pyproject.toml
+[project]
+dependencies = [
+    "requests>=2.28.0",
+]
+```
+
+> Java's build ecosystem is... a lot. Maven uses XML (verbose but predictable), Gradle uses a DSL (flexible but the learning curve is steep). Compared to Python's `pip install something`, Java's dependency management feels over-engineered. But to be fair, Maven/Gradle handle compilation, testing, packaging, and deployment — they're more like `make` + `pip` + `setuptools` combined.
+
+---
+meta_desc: A Python developer's guide to learning Java — covering syntax, types, classes, interfaces, exceptions, generics, streams, and concurrency with side-by-side Python comparisons.
+---
+pub_date: 2026-02-14
+---
+has_code: yes
+---
+tags: java-notes
+---
+language: en
