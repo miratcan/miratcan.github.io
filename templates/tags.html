@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
-{% block title %}{{ this.title }}{% endblock %}
+{% block title %}Articles tagged "{{ this.tag }}"{% endblock %}
 {% block body %}
+<h1>Articles tagged "{{ this.tag }}"</h1>
 <div class="articles-layout">
   <main class="articles-main">
     {% with posts=this.items %}
