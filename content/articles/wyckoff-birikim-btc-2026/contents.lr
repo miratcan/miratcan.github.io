@@ -1,136 +1,134 @@
-title: BTC'nin $98k'dan $60k'ya Düşüşü Bir Wyckoff Birikimi Olabilir
+title: BTC $98k'dan $60k'ya Düştü — Ya Bu Bir Wyckoff Birikimiyse?
 ---
 body:
 
-BTC birkaç gün içinde $98k'dan $60k'ya çakıldı. Herkes panikliyor. Fear & Greed endeksi 8'e düştü — aşırı korku. Bireysel yatırımcılar kaçıyor.
+BTC günler içinde $98k'dan $60k'ya indi. Fear & Greed endeksi 8. Retail kaçıyor, kripto Twitter yas tutuyor.
 
-Peki ya bu çöküş tam olarak birilerin istediği şeyse?
+Ama bir adım geri çekilip bakınca, bu düşüşte bir tuhaflık var. Fiyat hareketleri, haberlerin zamanlaması ve on-chain veriler bir araya gelince ortaya ilginç bir tablo çıkıyor: [Wyckoff birikim](https://school.stockcharts.com/doku.php?id=market_analysis:the_wyckoff_method) şeması.
 
-Son günlerde fiyat hareketlerini, haber döngüsünü ve on-chain verileri inceliyorum. Gördüğüm şey ders kitabından çıkmış bir [Wyckoff birikim](https://school.stockcharts.com/doku.php?id=market_analysis:the_wyckoff_method) şemasına çok benziyor — büyük oyuncuların fiyatı kasıtlı olarak düşürüp, zayıf elleri silkeleyip, düşük fiyatlardan birikim yaptığı ve ardından fiyatı yukarı çektiği bir çerçeve.
+Kısaca: büyük oyuncular fiyatı kasıtlı olarak düşürür, küçük yatırımcıyı korkutup satar, ucuzdan toplar, sonra fiyatı geri çeker. Yüz yıllık bir teori ama piyasa manipülasyonunu açıklamakta hâlâ en iyi çerçevelerden biri.
 
-Bu benim tezim. İşte kanıtlar.
+Bu benim tezim. Kanıtlara bakalım.
 
-## Çöküş
+## Neler Oldu?
 
-Zaman çizelgesi:
-
-- **Ocak → 5 Şubat:** BTC $98k'dan aşağı doğru kanamaya devam ediyor, ivme artıyor
-- **5 Şubat:** Gerçek çöküş — tek bir günde $73.1k'dan $62.3k'ya. Trump'ın Avrupa gümrük vergileriyle $875M kripto likidasyonu
-- **6 Şubat:** Fiyat tam olarak $60,000'a düşüyor, ardından **93,000+ kontrat hacmiyle** sert bir şekilde $70.5k'ya sıçrıyor
-- **7-12 Şubat:** Yavaş erime devam ediyor: $70.5k → $67k → $66.2k (daha düşük dip)
+- **Ocak → 5 Şubat:** BTC $98k'dan sürekli gerileyerek düşüyor
+- **5 Şubat:** Sert satış — Trump'ın Avrupa gümrük vergileri tetikliyor, $875M likidasyonla $73.1k'dan $62.3k'ya tek günde
+- **6 Şubat:** Fiyat tam $60,000'a dokunuyor, **93,000+ kontrat hacimle** $70.5k'ya fırlıyor
+- **7-12 Şubat:** Yavaş erime: $70.5k → $67k → $66.2k
 - **13-14 Şubat:** $69.8k'ya toparlanma
 
-Tetikleyici Trump'ın gümrük vergisi duyurularıydı — önce Çin, sonra Avrupa. Kendi politikaları piyasayı çökertti. Bunu aklınızda tutun.
+Dikkat çeken şey: çöküşü tetikleyen Trump'ın kendi politikaları. Bunu aklınızda tutun.
 
-## Wyckoff Çerçevesi
+## Wyckoff Nedir, Buraya Nasıl Oturuyor?
 
-Richard Wyckoff'un birikim modeli, büyük oyuncuların ("bileşik adam") piyasaları fazlar halinde nasıl manipüle ettiğini tanımlar:
+Richard Wyckoff'un modeline göre büyük oyuncular ("composite man") piyasayı fazlar halinde manipüle eder:
 
-- **Faz A — Satış Klimaksı:** Bir aralık oluşturan şiddetli çöküş. *Tamamlandı — $98k → $60k düşüşü.*
-- **Faz B — Neden Oluşturma:** FUD eşliğinde yatay hareket. Kurumlar sessizce birikim yaparken bireysel yatırımcılar panikliyor. *Şu anda buradayız.*
-- **Faz C — Yay (Spring):** Desteğin altına son bir sarsıntı — stop-loss'ları tetiklemek ve maksimum korku yaratmak için. *Kilit soru — 6 Şubat'taki $60k yayı tamamladı mı, yoksa $53-55k hâlâ gelecek mi?*
-- **Faz D — Yükseliş Başlangıcı:** Fiyat artan hacimle aralıktan çıkar.
-- **Faz E — Yükseliş Trendi:** Yeni trend kurulur.
+- **Faz A — Satış Klimaksı:** Sert düşüşle bir taban aralığı oluşur. *$98k → $60k — tamam.*
+- **Faz B — Birikim:** Yatay hareket + FUD. Kurumlar sessizce alırken retail panik satar. *Şu an burada gibiyiz.*
+- **Faz C — Spring:** Desteğin altına son bir dalış — stop'ları patlatmak ve son kalan boğaları da kırmak için. *Kritik soru: 6 Şubat'taki $60k spring miydi, yoksa $53-55k hâlâ kapıda mı?*
+- **Faz D — Markup:** Hacimle birlikte yukarı kırılım.
+- **Faz E — Yükseliş trendi.**
 
-Çöküş yapısı Faz A ve B'ye neredeyse mükemmel uyuyor. Ama asıl argüman grafik formasyonu değil — etrafındaki *bağlam*.
+Grafik yapısı Faz A ve B'ye güzel oturuyor. Ama asıl mesele grafik değil — etrafındaki olaylar.
 
 ## Kanıtlar
 
-### 1. Trump'ın Stratejik Bitcoin Rezervi + Cramer Sızıntısı
+### 1. Stratejik Bitcoin Rezervi ve Cramer Sızıntısı
 
-Trump bir Stratejik Bitcoin Rezervi başkanlık kararnamesi imzaladı. [BITCOIN Yasası (S.954)](https://www.congress.gov/bill/119th-congress/senate-bill/954) 5 yılda 1 milyon BTC satın almayı öneriyor.
+Trump, Stratejik Bitcoin Rezervi için başkanlık kararnamesi imzaladı. [BITCOIN Yasası (S.954)](https://www.congress.gov/bill/119th-congress/senate-bill/954) 5 yılda 1 milyon BTC almayı planlıyor.
 
-Ardından 8-9 Şubat'ta Jim Cramer [şunu söyledi](https://www.benzinga.com/crypto/cryptocurrency/26/02/50471399/jim-cramer-says-hes-heard-trump-is-gonna-fill-the-bitcoin-reserve-at-60000-what-on-earth-data-tells-us): *"Trump'ın rezervi $60,000'dan dolduracağını duydum."*
+8-9 Şubat'ta Jim Cramer [çıkıp diyor ki](https://www.benzinga.com/crypto/cryptocurrency/26/02/50471399/jim-cramer-says-hes-heard-trump-is-gonna-fill-the-bitcoin-reserve-at-60000-what-on-earth-data-tells-us): *"Trump'ın rezervi $60,000'dan dolduracağını duydum."*
 
-BTC'nin tam $60,000'da devasa hacimle sıçraması tesadüf mü?
+BTC'nin tam $60,000'da devasa hacimle dönmesi tesadüf mü?
 
-### 2. Kayma (Slippage) Problemi
+### 2. Slippage Meselesi
 
-Tezin bende oturmasını sağlayan kısım bu.
+Tezin kafamda oturmasını sağlayan kısım bu.
 
-ABD hükümeti milyarlarca dolarlık BTC'yi ortalama $60k'dan almak istiyorsa — $60k'dan piyasa emri veremez. Bu kadar alım baskısı devasa kaymaya neden olur ve fiyatı alırken *yukarı* iter.
+Diyelim ABD hükümeti milyarlarca dolarlık BTC'yi ortalama $60k'dan almak istiyor. Ama gidip $60k'dan piyasa emri giremezsin — o kadar büyük alım fiyatı yukarı iter (slippage). Ortalaman $60k değil, $70-80k olur.
 
-Peki ne yaparsın? Fiyatın hedefinin *altında* olması gerekir. Fiyatı $53-55k'ya itersin, sonra agresif alım yaparsın. Kendi alımından kaynaklanan kayma, ortalama giriş fiyatını ~$60k'ya çıkarır.
+O zaman ne yapman lazım? Fiyatı hedefinin *altına* çekmen lazım. $53-55k'ya düşür, sonra agresif al. Kendi alımının yarattığı slippage ortalama girişini ~$60k'ya çıkarır.
 
-Bu da çöküşün sadece uygun değil — birikim mekanizması hedef fiyatta çalışması için *gerekli* olabileceği anlamına geliyor.
+Yani bu düşüş sadece "uygun bir fırsat" değil — hedef fiyattan birikim yapabilmek için *gerekli* olabilir.
 
-### 3. Koordineli FUD Saldırısı
+### 3. FUD Bombardımanı
 
-Kimlerin ne zaman "satın" diye bağırmaya başladığına bakın:
+Kim ne zaman konuşmuş, bir bakalım:
 
-- **Michael Burry** (3-5 Şubat): ["Ölüm spirali, BTC düşük $50k'lara"](https://www.coindesk.com/markets/2026/02/05/big-short-michael-burry-flags-bitcoin-pattern-that-predicts-drop-to-low-usd50-000s) — Big Short itibarını kullanarak
-- **Financial Times** (10 Şubat): ["Bitcoin'in gerçek değeri $0"](https://www.ccn.com/news/crypto/bitcoins-true-value-0-financial-times-columnist-claims/) — ana akım medyadan zirve FUD
-- **Peter Schiff:** "Bitcoin sıfıra çökecek" — tam zamanında
-- **BlackRock dijital varlıklar başkanı** (13 Şubat): ["Kaldıraç kaynaklı volatilite bitcoin'in anlatısını tehdit ediyor"](https://www.coindesk.com/markets/2026/02/13/blackrock-s-head-of-digital-assets-warns-leverage-driven-volatility-risks-undermine-bitcoin-s-institutional-narrative)
+- **Michael Burry** (3-5 Şubat): ["BTC düşük $50k'lara gidecek"](https://www.coindesk.com/markets/2026/02/05/big-short-michael-burry-flags-bitcoin-pattern-that-predicts-drop-to-low-usd50-000s) — Big Short ünüyle
+- **Financial Times** (10 Şubat): ["Bitcoin'in gerçek değeri $0"](https://www.ccn.com/news/crypto/bitcoins-true-value-0-financial-times-columnist-claims/)
+- **Peter Schiff:** "Bitcoin sıfıra çökecek" — her zamanki gibi
+- **BlackRock dijital varlıklar başkanı** (13 Şubat): ["Kaldıraç kaynaklı volatilite bitcoin'in kurumsal anlatısını tehdit ediyor"](https://www.coindesk.com/markets/2026/02/13/blackrock-s-head-of-digital-assets-warns-leverage-driven-volatility-risks-undermine-bitcoin-s-institutional-narrative)
 
-Sonuncusu en ilginci. BlackRock — dünyanın en büyük varlık yöneticisi — *kendi BTC ETF'sini tutarken* BTC hakkında olumsuz anlatılar yayıyor. Bir şey söyle, başka şey yap.
+Sonuncusu en ilginci. BlackRock — dünyanın en büyük varlık yöneticisi — kendi BTC ETF'ini tutarken, ağzıyla "BTC riskli" diyor. Söylediğine değil yaptığına bak.
 
-Tüm bu FUD'un 10 günlük bir pencerede, fiyat söylenen hükümet alım seviyesine çökerken aynı anda gelmesi? Çok fazla tesadüf.
+Bunların hepsi 10 günlük bir pencerede, fiyat tam da söylentilerdeki hükümet alım seviyesine çökerken mi geliyor? Çok tesadüf.
 
-### 4. Akıllı Para vs. Aptal Para Ayrışması
+### 4. Büyük Balıklar Alıyor, Küçük Balıklar Satıyor
 
-En net Wyckoff sinyali: kurumlar, bireysel yatırımcıların sattığını alıyor.
+Wyckoff birikiminin en klasik sinyali bu: kurumlar retail'in sattığını topluyor.
 
-- [CoinDesk (30 Ocak)](https://www.coindesk.com/markets/2026/01/30/retail-traders-are-running-for-the-exit-amid-bitcoin-s-selloff-while-mega-whales-are-quietly-buying-the-dip): "Bireysel yatırımcılar çıkışa koşarken mega-balinalar sessizce dipten alıyor"
-- [Bloomberg (10 Şubat)](https://www.bloomberg.com/news/articles/2026-02-10/bitcoin-whales-are-buying-again-as-other-large-buyers-retreat): "Bitcoin balinaları yeniden alıma geçiyor"
-- [CoinDesk (15 Şubat)](https://www.coindesk.com/markets/2026/02/15/wall-street-remains-bullish-on-bitcoin-while-offshore-traders-retreat): "Wall Street bitcoin'de yükselişçi kalırken offshore traderlar geri çekiliyor"
-- Sadece Ocak ayında balina cüzdanları (1,000+ BTC) tarafından **104,340 BTC** biriktirildi
-- [Michael Saylor / Strategy](https://cointelegraph.com/news/michael-saylor-signals-strategy-buy-bitcoin) (15 Şubat): Düşüşe rağmen agresif BTC alım sinyali
+- [CoinDesk (30 Ocak)](https://www.coindesk.com/markets/2026/01/30/retail-traders-are-running-for-the-exit-amid-bitcoin-s-selloff-while-mega-whales-are-quietly-buying-the-dip): Retail kaçarken mega-balinalar sessizce dipten topluyor
+- [Bloomberg (10 Şubat)](https://www.bloomberg.com/news/articles/2026-02-10/bitcoin-whales-are-buying-again-as-other-large-buyers-retreat): Balinalar yeniden alımda
+- [CoinDesk (15 Şubat)](https://www.coindesk.com/markets/2026/02/15/wall-street-remains-bullish-on-bitcoin-while-offshore-traders-retreat): Wall Street boğa, offshore trader'lar kaçıyor
+- Sadece Ocak'ta 1,000+ BTC tutan cüzdanlar **104,340 BTC** toplamış
+- [Michael Saylor](https://cointelegraph.com/news/michael-saylor-signals-strategy-buy-bitcoin) (15 Şubat): Düşüşe rağmen agresif alım sinyali
 
-Bireysel yatırımcı panikler, zararına satar ve çıkar. Balinalar ve kurumlar sessizce OTC masalarından birikim yapar (on-chain'de görünmez). Bu ders kitabından Faz B davranışı.
+Retail panikleyip zararına satarken, balinalar OTC masalarından sessizce topluyor. Tam da Faz B'nin tanımı.
 
-### 5. $60k Sıçraması
+### 5. $60k'daki Hacim Patlaması
 
-6 Şubat'ta BTC $60,000'a düştü ve 93,000+ kontrat hacimle sıçradı. Bollinger Bandı alt bandı ~$59.8k'da oturuyordu — neredeyse mükemmel uyum.
+6 Şubat'ta BTC $60,000'a değdi ve 93,000+ kontrat hacimle döndü. Bollinger alt bandı ~$59.8k — neredeyse birebir örtüşüyor.
 
-Birisi o seviyede *ağır* alım yaptı. Hükümet OTC aktivitesi mi, balina birikimi mi, yoksa ikisi birden mi — psikolojik ve teknik olarak önemli bir seviyedeki o hacim patlaması normal bireysel yatırımcı davranışı değil.
+O seviyede biri çok ciddi alım yaptı. Hükümet OTC alımı mı, balina birikimi mi, ikisi birden mi — bilinmez. Ama psikolojik ve teknik açıdan bu kadar kritik bir seviyedeki o hacim patlaması sıradan retail davranışı değil.
 
-## Umut Rallisi Formasyonu
+## Umut Rallisi Tuzağı
 
-Bu aralıkta takip ettiğim bir manipülasyon formasyonu var:
+Bu aralıkta bir manipülasyon döngüsü izliyorum:
 
-1. Fiyatın biraz yükselmesine izin ver ($66k → $69k) — long'lara umut ver
-2. Tekrar aşağı çak — o umudu ez
-3. Tekrarla, her sıçrama *bir öncekinden daha düşük*
-4. Sonunda long'lar pes eder ve kendileri short açar
-5. Long/short oranı 1.0'ın altına düştüğünde (çoğunluk short) = maksimum düşüş beklentisi
-6. *İşte o zaman* gerçek dönüş: short'lar sıkışır, fiyat roket gibi fırlar
+1. Fiyat biraz yükselsin ($66k → $69k) — long'lara umut ver
+2. Tekrar aşağı çak — umudu ez
+3. Tekrarla, her sıçrama bir öncekinden düşük
+4. Sonunda long'lar pes edip kendileri short açsın
+5. Long/short oranı 1.0'ın altına düşsün (çoğunluk short) = herkes ayıya dönmüş
+6. *İşte o zaman* gerçek dönüş gelir: short squeeze ile fiyat roket olur
 
-16 Şubat itibarıyla L/S oranı hâlâ 1.82 (%64.5 long). Long'lar henüz tam olarak teslim olmadı. Bu formasyon geçerliyse, dönüşten önce bir düşüş daha görebiliriz.
+Şu an (16 Şubat) L/S oranı 1.82 — hâlâ %64.5 long. Teslim olma henüz tamamlanmadı. Bu döngü geçerliyse, bir düşüş daha görebiliriz.
 
-## Neleri İzliyorum
+## Neleri İzliyorum?
 
 **Simetrik üçgen:**
 - Düşen tepeler: $70.5k → $70.3k → $69.8k
 - Yükselen dipler: $60.0k → $65.1k → $65.8k
-- Bu sıkışma bölgesi hızla daralıyor — yakında bir kırılım ya da çöküş gelecek
+- Daralıyor. Yakında ya yukarı ya aşağı kırılacak.
 
-**Long/Short oranı:** Şu an 1.82. 1.0'ın altına düşmesini bekliyorum. Long'lar teslim olana kadar gerçek dönüşü beklemiyorum.
+**Long/Short oranı:** 1.82. 1.0'ın altını görene kadar gerçek dönüş beklemiyorum.
 
-**Kritik tarihler:**
-- **6 Mart — NFP:** Güçlü istihdam raporu = "faiz indirimi yok" anlatısı = düşüş baskısı
-- **11 Mart — TÜFE:** Yüksek enflasyon = şahin FOMC beklentileri
-- **18 Mart — FOMC:** En büyük katalizör. Şahin = düşüş, güvercin = ralli. Faiz kararı + projeksiyonlar bir sonraki trendi belirleyecek
+**Takvim:**
+- **6 Mart — NFP:** Güçlü istihdam = faiz indirimi yok beklentisi = aşağı baskı
+- **11 Mart — TÜFE:** Yüksek enflasyon gelirse FOMC beklentileri şahinleşir
+- **18 Mart — FOMC:** En büyük katalizör. Şahin = düşüş, güvercin = ralli
 
-**WLFI joker kartı:** [Senatörler](https://cointelegraph.com/news/senators-urge-cfius-probe-uae-stake-trump-linked-wlfi), Trump bağlantılı kripto projesi World Liberty Financial'daki $500M BAE yatırımı için CFIUS soruşturması başlatılmasını istiyor. Başka bir FUD dalgası yaratabilecek politik risk — ya da sadece gürültü.
+**WLFI riski:** [Senatörler](https://cointelegraph.com/news/senators-urge-cfius-probe-uae-stake-trump-linked-wlfi) Trump bağlantılı World Liberty Financial'daki $500M BAE yatırımı için soruşturma istiyor. Yeni bir FUD dalgası yaratabilir — ya da hiçbir şey olmaz.
 
 ## İki Senaryo
 
-**Senaryo A: $60k yay (spring) idi.** 6 Şubat'taki 93K hacimli sıçrama Faz C'yi tamamladı. Fiyat üçgenin tepesini yeniden test eder, kırılır ve Faz D yükselişi başlar.
+**Senaryo A: $60k spring'di.** 6 Şubat'taki 93K hacimli dönüş Faz C'yi tamamladı. Üçgen yukarı kırılırsa Faz D başlar, yükseliş gelir.
 
-**Senaryo B: Yay henüz gerçekleşmedi.** L/S oranı hâlâ çok yüksek — long'lar inatçı. Kalan boğaları tamamen teslim almak için $53-55k'ya bir düşüş daha gelecek. Hükümet o seviyelerde alım yapar, kayma ortalamayı ~$60k'ya çeker, *sonra* yükseliş başlar.
+**Senaryo B: Spring henüz olmadı.** L/S oranı hâlâ yüksek, long'lar inatçı. $53-55k'ya bir dalış daha gelecek, son boğalar da kırılacak. Hükümet o seviyelerde alır, slippage ortalamayı $60k'ya çeker, *sonra* yükseliş.
 
-Senaryo B'ye daha yakınım ama üçgeni ve L/S oranını yakından izliyorum. Üçgen hacimle yukarı kırılırsa yeniden değerlendireceğim.
+Ben Senaryo B'ye daha yakınım ama üçgeni ve L/S oranını izliyorum. Hacimli yukarı kırılım gelirse fikrimi değiştiririm.
 
-## Son Not
+## Son Söz
 
-Bu spekülatif bir tez, yatırım tavsiyesi değil. Tamamen yanılıyor olabilirim. Wyckoff çerçevesi bir yorumlama merceği — piyasalar her zaman ders kitabı formasyonlarını takip etmez ve olmayan yerde formasyon görmek iyi belgelenmiş bir bilişsel önyargı.
+Bu spekülatif bir tez, yatırım tavsiyesi değil. Tamamen yanlış çıkabilir. Wyckoff bir yorumlama aracı — piyasa her zaman ders kitabına göre hareket etmez ve olmayan yerde formasyon görmek bilinen bir bilişsel tuzak.
 
-Bu tezi ilginç kılan tek bir veri noktası değil — hükümetin alım niyetini açıklaması, fiyatın söylenen alım seviyesine çökmesi, koordineli FUD ve akıllı para / aptal para ayrışmasının aynı anda gerçekleşmesi.
+Tezi ilginç kılan tek bir kanıt değil — hükümetin BTC alma niyetini açıklaması, fiyatın tam söylentilerdeki alım seviyesine düşmesi, koordineli FUD ve büyük balık/küçük balık ayrışmasının hepsinin aynı anda olması.
 
-Buna göre işlem açın ya da açmayın, önümüzdeki birkaç hafta çok şey gösterecek.
+Önümüzdeki birkaç hafta çok şey gösterecek.
 ---
-meta_desc: BTC $98k'dan $60k'ya çakıldı. Ama fiyat hareketi, koordineli FUD ve akıllı para sinyalleri Wyckoff birikimi gibi görünüyor. İşte kanıtlar.
+meta_desc: BTC $98k'dan $60k'ya düştü. Fiyat hareketi, koordineli FUD ve balina alımları Wyckoff birikim şemasına işaret ediyor. İşte kanıtlar ve izlenmesi gerekenler.
 ---
 pub_date: 2026-02-16
 ---
