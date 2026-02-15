@@ -1,0 +1,800 @@
+title: Common Design Patterns in Java: A Beginner's Guide
+---
+body:
+
+If you've been writing Java for a while, you've probably heard the term "design patterns" thrown around. Maybe someone on your team said "we should use a Factory here" and you nodded along while quietly Googling it.
+
+Design patterns are reusable solutions to common software design problems. They were popularized by the "Gang of Four" (GoF) book — *Design Patterns: Elements of Reusable Object-Oriented Software* (1994). The book describes 23 patterns, but you don't need to memorize all of them. In practice, a handful come up again and again.
+
+One important note before we start: **not every problem needs a pattern**. Over-engineering is a real risk. If a simple function solves your problem, don't wrap it in three interfaces and a factory. Patterns are tools, not mandates.
+
+Let's jump in.
+
+## Singleton
+
+**The problem:** You want exactly one instance of a class to exist. Think database connections, configuration managers, logging — things where having multiple instances would cause chaos.
+
+### Java Implementation
+
+The classic approach: private constructor + static `getInstance()` method.
+
+```java
+public class DatabaseConnection {
+    private static DatabaseConnection instance;
+
+    private DatabaseConnection() {
+        // private constructor — no one can call new DatabaseConnection()
+    }
+
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+        }
+        return instance;
+    }
+
+    public void query(String sql) {
+        System.out.println("Executing: " + sql);
+    }
+}
+
+// Usage
+DatabaseConnection db = DatabaseConnection.getInstance();
+db.query("SELECT * FROM users");
+```
+
+But wait — this isn't thread-safe. Two threads could both see `instance == null` at the same time and create two instances. You need synchronization:
+
+```java
+public class DatabaseConnection {
+    private static volatile DatabaseConnection instance;
+
+    private DatabaseConnection() {}
+
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            synchronized (DatabaseConnection.class) {
+                if (instance == null) {
+                    instance = new DatabaseConnection();
+                }
+            }
+        }
+        return instance;
+    }
+}
+```
+
+Double-checked locking. `volatile`. `synchronized`. Three keywords just to make sure there's only one of something. O_o
+
+The modern Java way? Use an enum. Joshua Bloch (author of *Effective Java*) calls this the best approach:
+
+```java
+public enum DatabaseConnection {
+    INSTANCE;
+
+    public void query(String sql) {
+        System.out.println("Executing: " + sql);
+    }
+}
+
+// Usage
+DatabaseConnection.INSTANCE.query("SELECT * FROM users");
+```
+
+Thread-safe, serialization-safe, reflection-safe. Three lines. Why didn't they teach this first?
+
+### Python Comparison
+
+In Python, a module is already a singleton. If you import a module twice, Python reuses the same module object:
+
+```python
+# db.py
+class DatabaseConnection:
+    def query(self, sql):
+        print(f"Executing: {sql}")
+
+# Module-level instance — this IS your singleton
+db = DatabaseConnection()
+```
+
+```python
+# main.py
+from db import db
+db.query("SELECT * FROM users")
+```
+
+That's it. No private constructors, no double-checked locking, no enum tricks. Python modules are singletons by nature.
+
+> All that boilerplate in Java — private constructors, volatile fields, synchronized blocks — just to guarantee one instance. In Python you write `db = DatabaseConnection()` at module level and you're done. This is what I mean when I say Java makes you work for things Python gives you for free.
+
+## Factory Method
+
+**The problem:** You need to create objects, but you don't want the client code to know (or care) about the specific class being instantiated. You want to decouple object creation from object usage.
+
+### Java Implementation
+
+```java
+// The product interface
+public interface Notification {
+    void send(String message);
+}
+
+// Concrete products
+public class EmailNotification implements Notification {
+    @Override
+    public void send(String message) {
+        System.out.println("Email: " + message);
+    }
+}
+
+public class SmsNotification implements Notification {
+    @Override
+    public void send(String message) {
+        System.out.println("SMS: " + message);
+    }
+}
+
+public class PushNotification implements Notification {
+    @Override
+    public void send(String message) {
+        System.out.println("Push: " + message);
+    }
+}
+
+// The factory
+public class NotificationFactory {
+    public static Notification create(String type) {
+        return switch (type) {
+            case "email" -> new EmailNotification();
+            case "sms" -> new SmsNotification();
+            case "push" -> new PushNotification();
+            default -> throw new IllegalArgumentException("Unknown type: " + type);
+        };
+    }
+}
+
+// Usage
+Notification notification = NotificationFactory.create("email");
+notification.send("Hello!");
+```
+
+### Python Comparison
+
+```python
+class EmailNotification:
+    def send(self, message):
+        print(f"Email: {message}")
+
+class SmsNotification:
+    def send(self, message):
+        print(f"SMS: {message}")
+
+class PushNotification:
+    def send(self, message):
+        print(f"Push: {message}")
+
+def create_notification(type_name):
+    factories = {
+        "email": EmailNotification,
+        "sms": SmsNotification,
+        "push": PushNotification,
+    }
+    return factories[type_name]()
+
+# Usage
+notification = create_notification("email")
+notification.send("Hello!")
+```
+
+> In Python, a function with a dictionary lookup does the job. No interface, no factory class. Python classes are first-class objects — you can put them in a dict and call them. Java needs the interface + factory class ceremony because types must be declared upfront. The Factory pattern exists in Java partly because the language doesn't have the flexibility Python does.
+
+## Builder
+
+**The problem:** You have a class with many parameters, some optional. Constructors with 8+ parameters are unreadable. Which argument is which?
+
+```java
+// This is painful
+User user = new User("Mirat", "mirat@example.com", 33, "Istanbul",
+                     true, false, "UTC+3", null);
+// What is true? What is false? What's null? Good luck.
+```
+
+### Java Implementation
+
+```java
+public class User {
+    private final String name;
+    private final String email;
+    private final int age;
+    private final String city;
+    private final boolean active;
+    private final String timezone;
+
+    private User(Builder builder) {
+        this.name = builder.name;
+        this.email = builder.email;
+        this.age = builder.age;
+        this.city = builder.city;
+        this.active = builder.active;
+        this.timezone = builder.timezone;
+    }
+
+    public static class Builder {
+        // Required
+        private final String name;
+        private final String email;
+
+        // Optional with defaults
+        private int age = 0;
+        private String city = "";
+        private boolean active = true;
+        private String timezone = "UTC";
+
+        public Builder(String name, String email) {
+            this.name = name;
+            this.email = email;
+        }
+
+        public Builder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public Builder city(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public Builder active(boolean active) {
+            this.active = active;
+            return this;
+        }
+
+        public Builder timezone(String timezone) {
+            this.timezone = timezone;
+            return this;
+        }
+
+        public User build() {
+            return new User(this);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "User{name='%s', email='%s', age=%d, city='%s', active=%b, timezone='%s'}"
+            .formatted(name, email, age, city, active, timezone);
+    }
+}
+
+// Usage — readable and self-documenting
+User user = new User.Builder("Mirat", "mirat@example.com")
+    .age(33)
+    .city("Istanbul")
+    .timezone("UTC+3")
+    .build();
+```
+
+Method chaining makes it clear what each value is. Much better than the 8-argument constructor.
+
+In real projects, you'd use **Lombok** to avoid writing all this:
+
+```java
+import lombok.Builder;
+
+@Builder
+public class User {
+    private String name;
+    private String email;
+    @Builder.Default private int age = 0;
+    @Builder.Default private boolean active = true;
+}
+
+// Same usage, zero boilerplate
+User user = User.builder()
+    .name("Mirat")
+    .email("mirat@example.com")
+    .age(33)
+    .build();
+```
+
+### Python Comparison
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class User:
+    name: str
+    email: str
+    age: int = 0
+    city: str = ""
+    active: bool = True
+    timezone: str = "UTC"
+
+# Usage
+user = User(name="Mirat", email="mirat@example.com", age=33, city="Istanbul")
+```
+
+> Python has keyword arguments. That's the whole Builder pattern, built into the language. `User(name="Mirat", age=33)` — self-documenting, readable, no boilerplate. Java doesn't have keyword arguments so you need 60 lines of Builder code (or Lombok) to achieve the same thing. This is probably the clearest example of Java patterns compensating for missing language features.
+
+## Observer
+
+**The problem:** When one object changes state, other objects need to be notified and updated automatically. Think event systems, UI updates, or pub/sub messaging.
+
+### Java Implementation
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+// The event
+public class PriceChangeEvent {
+    private final String product;
+    private final double oldPrice;
+    private final double newPrice;
+
+    public PriceChangeEvent(String product, double oldPrice, double newPrice) {
+        this.product = product;
+        this.oldPrice = oldPrice;
+        this.newPrice = newPrice;
+    }
+
+    public String getProduct() { return product; }
+    public double getOldPrice() { return oldPrice; }
+    public double getNewPrice() { return newPrice; }
+}
+
+// The observer interface
+public interface PriceObserver {
+    void onPriceChange(PriceChangeEvent event);
+}
+
+// The subject (observable)
+public class ProductStore {
+    private final List<PriceObserver> observers = new ArrayList<>();
+    private final Map<String, Double> prices = new HashMap<>();
+
+    public void addObserver(PriceObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(PriceObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void setPrice(String product, double price) {
+        double oldPrice = prices.getOrDefault(product, 0.0);
+        prices.put(product, price);
+
+        // Notify all observers
+        var event = new PriceChangeEvent(product, oldPrice, price);
+        for (PriceObserver observer : observers) {
+            observer.onPriceChange(event);
+        }
+    }
+}
+
+// Concrete observers
+public class EmailAlert implements PriceObserver {
+    @Override
+    public void onPriceChange(PriceChangeEvent event) {
+        if (event.getNewPrice() < event.getOldPrice()) {
+            System.out.println("Email: " + event.getProduct() +
+                " price dropped to $" + event.getNewPrice());
+        }
+    }
+}
+
+public class DashboardUpdater implements PriceObserver {
+    @Override
+    public void onPriceChange(PriceChangeEvent event) {
+        System.out.println("Dashboard: Updated " + event.getProduct() +
+            " → $" + event.getNewPrice());
+    }
+}
+
+// Usage
+ProductStore store = new ProductStore();
+store.addObserver(new EmailAlert());
+store.addObserver(new DashboardUpdater());
+
+store.setPrice("Laptop", 999.99);
+store.setPrice("Laptop", 899.99);  // triggers email alert + dashboard update
+```
+
+With Java 8+ lambdas, you can simplify the observer registration:
+
+```java
+// Using lambdas instead of creating classes
+store.addObserver(event ->
+    System.out.println("Price changed: " + event.getProduct()));
+```
+
+### Python Comparison
+
+```python
+class ProductStore:
+    def __init__(self):
+        self._observers = []
+        self._prices = {}
+
+    def add_observer(self, callback):
+        self._observers.append(callback)
+
+    def set_price(self, product, price):
+        old_price = self._prices.get(product, 0)
+        self._prices[product] = price
+        for callback in self._observers:
+            callback(product, old_price, price)
+
+# Usage
+store = ProductStore()
+
+# Just pass functions — no classes needed
+store.add_observer(lambda product, old, new:
+    print(f"Email: {product} dropped to ${new}") if new < old else None)
+
+store.add_observer(lambda product, old, new:
+    print(f"Dashboard: Updated {product} → ${new}"))
+
+store.set_price("Laptop", 999.99)
+store.set_price("Laptop", 899.99)
+```
+
+In Python, you just pass functions as callbacks. No observer interface, no event class (unless you want one). Functions are first-class citizens, so you don't need an interface just to define "something that can be called."
+
+## Strategy
+
+**The problem:** You have an algorithm that needs to vary. Different situations require different behaviors, and you want to switch between them at runtime without a mess of `if/else` chains.
+
+### Java Implementation
+
+```java
+// The strategy interface
+public interface PricingStrategy {
+    double calculatePrice(double basePrice, int quantity);
+}
+
+// Concrete strategies
+public class RegularPricing implements PricingStrategy {
+    @Override
+    public double calculatePrice(double basePrice, int quantity) {
+        return basePrice * quantity;
+    }
+}
+
+public class BulkPricing implements PricingStrategy {
+    @Override
+    public double calculatePrice(double basePrice, int quantity) {
+        if (quantity >= 10) {
+            return basePrice * quantity * 0.8;  // 20% discount
+        }
+        return basePrice * quantity;
+    }
+}
+
+public class SeasonalPricing implements PricingStrategy {
+    private final double discountRate;
+
+    public SeasonalPricing(double discountRate) {
+        this.discountRate = discountRate;
+    }
+
+    @Override
+    public double calculatePrice(double basePrice, int quantity) {
+        return basePrice * quantity * (1 - discountRate);
+    }
+}
+
+// The context
+public class ShoppingCart {
+    private PricingStrategy strategy;
+
+    public ShoppingCart(PricingStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void setStrategy(PricingStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public double checkout(double basePrice, int quantity) {
+        return strategy.calculatePrice(basePrice, quantity);
+    }
+}
+
+// Usage
+ShoppingCart cart = new ShoppingCart(new RegularPricing());
+System.out.println(cart.checkout(100, 5));   // 500.0
+
+cart.setStrategy(new BulkPricing());
+System.out.println(cart.checkout(100, 15));  // 1200.0 (20% off)
+
+cart.setStrategy(new SeasonalPricing(0.3));
+System.out.println(cart.checkout(100, 5));   // 350.0 (30% off)
+```
+
+Since Java 8+, you can use lambdas instead of creating separate classes:
+
+```java
+// Lambda strategies — no need for separate class files
+ShoppingCart cart = new ShoppingCart(
+    (price, qty) -> price * qty  // regular pricing as lambda
+);
+
+cart.setStrategy((price, qty) ->
+    qty >= 10 ? price * qty * 0.8 : price * qty  // bulk pricing
+);
+```
+
+### Python Comparison
+
+```python
+def regular_pricing(base_price, quantity):
+    return base_price * quantity
+
+def bulk_pricing(base_price, quantity):
+    if quantity >= 10:
+        return base_price * quantity * 0.8
+    return base_price * quantity
+
+def seasonal_pricing(discount_rate):
+    def calculate(base_price, quantity):
+        return base_price * quantity * (1 - discount_rate)
+    return calculate
+
+# Usage — just pass functions
+strategy = regular_pricing
+print(strategy(100, 5))   # 500.0
+
+strategy = bulk_pricing
+print(strategy(100, 15))  # 1200.0
+
+strategy = seasonal_pricing(0.3)
+print(strategy(100, 5))   # 350.0
+```
+
+> In Python, functions ARE the strategy pattern. You just pass a different function. No interface, no concrete strategy classes, no context class. Java needs all that ceremony because (before Java 8) you couldn't pass functions around — you had to wrap them in objects. Java 8 lambdas closed this gap significantly, but the "interface + concrete classes" approach is still what you'll see in most Java codebases and textbooks.
+
+## Adapter
+
+**The problem:** You have a class with one interface, but you need it to work with a system that expects a different interface. The Adapter wraps the incompatible class and translates its interface.
+
+### Java Implementation
+
+Imagine you have an old analytics library that you can't modify, and a new system that expects a different interface:
+
+```java
+// Old (third-party) interface — you can't change this
+public class OldAnalytics {
+    public void trackEvent(String eventName, String jsonData) {
+        System.out.println("Old analytics: " + eventName + " → " + jsonData);
+    }
+}
+
+// New interface your system expects
+public interface Analytics {
+    void track(String event, Map<String, Object> properties);
+}
+
+// The adapter — bridges old and new
+public class OldAnalyticsAdapter implements Analytics {
+    private final OldAnalytics oldAnalytics;
+
+    public OldAnalyticsAdapter(OldAnalytics oldAnalytics) {
+        this.oldAnalytics = oldAnalytics;
+    }
+
+    @Override
+    public void track(String event, Map<String, Object> properties) {
+        // Convert Map to JSON string for the old API
+        String json = new Gson().toJson(properties);
+        oldAnalytics.trackEvent(event, json);
+    }
+}
+
+// Usage
+Analytics analytics = new OldAnalyticsAdapter(new OldAnalytics());
+analytics.track("page_view", Map.of("url", "/home", "userId", 42));
+```
+
+The adapter wraps `OldAnalytics` and makes it look like it implements `Analytics`. Your new code never knows it's talking to an old library.
+
+### Python Comparison
+
+```python
+class OldAnalytics:
+    def track_event(self, event_name, json_data):
+        print(f"Old analytics: {event_name} → {json_data}")
+
+class OldAnalyticsAdapter:
+    def __init__(self, old_analytics):
+        self._old = old_analytics
+
+    def track(self, event, properties):
+        import json
+        self._old.track_event(event, json.dumps(properties))
+
+# Usage
+analytics = OldAnalyticsAdapter(OldAnalytics())
+analytics.track("page_view", {"url": "/home", "user_id": 42})
+```
+
+The adapter pattern works the same in both languages. But in Python, you often need it less thanks to **duck typing** — if an object has the right methods, it works, regardless of its type. No interface declaration needed. In Java, type compatibility is checked at compile time, so adapters are more frequently necessary.
+
+> Real-world example you've probably used: Java's `InputStreamReader` adapts a byte stream (`InputStream`) to a character stream (`Reader`). The entire Java I/O system is built on adapters and decorators wrapping each other. `BufferedReader(new InputStreamReader(new FileInputStream("file.txt")))` — three levels of wrapping. It's flexible, but... three levels of wrapping. O_o
+
+## Decorator
+
+**The problem:** You want to add behavior to an object dynamically, without changing its class. Unlike inheritance, which adds behavior at compile time to ALL instances, decorators let you add behavior to individual objects at runtime.
+
+### Java Implementation
+
+```java
+// Base interface
+public interface Coffee {
+    String getDescription();
+    double getCost();
+}
+
+// Base implementation
+public class SimpleCoffee implements Coffee {
+    @Override
+    public String getDescription() {
+        return "Simple coffee";
+    }
+
+    @Override
+    public double getCost() {
+        return 2.00;
+    }
+}
+
+// Decorator base — implements Coffee and wraps a Coffee
+public abstract class CoffeeDecorator implements Coffee {
+    protected final Coffee wrapped;
+
+    public CoffeeDecorator(Coffee coffee) {
+        this.wrapped = coffee;
+    }
+}
+
+// Concrete decorators
+public class MilkDecorator extends CoffeeDecorator {
+    public MilkDecorator(Coffee coffee) {
+        super(coffee);
+    }
+
+    @Override
+    public String getDescription() {
+        return wrapped.getDescription() + ", milk";
+    }
+
+    @Override
+    public double getCost() {
+        return wrapped.getCost() + 0.50;
+    }
+}
+
+public class SugarDecorator extends CoffeeDecorator {
+    public SugarDecorator(Coffee coffee) {
+        super(coffee);
+    }
+
+    @Override
+    public String getDescription() {
+        return wrapped.getDescription() + ", sugar";
+    }
+
+    @Override
+    public double getCost() {
+        return wrapped.getCost() + 0.25;
+    }
+}
+
+// Usage — stack decorators
+Coffee coffee = new SimpleCoffee();
+coffee = new MilkDecorator(coffee);
+coffee = new SugarDecorator(coffee);
+coffee = new SugarDecorator(coffee);  // double sugar
+
+System.out.println(coffee.getDescription());  // Simple coffee, milk, sugar, sugar
+System.out.println(coffee.getCost());          // 3.00
+```
+
+Each decorator wraps the previous one, adding its own behavior. You can stack them in any order and any number of times.
+
+### Python Comparison
+
+**Important:** Java's decorator pattern and Python's `@decorator` syntax are completely different concepts.
+
+Java's decorator pattern wraps objects to add behavior:
+
+```python
+# Java-style decorator pattern in Python
+class SimpleCoffee:
+    def get_description(self):
+        return "Simple coffee"
+
+    def get_cost(self):
+        return 2.00
+
+class MilkDecorator:
+    def __init__(self, coffee):
+        self._coffee = coffee
+
+    def get_description(self):
+        return self._coffee.get_description() + ", milk"
+
+    def get_cost(self):
+        return self._coffee.get_cost() + 0.50
+
+# Usage
+coffee = SimpleCoffee()
+coffee = MilkDecorator(coffee)
+```
+
+Python's `@decorator` syntax wraps functions:
+
+```python
+# Python's @ decorators — wrapping functions, not objects
+import time
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        print(f"{func.__name__} took {time.time() - start:.2f}s")
+        return result
+    return wrapper
+
+@timer
+def slow_function():
+    time.sleep(1)
+
+slow_function()  # prints: slow_function took 1.00s
+```
+
+> Same word, completely different concepts. Java decorators wrap objects with new behavior (Milk wrapping Coffee). Python's `@decorator` wraps functions with new behavior. They solve similar problems (adding behavior without modifying the original) but at different levels. Don't confuse them — I did when I first saw Java decorators.
+>
+> The classic real-world Java decorator example: I/O streams. `new BufferedReader(new InputStreamReader(new FileInputStream("file.txt")))` — each class decorates the previous one, adding buffering, character encoding, etc. It's the decorator pattern all the way down.
+
+## When NOT to Use Patterns
+
+This is maybe the most important section. Design patterns are solutions to specific problems. If you don't have the problem, you don't need the pattern.
+
+**Signs you might be over-engineering:**
+
+- You're adding a Factory for a class that's only created in one place
+- You're writing a Builder for a class with 3 fields
+- You're implementing Observer when a simple method call would do
+- You're using Strategy when you only have one algorithm
+- You're creating an Adapter when you could just modify the interface (if you own the code)
+
+> There's a joke: "A junior developer solves problems with code. A mid-level developer solves problems with design patterns. A senior developer solves problems with the simplest code that works." I've seen codebases with AbstractFactoryBuilderStrategyObserver classes that could have been a single function. Don't be that person. Use patterns when they genuinely reduce complexity, not when they add it.
+
+## Quick Reference
+
+| Pattern | Problem | Java Approach | Python Alternative |
+|---------|---------|---------------|-------------------|
+| Singleton | One instance only | enum or private constructor | Module-level variable |
+| Factory | Decouple object creation | Interface + factory class | Function + dict |
+| Builder | Many constructor params | Builder class + chaining | Keyword arguments |
+| Observer | Event notification | Observer interface + list | Callback functions |
+| Strategy | Swappable algorithms | Strategy interface + classes | First-class functions |
+| Adapter | Interface mismatch | Wrapper class | Duck typing (often unnecessary) |
+| Decorator | Dynamic behavior addition | Wrapper + interface | `@decorator` (different concept) |
+
+A common thread: many of these patterns exist in Java to work around things that Python gives you natively — first-class functions, keyword arguments, duck typing, module-level singletons. That doesn't make the patterns bad — they provide structure and compile-time safety. But it does explain why Python code tends to be shorter.
+
+---
+meta_desc: A beginner-friendly guide to common Java design patterns -- Singleton, Factory, Builder, Observer, Strategy, Adapter, and Decorator with real-world examples and Python comparisons.
+---
+pub_date: 2026-02-14
+---
+has_code: yes
+---
+tags: java-notes
+---
+language: en

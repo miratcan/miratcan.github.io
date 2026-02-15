@@ -2,6 +2,7 @@
 <html lang="{% block lang %}en{% endblock %}">
 <head>
   <meta charset="utf-8">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="d19d3d5e-43ab-47ca-9def-5c819bacf475"></script>
   <style>
     :root {
       --bg: #0a0c09;
@@ -77,6 +78,10 @@
     a:hover,
     a:focus-visible {
       color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    .model-article main a {
       text-decoration: underline;
     }
 

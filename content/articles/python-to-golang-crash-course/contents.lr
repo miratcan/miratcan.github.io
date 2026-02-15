@@ -12,7 +12,16 @@ package main
 func main() {
   // Do something here.
 }
-```  
+```
+
+In Python, there's no strict entry point requirement, but the common pattern is:
+
+```python
+if __name__ == '__main__':
+    # Do something here.
+```
+
+The difference is that Go enforces this at the language level — your program won't compile without `package main` and `func main()`. Python's `if __name__` is just a convention.
 
 ## Imports  
 
@@ -29,11 +38,21 @@ import (
 func main() {
 	fmt.Println("My favorite number is", rand.Intn(10))
 }
-```  
+```
+
+Python's import syntax is similar but has more flexibility:
+
+```python
+import math                    # Go: import "math"
+from math import sqrt          # Go: no equivalent, you always use math.Sqrt()
+import math as m               # Go: no built-in aliasing (well, there is but rarely used)
+```
+
+One key difference: in Go you must use every imported package or the code won't compile. Python doesn't care about unused imports.
 
 ## Visibility  
 
-Items within packages that start with capital letters are exported and can be accessed by other packages. This will raise an error because `pi` is not exported:  
+Items within packages that start with capital letters are exported and can be accessed by other packages. This will raise an error because `pi` is not exported:
 
 ```golang
 package main
@@ -46,11 +65,13 @@ import (
 func main() {
 	fmt.Println(math.pi)
 }
-```  
+```
+
+In Python, visibility is just a convention: prefix with `_` to mark something as "private." But nothing actually prevents you from accessing `_private_var` from outside. Go enforces this at the compiler level — lowercase names are truly inaccessible from other packages.
 
 ## Functions  
 
-In Golang, functions are defined using the `func` keyword instead of `def`. Parameters and return types must be explicitly defined, like this:  
+In Golang, functions are defined using the `func` keyword instead of `def`. Parameters and return types must be explicitly defined, like this:
 
 ```golang
 package main
@@ -64,7 +85,18 @@ func add(x int, y int) int {
 func main() {
 	fmt.Println(add(42, 13))
 }
-```  
+```
+
+Python equavelent with type hints:
+
+```python
+def add(x: int, y: int) -> int:
+    return x + y
+
+print(add(42, 13))
+```
+
+The big difference: Go's type declarations are enforced by the compiler. Python's type hints are just annotations — they don't prevent you from passing a string where an int is expected. You need tools like `mypy` to actually check them.
 
 You can also simplify parameter type declarations by only specifying the type for the last parameter. The preceding parameters will be assumed to be of the same type. In this example, both `x` and `y` are integers:  
 
@@ -94,7 +126,20 @@ func main() {
 }
 ```  
 
-If you do not name your return values, the function will use a "naked" return. Avoid naked returns as much as possible, especially in larger functions, as they make code harder to read and understand. 
+If you do not name your return values, the function will use a "naked" return. Avoid naked returns as much as possible, especially in larger functions, as they make code harder to read and understand.
+
+Python doesn't have named return values, but you can get close with type hints and tuple returns:
+
+```python
+def split(total: int) -> tuple[int, int]:
+    x = total * 4 // 9
+    y = total - x
+    return x, y
+
+print(split(17))
+```
+
+Go's named returns also serve as documentation — you can see what each return value means from the function signature. In Python you'd need a docstring or a `NamedTuple` for that.
 
 ## Variables
 
@@ -132,6 +177,22 @@ foo, bar, baz := true, true, false
 
 When you use `:=`, you don't need to use `var` statement.
 
+In Python, you just assign directly — no `var` keyword, no type declaration needed:
+
+```python
+foo, bar, baz = True, True, False
+```
+
+Python also has type hints if you want to be explicit, but they're optional:
+
+```python
+foo: bool = True
+bar: bool = True
+baz: bool = False
+```
+
+Another difference: Python variables don't have zero values. If you try to use a variable before assigning it, you get a `NameError`. Go gives you `0`, `false`, or `""` depending on the type.
+
 ## Types
 
 Here is the list of types in Golang:
@@ -167,6 +228,16 @@ var f float64 = float64(i)
 var u uint = uint(f)
 ```
 
+Python's type casting looks almost identical:
+
+```python
+i = 42
+f = float(i)
+u = int(f)
+```
+
+Same syntax pattern — `Type(value)`. The difference is Go does this at compile time and Python at runtime. Also Python is more forgiving: `int("42")` works in Python but Go can't convert a string to int with a simple cast (you need `strconv.Atoi`).
+
 ## Constants
 
 Constants are same with variables but they are not mutable. They can be string, number or boolean values. `const` keyword used to define constant instead of `var`.
@@ -174,6 +245,14 @@ Constants are same with variables but they are not mutable. They can be string, 
 ```golang
 const pi float = 3.14
 ```
+
+Python doesn't have real constants. The convention is to use `UPPER_CASE` names, but nothing stops you from changing the value:
+
+```python
+PI = 3.14  # Convention only, you can still do PI = 42
+```
+
+Python 3.8+ has `typing.Final` but it's only a hint for type checkers, it doesn't actually prevent reassignment at runtime. Go's `const` is enforced by the compiler.
 
 ## Loops
 
@@ -237,6 +316,25 @@ func main() {
 	}
 }
 ```
+
+Python has separate keywords for these patterns:
+
+```python
+# C-style for loop → Python uses range()
+for i in range(10):
+    sum += i
+
+# While loop
+while sum < 1000:
+    sum += sum
+
+# Infinite loop
+while True:
+    pass
+```
+
+I actually like Go's approach here — one keyword, three patterns. Python's `for` and `while` are more readable at first glance but Go's unified `for` is elegant once you get used to it.
+
 ## Control Flows
 
 ### If Statements
@@ -273,6 +371,20 @@ func pow(x, n, lim float64) float64 {
 	return lim
 }
 ```
+
+Python equavelent using the walrus operator (3.8+):
+
+```python
+import math
+
+def pow(x, n, lim):
+    if (v := math.pow(x, n)) < lim:
+        return v
+    return lim
+```
+
+The syntax is different (`:=` in Go's if statement vs `:=` as Python's walrus operator) but the idea is the same: assign and check in one line. Note that in Go, the variable `v` is scoped to the if block only. In Python, `v` leaks into the surrounding scope.
+
 ### Switch statements
 
 Switch statements are used to create sequence of if else conditions like other languages. Switch statements are evaluated from top to bottom.
@@ -315,6 +427,32 @@ func main() {
 	}
 }
 ```
+
+Python 3.10+ has `match-case` which is similar but more powerful (it supports pattern matching). For older Python versions, you'd use `if-elif-else`:
+
+```python
+import platform, datetime
+
+# match-case (Python 3.10+)
+match platform.system():
+    case "Darwin":
+        print("OS X.")
+    case "Linux":
+        print("Linux.")
+    case other:
+        print(f"{other}.")
+
+# if-elif-else (classic Python, same as the second Go example)
+hour = datetime.datetime.now().hour
+if hour < 12:
+    print("Good morning!")
+elif hour < 17:
+    print("Good afternoon.")
+else:
+    print("Good evening.")
+```
+
+One thing to note: Go's switch doesn't fall through by default (you need `fallthrough` keyword). Most other languages do fall through by default, so this is actually a nice Go design decision.
 
 ### Defers
 
@@ -375,6 +513,24 @@ Go supports pointers, which store the memory address of a value.
   ```
 
 This process is called **"dereferencing"** or **"indirecting."**
+
+Python doesn't have pointers. Everything in Python is a reference to an object — you never deal with memory addresses directly. The closest thing to understanding pointer behavior is knowing the difference between mutable and immutable types:
+
+```python
+# Mutable (like passing a pointer in Go)
+a = [1, 2, 3]
+b = a
+b.append(4)
+print(a)  # [1, 2, 3, 4] — both point to the same list
+
+# Immutable (like passing a value in Go)
+x = 42
+y = x
+y = 100
+print(x)  # 42 — x is unchanged
+```
+
+In Go, you explicitly choose whether to pass by value or by pointer. In Python, this behavior depends on whether the object is mutable or immutable. You don't get a choice.
 
 ## Structs
 
@@ -457,9 +613,29 @@ If the size is fixed and doesn't change often, consider using an array. However,
 
 In golang, arrays can not be resized. O_o They are defined as [number of elements]Type. For example `var a [10]int` creates an array called a with 10 integers.
 
+Python doesn't have fixed-size arrays in the language. The closest thing is a `tuple` (immutable, fixed-size) or the `array` module (typed but resizable). In practice, you'd just use a list and... not resize it:
+
+```python
+a = [0] * 10                 # "array" of 10 zeros
+# or
+from array import array
+a = array('i', [0] * 10)     # typed array of 10 integers
+# or
+a = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0)  # tuple, truly immutable
+```
+
 ## Slices
 
 In golang slices are used create sliced views for arrays. They are defined as `[]Type = Array[low: high]`. For example: `var s []int = a[1:4]` creates a s variable which is slice from the a array by getting first and fourth elements.
+
+Python also has slicing syntax (`a[1:4]`), but there's a critical difference: **Python slices create copies, Go slices are references.** This trips up a lot of Python developers:
+
+```python
+names = ["John", "Paul", "George", "Ringo"]
+a = names[0:2]   # Creates a NEW list ["John", "Paul"]
+a[0] = "XXX"
+print(names)      # ["John", "Paul", "George", "Ringo"] — unchanged!
+```
 
 Note that slices are not copies, they are references. The referenced array is changed, slice is changed too. Here is an example that creates names array and creates two slices from it. When you check the output you can see that when referenced array (names) are changed, a and b slices are changed too:
 
@@ -541,7 +717,7 @@ A slice has two key properties: **length** and **capacity**.
 - **Length**: The number of elements the slice currently holds.  
 - **Capacity**: The total number of elements available in the underlying array, starting from the first element of the slice.
 
-You can retrieve the length and capacity of a slice `s` using the expressions `len(s)` and `cap(s)`.
+You can retrieve the length and capacity of a slice `s` using the expressions `len(s)` and `cap(s)`. Python has `len()` but no concept of capacity — Python's list handles memory allocation internally and doesn't expose it to you.
 
 Slices can be extended by re-slicing them, as long as they don't exceed their capacity.  
 Try modifying one of the slice operations in the example program to extend the slice beyond its capacity and observe the result.
