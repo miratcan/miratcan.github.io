@@ -41,6 +41,7 @@
 {% block meta_img %}{% if this.attachments.get('hero.png') %}{{ this.attachments.get('hero.png').path}}{% endif %}{% if this.attachments.get('hero.jpg') %}{{ this.attachments.get('hero.jpg').path}}{% endif %}{% endblock %}
 
 {% block body %}
+<h1>{{ this.title }}</h1>
 {% if 'quote' in this.tags %}
 <div class="quote-post">
   <blockquote>
