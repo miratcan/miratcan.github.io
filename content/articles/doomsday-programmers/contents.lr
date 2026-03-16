@@ -1,0 +1,50 @@
+title: Do We Need Doomsday Programmers?
+---
+body:
+
+*We thought our systems were unbreakable. Then a virus, a tremor, a fiber cut and suddenly they weren't.*
+
+COVID-19 didn't just kill people. It exposed how fragile everything we built on top of "normal" really was. Supply chains collapsed. Remote infrastructure buckled. The assumptions we coded into our systems, about uptime, about travel, about physical presence, fell apart one by one.
+
+I live in a small town in Turkey. Any earthquke above 4.0 on the Richter scale takes down the GSM network. Four point zero. That's not a catastrophe, that's a Tuesday in a seismic zone. And yet: no signal, no API calls, no cloud IDE, no Stack Overflow.
+
+GitHub has a code repository in the Arctic, buried in a vault in Svalbard. They're preserving the world's open source software for a civilizational collapse scenario. The Svalbard Global Seed Vault does the same for crop seeds. Smart people are thinking about what survives a doomsday. Someone is preserving the code. Someone is preserving the seeds.
+
+Nobody is preserving the programmer.
+
+In America, a non-trivial number of people build private bunkers. Most of us think they're paranoid. But I spent three days last week without internet on my computer and I discovered I could barely function. Every time I pressed F1, it tried to open an online doc. Every time I reached for autocomplete, it waited for a model that wasn't there.
+
+I thought about QBasic. QBasic had a built-in help system. You pressed F1 and the answer was just *there*, local, instant, complete. The environment was self-contained. You didn't need the world to be working to write code. The whole thing fit on a floppy disk and it *knew things*.
+
+*Three days in, I caught myself staring at a blank editor. Not because I didn't know what to build. Because I didn't know where to start without the scaffolding I'd grown used to. No autocomplete. No instant documentaiton. No "just ask Claude." I opened a file, wrote a function signature, and froze. The muscle was there. The confidence wasn't.*
+
+---
+
+This is what I'm calling a doomsday programmer. Not a prepper. Not a luddite. Someone who could write functional software if the internet dissapeared tomorrow, because they carry a doomsday knowledge storage with them: in their minds, on their computers, on external hard drives, or even on paper.
+
+Think of it like knowing Morse code. Useless in daily life. Invaluable if everything else fails. The doomsday programmer has internalized enough, syntax, patterns, algorithms, mental models, that they don't need to phone home to think.
+
+We used to be like this by necessity. We kept snippet folders. We printed documentation. We built things up in our heads before we touched the keyboard. Senior developers carried years of compressed knowlege. Then Stack Overflow arrived. Then GitHub Copilot. Then Claude. Each tool was better than the last, and we handed off a little more of ourselves each time.
+
+I'm not saying this was wrong. I use these tools constantly. They make me faster. The question isn't whether to use them, it's whether we've quietly outsourced something we can't easily get back.
+
+Three days without internet and I noticed the atrophy. Not of skill exactly, but of *muscle*. The reaching. The thinking before typing. The trusting your own head.
+
+---
+
+Is preparing for this madness? I don't know. The bunker-builders in America would say no. The engineers at GitHub Svalbard would say no. Maybe the real question is simpler: what does it mean to truly know something in your craft, versus knowing how to look it up?
+
+The doomsday never has to come. The power grid stays on, the cables stay intact, Anthropic stays solvent. That's probably how it goes. But there might be something worth preserving in the programmer who dosen't need all of that to be true, who carries the knowledge like a language, not like a bookmark.
+
+*Are doomsday programmers just old-school good developers? Maybe. Or maybe we only find out the difference when the lights go out.*
+
+---
+meta_desc: COVID exposed fragile systems. A 4.0 earthquake kills my GSM. GitHub vaults code in the Arctic. But nobody is preserving the programmer who can work without the internet.
+---
+pub_date: 2026-03-16
+---
+has_code: no
+---
+tags: thoughts
+---
+language: en
