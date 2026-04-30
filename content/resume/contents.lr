@@ -22,9 +22,18 @@ Printable version is available [here](/resume/resume.html).
 
 ## **Professional Experience**
 
+### **Valocom (BBrain)**
+**Full-Stack Technical Lead & API Architect**
+*August 2025 – April 2026 | Remote*
+- Architected a new FastAPI backend (Python 3.13, PostgreSQL, Redis) with Clean Architecture across 23 domain services, replacing a legacy PHP system.
+- Migrated 18 of 19 legacy PHP endpoints to Python with zero downtime using a dual-router architecture.
+- Maintained and improved the Android tablet app (Java, Twilio video calling, Pushy push notifications).
+- Built BDD test infrastructure with real PostgreSQL integration tests and Azure Monitor observability.
+- Designed complex domain logic: license management, RBAC with 5 role scopes, calendar sync, and video calling workflows.
+
 ### **INOHOM Smart Home Systems**
-**Full Stack Developer**  
-*August 2023 – April 2025 | Remote*
+**Full Stack Developer**
+*August 2023 – August 2025 | Remote*
 - Delivered an internal help desk platform with Django, ReactJS, and Chakra UI, replacing a legacy ticketing workflow.
 - Added advanced filtering via Django FilterSet and React Context API state management to reduce support response time.
 - Deployed and maintained the application on internal Linux servers, owning monitoring and release processes.
@@ -49,21 +58,22 @@ Printable version is available [here](/resume/resume.html).
 - Designed data services and dashboards (Numba, Celery, PostgreSQL) that powered revenue forecasting.
 
 ## **Projects**
-- **Bedri:** Genetic-algorithm text-to-image app that evolves canvases with luminance-based fitness scoring.
-- **Etherboard.io:** On-chain announcement board on Gnosis Chain with investment mechanics in Solidity.
-- **Flipa.live:** Coin-flip betting dApp built on ReactJS and Web3JS with smart-contract settlement.
-- **Eleman:** Dockerised job board pulling data from Airtable, served with FastAPI + React.
+- **[TahtLang](https://github.com/tahtlang/tahtlang):** A DSL for Reigns-style card games with Tree-sitter grammar, LSP server, and balance simulator.
+- **[VPix](https://mirat.dev/vpix2/):** Vim-like pixel art editor in the browser. React, TypeScript, Canvas API.
+- **[Simsar MCP](https://simsar.trade/):** MCP server providing cryptocurrency market data to Claude and other AI assistants.
+- **[Bedri](https://mirat.dev/bedri/):** Genetic-algorithm text-to-image app that evolves canvases with luminance-based fitness scoring.
+- **[Eleman](https://github.com/miratcan/Eleman):** Dockerised static job board generator using Airtable as data source.
 
 ## **Education**
 - **Maltepe University** — B.A. Visual Communication Design (2008 – 2012)
 
 ## **Certifications, Skills & Interests**
 - **Certification:** Resilience Training – Emotional Toughness & Cognitive Flexibility (2024)
-- **Technologies:** Python (Django, FastAPI), JavaScript (ReactJS, NextJS), Solidity, Web3, REST APIs, Celery, Redis, PostgreSQL, Docker, Git, Linux
+- **Technologies:** Python (Django, FastAPI), TypeScript (React, Next.js), Java (Android), PostgreSQL, Redis, Azure, Docker, Twilio, MCP, Tree-sitter, Git, Linux
 - **Core Competencies:** Backend architecture, clean code & reviews, testing strategy, performance optimisation, cross-functional collaboration, mentoring
 - **Soft Skills:** Empathetic leadership, focus under pressure, async-first communication, technical mentorship, calm execution in ambiguity
 
 ---
-meta_desc: Experienced Python, Javascript, and Solidity developer who is open to remote jobs.
+meta_desc: Full-stack developer with 10+ years of experience. Python, Django, FastAPI, TypeScript, React. Open to remote positions.
 ---
 meta_img: face.jpeg
