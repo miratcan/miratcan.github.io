@@ -25,11 +25,10 @@ Printable version is available [here](/resume/resume.html).
 ### **Valocom (BBrain)**
 **Full-Stack Developer & Migration Architect**
 *August 2025 – April 2026 | Remote*
-- Architected a new FastAPI backend (Python 3.13, PostgreSQL, Redis) with Clean Architecture across 23 domain services, replacing a legacy PHP system.
-- Designed and executed an AI-orchestrated migration workflow with specialized agents (Explorer, Contract-Writer, Technical-Writer, Developer) to systematically migrate 18 of 19 legacy PHP endpoints with zero downtime.
-- Maintained and improved the Android tablet app (Java, Twilio video calling, Pushy push notifications) for an elderly care-calling platform.
-- Built BDD test infrastructure with real PostgreSQL integration tests and Azure Monitor observability.
-- Designed complex domain logic: license management, RBAC with 5 role scopes, Nettie calendar sync, and Twilio video calling workflows.
+- Designed an AI-orchestrated migration workflow with specialized agent roles (Explorer, Contract-Writer, Technical-Writer, Developer) to systematically migrate legacy PHP endpoints to FastAPI with zero downtime.
+- Implemented core backend features: sync_tablet endpoint (13+ data dependencies), Twilio video calling, Pushy push notifications, Nettie calendar integration, license activation flows, and WooCommerce webhook processing.
+- Refactored the Android tablet app: extracted components from a monolithic MainActivity, added JaCoCo test coverage, fixed 33 lint errors, and integrated external video calling (Vicasa).
+- Migrated all foreign keys from integer to UUID across the database schema with backward compatibility.
 
 ### **INOHOM Smart Home Systems**
 **Full Stack Developer**
