@@ -39,14 +39,14 @@ Printable version is available [here](/resume/resume.html).
 - Deployed and maintained the application on internal Linux servers, owning monitoring and release processes.
 
 ### **Metaverse INC.**
-**Blockchain & Full Stack Developer**  
-*March 2021 – March 2022 | Remote*
+**Blockchain & Full Stack Developer**
+*April 2022 – August 2023 | Remote*
 - Built multi-chain NFT marketplace features, including Solidity contracts and Python event-processing services.
 - Modernised a legacy ReactJS front-end, adding Next.js REST APIs and tooling for faster product iterations.
 
 ### **Radity**
-**Software Architect**  
-*March 2021 – April 2022 | Remote*
+**Software Architect**
+*March 2021 – March 2022 | Remote*
 - Led architecture decisions for enterprise client projects, from solution design to database migrations.
 - Produced technical specs and onboarding material to keep mixed skill-level teams aligned on delivery.
 
@@ -67,11 +67,12 @@ Printable version is available [here](/resume/resume.html).
 ## **Education**
 - **Maltepe University** — B.A. Visual Communication Design (2008 – 2012)
 
-## **Certifications, Skills & Interests**
-- **Certification:** Resilience Training – Emotional Toughness & Cognitive Flexibility (2024)
-- **Technologies:** Python (Django, FastAPI), TypeScript (React, Next.js), Java (Android), PostgreSQL, Redis, Azure, Docker, Twilio, MCP, Tree-sitter, Git, Linux
-- **Core Competencies:** Backend architecture, clean code & reviews, testing strategy, performance optimisation, cross-functional collaboration, mentoring
-- **Soft Skills:** Empathetic leadership, focus under pressure, async-first communication, technical mentorship, calm execution in ambiguity
+## **Skills**
+- **Languages:** Python, TypeScript, Java, SQL
+- **Backend:** Django, FastAPI, Celery, PostgreSQL, Redis, Azure
+- **Frontend:** React, Next.js, Android (Java)
+- **Tools:** Docker, Git, Linux, Twilio, MCP, Tree-sitter
+- **Other:** Backend architecture, testing strategy, API design, mentoring, team management
 
 ---
 meta_desc: Full-stack developer with 10+ years of experience. Python, Django, FastAPI, TypeScript, React. Open to remote positions.
