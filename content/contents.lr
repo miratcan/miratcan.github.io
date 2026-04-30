@@ -7,7 +7,7 @@ body:
   <div class="home-intro">
     <p>
 Hello, I'm Mirat—friends call me Miro. I'm a programmer, solopreneur, and dad of two who loves turning ideas into things people can use, listen to, or feel.</p>
-    <p>Over the years I've shipped experiments like OneMillionDollar.link alongside practical tools such as Kaydet. You can explore more of my work on <a href="https://github.com/miratcan">GitHub</a>.</p>
+    <p>Over the years I've built tools like <a href="https://github.com/miratcan/kaydet">Kaydet</a>, <a href="https://github.com/tahtlang/tahtlang">TahtLang</a>, and <a href="https://mirat.dev/vpix2/">VPix</a>. You can explore more of my work on <a href="https://github.com/miratcan">GitHub</a>.</p>
   </div>
 </div>
 
@@ -37,6 +37,6 @@ Hello, I'm Mirat—friends call me Miro. I'm a programmer, solopreneur, and dad 
 ---
 title: 
 ---
-meta_desc: I'm Mirat, a programmer and solopreneur who loves building things people actually use. Creator of OneMillionDollar.link and other viral experiments.
+meta_desc: Full-stack developer. Python, Django, TypeScript, React. Building tools I want to use.
 ---
 meta_img: mirat-resized.webp

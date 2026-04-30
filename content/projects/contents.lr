@@ -11,6 +11,33 @@ This list is a bit crowded. I've been coding for over 10 years, and since childh
 
 *Give your AI the eyes of a trader.* An MCP server providing cryptocurrency market data and 35+ technical indicators to Claude and other AI assistants.
 
+## TahtLang
+
+A domain-specific language for writing Reigns-style card games. Write `.taht` files in plain text, play in the terminal, export JSON for Unity/Godot. Comes with a Tree-sitter grammar, LSP server, and a balance simulator that runs hundreds of games to find unreachable cards and broken weights.
+
+ * [GitHub](https://github.com/tahtlang/tahtlang)
+ * [Showcase game: Osmancık](https://github.com/miratcan/osmancik) — 81-card Ottoman palace game written in TahtLang
+
+## VPix
+
+A keyboard-driven pixel art editor that works like Vim. No menus, no toolbars — just keys. Drawings are encoded in the URL so you can share them with a link.
+
+ * [Try it](https://mirat.dev/vpix2/)
+ * [GitHub](https://github.com/miratcan/vpix2)
+
+## Bedri
+
+A web app that uses genetic algorithms to turn images into text-based art. Named after the Turkish painter Bedri Baykam.
+
+ * [Try it](https://mirat.dev/bedri/)
+ * [GitHub](https://github.com/miratcan/bedri)
+
+## GroupDigestBot
+
+Telegram bot that summarizes group chats using Gemini AI. Logs messages, analyzes shared images, and generates conversation digests on demand with `/digest`.
+
+ * [GitHub](https://github.com/miratcan/groupdigestbot)
+
 ## Kaydet
 
 A simple journaling script I wrote for my own needs. Initially created in 2016, I turned it into a Python package in 2023:
@@ -54,15 +81,4 @@ A simple web application to help create a packing list for travel. It's still [o
  * [Web Archive](https://web.archive.org/web/20210515145133/https://bavulanekoysam.appspot.com/)
  * [Github](https://github.com/miratcan/BavulaNeKoysam)
 
-## Filika
-
-A terminal application I wrote for backing up FriendFeed accounts as it was shutting down. It also downloaded all shared images and MP3s. To ensure compatibility on all users' computers, I only used standard Python libraries. It's no longer functional since FriendFeed has closed, but it may interest those working with APIs and downloads.
-
- * [GitHub](https://gist.github.com/miratcan/89aff1ae486e91dd0ca8).
-
-## FFAnony
-
-A web service that allowed people to post anonymously on FriendFeed using an account named FFAnony. I built it as a one-night project during FriendFeed's active days. It hosted all sorts of content, from gossip and love confessions to playful banter, flirtation, and [/r/gonewild/](http://reddit.com/r/gonewild/)-style photo shares. Our people love gossip, so it became quite popular.
-
- * [Github](https://github.com/miratcan/FFAnony)
 
