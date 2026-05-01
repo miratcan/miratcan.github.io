@@ -1,132 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Mirat Can Bayrak - Resume</title>
-    <style>
-        body {
-            font-family: Georgia, serif;
-            max-width: 800px;
-            margin: 40px auto;
-            line-height: 1.6;
-        }
+  <meta charset="UTF-8">
+  <title>Mirat Can Bayrak - Resume</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      max-width: 750px;
+      margin: 32px auto;
+      padding: 0 24px;
+      line-height: 1.5;
+      color: #222;
+      font-size: 10.5pt;
+    }
 
-        h1,
-        h2 {
-            color: #456a8f;
-            border-bottom: 1px solid gray;
-        }
+    h1 {
+      font-size: 20pt;
+      margin: 0 0 4px 0;
+      color: #111;
+    }
 
-        h1 {
-            font-size: 24px;
-        }
+    .contact {
+      font-size: 9.5pt;
+      color: #444;
+      margin-bottom: 16px;
+    }
 
-        h2 {
-            font-size: 20px;
-            margin-top: 40px;
-        }
+    .contact a {
+      color: #444;
+      text-decoration: none;
+    }
 
-        p,
-        li {
-            font-size: 16px;
-        }
+    .contact span::after {
+      content: " \00b7  ";
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    .contact span:last-child::after {
+      content: "";
+    }
 
-        div.boxed {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+    h2 {
+      font-size: 11pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1.5px solid #222;
+      padding-bottom: 3px;
+      margin: 20px 0 10px 0;
+      color: #111;
+    }
 
-        div.boxed a {
-            border: 1px solid lightgray;
-            padding: 3px 6px;
-            border-radius: 3px;
-        }
-    </style>
+    h3 {
+      font-size: 10.5pt;
+      margin: 12px 0 1px 0;
+      color: #111;
+    }
+
+    .meta {
+      font-size: 9.5pt;
+      color: #555;
+      margin: 0 0 4px 0;
+    }
+
+    ul {
+      margin: 4px 0 8px 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin: 2px 0;
+    }
+
+    p {
+      margin: 4px 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2px 12px;
+      font-size: 10pt;
+    }
+
+    .skills-grid dt {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .skills-grid dd {
+      margin: 0;
+    }
+
+    a {
+      color: #222;
+      text-decoration: none;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+        font-size: 10pt;
+      }
+
+      h2 {
+        margin-top: 14px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <h1>Mirat Can Bayrak</h1>
-    <div class="boxed">
-        <a target="_blank" rel="noopener noreferrer" href="https://mirat.dev">mirat.dev</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/miratcan">github.com/miratcan</a>
-        <a target="_blank" rel="noopener noreferrer"
-            href="https://linkedin.com/in/mirat-can-bayrak">linkedin.com/in/mirat-can-bayrak</a>
-        <a target="_blank" rel="noopener noreferrer" href="mailto:mirat.bayrak@gmail.com">mirat.bayrak@gmail.com</a>
-        <a target="_blank" rel="noopener noreferrer" href="tel:+905066788505">+905066788505</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/bzrrQ3wLuJPu99FEA">Usak, Turkey</a>
-    </div>
+<h1>Mirat Can Bayrak</h1>
+<div class="contact">
+  <span>Usak, Turkey (GMT+3)</span>
+  <span>mirat.bayrak@gmail.com</span>
+  <span>+90 506 678 85 05</span>
+  <span>github.com/miratcan</span>
+  <span>linkedin.com/in/mirat-can-bayrak</span>
+</div>
 
-    <h2>WORK EXPERIENCE</h2>
+<h2>Summary</h2>
+<p>Backend-focused engineer with 10+ years of experience building Python systems (Django, FastAPI) for SaaS, healthcare, and IoT companies. Recently designed an AI-orchestrated migration workflow to systematically move a legacy PHP codebase to FastAPI with zero downtime. Comfortable owning projects end-to-end. Thrives in async, remote-first teams.</p>
 
-    <h3>INOHOM Smart Home Systems</h3>
-    <p><strong>Full Stack Developer | Aug. 2023 - Apr. 2025 | Remote</strong></p>
-    <p>INOHOM specializes in smart home solutions.</p>
-    <ul>
-        <li>Designed and developed an internal help desk system using Django and ReactJS.</li>
-        <li>Implemented advanced filtering with Django Filters and Context API state management.</li>
-        <li>Deployed application on internal Linux servers; used Chakra UI for responsive design.</li>
-    </ul>
+<h2>Professional Experience</h2>
 
-    <h3>Metaverse INC.</h3>
-    <p><strong>Blockchain & Full Stack Developer | Mar. 2021 - Mar. 2022 | Remote</strong></p>
-    <p>NFT marketplace with multi-chain support, serving crypto-native users.</p>
-    <ul>
-        <li>Wrote smart contracts in Solidity and built event-driven Python services for monitoring.</li>
-        <li>Refactored legacy ReactJS frontend and created REST APIs and admin tools using NextJS.</li>
-    </ul>
+<h3>Valocom (BBrain)</h3>
+<p class="meta">Full-Stack Developer &amp; Migration Architect &middot; Aug 2025 – Apr 2026 &middot; Remote</p>
+<ul>
+  <li>Designed an AI-orchestrated migration workflow with specialized agent roles (Explorer, Contract-Writer, Technical-Writer, Developer) to systematically migrate legacy PHP endpoints to FastAPI with zero downtime.</li>
+  <li>Implemented core backend features: sync_tablet endpoint (13+ data dependencies), Twilio video calling, Pushy push notifications, Nettie calendar integration, license activation flows, and WooCommerce webhook processing.</li>
+  <li>Refactored the Android tablet app: extracted components from a monolithic MainActivity, added JaCoCo test coverage, fixed 33 lint errors, and integrated external video calling (Vicasa).</li>
+  <li>Migrated all foreign keys from integer to UUID across the database schema with backward compatibility.</li>
+</ul>
 
-    <h3>Radity</h3>
-    <p><strong>Software Architect | Mar. 2021 - Apr. 2022 | Remote</strong></p>
-    <p>Swiss-based software consultancy building custom enterprise tools.</p>
-    <ul>
-        <li>Led architecture and infrastructure decisions across multiple client projects.</li>
-        <li>Wrote tech specs, planning documents, and DB migration scripts from legacy stacks.</li>
-    </ul>
+<h3>INOHOM Smart Home Systems</h3>
+<p class="meta">Full Stack Developer &middot; Aug 2023 – Aug 2025 &middot; Remote</p>
+<ul>
+  <li>Delivered an internal help desk platform with Django, ReactJS, and Chakra UI, replacing a legacy ticketing workflow.</li>
+  <li>Added advanced filtering via Django FilterSet and React Context API state management to reduce support response time.</li>
+  <li>Deployed and maintained the application on internal Linux servers, owning monitoring and release processes.</li>
+</ul>
 
-    <h3>Metglobal DMG</h3>
-    <p><strong>Python Developer -> Development Manager | Aug. 2017 - Jan. 2021 | Istanbul, Turkey</strong></p>
-    <p>Travel SaaS company powering booking engines across global brands.</p>
-    <ul>
-        <li>Managed Python teams, conducted hiring and technical reviews.</li>
-        <li>Built static hotel data services and gamified internal dashboards using Numba JIT.</li>
-        <li>Created workshops and internal training programs to upskill junior devs.</li>
-    </ul>
+<h3>Metaverse INC.</h3>
+<p class="meta">Blockchain &amp; Full Stack Developer &middot; Apr 2022 – Aug 2023 &middot; Remote</p>
+<ul>
+  <li>Built multi-chain NFT marketplace features, including Solidity contracts and Python event-processing services.</li>
+  <li>Modernised a legacy ReactJS front-end, adding Next.js REST APIs and tooling for faster product iterations.</li>
+</ul>
 
-    <h2>PROJECTS</h2>
-    <ul>
-        <li><strong>Bedri:</strong> A genetic-algorithm based text-to-image app; uses luminance-based fitness and
-            hill-climbing to evolve drawings via TSX + Canvas UI.</li>
-        <li><strong>Etherboard.io:</strong> Decentralized announcement board on Gnosis Chain with on-chain investment
-            logic.</li>
-        <li><strong>Flipa.live:</strong> Coin flip betting dApp built with ReactJS, Web3JS, and Solidity.</li>
-        <li><strong>Eleman:</strong> Dockerized job board powered by Airtable backend and FastAPI/React.</li>
-    </ul>
+<h3>Radity</h3>
+<p class="meta">Software Architect &middot; Mar 2021 – Mar 2022 &middot; Remote</p>
+<ul>
+  <li>Led architecture decisions for enterprise client projects, from solution design to database migrations.</li>
+  <li>Produced technical specs and onboarding material to keep mixed skill-level teams aligned on delivery.</li>
+</ul>
 
-    <h2>EDUCATION</h2>
-    <p><strong>Maltepe University</strong> | B.A. in Visual Communication Design | 2008 - 2012</p>
+<h3>Metglobal DMG</h3>
+<p class="meta">Python Developer → Development Manager &middot; Aug 2017 – Jan 2021 &middot; Istanbul, Turkey</p>
+<ul>
+  <li>Promoted to manage the Python division responsible for hotel booking engines used worldwide.</li>
+  <li>Coordinated hiring, mentoring, and delivery processes to raise team productivity and code quality.</li>
+  <li>Designed data services and dashboards (Numba, Celery, PostgreSQL) that powered revenue forecasting.</li>
+</ul>
 
-    <h2>CERTIFICATIONS, SKILLS & INTERESTS</h2>
-    <p><strong>Certifications:</strong> Resilience Training - Emotional Toughness & Cognitive Flexibility (2024)</p>
-    <p><strong>Technologies:</strong> Python (Django, FastAPI), JavaScript (ReactJS, NextJS), Solidity, Web3, REST APIs,
-        Celery, Redis, PostgreSQL, Docker, Git, Linux.</p>
-    <p><strong>Core Competencies:</strong></p>
-    <ul>
-        <li>Design, develop, and maintain robust backend systems</li>
-        <li>Write clean, efficient, and well-documented code</li>
-        <li>Ensure code quality through reviews, testing, and best practices</li>
-        <li>Collaborate with cross-functional teams to deliver end-to-end solutions</li>
-        <li>Identify and solve performance and scalability challenges</li>
-        <li>Contribute to architecture and system design discussions</li>
-    </ul>
-    <p><strong>Soft Skills:</strong> Empathetic leadership, deep focus, resilience under pressure, emotional regulation,
-        clarity in chaos, async-first collaboration, technical mentorship.</p>
+<h2>Projects</h2>
+<ul>
+  <li><strong>TahtLang</strong> — A DSL for Reigns-style card games with Tree-sitter grammar, LSP server, and balance simulator. github.com/tahtlang/tahtlang</li>
+  <li><strong>VPix</strong> — Vim-like pixel art editor in the browser. React, TypeScript, Canvas API. mirat.dev/vpix2</li>
+  <li><strong>Simsar MCP</strong> — MCP server providing cryptocurrency market data to Claude and other AI assistants. simsar.trade</li>
+  <li><strong>Bedri</strong> — Genetic-algorithm text-to-image app. React, TypeScript, Canvas API. mirat.dev/bedri</li>
+  <li><strong>Eleman</strong> — Dockerised static job board generator using Airtable as data source. github.com/miratcan/Eleman</li>
+</ul>
+
+<h2>Education</h2>
+<p><strong>Maltepe University</strong> — B.A. Visual Communication Design (2008 – 2012)</p>
+
+<h2>Skills</h2>
+<dl class="skills-grid">
+  <dt>Languages</dt>
+  <dd>English (C1 Advanced), Turkish (Native)</dd>
+  <dt>Programming</dt>
+  <dd>Python, TypeScript, Java, SQL</dd>
+  <dt>Backend</dt>
+  <dd>Django, FastAPI, Celery, PostgreSQL, Redis, Azure</dd>
+  <dt>Frontend</dt>
+  <dd>React, Next.js, Android (Java)</dd>
+  <dt>Tools</dt>
+  <dd>Docker, Git, Linux, Twilio, MCP, Tree-sitter</dd>
+  <dt>Other</dt>
+  <dd>Backend architecture, testing strategy, API design, mentoring, team management</dd>
+</dl>
+
+<h2>References</h2>
+<p><strong>Carlos Galvizu</strong> — Polarix &middot; linkedin.com/in/carlos-galvizu-6659a86 &middot; cgalvizu@polarix.com</p>
+
 </body>
-
 </html>
