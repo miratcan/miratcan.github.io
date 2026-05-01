@@ -4,23 +4,16 @@ title: Mirat Can Bayrak - Resume
 ---
 body:
 
-To save as PDF, use your browser's print function (Ctrl+P / Cmd+P).
+<p class="no-print" style="font-size:0.85rem;color:#998763;">To save as PDF, use your browser's print function (Ctrl+P / Cmd+P).</p>
 
-<table class="resume-contact">
-<tbody>
-<tr><td><strong>Location</strong></td><td>Usak, Turkey (GMT+3)</td></tr>
-<tr><td><strong>Email</strong></td><td><a href="mailto:mirat.bayrak@gmail.com">mirat.bayrak@gmail.com</a></td></tr>
-<tr><td><strong>Phone</strong></td><td><a href="tel:+905066788505">+90 0506 678 85 05</a></td></tr>
-<tr><td><strong>LinkedIn</strong></td><td><a href="https://www.linkedin.com/in/mirat-can-bayrak">Mirat Can Bayrak</a></td></tr>
-<tr><td><strong>GitHub</strong></td><td><a href="https://github.com/miratcan">miratcan</a></td></tr>
-</tbody></table>
+Usak, Turkey (GMT+3) · mirat.bayrak@gmail.com · +90 506 678 85 05 · [github.com/miratcan](https://github.com/miratcan) · [linkedin.com/in/mirat-can-bayrak](https://www.linkedin.com/in/mirat-can-bayrak)
 
-## **Summary**
+## Summary
 - Backend-focused engineer with **10+ years of experience** building Python systems (Django, FastAPI) for SaaS, healthcare, and IoT companies.
 - Recently designed an AI-orchestrated migration workflow to systematically move a legacy PHP codebase to FastAPI with zero downtime.
 - Comfortable owning projects end-to-end: architecture, implementation, delivery, and long-term maintenance. Thrives in async, remote-first teams.
 
-## **Professional Experience**
+## Professional Experience
 
 ### **Valocom (BBrain)**
 **Full-Stack Developer & Migration Architect**
@@ -56,17 +49,17 @@ To save as PDF, use your browser's print function (Ctrl+P / Cmd+P).
 - Coordinated hiring, mentoring, and delivery processes to raise team productivity and code quality.
 - Designed data services and dashboards (Numba, Celery, PostgreSQL) that powered revenue forecasting.
 
-## **Projects**
+## Projects
 - **[TahtLang](https://github.com/tahtlang/tahtlang):** A DSL for Reigns-style card games with Tree-sitter grammar, LSP server, and balance simulator.
 - **[VPix](https://mirat.dev/vpix2/):** Vim-like pixel art editor in the browser. React, TypeScript, Canvas API.
 - **[Simsar MCP](https://simsar.trade/):** MCP server providing cryptocurrency market data to Claude and other AI assistants.
 - **[Bedri](https://mirat.dev/bedri/):** Genetic-algorithm text-to-image app that evolves canvases with luminance-based fitness scoring.
 - **[Eleman](https://github.com/miratcan/Eleman):** Dockerised static job board generator using Airtable as data source.
 
-## **Education**
+## Education
 - **Maltepe University** — B.A. Visual Communication Design (2008 – 2012)
 
-## **Skills**
+## Skills
 - **Spoken Languages:** English (C1 Advanced), Turkish (Native)
 - **Programming Languages:** Python, TypeScript, Java, SQL
 - **Backend:** Django, FastAPI, Celery, PostgreSQL, Redis, Azure
@@ -74,7 +67,7 @@ To save as PDF, use your browser's print function (Ctrl+P / Cmd+P).
 - **Tools:** Docker, Git, Linux, Twilio, MCP, Tree-sitter
 - **Other:** Backend architecture, testing strategy, API design, mentoring, team management
 
-## **References**
+## References
 - **Carlos Galvizu** — Polarix · [LinkedIn](https://www.linkedin.com/in/carlos-galvizu-6659a86/) · cgalvizu@polarix.com
 
 ---
