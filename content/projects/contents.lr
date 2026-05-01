@@ -51,7 +51,7 @@ A simple journaling script I wrote for my own needs. Initially created in 2016, 
 A Python script that generates a categorized link directory website (web directory) by using an Excel file stored on Google Drive as a data source, along with a sample website created with it.
 
  * [Github](https://github.com/miratcan/InternetGuzeldir)
- * [Web](https://internetguzeldir.com)
+ * [Web Archive](https://web.archive.org/web/2025/https://internetguzeldir.com/)
 
 ## Eleman
 
@@ -74,11 +74,5 @@ A bookmarking and sharing service designed for following topics instead of peopl
  * [Web Archive](https://web.archive.org/web/20150325085445/http://linkfloyd.com/).
  * [Github](https://github.com/linkfloyd/linkfloyd-museum)
 
-## Bavula Ne Koysam?
-
-A simple web application to help create a packing list for travel. It's still [online](http://bavulanekoysam.appspot.com). I initially wrote it using App Engine, but I plan to rewrite it to function solely as a frontend application.
-
- * [Web Archive](https://web.archive.org/web/20210515145133/https://bavulanekoysam.appspot.com/)
- * [Github](https://github.com/miratcan/BavulaNeKoysam)
 
 
