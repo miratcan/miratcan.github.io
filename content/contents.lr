@@ -6,7 +6,7 @@ body:
   <img src="mirat-resized.webp" alt="Mirat Can Bayrak">
   <div class="home-intro">
     <p>
-Hello, I'm Mirat—friends call me Miro. I'm a programmer, solopreneur, and dad of two who loves turning ideas into things people can use, listen to, or feel.</p>
+Hello, I'm Mirat—friends call me Miro. I'm a programmer and dad of two who loves turning ideas into things people can use, listen to, or feel.</p>
     <p>Over the years I've built tools like <a href="https://github.com/miratcan/kaydet">Kaydet</a>, <a href="https://github.com/tahtlang/tahtlang">TahtLang</a>, and <a href="https://mirat.dev/vpix2/">VPix</a>. You can explore more of my work on <a href="https://github.com/miratcan">GitHub</a>.</p>
   </div>
 </div>
