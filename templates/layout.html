@@ -814,6 +814,117 @@
       color: var(--fg);
     }
 
+    @media print {
+      :root {
+        --bg: #fff;
+        --fg: #222;
+        --accent: #222;
+        --fg-muted: #666;
+        --surface: #fff;
+        --surface-strong: #fff;
+        --border: #ccc;
+      }
+
+      body {
+        background: #fff;
+        color: #222;
+        font-size: 11pt;
+        line-height: 1.5;
+      }
+
+      header, .home-social, .home-availability {
+        display: none !important;
+      }
+
+      main {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .wrapper {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      a {
+        color: #222 !important;
+        text-decoration: none !important;
+      }
+
+      h1 {
+        font-size: 18pt;
+        text-align: left;
+        text-transform: none;
+        margin-bottom: 0.5rem;
+      }
+
+      h2 {
+        font-size: 14pt;
+        margin: 1.5rem 0 0.5rem;
+        border-bottom: 1px solid #ccc;
+        page-break-after: avoid;
+      }
+
+      h3 {
+        font-size: 12pt;
+        margin: 1rem 0 0.3rem;
+        page-break-after: avoid;
+      }
+
+      ul, ol {
+        padding-left: 1.2rem;
+      }
+
+      li {
+        margin: 0.25rem 0;
+        line-height: 1.4;
+      }
+
+      table {
+        border: 1px solid #ccc;
+        box-shadow: none !important;
+      }
+
+      td {
+        padding: 0.3rem 0.6rem;
+        border-bottom: 1px solid #eee;
+      }
+
+      td:first-child {
+        color: #666;
+        font-size: 9pt;
+      }
+
+      .page-resume table {
+        box-shadow: none !important;
+      }
+
+      .page-projects main > h2 {
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      .page-projects main > h2 + p {
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      pre, code {
+        font-size: 9pt;
+      }
+
+      blockquote {
+        border-left: 2px solid #ccc;
+        background: none;
+      }
+
+      img {
+        max-width: 150px;
+      }
+    }
+
   </style>
   {% if this.has_code %}
   <link rel="stylesheet" href="{{ '/static/pygments.css'|url }}">
