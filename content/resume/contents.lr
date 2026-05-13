@@ -1,6 +1,6 @@
 _model: page
 ---
-title: Mirat Can Bayrak - Resume
+title: Resume - Mirat Can Bayrak
 ---
 body:
 
@@ -9,9 +9,9 @@ body:
 Usak, Turkey (GMT+3) · mirat.bayrak@gmail.com · +90 506 678 85 05 · [github.com/miratcan](https://github.com/miratcan) · [linkedin.com/in/mirat-can-bayrak](https://www.linkedin.com/in/mirat-can-bayrak)
 
 ## Summary
-- Backend-focused engineer with **10+ years of experience** building Python systems (Django, FastAPI) for SaaS, healthcare, and IoT companies.
-- Recently designed an AI-orchestrated migration workflow to systematically move a legacy PHP codebase to FastAPI with zero downtime.
-- Comfortable owning projects end-to-end: architecture, implementation, delivery, and long-term maintenance. Thrives in async, remote-first teams.
+- Generalist engineer who has shipped Android apps, desktop tools, Django backends, React frontends, and Solidity smart contracts across 15+ years.
+- Comfortable owning anything from database to deploy. Led a dev team at a global travel SaaS.
+- Remote-first since 2011.
 
 ## Professional Experience
 
@@ -26,9 +26,9 @@ Usak, Turkey (GMT+3) · mirat.bayrak@gmail.com · +90 506 678 85 05 · [github.c
 ### **INOHOM Smart Home Systems**
 **Full Stack Developer**
 *August 2023 – August 2025 | Remote*
-- Delivered an internal help desk platform with Django, ReactJS, and Chakra UI, replacing a legacy ticketing workflow.
-- Added advanced filtering via Django FilterSet and React Context API state management to reduce support response time.
-- Deployed and maintained the application on internal Linux servers, owning monitoring and release processes.
+- Built a field service management platform from scratch for HQ, distributors, and end users — covering fault reporting, job dispatch, spare part tracking, and device backups.
+- Designed a multi-tier workflow: customer reports route to regional distributor, get queued for field service, and track through resolution with full audit trail.
+- Backend in Django + FastAPI with Django Filters; React + Chakra UI frontend with separate portals for customers and distributors.
 
 ### **Metaverse INC.**
 **Blockchain & Full Stack Developer**
@@ -43,34 +43,67 @@ Usak, Turkey (GMT+3) · mirat.bayrak@gmail.com · +90 506 678 85 05 · [github.c
 - Produced technical specs and onboarding material to keep mixed skill-level teams aligned on delivery.
 
 ### **Metglobal DMG**
-**Python Developer → Development Manager**  
+**Python Developer → Development Manager**
 *August 2017 – January 2021 | Istanbul, Turkey*
 - Promoted to manage the Python division responsible for hotel booking engines used worldwide.
-- Coordinated hiring, mentoring, and delivery processes to raise team productivity and code quality.
-- Designed data services and dashboards (Numba, Celery, PostgreSQL) that powered revenue forecasting.
+- Managed 3 teams (12 engineers total), coordinated hiring, mentoring, and delivery processes.
+- Built the Cosmos static hotel data service (500K+ hotels, 232 countries) and internal dashboards using Numba, Celery, and PostgreSQL.
 
-## Projects
+### **Netagenda AG**
+**Backend Developer**
+*July 2015 – September 2016 | Istanbul*
+- Developed the backend for a Swiss marketplace platform for booking and comparing services.
+- Transitioned to QA, building manual test processes and automating frontend tests with Selenium and Cucumber.
+
+### **Reachpod**
+**Software Developer**
+*October 2014 – June 2015 | Istanbul*
+- Built the backend for a social media management platform — unified dashboard for Facebook, Instagram, and Twitter accounts.
+- Integrated multiple social media APIs for scheduling, analytics, and cross-platform posting.
+
+### **Markafoni**
+**Software Developer**
+*May 2013 – September 2014 | Istanbul*
+- Maintained the backend of Markafoni.com — a high-traffic e-commerce platform with 20M unique visitors and 340M page views per month.
+- Worked with Celery, RabbitMQ, Redis, and MongoDB for distributed task processing at scale.
+- Built a "Payment Test Server" that simulated virtual POS and payment provider APIs for integration testing.
+
+### **Buzul Teknoloji**
+**Software Engineer**
+*January 2012 – July 2013 | Istanbul*
+- Maintained ValMod, a Django application used by the UK government to validate hospital receipts across 5 regions in England.
+
+### **Opsinova Multimedia & Entertainment**
+**Freelance Software Developer**
+*2011 – 2013 | Remote (Barcelona)*
+- Built lookremix.com end-to-end: Django backend and a browser-based image processing tool with JavaScript and Backbone.js.
+
+### **Mobil8 Solutions Limited**
+**Assistant Software Programmer**
+*September 2007 – February 2009 | Part-time, Turkey*
+- Automated image editing and content delivery workflows using Python, replacing manual graphic production processes.
+
+## Side Projects (solo, built and shipped)
+- **[Resmin](https://github.com/miratcan/Resmin):** Visual Q&A platform where users answer questions with image stories — Django, full user/content system.
 - **[TahtLang](https://github.com/tahtlang/tahtlang):** A DSL for Reigns-style card games with Tree-sitter grammar, LSP server, and balance simulator.
-- **[VPix](https://mirat.dev/vpix2/):** Vim-like pixel art editor in the browser. React, TypeScript, Canvas API.
 - **[Simsar MCP](https://simsar.trade/):** MCP server providing cryptocurrency market data to Claude and other AI assistants.
-- **[Bedri](https://mirat.dev/bedri/):** Genetic-algorithm text-to-image app that evolves canvases with luminance-based fitness scoring.
-- **[Eleman](https://github.com/miratcan/Eleman):** Dockerised static job board generator using Airtable as data source.
+- **[Eleman](https://github.com/miratcan/Eleman):** Job board platform — FastAPI backend, React frontend, Airtable integration, Dockerised deployment.
+- **[VPix](https://mirat.dev/vpix2/):** Vim-like pixel art editor in the browser. React, TypeScript, Canvas API.
+- **[kaydet](https://github.com/miratcan/kaydet):** CLI journaling tool for daily notes — Python, published on PyPI.
 
 ## Education
 - **Maltepe University** — B.A. Visual Communication Design (2008 – 2012)
 
 ## Skills
 - **Spoken Languages:** English (C1 Advanced), Turkish (Native)
-- **Programming Languages:** Python, TypeScript, Java, SQL
-- **Backend:** Django, FastAPI, Celery, PostgreSQL, Redis, Azure
-- **Frontend:** React, Next.js, Android (Java)
-- **Tools:** Docker, Git, Linux, Twilio, MCP, Tree-sitter
-- **Other:** Backend architecture, testing strategy, API design, mentoring, team management
+- **Technologies:** Python (Django, FastAPI), JavaScript (ReactJS, NextJS), Java (Android), Solidity, Web3, REST APIs, Celery, Redis, PostgreSQL, MongoDB, Docker, Git, Linux, Nginx, Caddy, VPS deployment, Twilio, MCP, Tree-sitter
+- **Core Competencies:** Backend architecture, clean code & reviews, testing strategy, performance optimisation, cross-functional collaboration, mentoring
+- **Soft Skills:** Empathetic leadership, focus under pressure, async-first communication, technical mentorship, resilience training (certified, 2024)
 
 ## References
 - **Carlos Galvizu** — Polarix · [LinkedIn](https://www.linkedin.com/in/carlos-galvizu-6659a86/) · cgalvizu@polarix.com
 
 ---
-meta_desc: Full-stack developer with 10+ years of experience. Python, Django, FastAPI, TypeScript, React. Open to remote positions.
+meta_desc: Generalist engineer with 15+ years of experience — Django, React, Solidity. Remote-first since 2011.
 ---
 meta_img: face.jpeg
