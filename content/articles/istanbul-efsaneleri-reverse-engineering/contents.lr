@@ -207,6 +207,26 @@ SOUNDS.CKD'de 206 ses dosyası var. Format: raw PCM, 8-bit unsigned, mono, 22050
 
 Savaş sırasında karakterler "vecize" (atasözü) okuyor — sesli. Erkek ve kadın varyantları ayrı dosyalarda (vecize/fecize, cevap/fevap).
 
+Örnekler (decode edilen PUR dosyalarından WAV'a çevrildi):
+
+Erkek vecize (atasözü):
+<audio controls><source src="vecize01.wav" type="audio/wav"></audio>
+
+Kadın vecize:
+<audio controls><source src="fecize01.wav" type="audio/wav"></audio>
+
+Hikaye anlatımı (21 saniye):
+<audio controls><source src="para00.wav" type="audio/wav"></audio>
+
+Vuruş sesi:
+<audio controls><source src="vurus.wav" type="audio/wav"></audio>
+
+Ölüm sesi:
+<audio controls><source src="olum.wav" type="audio/wav"></audio>
+
+Kapı sesi:
+<audio controls><source src="kapi.wav" type="audio/wav"></audio>
+
 ### Müzik
 
 MUZIK.CKD'de 16 dosya var. Format: DSMI Advanced Module Format v14 (AMF) — Otto Chrons'un tracker formatı. OpenMPT ile çalınabilir.
@@ -221,6 +241,9 @@ MUZIK.CKD'de 16 dosya var. Format: DSMI Advanced Module Format v14 (AMF) — Ott
 | THEEND.AMF | (isimsiz) | Final |
 
 Besteci: "ibina özgür". Instrument isimlerinde easter egg'ler: "istanbul efsaneleri", "lale savascilari", Metallica referansları, "compuphiliacs", "enjoy ????".
+
+AMF dosyaları indirilebilir (OpenMPT veya XMP ile çalınabilir):
+[ISTANBUL.AMF](ISTANBUL.AMF) (ana tema) | [SAVAS.AMF](SAVAS.AMF) (savaş) | [3D.AMF](3D.AMF) (zindan)
 
 ## Kaynak Kod Mimarisi
 
