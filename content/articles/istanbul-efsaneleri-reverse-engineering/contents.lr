@@ -326,6 +326,48 @@ Son ekran:
 
 Cliffhanger. Devam oyunu çıkmadı.
 
+## Zindan Haritaları — Çözüldü
+
+FRPOS.CKD'den çıkan PC dosyaları harita verisi. Formatı tamamen çözüldü:
+
+```
+W(1 byte) + H(1 byte) + tiles(W × H × 15 byte) + footer(21 byte)
+```
+
+Her tile 15 byte: ilk byte tile tipi (0=koridor, 1-3=duvar varyantları, 4+=özel alanlar), kalan 14 byte duvar yönleri ve event metadata.
+
+18 haritanın tamamı decode edildi. Otopark'tan (10x10) Mecidiyeköy'e (30x30), Topkapı Sarayı'ndan (20x20) Cehalet Tapınağı'na (5x5). Siyah = koridor, gri = duvar, kırmızı = özel alan/tetikleyici.
+
+![Otopark haritası — 10x10, başlangıç noktası](PC1_map.png)
+
+![Mecidiyeköy haritası — 30x30, en büyük zindan](PC2_map.png)
+
+![Eminönü haritası — 20x23, direniş merkezi](PC4_map.png)
+
+![Ümraniye haritası — 14x16, sınavlar](PC6_map.png)
+
+![Topkapı Sarayı haritası — 20x20, Kılıçartıbeş burada](PC15_map.png)
+
+Tüm harita boyutları:
+
+| Bölge | Boyut | Tile sayısı |
+|-------|-------|-------------|
+| Otopark | 10x10 | 100 |
+| Mecidiyeköy | 30x30 | 900 |
+| Beşiktaş | 20x18 | 360 |
+| Eminönü | 20x23 | 460 |
+| Üsküdar | 15x13 | 195 |
+| Ümraniye | 14x16 | 224 |
+| Kadıköy | 10x12 | 120 |
+| Beyoğlu | 8x12 | 96 |
+| Ortaköy | 14x12 | 168 |
+| Beyazıt | 15x12 | 180 |
+| Fatih | 11x16 | 176 |
+| Sarıyer | 10x11 | 110 |
+| Topkapı Sarayı | 20x20 | 400 |
+| Kız Kulesi | 10x10 | 100 |
+| Cehalet Tapınağı | 5x5 | 25 |
+
 ## Video/Animasyon Sistemi
 
 En büyük arşiv olan 0GFL.CKD (218 MB) video ve animasyon verilerini içeriyor. 70 dosya: 35 GFL (frame verisi) + 35 GHD (header/palette).
