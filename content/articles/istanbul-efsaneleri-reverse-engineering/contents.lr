@@ -1,0 +1,257 @@
+title: İstanbul Efsaneleri - Lale Savaşçıları: 30 Yıllık Oyunun İçine Girmek
+---
+body:
+
+*Bu araştırma benim tarafımdan değil, Claude Code (Opus 4.6, 1M context) tarafından yapıldı. Dosyaları buldum, çalıştırdım, sonuçlara baktım — ama binary'yi parse eden, formatları çözen, debug mesajlarını ortaya çıkaran oydu. Bunu burada belirtmek istedim çünkü sahiplenmek doğru olmaz.*
+
+1995\. Silicon Worx adında bir grup Türk geliştirici, Amiga için bir RPG oyunu çıkardı. İstanbul'da geçiyor, Türkçe yazılmış, Türk karakterleri var, Türkçe diyaloglar var. Adı: **İstanbul Efsaneleri - Lale Savaşçıları**.
+
+Oyun hâlâ Türk oyun tarihinin mihenk taşı sayılıyor. Neden? Çünkü "Biz de yapabilir miyiz?" sorusunun cevabıydı.
+
+Otuz yıl sonra merak ettim: içinde ne var?
+
+## Dosya Yapısı
+
+DOS versiyonu 8 adet `.CKD` dosyasından oluşuyor:
+
+| Dosya | Boyut | İçerik |
+|-------|-------|---------|
+| 0GFL.CKD | 218 MB | Grafikler |
+| SOUNDS.CKD | 11 MB | Sesler |
+| IKON.CKD | 2 MB | İkonlar |
+| SAVAS.CKD | — | Savaş sprite'ları |
+| MUZIK.CKD | — | Müzikler |
+| 3D.CKD | — | 3D texture'lar |
+| IVIR.CKD | — | Intro/cutscene'ler |
+| FRPOS.CKD | — | Harita ve script verileri |
+
+CKD uzantısına bakarsan bir şey çıkmaz. Dosyanın içine bakman lazım.
+
+## FLiB Arşiv Formatı
+
+`0GFL.CKD`'nin hex dump'ında ilk 4 byte `46 4C 69 42` çıktı: **FLiB**.
+
+Bu Silicon Worx'un kendi icat ettiği arşiv formatı. Header yapısı:
+
+```
+[FLiB] [dosya sayısı: 4 byte LE] [veri boyutu: 4 byte LE]
+```
+
+Toplamda 12 byte header. Sonrasında her dosya `FiLE` marker'ıyla başlıyor, 65 byte sabit entry header, içinde dosya adı ve metadata. Sonunda 65 byte'lık dizin bölümü.
+
+Belgesi yok, spesifikasyonu yok. Format tamamen binary'den okuyarak çıkarıldı. Arşivin içinden dosyaları parse ettikten sonra `.CMP` uzantılı yüzlerce grafik dosyası çıktı.
+
+## CMP Grafik Formatı
+
+CMP'nin de belgesi yok. Yine binary'den:
+
+```
+[genişlik: 2 byte LE] [yükseklik: 2 byte LE] [RLE sıkıştırılmış piksel verisi]
+```
+
+RLE şeması:
+
+- Byte `>= 0x80` → run: `count = byte & 0x7F`, sonraki byte o kadar tekrarlanır
+- Byte `< 0x80` → literal: sonraki `count` byte olduğu gibi kopyalanır
+
+8-bit indexed color. Palette ayrı `.PAL` dosyasında: 768 byte = 256 x RGB, ama her kanal 6-bit (0-63), 4 ile çarparak 8-bit'e scale ediyorsun.
+
+PAL dosyasını grafiklere uygulayınca içerideki görseller ortaya çıktı.
+
+## İçeriden Ne Çıktı
+
+### Açılış ekranı
+
+![Açılış ekranı — kötü karakterler](ACILISA.png)
+
+### İstanbul haritası
+
+![İstanbul haritası — 12 semt](ISTHARA.png)
+
+Haritada 12 semt var: Otopark (başlangıç noktası), Mecidiyeköy, Beşiktaş, Eminönü, Üsküdar, Ümraniye, Kadıköy, Beyoğlu, Ortaköy, Beyazıt, Fatih, Sarıyer. Bunların dışında özel alanlar: üç ayrı kanalizasyon, Topkapı Sarayı, Kız Kulesi, Cehalet Tapınağı.
+
+Dosya isimlendirmesi de anlatıyor her şeyi: `mec-d-in` = Mecidiyeköy gündüz içeri, `mec-n-ot` = Mecidiyeköy gece dışarı. Gündüz/gece döngüsü var.
+
+### El çizimi harita
+
+![Oyun içi el çizimi kağıt harita](HAR2.png)
+
+### 3D zindan
+
+Semt içine girince first-person perspektif. Pre-rendered texture'lar:
+
+![3D zindan duvar texture'ı](DUVAR1.png)
+
+![Kapı texture'ı](KAPI1.png)
+
+![Merdiven görünümü — taş zindan](MERDIM.png)
+
+95'te bu texture'ları elle mi çizdiler? Evet.
+
+### İzometrik savaş
+
+![İzometrik savaş arenası — İstanbul silueti arka planda](ANAKES.png)
+
+### Ejderha sprite sheet
+
+![Ejderha sprite sheet — 6 frame animasyon, magenta transparency](DRAGON.png)
+
+Sprite animasyonları `.KOR` dosyalarında: 72 byte = frame koordinatları. Magenta (pembe) piksel transparency mask olarak kullanılmış — 90'larda standart bir teknik.
+
+### Storyboard çizimleri
+
+IVIR.CKD'den el çizimi storyboard kareler çıktı:
+
+![Kız Kulesi çizimi](SBD00.png)
+
+![Savaş sahnesi çizimi](SBD02.png)
+
+![Atlı savaşçılar](SBD04.png)
+
+![Ziyafet sahnesi](SBD07.png)
+
+### Karakter ekranı
+
+![Karakter stat ekranı](VIEWPC.png)
+
+### Gelecek oyun reklamları
+
+![Oyun içi reklam — Umut Tarlaları, KROBB, İstanbul Efsaneleri II "Pek Yakında!"](RPZ.png)
+
+İstanbul Efsaneleri II duyurulmuş ama çıkmamış.
+
+## FRPOS: Kendi Scriptleri
+
+Belki en ilginç kısım bu. `FRPOS.L` dosyasında Silicon Worx kendi scripting motorunu yazmış. Debug mesajları:
+
+```
+FRPOS komutu: random(ilk deneme)..
+FRPOS komutu: wait(ilk deneme)..
+eger olay %d->%s
+Komut no:%d
+Atla:%d=>
+```
+
+Türkçe debug mesajları. Kendi geliştirdikleri bir bytecode interpreter, Türkçe keyword'ler.
+
+FRPOS.CKD arşivinden çıkan script dosyaları AmBk header'ıyla başlıyor (20 byte), sonra encoded data. Encoding mekanizması: her byte'a +10 ekle, decode olur. İçinden Türkçe diyaloglar çıktı:
+
+```
+"dISarIdan garip hIrIltIlar geliyor...
+ gerCekten dISarI CIkacak MIYIZ?"
+
+"burada baygIN bir adam yatIyor.
+ UstUnU arayalIm mI?"
+  → evet / hayIr
+
+"beyler, burada bir anahtar buldum!"
+
+"otoparktan CIkmak istediGine emin misin?"
+```
+
+Oyunun tüm hikaye dallanmaları, diyaloglar, olay tetikleyicileri bu script dosyalarının içinde.
+
+## Kaynak Kod Mimarisi
+
+`IST.EXE` Borland C++ ile derlenmiş. String'leri ve sembol tablolarını analiz edince modül yapısı ortaya çıktı:
+
+| Modül | İşlev |
+|-------|-------|
+| `ISTANBUL.C` | Ana oyun döngüsü |
+| `3DSYS.L` / `3DQUICK.L` | First-person 3D zindan motoru |
+| `ISOSYS.L` | İzometrik savaş sistemi |
+| `FRPOS.L` | Scripting motoru |
+| `CHARGEN.L` | Karakter oluşturma |
+| `DEMOLAR.L` | Hikaye/cutscene sistemi |
+| `INTRFACE.L` | Kullanıcı arayüzü |
+| `GFL.C` / `GFLALT.H` | FLiB arşiv dosya sistemi |
+
+Dışarıdan alınan tek kütüphane: **AMP 2.00** (Otto Chrons) — müzik sistemi için. Geri kalan her şey Silicon Worx'a ait.
+
+## Düşmanlar ve Savaş
+
+38 ayrı düşman türü var. İsimleri:
+
+**Sokak:** beyaz böcük, irospa, ipna, lavuk, maganda, hırgız, bahçıvan, dadaş, faytır, kılerik, fare, köpek, guş, ayı, yarasa, ömürcek böcüğü, dev ömürcek
+
+**Yobazlar:** yobaz ograten, yobaz beşamel, yobaz bolonez, yobaz napoliten
+
+**Boss'lar:** kelp, karafatma, çembersakal, fanatik, leş gargası, balgam, afakan, barut hüsam, haşmet maap, şeyh cehalet, kıl sıtkı, **belediye dragonu**
+
+Savaş diyaloglarından:
+
+> "höynk!!!"
+
+> "ben gariban bir antenim!"
+
+> "anneeee!!!"
+
+> "ya ben iyi deyilim yaa!"
+
+> "aman tanrım kör oldum, göremiyorum!!!"
+
+Karakter sınıfları: Öğrenci, Öğretmen, Maganda, Lavuk, Memur, Siliconian.
+
+Hız sistemi: "ışık hızıyla" → "ses hızıyla" → "bayağı hızlı" → "araba hızlı" → "yürüme hızlı" → "otobüs hızlı" → "cengo yerkenki".
+
+## Debug Mesajları
+
+EXE'nin içinde kalan string'ler:
+
+> "Buggy code, buggy code, BC BC satir:%d"
+
+> "Tamam abi breyk, breyk, sitop !!!"
+
+> "Bitler resetlendi, pireler set edilmeliydi..."
+
+> "(ulan Özgür, sen mi yaptın lan bu dedeyi her şeyi bok etti herif..silin lan şunu disketten)!!!!!!!!!!!!!!!!!!!!!"
+
+> "allah nazardan saklasın"
+
+Son comment'i bırakmışlar. Kim bilir hangi kritik fonksiyonun üstünde.
+
+## Ekip Fotoğrafı
+
+![Silicon Worx ekip fotoğrafı — "Nasıl?"](GRUP.png)
+
+`GRUP.CMP` dosyasından çıktı. Gerçek fotoğraf. Üzerinde "Nasıl?" yazıyor.
+
+Nasıl mı? İyi.
+
+## Ana Hikaye
+
+Versiyon numarası `0.12.96` — Ocak 1996.
+
+Hikaye: Dört genç otoparkta futbol oynarken kendilerini İstanbul Efsaneleri evreninde buluyorlar. Şeyh Cehalet adında bir kötü, Muska-ül Cehalet ile İstanbul'u karanlığa sürüklüyor. Yardımcılar: Cevdet (Rastlantılar Tanrısı), Vesile (direniş lideri). İhanetçi: Kıl Sıtkı.
+
+Ümraniye'de üç sınav: zeka, dövüş, dürüstlük. Topkapı Sarayı mahzenlerinde Kılıçartıbeş efsanevi kılıcı. Belediye Dragonu Celal'in sırtında uçuş. Kız Kulesi'nde yılan ve bulmaca. Final: Cehalet Tapınağı'nda son savaş.
+
+Son ekran:
+
+> "birdenbire!!!..."
+
+Cliffhanger. Devam oyunu çıkmadı.
+
+## Sonuç
+
+1994-96 yıllarında bir grup Türk geliştirici — çoğu liseli — ellerindeki Amiga'yla, sonra bir araya geldiklerinde bodrum katlarında, RAKS kamplarında bir RPG oyunu yaptı. Kendi arşiv formatını yazdılar, kendi grafik codec'lerini yazdılar, kendi scripting dillerini yazdılar. Tek dışarıdan aldıkları şey müzik kütüphanesi.
+
+30 yıl sonra binary'ye bakınca her şey hâlâ orada duruyor: debug mesajları, storyboard çizimleri, ekip fotoğrafı, yarım kalan diyaloglar.
+
+"Acaba biz de yapabilir miyiz?" sorusunun cevabı hâlâ `.CKD` dosyalarının içinde saklı.
+---
+has_code: yes
+---
+pub_date: 2026-05-17
+---
+tags:
+
+reverse-engineering
+turkiye
+retro-gaming
+---
+meta_desc: 1995 yapımı İstanbul Efsaneleri - Lale Savaşçıları oyununun reverse engineering ile incelenmesi. FLiB arşiv formatı, CMP grafik codec'i, FRPOS scripting motoru ve daha fazlası.
+---
+meta_img: ACILISA.png
+---
+language: tr
