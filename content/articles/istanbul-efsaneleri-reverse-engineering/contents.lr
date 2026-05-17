@@ -60,9 +60,11 @@ PAL dosyasını grafiklere uygulayınca içerideki görseller ortaya çıktı.
 
 ## İçeriden Ne Çıktı
 
-### Açılış ekranı
+### Açılış ekranları
 
 ![Açılış ekranı — kötü karakterler](ACILISA.png)
+
+![İkinci açılış ekranı](ACILISB.png)
 
 ### İstanbul haritası
 
@@ -72,53 +74,87 @@ Haritada 12 semt var: Otopark (başlangıç noktası), Mecidiyeköy, Beşiktaş,
 
 Dosya isimlendirmesi de anlatıyor her şeyi: `mec-d-in` = Mecidiyeköy gündüz içeri, `mec-n-ot` = Mecidiyeköy gece dışarı. Gündüz/gece döngüsü var.
 
-### El çizimi harita
+### El çizimi haritalar
+
+Oyun içinde kullanılan haritalar gerçek kağıt üzerine çizilip fotoğraflanmış:
 
 ![Oyun içi el çizimi kağıt harita](HAR2.png)
 
+![Başka bir el çizimi harita](HAR3.png)
+
+![Üçüncü harita](HAR4.png)
+
 ### 3D zindan
 
-Semt içine girince first-person perspektif. Pre-rendered texture'lar:
+Semt içine girince first-person perspektif. Gerçek zamanlı 3D yerine, pre-rendered perspektif texture'lar kullanılmış — duvarlar, kapılar, merdivenler farklı açılardan önceden çizilip birleştirilmiş. 1995 için akıllıca bir yaklaşım.
 
-![3D zindan duvar texture'ı](DUVAR1.png)
+![3D zindan duvar texture'ı — sol/sağ perspektif + düz ön görünüm](DUVAR1.png)
 
-![Kapı texture'ı](KAPI1.png)
+![Kapı texture'ı — aynı perspektif sistemi](KAPI1.png)
 
 ![Merdiven görünümü — taş zindan](MERDIM.png)
 
-95'te bu texture'ları elle mi çizdiler? Evet.
+![3D zindan ana arayüz ekranı](PCMAINTH.png)
+
+### Karakter ekranı ve ticaret
+
+![Karakter stat ekranı — boy, kilo, güç, zeka, vurucu güç, dayanıklılık, istanbulluluk, etkileyicilik](VIEWPC.png)
+
+![Ticaret ekranı](TRADE.png)
+
+Stat sistemi 46 ayrı uint16 değerden oluşuyor. Sınıf ID, cinsiyet, boy, kilo, güç, seviye ve 40 kadar daha stat. Formüller EXE'nin içinde gömülü.
+
+### Karakter oluşturma
+
+![Karakter seçim ekranı](KARAKTER.png)
+
+Altı karakter sınıfı: Öğrenci, Öğretmen, Maganda, Lavuk, Memur, Siliconian.
 
 ### İzometrik savaş
 
 ![İzometrik savaş arenası — İstanbul silueti arka planda](ANAKES.png)
 
-### Ejderha sprite sheet
+Savaş arenasının tabanı:
 
-![Ejderha sprite sheet — 6 frame animasyon, magenta transparency](DRAGON.png)
+![Savaş arenası zemin texture'ı](TABLETUR.png)
+
+### Savaş sprite'ları
+
+![Lale Savaşçısı — müttefik NPC sprite sheet](LALE.png)
+
+![Ejderha — Belediye Dragonu sprite sheet, 6 frame animasyon](DRAGON.png)
+
+![Kelp — boss düşman sprite sheet](KELP.png)
+
+![Bahçıvan — sokak düşmanı sprite sheet](BAHCIVAN.png)
+
+![Kıl Sıtkı — ihanetçi karakter sprite sheet](SITKI.png)
 
 Sprite animasyonları `.KOR` dosyalarında: 72 byte = frame koordinatları. Magenta (pembe) piksel transparency mask olarak kullanılmış — 90'larda standart bir teknik.
 
 ### Storyboard çizimleri
 
-IVIR.CKD'den el çizimi storyboard kareler çıktı:
+IVIR.CKD'den el çizimi storyboard kareler çıktı. Bunlar oyunun hikaye anlatım sahneleri:
 
-![Kız Kulesi çizimi](SBD00.png)
+![Kız Kulesi çizimi — İstanbul silueti](SBD00.png)
 
-![Savaş sahnesi çizimi](SBD02.png)
+![Savaş sahnesi — askerler](SBD02.png)
 
 ![Atlı savaşçılar](SBD04.png)
 
 ![Ziyafet sahnesi](SBD07.png)
 
-### Karakter ekranı
-
-![Karakter stat ekranı](VIEWPC.png)
+![Dev yılan ile karşılaşma](SOON.png)
 
 ### Gelecek oyun reklamları
 
-![Oyun içi reklam — Umut Tarlaları, KROBB, İstanbul Efsaneleri II "Pek Yakında!"](RPZ.png)
+![Oyun içi reklam — Umut Tarlaları, KROBB, Son Gaç, İstanbul Efsaneleri II "Pek Yakında!"](RPZ.png)
 
 İstanbul Efsaneleri II duyurulmuş ama çıkmamış.
+
+### Raks dansçısı
+
+![Raks — oyun içi animasyon karesi](RAKS.png)
 
 ## FRPOS: Kendi Scriptleri
 
@@ -150,6 +186,41 @@ FRPOS.CKD arşivinden çıkan script dosyaları AmBk header'ıyla başlıyor (20
 ```
 
 Oyunun tüm hikaye dallanmaları, diyaloglar, olay tetikleyicileri bu script dosyalarının içinde.
+
+## Ses ve Müzik
+
+### Ses efektleri
+
+SOUNDS.CKD'de 206 ses dosyası var. Format: raw PCM, 8-bit unsigned, mono, 22050 Hz. Header yok — dosya direkt sample data ile başlıyor.
+
+| Dosya grubu | Sayı | İçerik |
+|-------------|------|--------|
+| CEVAP | 50 | Erkek diyalog cevapları |
+| FEVAP | 50 | Kadın diyalog cevapları |
+| VECIZE | 34 | Erkek atasözü okumaları |
+| FECIZE | 34 | Kadın atasözü okumaları |
+| PARA (SND) | 10 | Hikaye anlatımı (21-43 saniye) |
+| ADIM | 7 | Ayak sesleri |
+| KAPI | 6 | Kapı sesleri |
+| SW/FW | 8 | Kılıç/silah sesleri |
+| Diğer | misc | Ölüm, kanat, vuruş, ıska, merdiven... |
+
+Savaş sırasında karakterler "vecize" (atasözü) okuyor — sesli. Erkek ve kadın varyantları ayrı dosyalarda (vecize/fecize, cevap/fevap).
+
+### Müzik
+
+MUZIK.CKD'de 16 dosya var. Format: DSMI Advanced Module Format v14 (AMF) — Otto Chrons'un tracker formatı. OpenMPT ile çalınabilir.
+
+| Dosya | Başlık | Kullanım |
+|-------|--------|----------|
+| ISTANBUL.AMF | "PUNKIN' again" | Ana tema |
+| SAVAS.AMF | "savas" | Savaş müziği |
+| 3D.AMF | "istanbul 3d2" | Zindan müziği |
+| DEMO.AMF | "years of hatred" | Demo/intro |
+| NIGHTMAR.AMF | "nightmare" | Karanlık alanlar |
+| THEEND.AMF | (isimsiz) | Final |
+
+Besteci: "ibina özgür". Instrument isimlerinde easter egg'ler: "istanbul efsaneleri", "lale savascilari", Metallica referansları, "compuphiliacs", "enjoy ????".
 
 ## Kaynak Kod Mimarisi
 
@@ -231,6 +302,51 @@ Son ekran:
 > "birdenbire!!!..."
 
 Cliffhanger. Devam oyunu çıkmadı.
+
+## Video/Animasyon Sistemi
+
+En büyük arşiv olan 0GFL.CKD (218 MB) video ve animasyon verilerini içeriyor. 70 dosya: 35 GFL (frame verisi) + 35 GHD (header/palette).
+
+GHD dosyaları `GFLO` magic byte ile başlıyor, içinde VGA palette ve frame metadata var. GFL dosyaları raw pixel data içeriyor — CMP'deki RLE sıkıştırma burada yok.
+
+İçerik:
+
+| Dosya | Boyut | İçerik |
+|-------|-------|--------|
+| SON.GFL | 27.7 MB | Oyun sonu sinematik — en büyük dosya |
+| FUN.GFL | 21.3 MB | Final sekansı |
+| SEQ1-SEQ5 | 6-18 MB | Hikaye sinematikleri |
+| INTRO.GFL | 862 KB | Giriş animasyonu |
+| SILICON.GFL | 3.9 MB | Silicon Worx logosu |
+| KOVALSON.GFL | 5.7 MB | Kovalamaca sonu |
+| MEC-D-IN.GFL vb. | 3-5 MB | Lokasyon animasyonları (gündüz/gece × iç/dış) |
+
+Her lokasyonun dört varyantı var: `MEC-D-IN` (Mecidiyeköy, gündüz, iç mekan), `MEC-N-OT` (gece, dış mekan). D=Day, N=Night, IN=Indoor, OT=Outdoor.
+
+GFL'in pixel-palette eşlemesi henüz tam çözülemedi — frame'ler decode ediliyor ama renkler kayık. Muhtemelen GHD'deki metadata'da bir palette index transform var. Ghidra ile EXE'deki GFL.C koduna bakmak lazım.
+
+## Karakter Sistemi
+
+Save dosyası (SAKLA001.SAV, 1524 byte) ve varsayılan parti dosyası (GRPHAZIR.DAT, 664 byte) karakter yapısını ortaya koyuyor.
+
+Her karakter 92 byte stat bloğuna sahip — 46 adet uint16 değer:
+
+| İndeks | Değerler (gürcani, alper, gökhan, nizamettin) | Tahmin |
+|--------|-----------------------------------------------|--------|
+| 1 | 8, 5, 2, 4 | Sınıf ID |
+| 2 | 1, 1, 1, 1 | Cinsiyet (1=erkek) |
+| 3 | 50, 50, 50, 50 | Boy |
+| 4 | 50, 50, 50, 50 | Kilo |
+| 5 | 81, 110, 101, 196 | Güç |
+| 6 | 6, 6, 5, 3 | Seviye |
+| 7-17 | (çeşitli) | Zeka, vurucu güç, dayanıklılık vb. |
+| 18 | 175, 179, 168, 154 | Max HP? |
+| 28 | =idx 5 | Güç (max/base duplicate) |
+| 29 | =idx 6 | Seviye (max/base duplicate) |
+
+36 karakter boolean flag'i de var: `100000000000000000000000000000000000` — ilk flag muhtemelen "aktif parti üyesi".
+
+Varsayılan parti: gürcani (siliconian), alper (lavuk), gökhan (öğrenci), nizamettin abi (maganda).
 
 ## Sonuç
 
