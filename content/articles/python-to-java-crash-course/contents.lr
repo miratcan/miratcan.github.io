@@ -1,4 +1,4 @@
-title: Python to Java Crash Course: Learn Java as a Python Developer
+title: Python to Java Crash Course for Python Developers
 ---
 body:
 
@@ -1454,7 +1454,7 @@ dependencies = [
 > Java's build ecosystem is... a lot. Maven uses XML (verbose but predictable), Gradle uses a DSL (flexible but the learning curve is steep). Compared to Python's `pip install something`, Java's dependency management feels over-engineered. But to be fair, Maven/Gradle handle compilation, testing, packaging, and deployment — they're more like `make` + `pip` + `setuptools` combined.
 
 ---
-meta_desc: A Python developer's guide to learning Java — covering syntax, types, classes, interfaces, exceptions, generics, streams, and concurrency with side-by-side Python comparisons.
+meta_desc: A Python developer's guide to Java: syntax, types, classes, interfaces, exceptions, generics, streams, and concurrency.
 ---
 pub_date: 2026-02-14
 ---

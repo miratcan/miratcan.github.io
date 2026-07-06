@@ -23,6 +23,6 @@ has_code: yes
 ---
 pub_date: 2024-12-04
 ---
-meta_desc: Quick reference for merging two tables in Lua.
+meta_desc: A quick reference for merging two tables in Lua with a simple, reusable snippet.
 ---
 language: en

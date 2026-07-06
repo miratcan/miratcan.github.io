@@ -1,4 +1,4 @@
-title: Python to Go Crash Course: Learn Golang as a Python Developer
+title: Python to Go Crash Course for Python Developers
 ---
 body:
 
@@ -1473,7 +1473,7 @@ Common format verbs in Go:
 | `%+v` | Struct with field names | `repr()` |
 
 ---
-meta_desc: A Python developer's guide to learning Go — covering syntax, types, structs, interfaces, error handling, goroutines, channels, and modules with side-by-side Python comparisons.
+meta_desc: A Python developer's guide to Go: syntax, types, structs, interfaces, error handling, goroutines, channels, and modules.
 ---
 pub_date: 2024-12-11
 ---

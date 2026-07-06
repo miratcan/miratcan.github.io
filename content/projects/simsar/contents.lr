@@ -1,12 +1,10 @@
 _model: page
 ---
-title: Simsar MCP - Cryptocurrency Market Data for AI Assistants
+title: Simsar MCP: Crypto Market Data for AI
 ---
-meta_desc: Give your AI the eyes of a trader. MCP server providing real-time crypto prices, 35+ technical indicators, market sentiment, and economic calendar to Claude and other AI assistants.
+meta_desc: MCP server giving Claude and other AI assistants real-time crypto prices, 35+ technical indicators, market sentiment, and an economic calendar.
 ---
 body:
-
-# Simsar MCP
 
 **Give your AI the eyes of a trader.**
 

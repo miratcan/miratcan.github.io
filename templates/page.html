@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %}{{ this.title or 'Home' }}{% endblock %}
+
 {% block body %}
   {% if this.title %}<h1>{{ this.title }}</h1>{% endif %}
   {{ this.body }}

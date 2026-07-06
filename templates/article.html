@@ -2,10 +2,11 @@
 {% from "macros/article.html" import render_article %}
 
 {% block title %}{{ this.title }}{% endblock %}
+{% block title_suffix %}{% endblock %}
 {% block og_type %}article{% endblock %}
 {% block lang %}{{ this.language or 'en' }}{% endblock %}
 {% block content_lang %}{{ this.language or 'en' }}{% endblock %}
-{% block description %}{{ this.description|truncate(155) or this.body|striptags|truncate(155) }}{% endblock %}
+{% block meta_description %}{{ this.meta_desc or (this.body|string|striptags|truncate(155, false, '…'))|trim }}{% endblock %}
 {% block extra_head %}
   {% if this.has_code %}
     <link rel="stylesheet" href="{{ "static/pygments.css"|asseturl }}">
@@ -18,6 +19,7 @@
   "@type": "Article",
   "headline": {{ this.title|tojson }},
   "datePublished": "{{ this.pub_date }}",
+  "dateModified": "{{ this.mod_date or this.pub_date }}",
   "author": {
     "@type": "Person",
     "name": "Mirat Can Bayrak",
@@ -57,7 +59,7 @@
   <div class="photo-post-images">
     {% for attachment in this.attachments.images %}
       {% if not attachment.attachment_filename.startswith('hero') %}
-      <img src="{{ attachment|url }}" alt="{{ this.title }}" loading="lazy">
+      <img src="{{ attachment|url }}" alt="{{ this.title }}" loading="lazy"{% if attachment.width and attachment.height %} width="{{ attachment.width }}" height="{{ attachment.height }}"{% endif %}>
       {% endif %}
     {% endfor %}
   </div>

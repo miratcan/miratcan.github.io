@@ -1,4 +1,4 @@
-title: Why plain text + SQLite beat every cloud note app for my workflow
+title: Why plain text + SQLite beat every cloud note app
 ---
 body:
 
@@ -380,7 +380,7 @@ That is the real power of tools you build for yourself. They grow with you. They
 ---
 pub_date: 2025-10-28
 ---
-meta_desc: How I built and evolved Kaydet, a terminal-native personal diary with AI integration, over nine years—from simple Python wrapper to structured metadata and SQLite search.
+meta_desc: How I built and evolved Kaydet, a terminal-native personal diary with AI and SQLite search, over nine years.
 ---
 has_code: yes
 ---

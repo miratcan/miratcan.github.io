@@ -125,7 +125,7 @@ Simdi de bu bos projeyi Android uzerinde calistiralim:
 
 Bu komut baya bir indirme yapacak, daha once kurdugumuz Android SDK uzerine, React Native'in calismasi icin gerekli olan paketleri kuracak. Iyi haber bu islemin sadece 1 defa yapilacak olmasi. Eger sansimiz yerindeyse telefonumuzda sunun gibi bir ekran gormeliyiz:
 
-<p style="text-align:center"><img src="https://kylewbanks.com/images/post/react-native-tutorial-1.png" /></p>
+<p style="text-align:center"><img src="https://kylewbanks.com/images/post/react-native-tutorial-1.png" alt="React Native tutorial ekran görüntüsü" /></p>
 
 Bu ekrandayken telefonu salladiginizda karsiniza cesitli gelistirici secenekleri cikacak. Bunlari biraz kurcalayin ne oldugunu anlamaya calisin. Ilerde lazim olacaklar.
 

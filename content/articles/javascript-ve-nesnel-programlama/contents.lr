@@ -71,7 +71,7 @@ console.log(a.length); // burada fall back islemi gerceklesiyor, objeye donusuyo
 
 Ikinci bir gariplik ise Javascript'de sinif kavraminin bulunmayisi. O_o
 
-<p style="text-align:center"><img src="http://www.podcastscience.fm/wp-content/uploads/2016/06/ps263_53c89d5a8d55c4883e64d8cf77445bbb.jpg" /></p>
+<p style="text-align:center"><img src="https://www.podcastscience.fm/wp-content/uploads/2016/06/ps263_53c89d5a8d55c4883e64d8cf77445bbb.jpg" alt="Nesnel programlama illüstrasyonu" /></p>
 
 Ancak turetme islerini bir obje olusturup buna ait metodlari ve ozellikleri yine de baska objelere aktararak halledebiliyoruz.
 

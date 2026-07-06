@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}Articles tagged "{{ this.tag }}"{% endblock %}
+{% block meta_description %}Articles by Mirat Can Bayrak tagged {{ this.tag }}. Browse posts on {{ this.tag }} covering software, side projects, and more.{% endblock %}
 {% block body %}
 <h1>Articles tagged "{{ this.tag }}"</h1>
 <div class="articles-layout">

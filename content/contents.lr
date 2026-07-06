@@ -3,7 +3,7 @@ body:
 <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0">Mirat Can Bayrak — Programmer, Solopreneur & Dad</h1>
 
 <div class="home-hero">
-  <img src="mirat-resized.webp" alt="Mirat Can Bayrak">
+  <img src="mirat-resized.webp" alt="Mirat Can Bayrak" width="300" height="450">
   <div class="home-intro">
     <p>
 Hello, I'm Mirat—friends call me Miro. I'm a programmer and dad of two who loves turning ideas into things people can use, listen to, or feel.</p>

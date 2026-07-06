@@ -10,7 +10,7 @@ body:
 ```
 
 ---
-meta_desc: Use round function: number = round(number)
+meta_desc: How to round a number to two decimals in Python using the built-in round() function.
 ---
 tags: python-notes
 ---

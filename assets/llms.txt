@@ -1,0 +1,17 @@
+# Mirat Can Bayrak
+
+> Personal site and blog of Mirat Can Bayrak (Miro) — full-stack developer (Python, Django, TypeScript, React), solopreneur, and dad. Writing about software, side projects, indie hacking, and personal notes in English and Turkish.
+
+## Main
+
+- [Home](https://mirat.dev/): Intro, links, and availability.
+- [Articles](https://mirat.dev/articles/): All blog posts, filterable by tag and language.
+- [Projects](https://mirat.dev/projects/): Selected software projects.
+- [Resume](https://mirat.dev/resume/): Professional background and experience.
+- [Links](https://mirat.dev/links/): Curated links.
+
+## Notes
+
+- Content is authored by Mirat Can Bayrak.
+- Turkish articles keep their original language because cultural nuance does not translate well.
+- Older archived articles are kept for historical/nostalgic reasons and may be outdated.

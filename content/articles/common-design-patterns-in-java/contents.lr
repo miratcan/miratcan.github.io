@@ -789,7 +789,7 @@ This is maybe the most important section. Design patterns are solutions to speci
 A common thread: many of these patterns exist in Java to work around things that Python gives you natively — first-class functions, keyword arguments, duck typing, module-level singletons. That doesn't make the patterns bad — they provide structure and compile-time safety. But it does explain why Python code tends to be shorter.
 
 ---
-meta_desc: A beginner-friendly guide to common Java design patterns -- Singleton, Factory, Builder, Observer, Strategy, Adapter, and Decorator with real-world examples and Python comparisons.
+meta_desc: A beginner-friendly guide to common Java design patterns: Singleton, Factory, Builder, Observer, Strategy, Adapter, and Decorator.
 ---
 pub_date: 2026-02-14
 ---
