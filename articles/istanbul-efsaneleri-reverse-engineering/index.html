@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="d19d3d5e-43ab-47ca-9def-5c819bacf475"></script>
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    .model-article main a {
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .home-title {
+      text-align: left;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: clamp(1.6rem, 1.5vw + 1.2rem, 2.1rem);
+      line-height: 1.25;
+      margin: 0 0 1rem;
+    }
+
+    .home-work {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1.2rem 0 2.5rem;
+    }
+
+    .home-work-item {
+      padding: 0.9rem 1.1rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .home-work-item h3 {
+      margin: 0 0 0.3rem;
+      font-size: 1.05rem;
+    }
+
+    .home-work-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--fg-muted);
+      line-height: 1.5;
+    }
+
+    .home-work-item a.work-name {
+      color: var(--accent);
+    }
+
+    .home-latest {
+      margin-top: 3rem;
+    }
+
+    .home-latest-more {
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .home-work {
+        grid-template-columns: 1fr 1fr;
+      }
+      .home-work-item:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+    @media print {
+      :root {
+        --bg: #fff;
+        --fg: #222;
+        --accent: #222;
+        --fg-muted: #666;
+        --surface: #fff;
+        --surface-strong: #fff;
+        --border: #ccc;
+      }
+
+      body {
+        background: #fff;
+        color: #222;
+        font-size: 11pt;
+        line-height: 1.5;
+      }
+
+      header, .home-social, .home-availability, .no-print {
+        display: none !important;
+      }
+
+      main {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .wrapper {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      a {
+        color: #222 !important;
+        text-decoration: none !important;
+      }
+
+      h1 {
+        font-size: 18pt;
+        text-align: left;
+        text-transform: none;
+        margin-bottom: 0.5rem;
+      }
+
+      h2 {
+        font-size: 14pt;
+        margin: 1.5rem 0 0.5rem;
+        border-bottom: 1px solid #ccc;
+        page-break-after: avoid;
+      }
+
+      h3 {
+        font-size: 12pt;
+        margin: 1rem 0 0.3rem;
+        page-break-after: avoid;
+      }
+
+      ul, ol {
+        padding-left: 1.2rem;
+      }
+
+      li {
+        margin: 0.25rem 0;
+        line-height: 1.4;
+      }
+
+      table {
+        border: 1px solid #ccc;
+        box-shadow: none !important;
+      }
+
+      td {
+        padding: 0.3rem 0.6rem;
+        border-bottom: 1px solid #eee;
+      }
+
+      td:first-child {
+        color: #666;
+        font-size: 9pt;
+      }
+
+      .page-resume table {
+        box-shadow: none !important;
+      }
+
+      .page-projects main > h2 {
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      .page-projects main > h2 + p {
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      pre, code {
+        font-size: 9pt;
+      }
+
+      blockquote {
+        border-left: 2px solid #ccc;
+        background: none;
+      }
+
+      img {
+        max-width: 150px;
+      }
+    }
+
+  </style>
+  
+  <link rel="stylesheet" href="../../static/pygments.css">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="tr">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>İstanbul Efsaneleri: Bir Türk RPG&#39;sini Sıfırdan Okumak</title>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../mirat.png" sizes="any">
+  <link rel="apple-touch-icon" href="../../mirat.png">
+  <link rel='canonical' href="https://mirat.dev/articles/istanbul-efsaneleri-reverse-engineering/">
+  
+  
+  
+  <meta name="title" content="İstanbul Efsaneleri: Bir Türk RPG&#39;sini Sıfırdan Okumak — Mirat Can Bayrak" />
+  <meta name="description" content="Lale Savaşçıları&#39;nın belgesiz binary formatlarını sıfırdan çözmek: FLiB arşivleri, CMP grafikler, scriptler ve harita yapısı." />
+  <meta property="og:type" content="article" />
+<meta property="og:url" content="https://mirat.dev/articles/istanbul-efsaneleri-reverse-engineering/" />
+<meta property="og:title" content="İstanbul Efsaneleri: Bir Türk RPG&#39;sini Sıfırdan Okumak — Mirat Can Bayrak" />
+<meta property="og:description" content="Lale Savaşçıları&#39;nın belgesiz binary formatlarını sıfırdan çözmek: FLiB arşivleri, CMP grafikler, scriptler ve harita yapısı." />
+<meta property="og:image" content="https://mirat.dev/ACILISA.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/articles/istanbul-efsaneleri-reverse-engineering/" />
+<meta name="twitter:title" content="İstanbul Efsaneleri: Bir Türk RPG&#39;sini Sıfırdan Okumak — Mirat Can Bayrak" />
+<meta name="twitter:description" content="Lale Savaşçıları&#39;nın belgesiz binary formatlarını sıfırdan çözmek: FLiB arşivleri, CMP grafikler, scriptler ve harita yapısı." />
+<meta name="twitter:image" content="https://mirat.dev/ACILISA.png" />
+  
+  
+  
+    <link rel="stylesheet" href="../../static/pygments.css?h=a019983c">
+  
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "\u0130stanbul Efsaneleri: Bir T\u00fcrk RPG\u0027sini S\u0131f\u0131rdan Okumak",
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-05-17",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "https://mirat.dev/articles/istanbul-efsaneleri-reverse-engineering/",
+  "inLanguage": "tr",
+  "description": "Lale Sava\u015f\u00e7\u0131lar\u0131\u0027n\u0131n belgesiz binary formatlar\u0131n\u0131 s\u0131f\u0131rdan \u00e7\u00f6zmek: FLiB ar\u015fivleri, CMP grafikler, scriptler ve harita yap\u0131s\u0131."
+}
+</script>
+
+</head>
+
+
+
+
+
+
+
+<body class="page-articles-istanbul-efsaneleri-reverse-engineering model-article">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+<h1>İstanbul Efsaneleri: Bir Türk RPG&#39;sini Sıfırdan Okumak</h1>
+
+
+
+<div style="background: color-mix(in srgb, var(--accent) 15%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 2rem;">
+  <p style="margin: 0; color: var(--fg);"><strong>🇹🇷 Turkish Content:</strong> This article is written in Turkish. The cultural and emotional nuances cannot be properly translated, so it remains in its original language.</p>
+</div>
+
+
+
+<div class="article-meta">
+  May 2026 · written at age 42
+</div>
+
+<style>
+.hexdump {
+  background: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.hexdump-title {
+  color: #888;
+  font-size: 0.75rem;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #333;
+}
+.hexdump pre {
+  margin: 0;
+  color: #aaa;
+  white-space: pre;
+}
+.hex-addr { color: #555; }
+.hex-magic { color: #ff6b6b; font-weight: bold; }
+.hex-magic2 { color: #ffa94d; font-weight: bold; }
+.hex-field1 { color: #69db7c; }
+.hex-field2 { color: #74c0fc; }
+.hex-string { color: #ffd43b; }
+.hex-data { color: #b197fc; }
+.hex-dot { color: #444; }
+</style><p><em>Bu araştırma Claude Code (Opus 4.6, 1M context) tarafından yapıldı. Bulguları ve anlatısı insan editöründen (benden) geçti, ama binary'leri ilk açan, pattern'ları kuran, kodları yazan asistanın ta kendisi.</em></p>
+<hr>
+<p>1993'ün son gecesi. Şişli'nin soğuk sokakları. İki Özgür yan yana yürüyor.</p>
+<p>O geceden bu yana 30 yıl geçti. Ortaya çıkan şey — <em>İstanbul Efsaneleri: Lale Savaşçıları</em> — Türkiye'nin en özgün bilgisayar oyunlarından biri olarak hâlâ akıllarda. Otopark bodrum katında başlayan bir hikaye, çöp tenekesi kapakları ve levreklerle savaşan magandalar, Cehalet Tapınağı'na uzanan bir yolculuk.</p>
+<p>Ben de bu oyunun dosyalarına baktım. Belgelenmemiş binary formatlar. Hiç dokümanasyon yok. Sadece <code>.CKD</code> uzantılı arşivler, <code>.CMP</code> grafikler, <code>.PCS</code> scriptler, <code>.PUR</code> ses dosyaları — hepsi kendi içine kapalı.</p>
+<p>Bu yazı o dosyaların peşinde yürümek için. Reverse engineering: bir şeyi sıfırdan okumak. Hiçbir kaynak kod yok, hiçbir format belgesi yok. Sadece ham byte'lar ve sabır.</p>
+<h2>Reverse Engineering Nasıl Çalışır?</h2>
+<p>Belgesiz bir binary formatı çözmek şuna benzer: alfabesi bile farklı bir dilde yazılmış bir mektup okumaya çalışmak.</p>
+<ol>
+<li><strong>Genel yapıyı anla.</strong> Dosya boyutu, uzantılar, kaç tane var?</li>
+<li><strong>Magic byte'ları bul.</strong> Her format ilk birkaç byte'ta kendini tanıtır.</li>
+<li><strong>Pattern'ları keşfet.</strong> Tekrar eden diziler, sabit offset'ler, yapısal boşluklar.</li>
+<li><strong>Hipotez kur.</strong> "Bu 4 byte little-endian integer olabilir mi?" Hesapla, kontrol et.</li>
+<li><strong>Test et.</strong> Hipotezi uygula, sonuç mantıklı mı?</li>
+<li><strong>Doğrula.</strong> Birden fazla dosyada çalışıyor mu?</li>
+</ol>
+<p>Ve yanılmak normal. Bir hipotezin tutmaması yeni bilgi demek.</p>
+<h2>Tarihsel Bağlam</h2>
+<p>Oyunun yazarı Özgür Özol (StillPsycho) kendi sözleriyle:</p>
+<blockquote><p><em>"Oyunu yazmamız 1 yıl kadar sürdü. Amiga için bir programlama dili olan AMOS kullanmıştık. Elimizde gerçekten az imkan vardı. Grafiklerde bir koordinat hatası olunca Amiga'yı resetleyip, disketten grafik programı çalıştırıp, hatayı düzeltip, tekrar program editörünü boot etmek ne demektir acaba bu yeni kuşak anlayabilir mi?"</em></p>
+</blockquote>
+<p>PC sürümü ayrı bir hikaye. Compuphiliacs ve SiliconWorx grupları birleşti. RAKS New Media dağıtımı üstlendi, $35'a sattı.</p>
+<blockquote><p><em>"Acilen CD-ROM'dan film oynatmak için bir video codec geliştirir. Ekibin elinde bir CD-ROM olmaması elbet işleri biraz sürreal bir sürece sokar."</em></p>
+</blockquote>
+<p>Film çekimlerinde V8 kamera, bir Vosvos'un uzun farları ve kaplama kağıdından filtreler kullanıldı. Ekibin oyundan elde ettiği gelirle RAKS kampı boyunca yenen kebapların borcu ödendi.</p>
+<p>Poster hikayesi de ayrı (Emre Erdur anlatıyor): Akrilik boyalarla poster çizildi, kraft kartonundan özel zarf yapıldı, talimat yazıldı. Sonra biri gelip posteri zarfından çıkarmış, kıvırıp koltuğunun altına sokup götürmüş. Orijinal kayıp.</p>
+<p>Ve "Acaba biz de yapabilir miyiz?" sorusunun cevabını verdiler.</p>
+<hr>
+<h2>1. İlk Adım: Dosya Yapısını Anlamak</h2>
+<p>Oyun dizini:</p>
+<pre><code>IST.EXE      385 KB   — ana executable
+0GFL.CKD     218 MB   — dev arşiv (video?)
+SOUNDS.CKD   11 MB    — sesler
+SAVAS.CKD    254 KB   — savaş grafikleri
+MUZIK.CKD    1.2 MB   — müzik
+3D.CKD       1.4 MB   — 3D texture'lar
+IVIR.CKD     1.4 MB   — intro/cutscene
+FRPOS.CKD    148 KB   — harita ve script
+SONPAL.PAL   768 B    — palette
+</code></pre>
+<p><code>.CKD</code> uzantısı standart değil. <code>file</code> komutu <code>data</code> diyor — tanıyamadı. <code>xxd</code> ile ilk byte'lara bakıyorum:</p>
+<div class="hexdump">
+<div class="hexdump-title">SAVAS.CKD — ilk 48 byte</div>
+<pre>
+<span class="hex-addr">00000000</span>  <span class="hex-magic">46 4c 69 42</span> <span class="hex-field1">7a 00 00 00</span>  <span class="hex-field2">ab c3 03 00</span> <span class="hex-magic2">46 69 4c 45</span>  |<span class="hex-magic">FLiB</span><span class="hex-field1">z...</span><span class="hex-field2">....</span><span class="hex-magic2">FiLE</span>|
+<span class="hex-addr">00000010</span>  <span class="hex-string">41 46 41 4b 41 4e 2e 43  4d 50 00 00 00 00 00 00</span>  |<span class="hex-string">AFAKAN.CMP</span>......|
+<span class="hex-addr">00000020</span>  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+</pre>
+</div><p>İlk 4 byte: <code>46 4C 69 42</code> = <span style="color:#ff6b6b">**FLiB**</span>. Bu bir magic number — dosya formatını tanıtan imza.</p>
+<p>Sonraki 4 byte (yeşil): <code>7a 00 00 00</code> = little-endian uint32 = <strong>122</strong>. Dosya sayısı.</p>
+<p>Sonraki 4 (mavi): veri boyutu. Sonra turuncu: <code>46 69 4c 45</code> = <span style="color:#ffa94d">**FiLE**</span> — bir entry'nin başlangıcı.</p>
+<p>Ve sarı: <code>AFAKAN.CMP</code> — bir dosya adı. Okunabiliyor!</p>
+<h3>FLiB Arşiv Formatı</h3>
+<p>İki ardışık <code>FiLE</code> marker arasındaki mesafeyi hesapladım. <strong>65 byte entry header</strong> + dosya verisi. Entry yapısı:</p>
+<pre><code>[0:4]    "FiLE" marker
+[4:32]   dosya adı (28 byte, null-padded)
+[32:36]  4 byte gap
+[36:50]  dosya adı kopyası (14 byte)
+[53]     flag byte
+[57:60]  dosya boyutu (3 byte little-endian)
+[61:64]  dosya boyutu tekrarı
+[64]     0x00 separator
+</code></pre>
+<p>Bunu nasıl buldum? İlk <code>FiLE</code> offset 12'de, ikinci <code>FiLE</code> offset 0x3c2'de. Aradaki fark 950 byte. Entry header'ı çıkarınca kalan = dosya verisi. Birkaç entry'yi karşılaştırarak field sınırları netleşti.</p>
+<p>Parser yazdım: <code>flib_parser.py</code>. Tüm CKD dosyaları açılabiliyor. SAVAS.CKD'den 122, SOUNDS.CKD'den 206, IKON.CKD'den 188 dosya çıktı.</p>
+<hr>
+<h2>2. Grafikleri Görmek: CMP Formatı</h2>
+<p>SAVAS.CKD'den çıkan ilk <code>.CMP</code> dosyası: <code>ANAKES.CMP</code>, 36687 byte.</p>
+<div class="hexdump">
+<div class="hexdump-title">ANAKES.CMP — header</div>
+<pre>
+<span class="hex-addr">00000000</span>  <span class="hex-field1">40 01</span> <span class="hex-field2">c8 00</span> <span class="hex-data">94 11 85 00  9f 11 85 00  ff 11 ff 11  99 11 85 00</span>  |<span class="hex-field1">@.</span><span class="hex-field2">È.</span><span class="hex-data">............</span>|
+
+Width:  <span class="hex-field1">0x0140 = 320</span>
+Height: <span class="hex-field2">0x00C8 = 200</span>
+Data:   <span class="hex-data">RLE sıkıştırılmış piksel verisi</span>
+</pre>
+</div><p>320×200 = VGA tam ekran. Ama dosya 36687 byte, 64000 piksel gerek. Sıkıştırma var.</p>
+<p>Byte dağılımına bakıyorum: yaklaşık %50 byte &gt;= 0x80. Klasik RLE işareti.</p>
+<p><strong>Hipotez:</strong> Byte &gt;= 0x80 → run: <code>count = byte &amp; 0x7F</code>, sonraki byte bu kadar tekrarla. Byte &lt; 0x80 → literal: sonraki <code>count</code> byte kopyala.</p>
+<p>Test: tam <strong>64000 piksel</strong> çıktı. İlk deneme doğru.</p>
+<p>Palette: <code>.PAL</code> dosyası = 768 byte = 256 renk × 3 (RGB). VGA 6-bit (0-63), ×4 ile 8-bit'e scale.</p>
+<p>İlk doğru render:</p>
+<p><img src="ANAKES.png" alt="İstanbul silueti — savaş arenası arka planı, 320×200"></p>
+<h3>Yanlış Palette Macerası</h3>
+<p>SBD dosyaları (storyboard sahneleri) hep kırmızı çıkıyordu. 25 farklı palette denedim. Sonunda <code>DEMO1.PAL</code> tuttu. Farklı sahneler farklı palette kullanıyor — doğrusunu bulmak için bazen kaba kuvvet gerekiyor.</p>
+<h3>Çıkan Grafikler</h3>
+<p><img src="ACILISA.png" alt="Açılış ekranı A"></p>
+<p><img src="ACILISB.png" alt="Açılış ekranı B"></p>
+<p><img src="ISTHARA.png" alt="İstanbul haritası — 12 semt"></p>
+<p><img src="DRAGON.png" alt="Ejderha sprite sheet — 6 frame, magenta transparency"></p>
+<p><img src="LALE.png" alt="Lale Savaşçısı — müttefik NPC"></p>
+<p><img src="KELP.png" alt="Kelp — boss düşman"></p>
+<p><img src="BAHCIVAN.png" alt="Bahçıvan — sokak düşmanı"></p>
+<p><img src="SITKI.png" alt="Kıl Sıtkı — ihanetçi"></p>
+<p><img src="SBD00.png" alt="Kız Kulesi storyboard"></p>
+<p><img src="SBD02.png" alt="Savaş sahnesi storyboard"></p>
+<p><img src="SBD04.png" alt="Atlı savaşçılar"></p>
+<p><img src="SBD07.png" alt="Ziyafet sahnesi"></p>
+<p><img src="SOON.png" alt="Dev yılan ile karşılaşma"></p>
+<p><img src="KARAKTER.png" alt="Karakter seçim ekranı"></p>
+<p><img src="RAKS.png" alt="Raks"></p>
+<p>Sprite'larda magenta (#FF00FF) transparency mask — 90'ların standart tekniği. <code>.KOR</code> dosyaları (72 byte) frame koordinatları içeriyor.</p>
+<hr>
+<h2>3. Sesleri Duymak: PUR ve AMF</h2>
+<p>SOUNDS.CKD'den 206 dosya çıktı. <code>.PUR</code> uzantılı.</p>
+<div class="hexdump">
+<div class="hexdump-title">VECIZE01.PUR — header yok, direkt audio data</div>
+<pre>
+<span class="hex-addr">00000000</span>  <span class="hex-data">7f 80 81 80 80 7f 80 7f  80 81 80 80 7f 80 80 81</span>  |<span class="hex-data">................</span>|
+<span class="hex-addr">00000010</span>  <span class="hex-data">80 7f 81 82 83 82 81 80  7f 7e 7d 7c 7e 7f 80 81</span>  |<span class="hex-data">.........~}|~...</span>|
+</pre>
+</div><p>Header yok. Değerler 0x7E-0x82 arasında — unsigned 8-bit PCM audio'nun sessizlik değeri 0x80.</p>
+<p>Ama sample rate ne? Autocorrelation pitch analizi yaptım: erkek ses 149Hz (22050Hz'de), kadın ses 199Hz. 11025Hz olsaydı bu değerler 74Hz ve 99Hz olurdu — insan sesi için çok düşük.</p>
+<p><strong>Format: raw PCM, 8-bit unsigned, mono, 22050 Hz.</strong></p>
+<p>Erkek vecize (atasözü):</p>
+<audio controls><source src="vecize01.wav" type="audio/wav"></audio><p>Kadın vecize:</p>
+<audio controls><source src="fecize01.wav" type="audio/wav"></audio><p>Hikaye anlatımı (21 saniye):</p>
+<audio controls><source src="para00.wav" type="audio/wav"></audio><p>Vuruş:</p>
+<audio controls><source src="vurus.wav" type="audio/wav"></audio><p>Ölüm:</p>
+<audio controls><source src="olum.wav" type="audio/wav"></audio><p>Kapı:</p>
+<audio controls><source src="kapi.wav" type="audio/wav"></audio><h3>AMF Müzik</h3>
+<p>MUZIK.CKD'den <code>.AMF</code> dosyaları çıktı: DSMI Advanced Module Format v14.</p>
+<div class="hexdump">
+<div class="hexdump-title">ISTANBUL.AMF — DSMI v14 header</div>
+<pre>
+<span class="hex-addr">00000000</span>  <span class="hex-magic">41 4d 46</span> <span class="hex-field1">0e</span> <span class="hex-string">33 79 65 6e  69 00 00 00 00 00 00 00</span>  |<span class="hex-magic">AMF</span><span class="hex-field1">.</span><span class="hex-string">3yeni.......</span>|
+
+Magic: <span class="hex-magic">AMF</span>  Version: <span class="hex-field1">14</span>  Title: <span class="hex-string">"3yeni"</span>
+</pre>
+</div><p>Besteci: "ibina özgür". Easter egg'ler: "istanbul efsaneleri", "compuphiliacs", Metallica referansları.</p>
+<p>AMF dosyaları (OpenMPT ile çalınabilir):
+<a href="ISTANBUL.AMF">ISTANBUL.AMF — ana tema</a> | <a href="SAVAS.AMF">SAVAS.AMF — savaş</a> | <a href="3D.AMF">3D.AMF — zindan</a></p>
+<hr>
+<h2>4. Hikayeyi Okumak: FRPOS Script Motoru</h2>
+<p>IST.EXE'nin içinde debug string'leri arayınca:</p>
+<pre><code>FRPOS komutu: random(ilk deneme)..
+FRPOS komutu: wait(ilk deneme)..
+eger olay %d-&gt;%s
+Komut no:%d
+Atla:%d=&gt;
+</code></pre>
+<p><code>FRPOS</code> — oyunun kendi script motorunun adı. StillPsycho bizzat anlatmış:</p>
+<blockquote><p><em>"FRPOS diye bir çeşit yan programlama dili yazmıştık. Öyküyü bilgisayar da anlasın diye."</em></p>
+</blockquote>
+<p>1994'te, ticari bir engine yokken, sıfırdan scripting dili.</p>
+<h3>PCS Encoding'i Çözmek</h3>
+<p>PCS dosyaları AmBk header (20 byte) ile başlıyor. Sonrası encoded:</p>
+<div class="hexdump">
+<div class="hexdump-title">PCS1 (Otopark) — encoded data, okunamaz</div>
+<pre>
+<span class="hex-addr">00000014</span>  <span class="hex-data">00 06 01 36 00 16 00 b8  01 32 01 34 0d 00 01 01</span>
+<span class="hex-addr">00000024</span>  <span class="hex-data">01 01 04 02</span> <span class="hex-string">47 5a 3f 49  57 68 3f 5a 57 64 16 5d</span>
+</pre>
+</div><p>0x16 çok sık görünüyor. 0x16 + 10 = 0x20 = space. <strong>Her byte'a +10 ekle:</strong></p>
+<div class="hexdump">
+<div class="hexdump-title">PCS1 — decoded (+10): Türkçe metin!</div>
+<pre>
+<span class="hex-addr">00000014</span>  <span class="hex-data">0a 10 0b 40 0a 20 0a c2  0b 3c 0b 3e 17 0a 0b 0b</span>
+<span class="hex-addr">00000024</span>  <span class="hex-data">0b 0b 0e 0c</span> <span class="hex-string">51 64 49 53  61 72 49 64 61 6e 20 67</span>
+                                    <span class="hex-string">Q  d  I  S  a  r  I  d  a  n     g</span>
+</pre>
+</div><p><code>QdISarIdan</code> = "dışarıdan". Türkçe metin ortaya çıkıyor!</p>
+<p>Tüm 18 script dosyasını decode ettim. Oyunun hikayesi, diyalogları, dallanmaları burada:</p>
+<pre><code>"dISarIdan garip hIrIltIlar geliyor...
+ gerCekten dISarI CIkacak MIYIZ?"
+  → evet / hayIr
+
+"burada baygIN bir adam yatIyor. UstUnU arayalIm mI?"
+
+"beyler, burada bir anahtar buldum!"
+</code></pre>
+<p>Ve bir noktada, doğrudan developer yorumu:</p>
+<blockquote><p>(ulan Özgür, sen mi yaptın lan bu dedeyi her şeyi bok etti herif..silin lan şunu disketten)!!!!!!!!!</p>
+</blockquote>
+<p>Dördüncü duvar kırılıyor. Script dosyasının içinde, 1994'te yazılmış, 2025'te açılıyor.</p>
+<hr>
+<h2>5. Haritaları Çözmek: Tile-Based Dungeon</h2>
+<p>PC dosyaları harita verisi. AmBk header sonrası ilk 2 byte = W, H:</p>
+<p>PC1: 10×10, PC2: 30×30, PC15: 20×20, PC18: 5×5.</p>
+<p>Tile boyutu keşfi: <code>(dosya_boyutu - 23) / (W × H)</code> her haritada tam <strong>15</strong> çıkıyor. 23 = 2 (W,H) + 21 (footer).</p>
+<p><strong>Format:</strong> <code>W(1) + H(1) + tiles(W×H × 15 byte) + footer(21 byte)</code></p>
+<p>18 harita decode edildi:</p>
+<p><img src="PC1_map.png" alt="Otopark — 10×10, başlangıç noktası"></p>
+<p><img src="PC2_map.png" alt="Mecidiyeköy — 30×30, en büyük zindan"></p>
+<p><img src="PC4_map.png" alt="Eminönü — 20×23, direniş merkezi"></p>
+<p><img src="PC6_map.png" alt="Ümraniye — 14×16, sınavlar"></p>
+<p><img src="PC15_map.png" alt="Topkapı Sarayı — 20×20, Kılıçartıbeş burada"></p>
+<p>Siyah = koridor, gri = duvar, kırmızı = özel alan/event tetikleyici.</p>
+<table>
+<thead><tr>
+<th>Bölge</th>
+<th>Boyut</th>
+<th>Tile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Otopark</td>
+<td>10×10</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Mecidiyeköy</td>
+<td>30×30</td>
+<td>900</td>
+</tr>
+<tr>
+<td>Beşiktaş</td>
+<td>20×18</td>
+<td>360</td>
+</tr>
+<tr>
+<td>Eminönü</td>
+<td>20×23</td>
+<td>460</td>
+</tr>
+<tr>
+<td>Topkapı Sarayı</td>
+<td>20×20</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Kız Kulesi</td>
+<td>10×10</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Cehalet Tapınağı</td>
+<td>5×5</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<p>3D zindan texture'ları:</p>
+<p><img src="DUVAR1.png" alt="Duvar — sol/sağ perspektif + düz ön görünüm"></p>
+<p><img src="KAPI1.png" alt="Kapı"></p>
+<p><img src="MERDIM.png" alt="Merdiven — taş zindan"></p>
+<p><img src="PCMAINTH.png" alt="3D zindan ana ekranı"></p>
+<hr>
+<h2>6. Karakter Sistemi</h2>
+<p>GRPHAZIR.DAT (664 byte) = varsayılan parti. 4 karakter × (74 byte isim bloğu + 92 byte stat bloğu).</p>
+<div class="hexdump">
+<div class="hexdump-title">GRPHAZIR.DAT — ilk karakter</div>
+<pre>
+<span class="hex-addr">00000000</span>  <span class="hex-string">67 81 72 63 61 6e 69 00</span>  00 00 00 00 00 00 00 00  |<span class="hex-string">gürcani.</span>........|
+<span class="hex-addr">00000025</span>  <span class="hex-field2">31 30 30 30 30 30 30 30</span>  30 30 30 30 30 30 30 30  |<span class="hex-field2">10000000</span>00000000|
+
+İsim: <span class="hex-string">"gürcani"</span>
+Flags: <span class="hex-field2">"100000000000000000000000000000000000"</span> (36 boolean)
+</pre>
+</div><p>92-byte stat bloğunda 46 uint16 değer. Çözülenler:</p>
+<table>
+<thead><tr>
+<th>İndeks</th>
+<th>gürcani</th>
+<th>alper</th>
+<th>gökhan</th>
+<th>nizamettin</th>
+<th>Tahmin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>8</td>
+<td>5</td>
+<td>2</td>
+<td>4</td>
+<td>Sınıf ID</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>Cinsiyet</td>
+</tr>
+<tr>
+<td>3</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td>Boy</td>
+</tr>
+<tr>
+<td>4</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+<td>Kilo</td>
+</tr>
+<tr>
+<td>5</td>
+<td>81</td>
+<td>110</td>
+<td>101</td>
+<td>196</td>
+<td>Güç</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>5</td>
+<td>3</td>
+<td>Seviye</td>
+</tr>
+<tr>
+<td>18</td>
+<td>175</td>
+<td>179</td>
+<td>168</td>
+<td>154</td>
+<td>Max HP?</td>
+</tr>
+</tbody>
+</table>
+<p>Varsayılan parti: gürcani (siliconian), alper (lavuk), gökhan (öğrenci), nizamettin abi (maganda).</p>
+<p><img src="VIEWPC.png" alt="Karakter stat ekranı"></p>
+<p><img src="TRADE.png" alt="Ticaret ekranı"></p>
+<hr>
+<h2>7. Çözülemeyen: GFL Video Formatı</h2>
+<p>0GFL.CKD: 218 MB, 70 dosya. 35 <code>.GFL</code> video + 35 <code>.GHD</code> header çifti.</p>
+<p>GHD başlığı:</p>
+<div class="hexdump">
+<div class="hexdump-title">INTRO.GHD — GFLO header</div>
+<pre>
+<span class="hex-addr">00000000</span>  <span class="hex-magic">47 46 4c 4f</span> <span class="hex-field1">00 0a</span> <span class="hex-field2">22 56</span>  <span class="hex-data">a0 86 01 00</span> 00 00 00 00  |<span class="hex-magic">GFLO</span><span class="hex-field1">..</span><span class="hex-field2">"V</span><span class="hex-data">....</span>....|
+
+Magic: <span class="hex-magic">GFLO</span>
+Byte 6-7: <span class="hex-field2">0x5622 = 22050</span> — ses sample rate!
+Byte 8-11: <span class="hex-data">100000</span>
+</pre>
+</div><p>GHD'de palette var ve doğru renkleri gösteriyor. GFL'de raw pixel data var (entropy 6.52, mean byte diff 0.7 — çok smooth). <strong>Ama render edince gürültü.</strong></p>
+<p>Denenen yöntemler: raw 320×200, Mode-X 4-plane, Amiga bitplane, delta encoding, LZSS, palette rotation, column-major, interlaced. <strong>Hiçbiri tutmadı.</strong></p>
+<p>Bu soruyu çözmek için Ghidra ile IST.EXE disassembly gerekiyor.</p>
+<hr>
+<h2>8. Debug Mesajları ve Modül Yapısı</h2>
+<p>IST.EXE: 385KB, Borland C++ ile derlenmiş. Versiyon: <code>0.12.96</code>.</p>
+<p>Kaynak modüller (debug bilgisinden):</p>
+<table>
+<thead><tr>
+<th>Modül</th>
+<th>İşlev</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ISTANBUL.C</code></td>
+<td>Ana oyun döngüsü</td>
+</tr>
+<tr>
+<td><code>3DSYS.L</code> / <code>3DQUICK.L</code></td>
+<td>First-person 3D zindan</td>
+</tr>
+<tr>
+<td><code>ISOSYS.L</code></td>
+<td>İzometrik savaş</td>
+</tr>
+<tr>
+<td><code>FRPOS.L</code></td>
+<td>Script motoru</td>
+</tr>
+<tr>
+<td><code>CHARGEN.L</code></td>
+<td>Karakter oluşturma</td>
+</tr>
+<tr>
+<td><code>GFL.C</code></td>
+<td>FLiB arşiv sistemi</td>
+</tr>
+</tbody>
+</table>
+<p>Dışarıdan tek kütüphane: <strong>AMP 2.00</strong> (Otto Chrons) — müzik için. Geri kalan her şey onlara ait.</p>
+<p>Debug mesajları:</p>
+<blockquote><p>"Buggy code, buggy code, BC BC satir:%d"</p>
+<p>"Tamam abi breyk, breyk, sitop !!!"</p>
+<p>"Bitler resetlendi, pireler set edilmeliydi..."</p>
+<p>"allah nazardan saklasın"</p>
+</blockquote>
+<p>38 düşman türü. Yobaz sos isimleri: beşamel, bolonez, napoliten, ograten. Savaş diyalogları: "höynk!!!", "ben gariban bir antenim!", "anneeee!!!"</p>
+<p>Hız sistemi: "ışık hızıyla" → "ses hızıyla" → "bayağı hızlı" → "araba hızlı" → "yürüme hızlı" → "otobüs hızlı" → "cengo yerkenki".</p>
+<p><img src="RPZ.png" alt="Oyun içi reklamlar — Umut Tarlaları, KROBB, İstanbul Efsaneleri II &quot;Pek Yakında!&quot;"></p>
+<p>İstanbul Efsaneleri II duyurulmuş ama çıkmamış.</p>
+<hr>
+<h2>Sonuç</h2>
+<p><strong>Çözülen:</strong> FLiB arşiv formatı, CMP grafik codec'i, PUR ses formatı, AMF müzik, FRPOS script encoding, harita tile formatı, karakter stat yapısı.</p>
+<p><strong>Çözülemeyen:</strong> GFL video piksel sıralaması, FRPOS opcode tablosunun tamamı, savaş formülleri.</p>
+<p>1994-96'da bir grup Türk geliştirici — çoğu liseli — kendi arşiv formatını, kendi grafik codec'ini, kendi scripting dilini yazdı. Tek dışarıdan aldıkları şey müzik kütüphanesi.</p>
+<p>30 yıl sonra binary'ye bakınca her şey hâlâ orada: debug mesajları, storyboard çizimleri, ekip fotoğrafı, yarım kalan diyaloglar.</p>
+<p><img src="GRUP.png" alt="Silicon Worx ekip fotoğrafı — &quot;Nasıl?&quot;"></p>
+<p><em>"Nasıl?" yazıyor fotoğrafın altında. Nasıl mı? İyi.</em></p>
+<p><img src="HAR2.png" alt="El çizimi harita"></p>
+<p><img src="HAR3.png" alt="Harita 2"></p>
+<p><img src="HAR4.png" alt="Harita 3"></p>
+<p><img src="TABLETUR.png" alt="Savaş arenası zemini"></p>
+
+
+
+  <ul>
+    <li>
+        <a href="../../articles@tag/reverse-engineering/">
+          All posts tagged reverse-engineering
+        </a>
+      </li>
+    <li>
+        <a href="../../articles@tag/turkiye/">
+          All posts tagged turkiye
+        </a>
+      </li>
+    <li>
+        <a href="../../articles@tag/retro-gaming/">
+          All posts tagged retro-gaming
+        </a>
+      </li>
+    
+  </ul>
+
+
+
+
+      </div>
+    </main>
+  </div>
+  
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="d19d3d5e-43ab-47ca-9def-5c819bacf475"></script>
+  <style>
+    :root {
+      --bg: #0a0c09;
+      --fg: #e8dcc8;
+      --accent: #F4B942;
+      --fg-muted: #998763;
+      --surface: #15180f;
+      --surface-strong: #1d2018;
+      --border: #2d3028;
+      --radius: 0px;
+      --ln: 2px;
+      --gap: 1.5rem;
+      --fs: 1.1rem;
+      --lh: 1.8rem;
+      --fs-small: 1rem;
+      --fs-large: clamp(2.1rem, 2.2vw + 1.5rem, 2.5rem);
+      --fs-medium: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--gap);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: color-mix(in srgb, var(--bg) 80%, var(--fg));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--accent) 25%, var(--bg));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--fs);
+      line-height: var(--lh);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: color-mix(in srgb, var(--accent) 65%, var(--fg));
+      text-decoration: underline;
+    }
+
+    .model-article main a {
+      text-decoration: underline;
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--fg);
+    }
+
+    .screen *:not(pre):not(.hll) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .wrapper {
+      max-width: 79ch;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    header {
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg));
+      border-bottom: 1px solid var(--border);
+    }
+
+    header nav {
+      background: transparent;
+      padding: 0.9rem 0;
+    }
+
+    header nav .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--fg);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding-bottom: 0.35rem;
+      text-decoration: none;
+    }
+
+    header nav a span {
+      color: var(--accent);
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+      text-decoration: none;
+    }
+
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    header nav a:hover::after,
+    header nav a:focus-visible::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    header nav a.active {
+      color: var(--accent);
+    }
+
+    header nav a.active::after {
+      background: var(--accent);
+      transform: scaleX(1);
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+      margin: 0 0 1.4rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin: 0.65rem 0;
+    }
+
+    h1 {
+      font-size: var(--fs-large);
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+
+    h2 {
+      font-size: var(--fs-medium);
+      line-height: 1.4;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.5;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #f5f0e5;
+    }
+
+    blockquote {
+      padding: 0.75rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--fg);
+    }
+
+    blockquote > *:last-child {
+      margin-bottom: 0;
+    }
+
+    pre {
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88em;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: auto;
+    }
+
+    code {
+      color: var(--accent);
+      font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    td:first-child {
+      color: var(--fg-muted);
+      font-weight: 600;
+      width: 40%;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    p:has(> img:only-child) {
+      display: flex;
+      justify-content: center;
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .pagination__link,
+    .pagination__page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.75rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      font-size: 0.9rem;
+    }
+
+    .pagination__link {
+      color: var(--accent);
+    }
+
+    .pagination__link.is-disabled {
+      pointer-events: none;
+      color: var(--fg-muted);
+      border-color: color-mix(in srgb, var(--border) 60%, transparent);
+    }
+
+    #articles {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+    }
+
+    #articles li {
+      margin: 0;
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    #articles li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    #articles .article-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    #articles .article-title:hover {
+      color: color-mix(in srgb, var(--accent) 85%, var(--fg));
+      text-decoration: none;
+    }
+
+    .article-description {
+      color: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .article-meta {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .article-meta time {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .article-meta .meta-sep {
+      color: var(--fg-muted);
+      font-size: inherit;
+    }
+
+    .article-meta a {
+      color: var(--fg-muted);
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    .article-meta a:hover,
+    .article-meta a:focus-visible {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .tag-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag-list ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .articles-main {
+      flex: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .articles-sidebar {
+      flex-shrink: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .articles-layout {
+        flex-direction: row;
+        gap: 3rem;
+      }
+
+      .articles-sidebar {
+        width: 200px;
+        order: 2;
+      }
+
+      .articles-main {
+        order: 1;
+      }
+
+      .articles-sidebar .tag-list {
+        margin: 0;
+      }
+
+      .articles-sidebar .tag-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .tag-list a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .tag-list a:hover {
+      color: var(--accent);
+    }
+
+    .tag-list li {
+      margin: 0;
+    }
+
+    .tag-list a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-filter {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+
+    .lang-filter ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lang-filter a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .lang-filter a:hover {
+      color: var(--accent);
+    }
+
+    .lang-filter li {
+      margin: 0;
+    }
+
+    .lang-filter a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      .articles-sidebar .lang-filter ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    .home-hero {
+      display: grid;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .home-title {
+      text-align: left;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: clamp(1.6rem, 1.5vw + 1.2rem, 2.1rem);
+      line-height: 1.25;
+      margin: 0 0 1rem;
+    }
+
+    .home-work {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1.2rem 0 2.5rem;
+    }
+
+    .home-work-item {
+      padding: 0.9rem 1.1rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .home-work-item h3 {
+      margin: 0 0 0.3rem;
+      font-size: 1.05rem;
+    }
+
+    .home-work-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--fg-muted);
+      line-height: 1.5;
+    }
+
+    .home-work-item a.work-name {
+      color: var(--accent);
+    }
+
+    .home-latest {
+      margin-top: 3rem;
+    }
+
+    .home-latest-more {
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .home-work {
+        grid-template-columns: 1fr 1fr;
+      }
+      .home-work-item:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .home-hero img {
+      max-width: 220px;
+      margin: 0 auto;
+      box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-intro p {
+      margin-bottom: 1.4rem;
+      color: var(--fg);
+    }
+
+    .home-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 0;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .social-link::before {
+      font-size: 0.95rem;
+    }
+
+    .social-link--github::before {
+      content: "🐙";
+    }
+
+    .social-link--instagram::before {
+      content: "📸";
+    }
+
+    .social-link--soundcloud::before {
+      content: "🎵";
+    }
+
+    .home-availability {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .home-availability-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-item span {
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .home-availability-links {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-availability-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .home-availability-item a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible,
+    .home-availability-item a:hover,
+    .home-availability-item a:focus-visible {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: var(--accent);
+      color: color-mix(in srgb, var(--accent) 70%, var(--fg));
+    }
+
+    .page-articles .wrapper h1 {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-links main > h2 {
+      margin-top: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .page-links main > h2:first-of-type {
+      margin-top: 2rem;
+    }
+
+    .page-links main > h2 + ul {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid color-mix(in srgb, var(--border) 40%, transparent);
+      padding-left: 1.1rem;
+    }
+
+    .page-links main a {
+      color: var(--accent);
+    }
+
+    .page-projects main > h2 {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.1rem 1.3rem 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .page-projects main > h2 + p {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1rem 1.3rem 1.1rem;
+      margin-top: 0;
+    }
+
+    .page-projects main > h2 + p + ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--surface);
+      margin: -0.5rem 0 2.5rem;
+      padding: 0 1.3rem 1.15rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .page-projects main > h2 + p + ul li {
+      margin: 0;
+    }
+
+    .page-projects main > h2 + p + ul a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0;
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      font-size: 0.85rem;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+    }
+
+    .page-resume table {
+      float: none;
+      margin: 0 0 2rem 0;
+      box-shadow: 0 24px 50px -45px rgba(0, 0, 0, 0.8);
+    }
+
+    .page-resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .page-resume li {
+      line-height: 1.65;
+      margin: 0.55rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .home-hero {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .home-hero img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav .wrapper {
+        gap: 0.5rem 1rem;
+      }
+
+      .page-projects main > h2,
+      .page-projects main > h2 + p,
+      .page-projects main > h2 + p + ul {
+        border-radius: var(--radius);
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      header,
+      main {
+        padding: 1em 0;
+      }
+    }
+
+    main> :first-child {
+      margin-top: 0;
+    }
+
+    .quote-post {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      padding: 2rem 0;
+    }
+
+    .quote-post blockquote {
+      border-left: none;
+      background: none;
+      text-align: center;
+      max-width: 60ch;
+      padding: 0;
+      position: relative;
+    }
+
+    .quote-post blockquote::before {
+      content: "\201C";
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: -2.5rem;
+      left: -1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-post blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--fg);
+    }
+
+    .video-post iframe {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-post-images img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .photo-post-images img:not(:only-child) {
+      width: calc(50% - 2px);
+      object-fit: cover;
+    }
+
+    .photo-post-body {
+      color: var(--fg);
+    }
+
+    @media print {
+      :root {
+        --bg: #fff;
+        --fg: #222;
+        --accent: #222;
+        --fg-muted: #666;
+        --surface: #fff;
+        --surface-strong: #fff;
+        --border: #ccc;
+      }
+
+      body {
+        background: #fff;
+        color: #222;
+        font-size: 11pt;
+        line-height: 1.5;
+      }
+
+      header, .home-social, .home-availability, .no-print {
+        display: none !important;
+      }
+
+      main {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .wrapper {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      a {
+        color: #222 !important;
+        text-decoration: none !important;
+      }
+
+      h1 {
+        font-size: 18pt;
+        text-align: left;
+        text-transform: none;
+        margin-bottom: 0.5rem;
+      }
+
+      h2 {
+        font-size: 14pt;
+        margin: 1.5rem 0 0.5rem;
+        border-bottom: 1px solid #ccc;
+        page-break-after: avoid;
+      }
+
+      h3 {
+        font-size: 12pt;
+        margin: 1rem 0 0.3rem;
+        page-break-after: avoid;
+      }
+
+      ul, ol {
+        padding-left: 1.2rem;
+      }
+
+      li {
+        margin: 0.25rem 0;
+        line-height: 1.4;
+      }
+
+      table {
+        border: 1px solid #ccc;
+        box-shadow: none !important;
+      }
+
+      td {
+        padding: 0.3rem 0.6rem;
+        border-bottom: 1px solid #eee;
+      }
+
+      td:first-child {
+        color: #666;
+        font-size: 9pt;
+      }
+
+      .page-resume table {
+        box-shadow: none !important;
+      }
+
+      .page-projects main > h2 {
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      .page-projects main > h2 + p {
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      pre, code {
+        font-size: 9pt;
+      }
+
+      blockquote {
+        border-left: 2px solid #ccc;
+        background: none;
+      }
+
+      img {
+        max-width: 150px;
+      }
+    }
+
+  </style>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="en">
+
+  
+  
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FNHYLZR5Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FNHYLZR5Z');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {(c[a].q = c[a].q || []).push(arguments)};
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "p841gcyf0p");
+</script>
+  <!-- Primary Meta Tags -->
+  <title>Bitcoin Crash Explained: Wyckoff Model &amp; Whale Accumulation</title>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../mirat.png" sizes="any">
+  <link rel="apple-touch-icon" href="../../mirat.png">
+  <link rel='canonical' href="https://mirat.dev/articles/wyckoff-accumulation-btc-2026/">
+  
+  
+  
+  <meta name="title" content="Bitcoin Crash Explained: Wyckoff Model &amp; Whale Accumulation — Mirat Can Bayrak" />
+  <meta name="description" content="Why did Bitcoin crash from $98k to $60k? A detailed analysis through the Wyckoff accumulation model, whale buying, on-chain data and market psychology." />
+  <meta property="og:type" content="article" />
+<meta property="og:url" content="https://mirat.dev/articles/wyckoff-accumulation-btc-2026/" />
+<meta property="og:title" content="Bitcoin Crash Explained: Wyckoff Model &amp; Whale Accumulation — Mirat Can Bayrak" />
+<meta property="og:description" content="Why did Bitcoin crash from $98k to $60k? A detailed analysis through the Wyckoff accumulation model, whale buying, on-chain data and market psychology." />
+<meta property="og:image" content="https://mirat.dev/mirat-orig.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mirat.dev/articles/wyckoff-accumulation-btc-2026/" />
+<meta name="twitter:title" content="Bitcoin Crash Explained: Wyckoff Model &amp; Whale Accumulation — Mirat Can Bayrak" />
+<meta name="twitter:description" content="Why did Bitcoin crash from $98k to $60k? A detailed analysis through the Wyckoff accumulation model, whale buying, on-chain data and market psychology." />
+<meta name="twitter:image" content="https://mirat.dev/mirat-orig.jpg" />
+  
+  
+  
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bitcoin Crash Explained: Wyckoff Model \u0026 Whale Accumulation",
+  "datePublished": "2026-02-16",
+  "dateModified": "2026-02-16",
+  "author": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak",
+    "url": "https://mirat.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mirat Can Bayrak"
+  },
+  "url": "https://mirat.dev/articles/wyckoff-accumulation-btc-2026/",
+  "inLanguage": "en",
+  "description": "Why did Bitcoin crash from $98k to $60k? A detailed analysis through the Wyckoff accumulation model, whale buying, on-chain data and market psychology."
+}
+</script>
+
+</head>
+
+
+
+
+
+
+
+<body class="page-articles-wyckoff-accumulation-btc-2026 model-article">
+  <div class="screen">
+    <header>
+      <nav>
+  <div class="wrapper">
+    <a  href="/"><span>H</span>ome</a>
+    
+    <a  class="active"  href="/articles/"><span>A</span>rticles</a>
+    
+
+    
+    <a  href="/projects/"><span>P</span>rojects</a>
+    
+
+    
+    <a  href="/links/"><span>L</span>inks</a>
+    
+
+    
+    <a  href="/resume/"><span>R</span>esume</a>
+    
+  </div>
+</nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        
+<h1>Bitcoin Crash Explained: Wyckoff Model &amp; Whale Accumulation</h1>
+
+
+
+
+
+<div class="article-meta">
+  February 2026 · written at age 42
+</div>
+
+<p>Bitcoin crashed from $98k to $60k in a matter of weeks. The Fear &amp; Greed index hit 8 — extreme fear — and retail investors are selling at a loss.</p>
+<p>My thesis: this crash may be a classic <a href="https://chartschool.stockcharts.com/table-of-contents/market-analysis/wyckoff-analysis-articles/the-wyckoff-method-a-tutorial">Wyckoff accumulation</a> — large operators pushing the price down to accumulate cheaply before marking it back up.</p>
+<p>I'll analyze this claim through the Wyckoff model, on-chain data, volume behavior and market psychology. I'll also explain why I could be completely wrong.</p>
+<h2>Does the Bitcoin Crash Fit the Wyckoff Accumulation Model?</h2>
+<p>This kind of price behavior isn't new. Financial markets have a well-documented model for how large operators accumulate positions.</p>
+<p>Richard Wyckoff's accumulation model describes how large operators manipulate markets in five phases:</p>
+<p><strong>Phase A — Selling Climax:</strong> Price crashes rapidly, establishing a range. Everyone says "it's over."
+→ <em>The $98k to $60k crash. This phase appears complete.</em></p>
+<p><strong>Phase B — Silent Accumulation:</strong> Price moves sideways. Fear is pumped through media, retail panic-sells. Meanwhile, large operators quietly accumulate.
+→ <em>We appear to be here now. Evidence below.</em></p>
+<p><strong>Phase C — The Spring:</strong> Price dips below support one more time. The goal is to trigger stop-losses and break the last remaining bulls.
+→ <em>Key question: was the Feb 6 $60k bounce the spring, or is $53-55k still coming?</em></p>
+<p><strong>Phase D — Markup:</strong> Breakout from the range with increasing volume.</p>
+<p><strong>Phase E — New uptrend established.</strong></p>
+<p>To show why I think this model fits the current Bitcoin crash, let's first look at what happened, then examine the evidence.</p>
+<h2>Timeline: What Happened?</h2>
+<p>Trump declared at the 2024 Nashville Bitcoin Conference that he'd make the U.S. "the crypto capital of the world." In March 2025, he signed the <a href="https://www.whitehouse.gov/presidential-actions/2025/03/establishment-of-the-strategic-bitcoin-reserve-and-united-states-digital-asset-stockpile/">Strategic Bitcoin Reserve executive order</a> — mandating that the government's 207,000 BTC not be sold and that additional acquisition strategies be explored. The <a href="https://www.congress.gov/bill/119th-congress/senate-bill/954">BITCOIN Act (S.954)</a> bill proposes acquiring 1 million BTC over 5 years. The bill hasn't passed Congress yet, but the political intent is clear.</p>
+<p>Then the crash sequence began. In late January 2026, Trump threatened 25% tariffs on 8 European countries over the Greenland dispute. Markets shook, BTC followed — $875M liquidated in 24 hours. On Feb 1, additional tariffs on Canada, Mexico and China went into effect. From Feb 3-5, <a href="https://www.coindesk.com/markets/2026/02/05/big-short-michael-burry-flags-bitcoin-pattern-that-predicts-drop-to-low-usd50-000s">Michael Burry</a> called for "$50k lows" and <a href="https://seekingalpha.com/news/4547997-bitcoin-s-price-target-at-zero">Richard Farr</a> set a $0 price target. On Feb 5, Microsoft's poor earnings dragged tech stocks — BTC dropped from $73k to $62k in a single day.</p>
+<p>On Feb 6, price touched exactly $60,000 and bounced hard to $70.5k with 93,000+ contracts volume. The following week it drifted to $66k. <a href="https://www.ccn.com/news/crypto/bitcoins-true-value-0-financial-times-columnist-claims/">Financial Times</a> published "Bitcoin's true value is zero," <a href="https://finance.yahoo.com/news/bitcoin-price-0-heres-why-100215567.html">Yahoo Finance</a> ran "Is Bitcoin heading to $0?" headlines. By Feb 13-14, price recovered to $69.8k.</p>
+<h3>Why This Timeline Matters</h3>
+<p>The man who says he'll make BTC a strategic reserve is crashing the market with his own tariff policies. The side effect of those policies was pushing down the price of the very asset he says he wants to buy.</p>
+<p>The timing could be coincidental. But it fits the Wyckoff phases remarkably well.</p>
+<h2>5 Critical Signals That Bitcoin May Be in a Wyckoff Accumulation</h2>
+<h3>1. The $60k Volume Spike</h3>
+<p>On Feb 6, BTC touched exactly $60,000 and reversed with 93,000+ contracts volume. The Bollinger Band lower band — a technical indicator showing how far price has deviated from its statistical "normal" range — sat at ~$59.8k, meaning price had entered "oversold" territory with statistically elevated reversal probability.</p>
+<p>Someone bought heavily at that level. We don't know who. But that volume spike at such a psychologically and technically significant level is not normal retail behavior.</p>
+<h3>2. Whales Are Buying, Retail Is Selling</h3>
+<p>The most classic Wyckoff accumulation signal: retail panic-sells while large investors (whales — addresses holding 1,000+ BTC) quietly accumulate. The data confirms exactly this:</p>
+<p><a href="https://www.coindesk.com/markets/2026/01/30/retail-traders-are-running-for-the-exit-amid-bitcoin-s-selloff-while-mega-whales-are-quietly-buying-the-dip">CoinDesk</a>, <a href="https://www.bloomberg.com/news/articles/2026-02-10/bitcoin-whales-are-buying-again-as-other-large-buyers-retreat">Bloomberg</a> and <a href="https://www.coindesk.com/markets/2026/02/15/wall-street-remains-bullish-on-bitcoin-while-offshore-traders-retreat">CoinDesk</a> reported the same pattern throughout January-February: retail running for the exits while whale wallets quietly buy the dip. In January alone, whale addresses accumulated roughly $7 billion worth — <strong>104,340 BTC</strong>. <a href="https://cointelegraph.com/news/michael-saylor-signals-strategy-buy-bitcoin">Michael Saylor</a> also signaled aggressive buying on Feb 15 despite the downturn.</p>
+<p>Most of these purchases happen through OTC desks (over-the-counter markets — private channels where large buyers and sellers trade directly, invisible on public exchanges). So looking at on-chain data and concluding "no big buying" can be misleading.</p>
+<h3>3. The Hope Rally Trap: Market Psychology</h3>
+<p>The most critical part of Wyckoff accumulation isn't price — it's investor psychology. In Phase B, the goal isn't just to buy cheap — it's to break the remaining optimists.</p>
+<p>There's a repeating cycle in this range. Two key terms:</p>
+<ul>
+<li><strong>Long:</strong> Someone who buys BTC expecting price to rise. Profits if it goes up, loses if it goes down.</li>
+<li><strong>Short:</strong> Someone who borrows and sells BTC expecting price to fall. Profits if it drops, loses if it rises.</li>
+</ul>
+<p>The cycle works like this:</p>
+<ol>
+<li>Let price climb a bit ($66k → $69k) — give longs hope</li>
+<li>Slam it back down — crush that hope</li>
+<li>Repeat, each bounce <em>lower</em> than the last</li>
+<li>Eventually longs give up and flip short themselves</li>
+<li>Long/short ratio drops below 1.0 — majority now expects further decline</li>
+<li><em>Then</em> the real reversal: with everyone short, price suddenly surges. Shorts are forced to buy BTC to close their positions, and this forced buying pushes price even higher — this is called a "short squeeze"</li>
+</ol>
+<p>As of Feb 16, the L/S ratio is 1.82 — still 64.5% long. Most traders still expect a recovery, meaning capitulation isn't complete yet. If this cycle holds, we may need one more drop before the turn.</p>
+<h3>4. Coordinated Negative Media Blitz</h3>
+<p>While price was crashing to the rumored government buy level, within a 10-day window U.S. media and prominent analysts all delivered the same message: "Bitcoin is finished." <a href="https://www.coindesk.com/markets/2026/02/05/big-short-michael-burry-flags-bitcoin-pattern-that-predicts-drop-to-low-usd50-000s">Michael Burry</a> pointed to $50k, <a href="https://seekingalpha.com/news/4547997-bitcoin-s-price-target-at-zero">Pivotus Partners</a> set a price target of zero, <a href="https://www.ccn.com/news/crypto/bitcoins-true-value-0-financial-times-columnist-claims/">Financial Times</a> said "true value is zero." <a href="https://finance.yahoo.com/news/bitcoin-price-0-heres-why-100215567.html">Yahoo Finance</a>, MarketWatch and Seeking Alpha ran these as front-page stories.</p>
+<p>The most telling: <a href="https://www.coindesk.com/markets/2026/02/13/blackrock-s-head-of-digital-assets-warns-leverage-driven-volatility-risks-undermine-bitcoin-s-institutional-narrative">BlackRock</a> — the world's largest asset manager — was spreading "BTC is risky" narratives while holding their own BTC ETF. In institutional markets, what matters isn't what's being said — it's what's being done.</p>
+<p>This many sources, in this short a window, all delivering the same message — purely organic, or orchestrated?</p>
+<h3>5. The Political Context: Trump's $60k Motivation</h3>
+<p><em>This is the most speculative section. There is no direct evidence of government-level buying. However, the political incentives make this possibility theoretically plausible.</em></p>
+<p>Trump signed the executive order, additional acquisition strategies are being explored, and political intent is clear. On Feb 8-9, Jim Cramer <a href="https://www.benzinga.com/crypto/cryptocurrency/26/02/50471399/jim-cramer-says-hes-heard-trump-is-gonna-fill-the-bitcoin-reserve-at-60000-what-on-earth-data-tells-us">stated</a>: <em>"I've heard Trump is gonna fill the reserve at $60,000."</em> And BTC bounced at exactly $60,000 with massive volume.</p>
+<p>If the government truly wants to buy at that level, it has motivation to push price there. But why would they need to push it even lower?</p>
+<p>Say you want to buy billions in BTC at a $60k average. But at that scale, you consume available sell orders — each subsequent buy costs more than the last. This is called "slippage." If you start buying at $60k, your own purchases push price to $70-80k, and your average entry ends up far above target.</p>
+<p>The solution: push price <em>below</em> target. Drop it to $53-55k, then buy aggressively. The slippage from your own buying brings your average up to ~$60k. The crash isn't just convenient — it may be <em>necessary</em> to accumulate at the target price.</p>
+<p>In other words: for a large buyer, a crash isn't a problem — it's a strategy. This is why large institutional purchases typically happen during downturns and uncertainty, not during rallies.</p>
+<h2>Why I Could Be Wrong</h2>
+<p>Let me be honest — I could be completely wrong:</p>
+<ul>
+<li><strong>Wyckoff is an interpretive tool, not prophecy.</strong> Markets don't always follow the model. Seeing patterns where none exist is a well-documented cognitive bias.</li>
+<li><strong>The timing could be coincidental.</strong> In a bear market, everyone talks bearish — coordinated-looking media doesn't require conscious orchestration.</li>
+<li><strong>Government buying is unproven.</strong> The executive order exists but doesn't mandate active purchases, only strategy exploration. The BITCOIN Act bill hasn't passed Congress. Cramer's $60k claim is a rumor. There is no on-chain evidence of government buying.</li>
+<li><strong>Macro risks are real.</strong> Tariffs, inflation, interest rate policy — these can crash BTC without any manipulation.</li>
+</ul>
+<h2>Two Scenarios</h2>
+<p><strong>Scenario A — $60k was the spring:</strong> The Feb 6 bounce with 93K volume completed Phase C. If price breaks the top of the triangle, markup begins.</p>
+<p><strong>Scenario B — The spring hasn't happened yet:</strong> L/S ratio is still too high, longs are stubborn. Another drop to $53-55k is coming to fully break remaining bulls. Large buyers accumulate at those levels, slippage brings the average to ~$60k, <em>then</em> the markup begins.</p>
+<p>I lean toward Scenario B — because market psychology doesn't appear to have reached full capitulation yet. But if a high-volume breakout materializes, I'll reassess.</p>
+<h2>Critical Signals for a Bitcoin Price Reversal</h2>
+<p><strong>The narrowing triangle</strong> — price is compressing into an increasingly tight range. Lower highs: $70.5k → $70.3k → $69.8k. Higher lows: $60k → $65.1k → $65.8k. A breakout or breakdown is coming soon.</p>
+<p><strong>L/S ratio</strong> — 1.82. I don't expect the real reversal until the majority flips short (below 1.0).</p>
+<p><strong>Key dates:</strong></p>
+<ul>
+<li><strong>March 6 — NFP:</strong> Strong jobs data = "no rate cut" narrative. High rates keep investors in risk-free bonds, away from assets like BTC.</li>
+<li><strong>March 11 — CPI:</strong> High inflation makes Fed rate cuts even harder, same effect.</li>
+<li><strong>March 18 — FOMC:</strong> The biggest catalyst. Rate cut = money flows into risk assets and BTC rises. No cut or hawkish messaging = decline continues.</li>
+</ul>
+<p><strong>Political risk:</strong> <a href="https://cointelegraph.com/news/senators-urge-cfius-probe-uae-stake-trump-linked-wlfi">Senators</a> are pushing for a CFIUS probe into the $500M UAE investment in Trump-linked World Liberty Financial. Could create another FUD wave — or be noise.</p>
+<h2>Bitcoin Crash: Collapse or Accumulation?</h2>
+<p>The Bitcoin crash may be driven by macro uncertainty, leveraged position liquidations, and large-scale accumulation by institutional buyers. According to the Wyckoff model, sharp crashes like this can precede new uptrends.</p>
+<p>The Wyckoff accumulation hypothesis appears consistent with current price action, on-chain data and market psychology. But it's not certain.</p>
+<p>What will determine whether this is real isn't theory — it's the price action over the coming weeks.</p>
+
+
+
+  <ul>
+    <li>
+        <a href="../../articles@tag/thoughts/">
+          All posts tagged thoughts
+        </a>
+      </li>
+    
+  </ul>
+
+
+
+
+      </div>
+    </main>
+  </div>
+  
+
+<script src="https://utteranc.es/client.js"
+        repo="miratcan/miratcan.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+</body>
+
+</html>

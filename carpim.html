@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Carpim Oyunu -- Miray</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <style>
+    :root{
+      --bg:#0f1020;
+      --bg2:#171936;
+      --card:#ffffff;
+      --ink:#151728;
+      --muted:#5b5f7a;
+      --brand:#6C72FF;
+      --brand2:#8E53E9;
+      --good:#18b27f;
+      --bad:#ff5a5f;
+      --glow: 0 10px 30px rgba(108,114,255,.35);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-rounded, system-ui, -apple-system, "SF Pro Rounded", "SF Pro Text", Inter, Roboto, Arial, sans-serif;
+      color:#fff; background:
+        radial-gradient(1200px 600px at 80% -10%, #2a2e78 0, transparent 60%),
+        radial-gradient(1000px 600px at -10% 110%, #3b1c68 0, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0, #11122a 100%);
+      overflow-x:hidden;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 20px 90px}
+    header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+    .logo{
+      width:46px;height:46px;border-radius:12px;
+      background: conic-gradient(from 0deg, #ffbc5a, #ff6f91, #9b6bff, #5ad1ff, #ffbc5a);
+      position:relative;box-shadow:var(--glow);flex:0 0 auto;
+    }
+    .logo::after{
+      content:"x"; position:absolute; inset:0; display:grid; place-items:center; font-weight:800; font-size:28px; color:#101020;
+      text-shadow:0 2px 0 rgba(255,255,255,.6);
+    }
+    h1{margin:0; font-size:28px; letter-spacing:.2px}
+    .sub{color:#c9ccdf; font-size:14px}
+
+    nav.tabs{
+      margin:18px 0 22px; display:flex; gap:8px; flex-wrap:wrap;
+      background:rgba(255,255,255,.06); padding:8px; border-radius:14px; backdrop-filter:blur(10px);
+    }
+    .tab{
+      border:0; padding:10px 14px; border-radius:12px; cursor:pointer; color:#e8e9f6; background:transparent; font-weight:600;
+    }
+    .tab.active{background:linear-gradient(180deg, var(--brand), var(--brand2)); box-shadow:var(--glow)}
+    .grid{display:grid; gap:16px}
+    .two{grid-template-columns: repeat(2, minmax(0,1fr))}
+    @media (max-width:900px){ .two{grid-template-columns:1fr} }
+
+    .card{
+      background:#fff; color:var(--ink); border-radius:var(--radius); padding:18px 18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25); position:relative; overflow:hidden;
+    }
+    .card h2{margin:0 0 12px; font-size:20px}
+    .note{color:var(--muted); font-size:14px}
+
+    /* Setup (ana ekran) */
+    .table-list{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:10px; margin-top:10px}
+    .tbl{
+      display:flex; align-items:center; gap:10px; padding:12px 12px; border-radius:14px; background:#f2f3ff; border:2px solid transparent;
+      user-select:none; cursor:pointer; transition:.15s transform;
+    }
+    .tbl:hover{transform:translateY(-1px)}
+    .tbl input{appearance:none; width:22px;height:22px;border-radius:6px;border:2px solid #a1a6ff; display:grid; place-items:center; background:#fff}
+    .tbl input:checked{background:linear-gradient(180deg, var(--brand), var(--brand2)); border-color:transparent; box-shadow:var(--glow)}
+    .tbl input:checked::after{content:"OK"; color:#fff; font-weight:900; font-size:14px}
+    .tbl b{font-size:18px}
+    .row{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+    .grow{flex:1}
+    .btn{
+      appearance:none; border:0; padding:14px 18px; border-radius:14px; font-weight:800; cursor:pointer; letter-spacing:.2px;
+      background:linear-gradient(180deg, var(--brand), var(--brand2)); color:#fff; box-shadow:var(--glow);
+    }
+    .btn.secondary{background:#eef0ff; color:#3a3f78; box-shadow:none; font-weight:700}
+    .btn.ghost{background:transparent; color:#3a3f78}
+    .btn:disabled{opacity:.5; cursor:not-allowed}
+    .warn{color:var(--bad); font-weight:700}
+
+    /* Game screen */
+    .game{display:none}
+    .hidden{display:none !important}
+    .qbox{
+      background:linear-gradient(180deg, #fff, #f4f6ff); border-radius:18px; padding:22px; text-align:center; box-shadow:0 8px 20px rgba(0,0,0,.12);
+    }
+    .ask{font-size:46px; font-weight:900; color:#232747; letter-spacing:1px}
+    .progress{height:10px; background:#e9ebff; border-radius:999px; overflow:hidden}
+    .bar{height:100%; width:0%; background:linear-gradient(90deg, var(--brand), var(--brand2))}
+    .timer{font-variant-numeric: tabular-nums; font-weight:800; color:#2f3676}
+    .ans-row{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+    input.answer{
+      font-size:28px; width:140px; text-align:center; padding:12px 10px; border-radius:12px; border:2px solid #cfd4ff; outline:none;
+      background:#fff;
+    }
+    input.answer:focus{border-color:#8e92ff; box-shadow:0 0 0 4px rgba(108,114,255,.15)}
+    .msg{min-height:24px; margin-top:6px; font-weight:700}
+    .msg.good{color:var(--good)}
+    .msg.bad{color:var(--bad)}
+    .shake{animation:shake .3s}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; background:#eef0ff; border-radius:999px; color:#2d3270; font-weight:700}
+
+    /* Finish */
+    .finish-time{font-size:42px; font-weight:900; color:#1f2458}
+    .trophy{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;margin:6px auto 6px;background:linear-gradient(180deg,#ffd054,#ffb21a);box-shadow:0 12px 30px rgba(255,200,50,.45)}
+    .trophy svg{width:36px;height:36px;fill:#7a4d00}
+
+    /* Scores */
+    .score-grid{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px}
+    @media (max-width:900px){ .score-grid{grid-template-columns:1fr 1fr} }
+    @media (max-width:640px){ .score-grid{grid-template-columns:1fr} }
+    .score-card{background:#fff;border-radius:16px;padding:14px;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+    .score-card h3{margin:0 0 8px}
+    .score-list{list-style:none;margin:0;padding:0}
+    .score-list li{display:flex;justify-content:space-between;gap:8px;padding:8px;border-radius:10px;background:#f7f8ff;margin-bottom:6px}
+    .score-list .time{font-weight:800;color:#28306c}
+    .score-list .date{color:#5f6490;font-size:12px}
+
+    /* Stats */
+    table{width:100%;border-collapse:separate;border-spacing:0 8px}
+    th, td{padding:10px 12px;text-align:left}
+    th{color:#2f356f;font-size:13px;text-transform:uppercase;letter-spacing:.6px}
+    tbody tr{background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.08)}
+    tbody td:first-child{border-top-left-radius:10px;border-bottom-left-radius:10px}
+    tbody td:last-child{border-top-right-radius:10px;border-bottom-right-radius:10px}
+    .chip{background:#eef0ff;color:#2a3072;padding:4px 8px;border-radius:999px;font-weight:700;font-size:12px}
+
+    footer{
+      position:fixed; left:0; right:0; bottom:0; padding:10px 16px; background:linear-gradient(180deg, transparent, rgba(0,0,0,.35));
+      color:#e9ebff; text-align:center; font-weight:700
+    }
+
+    /* Confetti */
+    .confetti{position:fixed;pointer-events:none;inset:0;overflow:hidden}
+    .confetti i{position:absolute; width:10px;height:14px; background:#ffcf66; transform:translateY(-100vh) rotate(0deg); opacity:.9}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>Carpim Oyunu</h1>
+        <div class="sub">Sec, basla, 10 soruyu en hizli sen bitir!</div>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Bolumler">
+      <button class="tab active" data-tab="play" role="tab" aria-selected="true">Oyna</button>
+      <button class="tab" data-tab="scores" role="tab" aria-selected="false">Skorlar</button>
+      <button class="tab" data-tab="stats" role="tab" aria-selected="false">Istatistikler</button>
+    </nav>
+
+    <!-- PLAY TAB -->
+    <section id="tab-play" class="grid two" role="tabpanel" aria-labelledby="Oyna">
+      <div class="card" id="setup">
+        <h2>Hangi carpimlari calisalim?</h2>
+        <div class="note">En az birini sec. Baslayinca menu saklanir, oyun ekrani acilir.</div>
+        <div class="table-list" id="tableList"></div>
+        <div class="row" style="margin-top:12px">
+          <div class="grow"></div>
+          <button class="btn secondary" id="selectAll">Tumunu Sec</button>
+          <button class="btn ghost" id="clearAll">Temizle</button>
+          <button class="btn" id="startBtn">Basla</button>
+        </div>
+        <div class="warn" id="setupWarn" style="display:none;margin-top:8px">En az bir tablo secmelisin.</div>
+      </div>
+
+      <div class="card game" id="game">
+        <div class="row" style="justify-content:space-between; margin-bottom:10px">
+          <div class="pill">Soru: <span id="qIndex">1</span> / 10</div>
+          <div class="pill">Sure: <span class="timer" id="runTimer">00.0</span></div>
+        </div>
+        <div class="progress" aria-label="Ilerleme">
+          <div class="bar" id="bar"></div>
+        </div>
+
+        <div class="qbox" style="margin-top:14px">
+          <div class="ask" id="question">3 x 5 = ?</div>
+          <div class="ans-row">
+            <input class="answer" id="answer" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Cevap kutusu" />
+            <button class="btn" id="nextBtn">Sonraki</button>
+          </div>
+          <div class="msg" id="msg"></div>
+        </div>
+      </div>
+
+      <div class="card hidden" id="finish">
+        <div class="trophy" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 2h12v3h3v3c0 2.8-2.2 5-5 5-.8 2.3-2.9 4-5.4 4H10v2h4v2H6v-2h4v-2H9.4C6.4 17 4 14.6 4 11.6V5H1V2h5zm14 5V5h-2v3c0 .3 0 .7-.1 1.1 1.2-.4 2.1-1.6 2.1-3.1zM6 8V5H4v2c0 1.5.9 2.7 2.1 3.1C6 8.7 6 8.3 6 8z"/></svg>
+        </div>
+        <h2 style="text-align:center;margin:6px 0 2px">Bitti! Toplam Sure</h2>
+        <div class="finish-time" id="finishTime" style="text-align:center">00.0 sn</div>
+        <div class="note" style="text-align:center;margin-top:6px" id="finishNote"></div>
+        <div class="row" style="justify-content:center;margin-top:14px">
+          <button class="btn secondary" id="playAgain">Yeni Oyun</button>
+          <button class="btn" id="gotoScores">Skorlari Gor</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCORES TAB -->
+    <section id="tab-scores" class="hidden" role="tabpanel" aria-labelledby="Skorlar">
+      <div class="card">
+        <h2>Skorlar</h2>
+        <div class="note">Her tablo basligi altinda en iyi sureler ve tarihleri sakliyoruz.</div>
+        <div class="score-grid" id="scoresGrid"></div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn secondary" id="resetData">Tum Verileri Sil</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS TAB -->
+    <section id="tab-stats" class="hidden" role="tabpanel" aria-labelledby="Istatistikler">
+      <div class="grid two">
+        <div class="card">
+          <h2>En Hizli Yanitlanan Sorular</h2>
+          <div class="note">En dusuk ortalama sureye gore sirali (en az 3 kez cevaplananlar).</div>
+          <div class="table-wrap" style="overflow:auto">
+            <table id="fastTable">
+              <thead><tr><th>Soru</th><th>Ortalama Sure</th><th>Dogru Sayisi</th><th>Yanlis Denemeler</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h2>En Cok Zorlanilan Sorular</h2>
+          <div class="note">En yuksek ortalama sureye gore sirali (en az 3 kez cevaplananlar).</div>
+          <div class="table-wrap" style="overflow:auto">
+            <table id="hardTable">
+              <thead><tr><th>Soru</th><th>Ortalama Sure</th><th>Dogru Sayisi</th><th>Yanlis Denemeler</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>Miray icin Babasi Tarafindan Uretilmistir &lt;3</footer>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script>
+  // ---------- Storage helpers ----------
+  const KEYS = {
+    LB: 'mt_leaderboard_v1',
+    PAIRS: 'mt_pairs_v1',
+    SESS: 'mt_sessions_v1'
+  };
+  const readStore = (k, def) => {
+    try{ const v = JSON.parse(localStorage.getItem(k)); return v ?? def; }catch{ return def; }
+  };
+  const writeStore = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+
+  // ---------- Elements ----------
+  const tabs = document.querySelectorAll('.tab');
+  const tabPlay = document.getElementById('tab-play');
+  const tabScores = document.getElementById('tab-scores');
+  const tabStats = document.getElementById('tab-stats');
+
+  const setupEl = document.getElementById('setup');
+  const gameEl  = document.getElementById('game');
+  const finishEl= document.getElementById('finish');
+
+  const tableList = document.getElementById('tableList');
+  const selectAllBtn = document.getElementById('selectAll');
+  const clearAllBtn = document.getElementById('clearAll');
+  const startBtn = document.getElementById('startBtn');
+  const setupWarn = document.getElementById('setupWarn');
+
+  const qIndexEl = document.getElementById('qIndex');
+  const runTimerEl = document.getElementById('runTimer');
+  const barEl = document.getElementById('bar');
+  const questionEl = document.getElementById('question');
+  const answerEl = document.getElementById('answer');
+  const nextBtn = document.getElementById('nextBtn');
+  const msgEl = document.getElementById('msg');
+
+  const finishTimeEl = document.getElementById('finishTime');
+  const finishNoteEl = document.getElementById('finishNote');
+  const playAgainBtn = document.getElementById('playAgain');
+  const gotoScoresBtn = document.getElementById('gotoScores');
+
+  const scoresGrid = document.getElementById('scoresGrid');
+  const resetBtn = document.getElementById('resetData');
+
+  const fastTable = document.querySelector('#fastTable tbody');
+  const hardTable = document.querySelector('#hardTable tbody');
+
+  const confettiRoot = document.getElementById('confetti');
+
+  function fmtTime(ms){
+    return (ms/1000).toFixed(1).replace('.', ',') + ' sn';
+  }
+  const trDateOpts = { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' };
+
+  // ---------- Tabs ----------
+  tabs.forEach(b=>{
+    b.addEventListener('click', ()=>{
+      tabs.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const target = b.dataset.tab;
+      for(const sec of [tabPlay, tabScores, tabStats]) sec.classList.add('hidden');
+      if(target==='play') tabPlay.classList.remove('hidden');
+      if(target==='scores'){ tabScores.classList.remove('hidden'); renderScores(); }
+      if(target==='stats'){ tabStats.classList.remove('hidden'); renderStats(); }
+    });
+  });
+
+  // ---------- Setup checkboxes ----------
+  const checkboxRefs = [];
+  function renderTables(){
+    let html = '';
+    for(let i=1;i<=9;i++){
+      const id = 't'+i;
+      html += `<label class="tbl" for="${id}">
+        <input type="checkbox" id="${id}" data-val="${i}" />
+        <b>${i}'ler</b>
+      </label>`;
+    }
+    tableList.innerHTML = html;
+    tableList.querySelectorAll('input[type=checkbox]').forEach(cb=>checkboxRefs.push(cb));
+  }
+  renderTables();
+
+  selectAllBtn.addEventListener('click', ()=>{
+    checkboxRefs.forEach(cb=>cb.checked=true);
+  });
+  clearAllBtn.addEventListener('click', ()=>{
+    checkboxRefs.forEach(cb=>cb.checked=false);
+  });
+
+  // ---------- Game state ----------
+  let selection = [];
+  let questions = [];
+  let qIndex = 0;
+  let wrongAttempts = 0; // current question wrongs
+  let startedAt = 0;
+  let qStartedAt = 0;
+  let timerId;
+
+  function pick(list){ return list[Math.floor(Math.random()*list.length)]; }
+
+  function genQuestions(sel, n=10){
+    const qs = [];
+    for(let i=0;i<n;i++){
+      const a = +pick(sel);
+      const b = 1 + Math.floor(Math.random()*9);
+      qs.push({a, b});
+    }
+    return qs;
+  }
+
+  function startGame(){
+    selection = checkboxRefs.filter(cb=>cb.checked).map(cb=>+cb.dataset.val);
+    if(selection.length===0){ setupWarn.style.display='block'; return; }
+    setupWarn.style.display='none';
+
+    questions = genQuestions(selection, 10);
+    qIndex = 0;
+    startedAt = Date.now();
+    qStartedAt = Date.now();
+    msgEl.textContent = '';
+    msgEl.className = 'msg';
+    answerEl.value = '';
+    wrongAttempts = 0;
+    updateProgress();
+    showQuestion();
+
+    // switch to game screen
+    setupEl.classList.add('hidden');
+    finishEl.classList.add('hidden');
+    gameEl.classList.remove('game'); // ensure visible style is active
+    gameEl.style.display = ''; // reset possible inline none
+    gameEl.classList.remove('hidden');
+
+    // live timer
+    if(timerId) cancelAnimationFrame(timerId);
+    const tick = ()=>{
+      const ms = Date.now() - startedAt;
+      runTimerEl.textContent = (ms/1000).toFixed(1).replace('.', ',');
+      timerId = requestAnimationFrame(tick);
+    };
+    tick();
+    answerEl.focus({preventScroll:true});
+  }
+
+  function updateProgress(){
+    qIndexEl.textContent = (qIndex+1);
+    barEl.style.width = `${((qIndex)/10)*100}%`;
+  }
+
+  function showQuestion(){
+    const {a,b} = questions[qIndex];
+    questionEl.textContent = `${a} x ${b} = ?`;
+    answerEl.value = '';
+    wrongAttempts = 0;
+    qStartedAt = Date.now();
+  }
+
+  function celebrate(){
+    // tiny confetti burst
+    const n=50, w=window.innerWidth, h=window.innerHeight;
+    for(let i=0;i<n;i++){
+      const e = document.createElement('i');
+      e.style.left = (Math.random()*w)+'px';
+      e.style.top = '0px';
+      const colors = ['#ff7aa2','#ffd166','#70e0a3','#8ea2ff','#f6a6ff'];
+      e.style.background = colors[i%colors.length];
+      const rot = Math.floor(Math.random()*360);
+      const dur = 800 + Math.random()*900;
+      e.animate([
+        { transform:`translateY(-20px) rotate(${rot}deg)`, opacity:1 },
+        { transform:`translateY(${h*0.9}px) rotate(${rot+720}deg)`, opacity:.9}
+      ], { duration:dur, easing:'cubic-bezier(.2,.8,.2,1)'});
+      confettiRoot.appendChild(e);
+      setTimeout(()=>e.remove(), 1200);
+    }
+  }
+
+  function handleNext(){
+    const val = parseInt((answerEl.value||'').trim(),10);
+    if(Number.isNaN(val)){
+      msgEl.textContent = 'Bir sayi yaz :)';
+      msgEl.className = 'msg bad';
+      answerEl.classList.remove('shake'); void answerEl.offsetWidth; answerEl.classList.add('shake');
+      answerEl.focus();
+      return;
+    }
+    const {a,b} = questions[qIndex];
+    const correct = a*b;
+    if(val === correct){
+      // record question time including wrong attempts
+      const qTime = Date.now()-qStartedAt;
+      currentSession.questions.push({a,b,timeMs:qTime, wrongs: wrongAttempts});
+      msgEl.textContent = 'Harika! Dogru.';
+      msgEl.className = 'msg good';
+      celebrate();
+
+      qIndex++;
+      if(qIndex>=10){
+        finishGame();
+      }else{
+        updateProgress();
+        setTimeout(()=>{
+          msgEl.textContent = '';
+          showQuestion();
+        }, 250);
+      }
+    }else{
+      wrongAttempts++;
+      msgEl.textContent = 'Tekrar dene!';
+      msgEl.className = 'msg bad';
+      answerEl.classList.remove('shake'); void answerEl.offsetWidth; answerEl.classList.add('shake');
+      answerEl.focus();
+      answerEl.select();
+    }
+  }
+
+  // ---------- Session recording ----------
+  const currentSession = {
+    dateISO: null,
+    selection: [],
+    totalTimeMs: 0,
+    questions: []
+  };
+
+  function finishGame(){
+    cancelAnimationFrame(timerId);
+    barEl.style.width = '100%';
+    const totalMs = Date.now() - startedAt;
+    currentSession.dateISO = new Date().toISOString();
+    currentSession.selection = selection.slice();
+    currentSession.totalTimeMs = totalMs;
+
+    // Save session
+    const sess = readStore(KEYS.SESS, []);
+    sess.push({...currentSession});
+    writeStore(KEYS.SESS, sess);
+
+    // Update leaderboards per selected table
+    const lb = readStore(KEYS.LB, {});
+    for(const k of selection){
+      lb[k] = lb[k] || [];
+      lb[k].push({ timeMs: totalMs, dateISO: currentSession.dateISO });
+      lb[k].sort((x,y)=>x.timeMs-y.timeMs);
+      lb[k] = lb[k].slice(0,10); // keep top 10
+    }
+    writeStore(KEYS.LB, lb);
+
+    // Update pairs stats
+    const pairs = readStore(KEYS.PAIRS, {});
+    for(const q of currentSession.questions){
+      const key = `${q.a}x${q.b}`;
+      if(!pairs[key]) pairs[key] = { total:0, totalTimeMs:0, wrongs:0 };
+      pairs[key].total++;
+      pairs[key].totalTimeMs += q.timeMs;
+      pairs[key].wrongs += q.wrongs;
+    }
+    writeStore(KEYS.PAIRS, pairs);
+
+    // Show finish
+    finishTimeEl.textContent = fmtTime(totalMs);
+    finishNoteEl.textContent = `Secilen tablolar: ${selection.map(x=>x+"'ler").join(', ')}`;
+    gameEl.classList.add('hidden');
+    finishEl.classList.remove('hidden');
+
+    // reset session object for next run
+    currentSession.dateISO = null;
+    currentSession.selection = [];
+    currentSession.totalTimeMs = 0;
+    currentSession.questions = [];
+  }
+
+  // ---------- Scores render ----------
+  function renderScores(){
+    const lb = readStore(KEYS.LB, {});
+    let html = '';
+    for(let k=1;k<=9;k++){
+      const list = lb[k]||[];
+      html += `<div class="score-card">
+        <h3>${k}x?</h3>
+        ${list.length===0 ? '<div class="note">Henuz skor yok.</div>' :
+        `<ul class="score-list">
+          ${list.map(item=>`<li><span class="time">${fmtTime(item.timeMs)}</span><span class="date">${new Date(item.dateISO).toLocaleString('tr-TR', trDateOpts)}</span></li>`).join('')}
+        </ul>`}
+      </div>`;
+    }
+    scoresGrid.innerHTML = html;
+  }
+
+  // ---------- Stats render ----------
+  function renderStats(){
+    const pairs = readStore(KEYS.PAIRS, {});
+    const arr = Object.entries(pairs).map(([k, v])=>{
+      const avg = v.totalTimeMs / v.total;
+      return {key:k, avgMs:avg, total:v.total, wrongs:v.wrongs};
+    }).filter(x=>x.total>=3); // en az 3 kere cozulmusler
+    const fastest = [...arr].sort((a,b)=>a.avgMs-b.avgMs).slice(0,12);
+    const hardest = [...arr].sort((a,b)=>b.avgMs-a.avgMs).slice(0,12);
+
+    const row = (r)=>`<tr>
+      <td><span class="chip">${r.key}</span></td>
+      <td><b>${fmtTime(r.avgMs)}</b></td>
+      <td>${r.total}</td>
+      <td>${r.wrongs}</td>
+    </tr>`;
+
+    fastTable.innerHTML = fastest.map(row).join('') || `<tr><td colspan="4" class="note" style="padding:12px">Istatistik icin yeterli veri yok.</td></tr>`;
+    hardTable.innerHTML = hardest.map(row).join('') || `<tr><td colspan="4" class="note" style="padding:12px">Istatistik icin yeterli veri yok.</td></tr>`;
+  }
+
+  // ---------- Events ----------
+  startBtn.addEventListener('click', startGame);
+  answerEl.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ handleNext(); }});
+  nextBtn.addEventListener('click', handleNext);
+
+  playAgainBtn.addEventListener('click', ()=>{
+    // back to setup
+    finishEl.classList.add('hidden');
+    setupEl.classList.remove('hidden');
+    // reset progress bar
+    barEl.style.width = '0%';
+    tabs.forEach(x=>x.classList.remove('active')); tabs[0].classList.add('active');
+    tabPlay.classList.remove('hidden'); tabScores.classList.add('hidden'); tabStats.classList.add('hidden');
+  });
+  gotoScoresBtn.addEventListener('click', ()=>{
+    tabs.forEach(x=>x.classList.remove('active')); tabs[1].classList.add('active');
+    tabPlay.classList.add('hidden'); tabStats.classList.add('hidden'); tabScores.classList.remove('hidden');
+    renderScores();
+  });
+
+  resetBtn.addEventListener('click', ()=>{
+    if(confirm('Tum skor ve istatistikleri silmek istedigine emin misin?')){
+      localStorage.removeItem(KEYS.LB);
+      localStorage.removeItem(KEYS.PAIRS);
+      localStorage.removeItem(KEYS.SESS);
+      renderScores(); renderStats();
+      alert('Veriler silindi.');
+    }
+  });
+
+  // initial scores/stats render
+  renderScores();
+  renderStats();
+
+  // Progressive focus fix for iPad
+  document.addEventListener('touchstart', ()=>{}, {passive:true});
+  </script>
+</body>
+</html>
