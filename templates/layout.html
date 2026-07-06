@@ -520,8 +520,62 @@
     .home-hero {
       display: grid;
       gap: 1.5rem;
-      align-items: start;
+      align-items: center;
       margin-bottom: 2rem;
+    }
+
+    .home-title {
+      text-align: left;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: clamp(1.6rem, 1.5vw + 1.2rem, 2.1rem);
+      line-height: 1.25;
+      margin: 0 0 1rem;
+    }
+
+    .home-work {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1.2rem 0 2.5rem;
+    }
+
+    .home-work-item {
+      padding: 0.9rem 1.1rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .home-work-item h3 {
+      margin: 0 0 0.3rem;
+      font-size: 1.05rem;
+    }
+
+    .home-work-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--fg-muted);
+      line-height: 1.5;
+    }
+
+    .home-work-item a.work-name {
+      color: var(--accent);
+    }
+
+    .home-latest {
+      margin-top: 3rem;
+    }
+
+    .home-latest-more {
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .home-work {
+        grid-template-columns: 1fr 1fr;
+      }
+      .home-work-item:last-child {
+        grid-column: 1 / -1;
+      }
     }
 
     .home-hero img {

@@ -1,13 +1,28 @@
 body:
 
-<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0">Mirat Can Bayrak — Programmer, Solopreneur & Dad</h1>
-
 <div class="home-hero">
   <img src="mirat-resized.webp" alt="Mirat Can Bayrak" width="300" height="450">
   <div class="home-intro">
-    <p>
-Hello, I'm Mirat—friends call me Miro. I'm a programmer and dad of two who loves turning ideas into things people can use, listen to, or feel.</p>
-    <p>Over the years I've built tools like <a href="https://github.com/miratcan/kaydet">Kaydet</a>, <a href="https://github.com/tahtlang/tahtlang">TahtLang</a>, and <a href="https://mirat.dev/vpix2/">VPix</a>. You can explore more of my work on <a href="https://github.com/miratcan">GitHub</a>.</p>
+    <h1 class="home-title">I build tools, products, and the occasional viral experiment.</h1>
+    <p>Hello, I'm Mirat—friends call me Miro. I'm a full-stack developer (Python/Django, TypeScript/React), solopreneur, and dad of two. I like turning ideas into things people can actually use, listen to, or feel.</p>
+    <p>I've been shipping side projects for over a decade and writing about what worked, what flopped, and why. Some went viral; most taught me something. Here's a taste.</p>
+  </div>
+</div>
+
+<h2>Selected work</h2>
+
+<div class="home-work">
+  <div class="home-work-item">
+    <h3><a class="work-name" href="https://github.com/miratcan/kaydet">Kaydet</a></h3>
+    <p>A terminal-native personal diary with SQLite search. Nine years old and still part of my daily routine.</p>
+  </div>
+  <div class="home-work-item">
+    <h3><a class="work-name" href="https://github.com/tahtlang/tahtlang">TahtLang</a></h3>
+    <p>My own small programming language—built to understand how languages work by writing one from scratch.</p>
+  </div>
+  <div class="home-work-item">
+    <h3><a class="work-name" href="https://github.com/miratcan">More on GitHub</a></h3>
+    <p>Reddit clones, pixel tools, viral one-nighters, and a graveyard of experiments I'd happily talk about.</p>
   </div>
 </div>
 
@@ -21,22 +36,17 @@ Hello, I'm Mirat—friends call me Miro. I'm a programmer and dad of two who lov
 
 <div class="home-availability">
   <div class="home-availability-item">
-    <span>Freelance</span>
-    <div class="home-availability-links">
-      <a href="https://www.upwork.com/freelancers/~01f71b803bc3f9e6b5" target="_blank" rel="noopener">Upwork</a>
-    </div>
-  </div>
-  <div class="home-availability-item">
-    <span>Full-time</span>
+    <span>Hire me</span>
     <div class="home-availability-links">
       <a href="/resume/resume.html" target="_blank" rel="noopener">Resume</a>
       <a href="https://www.linkedin.com/in/mirat-can-bayrak-791b0314/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.upwork.com/freelancers/~01f71b803bc3f9e6b5" target="_blank" rel="noopener">Upwork</a>
     </div>
   </div>
 </div>
 ---
 title: 
 ---
-meta_desc: Full-stack developer. Python, Django, TypeScript, React. Building tools I want to use.
+meta_desc: Full-stack developer (Python, Django, TypeScript, React) and solopreneur. Tools, products, side projects, and honest write-ups of what worked.
 ---
 meta_img: mirat-resized.webp

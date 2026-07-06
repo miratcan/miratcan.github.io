@@ -5,4 +5,11 @@
 {% block body %}
   {% if this.title %}<h1>{{ this.title }}</h1>{% endif %}
   {{ this.body }}
+  {% if this._path == '/' %}
+  <section class="home-latest">
+    <h2>Latest writing</h2>
+    {% with posts = site.query('/articles').limit(3) %}{% include "_articles.html" %}{% endwith %}
+    <p class="home-latest-more"><a href="/articles/">Read all articles →</a></p>
+  </section>
+  {% endif %}
 {% endblock %}
