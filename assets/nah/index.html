@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>NAH! Tespiti 🎆</title>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1/dist/confetti.browser.min.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; background-color: #1a1a1a; color: white; margin: 0; min-height: 100vh; overflow: hidden; }
+    #bgCanvas { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; }
+    .container { position: fixed; inset: 0; overflow: hidden; }
+    video, #canvas { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    #canvas { transform: scaleX(-1); }
+    h2 {
+      position: fixed;
+      top: 12px;
+      left: 0;
+      right: 0;
+      margin: 0;
+      z-index: 10;
+      pointer-events: none;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    }
+    #startBtn {
+      position: fixed;
+      top: 62px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 10px;
+      background: #ff4757;
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+    }
+    #startBtn:hover { background: #ff6b81; }
+    #loading { position: fixed; top: 120px; left: 0; right: 0; font-size: 14px; color: #ccc; z-index: 10; }
+    .babyGif {
+      position: fixed;
+      bottom: 0;
+      width: 140px;
+      display: none;
+      pointer-events: none;
+      z-index: 5;
+      filter: drop-shadow(0 0 12px rgba(255, 71, 199, 0.8));
+    }
+    #babyLeft { left: 0; }
+    #babyRight { right: 0; transform: scaleX(-1); }
+  </style>
+</head>
+<body>
+
+  <canvas id="bgCanvas"></canvas>
+  <h2>Kameraya nah çek</h2>
+  <div class="container">
+    <video id="webcam" width="640" height="480" autoplay playsinline></video>
+    <canvas id="canvas" width="640" height="480"></canvas>
+  </div>
+  <button id="startBtn">🎥 Başlat</button>
+  <div id="loading">⏳ Hazırlanıyor…</div>
+  <img id="babyLeft" class="babyGif" src="dancing_baby.gif" alt="">
+  <img id="babyRight" class="babyGif" src="dancing_baby.gif" alt="">
+
+  <script>
+    const videoElement = document.getElementById('webcam');
+    const canvasElement = document.getElementById('canvas');
+    const canvasCtx = canvasElement.getContext('2d');
+    const loadingEl = document.getElementById('loading');
+    const babyLeft = document.getElementById('babyLeft');
+    const babyRight = document.getElementById('babyRight');
+    let babiesShown = false;
+
+    function setBabies(show) {
+      if (show === babiesShown) return;
+      babiesShown = show;
+      const d = show ? 'block' : 'none';
+      babyLeft.style.display = d;
+      babyRight.style.display = d;
+    }
+
+    const W = canvasElement.width;
+    const H = canvasElement.height;
+
+    let lastStatus = '';
+    function logStatus(msg) {
+      if (msg !== lastStatus) { lastStatus = msg; console.log(msg); }
+    }
+
+    let handResults = null;
+    let segResults = null;
+    let nahActive = false;
+    let running = false;
+
+    function distance(p1, p2) {
+      return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+    }
+
+    function isFigGesture(landmarks) {
+      const thumbTip = landmarks[4];
+      const indexPip = landmarks[6];
+      const middlePip = landmarks[10];
+      const indexTip = landmarks[8];
+      const middleTip = landmarks[12];
+      const wrist = landmarks[0];
+
+      const isFist = distance(indexTip, wrist) < distance(indexPip, wrist) &&
+                     distance(middleTip, wrist) < distance(middlePip, wrist);
+
+      const midPipX = (indexPip.x + middlePip.x) / 2;
+      const midPipY = (indexPip.y + middlePip.y) / 2;
+      const thumbToGapDist = distance(thumbTip, { x: midPipX, y: midPipY });
+
+      const isThumbBetween = thumbToGapDist < 0.08;
+
+      return isFist && isThumbBetween;
+    }
+
+    // ---- Havai fişek parçacık sistemi ----
+    const fireworks = [];
+    const FW_COLORS = ['#ff4757', '#ffa502', '#2ed573', '#7d5fff', '#1e90ff', '#ffd32a', '#ff6b81', '#00d2d3'];
+    let lastBeat = -1;
+
+    function spawnRocket() {
+      fireworks.push({
+        kind: 'rocket',
+        x: 60 + Math.random() * (W - 120),
+        y: H + 5,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: -(9 + Math.random() * 3),
+        color: FW_COLORS[Math.floor(Math.random() * FW_COLORS.length)],
+        life: 1
+      });
+    }
+
+    function explode(r) {
+      const n = 55;
+      for (let i = 0; i < n; i++) {
+        const a = (Math.PI * 2 * i) / n + (Math.random() - 0.5) * 0.4;
+        const s = 2 + Math.random() * 4.5;
+        fireworks.push({
+          kind: 'spark',
+          x: r.x, y: r.y,
+          vx: Math.cos(a) * s,
+          vy: Math.sin(a) * s,
+          color: r.color,
+          life: 1,
+          decay: 0.006 + Math.random() * 0.014
+        });
+      }
+    }
+
+    function updateFireworks(dt) {
+      for (let i = fireworks.length - 1; i >= 0; i--) {
+        const f = fireworks[i];
+        if (f.kind === 'rocket') {
+          f.x += f.vx;
+          f.y += f.vy;
+          f.vy += 0.25;
+          if (f.vy >= -1) { explode(f); fireworks.splice(i, 1); continue; }
+        } else {
+          f.x += f.vx;
+          f.y += f.vy;
+          f.vy += 0.08;
+          f.vx *= 0.985;
+          f.vy *= 0.985;
+          f.life -= f.decay;
+          if (f.life <= 0) { fireworks.splice(i, 1); }
+        }
+      }
+      if (!nahActive) { fireworks.length = 0; lastBeat = -1; return; }
+      const beatIndex = Math.floor(musicElapsed() / BEAT);
+      if (beatIndex !== lastBeat) {
+        lastBeat = beatIndex;
+        if (beatIndex % 2 === 0) spawnRocket();
+      }
+    }
+
+    function drawFireworks(ctx) {
+      for (const f of fireworks) {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, Math.min(1, f.life));
+        ctx.fillStyle = f.color;
+        if (f.kind === 'rocket') {
+          ctx.fillRect(f.x - 2, f.y - 4, 4, 8);
+        } else {
+          ctx.beginPath();
+          ctx.arc(f.x, f.y, 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    }
+
+    // ---- Konfeti (sadece NAH varken) ----
+    let confettiInterval = null;
+
+    function startConfetti() {
+      if (confettiInterval) return;
+      confettiInterval = setInterval(() => {
+        confetti({
+          particleCount: 80,
+          spread: 100,
+          origin: { x: Math.random(), y: Math.random() * 0.4 },
+          zIndex: 9999
+        });
+      }, 400);
+    }
+
+    function stopConfetti() {
+      if (confettiInterval) { clearInterval(confettiInterval); confettiInterval = null; }
+    }
+
+    // ---- Müzik (Web Audio: anında başlar) ----
+    const BPM = 110;
+    const BEAT = 60 / BPM;
+    let audioCtx = null;
+    let audioBuffer = null;
+    let musicSource = null;
+    let musicStartTime = 0;
+
+    function musicElapsed() {
+      return (musicSource && audioCtx) ? Math.max(0, audioCtx.currentTime - musicStartTime) : 0;
+    }
+
+    async function preloadMusic() {
+      try {
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        const res = await fetch('nah_sarki.mp3');
+        const data = await res.arrayBuffer();
+        audioBuffer = await audioCtx.decodeAudioData(data);
+        if (loadingEl) loadingEl.style.display = 'none';
+        return true;
+      } catch (e) {
+        console.warn('Müzik yüklenemedi', e);
+        if (loadingEl) loadingEl.innerText = '⚠️ Müzik yüklenemedi';
+        return false;
+      }
+    }
+
+    function startMusic() {
+      if (!audioBuffer || !audioCtx) return;
+      stopMusic();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      musicSource = audioCtx.createBufferSource();
+      musicSource.buffer = audioBuffer;
+      musicSource.loop = true;
+      musicSource.connect(audioCtx.destination);
+      musicStartTime = audioCtx.currentTime;
+      musicSource.start(0);
+    }
+
+    function stopMusic() {
+      if (musicSource) {
+        try { musicSource.stop(); } catch (e) {}
+        musicSource.disconnect();
+        musicSource = null;
+      }
+    }
+
+    // ---- Beat'e senkron psychedelic arka plan (tam sayfa) ----
+    const bgCanvas = document.getElementById('bgCanvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    let bgW = 0, bgH = 0;
+
+    function resizeBg() {
+      bgW = bgCanvas.width = window.innerWidth;
+      bgH = bgCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeBg);
+    resizeBg();
+
+    let psyLevel = 0;
+
+    function drawPsychedelic(ctx, t, w, h, alpha) {
+      ctx.clearRect(0, 0, w, h);
+      if (alpha <= 0.002) return;
+
+      const beatPhase = (((t % BEAT) + BEAT) % BEAT) / BEAT;
+      const pulse = Math.pow(1 - beatPhase, 2);
+      const beatIndex = Math.floor(t / BEAT);
+      const base = Math.max(w, h);
+
+      ctx.save();
+      ctx.globalAlpha = alpha;
+
+      ctx.fillStyle = '#05010a';
+      ctx.fillRect(0, 0, w, h);
+      ctx.globalCompositeOperation = 'lighter';
+
+      const hueBase = (beatIndex * 47 + t * 40) % 360;
+      const blobs = 6;
+      for (let i = 0; i < blobs; i++) {
+        const hue = (hueBase + i * (360 / blobs)) % 360;
+        const ang = t * 0.9 + i * ((Math.PI * 2) / blobs);
+        const cx = w / 2 + Math.cos(ang) * w * 0.3;
+        const cy = h / 2 + Math.sin(ang * 1.3 + i) * h * 0.3;
+        const r = base * (0.42 + 0.35 * pulse);
+        const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+        g.addColorStop(0, `hsla(${hue}, 100%, ${40 + 30 * pulse}%, 0.85)`);
+        g.addColorStop(0.5, `hsla(${(hue + 40) % 360}, 100%, ${20 + 20 * pulse}%, 0.5)`);
+        g.addColorStop(1, `hsla(${hue}, 100%, 5%, 0)`);
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      ctx.globalCompositeOperation = 'source-over';
+
+      if (pulse > 0.45) {
+        ctx.fillStyle = `rgba(255,255,255,${(pulse - 0.45) * 0.6})`;
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      ctx.restore();
+    }
+
+    // ---- Çizim ----
+    const personCanvas = document.createElement('canvas');
+    personCanvas.width = W;
+    personCanvas.height = H;
+    const personCtx = personCanvas.getContext('2d');
+
+    function drawFrame() {
+      if (!segResults && !handResults) return;
+
+      canvasCtx.save();
+      canvasCtx.clearRect(0, 0, W, H);
+
+      // NAH aktifken: kamera kutusu şeffaf, kişi sayfa arka planının üstünde
+      if (running && nahActive && segResults) {
+        if (videoElement.style.visibility !== 'hidden') videoElement.style.visibility = 'hidden';
+        setBabies(true);
+
+        drawFireworks(canvasCtx);
+
+        // Kişiyi maskeyle kes (şeffaf arka planlı)
+        personCtx.clearRect(0, 0, W, H);
+        personCtx.drawImage(segResults.segmentationMask, 0, 0, W, H);
+        personCtx.globalCompositeOperation = 'source-in';
+        personCtx.drawImage(segResults.image, 0, 0, W, H);
+        personCtx.globalCompositeOperation = 'source-over';
+
+        canvasCtx.drawImage(personCanvas, 0, 0);
+      } else {
+        if (videoElement.style.visibility === 'hidden') videoElement.style.visibility = 'visible';
+        setBabies(false);
+        const src = (handResults && handResults.image) ? handResults.image : (segResults && segResults.image);
+        if (src) canvasCtx.drawImage(src, 0, 0, W, H);
+      }
+
+      canvasCtx.restore();
+    }
+    function loop(timestamp) {
+      requestAnimationFrame(loop);
+
+      const dt = Math.min(0.05, (timestamp - (loop._last || timestamp)) / 1000);
+      loop._last = timestamp;
+      updateFireworks(dt);
+
+      if (running) {
+        const target = nahActive ? 1 : 0;
+        psyLevel += (target - psyLevel) * Math.min(1, dt * 6);
+        if (target === 0 && psyLevel < 0.002) psyLevel = 0;
+        drawPsychedelic(bgCtx, musicElapsed(), bgW, bgH, psyLevel);
+        try {
+          drawFrame();
+        } catch (e) {
+          console.warn('drawFrame hatası', e);
+        }
+      }
+    }
+
+    // ---- Tespit sonuçları ----
+    const hands = new Hands({
+      locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+    });
+
+    hands.setOptions({
+      maxNumHands: 1,
+      modelComplexity: 1,
+      minDetectionConfidence: 0.7,
+      minTrackingConfidence: 0.7
+    });
+
+    hands.onResults((results) => {
+      handResults = results;
+
+      let fig = false;
+      if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+        for (const landmarks of results.multiHandLandmarks) {
+          if (isFigGesture(landmarks)) { fig = true; break; }
+        }
+      }
+
+      const was = nahActive;
+      nahActive = fig;
+
+      if (fig && !was) {
+        startMusic();
+        startConfetti();
+        logStatus("NAH! 🎆");
+      } else if (fig) {
+        logStatus("NAH! 🎆");
+      } else if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+        if (was) { stopMusic(); stopConfetti(); }
+        logStatus("El Algılandı");
+      } else {
+        if (was) { stopMusic(); stopConfetti(); }
+        logStatus("El Aranıyor...");
+      }
+    });
+
+    // ---- Arka plan temizleme ----
+    const selfieSegmentation = new SelfieSegmentation({
+      locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`
+    });
+
+    selfieSegmentation.setOptions({
+      modelSelection: 1
+    });
+
+    selfieSegmentation.onResults((results) => {
+      segResults = results;
+    });
+
+    // ---- Başlat ----
+    document.getElementById('startBtn').addEventListener('click', () => {
+      document.getElementById('startBtn').style.display = 'none';
+      if (loadingEl) loadingEl.style.display = 'none';
+      logStatus("El Aranıyor...");
+
+      // Ses kilidini aç
+      if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+
+      running = true;
+
+      const camera = new Camera(videoElement, {
+        onFrame: async () => {
+          await selfieSegmentation.send({ image: videoElement });
+          await hands.send({ image: videoElement });
+        },
+        width: 640,
+        height: 480
+      });
+
+      camera.start();
+      requestAnimationFrame(loop);
+    });
+
+    // ---- Önyükleme: şarkı + modeller (kamera beklemeden) ----
+    async function warmModels() {
+      const c = document.createElement('canvas');
+      c.width = 64; c.height = 64;
+      const cx = c.getContext('2d');
+      cx.fillStyle = '#000';
+      cx.fillRect(0, 0, 64, 64);
+      try {
+        await hands.send({ image: c });
+        await selfieSegmentation.send({ image: c });
+      } catch (e) {}
+    }
+
+    preloadMusic();
+    warmModels();
+  </script>
+</body>
+</html>
